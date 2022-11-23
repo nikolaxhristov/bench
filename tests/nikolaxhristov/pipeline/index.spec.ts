@@ -20,13 +20,4 @@ test("compression", async () => {
 			]),
 		}).compress()
 	);
-
-	// await expect(
-	// 	await new compress({
-	// 		path: new Map([
-	// 			["./src/test/sample/input", "./src/test/sample/output"],
-	// 		]),
-	// 		logger: 2,
-	// 	}).compress()
-	// );
 });
