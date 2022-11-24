@@ -1,24 +1,16 @@
 #!/bin/bash
 
-mkdir -p ./bench/nikolaxhristov/pipeline/
-touch ./bench/nikolaxhristov/pipeline/cache.md
-
-mkdir -p ./bench/nikolaxhristov/pipeline/
-touch ./bench/nikolaxhristov/pipeline/no-cache.md
-
 hyperfine \
-	--runs 3 \
-	--warmup 3 \
+	--runs 1 \
 	--show-output \
 	--export-markdown ./bench/nikolaxhristov/pipeline/no-cache.md \
-	'pnpm run test:nikolaxhristov:pipeline:compression:no-cache'
+	'node ./dist/bench/nikolaxhristov/pipeline/compression.no-cache.js'
 
 hyperfine \
-	--runs 3 \
-	--warmup 3 \
+	--runs 1 \
 	--show-output \
 	--export-markdown ./bench/nikolaxhristov/pipeline/cache.md \
-	'pnpm run test:nikolaxhristov:pipeline:compression:cache'
+	'node ./dist/bench/nikolaxhristov/pipeline/compression.cache.js'
 
 {
 	printf '# benchmarks\n'
