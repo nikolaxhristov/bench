@@ -10,12 +10,6 @@ jest.setTimeout(30000000);
 
 describe("compression", () => {
 	test("smaller directory", async () => {
-		try {
-			await fs.promises.rm("./samples/nikolaxhristov/pipeline/output/", {
-				recursive: true,
-			});
-		} catch (_error) {}
-
 		await new pipeline({
 			path: new Map([
 				[
@@ -29,7 +23,7 @@ describe("compression", () => {
 			parseInt(
 				(
 					await execP(
-						"du -s samples/nikolaxhristov/pipeline/output/ | cut -f1"
+						"du -s ./samples/nikolaxhristov/pipeline/output/ | cut -f1"
 					)
 				).stdout
 			)
@@ -37,7 +31,7 @@ describe("compression", () => {
 			parseInt(
 				(
 					await execP(
-						"du -s samples/nikolaxhristov/pipeline/input/ | cut -f1"
+						"du -s ./samples/nikolaxhristov/pipeline/input/ | cut -f1"
 					)
 				).stdout
 			)
