@@ -8,4 +8,5 @@ export default async () =>
 				"./samples/nikolaxhristov/pipeline/output/",
 			],
 		]),
+		logger: 1,
 	}).compress();
