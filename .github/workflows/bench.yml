@@ -14,7 +14,6 @@ on:
 
 jobs:
     bench:
-        needs: prepare
         strategy:
             matrix:
                 node-version: [18]
