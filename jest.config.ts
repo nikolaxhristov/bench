@@ -23,5 +23,6 @@ export default (): JestConfigWithTsJest => ({
 		"<rootDir>/node_modules/",
 		"/node_modules/",
 		"node_modules",
+		"tests",
 	],
 });
