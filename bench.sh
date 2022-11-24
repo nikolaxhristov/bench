@@ -7,14 +7,16 @@ mkdir -p ./bench/nikolaxhristov/pipeline/
 touch ./bench/nikolaxhristov/pipeline/no-cache.md
 
 hyperfine \
-	--runs 1 \
-	--warmup 1 \
+	--runs 3 \
+	--warmup 3 \
+	--show-output \
 	--export-markdown ./bench/nikolaxhristov/pipeline/no-cache.md \
 	'pnpm run test:nikolaxhristov:pipeline:compression:no-cache'
 
 hyperfine \
-	--runs 1 \
-	--warmup 1 \
+	--runs 3 \
+	--warmup 3 \
+	--show-output \
 	--export-markdown ./bench/nikolaxhristov/pipeline/cache.md \
 	'pnpm run test:nikolaxhristov:pipeline:compression:cache'
 
