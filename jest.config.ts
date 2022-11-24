@@ -19,5 +19,9 @@ export default (): JestConfigWithTsJest => ({
 		],
 	},
 	resolver: "ts-jest-resolver",
-	transformIgnorePatterns: ["<rootDir>/node_modules/"],
+	transformIgnorePatterns: [
+		"<rootDir>/node_modules/",
+		"/node_modules/",
+		"node_modules",
+	],
 });
