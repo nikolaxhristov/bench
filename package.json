@@ -16,6 +16,6 @@
 		"ts-jest-resolver": "2.0.0"
 	},
 	"devDependencies": {
-		"@nikolarhristov/pipeline": "0.0.4"
+		"@nikolarhristov/pipeline": "0.0.5"
 	}
 }
