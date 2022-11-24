@@ -1,5 +1,11 @@
 #!/bin/bash
 
+mkdir -p ./bench/nikolarhristov/pipeline/
+touch ./bench/nikolarhristov/pipeline/cache.md
+
+mkdir -p ./bench/nikolarhristov/pipeline/
+touch ./bench/nikolarhristov/pipeline/no-cache.md
+
 hyperfine \
 	--runs 1 \
 	--export-markdown ./bench/nikolarhristov/pipeline/no-cache.md \
