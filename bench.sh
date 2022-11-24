@@ -8,11 +8,13 @@ touch ./bench/nikolaxhristov/pipeline/no-cache.md
 
 hyperfine \
 	--runs 1 \
+	--warmup 1 \
 	--export-markdown ./bench/nikolaxhristov/pipeline/no-cache.md \
 	'pnpm run test:nikolaxhristov:pipeline:compression:no-cache'
 
 hyperfine \
 	--runs 1 \
+	--warmup 1 \
 	--export-markdown ./bench/nikolaxhristov/pipeline/cache.md \
 	'pnpm run test:nikolaxhristov:pipeline:compression:cache'
 
