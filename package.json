@@ -1,5 +1,6 @@
 {
 	"name": "@nikolarhristov/bench",
+	"type": "module",
 	"scripts": {
 		"test": "jest -c jest.config.ts"
 	},
@@ -14,6 +15,6 @@
 		"ts-jest-resolver": "2.0.0"
 	},
 	"devDependencies": {
-		"@nikolarhristov/pipeline": "0.0.2"
+		"@nikolarhristov/pipeline": "0.0.4"
 	}
 }

@@ -1,16 +1,21 @@
 import * as fs from "fs";
 import pipeline from "@nikolarhristov/pipeline";
+import { expect, describe, test } from "@jest/globals";
+import { promisify } from "util";
+import { exec } from "child_process";
 
-jest.setTimeout(300000000);
+const execP = promisify(exec);
 
-test("compression", async () => {
-	try {
-		await fs.promises.rm("./samples/nikolaxhristov/pipeline/output/", {
-			recursive: true,
-		});
-	} catch (_error) {}
+jest.setTimeout(30000000);
 
-	expect(
+describe("compression", () => {
+	test("smaller directory", async () => {
+		try {
+			await fs.promises.rm("./samples/nikolaxhristov/pipeline/output/", {
+				recursive: true,
+			});
+		} catch (_error) {}
+
 		await new pipeline({
 			path: new Map([
 				[
@@ -18,6 +23,24 @@ test("compression", async () => {
 					"./samples/nikolaxhristov/pipeline/output",
 				],
 			]),
-		}).compress()
-	);
+		}).compress();
+
+		expect(
+			parseInt(
+				(
+					await execP(
+						"du -s samples/nikolaxhristov/pipeline/output/ | cut -f1"
+					)
+				).stdout
+			)
+		).toBeLessThan(
+			parseInt(
+				(
+					await execP(
+						"du -s samples/nikolaxhristov/pipeline/input/ | cut -f1"
+					)
+				).stdout
+			)
+		);
+	});
 });
