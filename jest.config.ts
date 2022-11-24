@@ -4,6 +4,7 @@ export default (): JestConfigWithTsJest => ({
 	preset: "ts-jest/presets/js-with-ts",
 	rootDir: "./",
 	roots: ["<rootDir>"],
+	clearMocks: true,
 	testEnvironment: "node",
 	extensionsToTreatAsEsm: [".jsx", ".ts", ".tsx", ".mts"],
 	moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
