@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-F3HETJL3">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="generator" content="Astro v1.6.10">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#8D46E7">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7">
+<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS">
+
+<title>Astro 0.23 Release Notes | Astro</title>
+
+<!-- SEO STARTS --><meta name="mobile-web-app-capable" content="yes">
+<meta name="robots" content="follow, index">
+<meta name="apple-mobile-web-app-title" content="Astro">
+
+<meta content="Introducing: Dynamic file routes • Automatic XSS protection • two new component directives • vite 2.8 • and more!" name="description">
+<link rel="canonical" href="https://astro.build.compress.critters.pages.dev/blog/astro-023/">
+
+<meta name="og:site_name" property="og:site_name" content="Astro">
+<meta name="og:type" property="og:type" content="article">
+<meta property="og:description" content="Introducing: Dynamic file routes • Automatic XSS protection • two new component directives • vite 2.8 • and more!">
+<meta property="og:title" content="Astro 0.23 Release Notes | Astro">
+<meta property="og:image" content="https://astro.build.compress.critters.pages.dev/assets/social_Z2jl3ah.jpeg">
+<meta property="og:url" content="https://astro.build.compress.critters.pages.dev/blog/astro-023/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Astro 0.23 Release Notes | Astro">
+<meta name="twitter:description" content="Introducing: Dynamic file routes • Automatic XSS protection • two new component directives • vite 2.8 • and more!">
+<meta name="twitter:image" content="https://astro.build.compress.critters.pages.dev/assets/social_Z2jl3ah.jpeg">
+<!-- /SEO ENDS-->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+	<link rel="stylesheet" href="/assets/404.2f0011fe.css" />
+<link rel="stylesheet" href="/assets/_slug_.b0ffba02.css" />
+<link rel="stylesheet" href="/assets/_slug_.e85d6370.css" />
+<link rel="stylesheet" href="/assets/rss.xml.c4aaed3a.css" /><script type="module" src="/hoisted.325dab7f.js"></script>
+<script type="module" src="/page.5a6f3db5.js"></script></head>
+
+	<body class="astro-F3HETJL3">
+		<div class="relative overflow-hidden min-h-screen flex flex-col astro-F3HETJL3">
+			
+
+<header id="navheader" class="fixed top-0 left-0 right-0 z-20 astro-2EIQQAR5">
+	<div class="bg-neutral-900 text-neutral-400 py-4 astro-2EIQQAR5">
+		<nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 astro-2EIQQAR5" aria-label="Global">
+			<div class="flex flex-col sm:flex-row items-center flex-1 gap-y-6 astro-2EIQQAR5">
+				<div class="flex items-center justify-between w-full md:w-auto -m-2 astro-2EIQQAR5">
+					<a href="/" class="flex gap-x-1 text-neutral-50 font-semibold text-xl astro-2EIQQAR5" id="navlogo">
+						<span class="sr-only astro-2EIQQAR5">Astro</span>
+					</a>
+					<div class="-mr-2 sm:-mr-6 flex items-center md:hidden astro-2EIQQAR5">
+						<button type="button" id="menubtn" class="rounded-md p-2 inline-flex items-center justify-center hover:bg-neutral-600 hover:text-neutral-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-neutral-50 astro-2EIQQAR5" aria-expanded="false">
+							<span class="sr-only astro-2EIQQAR5">Open main menu</span>
+						</button>
+					</div>
+				</div>
+				<div id="menu" class="flex flex-col sm:flex-row gap-x-8 gap-y-4 sm:ml-10 text-center sm:text-left sm:pb-0 astro-2EIQQAR5">
+					<a href="/showcase" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Showcase
+							</a><a href="https://astro.docs.compress.critters.pages.dev" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Docs
+							</a><a href="/themes" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Themes
+							</a><a href="/integrations" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Integrations
+							</a><a href="/blog" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Blog
+							</a>
+				</div>
+
+				<div id="mobilesocial" class="items-center gap-x-3 flex sm:hidden pb-4 astro-2EIQQAR5">
+					<a class="ml-3 flex items-center no-underline astro-2EIQQAR5" href="https://github.com/withastro/astro" title="Go to Astro's GitHub repo">
+									<div class="item-center hidden sm:flex astro-2EIQQAR5">
+										<div class="bg-primary-900 border-primary-500 flex h-6 items-center rounded-l border border-r-0 px-2 text-[13px] font-semibold	leading-3 text-orange-100 astro-2EIQQAR5">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="mr-1 block h-4 w-4 astro-2EIQQAR5">
+												<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class="astro-2EIQQAR5"></path>
+											</svg>
+											22.7K
+										</div>
+										<div class="inline-block w-[18px] overflow-hidden astro-2EIQQAR5">
+											<div class="bg-primary-900 border-primary-500 h-6 w-[17px] origin-top-left rotate-45 transform border border-l-0 astro-2EIQQAR5"></div>
+										</div>
+									</div>
+								</a><a href="/chat" class="astro-2EIQQAR5">
+									<span class="sr-only astro-2EIQQAR5">Join the Astro community on Discord</span>
+								</a><a href="https://twitter.com/astrodotbuild" class="astro-2EIQQAR5">
+									<span class="sr-only astro-2EIQQAR5">Follow Astro on Twitter</span>
+								</a>
+				</div>
+			</div>
+			<div class="items-center ml-6 pl-1 gap-x-3 hidden md:flex astro-2EIQQAR5">
+				<a class="ml-3 flex items-center no-underline astro-2EIQQAR5" href="https://github.com/withastro/astro" title="Go to Astro's GitHub repo">
+								<div class="item-center hidden sm:flex astro-2EIQQAR5">
+									<div class="bg-primary-900 border-primary-500 flex h-6 items-center rounded-l border border-r-0 px-2 text-[13px] font-semibold	leading-3 text-orange-100 astro-2EIQQAR5">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="mr-1 block h-4 w-4 astro-2EIQQAR5">
+											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class="astro-2EIQQAR5"></path>
+										</svg>
+										22.7K
+									</div>
+									<div class="inline-block w-[18px] overflow-hidden astro-2EIQQAR5">
+										<div class="bg-primary-900 border-primary-500 h-6 w-[17px] origin-top-left rotate-45 transform border border-l-0 astro-2EIQQAR5"></div>
+									</div>
+								</div>
+							</a><a href="/chat" title="Join the Astro community on Discord" class="astro-2EIQQAR5">
+								<span class="sr-only astro-2EIQQAR5">Join the Astro community on Discord</span>
+
+							</a><a href="https://twitter.com/astrodotbuild" title="Follow Astro on Twitter" class="astro-2EIQQAR5">
+								<span class="sr-only astro-2EIQQAR5">Follow Astro on Twitter</span>
+
+							</a>
+			</div>
+		</nav>
+	</div>
+</header>
+
+
+
+			<main class="flex-1 astro-Q52DA2LF astro-F3HETJL3">
+				<article class="max-w-screen-md px-4 py-12 sm:py-24 mx-auto astro-Q52DA2LF">
+		
+		
+		<h1 class="my-6 text-4xl sm:text-5xl text-neutral-900 font-bold text-center astro-Q52DA2LF">
+			Astro 0.23 Release Notes
+		</h1>
+		<div class="my-4 space-y-2 text-neutral-500 text-lg astro-Q52DA2LF">
+			<p class="flex gap-2 items-center justify-center flex-wrap astro-Q52DA2LF">
+				<time datetime="February 19, 2022" class="astro-Q52DA2LF">
+					February 19, 2022
+				</time>
+				<span class="astro-Q52DA2LF">by</span>
+				<a href="https://twitter.com/FredKSchott" class="inline-flex space-x-1 no-underline hover:underline astro-Q52DA2LF">
+								<img class="my-0 h-6 w-6 rounded-full" alt="" aria-hidden="true" width="48" height="48" src="/assets/fred.d6714e6b_hg6iM.jpg" loading="lazy" decoding="async">
+								<span class="astro-Q52DA2LF">Fred Schott</span>
+							</a>
+			</p>
+		</div>
+		<hr class="my-4 astro-Q52DA2LF">
+		<div class="prose text-lg astro-Q52DA2LF">
+			<p><strong>Astro v0.23.0</strong> has just been released with some new features and highlights:</p>
+<ul>
+<li><a href="#dynamic-file-routes">Dynamic File Routes</a></li>
+<li><a href="#automatic-xss-protection">Automatic XSS Protection</a></li>
+<li><a href="#new-sethtml-and-settext-directives">New <code>set:html</code> and <code>set:text</code> directives</a></li>
+<li><a href="#safe-access-to-sensitive-environment-variables">Safe access to sensitive environment variables</a></li>
+<li><a href="#better-builds-with-vite-v28">Better builds with Vite v2.8</a></li>
+<li><a href="#better-stability-with-astrocompiler-v011">Better stability with @astro/compiler v0.11</a></li>
+<li><a href="#better-build-performance">Better build performance with <code>--experimental-static-builds</code></a></li>
+</ul>
+<h2 id="dynamic-file-routes">Dynamic File Routes</h2>
+<p>You can now build dynamic, non-HTML files in your project by using Astro’s new
+<strong>file routes</strong>. Use file routes to dynamically generate files during your build
+for things like JSON, XML, or even non-text assets like images. This feature has
+been one of our most requested since the early days of Astro!</p>
+<p>To create a file route inside of your Astro project, create a new JavaScript or
+TypeScript file inside of your <code>src/pages</code> directory. File routes leverage
+Astro’s existing file-based router, so be sure to include the final built file
+extension in the filename.</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">// Example: src/pages/builtwith.json.ts</span></span>
+<span class="line"><span style="color:#8B949E">// Outputs: /builtwith.json</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// File routes export a get() function, which gets called to generate the file.</span></span>
+<span class="line"><span style="color:#8B949E">// Return an object with `body` to save the file contents in your final build.</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">async</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">function</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">get</span><span style="color:#C9D1D9">() {</span></span>
+<span class="line"><span style="color:#C9D1D9">	</span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> {</span></span>
+<span class="line"><span style="color:#C9D1D9">		body: </span><span style="color:#79C0FF">JSON</span><span style="color:#C9D1D9">.</span><span style="color:#D2A8FF">stringify</span><span style="color:#C9D1D9">({</span></span>
+<span class="line"><span style="color:#C9D1D9">			name: </span><span style="color:#A5D6FF">&quot;Astro&quot;</span><span style="color:#C9D1D9">,</span></span>
+<span class="line"><span style="color:#C9D1D9">			url: </span><span style="color:#A5D6FF">&quot;https://astro.build.compress.critters.pages.dev.compress.critters.pages.dev/&quot;</span><span style="color:#C9D1D9">,</span></span>
+<span class="line"><span style="color:#C9D1D9">		}),</span></span>
+<span class="line"><span style="color:#C9D1D9">	};</span></span>
+<span class="line"><span style="color:#C9D1D9">}</span></span></code></pre>
+<p>This feature is only available with the <code>--experimental-static-build</code> flag.
+<a href="https://astro-docs-compress-critters.pages.dev/en/core-concepts/astro-pages/#non-html-pages">To learn more, check out the docs.</a></p>
+<h2 id="automatic-xss-protection">Automatic XSS Protection</h2>
+<p>Astro v0.23 begins our migration towards automatic HTML escaping inside of Astro
+template expressions. This new feature will protect you from accidentally
+injecting untrusted HTML onto your page. Without it, you open yourself up to
+Cross Site Scripting (XSS) attacks where malicious users can hijack your site to
+run untrusted or unexpected code on the page.</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">&lt;!-- Examples of untrusted HTML injection --&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span><span style="color:#FF7B72">{</span><span style="color:#A5D6FF">`&lt;span&gt;Hello, dangerous HTML&lt;/span&gt;`</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9">&lt;/</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span><span style="color:#FF7B72">{</span><span style="color:#A5D6FF">`&lt;script&gt;alert(&#39;oh no&#39;);&lt;/script&gt;`</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9">&lt;/</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span><span style="color:#FF7B72">{</span><span style="color:#C9D1D9">untrustedHtml</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9">&lt;/</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span></span></code></pre>
+<p>Thanks to React and other component-based UI libraries, XSS vulnerabilities are
+becoming a thing of the past. Astro is excited to meet this same bar of
+zero-effort, built-in, automatic XSS protection.</p>
+<p>To help our users migrate, Astro v0.23 will log a warning to the console when
+unescaped HTML is encountered inside of a template expression. In the next
+version, template expressions will always escape their contents.</p>
+<h2 id="new-sethtml-and-settext-directives">New <code>set:html</code> and <code>set:text</code> directives</h2>
+<p>Two new directives are introduced to support better HTML injection when you need
+it. As we covered in the previous section, setting HTML directly is risky.
+However, in some special cases it may be required. Astro created the new
+<code>set:html</code> directive for those cases. You can think of it like React’s
+<code>dangerouslySetInnerHTML</code>.</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">&lt;!-- Examples of explicit HTML setting --&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">set:html</span><span style="color:#C9D1D9">=</span><span style="color:#FF7B72">{</span><span style="color:#A5D6FF">`&lt;span&gt;Hello, trusted or already escaped HTML&lt;/span&gt;`</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">set:html</span><span style="color:#C9D1D9">=</span><span style="color:#FF7B72">{</span><span style="color:#A5D6FF">`&lt;script&gt;alert(&#39;oh yes&#39;);&lt;/script&gt;`</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">set:html</span><span style="color:#C9D1D9">=</span><span style="color:#FF7B72">{</span><span style="color:#C9D1D9">trustedOrAlreadyEscapedHtml</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;</span></span></code></pre>
+<p>If you don’t want a <code>&lt;div&gt;</code> wrapper, you can also use <code>set:html</code> on the Fragment
+component for zero wrapping HTML:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">- {`&lt;span&gt;Hello, dangerous HTML&lt;/span&gt;`}</span></span>
+<span class="line"><span style="color:#c9d1d9">+ &lt;Fragment set:html={`&lt;span&gt;Hello, trusted or already escaped HTML&lt;/span&gt;`} /&gt;</span></span></code></pre>
+<p><code>set:text</code> is also available to set the element text directly, similar to
+setting the <code>.text</code> property on an element in the browser. Together, these two
+directives give you a bit more control over the Astro output when you need it.</p>
+<h2 id="safe-access-to-sensitive-environment-variables">Safe access to sensitive environment variables</h2>
+<p>For security, Vite only loads environment variables that are explicitly opted-in
+to be exposed with a <code>PUBLIC_</code> prefix. This restriction makes sense in the
+browser, and protects you from accidentally leaking secret tokens and values.
+However, it also meant that private environment variables weren’t available to
+you at all, even locally inside of server-rendered Astro components.</p>
+<p><p>In Astro v0.23, <code>import.meta.env</code> now lets you access
+your private environment variables inside of Astro and anytime code renders
+locally or on the server. Astro will continue to protect you on the client,
+and only expose <code>PUBLIC_</code> variables to the frontend that ships to
+your users.</p></p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">// DB_PASSWORD is only available when building your site.</span></span>
+<span class="line"><span style="color:#8B949E">// If any code tried to run this in the browser, it will be empty.</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">data</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">await</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">db</span><span style="color:#C9D1D9">(</span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">.</span><span style="color:#79C0FF">meta</span><span style="color:#C9D1D9">.env.</span><span style="color:#79C0FF">DB_PASSWORD</span><span style="color:#C9D1D9">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// PUBLIC_POKEAPI is available anywhere, thanks to the PUBLIC_ prefix!</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">data</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">fetch</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">`${</span><span style="color:#FF7B72">import</span><span style="color:#A5D6FF">.</span><span style="color:#79C0FF">meta</span><span style="color:#A5D6FF">.</span><span style="color:#C9D1D9">env</span><span style="color:#A5D6FF">.</span><span style="color:#79C0FF">PUBLIC_POKEAPI</span><span style="color:#A5D6FF">}/pokemon/squirtle`</span><span style="color:#C9D1D9">);</span></span></code></pre>
+<p>See our
+<a href="https://astro-docs-compress-critters.pages.dev/en/guides/environment-variables/">Environment Variables documentation</a>
+to learn more.</p>
+<h2 id="better-builds-with-vite-v28">Better builds with Vite v2.8</h2>
+<p>Astro v0.23 comes with an internal Vite upgrade that brings new features and
+huge stability improvements. Vite’s npm package handling got a boost as well, so
+that more packages should work in more projects.
+<a href="https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md">Check out their changelog</a>
+to learn more.</p>
+<h2 id="better-stability-with-astrocompiler-v011">Better stability with @astro/compiler v0.11</h2>
+<p>Astro v0.23 also got a compiler upgrade which should result in noticeable
+performance and stability improvements across all projects.
+<a href="https://github.com/withastro/compiler/releases">Check out the changelog</a> to
+learn more.</p>
+<h2 id="better-build-performance">Better build performance</h2>
+<p>You may have noticed the reference to <code>--experimental-static-build</code> above, and
+the fact that some new features are only available behind this flag. This flag
+is not new in v0.23, but it continues to improve as we get closer to an official
+release of the feature. This new “static build” strategy will soon become the
+default build behavior in Astro.</p>
+<p>If you haven’t tried the <code>--experimental-static-build</code> flag out yet in your
+build, please give it a try and leave us feedback in Discord. Check out our blog
+post <a href="/blog/experimental-static-build">Scaling Astro to 10,000+ Pages</a> to learn
+more about this future build strategy for Astro.</p>
+<h2 id="">👋</h2>
+<p>Thank you for reading! <a href="https://twitter.com/astrodotbuild">Follow us on Twitter</a>
+to stay up to date on Astro releases and news.</p>
+<p>If you’ve read this far, you should definitely
+<a href="https://astro.build.compress.critters.pages.dev.compress.critters.pages.dev/chat">join us on Discord.</a>
+;)</p>
+		</div>
+	</article>
+			</main>
+
+			<footer class="bg-neutral-900">
+	<div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+		<nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+			<div class="px-5 py-2 text-center">
+						<a href="https://astro-docs-compress-critters.pages.dev/en/concepts/why-astro/" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Why Astro?
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="https://astro-docs-compress-critters.pages.dev/" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Documentation
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="/blog" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Blog
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="/press" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Press
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="/privacy" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Privacy Policy
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="https://astro.build.compress.critters.pages.dev.compress.critters.pages.dev/company/" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							The Astro Technology Company (We&#39;re Hiring!)
+						</a>
+					</div>
+		</nav>
+		<div class="mt-8 flex justify-center space-x-6">
+			<a href="https://github.com/withastro/astro" title="Go to Astro's GitHub repo" class="text-neutral-300 hover:text-neutral-100">
+						<span class="sr-only">Go to Astro&#39;s GitHub repo</span>
+						
+					</a><a href="/chat" title="Join the Astro community on Discord" class="text-neutral-300 hover:text-neutral-100">
+						<span class="sr-only">Join the Astro community on Discord</span>
+						
+					</a><a href="https://twitter.com/astrodotbuild" title="Follow Astro on Twitter" class="text-neutral-300 hover:text-neutral-100">
+						<span class="sr-only">Follow Astro on Twitter</span>
+						
+					</a>
+		</div>
+	</div>
+</footer>
+		</div>
+		
+	</body>
+</html>
+

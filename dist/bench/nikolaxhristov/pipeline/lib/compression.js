@@ -1,1 +1,1 @@
-import p from"@nikolarhristov/pipeline";var i=async()=>await new p({path:new Map([["./samples/nikolaxhristov/pipeline/input/","./samples/nikolaxhristov/pipeline/output/"]]),logger:1}).compress();export{i as default};
+import p from"@nikolarhristov/pipeline";var i=async()=>await new p({path:new Map([["./samples/nikolaxhristov/pipeline/smaller-input/","./samples/nikolaxhristov/pipeline/output/"]])}).compress();export{i as default};

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-F3HETJL3">
+	<head>
+		<!-- Global Metadata --><meta charset="utf-8">
+<meta name="generator" content="Astro v1.6.10">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#8D46E7">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7">
+<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS">
+
+<title>Astro 1.4.0 Release | Astro</title>
+
+<!-- SEO STARTS --><meta name="mobile-web-app-capable" content="yes">
+<meta name="robots" content="follow, index">
+<meta name="apple-mobile-web-app-title" content="Astro">
+
+<meta content="Introducing: Astro.cookies • Strict dependency installation • Better control over style ordering • JSX in Vue components" name="description">
+<link rel="canonical" href="https://astro.build.compress.critters.pages.dev/blog/astro-140/">
+
+<meta name="og:site_name" property="og:site_name" content="Astro">
+<meta name="og:type" property="og:type" content="article">
+<meta property="og:description" content="Introducing: Astro.cookies • Strict dependency installation • Better control over style ordering • JSX in Vue components">
+<meta property="og:title" content="Astro 1.4.0 Release | Astro">
+<meta property="og:image" content="https://astro.build.compress.critters.pages.dev/assets/social.4df01cf6_Z1jhpsT.jpeg">
+<meta property="og:url" content="https://astro.build.compress.critters.pages.dev/blog/astro-140/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Astro 1.4.0 Release | Astro">
+<meta name="twitter:description" content="Introducing: Astro.cookies • Strict dependency installation • Better control over style ordering • JSX in Vue components">
+<meta name="twitter:image" content="https://astro.build.compress.critters.pages.dev/assets/social.4df01cf6_Z1jhpsT.jpeg">
+<!-- /SEO ENDS-->
+
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://certain-quality.astro.build/script.js" data-site="EZBHTSIG" defer></script>
+
+	<link rel="stylesheet" href="/assets/404.2f0011fe.css" />
+<link rel="stylesheet" href="/assets/_slug_.b0ffba02.css" />
+<link rel="stylesheet" href="/assets/_slug_.e85d6370.css" />
+<link rel="stylesheet" href="/assets/rss.xml.c4aaed3a.css" /><script type="module" src="/hoisted.325dab7f.js"></script>
+<script type="module" src="/page.5a6f3db5.js"></script></head>
+
+	<body class="astro-F3HETJL3">
+		<div class="relative overflow-hidden min-h-screen flex flex-col astro-F3HETJL3">
+			
+
+<header id="navheader" class="fixed top-0 left-0 right-0 z-20 astro-2EIQQAR5">
+	<div class="bg-neutral-900 text-neutral-400 py-4 astro-2EIQQAR5">
+		<nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 astro-2EIQQAR5" aria-label="Global">
+			<div class="flex flex-col sm:flex-row items-center flex-1 gap-y-6 astro-2EIQQAR5">
+				<div class="flex items-center justify-between w-full md:w-auto -m-2 astro-2EIQQAR5">
+					<a href="/" class="flex gap-x-1 text-neutral-50 font-semibold text-xl astro-2EIQQAR5" id="navlogo">
+						<span class="sr-only astro-2EIQQAR5">Astro</span>
+					</a>
+					<div class="-mr-2 sm:-mr-6 flex items-center md:hidden astro-2EIQQAR5">
+						<button type="button" id="menubtn" class="rounded-md p-2 inline-flex items-center justify-center hover:bg-neutral-600 hover:text-neutral-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-neutral-50 astro-2EIQQAR5" aria-expanded="false">
+							<span class="sr-only astro-2EIQQAR5">Open main menu</span>
+						</button>
+					</div>
+				</div>
+				<div id="menu" class="flex flex-col sm:flex-row gap-x-8 gap-y-4 sm:ml-10 text-center sm:text-left sm:pb-0 astro-2EIQQAR5">
+					<a href="/showcase" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Showcase
+							</a><a href="https://astro.docs.compress.critters.pages.dev" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Docs
+							</a><a href="/themes" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Themes
+							</a><a href="/integrations" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Integrations
+							</a><a href="/blog" class="text-base text-neutral-50 hover:text-neutral-300 astro-2EIQQAR5">
+								Blog
+							</a>
+				</div>
+
+				<div id="mobilesocial" class="items-center gap-x-3 flex sm:hidden pb-4 astro-2EIQQAR5">
+					<a class="ml-3 flex items-center no-underline astro-2EIQQAR5" href="https://github.com/withastro/astro" title="Go to Astro's GitHub repo">
+									<div class="item-center hidden sm:flex astro-2EIQQAR5">
+										<div class="bg-primary-900 border-primary-500 flex h-6 items-center rounded-l border border-r-0 px-2 text-[13px] font-semibold	leading-3 text-orange-100 astro-2EIQQAR5">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="mr-1 block h-4 w-4 astro-2EIQQAR5">
+												<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class="astro-2EIQQAR5"></path>
+											</svg>
+											22.7K
+										</div>
+										<div class="inline-block w-[18px] overflow-hidden astro-2EIQQAR5">
+											<div class="bg-primary-900 border-primary-500 h-6 w-[17px] origin-top-left rotate-45 transform border border-l-0 astro-2EIQQAR5"></div>
+										</div>
+									</div>
+								</a><a href="/chat" class="astro-2EIQQAR5">
+									<span class="sr-only astro-2EIQQAR5">Join the Astro community on Discord</span>
+								</a><a href="https://twitter.com/astrodotbuild" class="astro-2EIQQAR5">
+									<span class="sr-only astro-2EIQQAR5">Follow Astro on Twitter</span>
+								</a>
+				</div>
+			</div>
+			<div class="items-center ml-6 pl-1 gap-x-3 hidden md:flex astro-2EIQQAR5">
+				<a class="ml-3 flex items-center no-underline astro-2EIQQAR5" href="https://github.com/withastro/astro" title="Go to Astro's GitHub repo">
+								<div class="item-center hidden sm:flex astro-2EIQQAR5">
+									<div class="bg-primary-900 border-primary-500 flex h-6 items-center rounded-l border border-r-0 px-2 text-[13px] font-semibold	leading-3 text-orange-100 astro-2EIQQAR5">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="mr-1 block h-4 w-4 astro-2EIQQAR5">
+											<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" class="astro-2EIQQAR5"></path>
+										</svg>
+										22.7K
+									</div>
+									<div class="inline-block w-[18px] overflow-hidden astro-2EIQQAR5">
+										<div class="bg-primary-900 border-primary-500 h-6 w-[17px] origin-top-left rotate-45 transform border border-l-0 astro-2EIQQAR5"></div>
+									</div>
+								</div>
+							</a><a href="/chat" title="Join the Astro community on Discord" class="astro-2EIQQAR5">
+								<span class="sr-only astro-2EIQQAR5">Join the Astro community on Discord</span>
+
+							</a><a href="https://twitter.com/astrodotbuild" title="Follow Astro on Twitter" class="astro-2EIQQAR5">
+								<span class="sr-only astro-2EIQQAR5">Follow Astro on Twitter</span>
+
+							</a>
+			</div>
+		</nav>
+	</div>
+</header>
+
+
+
+			<main class="flex-1 astro-Q52DA2LF astro-F3HETJL3">
+				<article class="max-w-screen-md px-4 py-12 sm:py-24 mx-auto astro-Q52DA2LF">
+		
+		
+		<h1 class="my-6 text-4xl sm:text-5xl text-neutral-900 font-bold text-center astro-Q52DA2LF">
+			Astro 1.4.0 Release
+		</h1>
+		<div class="my-4 space-y-2 text-neutral-500 text-lg astro-Q52DA2LF">
+			<p class="flex gap-2 items-center justify-center flex-wrap astro-Q52DA2LF">
+				<time datetime="September 29, 2022" class="astro-Q52DA2LF">
+					September 29, 2022
+				</time>
+				<span class="astro-Q52DA2LF">by</span>
+				<a href="https://twitter.com/matthewcp" class="inline-flex space-x-1 no-underline hover:underline astro-Q52DA2LF">
+								<img class="my-0 h-6 w-6 rounded-full" alt="" aria-hidden="true" width="48" height="48" src="/assets/matthew.156c0c47_dfDYr.jpg" loading="lazy" decoding="async">
+								<span class="astro-Q52DA2LF">Matthew Phillips</span>
+							</a>
+			</p>
+		</div>
+		<hr class="my-4 astro-Q52DA2LF">
+		<div class="prose text-lg astro-Q52DA2LF">
+			<p>We just released Astro 1.4.0, featuring:</p>
+<ul>
+<li><strong><a href="#astro-cookies">Astro.cookies</a></strong>: A simplified approach to manipulating
+cookies within Astro pages and API routes.</li>
+<li><strong><a href="#strict-dependency-installation">Support for strict dependency installation</a></strong>:
+pnpm users can now have the benefits of its default semi-strict dependency
+installation strategy in Astro projects.</li>
+<li><strong><a href="#style-ordering">Better control over style ordering</a></strong>: We’ve fixed style
+ordering so that styles defined in Astro components are lower in bundled CSS
+than global styles you import.</li>
+<li><strong><a href="#jsx-support-in-vue">JSX support in Vue</a></strong>: Vue users can now define
+components using JSX and TSX.</li>
+</ul>
+<p>You can update your projects by running <code>npm install astro@latest</code>.</p>
+<h2 id="astrocookies">Astro.cookies</h2>
+<picture>
+	<source type="image/avif" srcset="/assets/astro-cookies.3d839dbb_HsV0E.avif 400w,/assets/astro-cookies.3d839dbb_Z1HApmV.avif 800w,/assets/astro-cookies.3d839dbb_hkckM.avif 1500w" sizes="(max-width: 767px) 100vw, 736px"><source type="image/webp" srcset="/assets/astro-cookies.3d839dbb_1qNJXq.webp 400w,/assets/astro-cookies.3d839dbb_ZYfApa.webp 800w,/assets/astro-cookies.3d839dbb_10F1iy.webp 1500w" sizes="(max-width: 767px) 100vw, 736px"><source type="image/png" srcset="/assets/astro-cookies.3d839dbb_1PrNWv.png 400w,/assets/astro-cookies.3d839dbb_1qEEOA.png 800w,/assets/astro-cookies.3d839dbb_Z1rvs0B.png 1500w" sizes="(max-width: 767px) 100vw, 736px">
+	<img src="/assets/astro-cookies.3d839dbb_Z1rvs0B.png" loading="lazy" decoding="async" alt="Code example that shows off using Astro.cookies" class="astro-O2TNYKPC">
+</picture>
+
+
+<p>Sites built with <abbr title="Server-side rendering">SSR</abbr> are able to read
+and set cookies in Astro. Previously, reading cookies required reading the
+<code>cookie</code> header in the request (<code>Astro.request</code> in pages) and then parsing it
+using a library. Writing cookies required serializing into <code>Set-Cookie</code> headers
+in the returned Response.</p>
+<p>Given the importance of cookies in stateful and authenticated apps, we felt a
+simplified abstraction for cookies would make all of this easier.</p>
+<p>With <code>Astro.cookies</code> you can read and write cookies with a
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>-like
+API. In the above example, we check if a <code>prefs</code> cookie exists and set a default
+value if it doesn’t. We then get its value and use it in our template.</p>
+<p>Check out
+<a href="https://astro-docs-compress-critters.pages.dev/en/reference/api-reference/#astrocookies">the docs</a>
+for the full API reference.</p>
+<h2 id="strict-dependency-installation">Strict dependency installation</h2>
+<p>If you are using <a href="https://pnpm.io/">pnpm</a> in your Astro project, you can now
+install your dependencies using its strict dependency algorithm. Since Astro
+runs code on your behalf, you previously needed to
+<a href="https://pnpm.io/blog/2020/10/17/node-modules-configuration-options-with-pnpm#the-worst-case---hoisting-to-the-root">hoist packages to the root</a>,
+which meant that most of your dependencies (and <em>their</em> dependencies) were
+installed into the top-level <code>node_modules/</code> folder.</p>
+<p>A stricter installation is more <em>correct</em>, in that a package can only import
+dependencies it defines in its own <code>package.json</code>. A stricter installation is
+also faster, as Node.js does not need to look in as many folders to find
+packages.</p>
+<p>This feature comes for free in Astro 1.4.0 for new projects. Existing projects
+can remove hoisting configuration they might have in a <code>.npmrc</code> file.</p>
+<h2 id="better-control-over-style-ordering">Better control over style ordering</h2>
+<p>When Astro 1.0 was released, we changed our CSS scoping mechanism to use the
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"><code>:where()</code> pseudo-class</a>.
+This allowed you to better control specificity with the usual means, such as
+adding class names.</p>
+<p>Making this switch, we didn’t realize that the default ordering of styles wasn’t
+ideal: styles defined directly in a component came before imported styles in the
+CSS output, giving component styles a lower precedence than imported styles.</p>
+<p>In 1.4.0, styles you write in Astro components will come <em>after</em> global styles
+imported. In practice, this means that if you write a component like so:</p>
+<p><strong>Title.astro</strong></p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">---</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;../styles/global-titles.css&quot;</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#8B949E">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">h1</span><span style="color:#C9D1D9">&gt;</span><span style="color:#FF7B72">{</span><span style="color:#C9D1D9">Astro.props.title</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9">&lt;/</span><span style="color:#7EE787">h1</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;</span><span style="color:#7EE787">style</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">	</span><span style="color:#7EE787">h1</span><span style="color:#C9D1D9"> {</span></span>
+<span class="line"><span style="color:#C9D1D9">		</span><span style="color:#79C0FF">color</span><span style="color:#C9D1D9">: </span><span style="color:#79C0FF">aliceblue</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#C9D1D9">	}</span></span>
+<span class="line"><span style="color:#C9D1D9">&lt;/</span><span style="color:#7EE787">style</span><span style="color:#C9D1D9">&gt;</span></span></code></pre>
+<p>When your site is built and the CSS is bundled you get something like the
+following:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">/* /src/styles/global-titles.css */</span></span>
+<span class="line"><span style="color:#7EE787">h1</span><span style="color:#C9D1D9"> {</span></span>
+<span class="line"><span style="color:#C9D1D9">	</span><span style="color:#79C0FF">color</span><span style="color:#C9D1D9">: onyx;</span></span>
+<span class="line"><span style="color:#C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/* /src/components/Title.astro */</span></span>
+<span class="line"><span style="color:#7EE787">h1</span><span style="color:#C9D1D9">:where(</span><span style="color:#79C0FF">.astro-1234</span><span style="color:#C9D1D9">) {</span></span>
+<span class="line"><span style="color:#C9D1D9">	</span><span style="color:#79C0FF">color</span><span style="color:#C9D1D9">: </span><span style="color:#79C0FF">aliceblue</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#C9D1D9">}</span></span></code></pre>
+<p>Given that these selectors both have the same specificity, the one listed
+later—the one scoped to your Title.astro component—will prevail. Within that
+component, the <code>h1</code> will have <code>color: aliceblue</code>, but any <code>h1</code> defined outside
+of your component will be <code>onyx</code>.</p>
+<p>You get the best of both worlds: styles defined in Astro are better prioritized
+if they have the same specificity, but you can override this by increasing
+specificity when needed.</p>
+<p>The output CSS order is now (from lowest to highest precedence):</p>
+<ol>
+<li>CSS in your <code>public/</code> folder added as <code>&lt;link&gt;</code> tags in the head.</li>
+<li>CSS imported in your frontmatter, in the order of your import statements
+(depth-first).</li>
+<li>CSS defined in Astro style tags.</li>
+</ol>
+<p>We’re currently writing up full documentation to explain how CSS ordering works
+and how you can control CSS priority via ordering and specificity.</p>
+<h2 id="jsx-support-in-vue">JSX support in Vue</h2>
+<picture>
+	<source type="image/avif" srcset="/assets/vue-jsx.39b61354_1k1z3R.avif 400w,/assets/vue-jsx.39b61354_kVzeb.avif 800w,/assets/vue-jsx.39b61354_1jCj4p.avif 1500w" sizes="(max-width: 767px) 100vw, 736px"><source type="image/webp" srcset="/assets/vue-jsx.39b61354_23mo1D.webp 400w,/assets/vue-jsx.39b61354_14hobW.webp 800w,/assets/vue-jsx.39b61354_22X82b.webp 1500w" sizes="(max-width: 767px) 100vw, 736px"><source type="image/png" srcset="/assets/vue-jsx.39b61354_Z1zsvuj.png 400w,/assets/vue-jsx.39b61354_Z2gqiQa.png 800w,/assets/vue-jsx.39b61354_xAMq4.png 1500w" sizes="(max-width: 767px) 100vw, 736px">
+	<img src="/assets/vue-jsx.39b61354_xAMq4.png" loading="lazy" decoding="async" alt="Code example that shows a JSX component defined with Vue" class="astro-O2TNYKPC">
+</picture>
+
+
+<p>You can now use JSX and TSX with the
+<a href="https://github.com/withastro/astro/blob/d08093f7d4f9762c0edc71e14c796d7ea8038cda/packages/integrations/vue/README.md">Vue integration</a>.
+Setting <code>jsx: true</code> in the integrations options enables the
+<a href="https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx">@vitejs/plugin-vue-jsx</a>
+Vite plugin, which does most of the work, and you can use any of its options.</p>
+<hr/>
+<p>Thanks to everyone that contributed to this outstanding release. In addition to
+these new features there were also a bunch of bug fixes throughout the core
+packages and integrations. See the
+<a href="https://github.com/withastro/astro/pull/4903">release notes</a> to learn more.</p>
+		</div>
+	</article>
+			</main>
+
+			<footer class="bg-neutral-900">
+	<div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+		<nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+			<div class="px-5 py-2 text-center">
+						<a href="https://astro-docs-compress-critters.pages.dev/en/concepts/why-astro/" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Why Astro?
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="https://astro-docs-compress-critters.pages.dev/" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Documentation
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="/blog" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Blog
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="/press" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Press
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="/privacy" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							Privacy Policy
+						</a>
+					</div><div class="px-5 py-2 text-center">
+						<a href="https://astro.build.compress.critters.pages.dev.compress.critters.pages.dev/company/" class="text-base text-neutral-300 hover:text-neutral-100 hover:underline">
+							The Astro Technology Company (We&#39;re Hiring!)
+						</a>
+					</div>
+		</nav>
+		<div class="mt-8 flex justify-center space-x-6">
+			<a href="https://github.com/withastro/astro" title="Go to Astro's GitHub repo" class="text-neutral-300 hover:text-neutral-100">
+						<span class="sr-only">Go to Astro&#39;s GitHub repo</span>
+						
+					</a><a href="/chat" title="Join the Astro community on Discord" class="text-neutral-300 hover:text-neutral-100">
+						<span class="sr-only">Join the Astro community on Discord</span>
+						
+					</a><a href="https://twitter.com/astrodotbuild" title="Follow Astro on Twitter" class="text-neutral-300 hover:text-neutral-100">
+						<span class="sr-only">Follow Astro on Twitter</span>
+						
+					</a>
+		</div>
+	</div>
+</footer>
+		</div>
+		
+	</body>
+</html>
+
