@@ -1,0 +1,83 @@
+name: Bench
+
+concurrency:
+    group: bench-${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_call:
+
+jobs:
+    bench:
+        needs: prepare
+        strategy:
+            matrix:
+                node-version: [18]
+                toolchain: ["nightly"]
+                platform: ["ubuntu-latest"]
+        runs-on: ${{ matrix.platform }}
+        steps:
+            - uses: actions/checkout@v3.1.0
+
+            # Setup Node
+            - uses: pnpm/action-setup@v2.2.4
+              with:
+                  version: 7.13.4
+                  run_install: |
+                      - recursive: true
+                        args: [
+                          --child-concurrency=9999,
+                          --link-workspace-packages=true,
+                          --lockfile-only,
+                          --network-concurrency=9999,
+                          --prefer-frozen-lockfile=false,
+                          --shamefully-hoist=false,
+                          --shared-workspace-lockfile=true,
+                          --strict-peer-dependencies=false,
+                          --unsafe-perm=true
+                        ]
+            - uses: actions/setup-node@v3.5.1
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "pnpm"
+                  cache-dependency-path: ./pnpm-lock.yaml
+            - run: pnpm install
+              working-directory: .
+
+            # Setup Rust
+            - uses: actions-rs/toolchain@v1.0.7
+              with:
+                  profile: minimal
+                  toolchain: ${{ matrix.toolchain }}
+            - uses: actions/cache@v3
+              with:
+                  path: |
+                      ~/.cargo/bin/
+                      ~/.cargo/registry/index/
+                      ~/.cargo/registry/cache/
+                      ~/.cargo/git/db/
+                      target/
+                  key: ${{ runner.os }}-cargo-${{ hashFiles('./Cargo.toml') }}
+            - uses: actions-rs/install@v0.1.2
+              with:
+                  crate: hyperfine
+                  use-tool-cache: true
+
+            # Run the benchmark
+            - run: |
+                  chmod a+x ./bench.sh
+                  ./bench.sh
+
+            # Commit the results
+            - run: |
+                  git add bench/
+                  git add README.md
+                  git config --global user.name 'Bench'
+                  git config --global user.email 'bench@nikolahristov.tech'
+                  git commit -m "Auto Bench $(git log -1 --pretty=%h) $(git log -1 --pretty=%B)"
+                  git push

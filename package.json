@@ -2,7 +2,8 @@
 	"name": "@nikolarhristov/bench",
 	"type": "module",
 	"scripts": {
-		"test": "jest -c jest.config.ts"
+		"test:nikolaxhristov:pipeline:compression:cache": "jest -c jest.config.ts tests/nikolaxhristov/pipeline/compression.cache.spec.ts",
+		"test:nikolaxhristov:pipeline:compression:no-cache": "jest -c jest.config.ts tests/nikolaxhristov/pipeline/compression.no-cache.spec.ts"
 	},
 	"dependencies": {
 		"@jest/globals": "29.3.1",
