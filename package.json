@@ -7,6 +7,7 @@
 	},
 	"dependencies": {
 		"@jest/globals": "29.3.1",
+		"@nikolarhristov/pipeline": "0.0.5",
 		"@types/jest": "29.2.3",
 		"@types/rewire": "2.5.28",
 		"@types/sharp": "0.31.0",
@@ -14,8 +15,5 @@
 		"rewire": "6.0.0",
 		"ts-jest": "29.0.3",
 		"ts-jest-resolver": "2.0.0"
-	},
-	"devDependencies": {
-		"@nikolarhristov/pipeline": "0.0.5"
 	}
 }
