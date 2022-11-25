@@ -1,1 +1,0 @@
-import p from"@nikolarhristov/pipeline";var i=async()=>await new p({path:new Map([["./samples/nikolaxhristov/pipeline/smaller-input/","./samples/nikolaxhristov/pipeline/output/"]])}).compress();export{i as default};

@@ -5,8 +5,8 @@
 	"scripts": {
 		"bench": "pnpm run build && bash bench.sh",
 		"build": "lightrix build src/bench/**/*.ts",
-		"nikolaxhristov:pipeline:compression:cache": "ts-node bench/nikolaxhristov/pipeline/compression.cache.ts",
-		"nikolaxhristov:pipeline:compression:no-cache": "ts-node bench/nikolaxhristov/pipeline/compression.no-cache.ts"
+		"nikolaxhristov:pipeline:compress": "ts-node bench/nikolaxhristov/pipeline/compress.ts",
+		"nikolaxhristov:pipeline:critters": "ts-node bench/nikolaxhristov/pipeline/critters.ts"
 	},
 	"dependencies": {
 		"@nikolarhristov/pipeline": "0.0.5"
