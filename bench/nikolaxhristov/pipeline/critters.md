@@ -1,3 +1,3 @@
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `node ./dist/bench/nikolaxhristov/pipeline/critters.js` | 1.037 | 1.037 | 1.037 | 1.00 |
+| `node ./dist/bench/nikolaxhristov/pipeline/critters.js` | 5.896 | 5.896 | 5.896 | 1.00 |
