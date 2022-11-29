@@ -9,7 +9,7 @@
 		"nikolaxhristov:pipeline:critters": "ts-node bench/nikolaxhristov/pipeline/critters.ts"
 	},
 	"dependencies": {
-		"@nikolarhristov/pipeline": "0.0.7"
+		"@nikolarhristov/pipeline": "0.0.9"
 	},
 	"devDependencies": {
 		"@lightrix/config": "0.0.6",
