@@ -13,4 +13,5 @@ await new pipeline({
 			],
 		]),
 	],
+	logger: 1,
 }).critters();
