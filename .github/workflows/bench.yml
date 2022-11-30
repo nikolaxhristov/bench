@@ -30,7 +30,7 @@ jobs:
             # Setup Node
             - uses: pnpm/action-setup@v2.2.4
               with:
-                  version: 7.13.4
+                  version: 7.17.1
                   run_install: |
                       - recursive: true
                         args: [
