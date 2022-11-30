@@ -13,5 +13,5 @@ await new pipeline({
 			],
 		]),
 	],
-	logger: 1
+	logger: 1,
 }).compress();
