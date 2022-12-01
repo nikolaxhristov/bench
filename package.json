@@ -9,7 +9,7 @@
 		"nikolaxhristov:pipeline:critters": "ts-node bench/nikolaxhristov/pipeline/critters.ts"
 	},
 	"dependencies": {
-		"@nikolarhristov/pipeline@0.0.1": "https://github.com/nikolaxhristov/pipeline#v0.0.9",
+		"@nikolarhristov/pipeline@0.0.1": "https://github.com/nikolaxhristov/pipeline#v0.0.10",
 		"@nikolarhristov/pipeline@0.0.2": "https://github.com/nikolaxhristov/pipeline#v0.0.9",
 		"@nikolarhristov/pipeline@0.0.3": "https://github.com/nikolaxhristov/pipeline#v0.0.9",
 		"@nikolarhristov/pipeline@0.0.4": "https://github.com/nikolaxhristov/pipeline#v0.0.9",
