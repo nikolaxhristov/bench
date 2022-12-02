@@ -6,8 +6,7 @@
 		"bench": "pnpm run build && bash bench.sh",
 		"build": "lightrix build src/bench/**/*.ts",
 		"nikolaxhristov:pipeline:compress": "ts-node bench/nikolaxhristov/pipeline/compress.ts",
-		"nikolaxhristov:pipeline:critters": "ts-node bench/nikolaxhristov/pipeline/critters.ts",
-		"test": "jest -c jest.config.ts"
+		"nikolaxhristov:pipeline:critters": "ts-node bench/nikolaxhristov/pipeline/critters.ts"
 	},
 	"dependencies": {
 		"@jest/globals": "29.3.1",
