@@ -4,12 +4,9 @@
 	"private": true,
 	"scripts": {
 		"bench": "pnpm run build && bash bench.sh",
-		"build": "lightrix build src/bench/**/*.ts",
-		"nikolaxhristov:pipeline:compress": "ts-node bench/nikolaxhristov/pipeline/compress.ts",
-		"nikolaxhristov:pipeline:critters": "ts-node bench/nikolaxhristov/pipeline/critters.ts"
+		"build": "lightrix build src/bench/**/*.ts"
 	},
 	"dependencies": {
-		"@jest/globals": "29.3.1",
 		"@nikolarhristov/pipeline": "0.0.10",
 		"ts-node": "10.9.1"
 	},
