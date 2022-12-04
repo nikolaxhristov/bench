@@ -7,7 +7,7 @@
 		"build": "lightrix build src/bench/**/*.ts"
 	},
 	"dependencies": {
-		"@nikolarhristov/pipeline": "0.0.11",
+		"@nikolarhristov/pipeline": "0.0.12",
 		"ts-node": "10.9.1"
 	},
 	"devDependencies": {
