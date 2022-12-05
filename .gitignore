@@ -1,1 +1,2 @@
-samples/**/output/*
+output/**/*
+!output/.gitkeep

@@ -1,0 +1,108 @@
+{
+	"files": {
+		"maxSize": null
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": true,
+		"ignore": ["**/node_modules/**"],
+		"indentSize": 4,
+		"indentStyle": "tab",
+		"lineWidth": 80
+	},
+	"javascript": {
+		"formatter": {
+			"quoteProperties": "preserve",
+			"quoteStyle": "double",
+			"trailingComma": "all"
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"ignore": ["**/node_modules/**"],
+		"rules": {
+			"a11y": {
+				"noAutofocus": "error",
+				"noPositiveTabindex": "error",
+				"recommended": true,
+				"useAltText": "error",
+				"useAnchorContent": "error",
+				"useBlankTarget": "error",
+				"useButtonType": "error",
+				"useKeyWithClickEvents": "error",
+				"useKeyWithMouseEvents": "error",
+				"useValidAnchor": "error"
+			},
+			"complexity": {
+				"noExtraBooleanCast": "error",
+				"recommended": true,
+				"useSimplifiedLogicExpression": "error"
+			},
+			"correctness": {
+				"noArguments": "error",
+				"noArrayIndexKey": "error",
+				"noAsyncPromiseExecutor": "error",
+				"noCatchAssign": "error",
+				"noChildrenProp": "error",
+				"noCommentText": "error",
+				"noCompareNegZero": "error",
+				"noDebugger": "error",
+				"noDelete": "error",
+				"noDoubleEquals": "error",
+				"noDupeArgs": "error",
+				"noEmptyPattern": "error",
+				"noFunctionAssign": "error",
+				"noImportAssign": "error",
+				"noLabelVar": "error",
+				"noMultipleSpacesInRegularExpressionLiterals": "error",
+				"noNewSymbol": "error",
+				"noRenderReturnValue": "error",
+				"noRestrictedGlobals": "error",
+				"noShadowRestrictedNames": "error",
+				"noSparseArray": "error",
+				"noUndeclaredVariables": "error",
+				"noUnnecessaryContinue": "error",
+				"noUnreachable": "error",
+				"noUnsafeNegation": "error",
+				"noUnusedVariables": "error",
+				"noUselessFragments": "error",
+				"noVoidElementsWithChildren": "error",
+				"recommended": true,
+				"useSingleCaseStatement": "error",
+				"useValidTypeof": "error",
+				"useWhile": "error"
+			},
+			"nursery": {
+				"noBannedTypes": "error",
+				"noConstAssign": "error",
+				"noExplicitAny": "error",
+				"noInvalidConstructorSuper": "error",
+				"recommended": true,
+				"useCamelCase": "error",
+				"useExhaustiveDependencies": "error",
+				"useFlatMap": "error",
+				"useValidForDirection": "error"
+			},
+			"recommended": true,
+			"security": {
+				"noDangerouslySetInnerHtml": "error",
+				"noDangerouslySetInnerHtmlWithChildren": "error",
+				"recommended": true
+			},
+			"style": {
+				"noImplicitBoolean": "error",
+				"noNegationElse": "error",
+				"noShoutyConstants": "error",
+				"noUnusedTemplateLiteral": "error",
+				"recommended": true,
+				"useBlockStatements": "error",
+				"useFragmentSyntax": "error",
+				"useOptionalChain": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandArrayType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": "error"
+			}
+		}
+	}
+}
