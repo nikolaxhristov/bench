@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://astro.build.compress.critters.pages.dev.compress.critters.pages.dev/sitemap-index.xml
+Sitemap: https://astro.build/sitemap-index.xml

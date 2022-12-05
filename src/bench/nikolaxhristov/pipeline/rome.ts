@@ -1,5 +1,8 @@
 import pipeline from "@nikolarhristov/pipeline";
-import type { optionCallbacksPipe } from "@nikolarhristov/pipeline/dist/options/index.js";
+import type {
+	optionCallbacksFile,
+	optionCallbacksPipe,
+} from "@nikolarhristov/pipeline/dist/options/index.js";
 
 import { BackendKind, Rome } from "@rometools/js-api";
 import { resolve } from "path";
@@ -21,19 +24,19 @@ await new pipeline({
 	]),
 	files: "**/*.{js,mjs,cjs,ts}",
 	pipeline: {
-		wrote: async (data: string, file: string) =>
+		wrote: async (file: string, data: string) =>
 			(
 				await rome.formatContent(data, {
 					filePath: resolve(file),
 				})
 			).content,
-		failed: async (inputPath: string) =>
+		failed: async (inputPath: optionCallbacksFile["inputPath"]) =>
 			`Error: Cannot format file ${inputPath} !`,
 		accomplished: async (
-			inputPath: string,
-			outputPath: string,
-			_fileSizeBefore: number,
-			_fileSizeAfter: number
+			inputPath: optionCallbacksFile["inputPath"],
+			outputPath: optionCallbacksFile["outputPath"],
+			_fileSizeBefore: optionCallbacksFile["fileSizeBefore"],
+			_fileSizeAfter: optionCallbacksFile["fileSizeAfter"]
 		) => `Formatted ${inputPath} in ${outputPath}.`,
 		fulfilled: async (pipe: optionCallbacksPipe) =>
 			`Successfully formatted a total of ${pipe.files} JS and TS ${
