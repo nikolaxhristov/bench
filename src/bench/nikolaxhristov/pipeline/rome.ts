@@ -43,4 +43,5 @@ await new pipeline({
 				pipe.files === 1 ? "file" : "files"
 			}.`,
 	},
+	logger: 1
 }).process();

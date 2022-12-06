@@ -7,4 +7,5 @@ await new pipeline({
 			"./output/nikolaxhristov/pipeline/",
 		],
 	]),
+	logger: 1
 }).compress();
