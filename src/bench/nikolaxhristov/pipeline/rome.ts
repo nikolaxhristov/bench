@@ -1,4 +1,4 @@
-import pipeline from "@nikolarhristov/pipeline";
+import { pipeline } from "@nikolarhristov/pipeline";
 import type {
 	optionCallbacksFile,
 	optionCallbacksPipe,
@@ -31,7 +31,7 @@ await new pipeline({
 				})
 			).content,
 		failed: async (inputPath: optionCallbacksFile["inputPath"]) =>
-			`Error: Cannot format file ${inputPath} !`,
+			`Error: Cannot format file ${inputPath}!`,
 		accomplished: async (
 			inputPath: optionCallbacksFile["inputPath"],
 			outputPath: optionCallbacksFile["outputPath"],

@@ -1,4 +1,4 @@
-import pipeline from "@nikolarhristov/pipeline";
+import { pipeline } from "@nikolarhristov/pipeline";
 
 await new pipeline({
 	path: new Map([
