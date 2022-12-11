@@ -1,4 +1,4 @@
-import { pipeline } from "@nikolarhristov/pipeline";
+import { pipeline, files } from "@nikolarhristov/pipeline";
 
 import type {
 	optionCallbacksFile,
