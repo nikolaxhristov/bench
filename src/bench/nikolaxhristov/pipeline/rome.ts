@@ -1,19 +1,22 @@
 import { pipeline } from "@nikolarhristov/pipeline";
+
 import type {
 	optionCallbacksFile,
 	optionCallbacksPipe,
 } from "@nikolarhristov/pipeline/dist/options/index.js";
 
-import { BackendKind, Rome } from "@rometools/js-api";
+import { Configuration, Distribution, Rome } from "@rometools/js-api";
 import { resolve } from "path";
 
 import getConfig from "../../../lib/astro-community/astro-rome/lib/get-config.js";
 
 const rome = await Rome.create({
-	backendKind: BackendKind.NODE,
+	distribution: Distribution.NODE,
 });
 
-await rome.applyConfiguration(JSON.parse(await getConfig("rome.json")));
+rome.applyConfiguration(
+	JSON.parse(await getConfig("rome.json")) as Configuration
+);
 
 await new pipeline({
 	path: new Map([
@@ -25,11 +28,9 @@ await new pipeline({
 	files: "**/*.{js,mjs,cjs,ts}",
 	pipeline: {
 		wrote: async (file: string, data: string) =>
-			(
-				await rome.formatContent(data, {
-					filePath: resolve(file),
-				})
-			).content,
+			rome.formatContent(data, {
+				filePath: resolve(file),
+			}).content,
 		failed: async (inputPath: optionCallbacksFile["inputPath"]) =>
 			`Error: Cannot format file ${inputPath}!`,
 		accomplished: async (
@@ -43,5 +44,5 @@ await new pipeline({
 				pipe.files === 1 ? "file" : "files"
 			}.`,
 	},
-	logger: 1
+	logger: 1,
 }).process();
