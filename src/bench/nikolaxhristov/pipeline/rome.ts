@@ -40,9 +40,11 @@ await new pipeline({
 			_fileSizeAfter: optionCallbacksFile["fileSizeAfter"]
 		) => `Formatted ${inputPath} in ${outputPath}.`,
 		fulfilled: async (pipe: optionCallbacksPipe) =>
-			`Successfully formatted a total of ${pipe.files} JS and TS ${
-				pipe.files === 1 ? "file" : "files"
-			}.`,
+			pipe.files > 0
+				? `Successfully formatted a total of ${pipe.files} JS and TS ${
+						pipe.files === 1 ? "file" : "files"
+				  }.`
+				: false,
 	},
 	// rome-ignore lint/nursery/noPrecisionLoss:
 	logger: 1,

@@ -7,7 +7,7 @@
 		"build": "lightrix build src/bench/**/*.ts src/lib/**/*.ts -c config/esbuild.ts"
 	},
 	"dependencies": {
-		"@nikolarhristov/pipeline": "0.1.5",
+		"@nikolarhristov/pipeline": "0.1.6",
 		"@rometools/backend-jsonrpc": "11.0.0",
 		"@rometools/js-api": "0.2.0",
 		"@rometools/wasm-nodejs": "11.0.0",
@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@lightrix/config": "0.0.6",
-		"@lightrix/scripts": "0.1.0",
+		"@lightrix/scripts": "0.1.1",
 		"esbuild-plugin-copy": "2.0.1"
 	},
 	"publishConfig": {
