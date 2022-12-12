@@ -27,18 +27,14 @@ await new pipeline({
 	]),
 	files: "**/*.{js,mjs,cjs,ts}",
 	pipeline: {
-		wrote: async (file: string, data: string) =>
-			rome.formatContent(data, {
-				filePath: resolve(file),
+		wrote: async (current) =>
+			rome.formatContent(current.buffer.toString(), {
+				filePath: resolve(current.inputPath),
 			}).content,
 		failed: async (inputPath: optionCallbacksFile["inputPath"]) =>
 			`Error: Cannot format file ${inputPath}!`,
-		accomplished: async (
-			inputPath: optionCallbacksFile["inputPath"],
-			outputPath: optionCallbacksFile["outputPath"],
-			_fileSizeBefore: optionCallbacksFile["fileSizeBefore"],
-			_fileSizeAfter: optionCallbacksFile["fileSizeAfter"]
-		) => `Formatted ${inputPath} in ${outputPath}.`,
+		accomplished: async (current) =>
+			`Formatted ${current.inputPath} in ${current.outputPath}.`,
 		fulfilled: async (pipe: optionCallbacksPipe) =>
 			pipe.files > 0
 				? `Successfully formatted a total of ${pipe.files} JS and TS ${

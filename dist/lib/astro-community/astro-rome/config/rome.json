@@ -2,7 +2,7 @@
 	"$schema": "https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json",
 	"files": {
 		"ignore": ["**/node_modules/**"],
-		"maxSize": null
+		"maxSize": 100000000
 	},
 	"formatter": {
 		"enabled": true,
