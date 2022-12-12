@@ -1,3 +1,3 @@
-| Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `node ./dist/bench/nikolaxhristov/pipeline/rome.js` | 949.9 | 949.9 | 949.9 | 1.00 |
+| `node ./dist/bench/nikolaxhristov/pipeline/rome.js` | 1.050 | 1.050 | 1.050 | 1.00 |
