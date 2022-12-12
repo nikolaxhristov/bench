@@ -1,4 +1,4 @@
-import { pipeline, files } from "@nikolarhristov/pipeline";
+import { pipeline } from "@nikolarhristov/pipeline";
 
 import type {
 	optionCallbacksFile,
@@ -44,5 +44,6 @@ await new pipeline({
 				pipe.files === 1 ? "file" : "files"
 			}.`,
 	},
+	// rome-ignore lint/nursery/noPrecisionLoss:
 	logger: 1,
 }).process();
