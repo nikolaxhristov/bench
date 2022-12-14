@@ -20,10 +20,10 @@ hyperfine \
 
 {
 	printf '# benchmarks\n'
-	printf '\n## nikolahristov/pipeline critters\n'
+	printf '\n## @nikolarhristov/pipeline critters\n'
 	cat ./bench/nikolaxhristov/pipeline/critters.md
-	printf '\n## nikolahristov/pipeline rome\n'
+	printf '\n## @nikolarhristov/pipeline rome\n'
 	cat ./bench/nikolaxhristov/pipeline/rome.md
-	printf '\n## nikolahristov/pipeline compress\n'
+	printf '\n## @nikolarhristov/pipeline compress\n'
 	cat ./bench/nikolaxhristov/pipeline/compress.md
 } >README.md
