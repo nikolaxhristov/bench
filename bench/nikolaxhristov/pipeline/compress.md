@@ -1,3 +1,3 @@
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `node ./dist/bench/nikolaxhristov/pipeline/compress.js` | 213.621 | 213.621 | 213.621 | 1.00 |
+| `node ./dist/bench/nikolaxhristov/pipeline/compress.js` | 256.281 | 256.281 | 256.281 | 1.00 |
