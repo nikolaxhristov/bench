@@ -1,1 +1,7 @@
-ul:where(.astro-C3Y7ITVF)>li{display:flex}ul:where(.astro-C3Y7ITVF)>li>:first-child{width:100%;height:100%}
+ul:where(.astro-C3Y7ITVF) > li {
+	display: flex;
+}
+ul:where(.astro-C3Y7ITVF) > li > :first-child {
+	width: 100%;
+	height: 100%;
+}

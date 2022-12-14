@@ -4,7 +4,7 @@ const twitter = "https://twitter.com/jutanium";
 const dan = {
 	name: name,
 	image: image,
-	twitter: twitter
+	twitter: twitter,
 };
 
 export { dan as default, image, name, twitter };

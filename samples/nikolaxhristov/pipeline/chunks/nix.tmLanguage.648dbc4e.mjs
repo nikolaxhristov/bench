@@ -1,62 +1,60 @@
-const fileTypes = [
-	"nix"
-];
+const fileTypes = ["nix"];
 const name = "nix";
 const patterns = [
 	{
-		include: "#expression"
-	}
+		include: "#expression",
+	},
 ];
 const repository = {
 	"attribute-bind": {
 		patterns: [
 			{
-				include: "#attribute-name"
+				include: "#attribute-name",
 			},
 			{
-				include: "#attribute-bind-from-equals"
-			}
-		]
+				include: "#attribute-bind-from-equals",
+			},
+		],
 	},
 	"attribute-bind-from-equals": {
 		begin: "\\=",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.bind.nix"
-			}
+				name: "keyword.operator.bind.nix",
+			},
 		},
 		end: "\\;",
 		endCaptures: {
 			"0": {
-				name: "punctuation.terminator.bind.nix"
-			}
+				name: "punctuation.terminator.bind.nix",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"attribute-inherit": {
 		begin: "\\binherit\\b",
 		beginCaptures: {
 			"0": {
-				name: "keyword.other.inherit.nix"
-			}
+				name: "keyword.other.inherit.nix",
+			},
 		},
 		end: "\\;",
 		endCaptures: {
 			"0": {
-				name: "punctuation.terminator.inherit.nix"
-			}
+				name: "punctuation.terminator.inherit.nix",
+			},
 		},
 		patterns: [
 			{
 				begin: "\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.section.function.arguments.nix"
-					}
+						name: "punctuation.section.function.arguments.nix",
+					},
 				},
 				end: "(?=\\;)",
 				patterns: [
@@ -64,83 +62,83 @@ const repository = {
 						begin: "\\)",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.function.arguments.nix"
-							}
+								name: "punctuation.section.function.arguments.nix",
+							},
 						},
 						end: "(?=\\;)",
 						patterns: [
 							{
-								include: "#bad-reserved"
+								include: "#bad-reserved",
 							},
 							{
-								include: "#attribute-name-single"
+								include: "#attribute-name-single",
 							},
 							{
-								include: "#others"
-							}
-						]
+								include: "#others",
+							},
+						],
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?=[a-zA-Z\\_])",
 				end: "(?=\\;)",
 				patterns: [
 					{
-						include: "#bad-reserved"
+						include: "#bad-reserved",
 					},
 					{
-						include: "#attribute-name-single"
+						include: "#attribute-name-single",
 					},
 					{
-						include: "#others"
-					}
-				]
+						include: "#others",
+					},
+				],
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"attribute-name": {
 		patterns: [
 			{
 				match: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*",
-				name: "entity.other.attribute-name.multipart.nix"
+				name: "entity.other.attribute-name.multipart.nix",
 			},
 			{
-				match: "\\."
+				match: "\\.",
 			},
 			{
-				include: "#string-quoted"
+				include: "#string-quoted",
 			},
 			{
-				include: "#interpolation"
-			}
-		]
+				include: "#interpolation",
+			},
+		],
 	},
 	"attribute-name-single": {
 		match: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*",
-		name: "entity.other.attribute-name.single.nix"
+		name: "entity.other.attribute-name.single.nix",
 	},
 	"attrset-contents": {
 		patterns: [
 			{
-				include: "#attribute-inherit"
+				include: "#attribute-inherit",
 			},
 			{
-				include: "#bad-reserved"
+				include: "#bad-reserved",
 			},
 			{
-				include: "#attribute-bind"
+				include: "#attribute-bind",
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"attrset-definition": {
 		begin: "(?=\\{)",
@@ -150,31 +148,31 @@ const repository = {
 				begin: "(\\{)",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.attrset.nix"
-					}
+						name: "punctuation.definition.attrset.nix",
+					},
 				},
 				end: "(\\})",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.attrset.nix"
-					}
+						name: "punctuation.definition.attrset.nix",
+					},
 				},
 				patterns: [
 					{
-						include: "#attrset-contents"
-					}
-				]
+						include: "#attrset-contents",
+					},
+				],
 			},
 			{
 				begin: "(?<=\\})",
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
-			}
-		]
+						include: "#expression-cont",
+					},
+				],
+			},
+		],
 	},
 	"attrset-definition-brace-opened": {
 		patterns: [
@@ -183,25 +181,25 @@ const repository = {
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
 				begin: "(?=.?)",
 				end: "\\}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.attrset.nix"
-					}
+						name: "punctuation.definition.attrset.nix",
+					},
 				},
 				patterns: [
 					{
-						include: "#attrset-contents"
-					}
-				]
-			}
-		]
+						include: "#attrset-contents",
+					},
+				],
+			},
+		],
 	},
 	"attrset-for-sure": {
 		patterns: [
@@ -213,44 +211,44 @@ const repository = {
 						begin: "\\brec\\b",
 						beginCaptures: {
 							"0": {
-								name: "keyword.other.nix"
-							}
+								name: "keyword.other.nix",
+							},
 						},
 						end: "(?=\\{)",
 						patterns: [
 							{
-								include: "#others"
-							}
-						]
+								include: "#others",
+							},
+						],
 					},
 					{
-						include: "#attrset-definition"
+						include: "#attrset-definition",
 					},
 					{
-						include: "#others"
-					}
-				]
+						include: "#others",
+					},
+				],
 			},
 			{
 				begin: "(?=\\{\\s*(\\}|[^,?]*(=|;)))",
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#attrset-definition"
+						include: "#attrset-definition",
 					},
 					{
-						include: "#others"
-					}
-				]
-			}
-		]
+						include: "#others",
+					},
+				],
+			},
+		],
 	},
 	"attrset-or-function": {
 		begin: "\\{",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.attrset-or-function.nix"
-			}
+				name: "punctuation.definition.attrset-or-function.nix",
+			},
 		},
 		end: "(?=([\\])};]|\\b(else|then)\\b))",
 		patterns: [
@@ -259,28 +257,28 @@ const repository = {
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#attrset-definition-brace-opened"
-					}
-				]
+						include: "#attrset-definition-brace-opened",
+					},
+				],
 			},
 			{
 				begin: "(?=(\\.\\.\\.|\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*\\s*[,?]))",
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#function-definition-brace-opened"
-					}
-				]
+						include: "#function-definition-brace-opened",
+					},
+				],
 			},
 			{
-				include: "#bad-reserved"
+				include: "#bad-reserved",
 			},
 			{
 				begin: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*",
 				beginCaptures: {
 					"0": {
-						name: "variable.parameter.function.maybe.nix"
-					}
+						name: "variable.parameter.function.maybe.nix",
+					},
 				},
 				end: "(?=([\\])};]|\\b(else|then)\\b))",
 				patterns: [
@@ -289,72 +287,73 @@ const repository = {
 						end: "(?=([\\])};,]|\\b(else|then)\\b))",
 						patterns: [
 							{
-								include: "#attrset-definition-brace-opened"
-							}
-						]
+								include: "#attrset-definition-brace-opened",
+							},
+						],
 					},
 					{
 						begin: "\\s*(\\,)",
 						beginCaptures: {
 							"1": {
-								name: "keyword.operator.nix"
-							}
+								name: "keyword.operator.nix",
+							},
 						},
 						end: "(?=([\\])};,]|\\b(else|then)\\b))",
 						patterns: [
 							{
-								include: "#function-definition-brace-opened"
-							}
-						]
+								include: "#function-definition-brace-opened",
+							},
+						],
 					},
 					{
 						begin: "(?=\\=)",
 						end: "(?=([\\])};,]|\\b(else|then)\\b))",
 						patterns: [
 							{
-								include: "#attribute-bind-from-equals"
+								include: "#attribute-bind-from-equals",
 							},
 							{
-								include: "#attrset-definition-brace-opened"
-							}
-						]
+								include: "#attrset-definition-brace-opened",
+							},
+						],
 					},
 					{
 						begin: "(?=\\?)",
 						end: "(?=([\\])};,]|\\b(else|then)\\b))",
 						patterns: [
 							{
-								include: "#function-parameter-default"
+								include: "#function-parameter-default",
 							},
 							{
 								begin: "\\,",
 								beginCaptures: {
 									"0": {
-										name: "keyword.operator.nix"
-									}
+										name: "keyword.operator.nix",
+									},
 								},
 								end: "(?=([\\])};,]|\\b(else|then)\\b))",
 								patterns: [
 									{
-										include: "#function-definition-brace-opened"
-									}
-								]
-							}
-						]
+										include:
+											"#function-definition-brace-opened",
+									},
+								],
+							},
+						],
 					},
 					{
-						include: "#others"
-					}
-				]
+						include: "#others",
+					},
+				],
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"bad-reserved": {
 		match: "\\b(if|then|else|assert|with|let|in|rec|inherit)\\b",
-		name: "invalid.illegal.reserved.nix"
+		name: "invalid.illegal.reserved.nix",
 	},
 	comment: {
 		patterns: [
@@ -364,9 +363,9 @@ const repository = {
 				name: "comment.block.nix",
 				patterns: [
 					{
-						include: "#comment-remark"
-					}
-				]
+						include: "#comment-remark",
+					},
+				],
 			},
 			{
 				begin: "\\#",
@@ -374,19 +373,19 @@ const repository = {
 				name: "comment.line.number-sign.nix",
 				patterns: [
 					{
-						include: "#comment-remark"
-					}
-				]
-			}
-		]
+						include: "#comment-remark",
+					},
+				],
+			},
+		],
 	},
 	"comment-remark": {
 		captures: {
 			"1": {
-				name: "markup.bold.comment.nix"
-			}
+				name: "markup.bold.comment.nix",
+			},
 		},
-		match: "(TODO|FIXME|BUG|\\!\\!\\!):?"
+		match: "(TODO|FIXME|BUG|\\!\\!\\!):?",
 	},
 	constants: {
 		patterns: [
@@ -394,180 +393,180 @@ const repository = {
 				begin: "\\b(builtins|true|false|null)\\b",
 				beginCaptures: {
 					"0": {
-						name: "constant.language.nix"
-					}
+						name: "constant.language.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
 				begin: "\\b(scopedImport|import|isNull|abort|throw|baseNameOf|dirOf|removeAttrs|map|toString|derivationStrict|derivation)\\b",
 				beginCaptures: {
 					"0": {
-						name: "support.function.nix"
-					}
+						name: "support.function.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
 				begin: "\\b[0-9]+\\b",
 				beginCaptures: {
 					"0": {
-						name: "constant.numeric.nix"
-					}
+						name: "constant.numeric.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
-			}
-		]
+						include: "#expression-cont",
+					},
+				],
+			},
+		],
 	},
 	expression: {
 		patterns: [
 			{
-				include: "#parens-and-cont"
+				include: "#parens-and-cont",
 			},
 			{
-				include: "#list-and-cont"
+				include: "#list-and-cont",
 			},
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#with-assert"
+				include: "#with-assert",
 			},
 			{
-				include: "#function-for-sure"
+				include: "#function-for-sure",
 			},
 			{
-				include: "#attrset-for-sure"
+				include: "#attrset-for-sure",
 			},
 			{
-				include: "#attrset-or-function"
+				include: "#attrset-or-function",
 			},
 			{
-				include: "#let"
+				include: "#let",
 			},
 			{
-				include: "#if"
+				include: "#if",
 			},
 			{
-				include: "#operator-unary"
+				include: "#operator-unary",
 			},
 			{
-				include: "#constants"
+				include: "#constants",
 			},
 			{
-				include: "#bad-reserved"
+				include: "#bad-reserved",
 			},
 			{
-				include: "#parameter-name-and-cont"
+				include: "#parameter-name-and-cont",
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"expression-cont": {
 		begin: "(?=.?)",
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#parens"
+				include: "#parens",
 			},
 			{
-				include: "#list"
+				include: "#list",
 			},
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#function-for-sure"
+				include: "#function-for-sure",
 			},
 			{
-				include: "#attrset-for-sure"
+				include: "#attrset-for-sure",
 			},
 			{
-				include: "#attrset-or-function"
+				include: "#attrset-or-function",
 			},
 			{
 				match: "(\\bor\\b|\\.|==|!=|!|\\<\\=|\\<|\\>\\=|\\>|&&|\\|\\||-\\>|//|\\?|\\+\\+|-|\\*|/(?=([^*]|$))|\\+)",
-				name: "keyword.operator.nix"
+				name: "keyword.operator.nix",
 			},
 			{
-				include: "#constants"
+				include: "#constants",
 			},
 			{
-				include: "#bad-reserved"
+				include: "#bad-reserved",
 			},
 			{
-				include: "#parameter-name"
+				include: "#parameter-name",
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-body": {
 		begin: "(@\\s*([a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*)\\s*)?(\\:)",
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"function-body-from-colon": {
 		begin: "(\\:)",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.function.nix"
-			}
+				name: "punctuation.definition.function.nix",
+			},
 		},
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"function-contents": {
 		patterns: [
 			{
-				include: "#bad-reserved"
+				include: "#bad-reserved",
 			},
 			{
-				include: "#function-parameter"
+				include: "#function-parameter",
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-definition": {
 		begin: "(?=.?)",
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#function-body-from-colon"
+				include: "#function-body-from-colon",
 			},
 			{
 				begin: "(?=.?)",
@@ -577,8 +576,8 @@ const repository = {
 						begin: "(\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*)",
 						beginCaptures: {
 							"0": {
-								name: "variable.parameter.function.4.nix"
-							}
+								name: "variable.parameter.function.4.nix",
+							},
 						},
 						end: "(?=\\:)",
 						patterns: [
@@ -587,63 +586,65 @@ const repository = {
 								end: "(?=\\:)",
 								patterns: [
 									{
-										include: "#function-header-until-colon-no-arg"
+										include:
+											"#function-header-until-colon-no-arg",
 									},
 									{
-										include: "#others"
-									}
-								]
+										include: "#others",
+									},
+								],
 							},
 							{
-								include: "#others"
-							}
-						]
+								include: "#others",
+							},
+						],
 					},
 					{
 						begin: "(?=\\{)",
 						end: "(?=\\:)",
 						patterns: [
 							{
-								include: "#function-header-until-colon-with-arg"
-							}
-						]
-					}
-				]
+								include:
+									"#function-header-until-colon-with-arg",
+							},
+						],
+					},
+				],
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-definition-brace-opened": {
 		begin: "(?=.?)",
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#function-body-from-colon"
+				include: "#function-body-from-colon",
 			},
 			{
 				begin: "(?=.?)",
 				end: "(?=\\:)",
 				patterns: [
 					{
-						include: "#function-header-close-brace-with-arg"
+						include: "#function-header-close-brace-with-arg",
 					},
 					{
 						begin: "(?=.?)",
 						end: "(?=\\})",
 						patterns: [
 							{
-								include: "#function-contents"
-							}
-						]
-					}
-				]
+								include: "#function-contents",
+							},
+						],
+					},
+				],
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-for-sure": {
 		patterns: [
@@ -652,56 +653,56 @@ const repository = {
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#function-definition"
-					}
-				]
-			}
-		]
+						include: "#function-definition",
+					},
+				],
+			},
+		],
 	},
 	"function-header-close-brace-no-arg": {
 		begin: "\\}",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.entity.function.nix"
-			}
+				name: "punctuation.definition.entity.function.nix",
+			},
 		},
 		end: "(?=\\:)",
 		patterns: [
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-header-close-brace-with-arg": {
 		begin: "\\}",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.entity.function.nix"
-			}
+				name: "punctuation.definition.entity.function.nix",
+			},
 		},
 		end: "(?=\\:)",
 		patterns: [
 			{
-				include: "#function-header-terminal-arg"
+				include: "#function-header-terminal-arg",
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-header-open-brace": {
 		begin: "\\{",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.entity.function.2.nix"
-			}
+				name: "punctuation.definition.entity.function.2.nix",
+			},
 		},
 		end: "(?=\\})",
 		patterns: [
 			{
-				include: "#function-contents"
-			}
-		]
+				include: "#function-contents",
+			},
+		],
 	},
 	"function-header-terminal-arg": {
 		begin: "(?=@)",
@@ -714,41 +715,41 @@ const repository = {
 					{
 						begin: "(\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*)",
 						end: "(?=\\:)",
-						name: "variable.parameter.function.3.nix"
+						name: "variable.parameter.function.3.nix",
 					},
 					{
-						include: "#others"
-					}
-				]
+						include: "#others",
+					},
+				],
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-header-until-colon-no-arg": {
 		begin: "(?=\\{)",
 		end: "(?=\\:)",
 		patterns: [
 			{
-				include: "#function-header-open-brace"
+				include: "#function-header-open-brace",
 			},
 			{
-				include: "#function-header-close-brace-no-arg"
-			}
-		]
+				include: "#function-header-close-brace-no-arg",
+			},
+		],
 	},
 	"function-header-until-colon-with-arg": {
 		begin: "(?=\\{)",
 		end: "(?=\\:)",
 		patterns: [
 			{
-				include: "#function-header-open-brace"
+				include: "#function-header-open-brace",
 			},
 			{
-				include: "#function-header-close-brace-with-arg"
-			}
-		]
+				include: "#function-header-close-brace-with-arg",
+			},
+		],
 	},
 	"function-parameter": {
 		patterns: [
@@ -758,56 +759,56 @@ const repository = {
 				name: "keyword.operator.nix",
 				patterns: [
 					{
-						include: "#others"
-					}
-				]
+						include: "#others",
+					},
+				],
 			},
 			{
 				begin: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*",
 				beginCaptures: {
 					"0": {
-						name: "variable.parameter.function.1.nix"
-					}
+						name: "variable.parameter.function.1.nix",
+					},
 				},
 				end: "(,|(?=\\}))",
 				endCaptures: {
 					"0": {
-						name: "keyword.operator.nix"
-					}
+						name: "keyword.operator.nix",
+					},
 				},
 				patterns: [
 					{
-						include: "#whitespace"
+						include: "#whitespace",
 					},
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#function-parameter-default"
+						include: "#function-parameter-default",
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#others"
-			}
-		]
+				include: "#others",
+			},
+		],
 	},
 	"function-parameter-default": {
 		begin: "\\?",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.nix"
-			}
+				name: "keyword.operator.nix",
+			},
 		},
 		end: "(?=[,}])",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"if": {
 		begin: "(?=\\bif\\b)",
@@ -817,84 +818,84 @@ const repository = {
 				begin: "\\bif\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				end: "\\bth(?=en\\b)",
 				endCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?<=th)en\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				end: "\\bel(?=se\\b)",
 				endCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?<=el)se\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				endCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	illegal: {
 		match: ".",
-		name: "invalid.illegal"
+		name: "invalid.illegal",
 	},
 	interpolation: {
 		begin: "\\$\\{",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.section.embedded.begin.nix"
-			}
+				name: "punctuation.section.embedded.begin.nix",
+			},
 		},
 		end: "\\}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.section.embedded.end.nix"
-			}
+				name: "punctuation.section.embedded.end.nix",
+			},
 		},
 		name: "markup.italic",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"let": {
 		begin: "(?=\\blet\\b)",
@@ -904,8 +905,8 @@ const repository = {
 				begin: "\\blet\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(in|else|then)\\b))",
 				patterns: [
@@ -918,148 +919,148 @@ const repository = {
 								end: "\\}",
 								patterns: [
 									{
-										include: "#attrset-contents"
-									}
-								]
+										include: "#attrset-contents",
+									},
+								],
 							},
 							{
 								begin: "(^|(?<=\\}))",
 								end: "(?=([\\])};,]|\\b(else|then)\\b))",
 								patterns: [
 									{
-										include: "#expression-cont"
-									}
-								]
+										include: "#expression-cont",
+									},
+								],
 							},
 							{
-								include: "#others"
-							}
-						]
+								include: "#others",
+							},
+						],
 					},
 					{
-						include: "#attrset-contents"
+						include: "#attrset-contents",
 					},
 					{
-						include: "#others"
-					}
-				]
+						include: "#others",
+					},
+				],
 			},
 			{
 				begin: "\\bin\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.other.nix"
-					}
+						name: "keyword.other.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	list: {
 		begin: "\\[",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.list.nix"
-			}
+				name: "punctuation.definition.list.nix",
+			},
 		},
 		end: "\\]",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.list.nix"
-			}
+				name: "punctuation.definition.list.nix",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"list-and-cont": {
 		begin: "(?=\\[)",
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#list"
+				include: "#list",
 			},
 			{
-				include: "#expression-cont"
-			}
-		]
+				include: "#expression-cont",
+			},
+		],
 	},
 	"operator-unary": {
 		match: "(!|-)",
-		name: "keyword.operator.unary.nix"
+		name: "keyword.operator.unary.nix",
 	},
 	others: {
 		patterns: [
 			{
-				include: "#whitespace"
+				include: "#whitespace",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#illegal"
-			}
-		]
+				include: "#illegal",
+			},
+		],
 	},
 	"parameter-name": {
 		captures: {
 			"0": {
-				name: "variable.parameter.name.nix"
-			}
+				name: "variable.parameter.name.nix",
+			},
 		},
-		match: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*"
+		match: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*",
 	},
 	"parameter-name-and-cont": {
 		begin: "\\b[a-zA-Z\\_][a-zA-Z0-9\\_\\'\\-]*",
 		beginCaptures: {
 			"0": {
-				name: "variable.parameter.name.nix"
-			}
+				name: "variable.parameter.name.nix",
+			},
 		},
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#expression-cont"
-			}
-		]
+				include: "#expression-cont",
+			},
+		],
 	},
 	parens: {
 		begin: "\\(",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.expression.nix"
-			}
+				name: "punctuation.definition.expression.nix",
+			},
 		},
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.expression.nix"
-			}
+				name: "punctuation.definition.expression.nix",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"parens-and-cont": {
 		begin: "(?=\\()",
 		end: "(?=([\\])};,]|\\b(else|then)\\b))",
 		patterns: [
 			{
-				include: "#parens"
+				include: "#parens",
 			},
 			{
-				include: "#expression-cont"
-			}
-		]
+				include: "#expression-cont",
+			},
+		],
 	},
 	string: {
 		patterns: [
@@ -1071,128 +1072,128 @@ const repository = {
 						begin: "\\'\\'",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.string.other.start.nix"
-							}
+								name: "punctuation.definition.string.other.start.nix",
+							},
 						},
 						end: "\\'\\'(?!\\$|\\'|\\\\.)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.string.other.end.nix"
-							}
+								name: "punctuation.definition.string.other.end.nix",
+							},
 						},
 						name: "string.quoted.other.nix",
 						patterns: [
 							{
 								match: "\\'\\'(\\$|\\'|\\\\.)",
-								name: "constant.character.escape.nix"
+								name: "constant.character.escape.nix",
 							},
 							{
-								include: "#interpolation"
-							}
-						]
+								include: "#interpolation",
+							},
+						],
 					},
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
-				begin: "(?=\\\")",
+				begin: '(?=\\")',
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#string-quoted"
+						include: "#string-quoted",
 					},
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
 				begin: "([a-zA-Z0-9\\.\\_\\-\\+]*(\\/[a-zA-Z0-9\\.\\_\\-\\+]+)+)",
 				beginCaptures: {
 					"0": {
-						name: "string.unquoted.path.nix"
-					}
+						name: "string.unquoted.path.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
 				begin: "(\\<[a-zA-Z0-9\\.\\_\\-\\+]+(\\/[a-zA-Z0-9\\.\\_\\-\\+]+)*\\>)",
 				beginCaptures: {
 					"0": {
-						name: "string.unquoted.spath.nix"
-					}
+						name: "string.unquoted.spath.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
+						include: "#expression-cont",
+					},
+				],
 			},
 			{
 				begin: "([a-zA-Z][a-zA-Z0-9\\+\\-\\.]*\\:[a-zA-Z0-9\\%\\/\\?\\:\\@\\&\\=\\+\\$\\,\\-\\_\\.\\!\\~\\*\\']+)",
 				beginCaptures: {
 					"0": {
-						name: "string.unquoted.url.nix"
-					}
+						name: "string.unquoted.url.nix",
+					},
 				},
 				end: "(?=([\\])};,]|\\b(else|then)\\b))",
 				patterns: [
 					{
-						include: "#expression-cont"
-					}
-				]
-			}
-		]
+						include: "#expression-cont",
+					},
+				],
+			},
+		],
 	},
 	"string-quoted": {
-		begin: "\\\"",
+		begin: '\\"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.double.start.nix"
-			}
+				name: "punctuation.definition.string.double.start.nix",
+			},
 		},
-		end: "\\\"",
+		end: '\\"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.double.end.nix"
-			}
+				name: "punctuation.definition.string.double.end.nix",
+			},
 		},
 		name: "string.quoted.double.nix",
 		patterns: [
 			{
 				match: "\\\\.",
-				name: "constant.character.escape.nix"
+				name: "constant.character.escape.nix",
 			},
 			{
-				include: "#interpolation"
-			}
-		]
+				include: "#interpolation",
+			},
+		],
 	},
 	whitespace: {
-		match: "\\s+"
+		match: "\\s+",
 	},
 	"with-assert": {
 		begin: "\\b(with|assert)\\b",
 		beginCaptures: {
 			"0": {
-				name: "keyword.other.nix"
-			}
+				name: "keyword.other.nix",
+			},
 		},
 		end: "\\;",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
-	}
+				include: "#expression",
+			},
+		],
+	},
 };
 const scopeName = "source.nix";
 const uuid = "0514fd5f-acb6-436d-b42c-7643e6d36c8f";
@@ -1202,7 +1203,15 @@ const nix_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { nix_tmLanguage as default, fileTypes, name, patterns, repository, scopeName, uuid };
+export {
+	nix_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

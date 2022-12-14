@@ -1,107 +1,102 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "berry";
 const patterns = [
 	{
-		include: "#controls"
+		include: "#controls",
 	},
 	{
-		include: "#strings"
+		include: "#strings",
 	},
 	{
-		include: "#comment-block"
+		include: "#comment-block",
 	},
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#keywords"
+		include: "#keywords",
 	},
 	{
-		include: "#function"
+		include: "#function",
 	},
 	{
-		include: "#member"
+		include: "#member",
 	},
 	{
-		include: "#identifier"
+		include: "#identifier",
 	},
 	{
-		include: "#number"
+		include: "#number",
 	},
 	{
-		include: "#operator"
-	}
+		include: "#operator",
+	},
 ];
 const repository = {
 	controls: {
 		patterns: [
 			{
 				name: "keyword.control.berry",
-				match: "\\b(if|elif|else|for|while|do|end|break|continue|return|try|except|raise)\\b"
-			}
-		]
+				match: "\\b(if|elif|else|for|while|do|end|break|continue|return|try|except|raise)\\b",
+			},
+		],
 	},
 	strings: {
 		patterns: [
 			{
 				name: "string.quoted.double.berry",
-				match: "\"(\\\\.|[^\"])*\""
+				match: '"(\\\\.|[^"])*"',
 			},
 			{
 				name: "string.quoted.single.berry",
-				match: "'(\\\\.|[^'])*'"
-			}
-		]
+				match: "'(\\\\.|[^'])*'",
+			},
+		],
 	},
 	"comment-block": {
 		name: "comment.berry",
 		begin: "\\#\\-",
 		end: "\\-#",
-		patterns: [
-			{
-			}
-		]
+		patterns: [{}],
 	},
 	comments: {
 		name: "comment.line.berry",
 		begin: "\\#",
 		end: "\\n",
-		patterns: [
-			{
-			}
-		]
+		patterns: [{}],
 	},
 	keywords: {
 		patterns: [
 			{
 				name: "keyword.berry",
-				match: "\\b(var|static|def|class|true|false|nil|self|super|import|as)\\b"
-			}
-		]
+				match: "\\b(var|static|def|class|true|false|nil|self|super|import|as)\\b",
+			},
+		],
 	},
 	identifier: {
 		patterns: [
 			{
 				name: "identifier.berry",
-				match: "\\b[_A-Za-z]\\w+\\b"
-			}
-		]
+				match: "\\b[_A-Za-z]\\w+\\b",
+			},
+		],
 	},
 	number: {
 		patterns: [
 			{
 				name: "constant.numeric.berry",
-				match: "0x[a-fA-F0-9]+|\\d+|(\\d+\\.?|\\.\\d)\\d*([eE][+-]?\\d+)?"
-			}
-		]
+				match: "0x[a-fA-F0-9]+|\\d+|(\\d+\\.?|\\.\\d)\\d*([eE][+-]?\\d+)?",
+			},
+		],
 	},
 	operator: {
 		patterns: [
 			{
 				name: "keyword.operator.berry",
-				match: "\\(|\\)|\\[|\\]|\\.|-|\\!|~|\\*|/|%|\\+|&|\\^|\\||<|>|=|:"
-			}
-		]
+				match: "\\(|\\)|\\[|\\]|\\.|-|\\!|~|\\*|/|%|\\+|&|\\^|\\||<|>|=|:",
+			},
+		],
 	},
 	member: {
 		patterns: [
@@ -109,20 +104,20 @@ const repository = {
 				match: "\\.([a-zA-Z_][a-zA-Z0-9_]*)",
 				captures: {
 					"0": {
-						name: "entity.other.attribute-name.berry"
-					}
-				}
-			}
-		]
+						name: "entity.other.attribute-name.berry",
+					},
+				},
+			},
+		],
 	},
 	"function": {
 		patterns: [
 			{
 				name: "entity.name.function.berry",
-				match: "\\b([a-zA-Z_][a-zA-Z0-9_]*(?=\\s*\\())"
-			}
-		]
-	}
+				match: "\\b([a-zA-Z_][a-zA-Z0-9_]*(?=\\s*\\())",
+			},
+		],
+	},
 };
 const scopeName = "source.berry";
 const berry_tmLanguage = {
@@ -130,7 +125,14 @@ const berry_tmLanguage = {
 	name: name,
 	patterns: patterns,
 	repository: repository,
-	scopeName: scopeName
+	scopeName: scopeName,
 };
 
-export { $schema, berry_tmLanguage as default, name, patterns, repository, scopeName };
+export {
+	$schema,
+	berry_tmLanguage as default,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

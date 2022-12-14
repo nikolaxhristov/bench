@@ -1,262 +1,263 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/atom/language-less/blob/master/grammars/less.cson",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/atom/language-less/commit/87d4d59e8de6796b506b81a16e1dc1fafc99d30f";
+const version =
+	"https://github.com/atom/language-less/commit/87d4d59e8de6796b506b81a16e1dc1fafc99d30f";
 const name = "less";
 const scopeName = "source.css.less";
 const patterns = [
 	{
-		include: "#strings"
+		include: "#strings",
 	},
 	{
 		captures: {
 			"1": {
-				name: "entity.other.attribute-name.class.mixin.css"
-			}
+				name: "entity.other.attribute-name.class.mixin.css",
+			},
 		},
-		match: "(\\.[_a-zA-Z][a-zA-Z0-9_-]*(?=\\())"
+		match: "(\\.[_a-zA-Z][a-zA-Z0-9_-]*(?=\\())",
 	},
 	{
 		captures: {
 			"1": {
-				name: "entity.other.attribute-name.class.css"
+				name: "entity.other.attribute-name.class.css",
 			},
 			"2": {
-				name: "punctuation.definition.entity.css"
+				name: "punctuation.definition.entity.css",
 			},
 			"4": {
-				name: "variable.other.interpolation.less"
-			}
+				name: "variable.other.interpolation.less",
+			},
 		},
-		match: "((\\.)([_a-zA-Z]|(@{[a-zA-Z0-9_-]+}))[a-zA-Z0-9_-]*)"
+		match: "((\\.)([_a-zA-Z]|(@{[a-zA-Z0-9_-]+}))[a-zA-Z0-9_-]*)",
 	},
 	{
 		captures: {
 			"0": {
-				name: "entity.other.attribute-name.parent-selector.css"
+				name: "entity.other.attribute-name.parent-selector.css",
 			},
 			"1": {
-				name: "punctuation.definition.entity.css"
-			}
+				name: "punctuation.definition.entity.css",
+			},
 		},
-		match: "(&)[a-zA-Z0-9_-]*"
+		match: "(&)[a-zA-Z0-9_-]*",
 	},
 	{
 		begin: "(format|local|url|attr|counter|counters)\\s*(\\()",
 		beginCaptures: {
 			"1": {
-				name: "support.function.misc.css"
+				name: "support.function.misc.css",
 			},
 			"2": {
-				name: "punctuation.section.function.css"
-			}
+				name: "punctuation.section.function.css",
+			},
 		},
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.section.function.css"
-			}
+				name: "punctuation.section.function.css",
+			},
 		},
 		patterns: [
 			{
 				begin: "'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.css"
-					}
+						name: "punctuation.definition.string.begin.css",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.css"
-					}
+						name: "punctuation.definition.string.end.css",
+					},
 				},
 				name: "string.quoted.single.css",
 				patterns: [
 					{
 						match: "\\\\.",
-						name: "constant.character.escape.css"
-					}
-				]
+						name: "constant.character.escape.css",
+					},
+				],
 			},
 			{
-				begin: "\"",
+				begin: '"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.css"
-					}
+						name: "punctuation.definition.string.begin.css",
+					},
 				},
-				end: "\"",
+				end: '"',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.css"
-					}
+						name: "punctuation.definition.string.end.css",
+					},
 				},
 				name: "string.quoted.double.css",
 				patterns: [
 					{
 						match: "\\\\(\\d{1,6}|.)",
-						name: "constant.character.escape.css"
-					}
-				]
+						name: "constant.character.escape.css",
+					},
+				],
 			},
 			{
 				match: "[^'\") \\t]+",
-				name: "variable.parameter.misc.css"
-			}
-		]
+				name: "variable.parameter.misc.css",
+			},
+		],
 	},
 	{
 		match: "(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b(?!.*?(?<!@){)",
-		name: "constant.other.rgb-value.css"
+		name: "constant.other.rgb-value.css",
 	},
 	{
 		captures: {
 			"1": {
-				name: "entity.other.attribute-name.id"
+				name: "entity.other.attribute-name.id",
 			},
 			"2": {
-				name: "punctuation.definition.entity.css"
+				name: "punctuation.definition.entity.css",
 			},
 			"4": {
-				name: "variable.other.interpolation.less"
-			}
+				name: "variable.other.interpolation.less",
+			},
 		},
 		match: "((#)([_a-zA-Z]|(@{[a-zA-Z0-9_-]+}))[a-zA-Z0-9_-]*)",
-		name: "meta.selector.css"
+		name: "meta.selector.css",
 	},
 	{
 		begin: "/\\*",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.comment.begin.css"
-			}
+				name: "punctuation.definition.comment.begin.css",
+			},
 		},
 		end: "\\*/",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.comment.end.css"
-			}
+				name: "punctuation.definition.comment.end.css",
+			},
 		},
-		name: "comment.block.css"
+		name: "comment.block.css",
 	},
 	{
-		include: "source.css#numeric-values"
+		include: "source.css#numeric-values",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.begin.entity.css"
+				name: "punctuation.definition.begin.entity.css",
 			},
 			"2": {
-				name: "entity.other.attribute-name.attribute.css"
+				name: "entity.other.attribute-name.attribute.css",
 			},
 			"3": {
-				name: "punctuation.separator.operator.css"
+				name: "punctuation.separator.operator.css",
 			},
 			"4": {
-				name: "string.unquoted.attribute-value.css"
+				name: "string.unquoted.attribute-value.css",
 			},
 			"5": {
-				name: "string.quoted.double.attribute-value.css"
+				name: "string.quoted.double.attribute-value.css",
 			},
 			"6": {
-				name: "punctuation.definition.string.begin.css"
+				name: "punctuation.definition.string.begin.css",
 			},
 			"7": {
-				name: "punctuation.definition.string.end.css"
+				name: "punctuation.definition.string.end.css",
 			},
 			"8": {
-				name: "punctuation.definition.end.entity.css"
-			}
+				name: "punctuation.definition.end.entity.css",
+			},
 		},
 		match: "(?i)(\\[)\\s*(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)(?:\\s*([~|^$*]?=)\\s*(?:(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)|((?>(['\"])(?:[^\\\\]|\\\\.)*?(\\6)))))?\\s*(\\])",
-		name: "meta.attribute-selector.css"
+		name: "meta.attribute-selector.css",
 	},
 	{
 		begin: "((@)import\\b)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.at-rule.import.less"
+				name: "keyword.control.at-rule.import.less",
 			},
 			"2": {
-				name: "punctuation.definition.keyword.less"
-			}
+				name: "punctuation.definition.keyword.less",
+			},
 		},
 		end: ";",
 		endCaptures: {
 			"0": {
-				name: "punctuation.terminator.rule.css"
-			}
+				name: "punctuation.terminator.rule.css",
+			},
 		},
 		name: "meta.at-rule.import.css",
 		patterns: [
 			{
 				match: "(?<=\\(|,|\\s)\\b(reference|optional|once|multiple|less|inline)\\b(?=\\)|,)",
-				name: "keyword.control.import.option.less"
+				name: "keyword.control.import.option.less",
 			},
 			{
-				include: "#brace_round"
+				include: "#brace_round",
 			},
 			{
-				include: "source.css#commas"
+				include: "source.css#commas",
 			},
 			{
-				include: "#strings"
-			}
-		]
+				include: "#strings",
+			},
+		],
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.control.at-rule.fontface.css"
+				name: "keyword.control.at-rule.fontface.css",
 			},
 			"2": {
-				name: "punctuation.definition.keyword.css"
-			}
+				name: "punctuation.definition.keyword.css",
+			},
 		},
 		match: "^\\s*((@)font-face\\b)",
-		name: "meta.at-rule.fontface.css"
+		name: "meta.at-rule.fontface.css",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.control.at-rule.media.css"
+				name: "keyword.control.at-rule.media.css",
 			},
 			"2": {
-				name: "punctuation.definition.keyword.css"
-			}
+				name: "punctuation.definition.keyword.css",
+			},
 		},
 		match: "^\\s*((@)media\\b)",
-		name: "meta.at-rule.media.css"
+		name: "meta.at-rule.media.css",
 	},
 	{
-		include: "source.css#media-features"
+		include: "source.css#media-features",
 	},
 	{
 		match: "\\b(tv|tty|screen|projection|print|handheld|embossed|braille|aural|all)\\b",
-		name: "support.constant.media-type.media.css"
+		name: "support.constant.media-type.media.css",
 	},
 	{
 		match: "\\b(portrait|landscape)\\b",
-		name: "support.constant.property-value.media-property.media.css"
+		name: "support.constant.property-value.media-property.media.css",
 	},
 	{
 		captures: {
 			"1": {
-				name: "support.function.less"
-			}
+				name: "support.function.less",
+			},
 		},
-		match: "(\\.[a-zA-Z0-9_-]+)\\s*(;|\\()"
+		match: "(\\.[a-zA-Z0-9_-]+)\\s*(;|\\()",
 	},
 	{
 		begin: "(^[ \\t]+)?(?=//)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.whitespace.comment.leading.less"
-			}
+				name: "punctuation.whitespace.comment.leading.less",
+			},
 		},
 		end: "(?!\\G)",
 		patterns: [
@@ -264,228 +265,228 @@ const patterns = [
 				begin: "//",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.less"
-					}
+						name: "punctuation.definition.comment.less",
+					},
 				},
 				end: "\\n",
-				name: "comment.line.double-slash.less"
-			}
-		]
+				name: "comment.line.double-slash.less",
+			},
+		],
 	},
 	{
 		match: "(@|\\-\\-)[\\w-]+(?=\\s*)",
 		name: "variable.other.less",
 		captures: {
 			"1": {
-				name: "punctuation.definition.variable.less"
-			}
-		}
+				name: "punctuation.definition.variable.less",
+			},
+		},
 	},
 	{
-		include: "#variable_interpolation"
+		include: "#variable_interpolation",
 	},
 	{
 		begin: "{",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.section.property-list.begin.bracket.curly.css"
-			}
+				name: "punctuation.section.property-list.begin.bracket.curly.css",
+			},
 		},
 		end: "}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.section.property-list.end.bracket.curly.css"
-			}
+				name: "punctuation.section.property-list.end.bracket.curly.css",
+			},
 		},
 		name: "meta.property-list.css",
 		patterns: [
 			{
-				include: "source.css#pseudo-elements"
+				include: "source.css#pseudo-elements",
 			},
 			{
-				include: "source.css#pseudo-classes"
+				include: "source.css#pseudo-classes",
 			},
 			{
-				include: "source.css#tag-names"
+				include: "source.css#tag-names",
 			},
 			{
-				include: "source.css#commas"
+				include: "source.css#commas",
 			},
 			{
-				include: "#variable_interpolation"
+				include: "#variable_interpolation",
 			},
 			{
-				include: "source.css#property-names"
+				include: "source.css#property-names",
 			},
 			{
-				include: "#property_values"
+				include: "#property_values",
 			},
 			{
-				include: "$self"
-			}
-		]
+				include: "$self",
+			},
+		],
 	},
 	{
 		match: "\\!\\s*important",
-		name: "keyword.other.important.css"
+		name: "keyword.other.important.css",
 	},
 	{
 		match: "\\*|\\/|\\-|\\+|~|=|<=|>=|<|>",
-		name: "keyword.operator.less"
+		name: "keyword.operator.less",
 	},
 	{
 		match: "\\b(not|and|when)\\b",
-		name: "keyword.control.logical.operator.less"
+		name: "keyword.control.logical.operator.less",
 	},
 	{
-		include: "source.css#tag-names"
+		include: "source.css#tag-names",
 	},
 	{
 		match: "(?<![\\w-])[a-z][\\w&&[^A-Z]]*+-[\\w-&&[^A-Z]]+",
-		name: "entity.name.tag.custom.css"
+		name: "entity.name.tag.custom.css",
 	},
 	{
-		include: "source.css#pseudo-elements"
+		include: "source.css#pseudo-elements",
 	},
 	{
-		include: "source.css#pseudo-classes"
+		include: "source.css#pseudo-classes",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.section.property-list.begin.css"
+				name: "punctuation.section.property-list.begin.css",
 			},
 			"2": {
-				name: "punctuation.section.property-list.end.css"
-			}
+				name: "punctuation.section.property-list.end.css",
+			},
 		},
 		match: "(\\{)(\\})",
-		name: "meta.brace.curly.css"
+		name: "meta.brace.curly.css",
 	},
 	{
 		match: "\\{|\\}",
-		name: "meta.brace.curly.css"
+		name: "meta.brace.curly.css",
 	},
 	{
-		include: "#brace_round"
+		include: "#brace_round",
 	},
 	{
 		match: "\\[|\\]",
-		name: "meta.brace.square.less"
+		name: "meta.brace.square.less",
 	},
 	{
 		match: ";",
-		name: "punctuation.terminator.rule.css"
+		name: "punctuation.terminator.rule.css",
 	},
 	{
 		match: ":",
-		name: "punctuation.separator.key-value.css"
+		name: "punctuation.separator.key-value.css",
 	},
 	{
 		match: "\\btrue\\b",
-		name: "constant.language.boolean.less"
+		name: "constant.language.boolean.less",
 	},
 	{
 		match: "\\bdefault\\b",
-		name: "support.function.default.less"
+		name: "support.function.default.less",
 	},
 	{
 		match: "\\b(isurl|isstring|isnumber|iskeyword|iscolor)\\b",
-		name: "support.function.type-checking.less"
+		name: "support.function.type-checking.less",
 	},
 	{
 		match: "\\b(isunit|ispixel|ispercentage|isem)\\b",
-		name: "support.function.unit-checking.less"
+		name: "support.function.unit-checking.less",
 	},
 	{
-		include: "source.css#property-keywords"
+		include: "source.css#property-keywords",
 	},
 	{
-		include: "source.css#color-keywords"
+		include: "source.css#color-keywords",
 	},
 	{
-		include: "source.css#commas"
+		include: "source.css#commas",
 	},
 	{
-		include: "#less_builtin_functions"
+		include: "#less_builtin_functions",
 	},
 	{
-		include: "source.css#functions"
-	}
+		include: "source.css#functions",
+	},
 ];
 const repository = {
 	variable_interpolation: {
 		match: "@{[a-zA-Z0-9_-]+}",
-		name: "variable.other.interpolation.less"
+		name: "variable.other.interpolation.less",
 	},
 	strings: {
 		patterns: [
 			{
-				begin: "\"",
+				begin: '"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.css"
-					}
+						name: "punctuation.definition.string.begin.css",
+					},
 				},
-				end: "\"",
+				end: '"',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.css"
-					}
+						name: "punctuation.definition.string.end.css",
+					},
 				},
 				name: "string.quoted.double.css",
 				patterns: [
 					{
 						match: "\\\\([0-9A-Fa-f]{1,6}|.)",
-						name: "constant.character.escape.css"
+						name: "constant.character.escape.css",
 					},
 					{
-						include: "#variable_interpolation"
-					}
-				]
+						include: "#variable_interpolation",
+					},
+				],
 			},
 			{
 				begin: "'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.css"
-					}
+						name: "punctuation.definition.string.begin.css",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.css"
-					}
+						name: "punctuation.definition.string.end.css",
+					},
 				},
 				name: "string.quoted.single.css",
 				patterns: [
 					{
 						match: "\\\\([0-9A-Fa-f]{1,6}|.)",
-						name: "constant.character.escape.css"
+						name: "constant.character.escape.css",
 					},
 					{
-						include: "#variable_interpolation"
-					}
-				]
-			}
-		]
+						include: "#variable_interpolation",
+					},
+				],
+			},
+		],
 	},
 	brace_round: {
 		match: "\\(|\\)",
-		name: "meta.brace.round.css"
+		name: "meta.brace.round.css",
 	},
 	property_values: {
 		begin: "(?<!&)(:)\\s*(?!(\\s*{))(?!.*(?<!@){)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.separator.key-value.css"
-			}
+				name: "punctuation.separator.key-value.css",
+			},
 		},
 		end: "\\s*(;)|\\s*(?=})",
 		endCaptures: {
 			"1": {
-				name: "punctuation.terminator.rule.css"
-			}
+				name: "punctuation.terminator.rule.css",
+			},
 		},
 		contentName: "meta.property-value.css",
 		patterns: [
@@ -493,50 +494,50 @@ const repository = {
 				begin: "url(\\()",
 				beginCaptures: {
 					"1": {
-						name: "meta.brace.round.css"
-					}
+						name: "meta.brace.round.css",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "meta.brace.round.css"
-					}
+						name: "meta.brace.round.css",
+					},
 				},
 				name: "support.function.any-method.builtin.url.css",
 				patterns: [
 					{
-						include: "#strings"
+						include: "#strings",
 					},
 					{
 						match: "(\\b|\\.{0,2}/)[^)]*\\b",
-						name: "string.url.css"
-					}
-				]
+						name: "string.url.css",
+					},
+				],
 			},
 			{
-				include: "source.css#property-keywords"
+				include: "source.css#property-keywords",
 			},
 			{
-				include: "source.css#color-keywords"
+				include: "source.css#color-keywords",
 			},
 			{
-				include: "source.css#commas"
+				include: "source.css#commas",
 			},
 			{
-				include: "#less_builtin_functions"
+				include: "#less_builtin_functions",
 			},
 			{
-				include: "source.css#functions"
+				include: "source.css#functions",
 			},
 			{
-				include: "$self"
-			}
-		]
+				include: "$self",
+			},
+		],
 	},
 	less_builtin_functions: {
 		match: "\\b(abs|acos|alpha|argb|asin|atan|average|blue|calc|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b",
-		name: "support.function.any-method.builtin.less"
-	}
+		name: "support.function.any-method.builtin.less",
+	},
 };
 const less_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -544,7 +545,15 @@ const less_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { less_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	less_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

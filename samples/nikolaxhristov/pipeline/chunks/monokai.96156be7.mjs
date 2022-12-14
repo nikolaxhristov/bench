@@ -92,390 +92,386 @@ const colors = {
 	"terminal.ansiBrightBlue": "#819aff",
 	"terminal.ansiBrightMagenta": "#AE81FF",
 	"terminal.ansiBrightCyan": "#66D9EF",
-	"terminal.ansiBrightWhite": "#f8f8f2"
+	"terminal.ansiBrightWhite": "#f8f8f2",
 };
 const tokenColors = [
 	{
 		settings: {
-			foreground: "#F8F8F2"
-		}
+			foreground: "#F8F8F2",
+		},
 	},
 	{
 		scope: [
 			"meta.embedded",
 			"source.groovy.embedded",
-			"string meta.image.inline.markdown"
+			"string meta.image.inline.markdown",
 		],
 		settings: {
-			foreground: "#F8F8F2"
-		}
+			foreground: "#F8F8F2",
+		},
 	},
 	{
 		name: "Comment",
 		scope: "comment",
 		settings: {
-			foreground: "#88846f"
-		}
+			foreground: "#88846f",
+		},
 	},
 	{
 		name: "String",
 		scope: "string",
 		settings: {
-			foreground: "#E6DB74"
-		}
+			foreground: "#E6DB74",
+		},
 	},
 	{
 		name: "Template Definition",
 		scope: [
 			"punctuation.definition.template-expression",
-			"punctuation.section.embedded"
+			"punctuation.section.embedded",
 		],
 		settings: {
-			foreground: "#F92672"
-		}
+			foreground: "#F92672",
+		},
 	},
 	{
 		name: "Reset JavaScript string interpolation expression",
-		scope: [
-			"meta.template.expression"
-		],
+		scope: ["meta.template.expression"],
 		settings: {
-			foreground: "#F8F8F2"
-		}
+			foreground: "#F8F8F2",
+		},
 	},
 	{
 		name: "Number",
 		scope: "constant.numeric",
 		settings: {
-			foreground: "#AE81FF"
-		}
+			foreground: "#AE81FF",
+		},
 	},
 	{
 		name: "Built-in constant",
 		scope: "constant.language",
 		settings: {
-			foreground: "#AE81FF"
-		}
+			foreground: "#AE81FF",
+		},
 	},
 	{
 		name: "User-defined constant",
 		scope: "constant.character, constant.other",
 		settings: {
-			foreground: "#AE81FF"
-		}
+			foreground: "#AE81FF",
+		},
 	},
 	{
 		name: "Variable",
 		scope: "variable",
 		settings: {
 			fontStyle: "",
-			foreground: "#F8F8F2"
-		}
+			foreground: "#F8F8F2",
+		},
 	},
 	{
 		name: "Keyword",
 		scope: "keyword",
 		settings: {
-			foreground: "#F92672"
-		}
+			foreground: "#F92672",
+		},
 	},
 	{
 		name: "Storage",
 		scope: "storage",
 		settings: {
 			fontStyle: "",
-			foreground: "#F92672"
-		}
+			foreground: "#F92672",
+		},
 	},
 	{
 		name: "Storage type",
 		scope: "storage.type",
 		settings: {
 			fontStyle: "italic",
-			foreground: "#66D9EF"
-		}
+			foreground: "#66D9EF",
+		},
 	},
 	{
 		name: "Class name",
 		scope: "entity.name.type, entity.name.class, entity.name.namespace, entity.name.scope-resolution",
 		settings: {
 			fontStyle: "underline",
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		name: "Inherited class",
 		scope: "entity.other.inherited-class",
 		settings: {
 			fontStyle: "italic underline",
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		name: "Function name",
 		scope: "entity.name.function",
 		settings: {
 			fontStyle: "",
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		name: "Function argument",
 		scope: "variable.parameter",
 		settings: {
 			fontStyle: "italic",
-			foreground: "#FD971F"
-		}
+			foreground: "#FD971F",
+		},
 	},
 	{
 		name: "Tag name",
 		scope: "entity.name.tag",
 		settings: {
 			fontStyle: "",
-			foreground: "#F92672"
-		}
+			foreground: "#F92672",
+		},
 	},
 	{
 		name: "Tag attribute",
 		scope: "entity.other.attribute-name",
 		settings: {
 			fontStyle: "",
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		name: "Library function",
 		scope: "support.function",
 		settings: {
 			fontStyle: "",
-			foreground: "#66D9EF"
-		}
+			foreground: "#66D9EF",
+		},
 	},
 	{
 		name: "Library constant",
 		scope: "support.constant",
 		settings: {
 			fontStyle: "",
-			foreground: "#66D9EF"
-		}
+			foreground: "#66D9EF",
+		},
 	},
 	{
 		name: "Library class/type",
 		scope: "support.type, support.class",
 		settings: {
 			fontStyle: "italic",
-			foreground: "#66D9EF"
-		}
+			foreground: "#66D9EF",
+		},
 	},
 	{
 		name: "Library variable",
 		scope: "support.other.variable",
 		settings: {
-			fontStyle: ""
-		}
+			fontStyle: "",
+		},
 	},
 	{
 		name: "Invalid",
 		scope: "invalid",
 		settings: {
 			fontStyle: "",
-			foreground: "#F44747"
-		}
+			foreground: "#F44747",
+		},
 	},
 	{
 		name: "Invalid deprecated",
 		scope: "invalid.deprecated",
 		settings: {
-			foreground: "#F44747"
-		}
+			foreground: "#F44747",
+		},
 	},
 	{
 		name: "JSON String",
 		scope: "meta.structure.dictionary.json string.quoted.double.json",
 		settings: {
-			foreground: "#CFCFC2"
-		}
+			foreground: "#CFCFC2",
+		},
 	},
 	{
 		name: "diff.header",
 		scope: "meta.diff, meta.diff.header",
 		settings: {
-			foreground: "#75715E"
-		}
+			foreground: "#75715E",
+		},
 	},
 	{
 		name: "diff.deleted",
 		scope: "markup.deleted",
 		settings: {
-			foreground: "#F92672"
-		}
+			foreground: "#F92672",
+		},
 	},
 	{
 		name: "diff.inserted",
 		scope: "markup.inserted",
 		settings: {
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		name: "diff.changed",
 		scope: "markup.changed",
 		settings: {
-			foreground: "#E6DB74"
-		}
+			foreground: "#E6DB74",
+		},
 	},
 	{
 		scope: "constant.numeric.line-number.find-in-files - match",
 		settings: {
-			foreground: "#AE81FFA0"
-		}
+			foreground: "#AE81FFA0",
+		},
 	},
 	{
 		scope: "entity.name.filename.find-in-files",
 		settings: {
-			foreground: "#E6DB74"
-		}
+			foreground: "#E6DB74",
+		},
 	},
 	{
 		name: "Markup Quote",
 		scope: "markup.quote",
 		settings: {
-			foreground: "#F92672"
-		}
+			foreground: "#F92672",
+		},
 	},
 	{
 		name: "Markup Lists",
 		scope: "markup.list",
 		settings: {
-			foreground: "#E6DB74"
-		}
+			foreground: "#E6DB74",
+		},
 	},
 	{
 		name: "Markup Styling",
 		scope: "markup.bold, markup.italic",
 		settings: {
-			foreground: "#66D9EF"
-		}
+			foreground: "#66D9EF",
+		},
 	},
 	{
 		name: "Markup Inline",
 		scope: "markup.inline.raw",
 		settings: {
 			fontStyle: "",
-			foreground: "#FD971F"
-		}
+			foreground: "#FD971F",
+		},
 	},
 	{
 		name: "Markup Headings",
 		scope: "markup.heading",
 		settings: {
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		name: "Markup Setext Header",
 		scope: "markup.heading.setext",
 		settings: {
 			foreground: "#A6E22E",
-			fontStyle: "bold"
-		}
+			fontStyle: "bold",
+		},
 	},
 	{
 		name: "Markup Headings",
 		scope: "markup.heading.markdown",
 		settings: {
-			fontStyle: "bold"
-		}
+			fontStyle: "bold",
+		},
 	},
 	{
 		name: "Markdown Quote",
 		scope: "markup.quote.markdown",
 		settings: {
 			fontStyle: "italic",
-			foreground: "#75715E"
-		}
+			foreground: "#75715E",
+		},
 	},
 	{
 		name: "Markdown Bold",
 		scope: "markup.bold.markdown",
 		settings: {
-			fontStyle: "bold"
-		}
+			fontStyle: "bold",
+		},
 	},
 	{
 		name: "Markdown Link Title/Description",
 		scope: "string.other.link.title.markdown,string.other.link.description.markdown",
 		settings: {
-			foreground: "#AE81FF"
-		}
+			foreground: "#AE81FF",
+		},
 	},
 	{
 		name: "Markdown Underline Link/Image",
 		scope: "markup.underline.link.markdown,markup.underline.link.image.markdown",
 		settings: {
-			foreground: "#E6DB74"
-		}
+			foreground: "#E6DB74",
+		},
 	},
 	{
 		name: "Markdown Emphasis",
 		scope: "markup.italic.markdown",
 		settings: {
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "markup.strikethrough",
 		settings: {
-			fontStyle: "strikethrough"
-		}
+			fontStyle: "strikethrough",
+		},
 	},
 	{
 		name: "Markdown Punctuation Definition Link",
 		scope: "markup.list.unnumbered.markdown, markup.list.numbered.markdown",
 		settings: {
-			foreground: "#f8f8f2"
-		}
+			foreground: "#f8f8f2",
+		},
 	},
 	{
 		name: "Markdown List Punctuation",
-		scope: [
-			"punctuation.definition.list.begin.markdown"
-		],
+		scope: ["punctuation.definition.list.begin.markdown"],
 		settings: {
-			foreground: "#A6E22E"
-		}
+			foreground: "#A6E22E",
+		},
 	},
 	{
 		scope: "token.info-token",
 		settings: {
-			foreground: "#6796e6"
-		}
+			foreground: "#6796e6",
+		},
 	},
 	{
 		scope: "token.warn-token",
 		settings: {
-			foreground: "#cd9731"
-		}
+			foreground: "#cd9731",
+		},
 	},
 	{
 		scope: "token.error-token",
 		settings: {
-			foreground: "#f44747"
-		}
+			foreground: "#f44747",
+		},
 	},
 	{
 		scope: "token.debug-token",
 		settings: {
-			foreground: "#b267e6"
-		}
+			foreground: "#b267e6",
+		},
 	},
 	{
 		name: "this.self",
 		scope: "variable.language",
 		settings: {
-			foreground: "#FD971F"
-		}
-	}
+			foreground: "#FD971F",
+		},
+	},
 ];
 const semanticHighlighting = true;
 const name = "monokai";
@@ -484,7 +480,14 @@ const monokai = {
 	colors: colors,
 	tokenColors: tokenColors,
 	semanticHighlighting: semanticHighlighting,
-	name: name
+	name: name,
 };
 
-export { colors, monokai as default, name, semanticHighlighting, tokenColors, type };
+export {
+	colors,
+	monokai as default,
+	name,
+	semanticHighlighting,
+	tokenColors,
+	type,
+};

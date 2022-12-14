@@ -6,7 +6,7 @@ const matthew = {
 	name: name,
 	title: title,
 	image: image,
-	twitter: twitter
+	twitter: twitter,
 };
 
 export { matthew as default, image, name, title, twitter };

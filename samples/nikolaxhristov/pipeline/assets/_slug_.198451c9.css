@@ -1,1 +1,24 @@
-img:where(.astro-OT3E33LS){margin:calc(.25rem + 2px)}article:where(.astro-OT3E33LS){display:grid;grid-template-rows:auto auto 1fr;grid-template-columns:auto 1fr;grid-template-areas:"icon stars" "title title" "description description";row-gap:.5rem;outline:1px solid transparent}.icon:where(.astro-OT3E33LS){grid-area:icon}h3:where(.astro-OT3E33LS){grid-area:title}ul:where(.astro-OT3E33LS){grid-area:badges}p:where(.astro-OT3E33LS){grid-area:description;align-self:start}
+img:where(.astro-OT3E33LS) {
+	margin: calc(0.25rem + 2px);
+}
+article:where(.astro-OT3E33LS) {
+	display: grid;
+	grid-template-rows: auto auto 1fr;
+	grid-template-columns: auto 1fr;
+	grid-template-areas: "icon stars" "title title" "description description";
+	row-gap: 0.5rem;
+	outline: 1px solid transparent;
+}
+.icon:where(.astro-OT3E33LS) {
+	grid-area: icon;
+}
+h3:where(.astro-OT3E33LS) {
+	grid-area: title;
+}
+ul:where(.astro-OT3E33LS) {
+	grid-area: badges;
+}
+p:where(.astro-OT3E33LS) {
+	grid-area: description;
+	align-self: start;
+}

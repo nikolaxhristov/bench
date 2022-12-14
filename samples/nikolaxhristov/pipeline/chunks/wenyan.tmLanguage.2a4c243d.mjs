@@ -1,64 +1,65 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const scopeName = "source.wenyan";
 const name = "wenyan";
 const patterns = [
 	{
-		include: "#keywords"
+		include: "#keywords",
 	},
 	{
-		include: "#constants"
+		include: "#constants",
 	},
 	{
-		include: "#operators"
+		include: "#operators",
 	},
 	{
-		include: "#symbols"
+		include: "#symbols",
 	},
 	{
-		include: "#expression"
+		include: "#expression",
 	},
 	{
-		include: "#comment-blocks"
+		include: "#comment-blocks",
 	},
 	{
-		include: "#comment-lines"
-	}
+		include: "#comment-lines",
+	},
 ];
 const repository = {
 	expression: {
 		patterns: [
 			{
-				include: "#variables"
-			}
-		]
+				include: "#variables",
+			},
+		],
 	},
 	keywords: {
 		patterns: [
 			{
 				name: "storage.type",
-				match: "數|列|言|術|爻|物|元"
+				match: "數|列|言|術|爻|物|元",
 			},
 			{
 				name: "keyword.control",
-				match: "乃行是術曰|若其不然者|乃歸空無|欲行是術|乃止是遍|若其然者|其物如是|乃得矣|之術也|必先得|是術曰|恆為是|之物也|乃得|是謂|云云|中之|為是|乃止|若非|或若|之長|其餘"
+				match: "乃行是術曰|若其不然者|乃歸空無|欲行是術|乃止是遍|若其然者|其物如是|乃得矣|之術也|必先得|是術曰|恆為是|之物也|乃得|是謂|云云|中之|為是|乃止|若非|或若|之長|其餘",
 			},
 			{
 				name: "keyword.control",
-				match: "或云|蓋謂"
+				match: "或云|蓋謂",
 			},
 			{
 				name: "keyword.operator",
-				match: "中有陽乎|中無陰乎|所餘幾何|不等於|不大於|不小於|等於|大於|小於|加|減|乘|除|變|以|於"
+				match: "中有陽乎|中無陰乎|所餘幾何|不等於|不大於|不小於|等於|大於|小於|加|減|乘|除|變|以|於",
 			},
 			{
 				name: "keyword.other",
-				match: "不知何禍歟|不復存矣|姑妄行此|如事不諧|名之曰|吾嘗觀|之禍歟|乃作罷|吾有|今有|物之|書之|以施|昔之|是矣|之書|方悟|之義|嗚呼|之禍|有|施|曰|噫|取|今|夫|中|豈"
+				match: "不知何禍歟|不復存矣|姑妄行此|如事不諧|名之曰|吾嘗觀|之禍歟|乃作罷|吾有|今有|物之|書之|以施|昔之|是矣|之書|方悟|之義|嗚呼|之禍|有|施|曰|噫|取|今|夫|中|豈",
 			},
 			{
 				name: "keyword.control",
-				match: "也|凡|遍|若|者|之|充|銜"
-			}
-		]
+				match: "也|凡|遍|若|者|之|充|銜",
+			},
+		],
 	},
 	"comment-lines": {
 		name: "comment.line",
@@ -67,9 +68,9 @@ const repository = {
 		patterns: [
 			{
 				name: "constant.character",
-				match: "\\\\."
-			}
-		]
+				match: "\\\\.",
+			},
+		],
 	},
 	"comment-blocks": {
 		name: "comment.block",
@@ -78,19 +79,19 @@ const repository = {
 		patterns: [
 			{
 				name: "constant.character",
-				match: "\\\\."
-			}
-		]
+				match: "\\\\.",
+			},
+		],
 	},
 	constants: {
 		patterns: [
 			{
 				name: "constant.numeric",
-				match: "負|·|又|零|〇|一|二|三|四|五|六|七|八|九|十|百|千|萬|億|兆|京|垓|秭|穰|溝|澗|正|載|極|分|釐|毫|絲|忽|微|纖|沙|塵|埃|渺|漠"
+				match: "負|·|又|零|〇|一|二|三|四|五|六|七|八|九|十|百|千|萬|億|兆|京|垓|秭|穰|溝|澗|正|載|極|分|釐|毫|絲|忽|微|纖|沙|塵|埃|渺|漠",
 			},
 			{
 				name: "constant.language",
-				match: "其|陰|陽"
+				match: "其|陰|陽",
 			},
 			{
 				name: "string.quoted",
@@ -99,19 +100,19 @@ const repository = {
 				patterns: [
 					{
 						name: "constant.character",
-						match: "\\\\."
-					}
-				]
-			}
-		]
+						match: "\\\\.",
+					},
+				],
+			},
+		],
 	},
 	symbols: {
 		patterns: [
 			{
 				name: "punctuation.separator",
-				match: "。|、"
-			}
-		]
+				match: "。|、",
+			},
+		],
 	},
 	variables: {
 		name: "variable.other",
@@ -120,17 +121,24 @@ const repository = {
 		patterns: [
 			{
 				name: "constant.character",
-				match: "\\\\."
-			}
-		]
-	}
+				match: "\\\\.",
+			},
+		],
+	},
 };
 const wenyan_tmLanguage = {
 	$schema: $schema,
 	scopeName: scopeName,
 	name: name,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, wenyan_tmLanguage as default, name, patterns, repository, scopeName };
+export {
+	$schema,
+	wenyan_tmLanguage as default,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

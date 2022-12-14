@@ -454,264 +454,214 @@ const colors = {
 	"welcomePage.buttonHoverBackground": "#f2e9e1",
 	"widget.shadow": "#f2e9de4d",
 	"window.activeBorder": "#fffaf3",
-	"window.inactiveBorder": "#fffaf3"
+	"window.inactiveBorder": "#fffaf3",
 };
 const tokenColors = [
 	{
-		scope: [
-			"comment"
-		],
+		scope: ["comment"],
 		settings: {
 			foreground: "#9893a5",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"constant"
-		],
+		scope: ["constant"],
 		settings: {
-			foreground: "#286983"
-		}
+			foreground: "#286983",
+		},
 	},
 	{
 		scope: [
 			"constant.numeric",
 			"constant.language",
-			"constant.charcter.escape"
+			"constant.charcter.escape",
 		],
 		settings: {
-			foreground: "#d7827e"
-		}
+			foreground: "#d7827e",
+		},
 	},
 	{
-		scope: [
-			"entity.name"
-		],
+		scope: ["entity.name"],
 		settings: {
-			foreground: "#d7827e"
-		}
+			foreground: "#d7827e",
+		},
 	},
 	{
 		scope: [
 			"entity.name.section",
 			"entity.name.tag",
 			"entity.name.namespace",
-			"entity.name.type"
+			"entity.name.type",
 		],
 		settings: {
-			foreground: "#56949f"
-		}
+			foreground: "#56949f",
+		},
 	},
 	{
-		scope: [
-			"entity.other.attribute-name",
-			"entity.other.inherited-class"
-		],
+		scope: ["entity.other.attribute-name", "entity.other.inherited-class"],
 		settings: {
 			foreground: "#907aa9",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"invalid"
-		],
+		scope: ["invalid"],
 		settings: {
-			foreground: "#b4637a"
-		}
+			foreground: "#b4637a",
+		},
 	},
 	{
-		scope: [
-			"invalid.deprecated"
-		],
+		scope: ["invalid.deprecated"],
 		settings: {
-			foreground: "#797593"
-		}
+			foreground: "#797593",
+		},
 	},
 	{
-		scope: [
-			"keyword"
-		],
+		scope: ["keyword"],
 		settings: {
-			foreground: "#286983"
-		}
+			foreground: "#286983",
+		},
 	},
 	{
-		scope: [
-			"markup.inserted.diff"
-		],
+		scope: ["markup.inserted.diff"],
 		settings: {
-			foreground: "#56949f"
-		}
+			foreground: "#56949f",
+		},
 	},
 	{
-		scope: [
-			"markup.deleted.diff"
-		],
+		scope: ["markup.deleted.diff"],
 		settings: {
-			foreground: "#b4637a"
-		}
+			foreground: "#b4637a",
+		},
 	},
 	{
-		scope: [
-			"meta.diff.range"
-		],
+		scope: ["meta.diff.range"],
 		settings: {
-			foreground: "#907aa9"
-		}
+			foreground: "#907aa9",
+		},
 	},
 	{
-		scope: [
-			"meta.tag",
-			"meta.brace"
-		],
+		scope: ["meta.tag", "meta.brace"],
 		settings: {
-			foreground: "#575279"
-		}
+			foreground: "#575279",
+		},
 	},
 	{
-		scope: [
-			"meta.import",
-			"meta.export"
-		],
+		scope: ["meta.import", "meta.export"],
 		settings: {
-			foreground: "#286983"
-		}
+			foreground: "#286983",
+		},
 	},
 	{
 		scope: "meta.directive.vue",
 		settings: {
 			foreground: "#907aa9",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "meta.property-name.css",
 		settings: {
-			foreground: "#56949f"
-		}
+			foreground: "#56949f",
+		},
 	},
 	{
 		scope: "meta.property-value.css",
 		settings: {
-			foreground: "#ea9d34"
-		}
+			foreground: "#ea9d34",
+		},
 	},
 	{
 		scope: "meta.tag.other.html",
 		settings: {
-			foreground: "#797593"
-		}
+			foreground: "#797593",
+		},
 	},
 	{
-		scope: [
-			"punctuation"
-		],
+		scope: ["punctuation"],
 		settings: {
-			foreground: "#797593"
-		}
+			foreground: "#797593",
+		},
 	},
 	{
-		scope: [
-			"punctuation.accessor"
-		],
+		scope: ["punctuation.accessor"],
 		settings: {
-			foreground: "#286983"
-		}
+			foreground: "#286983",
+		},
 	},
 	{
-		scope: [
-			"punctuation.definition.string"
-		],
+		scope: ["punctuation.definition.string"],
 		settings: {
-			foreground: "#ea9d34"
-		}
+			foreground: "#ea9d34",
+		},
 	},
 	{
-		scope: [
-			"punctuation.definition.tag"
-		],
+		scope: ["punctuation.definition.tag"],
 		settings: {
-			foreground: "#9893a5"
-		}
+			foreground: "#9893a5",
+		},
 	},
 	{
-		scope: [
-			"storage.type",
-			"storage.modifier"
-		],
+		scope: ["storage.type", "storage.modifier"],
 		settings: {
-			foreground: "#286983"
-		}
+			foreground: "#286983",
+		},
 	},
 	{
-		scope: [
-			"string"
-		],
+		scope: ["string"],
 		settings: {
-			foreground: "#ea9d34"
-		}
+			foreground: "#ea9d34",
+		},
 	},
 	{
-		scope: [
-			"support"
-		],
+		scope: ["support"],
 		settings: {
-			foreground: "#56949f"
-		}
+			foreground: "#56949f",
+		},
 	},
 	{
-		scope: [
-			"support.constant"
-		],
+		scope: ["support.constant"],
 		settings: {
-			foreground: "#ea9d34"
-		}
+			foreground: "#ea9d34",
+		},
 	},
 	{
-		scope: [
-			"support.function"
-		],
+		scope: ["support.function"],
 		settings: {
 			foreground: "#b4637a",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"variable"
-		],
+		scope: ["variable"],
 		settings: {
 			foreground: "#d7827e",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: [
 			"variable.other",
 			"variable.language",
 			"variable.function",
-			"variable.argument"
+			"variable.argument",
 		],
 		settings: {
-			foreground: "#575279"
-		}
+			foreground: "#575279",
+		},
 	},
 	{
-		scope: [
-			"variable.parameter"
-		],
+		scope: ["variable.parameter"],
 		settings: {
-			foreground: "#907aa9"
-		}
-	}
+			foreground: "#907aa9",
+		},
+	},
 ];
 const rosePineDawn = {
 	name: name,
 	type: type,
 	colors: colors,
-	tokenColors: tokenColors
+	tokenColors: tokenColors,
 };
 
 export { colors, rosePineDawn as default, name, tokenColors, type };

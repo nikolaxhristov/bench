@@ -4,7 +4,7 @@ const twitter = "https://twitter.com/swithinbank";
 const chris = {
 	name: name,
 	image: image,
-	twitter: twitter
+	twitter: twitter,
 };
 
 export { chris as default, image, name, twitter };

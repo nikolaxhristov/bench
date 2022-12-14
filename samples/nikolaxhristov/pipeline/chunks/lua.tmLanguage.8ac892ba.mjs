@@ -1,9 +1,10 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/sumneko/lua.tmbundle/blob/master/Syntaxes/Lua.plist",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/sumneko/lua.tmbundle/commit/bc74f9230c3f07c0ecc1bc1727ad98d9e70aff5b";
+const version =
+	"https://github.com/sumneko/lua.tmbundle/commit/bc74f9230c3f07c0ecc1bc1727ad98d9e70aff5b";
 const name = "lua";
 const scopeName = "source.lua";
 const patterns = [
@@ -11,221 +12,221 @@ const patterns = [
 		begin: "\\b(?:(local)\\s+)?(function)\\b(?![,:])",
 		beginCaptures: {
 			"1": {
-				name: "keyword.local.lua"
+				name: "keyword.local.lua",
 			},
 			"2": {
-				name: "keyword.control.lua"
-			}
+				name: "keyword.control.lua",
+			},
 		},
 		end: "(?<=[\\)\\-{}\\[\\]\"'])",
 		name: "meta.function.lua",
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(\\()",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.parameters.begin.lua"
-					}
+						name: "punctuation.definition.parameters.begin.lua",
+					},
 				},
 				end: "(\\))|(?=[\\-\\.{}\\[\\]\"'])",
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.parameters.finish.lua"
-					}
+						name: "punctuation.definition.parameters.finish.lua",
+					},
 				},
 				name: "meta.parameter.lua",
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
 						match: "[a-zA-Z_][a-zA-Z0-9_]*",
-						name: "variable.parameter.function.lua"
+						name: "variable.parameter.function.lua",
 					},
 					{
 						match: ",",
-						name: "punctuation.separator.arguments.lua"
+						name: "punctuation.separator.arguments.lua",
 					},
 					{
 						begin: ":",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.separator.arguments.lua"
-							}
+								name: "punctuation.separator.arguments.lua",
+							},
 						},
 						end: "(?=[\\),])",
 						patterns: [
 							{
-								include: "#luadoc.type"
-							}
-						]
-					}
-				]
+								include: "#luadoc.type",
+							},
+						],
+					},
+				],
 			},
 			{
 				match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b\\s*(?=:)",
-				name: "entity.name.class.lua"
+				name: "entity.name.class.lua",
 			},
 			{
 				match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
-				name: "entity.name.function.lua"
-			}
-		]
+				name: "entity.name.function.lua",
+			},
+		],
 	},
 	{
 		match: "(?<![\\w\\d.])0[xX][0-9A-Fa-f]+(\\.[0-9A-Fa-f]+)?([eE]-?\\d*)?([pP][-+]\\d+)?",
-		name: "constant.numeric.float.hexadecimal.lua"
+		name: "constant.numeric.float.hexadecimal.lua",
 	},
 	{
 		match: "(?<![\\w\\d.])0[xX][0-9A-Fa-f]+(?![pPeE.0-9])",
-		name: "constant.numeric.integer.hexadecimal.lua"
+		name: "constant.numeric.integer.hexadecimal.lua",
 	},
 	{
 		match: "(?<![\\w\\d.])\\d+(\\.\\d+)?([eE]-?\\d*)?",
-		name: "constant.numeric.float.lua"
+		name: "constant.numeric.float.lua",
 	},
 	{
 		match: "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
-		name: "constant.numeric.integer.lua"
+		name: "constant.numeric.integer.lua",
 	},
 	{
-		include: "#string"
+		include: "#string",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.comment.lua"
-			}
+				name: "punctuation.definition.comment.lua",
+			},
 		},
 		match: "\\A(#!).*$\\n?",
-		name: "comment.line.shebang.lua"
+		name: "comment.line.shebang.lua",
 	},
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.control.goto.lua"
+				name: "keyword.control.goto.lua",
 			},
 			"2": {
-				name: "string.tag.lua"
-			}
+				name: "string.tag.lua",
+			},
 		},
-		match: "\\b(goto)\\s+([a-zA-Z_][a-zA-Z0-9_]*)"
+		match: "\\b(goto)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.section.embedded.begin.lua"
+				name: "punctuation.section.embedded.begin.lua",
 			},
 			"2": {
-				name: "punctuation.section.embedded.end.lua"
-			}
+				name: "punctuation.section.embedded.end.lua",
+			},
 		},
 		match: "(::)\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*(::)",
-		name: "string.tag.lua"
+		name: "string.tag.lua",
 	},
 	{
 		match: "<\\s*(const|close)\\s*>",
 		captures: {
 			"1": {
-				name: "string.tag.lua"
-			}
-		}
+				name: "string.tag.lua",
+			},
+		},
 	},
 	{
 		match: "\\<[a-zA-Z_\\*][a-zA-Z0-9_\\.\\*\\-]*\\>",
-		name: "storage.type.generic.lua"
+		name: "storage.type.generic.lua",
 	},
 	{
 		match: "\\b(break|do|else|for|if|elseif|goto|return|then|repeat|while|until|end|in)\\b",
-		name: "keyword.control.lua"
+		name: "keyword.control.lua",
 	},
 	{
 		match: "\\b(local|global)\\b",
-		name: "keyword.local.lua"
+		name: "keyword.local.lua",
 	},
 	{
 		match: "\\b(function)\\b(?![,:])",
-		name: "keyword.control.lua"
+		name: "keyword.control.lua",
 	},
 	{
 		match: "(?<![^.]\\.|:)\\b(false|nil(?!:)|true|_ENV|_G|_VERSION|math\\.(pi|huge|maxinteger|mininteger)|utf8\\.charpattern|io\\.(stdin|stdout|stderr)|package\\.(config|cpath|loaded|loaders|path|preload|searchers))\\b|(?<![.])\\.{3}(?!\\.)",
-		name: "constant.language.lua"
+		name: "constant.language.lua",
 	},
 	{
 		match: "(?<![^.]\\.|:)\\b(self)\\b",
-		name: "variable.language.self.lua"
+		name: "variable.language.self.lua",
 	},
 	{
 		match: "(?<![^.]\\.|:)\\b(assert|collectgarbage|dofile|error|getfenv|getmetatable|ipairs|load|loadfile|loadstring|module|next|pairs|pcall|print|rawequal|rawget|rawlen|rawset|require|select|setfenv|setmetatable|tonumber|tostring|type|unpack|xpcall)\\b(?!\\s*=(?!=))",
-		name: "support.function.lua"
+		name: "support.function.lua",
 	},
 	{
 		match: "(?<![^.]\\.|:)\\b(async)\\b(?!\\s*=(?!=))",
-		name: "entity.name.tag.lua"
+		name: "entity.name.tag.lua",
 	},
 	{
 		match: "(?<![^.]\\.|:)\\b(coroutine\\.(create|isyieldable|close|resume|running|status|wrap|yield)|string\\.(byte|char|dump|find|format|gmatch|gsub|len|lower|match|pack|packsize|rep|reverse|sub|unpack|upper)|table\\.(concat|insert|maxn|move|pack|remove|sort|unpack)|math\\.(abs|acos|asin|atan2?|ceil|cosh?|deg|exp|floor|fmod|frexp|ldexp|log|log10|max|min|modf|pow|rad|random|randomseed|sinh?|sqrt|tanh?|tointeger|type)|io\\.(close|flush|input|lines|open|output|popen|read|tmpfile|type|write)|os\\.(clock|date|difftime|execute|exit|getenv|remove|rename|setlocale|time|tmpname)|package\\.(loadlib|seeall|searchpath)|debug\\.(debug|[gs]etfenv|[gs]ethook|getinfo|[gs]etlocal|[gs]etmetatable|getregistry|[gs]etupvalue|[gs]etuservalue|set[Cc]stacklimit|traceback|upvalueid|upvaluejoin)|bit32\\.(arshift|band|bnot|bor|btest|bxor|extract|replace|lrotate|lshift|rrotate|rshift)|utf8\\.(char|codes|codepoint|len|offset))\\b(?!\\s*=(?!=))",
-		name: "support.function.library.lua"
+		name: "support.function.library.lua",
 	},
 	{
 		match: "\\b(and|or|not|\\|\\||\\&\\&|\\!)\\b",
-		name: "keyword.operator.lua"
+		name: "keyword.operator.lua",
 	},
 	{
 		match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*(?:[({\"']|\\[\\[))",
-		name: "support.function.any-method.lua"
+		name: "support.function.any-method.lua",
 	},
 	{
 		match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*\\??:)",
-		name: "entity.name.class.lua"
+		name: "entity.name.class.lua",
 	},
 	{
 		match: "(?<=[^.]\\.|:)\\b([a-zA-Z_][a-zA-Z0-9_]*)",
-		name: "entity.other.attribute.lua"
+		name: "entity.other.attribute.lua",
 	},
 	{
 		match: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
-		name: "variable.other.lua"
+		name: "variable.other.lua",
 	},
 	{
 		match: "\\+|-|%|#|\\*|\\/|\\^|==?|~=|!=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.)",
-		name: "keyword.operator.lua"
-	}
+		name: "keyword.operator.lua",
+	},
 ];
 const repository = {
 	escaped_char: {
 		patterns: [
 			{
 				match: "\\\\[abfnrtv\\\\\"'\\n]",
-				name: "constant.character.escape.lua"
+				name: "constant.character.escape.lua",
 			},
 			{
 				match: "\\\\z[\\n\\t ]*",
-				name: "constant.character.escape.lua"
+				name: "constant.character.escape.lua",
 			},
 			{
 				match: "\\\\\\d{1,3}",
-				name: "constant.character.escape.byte.lua"
+				name: "constant.character.escape.byte.lua",
 			},
 			{
 				match: "\\\\x[0-9A-Fa-f][0-9A-Fa-f]",
-				name: "constant.character.escape.byte.lua"
+				name: "constant.character.escape.byte.lua",
 			},
 			{
 				match: "\\\\u\\{[0-9A-Fa-f]+\\}",
-				name: "constant.character.escape.unicode.lua"
+				name: "constant.character.escape.unicode.lua",
 			},
 			{
 				match: "\\\\.",
-				name: "invalid.illegal.character.escape.lua"
-			}
-		]
+				name: "invalid.illegal.character.escape.lua",
+			},
+		],
 	},
 	string: {
 		patterns: [
@@ -233,99 +234,99 @@ const repository = {
 				begin: "'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.lua"
-					}
+						name: "punctuation.definition.string.begin.lua",
+					},
 				},
 				end: "'[ \\t]*|(?=\\n)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.lua"
-					}
+						name: "punctuation.definition.string.end.lua",
+					},
 				},
 				name: "string.quoted.single.lua",
 				patterns: [
 					{
-						include: "#escaped_char"
-					}
-				]
+						include: "#escaped_char",
+					},
+				],
 			},
 			{
-				begin: "\"",
+				begin: '"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.lua"
-					}
+						name: "punctuation.definition.string.begin.lua",
+					},
 				},
-				end: "\"[ \\t]*|(?=\\n)",
+				end: '"[ \\t]*|(?=\\n)',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.lua"
-					}
+						name: "punctuation.definition.string.end.lua",
+					},
 				},
 				name: "string.quoted.double.lua",
 				patterns: [
 					{
-						include: "#escaped_char"
-					}
-				]
+						include: "#escaped_char",
+					},
+				],
 			},
 			{
 				begin: "`",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.lua"
-					}
+						name: "punctuation.definition.string.begin.lua",
+					},
 				},
 				end: "`[ \\t]*|(?=\\n)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.lua"
-					}
+						name: "punctuation.definition.string.end.lua",
+					},
 				},
-				name: "string.quoted.double.lua"
+				name: "string.quoted.double.lua",
 			},
 			{
 				begin: "(?<=\\.cdef)\\s*(\\[(=*)\\[)",
 				beginCaptures: {
 					"0": {
-						name: "string.quoted.other.multiline.lua"
+						name: "string.quoted.other.multiline.lua",
 					},
 					"1": {
-						name: "punctuation.definition.string.begin.lua"
-					}
+						name: "punctuation.definition.string.begin.lua",
+					},
 				},
 				contentName: "meta.embedded.lua",
 				end: "(\\]\\2\\])[ \\t]*",
 				endCaptures: {
 					"0": {
-						name: "string.quoted.other.multiline.lua"
+						name: "string.quoted.other.multiline.lua",
 					},
 					"1": {
-						name: "punctuation.definition.string.end.lua"
-					}
+						name: "punctuation.definition.string.end.lua",
+					},
 				},
 				patterns: [
 					{
-						include: "source.c"
-					}
-				]
+						include: "source.c",
+					},
+				],
 			},
 			{
 				begin: "(?<!--)\\[(=*)\\[",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.lua"
-					}
+						name: "punctuation.definition.string.begin.lua",
+					},
 				},
 				end: "\\]\\1\\][ \\t]*",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.lua"
-					}
+						name: "punctuation.definition.string.end.lua",
+					},
 				},
-				name: "string.quoted.other.multiline.lua"
-			}
-		]
+				name: "string.quoted.other.multiline.lua",
+			},
+		],
 	},
 	comment: {
 		patterns: [
@@ -333,84 +334,84 @@ const repository = {
 				begin: "(^[ \\t]+)?(?=--)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.leading.lua"
-					}
+						name: "punctuation.whitespace.comment.leading.lua",
+					},
 				},
 				end: "(?!\\G)((?!^)[ \\t]+\\n)?",
 				endCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.trailing.lua"
-					}
+						name: "punctuation.whitespace.comment.trailing.lua",
+					},
 				},
 				patterns: [
 					{
 						begin: "--\\[(=*)\\[",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.begin.lua"
-							}
+								name: "punctuation.definition.comment.begin.lua",
+							},
 						},
 						end: "\\]\\1\\]",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.end.lua"
-							}
+								name: "punctuation.definition.comment.end.lua",
+							},
 						},
-						name: "comment.block.lua"
+						name: "comment.block.lua",
 					},
 					{
 						begin: "----",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.lua"
-							}
+								name: "punctuation.definition.comment.lua",
+							},
 						},
 						end: "\\n",
-						name: "comment.line.double-dash.lua"
+						name: "comment.line.double-dash.lua",
 					},
 					{
 						begin: "---",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.lua"
-							}
+								name: "punctuation.definition.comment.lua",
+							},
 						},
 						end: "\\n",
 						name: "comment.line.double-dash.doc.lua",
 						patterns: [
 							{
-								include: "#luadoc"
-							}
-						]
+								include: "#luadoc",
+							},
+						],
 					},
 					{
 						begin: "--",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.lua"
-							}
+								name: "punctuation.definition.comment.lua",
+							},
 						},
 						end: "\\n",
-						name: "comment.line.double-dash.lua"
-					}
-				]
+						name: "comment.line.double-dash.lua",
+					},
+				],
 			},
 			{
 				begin: "\\/\\*",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.begin.lua"
-					}
+						name: "punctuation.definition.comment.begin.lua",
+					},
 				},
 				end: "\\*\\/",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.end.lua"
-					}
+						name: "punctuation.definition.comment.end.lua",
+					},
 				},
-				name: "comment.block.lua"
-			}
-		]
+				name: "comment.block.lua",
+			},
+		],
 	},
 	luadoc: {
 		patterns: [
@@ -418,41 +419,41 @@ const repository = {
 				begin: "(?<=---\\s*)@class",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
 						match: "\\b([a-zA-Z_\\*][a-zA-Z0-9_\\.\\*\\-]*)",
-						name: "support.class.lua"
+						name: "support.class.lua",
 					},
 					{
 						match: ":|,",
-						name: "keyword.operator.lua"
-					}
-				]
+						name: "keyword.operator.lua",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@type",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
-						include: "#luadoc.type"
-					}
-				]
+						include: "#luadoc.type",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@alias",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
@@ -460,24 +461,24 @@ const repository = {
 						begin: "\\b([a-zA-Z_\\*][a-zA-Z0-9_\\.\\*\\-]*)",
 						beginCaptures: {
 							"0": {
-								name: "variable.lua"
-							}
+								name: "variable.lua",
+							},
 						},
 						end: "(?=\\n)",
 						patterns: [
 							{
-								include: "#luadoc.type"
-							}
-						]
-					}
-				]
+								include: "#luadoc.type",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@param",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
@@ -485,45 +486,45 @@ const repository = {
 						begin: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(\\??)",
 						beginCaptures: {
 							"1": {
-								name: "entity.name.variable.lua"
+								name: "entity.name.variable.lua",
 							},
 							"2": {
-								name: "keyword.operator.lua"
-							}
+								name: "keyword.operator.lua",
+							},
 						},
 						end: "(?=\\n)",
 						patterns: [
 							{
-								include: "#luadoc.type"
-							}
-						]
-					}
-				]
+								include: "#luadoc.type",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@return",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
 						match: "\\?",
-						name: "keyword.operator.lua"
+						name: "keyword.operator.lua",
 					},
 					{
-						include: "#luadoc.type"
-					}
-				]
+						include: "#luadoc.type",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@field",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
@@ -531,34 +532,34 @@ const repository = {
 						begin: "(\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b|(\\[))(\\??)",
 						beginCaptures: {
 							"2": {
-								name: "entity.name.variable.lua"
+								name: "entity.name.variable.lua",
 							},
 							"3": {
-								name: "keyword.operator.lua"
-							}
+								name: "keyword.operator.lua",
+							},
 						},
 						end: "(?=\\n)",
 						patterns: [
 							{
-								include: "#string"
+								include: "#string",
 							},
 							{
-								include: "#luadoc.type"
+								include: "#luadoc.type",
 							},
 							{
 								match: "\\]",
-								name: "keyword.operator.lua"
-							}
-						]
-					}
-				]
+								name: "keyword.operator.lua",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@generic",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
@@ -566,117 +567,117 @@ const repository = {
 						begin: "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
 						beginCaptures: {
 							"0": {
-								name: "storage.type.generic.lua"
-							}
+								name: "storage.type.generic.lua",
+							},
 						},
 						end: "(?=\\n)|(,)",
 						endCaptures: {
 							"0": {
-								name: "keyword.operator.lua"
-							}
+								name: "keyword.operator.lua",
+							},
 						},
 						patterns: [
 							{
 								match: ":",
-								name: "keyword.operator.lua"
+								name: "keyword.operator.lua",
 							},
 							{
-								include: "#luadoc.type"
-							}
-						]
-					}
-				]
+								include: "#luadoc.type",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@vararg",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
-						include: "#luadoc.type"
-					}
-				]
+						include: "#luadoc.type",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@overload",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
-						include: "#luadoc.type"
-					}
-				]
+						include: "#luadoc.type",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@deprecated",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
-				end: "(?=[\\n@#])"
+				end: "(?=[\\n@#])",
 			},
 			{
 				begin: "(?<=---\\s*)@meta",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
-				end: "(?=[\\n@#])"
+				end: "(?=[\\n@#])",
 			},
 			{
 				begin: "(?<=---\\s*)@version",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
 						match: "\\b(5\\.1|5\\.2|5\\.3|5\\.4|JIT)\\b",
-						name: "support.class.lua"
+						name: "support.class.lua",
 					},
 					{
 						match: ",|\\>|\\<",
-						name: "keyword.operator.lua"
-					}
-				]
+						name: "keyword.operator.lua",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@see",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
 						match: "\\b([a-zA-Z_\\*][a-zA-Z0-9_\\.\\*\\-]*)",
-						name: "support.class.lua"
+						name: "support.class.lua",
 					},
 					{
 						match: "#",
-						name: "keyword.operator.lua"
-					}
-				]
+						name: "keyword.operator.lua",
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@diagnostic",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
@@ -684,59 +685,59 @@ const repository = {
 						begin: "([a-zA-Z_\\-0-9]+)[ \\t]*(:)?",
 						beginCaptures: {
 							"1": {
-								name: "keyword.other.unit"
+								name: "keyword.other.unit",
 							},
 							"2": {
-								name: "keyword.operator.unit"
-							}
+								name: "keyword.operator.unit",
+							},
 						},
 						end: "(?=\\n)",
 						patterns: [
 							{
 								match: "\\b([a-zA-Z_\\*][a-zA-Z0-9_\\-]*)",
-								name: "support.class.lua"
+								name: "support.class.lua",
 							},
 							{
 								match: ",",
-								name: "keyword.operator.lua"
-							}
-						]
-					}
-				]
+								name: "keyword.operator.lua",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=---\\s*)@module",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
-						include: "#string"
-					}
-				]
+						include: "#string",
+					},
+				],
 			},
 			{
 				match: "(?<=---\\s*)@(async|nodiscard)",
-				name: "storage.type.annotation.lua"
+				name: "storage.type.annotation.lua",
 			},
 			{
 				begin: "(?<=---)\\|\\s*[\\>\\+]?",
 				beginCaptures: {
 					"0": {
-						name: "storage.type.annotation.lua"
-					}
+						name: "storage.type.annotation.lua",
+					},
 				},
 				end: "(?=[\\n@#])",
 				patterns: [
 					{
-						include: "#string"
-					}
-				]
-			}
-		]
+						include: "#string",
+					},
+				],
+			},
+		],
 	},
 	"luadoc.type": {
 		patterns: [
@@ -744,38 +745,38 @@ const repository = {
 				begin: "\\bfun\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.lua"
-					}
+						name: "keyword.control.lua",
+					},
 				},
 				end: "(?=\\s)",
 				patterns: [
 					{
 						match: "[\\(\\),:\\?][ \\t]*",
-						name: "keyword.operator.lua"
+						name: "keyword.operator.lua",
 					},
 					{
 						match: "([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*)(?<!,)[ \\t]*(?=\\??:)",
-						name: "entity.name.variable.lua"
+						name: "entity.name.variable.lua",
 					},
 					{
-						include: "#luadoc.type"
+						include: "#luadoc.type",
 					},
 					{
-						include: "#string"
-					}
-				]
+						include: "#string",
+					},
+				],
 			},
 			{
 				match: "\\<[a-zA-Z_\\*][a-zA-Z0-9_\\.\\*\\-]*\\>",
-				name: "storage.type.generic.lua"
+				name: "storage.type.generic.lua",
 			},
 			{
 				match: "\\basync\\b",
-				name: "entity.name.tag.lua"
+				name: "entity.name.tag.lua",
 			},
 			{
 				match: "[\\{\\}\\:\\,\\?\\|\\`][ \\t]*",
-				name: "keyword.operator.lua"
+				name: "keyword.operator.lua",
 			},
 			{
 				begin: "(?=[a-zA-Z_\\.\\*\"'\\[])",
@@ -783,19 +784,19 @@ const repository = {
 				patterns: [
 					{
 						match: "([a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]+)(?<!,)[ \\t]*",
-						name: "support.type.lua"
+						name: "support.type.lua",
 					},
 					{
 						match: "(\\.\\.\\.)[ \\t]*",
-						name: "constant.language.lua"
+						name: "constant.language.lua",
 					},
 					{
-						include: "#string"
-					}
-				]
-			}
-		]
-	}
+						include: "#string",
+					},
+				],
+			},
+		],
+	},
 };
 const lua_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -803,7 +804,15 @@ const lua_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { lua_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	lua_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

@@ -1,144 +1,141 @@
 const name = "turtle";
 const scopeName = "source.turtle";
-const fileTypes = [
-	"turtle",
-	"ttl"
-];
+const fileTypes = ["turtle", "ttl"];
 const patterns = [
 	{
-		include: "#rule-constraint"
+		include: "#rule-constraint",
 	},
 	{
-		include: "#iriref"
+		include: "#iriref",
 	},
 	{
-		include: "#prefix"
+		include: "#prefix",
 	},
 	{
-		include: "#prefixed-name"
+		include: "#prefixed-name",
 	},
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#special-predicate"
+		include: "#special-predicate",
 	},
 	{
-		include: "#literals"
+		include: "#literals",
 	},
 	{
-		include: "#language-tag"
-	}
+		include: "#language-tag",
+	},
 ];
 const uuid = "230498230498sdfkj8909-34df-23dfs";
 const repository = {
 	prefix: {
 		name: "keyword.operator.turtle",
-		match: "(?i:@?base|@?prefix)\\s"
+		match: "(?i:@?base|@?prefix)\\s",
 	},
 	iriref: {
 		name: "entity.name.type.iriref.turtle",
-		match: "<[^\\x20-\\x20<>\"{}|^`\\\\]*>"
+		match: '<[^\\x20-\\x20<>"{}|^`\\\\]*>',
 	},
 	"prefixed-name": {
 		name: "constant.complex.turtle",
 		match: "(\\w*:)(\\w*)",
 		captures: {
 			"1": {
-				name: "storage.type.PNAME_NS.turtle"
+				name: "storage.type.PNAME_NS.turtle",
 			},
 			"2": {
-				name: "support.variable.PN_LOCAL.turtle"
-			}
-		}
+				name: "support.variable.PN_LOCAL.turtle",
+			},
+		},
 	},
 	comment: {
 		name: "comment.line.number-sign.turtle",
-		match: "#.*$"
+		match: "#.*$",
 	},
 	"special-predicate": {
 		name: "meta.specialPredicate.turtle",
 		match: "\\s(a)\\s",
 		captures: {
 			"1": {
-				name: "keyword.control.turtle"
-			}
-		}
+				name: "keyword.control.turtle",
+			},
+		},
 	},
 	literals: {
 		patterns: [
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#boolean"
-			}
-		]
+				include: "#boolean",
+			},
+		],
 	},
 	string: {
 		patterns: [
 			{
-				include: "#single-squote-string-literal"
+				include: "#single-squote-string-literal",
 			},
 			{
-				include: "#single-dquote-string-literal"
+				include: "#single-dquote-string-literal",
 			},
 			{
-				include: "#triple-squote-string-literal"
+				include: "#triple-squote-string-literal",
 			},
 			{
-				include: "#triple-dquote-string-literal"
+				include: "#triple-dquote-string-literal",
 			},
 			{
-				include: "#triple-tick-string-literal"
-			}
-		]
+				include: "#triple-tick-string-literal",
+			},
+		],
 	},
 	"single-squote-string-literal": {
 		name: "string.quoted.single.turtle",
 		begin: "'",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.turtle"
-			}
+				name: "punctuation.definition.string.begin.turtle",
+			},
 		},
 		end: "'",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.turtle"
+				name: "punctuation.definition.string.end.turtle",
 			},
 			"2": {
-				name: "invalid.illegal.newline.turtle"
-			}
+				name: "invalid.illegal.newline.turtle",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-character-escape"
-			}
-		]
+				include: "#string-character-escape",
+			},
+		],
 	},
 	"single-dquote-string-literal": {
 		name: "string.quoted.double.turtle",
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.turtle"
-			}
+				name: "punctuation.definition.string.begin.turtle",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.turtle"
-			}
+				name: "punctuation.definition.string.end.turtle",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-character-escape"
-			}
-		]
+				include: "#string-character-escape",
+			},
+		],
 	},
 	"triple-squote-string-literal": {
 		name: "string.quoted.triple.turtle",
@@ -146,39 +143,39 @@ const repository = {
 		end: "'''",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.turtle"
-			}
+				name: "punctuation.definition.string.begin.turtle",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.turtle"
-			}
+				name: "punctuation.definition.string.end.turtle",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-character-escape"
-			}
-		]
+				include: "#string-character-escape",
+			},
+		],
 	},
 	"triple-dquote-string-literal": {
 		name: "string.quoted.triple.turtle",
-		begin: "\"\"\"",
-		end: "\"\"\"",
+		begin: '"""',
+		end: '"""',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.turtle"
-			}
+				name: "punctuation.definition.string.begin.turtle",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.turtle"
-			}
+				name: "punctuation.definition.string.end.turtle",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-character-escape"
-			}
-		]
+				include: "#string-character-escape",
+			},
+		],
 	},
 	"triple-tick-string-literal": {
 		name: "string.quoted.triple.turtle",
@@ -186,75 +183,75 @@ const repository = {
 		end: "```",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.turtle"
-			}
+				name: "punctuation.definition.string.begin.turtle",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.turtle"
-			}
+				name: "punctuation.definition.string.end.turtle",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-character-escape"
-			}
-		]
+				include: "#string-character-escape",
+			},
+		],
 	},
 	"string-character-escape": {
 		name: "constant.character.escape.turtle",
-		match: "\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)"
+		match: "\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)",
 	},
 	numeric: {
 		patterns: [
 			{
-				include: "#integer"
-			}
-		]
+				include: "#integer",
+			},
+		],
 	},
 	integer: {
 		name: "constant.numeric.turtle",
-		match: "[+-]?(?:\\d+|[0-9]+\\.[0-9]*|\\.[0-9]+(?:[eE][+-]?\\d+)?)"
+		match: "[+-]?(?:\\d+|[0-9]+\\.[0-9]*|\\.[0-9]+(?:[eE][+-]?\\d+)?)",
 	},
 	boolean: {
 		name: "constant.language.sparql",
-		match: "\\b(?i:true|false)\\b"
+		match: "\\b(?i:true|false)\\b",
 	},
 	"language-tag": {
 		name: "meta.string-literal-language-tag.turtle",
 		match: "@(\\w+)",
 		captures: {
 			"1": {
-				name: "entity.name.class.turtle"
-			}
-		}
+				name: "entity.name.class.turtle",
+			},
+		},
 	},
 	"rule-constraint": {
 		name: "meta.rule-constraint.turtle",
-		begin: "(rule:content) (\"\"\")",
+		begin: '(rule:content) (""")',
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#prefixed-name"
-					}
-				]
+						include: "#prefixed-name",
+					},
+				],
 			},
 			"2": {
-				name: "string.quoted.triple.turtle"
-			}
+				name: "string.quoted.triple.turtle",
+			},
 		},
-		end: "\"\"\"",
+		end: '"""',
 		endCaptures: {
 			"0": {
-				name: "string.quoted.triple.turtle"
-			}
+				name: "string.quoted.triple.turtle",
+			},
 		},
 		patterns: [
 			{
-				include: "source.srs"
-			}
-		]
-	}
+				include: "source.srs",
+			},
+		],
+	},
 };
 const turtle_tmLanguage = {
 	name: name,
@@ -262,7 +259,15 @@ const turtle_tmLanguage = {
 	fileTypes: fileTypes,
 	patterns: patterns,
 	uuid: uuid,
-	repository: repository
+	repository: repository,
 };
 
-export { turtle_tmLanguage as default, fileTypes, name, patterns, repository, scopeName, uuid };
+export {
+	turtle_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

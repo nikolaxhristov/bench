@@ -6,7 +6,7 @@ const drew = {
 	name: name,
 	title: title,
 	image: image,
-	twitter: twitter
+	twitter: twitter,
 };
 
 export { drew as default, image, name, title, twitter };

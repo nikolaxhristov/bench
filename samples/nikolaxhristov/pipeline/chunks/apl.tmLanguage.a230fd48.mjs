@@ -1,4 +1,5 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "apl";
 const scopeName = "source.apl";
 const fileTypes = [
@@ -11,21 +12,22 @@ const fileTypes = [
 	"aplo",
 	"dyalog",
 	"dyapp",
-	"mipage"
+	"mipage",
 ];
-const firstLineMatch = "(?x)\n# APL symbols\n[⌶-⍺]\n|\n\n# Hashbang\n^\\#!.*(?:\\s|\\/|(?<=!)\\b)\n\t(?:gnu[-._]?apl|aplx?|dyalog)\n(?:$|\\s)\n|\n\n# Modeline\n(?i:\n\t# Emacs\n\t-\\*-(?:\\s*(?=[^:;\\s]+\\s*-\\*-)|(?:.*?[;\\s]|(?<=-\\*-))mode\\s*:\\s*)\n\t\tapl\n\t(?=[\\s;]|(?<![-*])-\\*-).*?-\\*-\n\n\t|\n\n\t# Vim\n\t(?:(?:\\s|^)vi(?:m[<=>]?\\d+|m)?|\\sex)(?=:(?=\\s*set?\\s[^\\n:]+:)|:(?!\\s* set?\\s))(?:(?:\\s|\\s*:\\s*)\\w*(?:\\s*=(?:[^\\n\\\\\\s]|\\\\.)*)?)*[\\s:](?:filetype|ft|syntax)\\s*=\n\t\tapl\n\t(?=\\s|:|$)\n)";
+const firstLineMatch =
+	"(?x)\n# APL symbols\n[⌶-⍺]\n|\n\n# Hashbang\n^\\#!.*(?:\\s|\\/|(?<=!)\\b)\n\t(?:gnu[-._]?apl|aplx?|dyalog)\n(?:$|\\s)\n|\n\n# Modeline\n(?i:\n\t# Emacs\n\t-\\*-(?:\\s*(?=[^:;\\s]+\\s*-\\*-)|(?:.*?[;\\s]|(?<=-\\*-))mode\\s*:\\s*)\n\t\tapl\n\t(?=[\\s;]|(?<![-*])-\\*-).*?-\\*-\n\n\t|\n\n\t# Vim\n\t(?:(?:\\s|^)vi(?:m[<=>]?\\d+|m)?|\\sex)(?=:(?=\\s*set?\\s[^\\n:]+:)|:(?!\\s* set?\\s))(?:(?:\\s|\\s*:\\s*)\\w*(?:\\s*=(?:[^\\n\\\\\\s]|\\\\.)*)?)*[\\s:](?:filetype|ft|syntax)\\s*=\n\t\tapl\n\t(?=\\s|:|$)\n)";
 const foldingStartMarker = "{";
 const foldingStopMarker = "}";
 const patterns = [
 	{
 		match: "\\A#!.*$",
-		name: "comment.line.shebang.apl"
+		name: "comment.line.shebang.apl",
 	},
 	{
-		include: "#heredocs"
+		include: "#heredocs",
 	},
 	{
-		include: "#main"
+		include: "#main",
 	},
 	{
 		contentName: "text.embedded.apl",
@@ -33,62 +35,62 @@ const patterns = [
 		end: "(?=N)A",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.command.eof.apl"
+				name: "entity.name.command.eof.apl",
 			},
 			"2": {
-				name: "punctuation.definition.command.apl"
+				name: "punctuation.definition.command.apl",
 			},
 			"3": {
-				name: "punctuation.definition.command.apl"
+				name: "punctuation.definition.command.apl",
 			},
 			"4": {
 				patterns: [
 					{
-						include: "#comment"
-					}
-				]
-			}
-		}
+						include: "#comment",
+					},
+				],
+			},
+		},
 	},
 	{
 		name: "meta.round.bracketed.group.apl",
 		patterns: [
 			{
-				include: "#main"
-			}
+				include: "#main",
+			},
 		],
 		begin: "\\(",
 		end: "\\)",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.round.bracket.begin.apl"
-			}
+				name: "punctuation.round.bracket.begin.apl",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.round.bracket.end.apl"
-			}
-		}
+				name: "punctuation.round.bracket.end.apl",
+			},
+		},
 	},
 	{
 		name: "meta.square.bracketed.group.apl",
 		patterns: [
 			{
-				include: "#main"
-			}
+				include: "#main",
+			},
 		],
 		begin: "\\[",
 		end: "\\]",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.square.bracket.begin.apl"
-			}
+				name: "punctuation.square.bracket.begin.apl",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.square.bracket.end.apl"
-			}
-		}
+				name: "punctuation.square.bracket.end.apl",
+			},
+		},
 	},
 	{
 		name: "meta.system.command.apl",
@@ -96,23 +98,23 @@ const patterns = [
 		end: "$",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.command.apl"
+				name: "entity.name.command.apl",
 			},
 			"2": {
-				name: "punctuation.definition.command.apl"
-			}
+				name: "punctuation.definition.command.apl",
+			},
 		},
 		patterns: [
 			{
-				include: "#command-arguments"
+				include: "#command-arguments",
 			},
 			{
-				include: "#command-switches"
+				include: "#command-switches",
 			},
 			{
-				include: "#main"
-			}
-		]
+				include: "#main",
+			},
+		],
 	},
 	{
 		name: "meta.user.command.apl",
@@ -120,62 +122,62 @@ const patterns = [
 		end: "$",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.command.apl"
+				name: "entity.name.command.apl",
 			},
 			"2": {
-				name: "punctuation.definition.command.apl"
-			}
+				name: "punctuation.definition.command.apl",
+			},
 		},
 		patterns: [
 			{
-				include: "#command-arguments"
+				include: "#command-arguments",
 			},
 			{
-				include: "#command-switches"
+				include: "#command-switches",
 			},
 			{
-				include: "#main"
-			}
-		]
-	}
+				include: "#main",
+			},
+		],
+	},
 ];
 const repository = {
 	main: {
 		patterns: [
 			{
-				include: "#class"
+				include: "#class",
 			},
 			{
-				include: "#definition"
+				include: "#definition",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#label"
+				include: "#label",
 			},
 			{
-				include: "#sck"
+				include: "#sck",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#number"
+				include: "#number",
 			},
 			{
-				include: "#lambda"
+				include: "#lambda",
 			},
 			{
-				include: "#sysvars"
+				include: "#sysvars",
 			},
 			{
-				include: "#symbols"
+				include: "#symbols",
 			},
 			{
-				include: "#name"
-			}
-		]
+				include: "#name",
+			},
+		],
 	},
 	comment: {
 		patterns: [
@@ -185,19 +187,19 @@ const repository = {
 				end: "$",
 				captures: {
 					"0": {
-						name: "punctuation.definition.comment.apl"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.comment.apl",
+					},
+				},
+			},
+		],
 	},
 	number: {
 		patterns: [
 			{
 				name: "constant.numeric.apl",
-				match: "¯?[0-9][¯0-9A-Za-z]*(?:\\.[¯0-9Ee][¯0-9A-Za-z]*)*|¯?\\.[0-9Ee][¯0-9A-Za-z]*"
-			}
-		]
+				match: "¯?[0-9][¯0-9A-Za-z]*(?:\\.[¯0-9Ee][¯0-9A-Za-z]*)*|¯?\\.[0-9Ee][¯0-9A-Za-z]*",
+			},
+		],
 	},
 	strings: {
 		patterns: [
@@ -207,51 +209,51 @@ const repository = {
 				end: "'|$",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.apl"
-					}
+						name: "punctuation.definition.string.begin.apl",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.apl"
-					}
+						name: "punctuation.definition.string.end.apl",
+					},
 				},
 				patterns: [
 					{
 						match: "[^']*[^'\\n\\r\\\\]$",
-						name: "invalid.illegal.string.apl"
-					}
-				]
+						name: "invalid.illegal.string.apl",
+					},
+				],
 			},
 			{
 				name: "string.quoted.double.apl",
-				begin: "\"",
-				end: "\"|$",
+				begin: '"',
+				end: '"|$',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.apl"
-					}
+						name: "punctuation.definition.string.begin.apl",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.apl"
-					}
+						name: "punctuation.definition.string.end.apl",
+					},
 				},
 				patterns: [
 					{
-						match: "[^\"]*[^\"\\n\\r\\\\]$",
-						name: "invalid.illegal.string.apl"
-					}
-				]
-			}
-		]
+						match: '[^"]*[^"\\n\\r\\\\]$',
+						name: "invalid.illegal.string.apl",
+					},
+				],
+			},
+		],
 	},
 	name: {
 		patterns: [
 			{
 				name: "variable.other.readwrite.apl",
-				match: "(?x)\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*"
-			}
-		]
+				match: "(?x)\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*",
+			},
+		],
 	},
 	label: {
 		patterns: [
@@ -260,494 +262,494 @@ const repository = {
 				match: "(?x)\n^\\s*\n(\n\t[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n\t[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*\n)\n(:)",
 				captures: {
 					"1": {
-						name: "entity.label.name.apl"
+						name: "entity.label.name.apl",
 					},
 					"2": {
-						name: "punctuation.definition.label.end.apl"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.label.end.apl",
+					},
+				},
+			},
+		],
 	},
 	symbols: {
 		patterns: [
 			{
 				match: "(?<=\\s)←(?=\\s|$)",
-				name: "keyword.spaced.operator.assignment.apl"
+				name: "keyword.spaced.operator.assignment.apl",
 			},
 			{
 				match: "(?<=\\s)→(?=\\s|$)",
-				name: "keyword.spaced.control.goto.apl"
+				name: "keyword.spaced.control.goto.apl",
 			},
 			{
 				match: "(?<=\\s)≡(?=\\s|$)",
-				name: "keyword.spaced.operator.identical.apl"
+				name: "keyword.spaced.operator.identical.apl",
 			},
 			{
 				match: "(?<=\\s)≢(?=\\s|$)",
-				name: "keyword.spaced.operator.not-identical.apl"
+				name: "keyword.spaced.operator.not-identical.apl",
 			},
 			{
 				match: "\\+",
-				name: "keyword.operator.plus.apl"
+				name: "keyword.operator.plus.apl",
 			},
 			{
 				match: "[-−]",
-				name: "keyword.operator.minus.apl"
+				name: "keyword.operator.minus.apl",
 			},
 			{
 				match: "×",
-				name: "keyword.operator.times.apl"
+				name: "keyword.operator.times.apl",
 			},
 			{
 				match: "÷",
-				name: "keyword.operator.divide.apl"
+				name: "keyword.operator.divide.apl",
 			},
 			{
 				match: "⌊",
-				name: "keyword.operator.floor.apl"
+				name: "keyword.operator.floor.apl",
 			},
 			{
 				match: "⌈",
-				name: "keyword.operator.ceiling.apl"
+				name: "keyword.operator.ceiling.apl",
 			},
 			{
 				match: "[∣|]",
-				name: "keyword.operator.absolute.apl"
+				name: "keyword.operator.absolute.apl",
 			},
 			{
 				match: "[⋆*]",
-				name: "keyword.operator.exponent.apl"
+				name: "keyword.operator.exponent.apl",
 			},
 			{
 				match: "⍟",
-				name: "keyword.operator.logarithm.apl"
+				name: "keyword.operator.logarithm.apl",
 			},
 			{
 				match: "○",
-				name: "keyword.operator.circle.apl"
+				name: "keyword.operator.circle.apl",
 			},
 			{
 				match: "!",
-				name: "keyword.operator.factorial.apl"
+				name: "keyword.operator.factorial.apl",
 			},
 			{
 				match: "∧",
-				name: "keyword.operator.and.apl"
+				name: "keyword.operator.and.apl",
 			},
 			{
 				match: "∨",
-				name: "keyword.operator.or.apl"
+				name: "keyword.operator.or.apl",
 			},
 			{
 				match: "⍲",
-				name: "keyword.operator.nand.apl"
+				name: "keyword.operator.nand.apl",
 			},
 			{
 				match: "⍱",
-				name: "keyword.operator.nor.apl"
+				name: "keyword.operator.nor.apl",
 			},
 			{
 				match: "<",
-				name: "keyword.operator.less.apl"
+				name: "keyword.operator.less.apl",
 			},
 			{
 				match: "≤",
-				name: "keyword.operator.less-or-equal.apl"
+				name: "keyword.operator.less-or-equal.apl",
 			},
 			{
 				match: "=",
-				name: "keyword.operator.equal.apl"
+				name: "keyword.operator.equal.apl",
 			},
 			{
 				match: "≥",
-				name: "keyword.operator.greater-or-equal.apl"
+				name: "keyword.operator.greater-or-equal.apl",
 			},
 			{
 				match: ">",
-				name: "keyword.operator.greater.apl"
+				name: "keyword.operator.greater.apl",
 			},
 			{
 				match: "≠",
-				name: "keyword.operator.not-equal.apl"
+				name: "keyword.operator.not-equal.apl",
 			},
 			{
 				match: "[∼~]",
-				name: "keyword.operator.tilde.apl"
+				name: "keyword.operator.tilde.apl",
 			},
 			{
 				match: "\\?",
-				name: "keyword.operator.random.apl"
+				name: "keyword.operator.random.apl",
 			},
 			{
 				match: "[∊∈]",
-				name: "keyword.operator.member-of.apl"
+				name: "keyword.operator.member-of.apl",
 			},
 			{
 				match: "⍷",
-				name: "keyword.operator.find.apl"
+				name: "keyword.operator.find.apl",
 			},
 			{
 				match: ",",
-				name: "keyword.operator.comma.apl"
+				name: "keyword.operator.comma.apl",
 			},
 			{
 				match: "⍪",
-				name: "keyword.operator.comma-bar.apl"
+				name: "keyword.operator.comma-bar.apl",
 			},
 			{
 				match: "⌷",
-				name: "keyword.operator.squad.apl"
+				name: "keyword.operator.squad.apl",
 			},
 			{
 				match: "⍳",
-				name: "keyword.operator.iota.apl"
+				name: "keyword.operator.iota.apl",
 			},
 			{
 				match: "⍴",
-				name: "keyword.operator.rho.apl"
+				name: "keyword.operator.rho.apl",
 			},
 			{
 				match: "↑",
-				name: "keyword.operator.take.apl"
+				name: "keyword.operator.take.apl",
 			},
 			{
 				match: "↓",
-				name: "keyword.operator.drop.apl"
+				name: "keyword.operator.drop.apl",
 			},
 			{
 				match: "⊣",
-				name: "keyword.operator.left.apl"
+				name: "keyword.operator.left.apl",
 			},
 			{
 				match: "⊢",
-				name: "keyword.operator.right.apl"
+				name: "keyword.operator.right.apl",
 			},
 			{
 				match: "⊤",
-				name: "keyword.operator.encode.apl"
+				name: "keyword.operator.encode.apl",
 			},
 			{
 				match: "⊥",
-				name: "keyword.operator.decode.apl"
+				name: "keyword.operator.decode.apl",
 			},
 			{
 				match: "\\/",
-				name: "keyword.operator.slash.apl"
+				name: "keyword.operator.slash.apl",
 			},
 			{
 				match: "⌿",
-				name: "keyword.operator.slash-bar.apl"
+				name: "keyword.operator.slash-bar.apl",
 			},
 			{
 				match: "\\x5C",
-				name: "keyword.operator.backslash.apl"
+				name: "keyword.operator.backslash.apl",
 			},
 			{
 				match: "⍀",
-				name: "keyword.operator.backslash-bar.apl"
+				name: "keyword.operator.backslash-bar.apl",
 			},
 			{
 				match: "⌽",
-				name: "keyword.operator.rotate-last.apl"
+				name: "keyword.operator.rotate-last.apl",
 			},
 			{
 				match: "⊖",
-				name: "keyword.operator.rotate-first.apl"
+				name: "keyword.operator.rotate-first.apl",
 			},
 			{
 				match: "⍉",
-				name: "keyword.operator.transpose.apl"
+				name: "keyword.operator.transpose.apl",
 			},
 			{
 				match: "⍋",
-				name: "keyword.operator.grade-up.apl"
+				name: "keyword.operator.grade-up.apl",
 			},
 			{
 				match: "⍒",
-				name: "keyword.operator.grade-down.apl"
+				name: "keyword.operator.grade-down.apl",
 			},
 			{
 				match: "⌹",
-				name: "keyword.operator.quad-divide.apl"
+				name: "keyword.operator.quad-divide.apl",
 			},
 			{
 				match: "≡",
-				name: "keyword.operator.identical.apl"
+				name: "keyword.operator.identical.apl",
 			},
 			{
 				match: "≢",
-				name: "keyword.operator.not-identical.apl"
+				name: "keyword.operator.not-identical.apl",
 			},
 			{
 				match: "⊂",
-				name: "keyword.operator.enclose.apl"
+				name: "keyword.operator.enclose.apl",
 			},
 			{
 				match: "⊃",
-				name: "keyword.operator.pick.apl"
+				name: "keyword.operator.pick.apl",
 			},
 			{
 				match: "∩",
-				name: "keyword.operator.intersection.apl"
+				name: "keyword.operator.intersection.apl",
 			},
 			{
 				match: "∪",
-				name: "keyword.operator.union.apl"
+				name: "keyword.operator.union.apl",
 			},
 			{
 				match: "⍎",
-				name: "keyword.operator.hydrant.apl"
+				name: "keyword.operator.hydrant.apl",
 			},
 			{
 				match: "⍕",
-				name: "keyword.operator.thorn.apl"
+				name: "keyword.operator.thorn.apl",
 			},
 			{
 				match: "⊆",
-				name: "keyword.operator.underbar-shoe-left.apl"
+				name: "keyword.operator.underbar-shoe-left.apl",
 			},
 			{
 				match: "⍸",
-				name: "keyword.operator.underbar-iota.apl"
+				name: "keyword.operator.underbar-iota.apl",
 			},
 			{
 				match: "¨",
-				name: "keyword.operator.each.apl"
+				name: "keyword.operator.each.apl",
 			},
 			{
 				match: "⍤",
-				name: "keyword.operator.rank.apl"
+				name: "keyword.operator.rank.apl",
 			},
 			{
 				match: "⌸",
-				name: "keyword.operator.quad-equal.apl"
+				name: "keyword.operator.quad-equal.apl",
 			},
 			{
 				match: "⍨",
-				name: "keyword.operator.commute.apl"
+				name: "keyword.operator.commute.apl",
 			},
 			{
 				match: "⍣",
-				name: "keyword.operator.power.apl"
+				name: "keyword.operator.power.apl",
 			},
 			{
 				match: "\\.",
-				name: "keyword.operator.dot.apl"
+				name: "keyword.operator.dot.apl",
 			},
 			{
 				match: "∘",
-				name: "keyword.operator.jot.apl"
+				name: "keyword.operator.jot.apl",
 			},
 			{
 				match: "⍠",
-				name: "keyword.operator.quad-colon.apl"
+				name: "keyword.operator.quad-colon.apl",
 			},
 			{
 				match: "&",
-				name: "keyword.operator.ampersand.apl"
+				name: "keyword.operator.ampersand.apl",
 			},
 			{
 				match: "⌶",
-				name: "keyword.operator.i-beam.apl"
+				name: "keyword.operator.i-beam.apl",
 			},
 			{
 				match: "⌺",
-				name: "keyword.operator.quad-diamond.apl"
+				name: "keyword.operator.quad-diamond.apl",
 			},
 			{
 				match: "@",
-				name: "keyword.operator.at.apl"
+				name: "keyword.operator.at.apl",
 			},
 			{
 				match: "◊",
-				name: "keyword.operator.lozenge.apl"
+				name: "keyword.operator.lozenge.apl",
 			},
 			{
 				match: ";",
-				name: "keyword.operator.semicolon.apl"
+				name: "keyword.operator.semicolon.apl",
 			},
 			{
 				match: "¯",
-				name: "keyword.operator.high-minus.apl"
+				name: "keyword.operator.high-minus.apl",
 			},
 			{
 				match: "←",
-				name: "keyword.operator.assignment.apl"
+				name: "keyword.operator.assignment.apl",
 			},
 			{
 				match: "→",
-				name: "keyword.control.goto.apl"
+				name: "keyword.control.goto.apl",
 			},
 			{
 				match: "⍬",
-				name: "constant.language.zilde.apl"
+				name: "constant.language.zilde.apl",
 			},
 			{
 				match: "⋄",
-				name: "keyword.operator.diamond.apl"
+				name: "keyword.operator.diamond.apl",
 			},
 			{
 				match: "⍫",
-				name: "keyword.operator.lock.apl"
+				name: "keyword.operator.lock.apl",
 			},
 			{
 				match: "⎕",
-				name: "keyword.operator.quad.apl"
+				name: "keyword.operator.quad.apl",
 			},
 			{
 				match: "##",
-				name: "constant.language.namespace.parent.apl"
+				name: "constant.language.namespace.parent.apl",
 			},
 			{
 				match: "#",
-				name: "constant.language.namespace.root.apl"
+				name: "constant.language.namespace.root.apl",
 			},
 			{
 				match: "⌻",
-				name: "keyword.operator.quad-jot.apl"
+				name: "keyword.operator.quad-jot.apl",
 			},
 			{
 				match: "⌼",
-				name: "keyword.operator.quad-circle.apl"
+				name: "keyword.operator.quad-circle.apl",
 			},
 			{
 				match: "⌾",
-				name: "keyword.operator.circle-jot.apl"
+				name: "keyword.operator.circle-jot.apl",
 			},
 			{
 				match: "⍁",
-				name: "keyword.operator.quad-slash.apl"
+				name: "keyword.operator.quad-slash.apl",
 			},
 			{
 				match: "⍂",
-				name: "keyword.operator.quad-backslash.apl"
+				name: "keyword.operator.quad-backslash.apl",
 			},
 			{
 				match: "⍃",
-				name: "keyword.operator.quad-less.apl"
+				name: "keyword.operator.quad-less.apl",
 			},
 			{
 				match: "⍄",
-				name: "keyword.operator.greater.apl"
+				name: "keyword.operator.greater.apl",
 			},
 			{
 				match: "⍅",
-				name: "keyword.operator.vane-left.apl"
+				name: "keyword.operator.vane-left.apl",
 			},
 			{
 				match: "⍆",
-				name: "keyword.operator.vane-right.apl"
+				name: "keyword.operator.vane-right.apl",
 			},
 			{
 				match: "⍇",
-				name: "keyword.operator.quad-arrow-left.apl"
+				name: "keyword.operator.quad-arrow-left.apl",
 			},
 			{
 				match: "⍈",
-				name: "keyword.operator.quad-arrow-right.apl"
+				name: "keyword.operator.quad-arrow-right.apl",
 			},
 			{
 				match: "⍊",
-				name: "keyword.operator.tack-down.apl"
+				name: "keyword.operator.tack-down.apl",
 			},
 			{
 				match: "⍌",
-				name: "keyword.operator.quad-caret-down.apl"
+				name: "keyword.operator.quad-caret-down.apl",
 			},
 			{
 				match: "⍍",
-				name: "keyword.operator.quad-del-up.apl"
+				name: "keyword.operator.quad-del-up.apl",
 			},
 			{
 				match: "⍏",
-				name: "keyword.operator.vane-up.apl"
+				name: "keyword.operator.vane-up.apl",
 			},
 			{
 				match: "⍐",
-				name: "keyword.operator.quad-arrow-up.apl"
+				name: "keyword.operator.quad-arrow-up.apl",
 			},
 			{
 				match: "⍑",
-				name: "keyword.operator.tack-up.apl"
+				name: "keyword.operator.tack-up.apl",
 			},
 			{
 				match: "⍓",
-				name: "keyword.operator.quad-caret-up.apl"
+				name: "keyword.operator.quad-caret-up.apl",
 			},
 			{
 				match: "⍔",
-				name: "keyword.operator.quad-del-down.apl"
+				name: "keyword.operator.quad-del-down.apl",
 			},
 			{
 				match: "⍖",
-				name: "keyword.operator.vane-down.apl"
+				name: "keyword.operator.vane-down.apl",
 			},
 			{
 				match: "⍗",
-				name: "keyword.operator.quad-arrow-down.apl"
+				name: "keyword.operator.quad-arrow-down.apl",
 			},
 			{
 				match: "⍘",
-				name: "keyword.operator.underbar-quote.apl"
+				name: "keyword.operator.underbar-quote.apl",
 			},
 			{
 				match: "⍚",
-				name: "keyword.operator.underbar-diamond.apl"
+				name: "keyword.operator.underbar-diamond.apl",
 			},
 			{
 				match: "⍛",
-				name: "keyword.operator.underbar-jot.apl"
+				name: "keyword.operator.underbar-jot.apl",
 			},
 			{
 				match: "⍜",
-				name: "keyword.operator.underbar-circle.apl"
+				name: "keyword.operator.underbar-circle.apl",
 			},
 			{
 				match: "⍞",
-				name: "keyword.operator.quad-quote.apl"
+				name: "keyword.operator.quad-quote.apl",
 			},
 			{
 				match: "⍡",
-				name: "keyword.operator.dotted-tack-up.apl"
+				name: "keyword.operator.dotted-tack-up.apl",
 			},
 			{
 				match: "⍢",
-				name: "keyword.operator.dotted-del.apl"
+				name: "keyword.operator.dotted-del.apl",
 			},
 			{
 				match: "⍥",
-				name: "keyword.operator.dotted-circle.apl"
+				name: "keyword.operator.dotted-circle.apl",
 			},
 			{
 				match: "⍦",
-				name: "keyword.operator.stile-shoe-up.apl"
+				name: "keyword.operator.stile-shoe-up.apl",
 			},
 			{
 				match: "⍧",
-				name: "keyword.operator.stile-shoe-left.apl"
+				name: "keyword.operator.stile-shoe-left.apl",
 			},
 			{
 				match: "⍩",
-				name: "keyword.operator.dotted-greater.apl"
+				name: "keyword.operator.dotted-greater.apl",
 			},
 			{
 				match: "⍭",
-				name: "keyword.operator.stile-tilde.apl"
+				name: "keyword.operator.stile-tilde.apl",
 			},
 			{
 				match: "⍮",
-				name: "keyword.operator.underbar-semicolon.apl"
+				name: "keyword.operator.underbar-semicolon.apl",
 			},
 			{
 				match: "⍯",
-				name: "keyword.operator.quad-not-equal.apl"
+				name: "keyword.operator.quad-not-equal.apl",
 			},
 			{
 				match: "⍰",
-				name: "keyword.operator.quad-question.apl"
-			}
-		]
+				name: "keyword.operator.quad-question.apl",
+			},
+		],
 	},
 	definition: {
 		patterns: [
@@ -761,230 +763,230 @@ const repository = {
 						match: "(?x)\n^\\s*\n(\n\t(?>\n\t\t;\n\t\t(?:\n\t\t\t\\s*\n\t\t\t[⎕A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n\t\t\t[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*\n\t\t\t\\s*\n\t\t)+\n\t)+\n)",
 						captures: {
 							"0": {
-								name: "entity.function.local-variables.apl"
+								name: "entity.function.local-variables.apl",
 							},
 							"1": {
 								patterns: [
 									{
 										name: "punctuation.separator.apl",
-										match: ";"
-									}
-								]
-							}
-						}
+										match: ";",
+									},
+								],
+							},
+						},
 					},
 					{
-						include: "$self"
-					}
+						include: "$self",
+					},
 				],
 				beginCaptures: {
 					"0": {
-						name: "entity.function.definition.apl"
+						name: "entity.function.definition.apl",
 					},
 					"1": {
-						name: "keyword.operator.nabla.apl"
+						name: "keyword.operator.nabla.apl",
 					},
 					"2": {
-						name: "entity.function.return-value.apl"
+						name: "entity.function.return-value.apl",
 					},
 					"3": {
-						name: "entity.function.return-value.shy.apl"
+						name: "entity.function.return-value.shy.apl",
 					},
 					"4": {
-						name: "punctuation.definition.return-value.begin.apl"
+						name: "punctuation.definition.return-value.begin.apl",
 					},
 					"5": {
-						name: "punctuation.definition.return-value.end.apl"
+						name: "punctuation.definition.return-value.end.apl",
 					},
 					"6": {
-						name: "punctuation.definition.return-value.begin.apl"
+						name: "punctuation.definition.return-value.begin.apl",
 					},
 					"7": {
-						name: "punctuation.definition.return-value.end.apl"
+						name: "punctuation.definition.return-value.end.apl",
 					},
 					"8": {
-						name: "punctuation.definition.return-value.begin.apl"
+						name: "punctuation.definition.return-value.begin.apl",
 					},
 					"9": {
-						name: "punctuation.definition.return-value.end.apl"
+						name: "punctuation.definition.return-value.end.apl",
 					},
 					"10": {
-						name: "punctuation.definition.return-value.begin.apl"
+						name: "punctuation.definition.return-value.begin.apl",
 					},
 					"11": {
-						name: "punctuation.definition.return-value.end.apl"
+						name: "punctuation.definition.return-value.end.apl",
 					},
 					"12": {
-						name: "keyword.operator.assignment.apl"
+						name: "keyword.operator.assignment.apl",
 					},
 					"13": {
 						name: "entity.function.name.apl",
 						patterns: [
 							{
-								include: "#embolden"
-							}
-						]
+								include: "#embolden",
+							},
+						],
 					},
 					"14": {
-						name: "entity.function.axis.apl"
+						name: "entity.function.axis.apl",
 					},
 					"15": {
-						name: "punctuation.definition.axis.begin.apl"
+						name: "punctuation.definition.axis.begin.apl",
 					},
 					"16": {
-						name: "invalid.illegal.extra-characters.apl"
+						name: "invalid.illegal.extra-characters.apl",
 					},
 					"17": {
-						name: "invalid.illegal.apl"
+						name: "invalid.illegal.apl",
 					},
 					"18": {
-						name: "punctuation.definition.axis.end.apl"
+						name: "punctuation.definition.axis.end.apl",
 					},
 					"19": {
-						name: "entity.function.arguments.right.apl"
+						name: "entity.function.arguments.right.apl",
 					},
 					"20": {
-						name: "punctuation.definition.arguments.begin.apl"
+						name: "punctuation.definition.arguments.begin.apl",
 					},
 					"21": {
-						name: "punctuation.definition.arguments.end.apl"
+						name: "punctuation.definition.arguments.end.apl",
 					},
 					"22": {
-						name: "entity.function.arguments.left.apl"
+						name: "entity.function.arguments.left.apl",
 					},
 					"23": {
-						name: "entity.function.arguments.left.optional.apl"
+						name: "entity.function.arguments.left.optional.apl",
 					},
 					"24": {
-						name: "punctuation.definition.arguments.begin.apl"
+						name: "punctuation.definition.arguments.begin.apl",
 					},
 					"25": {
-						name: "punctuation.definition.arguments.end.apl"
+						name: "punctuation.definition.arguments.end.apl",
 					},
 					"26": {
-						name: "punctuation.definition.arguments.begin.apl"
+						name: "punctuation.definition.arguments.begin.apl",
 					},
 					"27": {
-						name: "punctuation.definition.arguments.end.apl"
+						name: "punctuation.definition.arguments.end.apl",
 					},
 					"28": {
-						name: "punctuation.definition.arguments.begin.apl"
+						name: "punctuation.definition.arguments.begin.apl",
 					},
 					"29": {
-						name: "punctuation.definition.arguments.end.apl"
+						name: "punctuation.definition.arguments.end.apl",
 					},
 					"30": {
 						name: "entity.function.name.apl",
 						patterns: [
 							{
-								include: "#embolden"
-							}
-						]
+								include: "#embolden",
+							},
+						],
 					},
 					"31": {
-						name: "entity.function.axis.apl"
+						name: "entity.function.axis.apl",
 					},
 					"32": {
-						name: "punctuation.definition.axis.begin.apl"
+						name: "punctuation.definition.axis.begin.apl",
 					},
 					"33": {
-						name: "invalid.illegal.extra-characters.apl"
+						name: "invalid.illegal.extra-characters.apl",
 					},
 					"34": {
-						name: "invalid.illegal.apl"
+						name: "invalid.illegal.apl",
 					},
 					"35": {
-						name: "punctuation.definition.axis.end.apl"
+						name: "punctuation.definition.axis.end.apl",
 					},
 					"36": {
-						name: "entity.function.operands.apl"
+						name: "entity.function.operands.apl",
 					},
 					"37": {
-						name: "punctuation.definition.operands.begin.apl"
+						name: "punctuation.definition.operands.begin.apl",
 					},
 					"38": {
-						name: "entity.function.operands.left.apl"
+						name: "entity.function.operands.left.apl",
 					},
 					"39": {
 						name: "entity.function.name.apl",
 						patterns: [
 							{
-								include: "#embolden"
-							}
-						]
+								include: "#embolden",
+							},
+						],
 					},
 					"40": {
-						name: "entity.function.axis.apl"
+						name: "entity.function.axis.apl",
 					},
 					"41": {
-						name: "punctuation.definition.axis.begin.apl"
+						name: "punctuation.definition.axis.begin.apl",
 					},
 					"42": {
-						name: "invalid.illegal.extra-characters.apl"
+						name: "invalid.illegal.extra-characters.apl",
 					},
 					"43": {
-						name: "invalid.illegal.apl"
+						name: "invalid.illegal.apl",
 					},
 					"44": {
-						name: "punctuation.definition.axis.end.apl"
+						name: "punctuation.definition.axis.end.apl",
 					},
 					"45": {
-						name: "entity.function.operands.right.apl"
+						name: "entity.function.operands.right.apl",
 					},
 					"46": {
-						name: "punctuation.definition.operands.end.apl"
+						name: "punctuation.definition.operands.end.apl",
 					},
 					"47": {
-						name: "entity.function.arguments.right.apl"
+						name: "entity.function.arguments.right.apl",
 					},
 					"48": {
-						name: "punctuation.definition.arguments.begin.apl"
+						name: "punctuation.definition.arguments.begin.apl",
 					},
 					"49": {
-						name: "punctuation.definition.arguments.end.apl"
+						name: "punctuation.definition.arguments.end.apl",
 					},
 					"50": {
-						name: "invalid.illegal.arguments.right.apl"
+						name: "invalid.illegal.arguments.right.apl",
 					},
 					"51": {
-						name: "entity.function.local-variables.apl"
+						name: "entity.function.local-variables.apl",
 					},
 					"52": {
 						patterns: [
 							{
 								name: "punctuation.separator.apl",
-								match: ";"
-							}
-						]
+								match: ";",
+							},
+						],
 					},
 					"53": {
-						name: "invalid.illegal.local-variables.apl"
+						name: "invalid.illegal.local-variables.apl",
 					},
 					"54": {
-						name: "comment.line.apl"
-					}
+						name: "comment.line.apl",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "keyword.operator.nabla.apl"
+						name: "keyword.operator.nabla.apl",
 					},
 					"2": {
-						name: "keyword.operator.lock.apl"
+						name: "keyword.operator.lock.apl",
 					},
 					"3": {
-						name: "comment.line.apl"
-					}
-				}
-			}
-		]
+						name: "comment.line.apl",
+					},
+				},
+			},
+		],
 	},
 	embolden: {
 		patterns: [
 			{
 				name: "markup.bold.identifier.apl",
-				match: ".+"
-			}
-		]
+				match: ".+",
+			},
+		],
 	},
 	lambda: {
 		name: "meta.lambda.function.apl",
@@ -992,58 +994,58 @@ const repository = {
 		end: "\\}",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.lambda.begin.apl"
-			}
+				name: "punctuation.definition.lambda.begin.apl",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.lambda.end.apl"
-			}
+				name: "punctuation.definition.lambda.end.apl",
+			},
 		},
 		patterns: [
 			{
-				include: "#main"
+				include: "#main",
 			},
 			{
-				include: "#lambda-variables"
-			}
-		]
+				include: "#lambda-variables",
+			},
+		],
 	},
 	"lambda-variables": {
 		patterns: [
 			{
 				match: "⍺⍺",
-				name: "constant.language.lambda.operands.left.apl"
+				name: "constant.language.lambda.operands.left.apl",
 			},
 			{
 				match: "⍵⍵",
-				name: "constant.language.lambda.operands.right.apl"
+				name: "constant.language.lambda.operands.right.apl",
 			},
 			{
 				match: "[⍺⍶]",
-				name: "constant.language.lambda.arguments.left.apl"
+				name: "constant.language.lambda.arguments.left.apl",
 			},
 			{
 				match: "[⍵⍹]",
-				name: "constant.language.lambda.arguments.right.apl"
+				name: "constant.language.lambda.arguments.right.apl",
 			},
 			{
 				match: "χ",
-				name: "constant.language.lambda.arguments.axis.apl"
+				name: "constant.language.lambda.arguments.axis.apl",
 			},
 			{
 				match: "∇∇",
-				name: "constant.language.lambda.operands.self.operator.apl"
+				name: "constant.language.lambda.operands.self.operator.apl",
 			},
 			{
 				match: "∇",
-				name: "constant.language.lambda.operands.self.function.apl"
+				name: "constant.language.lambda.operands.self.function.apl",
 			},
 			{
 				match: "λ",
-				name: "constant.language.lambda.symbol.apl"
-			}
-		]
+				name: "constant.language.lambda.symbol.apl",
+			},
+		],
 	},
 	sysvars: {
 		patterns: [
@@ -1052,14 +1054,14 @@ const repository = {
 				name: "support.system.variable.apl",
 				captures: {
 					"1": {
-						name: "punctuation.definition.quad.apl"
+						name: "punctuation.definition.quad.apl",
 					},
 					"2": {
-						name: "punctuation.definition.quad-quote.apl"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.quad-quote.apl",
+					},
+				},
+			},
+		],
 	},
 	"command-arguments": {
 		patterns: [
@@ -1069,11 +1071,11 @@ const repository = {
 				end: "\\b(?=\\s)",
 				patterns: [
 					{
-						include: "#main"
-					}
-				]
-			}
-		]
+						include: "#main",
+					},
+				],
+			},
+		],
 	},
 	"command-switches": {
 		patterns: [
@@ -1083,34 +1085,34 @@ const repository = {
 				end: "\\b(?=\\s)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.delimiter.switch.apl"
+						name: "punctuation.delimiter.switch.apl",
 					},
 					"2": {
-						name: "entity.name.switch.apl"
+						name: "entity.name.switch.apl",
 					},
 					"3": {
-						name: "punctuation.assignment.switch.apl"
-					}
+						name: "punctuation.assignment.switch.apl",
+					},
 				},
 				patterns: [
 					{
-						include: "#main"
-					}
-				]
+						include: "#main",
+					},
+				],
 			},
 			{
 				name: "variable.parameter.switch.apl",
 				match: "(?x)\n(?<=\\s)(-)\n(\n\t[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n\t[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*\n)\n(?!=)",
 				captures: {
 					"1": {
-						name: "punctuation.delimiter.switch.apl"
+						name: "punctuation.delimiter.switch.apl",
 					},
 					"2": {
-						name: "entity.name.switch.apl"
-					}
-				}
-			}
-		]
+						name: "entity.name.switch.apl",
+					},
+				},
+			},
+		],
 	},
 	sck: {
 		patterns: [
@@ -1119,11 +1121,11 @@ const repository = {
 				match: "(?<=\\s|^)(:)[A-Za-z]+",
 				captures: {
 					"1": {
-						name: "punctuation.definition.sck.begin.apl"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.sck.begin.apl",
+					},
+				},
+			},
+		],
 	},
 	"class": {
 		patterns: [
@@ -1132,51 +1134,51 @@ const repository = {
 				end: "(?<=\\s|^)((:)EndClass)(?=\\b)",
 				beginCaptures: {
 					"0": {
-						name: "meta.class.apl"
+						name: "meta.class.apl",
 					},
 					"1": {
-						name: "keyword.control.class.apl"
+						name: "keyword.control.class.apl",
 					},
 					"2": {
-						name: "punctuation.definition.class.apl"
+						name: "punctuation.definition.class.apl",
 					},
 					"3": {
 						name: "entity.name.type.class.apl",
 						patterns: [
 							{
-								include: "#strings"
-							}
-						]
+								include: "#strings",
+							},
+						],
 					},
 					"4": {
-						name: "entity.other.inherited-class.apl"
+						name: "entity.other.inherited-class.apl",
 					},
 					"5": {
-						name: "punctuation.separator.inheritance.apl"
+						name: "punctuation.separator.inheritance.apl",
 					},
 					"6": {
 						patterns: [
 							{
-								include: "#strings"
-							}
-						]
+								include: "#strings",
+							},
+						],
 					},
 					"7": {
 						name: "entity.other.class.interfaces.apl",
 						patterns: [
 							{
-								include: "#csv"
-							}
-						]
-					}
+								include: "#csv",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "keyword.control.class.apl"
+						name: "keyword.control.class.apl",
 					},
 					"2": {
-						name: "punctuation.definition.class.apl"
-					}
+						name: "punctuation.definition.class.apl",
+					},
 				},
 				patterns: [
 					{
@@ -1185,44 +1187,44 @@ const repository = {
 						end: "\\s*(←.*)?(?:$|(?=⍝))",
 						beginCaptures: {
 							"0": {
-								name: "keyword.control.field.apl"
+								name: "keyword.control.field.apl",
 							},
 							"1": {
-								name: "punctuation.definition.field.apl"
-							}
+								name: "punctuation.definition.field.apl",
+							},
 						},
 						endCaptures: {
 							"0": {
-								name: "entity.other.initial-value.apl"
+								name: "entity.other.initial-value.apl",
 							},
 							"1": {
 								patterns: [
 									{
-										include: "#main"
-									}
-								]
-							}
+										include: "#main",
+									},
+								],
+							},
 						},
 						patterns: [
 							{
 								name: "storage.modifier.access.public.apl",
-								match: "(?<=\\s|^)Public(?=\\s|$)"
+								match: "(?<=\\s|^)Public(?=\\s|$)",
 							},
 							{
 								name: "storage.modifier.access.private.apl",
-								match: "(?<=\\s|^)Private(?=\\s|$)"
+								match: "(?<=\\s|^)Private(?=\\s|$)",
 							},
 							{
 								name: "storage.modifier.shared.apl",
-								match: "(?<=\\s|^)Shared(?=\\s|$)"
+								match: "(?<=\\s|^)Shared(?=\\s|$)",
 							},
 							{
 								name: "storage.modifier.instance.apl",
-								match: "(?<=\\s|^)Instance(?=\\s|$)"
+								match: "(?<=\\s|^)Instance(?=\\s|$)",
 							},
 							{
 								name: "storage.modifier.readonly.apl",
-								match: "(?<=\\s|^)ReadOnly(?=\\s|$)"
+								match: "(?<=\\s|^)ReadOnly(?=\\s|$)",
 							},
 							{
 								name: "entity.name.type.apl",
@@ -1231,31 +1233,31 @@ const repository = {
 									"1": {
 										patterns: [
 											{
-												include: "#strings"
-											}
-										]
-									}
-								}
-							}
-						]
+												include: "#strings",
+											},
+										],
+									},
+								},
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	csv: {
 		patterns: [
 			{
 				match: ",",
-				name: "punctuation.separator.apl"
+				name: "punctuation.separator.apl",
 			},
 			{
-				include: "$self"
-			}
-		]
+				include: "$self",
+			},
+		],
 	},
 	heredocs: {
 		patterns: [
@@ -1267,25 +1269,25 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				contentName: "text.embedded.html.basic",
 				patterns: [
 					{
-						include: "text.html.basic"
+						include: "text.html.basic",
 					},
 					{
-						include: "#embedded-apl"
-					}
-				]
+						include: "#embedded-apl",
+					},
+				],
 			},
 			{
 				name: "meta.heredoc.apl",
@@ -1295,25 +1297,25 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				contentName: "text.embedded.xml",
 				patterns: [
 					{
-						include: "text.xml"
+						include: "text.xml",
 					},
 					{
-						include: "#embedded-apl"
-					}
-				]
+						include: "#embedded-apl",
+					},
+				],
 			},
 			{
 				name: "meta.heredoc.apl",
@@ -1323,25 +1325,25 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				contentName: "source.embedded.css",
 				patterns: [
 					{
-						include: "source.css"
+						include: "source.css",
 					},
 					{
-						include: "#embedded-apl"
-					}
-				]
+						include: "#embedded-apl",
+					},
+				],
 			},
 			{
 				name: "meta.heredoc.apl",
@@ -1351,25 +1353,25 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				contentName: "source.embedded.js",
 				patterns: [
 					{
-						include: "source.js"
+						include: "source.js",
 					},
 					{
-						include: "#embedded-apl"
-					}
-				]
+						include: "#embedded-apl",
+					},
+				],
 			},
 			{
 				name: "meta.heredoc.apl",
@@ -1379,25 +1381,25 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				contentName: "source.embedded.json",
 				patterns: [
 					{
-						include: "source.json"
+						include: "source.json",
 					},
 					{
-						include: "#embedded-apl"
-					}
-				]
+						include: "#embedded-apl",
+					},
+				],
 			},
 			{
 				name: "meta.heredoc.apl",
@@ -1407,22 +1409,22 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				contentName: "text.embedded.plain",
 				patterns: [
 					{
-						include: "#embedded-apl"
-					}
-				]
+						include: "#embedded-apl",
+					},
+				],
 			},
 			{
 				name: "meta.heredoc.apl",
@@ -1432,23 +1434,23 @@ const repository = {
 					"0": {
 						patterns: [
 							{
-								include: "#main"
-							}
-						]
-					}
+								include: "#main",
+							},
+						],
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "constant.other.apl"
-					}
+						name: "constant.other.apl",
+					},
 				},
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	"embedded-apl": {
 		patterns: [
@@ -1458,22 +1460,22 @@ const repository = {
 				end: "(?<=\\s)(\\2>)",
 				patterns: [
 					{
-						include: "#main"
-					}
+						include: "#main",
+					},
 				],
 				beginCaptures: {
 					"1": {
-						name: "punctuation.section.embedded.begin.apl"
-					}
+						name: "punctuation.section.embedded.begin.apl",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.section.embedded.end.apl"
-					}
-				}
-			}
-		]
-	}
+						name: "punctuation.section.embedded.end.apl",
+					},
+				},
+			},
+		],
+	},
 };
 const apl_tmLanguage = {
 	$schema: $schema,
@@ -1484,7 +1486,18 @@ const apl_tmLanguage = {
 	foldingStartMarker: foldingStartMarker,
 	foldingStopMarker: foldingStopMarker,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, apl_tmLanguage as default, fileTypes, firstLineMatch, foldingStartMarker, foldingStopMarker, name, patterns, repository, scopeName };
+export {
+	$schema,
+	apl_tmLanguage as default,
+	fileTypes,
+	firstLineMatch,
+	foldingStartMarker,
+	foldingStopMarker,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

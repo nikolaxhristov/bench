@@ -1,59 +1,57 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/textmate/smalltalk.tmbundle/blob/master/Syntaxes/SmallTalk.tmLanguage",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
 const name = "smalltalk";
 const foldingStartMarker = "\\[";
 const foldingStopMarker = "^\\s*\\]|^\\s\\]";
 const keyEquivalent = "^~S";
-const fileTypes = [
-	"st"
-];
+const fileTypes = ["st"];
 const patterns = [
 	{
 		match: "\\$.",
-		name: "constant.character.smalltalk"
+		name: "constant.character.smalltalk",
 	},
 	{
 		match: "\\b(class)\\b",
-		name: "storage.type.$1.smalltalk"
+		name: "storage.type.$1.smalltalk",
 	},
 	{
 		match: "\\b(extend|super|self)\\b",
-		name: "storage.modifier.$1.smalltalk"
+		name: "storage.modifier.$1.smalltalk",
 	},
 	{
 		match: "\\b(yourself|new|Smalltalk)\\b",
-		name: "keyword.control.$1.smalltalk"
+		name: "keyword.control.$1.smalltalk",
 	},
 	{
 		match: ":=",
-		name: "keyword.operator.assignment.smalltalk"
+		name: "keyword.operator.assignment.smalltalk",
 	},
 	{
 		comment: "Parse the variable declaration like: |a b c|",
 		match: "/^:\\w*\\s*\\|/",
-		name: "constant.other.block.smalltalk"
+		name: "constant.other.block.smalltalk",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.instance-variables.begin.smalltalk"
+				name: "punctuation.definition.instance-variables.begin.smalltalk",
 			},
 			"2": {
 				patterns: [
 					{
 						match: "\\w+",
-						name: "support.type.variable.declaration.smalltalk"
-					}
-				]
+						name: "support.type.variable.declaration.smalltalk",
+					},
+				],
 			},
 			"3": {
-				name: "punctuation.definition.instance-variables.end.smalltalk"
-			}
+				name: "punctuation.definition.instance-variables.end.smalltalk",
+			},
 		},
-		match: "(\\|)(\\s*\\w[\\w ]*)(\\|)"
+		match: "(\\|)(\\s*\\w[\\w ]*)(\\|)",
 	},
 	{
 		captures: {
@@ -61,179 +59,179 @@ const patterns = [
 				patterns: [
 					{
 						match: ":\\w+",
-						name: "entity.name.function.block.smalltalk"
-					}
-				]
-			}
+						name: "entity.name.function.block.smalltalk",
+					},
+				],
+			},
 		},
 		comment: "Parse the blocks like: [ :a :b | ...... ]",
-		match: "\\[((\\s+|:\\w+)*)\\|"
+		match: "\\[((\\s+|:\\w+)*)\\|",
 	},
 	{
-		include: "#numeric"
+		include: "#numeric",
 	},
 	{
 		match: "<(?!<|=)|>(?!<|=|>)|<=|>=|=|==|~=|~~|>>|\\^",
-		name: "keyword.operator.comparison.smalltalk"
+		name: "keyword.operator.comparison.smalltalk",
 	},
 	{
 		match: "(\\*|\\+|\\-|/|\\\\)",
-		name: "keyword.operator.arithmetic.smalltalk"
+		name: "keyword.operator.arithmetic.smalltalk",
 	},
 	{
 		match: "(?<=[ \\t])!+|\\bnot\\b|&|\\band\\b|\\||\\bor\\b",
-		name: "keyword.operator.logical.smalltalk"
+		name: "keyword.operator.logical.smalltalk",
 	},
 	{
 		comment: "Fake reserved word -> main Smalltalk messages",
 		match: "(?<!\\.)\\b(ensure|resume|retry|signal)\\b(?![?!])",
-		name: "keyword.control.smalltalk"
+		name: "keyword.control.smalltalk",
 	},
 	{
 		comment: "Fake conditionals. Smalltalk Methods.",
 		match: "ifCurtailed:|ifTrue:|ifFalse:|whileFalse:|whileTrue:",
-		name: "keyword.control.conditionals.smalltalk"
+		name: "keyword.control.conditionals.smalltalk",
 	},
 	{
 		captures: {
 			"1": {
-				name: "entity.other.inherited-class.smalltalk"
+				name: "entity.other.inherited-class.smalltalk",
 			},
 			"3": {
-				name: "keyword.control.smalltalk"
+				name: "keyword.control.smalltalk",
 			},
 			"4": {
-				name: "entity.name.type.class.smalltalk"
-			}
+				name: "entity.name.type.class.smalltalk",
+			},
 		},
 		match: "(\\w+)(\\s+(subclass:))\\s*(\\w*)",
-		name: "meta.class.smalltalk"
+		name: "meta.class.smalltalk",
 	},
 	{
-		begin: "\"",
+		begin: '"',
 		beginCaptures: [
 			{
-				name: "punctuation.definition.comment.begin.smalltalk"
-			}
+				name: "punctuation.definition.comment.begin.smalltalk",
+			},
 		],
-		end: "\"",
+		end: '"',
 		endCaptures: [
 			{
-				name: "punctuation.definition.comment.end.smalltalk"
-			}
+				name: "punctuation.definition.comment.end.smalltalk",
+			},
 		],
-		name: "comment.block.smalltalk"
+		name: "comment.block.smalltalk",
 	},
 	{
 		match: "\\b(true|false)\\b",
-		name: "constant.language.boolean.smalltalk"
+		name: "constant.language.boolean.smalltalk",
 	},
 	{
 		match: "\\b(nil)\\b",
-		name: "constant.language.nil.smalltalk"
+		name: "constant.language.nil.smalltalk",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.constant.smalltalk"
-			}
+				name: "punctuation.definition.constant.smalltalk",
+			},
 		},
 		comment: "messages/methods",
 		match: "(?>[a-zA-Z_]\\w*(?>[?!])?)(:)(?!:)",
-		name: "constant.other.messages.smalltalk"
+		name: "constant.other.messages.smalltalk",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.constant.smalltalk"
-			}
+				name: "punctuation.definition.constant.smalltalk",
+			},
 		},
 		comment: "symbols",
 		match: "(#)[a-zA-Z_][a-zA-Z0-9_:]*",
-		name: "constant.other.symbol.smalltalk"
+		name: "constant.other.symbol.smalltalk",
 	},
 	{
 		begin: "#\\[",
 		beginCaptures: [
 			{
-				name: "punctuation.definition.constant.begin.smalltalk"
-			}
+				name: "punctuation.definition.constant.begin.smalltalk",
+			},
 		],
 		end: "\\]",
 		endCaptures: [
 			{
-				name: "punctuation.definition.constant.end.smalltalk"
-			}
+				name: "punctuation.definition.constant.end.smalltalk",
+			},
 		],
 		name: "meta.array.byte.smalltalk",
 		patterns: [
 			{
 				match: "[0-9]+(r[a-zA-Z0-9]+)?",
-				name: "constant.numeric.integer.smalltalk"
+				name: "constant.numeric.integer.smalltalk",
 			},
 			{
 				match: "[^\\s\\]]+",
-				name: "invalid.illegal.character-not-allowed-here.smalltalk"
-			}
-		]
+				name: "invalid.illegal.character-not-allowed-here.smalltalk",
+			},
+		],
 	},
 	{
 		begin: "#\\(",
 		beginCaptures: [
 			{
-				name: "punctuation.definition.constant.begin.smalltalk"
-			}
+				name: "punctuation.definition.constant.begin.smalltalk",
+			},
 		],
 		comment: "Array Constructor",
 		end: "\\)",
 		endCaptures: [
 			{
-				name: "punctuation.definition.constant.end.smalltalk"
-			}
+				name: "punctuation.definition.constant.end.smalltalk",
+			},
 		],
-		name: "constant.other.array.smalltalk"
+		name: "constant.other.array.smalltalk",
 	},
 	{
 		begin: "'",
 		beginCaptures: [
 			{
-				name: "punctuation.definition.string.begin.smalltalk"
-			}
+				name: "punctuation.definition.string.begin.smalltalk",
+			},
 		],
 		end: "'",
 		endCaptures: [
 			{
-				name: "punctuation.definition.string.end.smalltalk"
-			}
+				name: "punctuation.definition.string.end.smalltalk",
+			},
 		],
-		name: "string.quoted.single.smalltalk"
+		name: "string.quoted.single.smalltalk",
 	},
 	{
 		match: "\\b[A-Z]\\w*\\b",
-		name: "variable.other.constant.smalltalk"
-	}
+		name: "variable.other.constant.smalltalk",
+	},
 ];
 const repository = {
 	numeric: {
 		patterns: [
 			{
 				match: "(?<!\\w)[0-9]+\\.[0-9]+s[0-9]*",
-				name: "constant.numeric.float.scaled.smalltalk"
+				name: "constant.numeric.float.scaled.smalltalk",
 			},
 			{
 				match: "(?<!\\w)[0-9]+\\.[0-9]+([edq]-?[0-9]+)?",
-				name: "constant.numeric.float.smalltalk"
+				name: "constant.numeric.float.smalltalk",
 			},
 			{
 				match: "(?<!\\w)-?[0-9]+r[a-zA-Z0-9]+",
-				name: "constant.numeric.integer.radix.smalltalk"
+				name: "constant.numeric.integer.radix.smalltalk",
 			},
 			{
 				match: "(?<!\\w)-?[0-9]+([edq]-?[0-9]+)?",
-				name: "constant.numeric.integer.smalltalk"
-			}
-		]
-	}
+				name: "constant.numeric.integer.smalltalk",
+			},
+		],
+	},
 };
 const scopeName = "source.smalltalk";
 const uuid = "1ED64A34-BCB1-44E1-A0FE-84053003E232";
@@ -247,7 +245,19 @@ const smalltalk_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { smalltalk_tmLanguage as default, fileTypes, foldingStartMarker, foldingStopMarker, information_for_contributors, keyEquivalent, name, patterns, repository, scopeName, uuid };
+export {
+	smalltalk_tmLanguage as default,
+	fileTypes,
+	foldingStartMarker,
+	foldingStopMarker,
+	information_for_contributors,
+	keyEquivalent,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

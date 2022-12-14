@@ -1,9 +1,10 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/atom/language-xml/blob/master/grammars/xml.cson",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/atom/language-xml/commit/7bc75dfe779ad5b35d9bf4013d9181864358cb49";
+const version =
+	"https://github.com/atom/language-xml/commit/7bc75dfe779ad5b35d9bf4013d9181864358cb49";
 const name = "xml";
 const scopeName = "text.xml";
 const patterns = [
@@ -11,342 +12,342 @@ const patterns = [
 		begin: "(<\\?)\\s*([-_a-zA-Z0-9]+)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "entity.name.tag.xml"
-			}
+				name: "entity.name.tag.xml",
+			},
 		},
 		end: "(\\?>)",
 		name: "meta.tag.preprocessor.xml",
 		patterns: [
 			{
 				match: " ([a-zA-Z-]+)",
-				name: "entity.other.attribute-name.xml"
+				name: "entity.other.attribute-name.xml",
 			},
 			{
-				include: "#doublequotedString"
+				include: "#doublequotedString",
 			},
 			{
-				include: "#singlequotedString"
-			}
-		]
+				include: "#singlequotedString",
+			},
+		],
 	},
 	{
 		begin: "(<!)(DOCTYPE)\\s+([:a-zA-Z_][:a-zA-Z0-9_.-]*)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "keyword.other.doctype.xml"
+				name: "keyword.other.doctype.xml",
 			},
 			"3": {
-				name: "variable.language.documentroot.xml"
-			}
+				name: "variable.language.documentroot.xml",
+			},
 		},
 		end: "\\s*(>)",
 		name: "meta.tag.sgml.doctype.xml",
 		patterns: [
 			{
-				include: "#internalSubset"
-			}
-		]
+				include: "#internalSubset",
+			},
+		],
 	},
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
 		begin: "(<)((?:([-_a-zA-Z0-9]+)(:))?([-_a-zA-Z0-9:]+))(?=(\\s[^>]*)?></\\2>)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "entity.name.tag.xml"
+				name: "entity.name.tag.xml",
 			},
 			"3": {
-				name: "entity.name.tag.namespace.xml"
+				name: "entity.name.tag.namespace.xml",
 			},
 			"4": {
-				name: "punctuation.separator.namespace.xml"
+				name: "punctuation.separator.namespace.xml",
 			},
 			"5": {
-				name: "entity.name.tag.localname.xml"
-			}
+				name: "entity.name.tag.localname.xml",
+			},
 		},
 		end: "(>)(</)((?:([-_a-zA-Z0-9]+)(:))?([-_a-zA-Z0-9:]+))(>)",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"3": {
-				name: "entity.name.tag.xml"
+				name: "entity.name.tag.xml",
 			},
 			"4": {
-				name: "entity.name.tag.namespace.xml"
+				name: "entity.name.tag.namespace.xml",
 			},
 			"5": {
-				name: "punctuation.separator.namespace.xml"
+				name: "punctuation.separator.namespace.xml",
 			},
 			"6": {
-				name: "entity.name.tag.localname.xml"
+				name: "entity.name.tag.localname.xml",
 			},
 			"7": {
-				name: "punctuation.definition.tag.xml"
-			}
+				name: "punctuation.definition.tag.xml",
+			},
 		},
 		name: "meta.tag.no-content.xml",
 		patterns: [
 			{
-				include: "#tagStuff"
-			}
-		]
+				include: "#tagStuff",
+			},
+		],
 	},
 	{
 		begin: "(</?)(?:([-\\w\\.]+)((:)))?([-\\w\\.:]+)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "entity.name.tag.namespace.xml"
+				name: "entity.name.tag.namespace.xml",
 			},
 			"3": {
-				name: "entity.name.tag.xml"
+				name: "entity.name.tag.xml",
 			},
 			"4": {
-				name: "punctuation.separator.namespace.xml"
+				name: "punctuation.separator.namespace.xml",
 			},
 			"5": {
-				name: "entity.name.tag.localname.xml"
-			}
+				name: "entity.name.tag.localname.xml",
+			},
 		},
 		end: "(/?>)",
 		name: "meta.tag.xml",
 		patterns: [
 			{
-				include: "#tagStuff"
-			}
-		]
+				include: "#tagStuff",
+			},
+		],
 	},
 	{
-		include: "#entity"
+		include: "#entity",
 	},
 	{
-		include: "#bare-ampersand"
+		include: "#bare-ampersand",
 	},
 	{
 		begin: "<%@",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.section.embedded.begin.xml"
-			}
+				name: "punctuation.section.embedded.begin.xml",
+			},
 		},
 		end: "%>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.section.embedded.end.xml"
-			}
+				name: "punctuation.section.embedded.end.xml",
+			},
 		},
 		name: "source.java-props.embedded.xml",
 		patterns: [
 			{
 				match: "page|include|taglib",
-				name: "keyword.other.page-props.xml"
-			}
-		]
+				name: "keyword.other.page-props.xml",
+			},
+		],
 	},
 	{
 		begin: "<%[!=]?(?!--)",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.section.embedded.begin.xml"
-			}
+				name: "punctuation.section.embedded.begin.xml",
+			},
 		},
 		end: "(?!--)%>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.section.embedded.end.xml"
-			}
+				name: "punctuation.section.embedded.end.xml",
+			},
 		},
 		name: "source.java.embedded.xml",
 		patterns: [
 			{
-				include: "source.java"
-			}
-		]
+				include: "source.java",
+			},
+		],
 	},
 	{
 		begin: "<!\\[CDATA\\[",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.xml"
-			}
+				name: "punctuation.definition.string.begin.xml",
+			},
 		},
 		end: "]]>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.xml"
-			}
+				name: "punctuation.definition.string.end.xml",
+			},
 		},
-		name: "string.unquoted.cdata.xml"
-	}
+		name: "string.unquoted.cdata.xml",
+	},
 ];
 const repository = {
 	EntityDecl: {
 		begin: "(<!)(ENTITY)\\s+(%\\s+)?([:a-zA-Z_][:a-zA-Z0-9_.-]*)(\\s+(?:SYSTEM|PUBLIC)\\s+)?",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "keyword.other.entity.xml"
+				name: "keyword.other.entity.xml",
 			},
 			"3": {
-				name: "punctuation.definition.entity.xml"
+				name: "punctuation.definition.entity.xml",
 			},
 			"4": {
-				name: "variable.language.entity.xml"
+				name: "variable.language.entity.xml",
 			},
 			"5": {
-				name: "keyword.other.entitytype.xml"
-			}
+				name: "keyword.other.entitytype.xml",
+			},
 		},
 		end: "(>)",
 		patterns: [
 			{
-				include: "#doublequotedString"
+				include: "#doublequotedString",
 			},
 			{
-				include: "#singlequotedString"
-			}
-		]
+				include: "#singlequotedString",
+			},
+		],
 	},
 	"bare-ampersand": {
 		match: "&",
-		name: "invalid.illegal.bad-ampersand.xml"
+		name: "invalid.illegal.bad-ampersand.xml",
 	},
 	doublequotedString: {
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.xml"
-			}
+				name: "punctuation.definition.string.begin.xml",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.xml"
-			}
+				name: "punctuation.definition.string.end.xml",
+			},
 		},
 		name: "string.quoted.double.xml",
 		patterns: [
 			{
-				include: "#entity"
+				include: "#entity",
 			},
 			{
-				include: "#bare-ampersand"
-			}
-		]
+				include: "#bare-ampersand",
+			},
+		],
 	},
 	entity: {
 		captures: {
 			"1": {
-				name: "punctuation.definition.constant.xml"
+				name: "punctuation.definition.constant.xml",
 			},
 			"3": {
-				name: "punctuation.definition.constant.xml"
-			}
+				name: "punctuation.definition.constant.xml",
+			},
 		},
 		match: "(&)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)",
-		name: "constant.character.entity.xml"
+		name: "constant.character.entity.xml",
 	},
 	internalSubset: {
 		begin: "(\\[)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.constant.xml"
-			}
+				name: "punctuation.definition.constant.xml",
+			},
 		},
 		end: "(\\])",
 		name: "meta.internalsubset.xml",
 		patterns: [
 			{
-				include: "#EntityDecl"
+				include: "#EntityDecl",
 			},
 			{
-				include: "#parameterEntity"
+				include: "#parameterEntity",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	parameterEntity: {
 		captures: {
 			"1": {
-				name: "punctuation.definition.constant.xml"
+				name: "punctuation.definition.constant.xml",
 			},
 			"3": {
-				name: "punctuation.definition.constant.xml"
-			}
+				name: "punctuation.definition.constant.xml",
+			},
 		},
 		match: "(%)([:a-zA-Z_][:a-zA-Z0-9_.-]*)(;)",
-		name: "constant.character.parameter-entity.xml"
+		name: "constant.character.parameter-entity.xml",
 	},
 	singlequotedString: {
 		begin: "'",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.xml"
-			}
+				name: "punctuation.definition.string.begin.xml",
+			},
 		},
 		end: "'",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.xml"
-			}
+				name: "punctuation.definition.string.end.xml",
+			},
 		},
 		name: "string.quoted.single.xml",
 		patterns: [
 			{
-				include: "#entity"
+				include: "#entity",
 			},
 			{
-				include: "#bare-ampersand"
-			}
-		]
+				include: "#bare-ampersand",
+			},
+		],
 	},
 	tagStuff: {
 		patterns: [
 			{
 				captures: {
 					"1": {
-						name: "entity.other.attribute-name.namespace.xml"
+						name: "entity.other.attribute-name.namespace.xml",
 					},
 					"2": {
-						name: "entity.other.attribute-name.xml"
+						name: "entity.other.attribute-name.xml",
 					},
 					"3": {
-						name: "punctuation.separator.namespace.xml"
+						name: "punctuation.separator.namespace.xml",
 					},
 					"4": {
-						name: "entity.other.attribute-name.localname.xml"
-					}
+						name: "entity.other.attribute-name.localname.xml",
+					},
 				},
-				match: "(?:^|\\s+)(?:([-\\w.]+)((:)))?([-\\w.:]+)\\s*="
+				match: "(?:^|\\s+)(?:([-\\w.]+)((:)))?([-\\w.:]+)\\s*=",
 			},
 			{
-				include: "#doublequotedString"
+				include: "#doublequotedString",
 			},
 			{
-				include: "#singlequotedString"
-			}
-		]
+				include: "#singlequotedString",
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -354,18 +355,18 @@ const repository = {
 				begin: "<%--",
 				captures: {
 					"0": {
-						name: "punctuation.definition.comment.xml"
+						name: "punctuation.definition.comment.xml",
 					},
 					end: "--%>",
-					name: "comment.block.xml"
-				}
+					name: "comment.block.xml",
+				},
 			},
 			{
 				begin: "<!--",
 				captures: {
 					"0": {
-						name: "punctuation.definition.comment.xml"
-					}
+						name: "punctuation.definition.comment.xml",
+					},
 				},
 				end: "-->",
 				name: "comment.block.xml",
@@ -374,14 +375,14 @@ const repository = {
 						begin: "--(?!>)",
 						captures: {
 							"0": {
-								name: "invalid.illegal.bad-comments-or-CDATA.xml"
-							}
-						}
-					}
-				]
-			}
-		]
-	}
+								name: "invalid.illegal.bad-comments-or-CDATA.xml",
+							},
+						},
+					},
+				],
+			},
+		],
+	},
 };
 const xml_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -389,7 +390,15 @@ const xml_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { xml_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	xml_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

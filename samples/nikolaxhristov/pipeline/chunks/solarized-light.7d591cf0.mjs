@@ -2,72 +2,69 @@ const name = "solarized-light";
 const tokenColors = [
 	{
 		settings: {
-			foreground: "#657B83"
-		}
+			foreground: "#657B83",
+		},
 	},
 	{
 		scope: [
 			"meta.embedded",
 			"source.groovy.embedded",
-			"string meta.image.inline.markdown"
+			"string meta.image.inline.markdown",
 		],
 		settings: {
-			foreground: "#657B83"
-		}
+			foreground: "#657B83",
+		},
 	},
 	{
 		name: "Comment",
 		scope: "comment",
 		settings: {
 			fontStyle: "italic",
-			foreground: "#93A1A1"
-		}
+			foreground: "#93A1A1",
+		},
 	},
 	{
 		name: "String",
 		scope: "string",
 		settings: {
-			foreground: "#2AA198"
-		}
+			foreground: "#2AA198",
+		},
 	},
 	{
 		name: "Regexp",
 		scope: "string.regexp",
 		settings: {
-			foreground: "#DC322F"
-		}
+			foreground: "#DC322F",
+		},
 	},
 	{
 		name: "Number",
 		scope: "constant.numeric",
 		settings: {
-			foreground: "#D33682"
-		}
+			foreground: "#D33682",
+		},
 	},
 	{
 		name: "Variable",
-		scope: [
-			"variable.language",
-			"variable.other"
-		],
+		scope: ["variable.language", "variable.other"],
 		settings: {
-			foreground: "#268BD2"
-		}
+			foreground: "#268BD2",
+		},
 	},
 	{
 		name: "Keyword",
 		scope: "keyword",
 		settings: {
-			foreground: "#859900"
-		}
+			foreground: "#859900",
+		},
 	},
 	{
 		name: "Storage",
 		scope: "storage",
 		settings: {
 			fontStyle: "bold",
-			foreground: "#586E75"
-		}
+			foreground: "#586E75",
+		},
 	},
 	{
 		name: "Class name",
@@ -75,256 +72,232 @@ const tokenColors = [
 			"entity.name.class",
 			"entity.name.type",
 			"entity.name.namespace",
-			"entity.name.scope-resolution"
+			"entity.name.scope-resolution",
 		],
 		settings: {
 			fontStyle: "",
-			foreground: "#CB4B16"
-		}
+			foreground: "#CB4B16",
+		},
 	},
 	{
 		name: "Function name",
 		scope: "entity.name.function",
 		settings: {
-			foreground: "#268BD2"
-		}
+			foreground: "#268BD2",
+		},
 	},
 	{
 		name: "Variable start",
 		scope: "punctuation.definition.variable",
 		settings: {
-			foreground: "#859900"
-		}
+			foreground: "#859900",
+		},
 	},
 	{
 		name: "Embedded code markers",
 		scope: [
 			"punctuation.section.embedded.begin",
-			"punctuation.section.embedded.end"
+			"punctuation.section.embedded.end",
 		],
 		settings: {
-			foreground: "#DC322F"
-		}
+			foreground: "#DC322F",
+		},
 	},
 	{
 		name: "Built-in constant",
-		scope: [
-			"constant.language",
-			"meta.preprocessor"
-		],
+		scope: ["constant.language", "meta.preprocessor"],
 		settings: {
-			foreground: "#B58900"
-		}
+			foreground: "#B58900",
+		},
 	},
 	{
 		name: "Support.construct",
-		scope: [
-			"support.function.construct",
-			"keyword.other.new"
-		],
+		scope: ["support.function.construct", "keyword.other.new"],
 		settings: {
-			foreground: "#CB4B16"
-		}
+			foreground: "#CB4B16",
+		},
 	},
 	{
 		name: "User-defined constant",
-		scope: [
-			"constant.character",
-			"constant.other"
-		],
+		scope: ["constant.character", "constant.other"],
 		settings: {
-			foreground: "#CB4B16"
-		}
+			foreground: "#CB4B16",
+		},
 	},
 	{
 		name: "Inherited class",
 		scope: "entity.other.inherited-class",
 		settings: {
-			foreground: "#6C71C4"
-		}
+			foreground: "#6C71C4",
+		},
 	},
 	{
 		name: "Function argument",
 		scope: "variable.parameter",
-		settings: {
-		}
+		settings: {},
 	},
 	{
 		name: "Tag name",
 		scope: "entity.name.tag",
 		settings: {
-			foreground: "#268BD2"
-		}
+			foreground: "#268BD2",
+		},
 	},
 	{
 		name: "Tag start/end",
 		scope: "punctuation.definition.tag",
 		settings: {
-			foreground: "#93A1A1"
-		}
+			foreground: "#93A1A1",
+		},
 	},
 	{
 		name: "Tag attribute",
 		scope: "entity.other.attribute-name",
 		settings: {
-			foreground: "#93A1A1"
-		}
+			foreground: "#93A1A1",
+		},
 	},
 	{
 		name: "Library function",
 		scope: "support.function",
 		settings: {
-			foreground: "#268BD2"
-		}
+			foreground: "#268BD2",
+		},
 	},
 	{
 		name: "Continuation",
 		scope: "punctuation.separator.continuation",
 		settings: {
-			foreground: "#DC322F"
-		}
+			foreground: "#DC322F",
+		},
 	},
 	{
 		name: "Library constant",
-		scope: [
-			"support.constant",
-			"support.variable"
-		],
-		settings: {
-		}
+		scope: ["support.constant", "support.variable"],
+		settings: {},
 	},
 	{
 		name: "Library class/type",
-		scope: [
-			"support.type",
-			"support.class"
-		],
+		scope: ["support.type", "support.class"],
 		settings: {
-			foreground: "#859900"
-		}
+			foreground: "#859900",
+		},
 	},
 	{
 		name: "Library Exception",
 		scope: "support.type.exception",
 		settings: {
-			foreground: "#CB4B16"
-		}
+			foreground: "#CB4B16",
+		},
 	},
 	{
 		name: "Library variable",
 		scope: "support.other.variable",
-		settings: {
-		}
+		settings: {},
 	},
 	{
 		name: "Invalid",
 		scope: "invalid",
 		settings: {
-			foreground: "#DC322F"
-		}
+			foreground: "#DC322F",
+		},
 	},
 	{
 		name: "diff: header",
-		scope: [
-			"meta.diff",
-			"meta.diff.header"
-		],
+		scope: ["meta.diff", "meta.diff.header"],
 		settings: {
 			fontStyle: "italic",
-			foreground: "#268BD2"
-		}
+			foreground: "#268BD2",
+		},
 	},
 	{
 		name: "diff: deleted",
 		scope: "markup.deleted",
 		settings: {
 			fontStyle: "",
-			foreground: "#DC322F"
-		}
+			foreground: "#DC322F",
+		},
 	},
 	{
 		name: "diff: changed",
 		scope: "markup.changed",
 		settings: {
 			fontStyle: "",
-			foreground: "#CB4B16"
-		}
+			foreground: "#CB4B16",
+		},
 	},
 	{
 		name: "diff: inserted",
 		scope: "markup.inserted",
 		settings: {
-			foreground: "#859900"
-		}
+			foreground: "#859900",
+		},
 	},
 	{
 		name: "Markup Quote",
 		scope: "markup.quote",
 		settings: {
-			foreground: "#859900"
-		}
+			foreground: "#859900",
+		},
 	},
 	{
 		name: "Markup Lists",
 		scope: "markup.list",
 		settings: {
-			foreground: "#B58900"
-		}
+			foreground: "#B58900",
+		},
 	},
 	{
 		name: "Markup Styling",
-		scope: [
-			"markup.bold",
-			"markup.italic"
-		],
+		scope: ["markup.bold", "markup.italic"],
 		settings: {
-			foreground: "#D33682"
-		}
+			foreground: "#D33682",
+		},
 	},
 	{
 		name: "Markup: Strong",
 		scope: "markup.bold",
 		settings: {
-			fontStyle: "bold"
-		}
+			fontStyle: "bold",
+		},
 	},
 	{
 		name: "Markup: Emphasis",
 		scope: "markup.italic",
 		settings: {
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "markup.strikethrough",
 		settings: {
-			fontStyle: "strikethrough"
-		}
+			fontStyle: "strikethrough",
+		},
 	},
 	{
 		name: "Markup Inline",
 		scope: "markup.inline.raw",
 		settings: {
 			fontStyle: "",
-			foreground: "#2AA198"
-		}
+			foreground: "#2AA198",
+		},
 	},
 	{
 		name: "Markup Headings",
 		scope: "markup.heading",
 		settings: {
 			fontStyle: "bold",
-			foreground: "#268BD2"
-		}
+			foreground: "#268BD2",
+		},
 	},
 	{
 		name: "Markup Setext Header",
 		scope: "markup.heading.setext",
 		settings: {
 			fontStyle: "",
-			foreground: "#268BD2"
-		}
-	}
+			foreground: "#268BD2",
+		},
+	},
 ];
 const colors = {
 	focusBorder: "#D3AF86",
@@ -410,14 +383,20 @@ const colors = {
 	"terminal.ansiBrightCyan": "#93a1a1",
 	"terminal.ansiBrightWhite": "#fdf6e3",
 	"terminal.background": "#FDF6E3",
-	"walkThrough.embeddedEditorBackground": "#00000014"
+	"walkThrough.embeddedEditorBackground": "#00000014",
 };
 const semanticHighlighting = true;
 const solarizedLight = {
 	name: name,
 	tokenColors: tokenColors,
 	colors: colors,
-	semanticHighlighting: semanticHighlighting
+	semanticHighlighting: semanticHighlighting,
 };
 
-export { colors, solarizedLight as default, name, semanticHighlighting, tokenColors };
+export {
+	colors,
+	solarizedLight as default,
+	name,
+	semanticHighlighting,
+	tokenColors,
+};

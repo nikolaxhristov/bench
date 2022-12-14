@@ -4,7 +4,7 @@ const image = "./tony.jpg";
 const tony = {
 	name: name,
 	title: title,
-	image: image
+	image: image,
 };
 
 export { tony as default, image, name, title };

@@ -1,62 +1,64 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/MagicStack/MagicPython/blob/master/grammars/MagicPython.tmLanguage",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/MagicStack/MagicPython/commit/b2b4f4ae7b4e6284e80bda8080106b93bd588f9e";
+const version =
+	"https://github.com/MagicStack/MagicPython/commit/b2b4f4ae7b4e6284e80bda8080106b93bd588f9e";
 const name = "python";
 const scopeName = "source.python";
 const patterns = [
 	{
-		include: "#statement"
+		include: "#statement",
 	},
 	{
-		include: "#expression"
-	}
+		include: "#expression",
+	},
 ];
 const repository = {
 	impossible: {
-		comment: "This is a special rule that should be used where no match is desired. It is not a good idea to match something like '1{0}' because in some cases that can result in infinite loops in token generation. So the rule instead matches and impossible expression to allow a match to fail and move to the next token.",
-		match: "$.^"
+		comment:
+			"This is a special rule that should be used where no match is desired. It is not a good idea to match something like '1{0}' because in some cases that can result in infinite loops in token generation. So the rule instead matches and impossible expression to allow a match to fail and move to the next token.",
+		match: "$.^",
 	},
 	statement: {
 		patterns: [
 			{
-				include: "#import"
+				include: "#import",
 			},
 			{
-				include: "#class-declaration"
+				include: "#class-declaration",
 			},
 			{
-				include: "#function-declaration"
+				include: "#function-declaration",
 			},
 			{
-				include: "#generator"
+				include: "#generator",
 			},
 			{
-				include: "#statement-keyword"
+				include: "#statement-keyword",
 			},
 			{
-				include: "#assignment-operator"
+				include: "#assignment-operator",
 			},
 			{
-				include: "#decorator"
+				include: "#decorator",
 			},
 			{
-				include: "#docstring-statement"
+				include: "#docstring-statement",
 			},
 			{
-				include: "#semicolon"
-			}
-		]
+				include: "#semicolon",
+			},
+		],
 	},
 	semicolon: {
 		patterns: [
 			{
 				name: "invalid.deprecated.semicolon.python",
-				match: "\\;$"
-			}
-		]
+				match: "\\;$",
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -67,45 +69,46 @@ const repository = {
 				end: "(?:$|(?=\\#))",
 				beginCaptures: {
 					"0": {
-						name: "meta.typehint.comment.python"
+						name: "meta.typehint.comment.python",
 					},
 					"1": {
-						name: "comment.typehint.directive.notation.python"
-					}
+						name: "comment.typehint.directive.notation.python",
+					},
 				},
 				patterns: [
 					{
 						name: "comment.typehint.ignore.notation.python",
-						match: "(?x)\n  \\G ignore\n  (?= \\s* (?: $ | \\#))\n"
+						match: "(?x)\n  \\G ignore\n  (?= \\s* (?: $ | \\#))\n",
 					},
 					{
 						name: "comment.typehint.type.notation.python",
-						match: "(?x)\n  (?<!\\.)\\b(\n    bool | bytes | float | int | object | str\n    | List | Dict | Iterable | Sequence | Set\n    | FrozenSet | Callable | Union | Tuple\n    | Any | None\n  )\\b\n"
+						match: "(?x)\n  (?<!\\.)\\b(\n    bool | bytes | float | int | object | str\n    | List | Dict | Iterable | Sequence | Set\n    | FrozenSet | Callable | Union | Tuple\n    | Any | None\n  )\\b\n",
 					},
 					{
 						name: "comment.typehint.punctuation.notation.python",
-						match: "([\\[\\]\\(\\),\\.\\=\\*]|(->))"
+						match: "([\\[\\]\\(\\),\\.\\=\\*]|(->))",
 					},
 					{
 						name: "comment.typehint.variable.notation.python",
-						match: "([[:alpha:]_]\\w*)"
-					}
-				]
+						match: "([[:alpha:]_]\\w*)",
+					},
+				],
 			},
 			{
-				include: "#comments-base"
-			}
-		]
+				include: "#comments-base",
+			},
+		],
 	},
 	"docstring-statement": {
 		begin: "^(?=\\s*[rR]?(\\'\\'\\'|\\\"\\\"\\\"|\\'|\\\"))",
-		comment: "the string either terminates correctly or by the beginning of a new line (this is for single line docstrings that aren't terminated) AND it's not followed by another docstring",
+		comment:
+			"the string either terminates correctly or by the beginning of a new line (this is for single line docstrings that aren't terminated) AND it's not followed by another docstring",
 		end: "((?<=\\1)|^)(?!\\s*[rR]?(\\'\\'\\'|\\\"\\\"\\\"|\\'|\\\"))",
 		patterns: [
 			{
-				include: "#docstring"
-			}
-		]
+				include: "#docstring",
+			},
+		],
 	},
 	docstring: {
 		patterns: [
@@ -115,25 +118,25 @@ const repository = {
 				end: "(\\1)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.string.begin.python"
-					}
+						name: "punctuation.definition.string.begin.python",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.string.end.python"
-					}
+						name: "punctuation.definition.string.end.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#docstring-prompt"
+						include: "#docstring-prompt",
 					},
 					{
-						include: "#codetags"
+						include: "#codetags",
 					},
 					{
-						include: "#docstring-guts-unicode"
-					}
-				]
+						include: "#docstring-guts-unicode",
+					},
+				],
 			},
 			{
 				name: "string.quoted.docstring.raw.multi.python",
@@ -141,28 +144,28 @@ const repository = {
 				end: "(\\2)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.string.python"
+						name: "storage.type.string.python",
 					},
 					"2": {
-						name: "punctuation.definition.string.begin.python"
-					}
+						name: "punctuation.definition.string.begin.python",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.string.end.python"
-					}
+						name: "punctuation.definition.string.end.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#string-consume-escape"
+						include: "#string-consume-escape",
 					},
 					{
-						include: "#docstring-prompt"
+						include: "#docstring-prompt",
 					},
 					{
-						include: "#codetags"
-					}
-				]
+						include: "#codetags",
+					},
+				],
 			},
 			{
 				name: "string.quoted.docstring.single.python",
@@ -170,25 +173,25 @@ const repository = {
 				end: "(\\1)|(\\n)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.string.begin.python"
-					}
+						name: "punctuation.definition.string.begin.python",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.string.end.python"
+						name: "punctuation.definition.string.end.python",
 					},
 					"2": {
-						name: "invalid.illegal.newline.python"
-					}
+						name: "invalid.illegal.newline.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#codetags"
+						include: "#codetags",
 					},
 					{
-						include: "#docstring-guts-unicode"
-					}
-				]
+						include: "#docstring-guts-unicode",
+					},
+				],
 			},
 			{
 				name: "string.quoted.docstring.raw.single.python",
@@ -196,190 +199,191 @@ const repository = {
 				end: "(\\2)|(\\n)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.string.python"
+						name: "storage.type.string.python",
 					},
 					"2": {
-						name: "punctuation.definition.string.begin.python"
-					}
+						name: "punctuation.definition.string.begin.python",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.string.end.python"
+						name: "punctuation.definition.string.end.python",
 					},
 					"2": {
-						name: "invalid.illegal.newline.python"
-					}
+						name: "invalid.illegal.newline.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#string-consume-escape"
+						include: "#string-consume-escape",
 					},
 					{
-						include: "#codetags"
-					}
-				]
-			}
-		]
+						include: "#codetags",
+					},
+				],
+			},
+		],
 	},
 	"docstring-guts-unicode": {
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#escape-sequence"
+				include: "#escape-sequence",
 			},
 			{
-				include: "#string-line-continuation"
-			}
-		]
+				include: "#string-line-continuation",
+			},
+		],
 	},
 	"docstring-prompt": {
 		match: "(?x)\n  (?:\n    (?:^|\\G) \\s* (?# '\\G' is necessary for ST)\n    ((?:>>>|\\.\\.\\.) \\s) (?=\\s*\\S)\n  )\n",
 		captures: {
 			"1": {
-				name: "keyword.control.flow.python"
-			}
-		}
+				name: "keyword.control.flow.python",
+			},
+		},
 	},
 	"statement-keyword": {
 		patterns: [
 			{
 				name: "storage.type.function.python",
-				match: "\\b((async\\s+)?\\s*def)\\b"
+				match: "\\b((async\\s+)?\\s*def)\\b",
 			},
 			{
 				name: "keyword.control.flow.python",
-				comment: "if `as` is eventually followed by `:` or line continuation\nit's probably control flow like:\n    with foo as bar, \\\n         Foo as Bar:\n      try:\n        do_stuff()\n      except Exception as e:\n        pass\n",
-				match: "\\b(?<!\\.)as\\b(?=.*[:\\\\])"
+				comment:
+					"if `as` is eventually followed by `:` or line continuation\nit's probably control flow like:\n    with foo as bar, \\\n         Foo as Bar:\n      try:\n        do_stuff()\n      except Exception as e:\n        pass\n",
+				match: "\\b(?<!\\.)as\\b(?=.*[:\\\\])",
 			},
 			{
 				name: "keyword.control.import.python",
 				comment: "other legal use of `as` is in an import",
-				match: "\\b(?<!\\.)as\\b"
+				match: "\\b(?<!\\.)as\\b",
 			},
 			{
 				name: "keyword.control.flow.python",
-				match: "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
+				match: "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | except | pass | raise\n    | return | try | while | with\n  )\\b\n",
 			},
 			{
 				name: "storage.modifier.declaration.python",
-				match: "(?x)\n  \\b(?<!\\.)(\n    global | nonlocal\n  )\\b\n"
+				match: "(?x)\n  \\b(?<!\\.)(\n    global | nonlocal\n  )\\b\n",
 			},
 			{
 				name: "storage.type.class.python",
-				match: "\\b(?<!\\.)(class)\\b"
-			}
-		]
+				match: "\\b(?<!\\.)(class)\\b",
+			},
+		],
 	},
 	"expression-bare": {
 		comment: "valid Python expressions w/o comments and line continuation",
 		patterns: [
 			{
-				include: "#backticks"
+				include: "#backticks",
 			},
 			{
-				include: "#illegal-anno"
+				include: "#illegal-anno",
 			},
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#regexp"
+				include: "#regexp",
 			},
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
-				include: "#lambda"
+				include: "#lambda",
 			},
 			{
-				include: "#generator"
+				include: "#generator",
 			},
 			{
-				include: "#illegal-operator"
+				include: "#illegal-operator",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#curly-braces"
+				include: "#curly-braces",
 			},
 			{
-				include: "#item-access"
+				include: "#item-access",
 			},
 			{
-				include: "#list"
+				include: "#list",
 			},
 			{
-				include: "#odd-function-call"
+				include: "#odd-function-call",
 			},
 			{
-				include: "#round-braces"
+				include: "#round-braces",
 			},
 			{
-				include: "#function-call"
+				include: "#function-call",
 			},
 			{
-				include: "#builtin-functions"
+				include: "#builtin-functions",
 			},
 			{
-				include: "#builtin-types"
+				include: "#builtin-types",
 			},
 			{
-				include: "#builtin-exceptions"
+				include: "#builtin-exceptions",
 			},
 			{
-				include: "#magic-names"
+				include: "#magic-names",
 			},
 			{
-				include: "#special-names"
+				include: "#special-names",
 			},
 			{
-				include: "#illegal-names"
+				include: "#illegal-names",
 			},
 			{
-				include: "#special-variables"
+				include: "#special-variables",
 			},
 			{
-				include: "#ellipsis"
+				include: "#ellipsis",
 			},
 			{
-				include: "#punctuation"
+				include: "#punctuation",
 			},
 			{
-				include: "#line-continuation"
-			}
-		]
+				include: "#line-continuation",
+			},
+		],
 	},
 	"expression-base": {
 		comment: "valid Python expressions with comments and line continuation",
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#expression-bare"
+				include: "#expression-bare",
 			},
 			{
-				include: "#line-continuation"
-			}
-		]
+				include: "#line-continuation",
+			},
+		],
 	},
 	expression: {
 		comment: "All valid Python expressions",
 		patterns: [
 			{
-				include: "#expression-base"
+				include: "#expression-base",
 			},
 			{
-				include: "#member-access"
+				include: "#member-access",
 			},
 			{
 				comment: "Tokenize identifiers to help linters",
-				match: "(?x) \\b ([[:alpha:]_]\\w*) \\b"
-			}
-		]
+				match: "(?x) \\b ([[:alpha:]_]\\w*) \\b",
+			},
+		],
 	},
 	"member-access": {
 		name: "meta.member.access.python",
@@ -387,127 +391,129 @@ const repository = {
 		end: "(?x)\n  # stop when you've just read non-whitespace followed by non-word\n  # i.e. when finished reading an identifier or function call\n  (?<=\\S)(?=\\W) |\n  # stop when seeing the start of something that's not a word,\n  # i.e. when seeing a non-identifier\n  (^|(?<=\\s))(?=[^\\\\\\w\\s]) |\n  $\n",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.separator.period.python"
-			}
+				name: "punctuation.separator.period.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#function-call"
+				include: "#function-call",
 			},
 			{
-				include: "#member-access-base"
+				include: "#member-access-base",
 			},
 			{
-				include: "#member-access-attribute"
-			}
-		]
+				include: "#member-access-attribute",
+			},
+		],
 	},
 	"member-access-base": {
 		patterns: [
 			{
-				include: "#magic-names"
+				include: "#magic-names",
 			},
 			{
-				include: "#illegal-names"
+				include: "#illegal-names",
 			},
 			{
-				include: "#illegal-object-name"
+				include: "#illegal-object-name",
 			},
 			{
-				include: "#special-names"
+				include: "#special-names",
 			},
 			{
-				include: "#line-continuation"
+				include: "#line-continuation",
 			},
 			{
-				include: "#item-access"
-			}
-		]
+				include: "#item-access",
+			},
+		],
 	},
 	"member-access-attribute": {
-		comment: "Highlight attribute access in otherwise non-specialized cases.",
+		comment:
+			"Highlight attribute access in otherwise non-specialized cases.",
 		name: "meta.attribute.python",
-		match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
+		match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n",
 	},
 	"special-names": {
 		name: "constant.other.caps.python",
-		match: "(?x)\n  \\b\n    # we want to see \"enough\", meaning 2 or more upper-case\n    # letters in the beginning of the constant\n    #\n    # for more details refer to:\n    #   https://github.com/MagicStack/MagicPython/issues/42\n    (\n      _* [[:upper:]] [_\\d]* [[:upper:]]\n    )\n    [[:upper:]\\d]* (_\\w*)?\n  \\b\n"
+		match: '(?x)\n  \\b\n    # we want to see "enough", meaning 2 or more upper-case\n    # letters in the beginning of the constant\n    #\n    # for more details refer to:\n    #   https://github.com/MagicStack/MagicPython/issues/42\n    (\n      _* [[:upper:]] [_\\d]* [[:upper:]]\n    )\n    [[:upper:]\\d]* (_\\w*)?\n  \\b\n',
 	},
 	"curly-braces": {
 		begin: "\\{",
 		end: "\\}",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.dict.begin.python"
-			}
+				name: "punctuation.definition.dict.begin.python",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.dict.end.python"
-			}
+				name: "punctuation.definition.dict.end.python",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.separator.dict.python",
-				match: ":"
+				match: ":",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	list: {
 		begin: "\\[",
 		end: "\\]",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.list.begin.python"
-			}
+				name: "punctuation.definition.list.begin.python",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.list.end.python"
-			}
+				name: "punctuation.definition.list.end.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"odd-function-call": {
-		comment: "A bit obscured function call where there may have been an\narbitrary number of other operations to get the function.\nE.g. \"arr[idx](args)\"\n",
+		comment:
+			'A bit obscured function call where there may have been an\narbitrary number of other operations to get the function.\nE.g. "arr[idx](args)"\n',
 		begin: "(?x)\n  (?<= \\] | \\) ) \\s*\n  (?=\\()\n",
 		end: "(\\))",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.arguments.end.python"
-			}
+				name: "punctuation.definition.arguments.end.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#function-arguments"
-			}
-		]
+				include: "#function-arguments",
+			},
+		],
 	},
 	"round-braces": {
 		begin: "\\(",
 		end: "\\)",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.parenthesis.begin.python"
-			}
+				name: "punctuation.parenthesis.begin.python",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.parenthesis.end.python"
-			}
+				name: "punctuation.parenthesis.end.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"line-continuation": {
 		patterns: [
@@ -515,153 +521,153 @@ const repository = {
 				match: "(\\\\)\\s*(\\S.*$\\n?)",
 				captures: {
 					"1": {
-						name: "punctuation.separator.continuation.line.python"
+						name: "punctuation.separator.continuation.line.python",
 					},
 					"2": {
-						name: "invalid.illegal.line.continuation.python"
-					}
-				}
+						name: "invalid.illegal.line.continuation.python",
+					},
+				},
 			},
 			{
 				begin: "(\\\\)\\s*$\\n?",
 				end: "(?x)\n  (?=^\\s*$)\n  |\n  (?! (\\s* [rR]? (\\'\\'\\'|\\\"\\\"\\\"|\\'|\\\"))\n      |\n      (\\G $)  (?# '\\G' is necessary for ST)\n  )\n",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.separator.continuation.line.python"
-					}
+						name: "punctuation.separator.continuation.line.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#regexp"
+						include: "#regexp",
 					},
 					{
-						include: "#string"
-					}
-				]
-			}
-		]
+						include: "#string",
+					},
+				],
+			},
+		],
 	},
 	"assignment-operator": {
 		name: "keyword.operator.assignment.python",
-		match: "(?x)\n     <<= | >>= | //= | \\*\\*=\n    | \\+= | -= | /= | @=\n    | \\*= | %= | ~= | \\^= | &= | \\|=\n    | =(?!=)\n"
+		match: "(?x)\n     <<= | >>= | //= | \\*\\*=\n    | \\+= | -= | /= | @=\n    | \\*= | %= | ~= | \\^= | &= | \\|=\n    | =(?!=)\n",
 	},
 	operator: {
 		match: "(?x)\n    \\b(?<!\\.)\n      (?:\n        (and | or | not | in | is)                         (?# 1)\n        |\n        (for | if | else | await | (?:yield(?:\\s+from)?))  (?# 2)\n      )\n    (?!\\s*:)\\b\n\n    | (<< | >> | & | \\| | \\^ | ~)                          (?# 3)\n\n    | (\\*\\* | \\* | \\+ | - | % | // | / | @)                (?# 4)\n\n    | (!= | == | >= | <= | < | >)                          (?# 5)\n",
 		captures: {
 			"1": {
-				name: "keyword.operator.logical.python"
+				name: "keyword.operator.logical.python",
 			},
 			"2": {
-				name: "keyword.control.flow.python"
+				name: "keyword.control.flow.python",
 			},
 			"3": {
-				name: "keyword.operator.bitwise.python"
+				name: "keyword.operator.bitwise.python",
 			},
 			"4": {
-				name: "keyword.operator.arithmetic.python"
+				name: "keyword.operator.arithmetic.python",
 			},
 			"5": {
-				name: "keyword.operator.comparison.python"
-			}
-		}
+				name: "keyword.operator.comparison.python",
+			},
+		},
 	},
 	punctuation: {
 		patterns: [
 			{
 				name: "punctuation.separator.colon.python",
-				match: ":"
+				match: ":",
 			},
 			{
 				name: "punctuation.separator.element.python",
-				match: ","
-			}
-		]
+				match: ",",
+			},
+		],
 	},
 	literal: {
 		patterns: [
 			{
 				name: "constant.language.python",
-				match: "\\b(True|False|None|NotImplemented|Ellipsis)\\b"
+				match: "\\b(True|False|None|NotImplemented|Ellipsis)\\b",
 			},
 			{
-				include: "#number"
-			}
-		]
+				include: "#number",
+			},
+		],
 	},
 	number: {
 		name: "constant.numeric.python",
 		patterns: [
 			{
-				include: "#number-float"
+				include: "#number-float",
 			},
 			{
-				include: "#number-dec"
+				include: "#number-dec",
 			},
 			{
-				include: "#number-hex"
+				include: "#number-hex",
 			},
 			{
-				include: "#number-oct"
+				include: "#number-oct",
 			},
 			{
-				include: "#number-bin"
+				include: "#number-bin",
 			},
 			{
-				include: "#number-long"
+				include: "#number-long",
 			},
 			{
 				name: "invalid.illegal.name.python",
-				match: "\\b[0-9]+\\w+"
-			}
-		]
+				match: "\\b[0-9]+\\w+",
+			},
+		],
 	},
 	"number-float": {
 		name: "constant.numeric.float.python",
 		match: "(?x)\n  (?<! \\w)(?:\n    (?:\n      \\.[0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\. [0-9](?: _?[0-9] )*\n      |\n      [0-9](?: _?[0-9] )* \\.\n    ) (?: [eE][+-]?[0-9](?: _?[0-9] )* )?\n    |\n    [0-9](?: _?[0-9] )* (?: [eE][+-]?[0-9](?: _?[0-9] )* )\n  )([jJ])?\\b\n",
 		captures: {
 			"1": {
-				name: "storage.type.imaginary.number.python"
-			}
-		}
+				name: "storage.type.imaginary.number.python",
+			},
+		},
 	},
 	"number-dec": {
 		name: "constant.numeric.dec.python",
 		match: "(?x)\n  (?<![\\w\\.])(?:\n      [1-9](?: _?[0-9] )*\n      |\n      0+\n      |\n      [0-9](?: _?[0-9] )* ([jJ])\n      |\n      0 ([0-9]+)(?![eE\\.])\n  )\\b\n",
 		captures: {
 			"1": {
-				name: "storage.type.imaginary.number.python"
+				name: "storage.type.imaginary.number.python",
 			},
 			"2": {
-				name: "invalid.illegal.dec.python"
-			}
-		}
+				name: "invalid.illegal.dec.python",
+			},
+		},
 	},
 	"number-hex": {
 		name: "constant.numeric.hex.python",
 		match: "(?x)\n  (?<![\\w\\.])\n    (0[xX]) (_?[0-9a-fA-F])+\n  \\b\n",
 		captures: {
 			"1": {
-				name: "storage.type.number.python"
-			}
-		}
+				name: "storage.type.number.python",
+			},
+		},
 	},
 	"number-oct": {
 		name: "constant.numeric.oct.python",
 		match: "(?x)\n  (?<![\\w\\.])\n    (0[oO]) (_?[0-7])+\n  \\b\n",
 		captures: {
 			"1": {
-				name: "storage.type.number.python"
-			}
-		}
+				name: "storage.type.number.python",
+			},
+		},
 	},
 	"number-bin": {
 		name: "constant.numeric.bin.python",
 		match: "(?x)\n  (?<![\\w\\.])\n    (0[bB]) (_?[01])+\n  \\b\n",
 		captures: {
 			"1": {
-				name: "storage.type.number.python"
-			}
-		}
+				name: "storage.type.number.python",
+			},
+		},
 	},
 	"number-long": {
 		name: "constant.numeric.bin.python",
@@ -669,231 +675,233 @@ const repository = {
 		match: "(?x)\n  (?<![\\w\\.])\n    ([1-9][0-9]* | 0) ([lL])\n  \\b\n",
 		captures: {
 			"2": {
-				name: "storage.type.number.python"
-			}
-		}
+				name: "storage.type.number.python",
+			},
+		},
 	},
 	regexp: {
 		patterns: [
 			{
-				include: "#regexp-single-three-line"
+				include: "#regexp-single-three-line",
 			},
 			{
-				include: "#regexp-double-three-line"
+				include: "#regexp-double-three-line",
 			},
 			{
-				include: "#regexp-single-one-line"
+				include: "#regexp-single-one-line",
 			},
 			{
-				include: "#regexp-double-one-line"
+				include: "#regexp-double-one-line",
 			},
 			{
-				include: "#fregexp-single-three-line"
+				include: "#fregexp-single-three-line",
 			},
 			{
-				include: "#fregexp-double-three-line"
+				include: "#fregexp-double-three-line",
 			},
 			{
-				include: "#fregexp-single-one-line"
+				include: "#fregexp-single-one-line",
 			},
 			{
-				include: "#fregexp-double-one-line"
-			}
-		]
+				include: "#fregexp-double-one-line",
+			},
+		],
 	},
 	string: {
 		patterns: [
 			{
-				include: "#string-quoted-multi-line"
+				include: "#string-quoted-multi-line",
 			},
 			{
-				include: "#string-quoted-single-line"
+				include: "#string-quoted-single-line",
 			},
 			{
-				include: "#string-bin-quoted-multi-line"
+				include: "#string-bin-quoted-multi-line",
 			},
 			{
-				include: "#string-bin-quoted-single-line"
+				include: "#string-bin-quoted-single-line",
 			},
 			{
-				include: "#string-raw-quoted-multi-line"
+				include: "#string-raw-quoted-multi-line",
 			},
 			{
-				include: "#string-raw-quoted-single-line"
+				include: "#string-raw-quoted-single-line",
 			},
 			{
-				include: "#string-raw-bin-quoted-multi-line"
+				include: "#string-raw-bin-quoted-multi-line",
 			},
 			{
-				include: "#string-raw-bin-quoted-single-line"
+				include: "#string-raw-bin-quoted-single-line",
 			},
 			{
-				include: "#fstring-fnorm-quoted-multi-line"
+				include: "#fstring-fnorm-quoted-multi-line",
 			},
 			{
-				include: "#fstring-fnorm-quoted-single-line"
+				include: "#fstring-fnorm-quoted-single-line",
 			},
 			{
-				include: "#fstring-normf-quoted-multi-line"
+				include: "#fstring-normf-quoted-multi-line",
 			},
 			{
-				include: "#fstring-normf-quoted-single-line"
+				include: "#fstring-normf-quoted-single-line",
 			},
 			{
-				include: "#fstring-raw-quoted-multi-line"
+				include: "#fstring-raw-quoted-multi-line",
 			},
 			{
-				include: "#fstring-raw-quoted-single-line"
-			}
-		]
+				include: "#fstring-raw-quoted-single-line",
+			},
+		],
 	},
 	"string-unicode-guts": {
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#string-entity"
+				include: "#string-entity",
 			},
 			{
-				include: "#string-brace-formatting"
-			}
-		]
+				include: "#string-brace-formatting",
+			},
+		],
 	},
 	"string-consume-escape": {
-		match: "\\\\['\"\\n\\\\]"
+		match: "\\\\['\"\\n\\\\]",
 	},
 	"string-raw-guts": {
 		patterns: [
 			{
-				include: "#string-consume-escape"
+				include: "#string-consume-escape",
 			},
 			{
-				include: "#string-formatting"
+				include: "#string-formatting",
 			},
 			{
-				include: "#string-brace-formatting"
-			}
-		]
+				include: "#string-brace-formatting",
+			},
+		],
 	},
 	"string-raw-bin-guts": {
 		patterns: [
 			{
-				include: "#string-consume-escape"
+				include: "#string-consume-escape",
 			},
 			{
-				include: "#string-formatting"
-			}
-		]
+				include: "#string-formatting",
+			},
+		],
 	},
 	"string-entity": {
 		patterns: [
 			{
-				include: "#escape-sequence"
+				include: "#escape-sequence",
 			},
 			{
-				include: "#string-line-continuation"
+				include: "#string-line-continuation",
 			},
 			{
-				include: "#string-formatting"
-			}
-		]
+				include: "#string-formatting",
+			},
+		],
 	},
 	"fstring-guts": {
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#escape-sequence"
+				include: "#escape-sequence",
 			},
 			{
-				include: "#string-line-continuation"
+				include: "#string-line-continuation",
 			},
 			{
-				include: "#fstring-formatting"
-			}
-		]
+				include: "#fstring-formatting",
+			},
+		],
 	},
 	"fstring-raw-guts": {
 		patterns: [
 			{
-				include: "#string-consume-escape"
+				include: "#string-consume-escape",
 			},
 			{
-				include: "#fstring-formatting"
-			}
-		]
+				include: "#fstring-formatting",
+			},
+		],
 	},
 	"fstring-illegal-single-brace": {
-		comment: "it is illegal to have a multiline brace inside a single-line string",
+		comment:
+			"it is illegal to have a multiline brace inside a single-line string",
 		begin: "(\\{)(?=[^\\n}]*$\\n?)",
 		end: "(\\})|(?=\\n)",
 		beginCaptures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
+				name: "constant.character.format.placeholder.other.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
+				name: "constant.character.format.placeholder.other.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-terminator-single"
+				include: "#fstring-terminator-single",
 			},
 			{
-				include: "#f-expression"
-			}
-		]
+				include: "#f-expression",
+			},
+		],
 	},
 	"fstring-illegal-multi-brace": {
 		patterns: [
 			{
-				include: "#impossible"
-			}
-		]
+				include: "#impossible",
+			},
+		],
 	},
 	"f-expression": {
-		comment: "All valid Python expressions, except comments and line continuation",
+		comment:
+			"All valid Python expressions, except comments and line continuation",
 		patterns: [
 			{
-				include: "#expression-bare"
+				include: "#expression-bare",
 			},
 			{
-				include: "#member-access"
+				include: "#member-access",
 			},
 			{
 				comment: "Tokenize identifiers to help linters",
-				match: "(?x) \\b ([[:alpha:]_]\\w*) \\b"
-			}
-		]
+				match: "(?x) \\b ([[:alpha:]_]\\w*) \\b",
+			},
+		],
 	},
 	"escape-sequence-unicode": {
 		patterns: [
 			{
 				name: "constant.character.escape.python",
-				match: "(?x)\n  \\\\ (\n        u[0-9A-Fa-f]{4}\n        | U[0-9A-Fa-f]{8}\n        | N\\{[\\w\\s]+?\\}\n     )\n"
-			}
-		]
+				match: "(?x)\n  \\\\ (\n        u[0-9A-Fa-f]{4}\n        | U[0-9A-Fa-f]{8}\n        | N\\{[\\w\\s]+?\\}\n     )\n",
+			},
+		],
 	},
 	"escape-sequence": {
 		name: "constant.character.escape.python",
-		match: "(?x)\n  \\\\ (\n        x[0-9A-Fa-f]{2}\n        | [0-7]{1,3}\n        | [\\\\\"'abfnrtv]\n     )\n"
+		match: "(?x)\n  \\\\ (\n        x[0-9A-Fa-f]{2}\n        | [0-7]{1,3}\n        | [\\\\\"'abfnrtv]\n     )\n",
 	},
 	"string-line-continuation": {
 		name: "constant.language.python",
-		match: "\\\\$"
+		match: "\\\\$",
 	},
 	"string-formatting": {
 		name: "meta.format.percent.python",
 		match: "(?x)\n  (\n    % (\\([\\w\\s]*\\))?\n      [-+#0 ]*\n      (\\d+|\\*)? (\\.(\\d+|\\*))?\n      ([hlL])?\n      [diouxXeEfFgGcrsab%]\n  )\n",
 		captures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
-		}
+				name: "constant.character.format.placeholder.other.python",
+			},
+		},
 	},
 	"string-brace-formatting": {
 		patterns: [
@@ -902,87 +910,88 @@ const repository = {
 				match: "(?x)\n  (\n    {{ | }}\n    | (?:\n      {\n        \\w* (\\.[[:alpha:]_]\\w* | \\[[^\\]'\"]+\\])*\n        (![rsa])?\n        ( : \\w? [<>=^]? [-+ ]? \\#?\n          \\d* ,? (\\.\\d+)? [bcdeEfFgGnosxX%]? )?\n      })\n  )\n",
 				captures: {
 					"1": {
-						name: "constant.character.format.placeholder.other.python"
+						name: "constant.character.format.placeholder.other.python",
 					},
 					"3": {
-						name: "storage.type.format.python"
+						name: "storage.type.format.python",
 					},
 					"4": {
-						name: "storage.type.format.python"
-					}
-				}
+						name: "storage.type.format.python",
+					},
+				},
 			},
 			{
 				name: "meta.format.brace.python",
 				match: "(?x)\n  (\n    {\n      \\w* (\\.[[:alpha:]_]\\w* | \\[[^\\]'\"]+\\])*\n      (![rsa])?\n      (:)\n        [^'\"{}\\n]* (?:\n          \\{ [^'\"}\\n]*? \\} [^'\"{}\\n]*\n        )*\n    }\n  )\n",
 				captures: {
 					"1": {
-						name: "constant.character.format.placeholder.other.python"
+						name: "constant.character.format.placeholder.other.python",
 					},
 					"3": {
-						name: "storage.type.format.python"
+						name: "storage.type.format.python",
 					},
 					"4": {
-						name: "storage.type.format.python"
-					}
-				}
-			}
-		]
+						name: "storage.type.format.python",
+					},
+				},
+			},
+		],
 	},
 	"fstring-formatting": {
 		patterns: [
 			{
-				include: "#fstring-formatting-braces"
+				include: "#fstring-formatting-braces",
 			},
 			{
-				include: "#fstring-formatting-singe-brace"
-			}
-		]
+				include: "#fstring-formatting-singe-brace",
+			},
+		],
 	},
 	"fstring-formatting-singe-brace": {
 		name: "invalid.illegal.brace.python",
-		match: "(}(?!}))"
+		match: "(}(?!}))",
 	},
 	"import": {
-		comment: "Import statements used to correctly mark `from`, `import`, and `as`\n",
+		comment:
+			"Import statements used to correctly mark `from`, `import`, and `as`\n",
 		patterns: [
 			{
 				begin: "\\b(?<!\\.)(from)\\b(?=.+import)",
 				end: "$|(?=import)",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.import.python"
-					}
+						name: "keyword.control.import.python",
+					},
 				},
 				patterns: [
 					{
 						name: "punctuation.separator.period.python",
-						match: "\\.+"
+						match: "\\.+",
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "\\b(?<!\\.)(import)\\b",
 				end: "$",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.import.python"
-					}
+						name: "keyword.control.import.python",
+					},
 				},
 				patterns: [
 					{
 						name: "keyword.control.import.python",
-						match: "\\b(?<!\\.)as\\b"
+						match: "\\b(?<!\\.)as\\b",
 					},
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	"class-declaration": {
 		patterns: [
@@ -992,38 +1001,38 @@ const repository = {
 				end: "(:)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.class.python"
-					}
+						name: "storage.type.class.python",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.section.class.begin.python"
-					}
+						name: "punctuation.section.class.begin.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#class-name"
+						include: "#class-name",
 					},
 					{
-						include: "#class-inheritance"
-					}
-				]
-			}
-		]
+						include: "#class-inheritance",
+					},
+				],
+			},
+		],
 	},
 	"class-name": {
 		patterns: [
 			{
-				include: "#illegal-object-name"
+				include: "#illegal-object-name",
 			},
 			{
-				include: "#builtin-possible-callables"
+				include: "#builtin-possible-callables",
 			},
 			{
 				name: "entity.name.type.class.python",
-				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
-			}
-		]
+				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n",
+			},
+		],
 	},
 	"class-inheritance": {
 		name: "meta.class.inheritance.python",
@@ -1031,69 +1040,69 @@ const repository = {
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.inheritance.begin.python"
-			}
+				name: "punctuation.definition.inheritance.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.inheritance.end.python"
-			}
+				name: "punctuation.definition.inheritance.end.python",
+			},
 		},
 		patterns: [
 			{
 				name: "keyword.operator.unpacking.arguments.python",
-				match: "(\\*\\*|\\*)"
+				match: "(\\*\\*|\\*)",
 			},
 			{
 				name: "punctuation.separator.inheritance.python",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "keyword.operator.assignment.python",
-				match: "=(?!=)"
+				match: "=(?!=)",
 			},
 			{
 				name: "support.type.metaclass.python",
-				match: "\\bmetaclass\\b"
+				match: "\\bmetaclass\\b",
 			},
 			{
-				include: "#illegal-names"
+				include: "#illegal-names",
 			},
 			{
-				include: "#class-kwarg"
+				include: "#class-kwarg",
 			},
 			{
-				include: "#call-wrapper-inheritance"
+				include: "#call-wrapper-inheritance",
 			},
 			{
-				include: "#expression-base"
+				include: "#expression-base",
 			},
 			{
-				include: "#member-access-class"
+				include: "#member-access-class",
 			},
 			{
-				include: "#inheritance-identifier"
-			}
-		]
+				include: "#inheritance-identifier",
+			},
+		],
 	},
 	"class-kwarg": {
 		match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\s*(=)(?!=)\n",
 		captures: {
 			"1": {
-				name: "entity.other.inherited-class.python variable.parameter.class.python"
+				name: "entity.other.inherited-class.python variable.parameter.class.python",
 			},
 			"2": {
-				name: "keyword.operator.assignment.python"
-			}
-		}
+				name: "keyword.operator.assignment.python",
+			},
+		},
 	},
 	"inheritance-identifier": {
 		match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n",
 		captures: {
 			"1": {
-				name: "entity.other.inherited-class.python"
-			}
-		}
+				name: "entity.other.inherited-class.python",
+			},
+		},
 	},
 	"member-access-class": {
 		name: "meta.member.access.python",
@@ -1101,20 +1110,20 @@ const repository = {
 		end: "(?<=\\S)(?=\\W)|$",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.separator.period.python"
-			}
+				name: "punctuation.separator.period.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#call-wrapper-inheritance"
+				include: "#call-wrapper-inheritance",
 			},
 			{
-				include: "#member-access-base"
+				include: "#member-access-base",
 			},
 			{
-				include: "#inheritance-identifier"
-			}
-		]
+				include: "#inheritance-identifier",
+			},
+		],
 	},
 	lambda: {
 		patterns: [
@@ -1122,17 +1131,17 @@ const repository = {
 				match: "((?<=\\.)lambda|lambda(?=\\s*[\\.=]))",
 				captures: {
 					"1": {
-						name: "keyword.control.flow.python"
-					}
-				}
+						name: "keyword.control.flow.python",
+					},
+				},
 			},
 			{
 				match: "\\b(lambda)\\s*?(?=[,\\n]|$)",
 				captures: {
 					"1": {
-						name: "storage.type.function.lambda.python"
-					}
-				}
+						name: "storage.type.function.lambda.python",
+					},
+				},
 			},
 			{
 				name: "meta.lambda-function.python",
@@ -1140,108 +1149,109 @@ const repository = {
 				end: "(:)|(\\n)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.function.lambda.python"
-					}
+						name: "storage.type.function.lambda.python",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.section.function.lambda.begin.python"
-					}
+						name: "punctuation.section.function.lambda.begin.python",
+					},
 				},
 				contentName: "meta.function.lambda.parameters.python",
 				patterns: [
 					{
 						name: "keyword.operator.unpacking.parameter.python",
-						match: "(\\*\\*|\\*)"
+						match: "(\\*\\*|\\*)",
 					},
 					{
-						include: "#lambda-nested-incomplete"
+						include: "#lambda-nested-incomplete",
 					},
 					{
-						include: "#illegal-names"
+						include: "#illegal-names",
 					},
 					{
 						match: "([[:alpha:]_]\\w*)\\s*(?:(,)|(?=:|$))",
 						captures: {
 							"1": {
-								name: "variable.parameter.function.language.python"
+								name: "variable.parameter.function.language.python",
 							},
 							"2": {
-								name: "punctuation.separator.parameters.python"
-							}
-						}
+								name: "punctuation.separator.parameters.python",
+							},
+						},
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#backticks"
+						include: "#backticks",
 					},
 					{
-						include: "#illegal-anno"
+						include: "#illegal-anno",
 					},
 					{
-						include: "#lambda-parameter-with-default"
+						include: "#lambda-parameter-with-default",
 					},
 					{
-						include: "#line-continuation"
+						include: "#line-continuation",
 					},
 					{
-						include: "#illegal-operator"
-					}
-				]
-			}
-		]
+						include: "#illegal-operator",
+					},
+				],
+			},
+		],
 	},
 	"lambda-incomplete": {
 		name: "storage.type.function.lambda.python",
-		match: "\\blambda(?=\\s*[,)])"
+		match: "\\blambda(?=\\s*[,)])",
 	},
 	"lambda-nested-incomplete": {
 		name: "storage.type.function.lambda.python",
-		match: "\\blambda(?=\\s*[:,)])"
+		match: "\\blambda(?=\\s*[:,)])",
 	},
 	"lambda-parameter-with-default": {
 		begin: "(?x)\n  \\b\n  ([[:alpha:]_]\\w*) \\s* (=)\n",
 		end: "(,)|(?=:|$)",
 		beginCaptures: {
 			"1": {
-				name: "variable.parameter.function.language.python"
+				name: "variable.parameter.function.language.python",
 			},
 			"2": {
-				name: "keyword.operator.python"
-			}
+				name: "keyword.operator.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.separator.parameters.python"
-			}
+				name: "punctuation.separator.parameters.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	generator: {
-		comment: "Match \"for ... in\" construct used in generators and for loops to\ncorrectly identify the \"in\" as a control flow keyword.\n",
+		comment:
+			'Match "for ... in" construct used in generators and for loops to\ncorrectly identify the "in" as a control flow keyword.\n',
 		begin: "\\bfor\\b",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.flow.python"
-			}
+				name: "keyword.control.flow.python",
+			},
 		},
 		end: "\\bin\\b",
 		endCaptures: {
 			"0": {
-				name: "keyword.control.flow.python"
-			}
+				name: "keyword.control.flow.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"function-declaration": {
 		name: "meta.function.python",
@@ -1249,45 +1259,45 @@ const repository = {
 		end: "(:|(?=[#'\"\\n]))",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.function.async.python"
+				name: "storage.type.function.async.python",
 			},
 			"2": {
-				name: "storage.type.function.python"
-			}
+				name: "storage.type.function.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.section.function.begin.python"
-			}
+				name: "punctuation.section.function.begin.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#function-def-name"
+				include: "#function-def-name",
 			},
 			{
-				include: "#parameters"
+				include: "#parameters",
 			},
 			{
-				include: "#line-continuation"
+				include: "#line-continuation",
 			},
 			{
-				include: "#return-annotation"
-			}
-		]
+				include: "#return-annotation",
+			},
+		],
 	},
 	"function-def-name": {
 		patterns: [
 			{
-				include: "#illegal-object-name"
+				include: "#illegal-object-name",
 			},
 			{
-				include: "#builtin-possible-callables"
+				include: "#builtin-possible-callables",
 			},
 			{
 				name: "entity.name.function.python",
-				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
-			}
-		]
+				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n",
+			},
+		],
 	},
 	parameters: {
 		name: "meta.function.parameters.python",
@@ -1295,128 +1305,128 @@ const repository = {
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.parameters.begin.python"
-			}
+				name: "punctuation.definition.parameters.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.parameters.end.python"
-			}
+				name: "punctuation.definition.parameters.end.python",
+			},
 		},
 		patterns: [
 			{
 				name: "keyword.operator.unpacking.parameter.python",
-				match: "(\\*\\*|\\*)"
+				match: "(\\*\\*|\\*)",
 			},
 			{
-				include: "#lambda-incomplete"
+				include: "#lambda-incomplete",
 			},
 			{
-				include: "#illegal-names"
+				include: "#illegal-names",
 			},
 			{
-				include: "#illegal-object-name"
+				include: "#illegal-object-name",
 			},
 			{
-				include: "#parameter-special"
+				include: "#parameter-special",
 			},
 			{
 				match: "(?x)\n  ([[:alpha:]_]\\w*)\n    \\s* (?: (,) | (?=[)#\\n=]))\n",
 				captures: {
 					"1": {
-						name: "variable.parameter.function.language.python"
+						name: "variable.parameter.function.language.python",
 					},
 					"2": {
-						name: "punctuation.separator.parameters.python"
-					}
-				}
+						name: "punctuation.separator.parameters.python",
+					},
+				},
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#loose-default"
+				include: "#loose-default",
 			},
 			{
-				include: "#annotated-parameter"
-			}
-		]
+				include: "#annotated-parameter",
+			},
+		],
 	},
 	"parameter-special": {
 		match: "(?x)\n  \\b ((self)|(cls)) \\b \\s*(?:(,)|(?=\\)))\n",
 		captures: {
 			"1": {
-				name: "variable.parameter.function.language.python"
+				name: "variable.parameter.function.language.python",
 			},
 			"2": {
-				name: "variable.parameter.function.language.special.self.python"
+				name: "variable.parameter.function.language.special.self.python",
 			},
 			"3": {
-				name: "variable.parameter.function.language.special.cls.python"
+				name: "variable.parameter.function.language.special.cls.python",
 			},
 			"4": {
-				name: "punctuation.separator.parameters.python"
-			}
-		}
+				name: "punctuation.separator.parameters.python",
+			},
+		},
 	},
 	"loose-default": {
 		begin: "(=)",
 		end: "(,)|(?=\\))",
 		beginCaptures: {
 			"1": {
-				name: "keyword.operator.python"
-			}
+				name: "keyword.operator.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.separator.parameters.python"
-			}
+				name: "punctuation.separator.parameters.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"annotated-parameter": {
 		begin: "(?x)\n  \\b\n  ([[:alpha:]_]\\w*) \\s* (:)\n",
 		end: "(,)|(?=\\))",
 		beginCaptures: {
 			"1": {
-				name: "variable.parameter.function.language.python"
+				name: "variable.parameter.function.language.python",
 			},
 			"2": {
-				name: "punctuation.separator.annotation.python"
-			}
+				name: "punctuation.separator.annotation.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.separator.parameters.python"
-			}
+				name: "punctuation.separator.parameters.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
 				name: "keyword.operator.assignment.python",
-				match: "=(?!=)"
-			}
-		]
+				match: "=(?!=)",
+			},
+		],
 	},
 	"return-annotation": {
 		begin: "(->)",
 		end: "(?=:)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.separator.annotation.result.python"
-			}
+				name: "punctuation.separator.annotation.result.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"item-access": {
 		patterns: [
@@ -1426,58 +1436,58 @@ const repository = {
 				end: "(\\])",
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.arguments.end.python"
-					}
+						name: "punctuation.definition.arguments.end.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#item-name"
+						include: "#item-name",
 					},
 					{
-						include: "#item-index"
+						include: "#item-index",
 					},
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	"item-name": {
 		patterns: [
 			{
-				include: "#special-variables"
+				include: "#special-variables",
 			},
 			{
-				include: "#builtin-functions"
+				include: "#builtin-functions",
 			},
 			{
-				include: "#special-names"
+				include: "#special-names",
 			},
 			{
 				name: "meta.indexed-name.python",
-				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
-			}
-		]
+				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n",
+			},
+		],
 	},
 	"item-index": {
 		begin: "(\\[)",
 		end: "(?=\\])",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.arguments.begin.python"
-			}
+				name: "punctuation.definition.arguments.begin.python",
+			},
 		},
 		contentName: "meta.item-access.arguments.python",
 		patterns: [
 			{
 				name: "punctuation.separator.slice.python",
-				match: ":"
+				match: ":",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	decorator: {
 		name: "meta.function.decorator.python",
@@ -1485,59 +1495,59 @@ const repository = {
 		end: "(?x)\n  ( \\) )\n    # trailing whitespace and comments are legal\n    (?: (.*?) (?=\\s*(?:\\#|$)) )\n  | (?=\\n|\\#)\n",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.function.decorator.python"
+				name: "entity.name.function.decorator.python",
 			},
 			"2": {
-				name: "punctuation.definition.decorator.python"
-			}
+				name: "punctuation.definition.decorator.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.arguments.end.python"
+				name: "punctuation.definition.arguments.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.decorator.python"
-			}
+				name: "invalid.illegal.decorator.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#decorator-name"
+				include: "#decorator-name",
 			},
 			{
-				include: "#function-arguments"
-			}
-		]
+				include: "#function-arguments",
+			},
+		],
 	},
 	"decorator-name": {
 		patterns: [
 			{
-				include: "#builtin-callables"
+				include: "#builtin-callables",
 			},
 			{
-				include: "#illegal-object-name"
+				include: "#illegal-object-name",
 			},
 			{
 				name: "entity.name.function.decorator.python",
 				match: "(?x)\n  ([[:alpha:]_]\\w*) | (\\.)\n",
 				captures: {
 					"2": {
-						name: "punctuation.separator.period.python"
-					}
-				}
+						name: "punctuation.separator.period.python",
+					},
+				},
 			},
 			{
-				include: "#line-continuation"
+				include: "#line-continuation",
 			},
 			{
 				name: "invalid.illegal.decorator.python",
 				match: "(?x)\n  \\s* ([^([:alpha:]\\s_\\.#\\\\] .*?) (?=\\#|$)\n",
 				captures: {
 					"1": {
-						name: "invalid.illegal.decorator.python"
-					}
-				}
-			}
-		]
+						name: "invalid.illegal.decorator.python",
+					},
+				},
+			},
+		],
 	},
 	"call-wrapper-inheritance": {
 		comment: "same as a function call, but in inheritance context",
@@ -1546,226 +1556,228 @@ const repository = {
 		end: "(\\))",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.arguments.end.python"
-			}
+				name: "punctuation.definition.arguments.end.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#inheritance-name"
+				include: "#inheritance-name",
 			},
 			{
-				include: "#function-arguments"
-			}
-		]
+				include: "#function-arguments",
+			},
+		],
 	},
 	"inheritance-name": {
 		patterns: [
 			{
-				include: "#lambda-incomplete"
+				include: "#lambda-incomplete",
 			},
 			{
-				include: "#builtin-possible-callables"
+				include: "#builtin-possible-callables",
 			},
 			{
-				include: "#inheritance-identifier"
-			}
-		]
+				include: "#inheritance-identifier",
+			},
+		],
 	},
 	"function-call": {
 		name: "meta.function-call.python",
-		comment: "Regular function call of the type \"name(args)\"",
+		comment: 'Regular function call of the type "name(args)"',
 		begin: "(?x)\n  \\b(?=\n    ([[:alpha:]_]\\w*) \\s* (\\()\n  )\n",
 		end: "(\\))",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.arguments.end.python"
-			}
+				name: "punctuation.definition.arguments.end.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#special-variables"
+				include: "#special-variables",
 			},
 			{
-				include: "#function-name"
+				include: "#function-name",
 			},
 			{
-				include: "#function-arguments"
-			}
-		]
+				include: "#function-arguments",
+			},
+		],
 	},
 	"function-name": {
 		patterns: [
 			{
-				include: "#builtin-possible-callables"
+				include: "#builtin-possible-callables",
 			},
 			{
-				comment: "Some color schemas support meta.function-call.generic scope",
+				comment:
+					"Some color schemas support meta.function-call.generic scope",
 				name: "meta.function-call.generic.python",
-				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n"
-			}
-		]
+				match: "(?x)\n  \\b ([[:alpha:]_]\\w*) \\b\n",
+			},
+		],
 	},
 	"function-arguments": {
 		begin: "(\\()",
 		end: "(?=\\))(?!\\)\\s*\\()",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.arguments.begin.python"
-			}
+				name: "punctuation.definition.arguments.begin.python",
+			},
 		},
 		contentName: "meta.function-call.arguments.python",
 		patterns: [
 			{
 				name: "punctuation.separator.arguments.python",
-				match: "(,)"
+				match: "(,)",
 			},
 			{
 				match: "(?x)\n  (?:(?<=[,(])|^) \\s* (\\*{1,2})\n",
 				captures: {
 					"1": {
-						name: "keyword.operator.unpacking.arguments.python"
-					}
-				}
+						name: "keyword.operator.unpacking.arguments.python",
+					},
+				},
 			},
 			{
-				include: "#lambda-incomplete"
+				include: "#lambda-incomplete",
 			},
 			{
-				include: "#illegal-names"
+				include: "#illegal-names",
 			},
 			{
 				match: "\\b([[:alpha:]_]\\w*)\\s*(=)(?!=)",
 				captures: {
 					"1": {
-						name: "variable.parameter.function-call.python"
+						name: "variable.parameter.function-call.python",
 					},
 					"2": {
-						name: "keyword.operator.assignment.python"
-					}
-				}
+						name: "keyword.operator.assignment.python",
+					},
+				},
 			},
 			{
 				name: "keyword.operator.assignment.python",
-				match: "=(?!=)"
+				match: "=(?!=)",
 			},
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
 				match: "\\s*(\\))\\s*(\\()",
 				captures: {
 					"1": {
-						name: "punctuation.definition.arguments.end.python"
+						name: "punctuation.definition.arguments.end.python",
 					},
 					"2": {
-						name: "punctuation.definition.arguments.begin.python"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.arguments.begin.python",
+					},
+				},
+			},
+		],
 	},
 	"builtin-callables": {
 		patterns: [
 			{
-				include: "#illegal-names"
+				include: "#illegal-names",
 			},
 			{
-				include: "#illegal-object-name"
+				include: "#illegal-object-name",
 			},
 			{
-				include: "#builtin-exceptions"
+				include: "#builtin-exceptions",
 			},
 			{
-				include: "#builtin-functions"
+				include: "#builtin-functions",
 			},
 			{
-				include: "#builtin-types"
-			}
-		]
+				include: "#builtin-types",
+			},
+		],
 	},
 	"builtin-possible-callables": {
 		patterns: [
 			{
-				include: "#builtin-callables"
+				include: "#builtin-callables",
 			},
 			{
-				include: "#magic-names"
-			}
-		]
+				include: "#magic-names",
+			},
+		],
 	},
 	"builtin-exceptions": {
 		name: "support.type.exception.python",
-		match: "(?x) (?<!\\.) \\b(\n  (\n    Arithmetic | Assertion | Attribute | Buffer | BlockingIO\n    | BrokenPipe | ChildProcess\n    | (Connection (Aborted | Refused | Reset)?)\n    | EOF | Environment | FileExists | FileNotFound\n    | FloatingPoint | IO | Import | Indentation | Index | Interrupted\n    | IsADirectory | NotADirectory | Permission | ProcessLookup\n    | Timeout\n    | Key | Lookup | Memory | Name | NotImplemented | OS | Overflow\n    | Reference | Runtime | Recursion | Syntax | System\n    | Tab | Type | UnboundLocal | Unicode(Encode|Decode|Translate)?\n    | Value | Windows | ZeroDivision | ModuleNotFound\n  ) Error\n|\n  ((Pending)?Deprecation | Runtime | Syntax | User | Future | Import\n    | Unicode | Bytes | Resource\n  )? Warning\n|\n  SystemExit | Stop(Async)?Iteration\n  | KeyboardInterrupt\n  | GeneratorExit | (Base)?Exception\n)\\b\n"
+		match: "(?x) (?<!\\.) \\b(\n  (\n    Arithmetic | Assertion | Attribute | Buffer | BlockingIO\n    | BrokenPipe | ChildProcess\n    | (Connection (Aborted | Refused | Reset)?)\n    | EOF | Environment | FileExists | FileNotFound\n    | FloatingPoint | IO | Import | Indentation | Index | Interrupted\n    | IsADirectory | NotADirectory | Permission | ProcessLookup\n    | Timeout\n    | Key | Lookup | Memory | Name | NotImplemented | OS | Overflow\n    | Reference | Runtime | Recursion | Syntax | System\n    | Tab | Type | UnboundLocal | Unicode(Encode|Decode|Translate)?\n    | Value | Windows | ZeroDivision | ModuleNotFound\n  ) Error\n|\n  ((Pending)?Deprecation | Runtime | Syntax | User | Future | Import\n    | Unicode | Bytes | Resource\n  )? Warning\n|\n  SystemExit | Stop(Async)?Iteration\n  | KeyboardInterrupt\n  | GeneratorExit | (Base)?Exception\n)\\b\n",
 	},
 	"builtin-functions": {
 		patterns: [
 			{
 				name: "support.function.builtin.python",
-				match: "(?x)\n  (?<!\\.) \\b(\n    __import__ | abs | all | any | ascii | bin | breakpoint | callable\n    | chr | compile | copyright | credits | delattr | dir | divmod\n    | enumerate | eval | exec | exit | filter | format | getattr\n    | globals | hasattr | hash | help | hex | id | input\n    | isinstance | issubclass | iter | len | license | locals | map\n    | max | memoryview | min | next | oct | open | ord | pow | print\n    | quit | range | reload | repr | reversed | round\n    | setattr | sorted | sum | vars | zip\n  )\\b\n"
+				match: "(?x)\n  (?<!\\.) \\b(\n    __import__ | abs | all | any | ascii | bin | breakpoint | callable\n    | chr | compile | copyright | credits | delattr | dir | divmod\n    | enumerate | eval | exec | exit | filter | format | getattr\n    | globals | hasattr | hash | help | hex | id | input\n    | isinstance | issubclass | iter | len | license | locals | map\n    | max | memoryview | min | next | oct | open | ord | pow | print\n    | quit | range | reload | repr | reversed | round\n    | setattr | sorted | sum | vars | zip\n  )\\b\n",
 			},
 			{
 				name: "variable.legacy.builtin.python",
-				match: "(?x)\n  (?<!\\.) \\b(\n    file | reduce | intern | raw_input | unicode | cmp | basestring\n    | execfile | long | xrange\n  )\\b\n"
-			}
-		]
+				match: "(?x)\n  (?<!\\.) \\b(\n    file | reduce | intern | raw_input | unicode | cmp | basestring\n    | execfile | long | xrange\n  )\\b\n",
+			},
+		],
 	},
 	"builtin-types": {
 		name: "support.type.python",
-		match: "(?x)\n  (?<!\\.) \\b(\n    bool | bytearray | bytes | classmethod | complex | dict\n    | float | frozenset | int | list | object | property\n    | set | slice | staticmethod | str | tuple | type\n\n    (?# Although 'super' is not a type, it's related to types,\n        and is special enough to be highlighted differently from\n        other built-ins)\n    | super\n  )\\b\n"
+		match: "(?x)\n  (?<!\\.) \\b(\n    bool | bytearray | bytes | classmethod | complex | dict\n    | float | frozenset | int | list | object | property\n    | set | slice | staticmethod | str | tuple | type\n\n    (?# Although 'super' is not a type, it's related to types,\n        and is special enough to be highlighted differently from\n        other built-ins)\n    | super\n  )\\b\n",
 	},
 	"magic-function-names": {
-		comment: "these methods have magic interpretation by python and are generally called\nindirectly through syntactic constructs\n",
+		comment:
+			"these methods have magic interpretation by python and are generally called\nindirectly through syntactic constructs\n",
 		match: "(?x)\n  \\b(\n    __(?:\n      abs | add | aenter | aexit | aiter | and | anext | await\n      | bool | call | ceil | cmp | coerce | complex | contains\n      | copy | deepcopy | del | delattr | delete | delitem\n      | delslice | dir | div | divmod | enter | eq | exit | float\n      | floor | floordiv | format | ge | get | getattr\n      | getattribute | getinitargs | getitem | getnewargs\n      | getslice | getstate | gt | hash | hex | iadd | iand | idiv\n      | ifloordiv | ilshift | imod | imul | index | init\n      | instancecheck | int | invert | ior | ipow | irshift | isub\n      | iter | itruediv | ixor | le | len | long | lshift | lt\n      | missing | mod | mul | ne | neg | new | next | nonzero | oct | or\n      | pos | pow | radd | rand | rdiv | rdivmod | reduce\n      | reduce_ex | repr | reversed | rfloordiv | rlshift | rmod\n      | rmul | ror | round | rpow | rrshift | rshift | rsub\n      | rtruediv | rxor | set | setattr | setitem | setslice\n      | setstate | sizeof | str | sub | subclasscheck | truediv\n      | trunc | unicode | xor | matmul | rmatmul | imatmul\n      | init_subclass | set_name | fspath | bytes | prepare\n    )__\n  )\\b\n",
 		captures: {
 			"1": {
-				name: "support.function.magic.python"
-			}
-		}
+				name: "support.function.magic.python",
+			},
+		},
 	},
 	"magic-variable-names": {
 		comment: "magic variables which a class/module may have.",
 		match: "(?x)\n  \\b(\n    __(?:\n      all | bases | builtins | class | class_getitem | code | debug\n      | defaults | dict | doc | file | func | kwdefaults | members\n      | metaclass | methods | module | mro | mro_entries | name\n      | qualname | post_init | self | signature | slots | subclasses\n      | version | weakref | wrapped | annotations | classcell\n      | spec | path | package | future | traceback\n    )__\n  )\\b\n",
 		captures: {
 			"1": {
-				name: "support.variable.magic.python"
-			}
-		}
+				name: "support.variable.magic.python",
+			},
+		},
 	},
 	"magic-names": {
 		patterns: [
 			{
-				include: "#magic-function-names"
+				include: "#magic-function-names",
 			},
 			{
-				include: "#magic-variable-names"
-			}
-		]
+				include: "#magic-variable-names",
+			},
+		],
 	},
 	"illegal-names": {
 		match: "(?x)\n  \\b(?:\n    (\n      and | assert | async | await | break | class | continue | def\n      | del | elif | else | except | finally | for | from | global\n      | if | in | is | (?<=\\.)lambda | lambda(?=\\s*[\\.=])\n      | nonlocal | not | or | pass | raise | return | try | while | with\n      | yield\n    ) | (\n      as | import\n    )\n  )\\b\n",
 		captures: {
 			"1": {
-				name: "keyword.control.flow.python"
+				name: "keyword.control.flow.python",
 			},
 			"2": {
-				name: "keyword.control.import.python"
-			}
-		}
+				name: "keyword.control.import.python",
+			},
+		},
 	},
 	"special-variables": {
 		match: "(?x)\n  \\b (?<!\\.) (?:\n    (self) | (cls)\n  )\\b\n",
 		captures: {
 			"1": {
-				name: "variable.language.special.self.python"
+				name: "variable.language.special.self.python",
 			},
 			"2": {
-				name: "variable.language.special.cls.python"
-			}
-		}
+				name: "variable.language.special.cls.python",
+			},
+		},
 	},
 	ellipsis: {
 		name: "constant.other.ellipsis.python",
-		match: "\\.\\.\\."
+		match: "\\.\\.\\.",
 	},
 	backticks: {
 		name: "invalid.deprecated.backtick.python",
@@ -1773,61 +1785,61 @@ const repository = {
 		end: "(?:\\`|(?<!\\\\)(\\n))",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"illegal-operator": {
 		patterns: [
 			{
 				name: "invalid.illegal.operator.python",
-				match: "&&|\\|\\||--|\\+\\+"
+				match: "&&|\\|\\||--|\\+\\+",
 			},
 			{
 				name: "invalid.illegal.operator.python",
-				match: "[?$]"
+				match: "[?$]",
 			},
 			{
 				name: "invalid.illegal.operator.python",
 				comment: "We don't want `!` to flash when we're typing `!=`",
-				match: "!\\b"
-			}
-		]
+				match: "!\\b",
+			},
+		],
 	},
 	"illegal-object-name": {
-		comment: "It's illegal to name class or function \"True\"",
+		comment: 'It\'s illegal to name class or function "True"',
 		name: "keyword.illegal.name.python",
-		match: "\\b(True|False|None)\\b"
+		match: "\\b(True|False|None)\\b",
 	},
 	"illegal-anno": {
 		name: "invalid.illegal.annotation.python",
-		match: "->"
+		match: "->",
 	},
 	"regexp-base-expression": {
 		patterns: [
 			{
-				include: "#regexp-quantifier"
+				include: "#regexp-quantifier",
 			},
 			{
-				include: "#regexp-base-common"
-			}
-		]
+				include: "#regexp-base-common",
+			},
+		],
 	},
 	"fregexp-base-expression": {
 		patterns: [
 			{
-				include: "#fregexp-quantifier"
+				include: "#fregexp-quantifier",
 			},
 			{
-				include: "#fstring-formatting-braces"
+				include: "#fstring-formatting-braces",
 			},
 			{
-				match: "\\{.*?\\}"
+				match: "\\{.*?\\}",
 			},
 			{
-				include: "#regexp-base-common"
-			}
-		]
+				include: "#regexp-base-common",
+			},
+		],
 	},
 	"fstring-formatting-braces": {
 		patterns: [
@@ -1836,244 +1848,244 @@ const repository = {
 				match: "({)(\\s*?)(})",
 				captures: {
 					"1": {
-						name: "constant.character.format.placeholder.other.python"
+						name: "constant.character.format.placeholder.other.python",
 					},
 					"2": {
-						name: "invalid.illegal.brace.python"
+						name: "invalid.illegal.brace.python",
 					},
 					"3": {
-						name: "constant.character.format.placeholder.other.python"
-					}
-				}
+						name: "constant.character.format.placeholder.other.python",
+					},
+				},
 			},
 			{
 				name: "constant.character.escape.python",
-				match: "({{|}})"
-			}
-		]
+				match: "({{|}})",
+			},
+		],
 	},
 	"regexp-base-common": {
 		patterns: [
 			{
 				name: "support.other.match.any.regexp",
-				match: "\\."
+				match: "\\.",
 			},
 			{
 				name: "support.other.match.begin.regexp",
-				match: "\\^"
+				match: "\\^",
 			},
 			{
 				name: "support.other.match.end.regexp",
-				match: "\\$"
+				match: "\\$",
 			},
 			{
 				name: "keyword.operator.quantifier.regexp",
-				match: "[+*?]\\??"
+				match: "[+*?]\\??",
 			},
 			{
 				name: "keyword.operator.disjunction.regexp",
-				match: "\\|"
+				match: "\\|",
 			},
 			{
-				include: "#regexp-escape-sequence"
-			}
-		]
+				include: "#regexp-escape-sequence",
+			},
+		],
 	},
 	"regexp-quantifier": {
 		name: "keyword.operator.quantifier.regexp",
-		match: "(?x)\n  \\{(\n    \\d+ | \\d+,(\\d+)? | ,\\d+\n  )\\}\n"
+		match: "(?x)\n  \\{(\n    \\d+ | \\d+,(\\d+)? | ,\\d+\n  )\\}\n",
 	},
 	"fregexp-quantifier": {
 		name: "keyword.operator.quantifier.regexp",
-		match: "(?x)\n  \\{\\{(\n    \\d+ | \\d+,(\\d+)? | ,\\d+\n  )\\}\\}\n"
+		match: "(?x)\n  \\{\\{(\n    \\d+ | \\d+,(\\d+)? | ,\\d+\n  )\\}\\}\n",
 	},
 	"regexp-backreference-number": {
 		name: "meta.backreference.regexp",
 		match: "(\\\\[1-9]\\d?)",
 		captures: {
 			"1": {
-				name: "entity.name.tag.backreference.regexp"
-			}
-		}
+				name: "entity.name.tag.backreference.regexp",
+			},
+		},
 	},
 	"regexp-backreference": {
 		name: "meta.backreference.named.regexp",
 		match: "(?x)\n  (\\()  (\\?P= \\w+(?:\\s+[[:alnum:]]+)?)  (\\))\n",
 		captures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.backreference.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.backreference.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.backreference.regexp"
+				name: "entity.name.tag.named.backreference.regexp",
 			},
 			"3": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.backreference.named.end.regexp"
-			}
-		}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.backreference.named.end.regexp",
+			},
+		},
 	},
 	"regexp-flags": {
 		name: "storage.modifier.flag.regexp",
-		match: "\\(\\?[aiLmsux]+\\)"
+		match: "\\(\\?[aiLmsux]+\\)",
 	},
 	"regexp-escape-special": {
 		name: "support.other.escape.special.regexp",
-		match: "\\\\([AbBdDsSwWZ])"
+		match: "\\\\([AbBdDsSwWZ])",
 	},
 	"regexp-escape-character": {
 		name: "constant.character.escape.regexp",
-		match: "(?x)\n  \\\\ (\n        x[0-9A-Fa-f]{2}\n        | 0[0-7]{1,2}\n        | [0-7]{3}\n     )\n"
+		match: "(?x)\n  \\\\ (\n        x[0-9A-Fa-f]{2}\n        | 0[0-7]{1,2}\n        | [0-7]{3}\n     )\n",
 	},
 	"regexp-escape-unicode": {
 		name: "constant.character.unicode.regexp",
-		match: "(?x)\n  \\\\ (\n        u[0-9A-Fa-f]{4}\n        | U[0-9A-Fa-f]{8}\n     )\n"
+		match: "(?x)\n  \\\\ (\n        u[0-9A-Fa-f]{4}\n        | U[0-9A-Fa-f]{8}\n     )\n",
 	},
 	"regexp-escape-catchall": {
 		name: "constant.character.escape.regexp",
-		match: "\\\\(.|\\n)"
+		match: "\\\\(.|\\n)",
 	},
 	"regexp-escape-sequence": {
 		patterns: [
 			{
-				include: "#regexp-escape-special"
+				include: "#regexp-escape-special",
 			},
 			{
-				include: "#regexp-escape-character"
+				include: "#regexp-escape-character",
 			},
 			{
-				include: "#regexp-escape-unicode"
+				include: "#regexp-escape-unicode",
 			},
 			{
-				include: "#regexp-backreference-number"
+				include: "#regexp-backreference-number",
 			},
 			{
-				include: "#regexp-escape-catchall"
-			}
-		]
+				include: "#regexp-escape-catchall",
+			},
+		],
 	},
 	"regexp-charecter-set-escapes": {
 		patterns: [
 			{
 				name: "constant.character.escape.regexp",
-				match: "\\\\[abfnrtv\\\\]"
+				match: "\\\\[abfnrtv\\\\]",
 			},
 			{
-				include: "#regexp-escape-special"
+				include: "#regexp-escape-special",
 			},
 			{
 				name: "constant.character.escape.regexp",
-				match: "\\\\([0-7]{1,3})"
+				match: "\\\\([0-7]{1,3})",
 			},
 			{
-				include: "#regexp-escape-character"
+				include: "#regexp-escape-character",
 			},
 			{
-				include: "#regexp-escape-unicode"
+				include: "#regexp-escape-unicode",
 			},
 			{
-				include: "#regexp-escape-catchall"
-			}
-		]
+				include: "#regexp-escape-catchall",
+			},
+		],
 	},
 	codetags: {
 		match: "(?:\\b(NOTE|XXX|HACK|FIXME|BUG|TODO)\\b)",
 		captures: {
 			"1": {
-				name: "keyword.codetag.notation.python"
-			}
-		}
+				name: "keyword.codetag.notation.python",
+			},
+		},
 	},
 	"comments-base": {
 		name: "comment.line.number-sign.python",
 		begin: "(\\#)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.comment.python"
-			}
+				name: "punctuation.definition.comment.python",
+			},
 		},
 		end: "($)",
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"comments-string-single-three": {
 		name: "comment.line.number-sign.python",
 		begin: "(\\#)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.comment.python"
-			}
+				name: "punctuation.definition.comment.python",
+			},
 		},
 		end: "($|(?='''))",
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"comments-string-double-three": {
 		name: "comment.line.number-sign.python",
 		begin: "(\\#)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.comment.python"
-			}
+				name: "punctuation.definition.comment.python",
+			},
 		},
-		end: "($|(?=\"\"\"))",
+		end: '($|(?="""))',
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"single-one-regexp-expression": {
 		patterns: [
 			{
-				include: "#regexp-base-expression"
+				include: "#regexp-base-expression",
 			},
 			{
-				include: "#single-one-regexp-character-set"
+				include: "#single-one-regexp-character-set",
 			},
 			{
-				include: "#single-one-regexp-comments"
+				include: "#single-one-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#single-one-regexp-named-group"
+				include: "#single-one-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#single-one-regexp-lookahead"
+				include: "#single-one-regexp-lookahead",
 			},
 			{
-				include: "#single-one-regexp-lookahead-negative"
+				include: "#single-one-regexp-lookahead-negative",
 			},
 			{
-				include: "#single-one-regexp-lookbehind"
+				include: "#single-one-regexp-lookbehind",
 			},
 			{
-				include: "#single-one-regexp-lookbehind-negative"
+				include: "#single-one-regexp-lookbehind-negative",
 			},
 			{
-				include: "#single-one-regexp-conditional"
+				include: "#single-one-regexp-conditional",
 			},
 			{
-				include: "#single-one-regexp-parentheses-non-capturing"
+				include: "#single-one-regexp-parentheses-non-capturing",
 			},
 			{
-				include: "#single-one-regexp-parentheses"
-			}
-		]
+				include: "#single-one-regexp-parentheses",
+			},
+		],
 	},
 	"single-one-regexp-character-set": {
 		patterns: [
 			{
-				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n"
+				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n",
 			},
 			{
 				name: "meta.character.set.regexp",
@@ -2081,34 +2093,34 @@ const repository = {
 				end: "(\\]|(?=\\'))|((?=(?<!\\\\)\\n))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.character.set.begin.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.begin.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "keyword.operator.negation.regexp"
+						name: "keyword.operator.negation.regexp",
 					},
 					"3": {
-						name: "constant.character.set.regexp"
-					}
+						name: "constant.character.set.regexp",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.character.set.end.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.end.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "invalid.illegal.newline.python"
-					}
+						name: "invalid.illegal.newline.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#regexp-charecter-set-escapes"
+						include: "#regexp-charecter-set-escapes",
 					},
 					{
 						name: "constant.character.set.regexp",
-						match: "[^\\n]"
-					}
-				]
-			}
-		]
+						match: "[^\\n]",
+					},
+				],
+			},
+		],
 	},
 	"single-one-regexp-named-group": {
 		name: "meta.named.regexp",
@@ -2116,25 +2128,25 @@ const repository = {
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-comments": {
 		name: "comment.regexp",
@@ -2142,242 +2154,242 @@ const repository = {
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.comment.begin.regexp"
-			}
+				name: "punctuation.comment.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.comment.end.regexp"
+				name: "punctuation.comment.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"single-one-regexp-lookahead": {
 		begin: "(\\()\\?=",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-lookahead-negative": {
 		begin: "(\\()\\?!",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-lookbehind": {
 		begin: "(\\()\\?<=",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-one-regexp-parentheses": {
 		begin: "\\(",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"single-three-regexp-expression": {
 		patterns: [
 			{
-				include: "#regexp-base-expression"
+				include: "#regexp-base-expression",
 			},
 			{
-				include: "#single-three-regexp-character-set"
+				include: "#single-three-regexp-character-set",
 			},
 			{
-				include: "#single-three-regexp-comments"
+				include: "#single-three-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#single-three-regexp-named-group"
+				include: "#single-three-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#single-three-regexp-lookahead"
+				include: "#single-three-regexp-lookahead",
 			},
 			{
-				include: "#single-three-regexp-lookahead-negative"
+				include: "#single-three-regexp-lookahead-negative",
 			},
 			{
-				include: "#single-three-regexp-lookbehind"
+				include: "#single-three-regexp-lookbehind",
 			},
 			{
-				include: "#single-three-regexp-lookbehind-negative"
+				include: "#single-three-regexp-lookbehind-negative",
 			},
 			{
-				include: "#single-three-regexp-conditional"
+				include: "#single-three-regexp-conditional",
 			},
 			{
-				include: "#single-three-regexp-parentheses-non-capturing"
+				include: "#single-three-regexp-parentheses-non-capturing",
 			},
 			{
-				include: "#single-three-regexp-parentheses"
+				include: "#single-three-regexp-parentheses",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-character-set": {
 		patterns: [
 			{
-				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n"
+				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n",
 			},
 			{
 				name: "meta.character.set.regexp",
@@ -2385,34 +2397,34 @@ const repository = {
 				end: "(\\]|(?=\\'\\'\\'))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.character.set.begin.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.begin.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "keyword.operator.negation.regexp"
+						name: "keyword.operator.negation.regexp",
 					},
 					"3": {
-						name: "constant.character.set.regexp"
-					}
+						name: "constant.character.set.regexp",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.character.set.end.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.end.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "invalid.illegal.newline.python"
-					}
+						name: "invalid.illegal.newline.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#regexp-charecter-set-escapes"
+						include: "#regexp-charecter-set-escapes",
 					},
 					{
 						name: "constant.character.set.regexp",
-						match: "[^\\n]"
-					}
-				]
-			}
-		]
+						match: "[^\\n]",
+					},
+				],
+			},
+		],
 	},
 	"single-three-regexp-named-group": {
 		name: "meta.named.regexp",
@@ -2420,28 +2432,28 @@ const repository = {
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-comments": {
 		name: "comment.regexp",
@@ -2449,841 +2461,841 @@ const repository = {
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.comment.begin.regexp"
-			}
+				name: "punctuation.comment.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.comment.end.regexp"
+				name: "punctuation.comment.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"single-three-regexp-lookahead": {
 		begin: "(\\()\\?=",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-lookahead-negative": {
 		begin: "(\\()\\?!",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-lookbehind": {
 		begin: "(\\()\\?<=",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-regexp-parentheses": {
 		begin: "\\(",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
+				include: "#single-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"double-one-regexp-expression": {
 		patterns: [
 			{
-				include: "#regexp-base-expression"
+				include: "#regexp-base-expression",
 			},
 			{
-				include: "#double-one-regexp-character-set"
+				include: "#double-one-regexp-character-set",
 			},
 			{
-				include: "#double-one-regexp-comments"
+				include: "#double-one-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#double-one-regexp-named-group"
+				include: "#double-one-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#double-one-regexp-lookahead"
+				include: "#double-one-regexp-lookahead",
 			},
 			{
-				include: "#double-one-regexp-lookahead-negative"
+				include: "#double-one-regexp-lookahead-negative",
 			},
 			{
-				include: "#double-one-regexp-lookbehind"
+				include: "#double-one-regexp-lookbehind",
 			},
 			{
-				include: "#double-one-regexp-lookbehind-negative"
+				include: "#double-one-regexp-lookbehind-negative",
 			},
 			{
-				include: "#double-one-regexp-conditional"
+				include: "#double-one-regexp-conditional",
 			},
 			{
-				include: "#double-one-regexp-parentheses-non-capturing"
+				include: "#double-one-regexp-parentheses-non-capturing",
 			},
 			{
-				include: "#double-one-regexp-parentheses"
-			}
-		]
+				include: "#double-one-regexp-parentheses",
+			},
+		],
 	},
 	"double-one-regexp-character-set": {
 		patterns: [
 			{
-				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n"
+				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n",
 			},
 			{
 				name: "meta.character.set.regexp",
 				begin: "(\\[)(\\^)?(\\])?",
-				end: "(\\]|(?=\"))|((?=(?<!\\\\)\\n))",
+				end: '(\\]|(?="))|((?=(?<!\\\\)\\n))',
 				beginCaptures: {
 					"1": {
-						name: "punctuation.character.set.begin.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.begin.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "keyword.operator.negation.regexp"
+						name: "keyword.operator.negation.regexp",
 					},
 					"3": {
-						name: "constant.character.set.regexp"
-					}
+						name: "constant.character.set.regexp",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.character.set.end.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.end.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "invalid.illegal.newline.python"
-					}
+						name: "invalid.illegal.newline.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#regexp-charecter-set-escapes"
+						include: "#regexp-charecter-set-escapes",
 					},
 					{
 						name: "constant.character.set.regexp",
-						match: "[^\\n]"
-					}
-				]
-			}
-		]
+						match: "[^\\n]",
+					},
+				],
+			},
+		],
 	},
 	"double-one-regexp-named-group": {
 		name: "meta.named.regexp",
 		begin: "(?x)\n  (\\()  (\\?P <\\w+(?:\\s+[[:alnum:]]+)?>)\n",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-comments": {
 		name: "comment.regexp",
 		begin: "\\(\\?#",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.comment.begin.regexp"
-			}
+				name: "punctuation.comment.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.comment.end.regexp"
+				name: "punctuation.comment.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"double-one-regexp-lookahead": {
 		begin: "(\\()\\?=",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-lookahead-negative": {
 		begin: "(\\()\\?!",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-lookbehind": {
 		begin: "(\\()\\?<=",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-one-regexp-parentheses": {
 		begin: "\\(",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"double-three-regexp-expression": {
 		patterns: [
 			{
-				include: "#regexp-base-expression"
+				include: "#regexp-base-expression",
 			},
 			{
-				include: "#double-three-regexp-character-set"
+				include: "#double-three-regexp-character-set",
 			},
 			{
-				include: "#double-three-regexp-comments"
+				include: "#double-three-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#double-three-regexp-named-group"
+				include: "#double-three-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#double-three-regexp-lookahead"
+				include: "#double-three-regexp-lookahead",
 			},
 			{
-				include: "#double-three-regexp-lookahead-negative"
+				include: "#double-three-regexp-lookahead-negative",
 			},
 			{
-				include: "#double-three-regexp-lookbehind"
+				include: "#double-three-regexp-lookbehind",
 			},
 			{
-				include: "#double-three-regexp-lookbehind-negative"
+				include: "#double-three-regexp-lookbehind-negative",
 			},
 			{
-				include: "#double-three-regexp-conditional"
+				include: "#double-three-regexp-conditional",
 			},
 			{
-				include: "#double-three-regexp-parentheses-non-capturing"
+				include: "#double-three-regexp-parentheses-non-capturing",
 			},
 			{
-				include: "#double-three-regexp-parentheses"
+				include: "#double-three-regexp-parentheses",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-character-set": {
 		patterns: [
 			{
-				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n"
+				match: "(?x)\n  \\[ \\^? \\] (?! .*?\\])\n",
 			},
 			{
 				name: "meta.character.set.regexp",
 				begin: "(\\[)(\\^)?(\\])?",
-				end: "(\\]|(?=\"\"\"))",
+				end: '(\\]|(?="""))',
 				beginCaptures: {
 					"1": {
-						name: "punctuation.character.set.begin.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.begin.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "keyword.operator.negation.regexp"
+						name: "keyword.operator.negation.regexp",
 					},
 					"3": {
-						name: "constant.character.set.regexp"
-					}
+						name: "constant.character.set.regexp",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.character.set.end.regexp constant.other.set.regexp"
+						name: "punctuation.character.set.end.regexp constant.other.set.regexp",
 					},
 					"2": {
-						name: "invalid.illegal.newline.python"
-					}
+						name: "invalid.illegal.newline.python",
+					},
 				},
 				patterns: [
 					{
-						include: "#regexp-charecter-set-escapes"
+						include: "#regexp-charecter-set-escapes",
 					},
 					{
 						name: "constant.character.set.regexp",
-						match: "[^\\n]"
-					}
-				]
-			}
-		]
+						match: "[^\\n]",
+					},
+				],
+			},
+		],
 	},
 	"double-three-regexp-named-group": {
 		name: "meta.named.regexp",
 		begin: "(?x)\n  (\\()  (\\?P <\\w+(?:\\s+[[:alnum:]]+)?>)\n",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-comments": {
 		name: "comment.regexp",
 		begin: "\\(\\?#",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.comment.begin.regexp"
-			}
+				name: "punctuation.comment.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.comment.end.regexp"
+				name: "punctuation.comment.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#codetags"
-			}
-		]
+				include: "#codetags",
+			},
+		],
 	},
 	"double-three-regexp-lookahead": {
 		begin: "(\\()\\?=",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-lookahead-negative": {
 		begin: "(\\()\\?!",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-lookbehind": {
 		begin: "(\\()\\?<=",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-regexp-parentheses": {
 		begin: "\\(",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
+				include: "#double-three-regexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"regexp-single-one-line": {
 		name: "string.regexp.quoted.single.python",
@@ -3291,31 +3303,31 @@ const repository = {
 		end: "(\\')|(?<!\\\\)(\\n)",
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-regexp-expression"
-			}
-		]
+				include: "#single-one-regexp-expression",
+			},
+		],
 	},
 	"regexp-single-three-line": {
 		name: "string.regexp.quoted.multi.python",
@@ -3323,138 +3335,138 @@ const repository = {
 		end: "(\\'\\'\\')",
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-regexp-expression"
-			}
-		]
+				include: "#single-three-regexp-expression",
+			},
+		],
 	},
 	"regexp-double-one-line": {
 		name: "string.regexp.quoted.single.python",
-		begin: "\\b(([uU]r)|([bB]r)|(r[bB]?))(\")",
-		end: "(\")|(?<!\\\\)(\\n)",
+		begin: '\\b(([uU]r)|([bB]r)|(r[bB]?))(")',
+		end: '(")|(?<!\\\\)(\\n)',
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-regexp-expression"
-			}
-		]
+				include: "#double-one-regexp-expression",
+			},
+		],
 	},
 	"regexp-double-three-line": {
 		name: "string.regexp.quoted.multi.python",
-		begin: "\\b(([uU]r)|([bB]r)|(r[bB]?))(\"\"\")",
-		end: "(\"\"\")",
+		begin: '\\b(([uU]r)|([bB]r)|(r[bB]?))(""")',
+		end: '(""")',
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-regexp-expression"
-			}
-		]
+				include: "#double-three-regexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-expression": {
 		patterns: [
 			{
-				include: "#fregexp-base-expression"
+				include: "#fregexp-base-expression",
 			},
 			{
-				include: "#single-one-regexp-character-set"
+				include: "#single-one-regexp-character-set",
 			},
 			{
-				include: "#single-one-regexp-comments"
+				include: "#single-one-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#single-one-regexp-named-group"
+				include: "#single-one-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#single-one-fregexp-lookahead"
+				include: "#single-one-fregexp-lookahead",
 			},
 			{
-				include: "#single-one-fregexp-lookahead-negative"
+				include: "#single-one-fregexp-lookahead-negative",
 			},
 			{
-				include: "#single-one-fregexp-lookbehind"
+				include: "#single-one-fregexp-lookbehind",
 			},
 			{
-				include: "#single-one-fregexp-lookbehind-negative"
+				include: "#single-one-fregexp-lookbehind-negative",
 			},
 			{
-				include: "#single-one-fregexp-conditional"
+				include: "#single-one-fregexp-conditional",
 			},
 			{
-				include: "#single-one-fregexp-parentheses-non-capturing"
+				include: "#single-one-fregexp-parentheses-non-capturing",
 			},
 			{
-				include: "#single-one-fregexp-parentheses"
-			}
-		]
+				include: "#single-one-fregexp-parentheses",
+			},
+		],
 	},
 	"single-one-fregexp-named-group": {
 		name: "meta.named.regexp",
@@ -3462,240 +3474,240 @@ const repository = {
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-lookahead": {
 		begin: "(\\()\\?=",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-lookahead-negative": {
 		begin: "(\\()\\?!",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-lookbehind": {
 		begin: "(\\()\\?<=",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-one-fregexp-parentheses": {
 		begin: "\\(",
 		end: "(\\)|(?=\\'))|((?=(?<!\\\\)\\n))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"single-three-fregexp-expression": {
 		patterns: [
 			{
-				include: "#fregexp-base-expression"
+				include: "#fregexp-base-expression",
 			},
 			{
-				include: "#single-three-regexp-character-set"
+				include: "#single-three-regexp-character-set",
 			},
 			{
-				include: "#single-three-regexp-comments"
+				include: "#single-three-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#single-three-regexp-named-group"
+				include: "#single-three-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#single-three-fregexp-lookahead"
+				include: "#single-three-fregexp-lookahead",
 			},
 			{
-				include: "#single-three-fregexp-lookahead-negative"
+				include: "#single-three-fregexp-lookahead-negative",
 			},
 			{
-				include: "#single-three-fregexp-lookbehind"
+				include: "#single-three-fregexp-lookbehind",
 			},
 			{
-				include: "#single-three-fregexp-lookbehind-negative"
+				include: "#single-three-fregexp-lookbehind-negative",
 			},
 			{
-				include: "#single-three-fregexp-conditional"
+				include: "#single-three-fregexp-conditional",
 			},
 			{
-				include: "#single-three-fregexp-parentheses-non-capturing"
+				include: "#single-three-fregexp-parentheses-non-capturing",
 			},
 			{
-				include: "#single-three-fregexp-parentheses"
+				include: "#single-three-fregexp-parentheses",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-named-group": {
 		name: "meta.named.regexp",
@@ -3703,721 +3715,721 @@ const repository = {
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-lookahead": {
 		begin: "(\\()\\?=",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-lookahead-negative": {
 		begin: "(\\()\\?!",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-lookbehind": {
 		begin: "(\\()\\?<=",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"single-three-fregexp-parentheses": {
 		begin: "\\(",
 		end: "(\\)|(?=\\'\\'\\'))",
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
+				include: "#single-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-single-three"
-			}
-		]
+				include: "#comments-string-single-three",
+			},
+		],
 	},
 	"double-one-fregexp-expression": {
 		patterns: [
 			{
-				include: "#fregexp-base-expression"
+				include: "#fregexp-base-expression",
 			},
 			{
-				include: "#double-one-regexp-character-set"
+				include: "#double-one-regexp-character-set",
 			},
 			{
-				include: "#double-one-regexp-comments"
+				include: "#double-one-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#double-one-regexp-named-group"
+				include: "#double-one-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#double-one-fregexp-lookahead"
+				include: "#double-one-fregexp-lookahead",
 			},
 			{
-				include: "#double-one-fregexp-lookahead-negative"
+				include: "#double-one-fregexp-lookahead-negative",
 			},
 			{
-				include: "#double-one-fregexp-lookbehind"
+				include: "#double-one-fregexp-lookbehind",
 			},
 			{
-				include: "#double-one-fregexp-lookbehind-negative"
+				include: "#double-one-fregexp-lookbehind-negative",
 			},
 			{
-				include: "#double-one-fregexp-conditional"
+				include: "#double-one-fregexp-conditional",
 			},
 			{
-				include: "#double-one-fregexp-parentheses-non-capturing"
+				include: "#double-one-fregexp-parentheses-non-capturing",
 			},
 			{
-				include: "#double-one-fregexp-parentheses"
-			}
-		]
+				include: "#double-one-fregexp-parentheses",
+			},
+		],
 	},
 	"double-one-fregexp-named-group": {
 		name: "meta.named.regexp",
 		begin: "(?x)\n  (\\()  (\\?P <\\w+(?:\\s+[[:alnum:]]+)?>)\n",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-lookahead": {
 		begin: "(\\()\\?=",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-lookahead-negative": {
 		begin: "(\\()\\?!",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-lookbehind": {
 		begin: "(\\()\\?<=",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-one-fregexp-parentheses": {
 		begin: "\\(",
-		end: "(\\)|(?=\"))|((?=(?<!\\\\)\\n))",
+		end: '(\\)|(?="))|((?=(?<!\\\\)\\n))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"double-three-fregexp-expression": {
 		patterns: [
 			{
-				include: "#fregexp-base-expression"
+				include: "#fregexp-base-expression",
 			},
 			{
-				include: "#double-three-regexp-character-set"
+				include: "#double-three-regexp-character-set",
 			},
 			{
-				include: "#double-three-regexp-comments"
+				include: "#double-three-regexp-comments",
 			},
 			{
-				include: "#regexp-flags"
+				include: "#regexp-flags",
 			},
 			{
-				include: "#double-three-regexp-named-group"
+				include: "#double-three-regexp-named-group",
 			},
 			{
-				include: "#regexp-backreference"
+				include: "#regexp-backreference",
 			},
 			{
-				include: "#double-three-fregexp-lookahead"
+				include: "#double-three-fregexp-lookahead",
 			},
 			{
-				include: "#double-three-fregexp-lookahead-negative"
+				include: "#double-three-fregexp-lookahead-negative",
 			},
 			{
-				include: "#double-three-fregexp-lookbehind"
+				include: "#double-three-fregexp-lookbehind",
 			},
 			{
-				include: "#double-three-fregexp-lookbehind-negative"
+				include: "#double-three-fregexp-lookbehind-negative",
 			},
 			{
-				include: "#double-three-fregexp-conditional"
+				include: "#double-three-fregexp-conditional",
 			},
 			{
-				include: "#double-three-fregexp-parentheses-non-capturing"
+				include: "#double-three-fregexp-parentheses-non-capturing",
 			},
 			{
-				include: "#double-three-fregexp-parentheses"
+				include: "#double-three-fregexp-parentheses",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-named-group": {
 		name: "meta.named.regexp",
 		begin: "(?x)\n  (\\()  (\\?P <\\w+(?:\\s+[[:alnum:]]+)?>)\n",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.begin.regexp",
 			},
 			"2": {
-				name: "entity.name.tag.named.group.regexp"
-			}
+				name: "entity.name.tag.named.group.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.named.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-lookahead": {
 		begin: "(\\()\\?=",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.regexp"
+				name: "keyword.operator.lookahead.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-lookahead-negative": {
 		begin: "(\\()\\?!",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookahead.negative.regexp"
+				name: "keyword.operator.lookahead.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookahead.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookahead.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp"
+				name: "keyword.operator.lookahead.negative.regexp punctuation.parenthesis.lookahead.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-lookbehind": {
 		begin: "(\\()\\?<=",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.regexp"
+				name: "keyword.operator.lookbehind.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-lookbehind-negative": {
 		begin: "(\\()\\?<!",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.lookbehind.negative.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.lookbehind.begin.regexp"
-			}
+				name: "punctuation.parenthesis.lookbehind.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp"
+				name: "keyword.operator.lookbehind.negative.regexp punctuation.parenthesis.lookbehind.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-conditional": {
 		begin: "(\\()\\?\\((\\w+(?:\\s+[[:alnum:]]+)?|\\d+)\\)",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator.conditional.regexp"
+				name: "keyword.operator.conditional.regexp",
 			},
 			"1": {
-				name: "punctuation.parenthesis.conditional.begin.regexp"
-			}
+				name: "punctuation.parenthesis.conditional.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp"
+				name: "keyword.operator.conditional.negative.regexp punctuation.parenthesis.conditional.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-parentheses-non-capturing": {
 		begin: "\\(\\?:",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.non-capturing.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"double-three-fregexp-parentheses": {
 		begin: "\\(",
-		end: "(\\)|(?=\"\"\"))",
+		end: '(\\)|(?="""))',
 		beginCaptures: {
 			"0": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp"
-			}
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.begin.regexp",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp"
+				name: "support.other.parenthesis.regexp punctuation.parenthesis.end.regexp",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
+				include: "#double-three-fregexp-expression",
 			},
 			{
-				include: "#comments-string-double-three"
-			}
-		]
+				include: "#comments-string-double-three",
+			},
+		],
 	},
 	"fregexp-single-one-line": {
 		name: "string.interpolated.python string.regexp.quoted.single.python",
@@ -4425,31 +4437,31 @@ const repository = {
 		end: "(\\')|(?<!\\\\)(\\n)",
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-one-fregexp-expression"
-			}
-		]
+				include: "#single-one-fregexp-expression",
+			},
+		],
 	},
 	"fregexp-single-three-line": {
 		name: "string.interpolated.python string.regexp.quoted.multi.python",
@@ -4457,95 +4469,95 @@ const repository = {
 		end: "(\\'\\'\\')",
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#single-three-fregexp-expression"
-			}
-		]
+				include: "#single-three-fregexp-expression",
+			},
+		],
 	},
 	"fregexp-double-one-line": {
 		name: "string.interpolated.python string.regexp.quoted.single.python",
-		begin: "\\b(([uU]r)|([fF]r)|(r[fF]?))(\")",
-		end: "(\")|(?<!\\\\)(\\n)",
+		begin: '\\b(([uU]r)|([fF]r)|(r[fF]?))(")',
+		end: '(")|(?<!\\\\)(\\n)',
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-one-fregexp-expression"
-			}
-		]
+				include: "#double-one-fregexp-expression",
+			},
+		],
 	},
 	"fregexp-double-three-line": {
 		name: "string.interpolated.python string.regexp.quoted.multi.python",
-		begin: "\\b(([uU]r)|([fF]r)|(r[fF]?))(\"\"\")",
-		end: "(\"\"\")",
+		begin: '\\b(([uU]r)|([fF]r)|(r[fF]?))(""")',
+		end: '(""")',
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"5": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-three-fregexp-expression"
-			}
-		]
+				include: "#double-three-fregexp-expression",
+			},
+		],
 	},
 	"string-raw-quoted-single-line": {
 		name: "string.quoted.raw.single.python",
@@ -4553,34 +4565,34 @@ const repository = {
 		end: "(\\4)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-single-bad-brace1-formatting-raw"
+				include: "#string-single-bad-brace1-formatting-raw",
 			},
 			{
-				include: "#string-single-bad-brace2-formatting-raw"
+				include: "#string-single-bad-brace2-formatting-raw",
 			},
 			{
-				include: "#string-raw-guts"
-			}
-		]
+				include: "#string-raw-guts",
+			},
+		],
 	},
 	"string-bin-quoted-single-line": {
 		name: "string.quoted.binary.single.python",
@@ -4588,25 +4600,25 @@ const repository = {
 		end: "(\\2)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"2": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-entity"
-			}
-		]
+				include: "#string-entity",
+			},
+		],
 	},
 	"string-raw-bin-quoted-single-line": {
 		name: "string.quoted.raw.binary.single.python",
@@ -4614,25 +4626,25 @@ const repository = {
 		end: "(\\2)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"2": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-raw-bin-guts"
-			}
-		]
+				include: "#string-raw-bin-guts",
+			},
+		],
 	},
 	"string-quoted-single-line": {
 		name: "string.quoted.single.python",
@@ -4640,34 +4652,34 @@ const repository = {
 		end: "(\\3)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"1": {
-				name: "invalid.illegal.prefix.python"
+				name: "invalid.illegal.prefix.python",
 			},
 			"2": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"3": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-single-bad-brace1-formatting-unicode"
+				include: "#string-single-bad-brace1-formatting-unicode",
 			},
 			{
-				include: "#string-single-bad-brace2-formatting-unicode"
+				include: "#string-single-bad-brace2-formatting-unicode",
 			},
 			{
-				include: "#string-unicode-guts"
-			}
-		]
+				include: "#string-unicode-guts",
+			},
+		],
 	},
 	"string-single-bad-brace1-formatting-unicode": {
 		comment: "template using {% ... %}",
@@ -4675,15 +4687,15 @@ const repository = {
 		end: "(?=(['\"])|((?<!\\\\)\\n))",
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#escape-sequence"
+				include: "#escape-sequence",
 			},
 			{
-				include: "#string-line-continuation"
-			}
-		]
+				include: "#string-line-continuation",
+			},
+		],
 	},
 	"string-single-bad-brace1-formatting-raw": {
 		comment: "template using {% ... %}",
@@ -4691,9 +4703,9 @@ const repository = {
 		end: "(?=(['\"])|((?<!\\\\)\\n))",
 		patterns: [
 			{
-				include: "#string-consume-escape"
-			}
-		]
+				include: "#string-consume-escape",
+			},
+		],
 	},
 	"string-single-bad-brace2-formatting-unicode": {
 		comment: "odd format or format-like syntax",
@@ -4701,12 +4713,12 @@ const repository = {
 		end: "(?=(['\"])|((?<!\\\\)\\n))",
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#string-entity"
-			}
-		]
+				include: "#string-entity",
+			},
+		],
 	},
 	"string-single-bad-brace2-formatting-raw": {
 		comment: "odd format or format-like syntax",
@@ -4714,12 +4726,12 @@ const repository = {
 		end: "(?=(['\"])|((?<!\\\\)\\n))",
 		patterns: [
 			{
-				include: "#string-consume-escape"
+				include: "#string-consume-escape",
 			},
 			{
-				include: "#string-formatting"
-			}
-		]
+				include: "#string-formatting",
+			},
+		],
 	},
 	"string-raw-quoted-multi-line": {
 		name: "string.quoted.raw.multi.python",
@@ -4727,34 +4739,34 @@ const repository = {
 		end: "(\\4)",
 		beginCaptures: {
 			"2": {
-				name: "invalid.deprecated.prefix.python"
+				name: "invalid.deprecated.prefix.python",
 			},
 			"3": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"4": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-multi-bad-brace1-formatting-raw"
+				include: "#string-multi-bad-brace1-formatting-raw",
 			},
 			{
-				include: "#string-multi-bad-brace2-formatting-raw"
+				include: "#string-multi-bad-brace2-formatting-raw",
 			},
 			{
-				include: "#string-raw-guts"
-			}
-		]
+				include: "#string-raw-guts",
+			},
+		],
 	},
 	"string-bin-quoted-multi-line": {
 		name: "string.quoted.binary.multi.python",
@@ -4762,25 +4774,25 @@ const repository = {
 		end: "(\\2)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"2": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-entity"
-			}
-		]
+				include: "#string-entity",
+			},
+		],
 	},
 	"string-raw-bin-quoted-multi-line": {
 		name: "string.quoted.raw.binary.multi.python",
@@ -4788,25 +4800,25 @@ const repository = {
 		end: "(\\2)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"2": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-raw-bin-guts"
-			}
-		]
+				include: "#string-raw-bin-guts",
+			},
+		],
 	},
 	"string-quoted-multi-line": {
 		name: "string.quoted.multi.python",
@@ -4814,34 +4826,34 @@ const repository = {
 		end: "(\\3)",
 		beginCaptures: {
 			"1": {
-				name: "invalid.illegal.prefix.python"
+				name: "invalid.illegal.prefix.python",
 			},
 			"2": {
-				name: "storage.type.string.python"
+				name: "storage.type.string.python",
 			},
 			"3": {
-				name: "punctuation.definition.string.begin.python"
-			}
+				name: "punctuation.definition.string.begin.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python"
+				name: "punctuation.definition.string.end.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-multi-bad-brace1-formatting-unicode"
+				include: "#string-multi-bad-brace1-formatting-unicode",
 			},
 			{
-				include: "#string-multi-bad-brace2-formatting-unicode"
+				include: "#string-multi-bad-brace2-formatting-unicode",
 			},
 			{
-				include: "#string-unicode-guts"
-			}
-		]
+				include: "#string-unicode-guts",
+			},
+		],
 	},
 	"string-multi-bad-brace1-formatting-unicode": {
 		comment: "template using {% ... %}",
@@ -4849,15 +4861,15 @@ const repository = {
 		end: "(?='''|\"\"\")",
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#escape-sequence"
+				include: "#escape-sequence",
 			},
 			{
-				include: "#string-line-continuation"
-			}
-		]
+				include: "#string-line-continuation",
+			},
+		],
 	},
 	"string-multi-bad-brace1-formatting-raw": {
 		comment: "template using {% ... %}",
@@ -4865,9 +4877,9 @@ const repository = {
 		end: "(?='''|\"\"\")",
 		patterns: [
 			{
-				include: "#string-consume-escape"
-			}
-		]
+				include: "#string-consume-escape",
+			},
+		],
 	},
 	"string-multi-bad-brace2-formatting-unicode": {
 		comment: "odd format or format-like syntax",
@@ -4875,12 +4887,12 @@ const repository = {
 		end: "(?='''|\"\"\")",
 		patterns: [
 			{
-				include: "#escape-sequence-unicode"
+				include: "#escape-sequence-unicode",
 			},
 			{
-				include: "#string-entity"
-			}
-		]
+				include: "#string-entity",
+			},
+		],
 	},
 	"string-multi-bad-brace2-formatting-raw": {
 		comment: "odd format or format-like syntax",
@@ -4888,12 +4900,12 @@ const repository = {
 		end: "(?='''|\"\"\")",
 		patterns: [
 			{
-				include: "#string-consume-escape"
+				include: "#string-consume-escape",
 			},
 			{
-				include: "#string-formatting"
-			}
-		]
+				include: "#string-formatting",
+			},
+		],
 	},
 	"fstring-fnorm-quoted-single-line": {
 		name: "meta.fstring.python",
@@ -4901,37 +4913,37 @@ const repository = {
 		end: "(\\3)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"1": {
-				name: "string.interpolated.python string.quoted.single.python storage.type.string.python"
+				name: "string.interpolated.python string.quoted.single.python storage.type.string.python",
 			},
 			"2": {
-				name: "invalid.illegal.prefix.python"
+				name: "invalid.illegal.prefix.python",
 			},
 			"3": {
-				name: "punctuation.definition.string.begin.python string.interpolated.python string.quoted.single.python"
-			}
+				name: "punctuation.definition.string.begin.python string.interpolated.python string.quoted.single.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.single.python"
+				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.single.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-guts"
+				include: "#fstring-guts",
 			},
 			{
-				include: "#fstring-illegal-single-brace"
+				include: "#fstring-illegal-single-brace",
 			},
 			{
-				include: "#fstring-single-brace"
+				include: "#fstring-single-brace",
 			},
 			{
-				include: "#fstring-single-core"
-			}
-		]
+				include: "#fstring-single-core",
+			},
+		],
 	},
 	"fstring-normf-quoted-single-line": {
 		name: "meta.fstring.python",
@@ -4939,37 +4951,37 @@ const repository = {
 		end: "(\\3)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"1": {
-				name: "invalid.illegal.prefix.python"
+				name: "invalid.illegal.prefix.python",
 			},
 			"2": {
-				name: "string.interpolated.python string.quoted.single.python storage.type.string.python"
+				name: "string.interpolated.python string.quoted.single.python storage.type.string.python",
 			},
 			"3": {
-				name: "punctuation.definition.string.begin.python string.quoted.single.python"
-			}
+				name: "punctuation.definition.string.begin.python string.quoted.single.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.single.python"
+				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.single.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-guts"
+				include: "#fstring-guts",
 			},
 			{
-				include: "#fstring-illegal-single-brace"
+				include: "#fstring-illegal-single-brace",
 			},
 			{
-				include: "#fstring-single-brace"
+				include: "#fstring-single-brace",
 			},
 			{
-				include: "#fstring-single-core"
-			}
-		]
+				include: "#fstring-single-core",
+			},
+		],
 	},
 	"fstring-raw-quoted-single-line": {
 		name: "meta.fstring.python",
@@ -4977,42 +4989,42 @@ const repository = {
 		end: "(\\2)|((?<!\\\\)\\n)",
 		beginCaptures: {
 			"1": {
-				name: "string.interpolated.python string.quoted.raw.single.python storage.type.string.python"
+				name: "string.interpolated.python string.quoted.raw.single.python storage.type.string.python",
 			},
 			"2": {
-				name: "punctuation.definition.string.begin.python string.quoted.raw.single.python"
-			}
+				name: "punctuation.definition.string.begin.python string.quoted.raw.single.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.raw.single.python"
+				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.raw.single.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-raw-guts"
+				include: "#fstring-raw-guts",
 			},
 			{
-				include: "#fstring-illegal-single-brace"
+				include: "#fstring-illegal-single-brace",
 			},
 			{
-				include: "#fstring-single-brace"
+				include: "#fstring-single-brace",
 			},
 			{
-				include: "#fstring-raw-single-core"
-			}
-		]
+				include: "#fstring-raw-single-core",
+			},
+		],
 	},
 	"fstring-single-core": {
 		name: "string.interpolated.python string.quoted.single.python",
-		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|(['\"])|((?<!\\\\)\\n))\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n"
+		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|(['\"])|((?<!\\\\)\\n))\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n",
 	},
 	"fstring-raw-single-core": {
 		name: "string.interpolated.python string.quoted.raw.single.python",
-		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|(['\"])|((?<!\\\\)\\n))\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n"
+		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|(['\"])|((?<!\\\\)\\n))\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n",
 	},
 	"fstring-single-brace": {
 		comment: "value interpolation using { ... }",
@@ -5020,96 +5032,96 @@ const repository = {
 		end: "(?x)\n  (\\})|(?=\\n)\n",
 		beginCaptures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
+				name: "constant.character.format.placeholder.other.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
+				name: "constant.character.format.placeholder.other.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-terminator-single"
+				include: "#fstring-terminator-single",
 			},
 			{
-				include: "#f-expression"
-			}
-		]
+				include: "#f-expression",
+			},
+		],
 	},
 	"fstring-terminator-single": {
 		patterns: [
 			{
 				name: "storage.type.format.python",
-				match: "(![rsa])(?=})"
+				match: "(![rsa])(?=})",
 			},
 			{
 				match: "(?x)\n  (![rsa])?\n    ( : \\w? [<>=^]? [-+ ]? \\#?\n      \\d* ,? (\\.\\d+)? [bcdeEfFgGnosxX%]? )(?=})\n",
 				captures: {
 					"1": {
-						name: "storage.type.format.python"
+						name: "storage.type.format.python",
 					},
 					"2": {
-						name: "storage.type.format.python"
-					}
-				}
+						name: "storage.type.format.python",
+					},
+				},
 			},
 			{
-				include: "#fstring-terminator-single-tail"
-			}
-		]
+				include: "#fstring-terminator-single-tail",
+			},
+		],
 	},
 	"fstring-terminator-single-tail": {
 		begin: "(![rsa])?(:)(?=.*?{)",
 		end: "(?=})|(?=\\n)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.format.python"
+				name: "storage.type.format.python",
 			},
 			"2": {
-				name: "storage.type.format.python"
-			}
+				name: "storage.type.format.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-illegal-single-brace"
+				include: "#fstring-illegal-single-brace",
 			},
 			{
-				include: "#fstring-single-brace"
-			},
-			{
-				name: "storage.type.format.python",
-				match: "([bcdeEfFgGnosxX%])(?=})"
+				include: "#fstring-single-brace",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\.\\d+)"
+				match: "([bcdeEfFgGnosxX%])(?=})",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(,)"
+				match: "(\\.\\d+)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\d+)"
+				match: "(,)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\#)"
+				match: "(\\d+)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "([-+ ])"
+				match: "(\\#)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "([<>=^])"
+				match: "([-+ ])",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\w)"
-			}
-		]
+				match: "([<>=^])",
+			},
+			{
+				name: "storage.type.format.python",
+				match: "(\\w)",
+			},
+		],
 	},
 	"fstring-fnorm-quoted-multi-line": {
 		name: "meta.fstring.python",
@@ -5117,37 +5129,37 @@ const repository = {
 		end: "(\\3)",
 		beginCaptures: {
 			"1": {
-				name: "string.interpolated.python string.quoted.multi.python storage.type.string.python"
+				name: "string.interpolated.python string.quoted.multi.python storage.type.string.python",
 			},
 			"2": {
-				name: "invalid.illegal.prefix.python"
+				name: "invalid.illegal.prefix.python",
 			},
 			"3": {
-				name: "punctuation.definition.string.begin.python string.interpolated.python string.quoted.multi.python"
-			}
+				name: "punctuation.definition.string.begin.python string.interpolated.python string.quoted.multi.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.multi.python"
+				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.multi.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-guts"
+				include: "#fstring-guts",
 			},
 			{
-				include: "#fstring-illegal-multi-brace"
+				include: "#fstring-illegal-multi-brace",
 			},
 			{
-				include: "#fstring-multi-brace"
+				include: "#fstring-multi-brace",
 			},
 			{
-				include: "#fstring-multi-core"
-			}
-		]
+				include: "#fstring-multi-core",
+			},
+		],
 	},
 	"fstring-normf-quoted-multi-line": {
 		name: "meta.fstring.python",
@@ -5155,37 +5167,37 @@ const repository = {
 		end: "(\\3)",
 		beginCaptures: {
 			"1": {
-				name: "invalid.illegal.prefix.python"
+				name: "invalid.illegal.prefix.python",
 			},
 			"2": {
-				name: "string.interpolated.python string.quoted.multi.python storage.type.string.python"
+				name: "string.interpolated.python string.quoted.multi.python storage.type.string.python",
 			},
 			"3": {
-				name: "punctuation.definition.string.begin.python string.quoted.multi.python"
-			}
+				name: "punctuation.definition.string.begin.python string.quoted.multi.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.multi.python"
+				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.multi.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-guts"
+				include: "#fstring-guts",
 			},
 			{
-				include: "#fstring-illegal-multi-brace"
+				include: "#fstring-illegal-multi-brace",
 			},
 			{
-				include: "#fstring-multi-brace"
+				include: "#fstring-multi-brace",
 			},
 			{
-				include: "#fstring-multi-core"
-			}
-		]
+				include: "#fstring-multi-core",
+			},
+		],
 	},
 	"fstring-raw-quoted-multi-line": {
 		name: "meta.fstring.python",
@@ -5193,42 +5205,42 @@ const repository = {
 		end: "(\\2)",
 		beginCaptures: {
 			"1": {
-				name: "string.interpolated.python string.quoted.raw.multi.python storage.type.string.python"
+				name: "string.interpolated.python string.quoted.raw.multi.python storage.type.string.python",
 			},
 			"2": {
-				name: "punctuation.definition.string.begin.python string.quoted.raw.multi.python"
-			}
+				name: "punctuation.definition.string.begin.python string.quoted.raw.multi.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.raw.multi.python"
+				name: "punctuation.definition.string.end.python string.interpolated.python string.quoted.raw.multi.python",
 			},
 			"2": {
-				name: "invalid.illegal.newline.python"
-			}
+				name: "invalid.illegal.newline.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-raw-guts"
+				include: "#fstring-raw-guts",
 			},
 			{
-				include: "#fstring-illegal-multi-brace"
+				include: "#fstring-illegal-multi-brace",
 			},
 			{
-				include: "#fstring-multi-brace"
+				include: "#fstring-multi-brace",
 			},
 			{
-				include: "#fstring-raw-multi-core"
-			}
-		]
+				include: "#fstring-raw-multi-core",
+			},
+		],
 	},
 	"fstring-multi-core": {
 		name: "string.interpolated.python string.quoted.multi.python",
-		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|'''|\"\"\")\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n"
+		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|'''|\"\"\")\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n",
 	},
 	"fstring-raw-multi-core": {
 		name: "string.interpolated.python string.quoted.raw.multi.python",
-		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|'''|\"\"\")\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n"
+		match: "(?x)\n  (.+?)\n    (\n      (?# .* and .*? in multi-line match need special handling of\n        newlines otherwise SublimeText and Atom will match slightly\n        differently.\n\n        The guard for newlines has to be separate from the\n        lookahead because of special $ matching rule.)\n      ($\\n?)\n      |\n      (?=[\\\\\\}\\{]|'''|\"\"\")\n    )\n  (?# due to how multiline regexps are matched we need a special case\n    for matching a newline character)\n  | \\n\n",
 	},
 	"fstring-multi-brace": {
 		comment: "value interpolation using { ... }",
@@ -5236,97 +5248,97 @@ const repository = {
 		end: "(?x)\n  (\\})\n",
 		beginCaptures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
+				name: "constant.character.format.placeholder.other.python",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "constant.character.format.placeholder.other.python"
-			}
+				name: "constant.character.format.placeholder.other.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-terminator-multi"
+				include: "#fstring-terminator-multi",
 			},
 			{
-				include: "#f-expression"
-			}
-		]
+				include: "#f-expression",
+			},
+		],
 	},
 	"fstring-terminator-multi": {
 		patterns: [
 			{
 				name: "storage.type.format.python",
-				match: "(![rsa])(?=})"
+				match: "(![rsa])(?=})",
 			},
 			{
 				match: "(?x)\n  (![rsa])?\n    ( : \\w? [<>=^]? [-+ ]? \\#?\n      \\d* ,? (\\.\\d+)? [bcdeEfFgGnosxX%]? )(?=})\n",
 				captures: {
 					"1": {
-						name: "storage.type.format.python"
+						name: "storage.type.format.python",
 					},
 					"2": {
-						name: "storage.type.format.python"
-					}
-				}
+						name: "storage.type.format.python",
+					},
+				},
 			},
 			{
-				include: "#fstring-terminator-multi-tail"
-			}
-		]
+				include: "#fstring-terminator-multi-tail",
+			},
+		],
 	},
 	"fstring-terminator-multi-tail": {
 		begin: "(![rsa])?(:)(?=.*?{)",
 		end: "(?=})",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.format.python"
+				name: "storage.type.format.python",
 			},
 			"2": {
-				name: "storage.type.format.python"
-			}
+				name: "storage.type.format.python",
+			},
 		},
 		patterns: [
 			{
-				include: "#fstring-illegal-multi-brace"
+				include: "#fstring-illegal-multi-brace",
 			},
 			{
-				include: "#fstring-multi-brace"
-			},
-			{
-				name: "storage.type.format.python",
-				match: "([bcdeEfFgGnosxX%])(?=})"
+				include: "#fstring-multi-brace",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\.\\d+)"
+				match: "([bcdeEfFgGnosxX%])(?=})",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(,)"
+				match: "(\\.\\d+)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\d+)"
+				match: "(,)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\#)"
+				match: "(\\d+)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "([-+ ])"
+				match: "(\\#)",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "([<>=^])"
+				match: "([-+ ])",
 			},
 			{
 				name: "storage.type.format.python",
-				match: "(\\w)"
-			}
-		]
-	}
+				match: "([<>=^])",
+			},
+			{
+				name: "storage.type.format.python",
+				match: "(\\w)",
+			},
+		],
+	},
 };
 const python_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -5334,7 +5346,15 @@ const python_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { python_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	python_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

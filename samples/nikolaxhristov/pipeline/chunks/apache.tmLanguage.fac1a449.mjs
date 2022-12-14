@@ -13,548 +13,548 @@ const fileTypes = [
 	".htgroups",
 	".HTGROUPS",
 	".htpasswd",
-	".HTPASSWD"
+	".HTPASSWD",
 ];
 const name = "apache";
 const patterns = [
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.comment.apacheconf"
-			}
+				name: "punctuation.definition.comment.apacheconf",
+			},
 		},
 		match: "^(\\s)*(#).*$\\n?",
-		name: "comment.line.hash.ini"
+		name: "comment.line.hash.ini",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.apacheconf"
+				name: "punctuation.definition.tag.apacheconf",
 			},
 			"2": {
-				name: "entity.tag.apacheconf"
+				name: "entity.tag.apacheconf",
 			},
 			"4": {
-				name: "string.value.apacheconf"
+				name: "string.value.apacheconf",
 			},
 			"5": {
-				name: "punctuation.definition.tag.apacheconf"
-			}
+				name: "punctuation.definition.tag.apacheconf",
+			},
 		},
-		match: "(<)(Proxy|ProxyMatch|IfVersion|Directory|DirectoryMatch|Files|FilesMatch|IfDefine|IfModule|Limit|LimitExcept|Location|LocationMatch|VirtualHost|Macro|If|Else|ElseIf)(\\s(.+?))?(>)"
+		match: "(<)(Proxy|ProxyMatch|IfVersion|Directory|DirectoryMatch|Files|FilesMatch|IfDefine|IfModule|Limit|LimitExcept|Location|LocationMatch|VirtualHost|Macro|If|Else|ElseIf)(\\s(.+?))?(>)",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.apacheconf"
+				name: "punctuation.definition.tag.apacheconf",
 			},
 			"2": {
-				name: "entity.tag.apacheconf"
+				name: "entity.tag.apacheconf",
 			},
 			"3": {
-				name: "punctuation.definition.tag.apacheconf"
-			}
+				name: "punctuation.definition.tag.apacheconf",
+			},
 		},
-		match: "(</)(Proxy|ProxyMatch|IfVersion|Directory|DirectoryMatch|Files|FilesMatch|IfDefine|IfModule|Limit|LimitExcept|Location|LocationMatch|VirtualHost|Macro|If|Else|ElseIf)(>)"
+		match: "(</)(Proxy|ProxyMatch|IfVersion|Directory|DirectoryMatch|Files|FilesMatch|IfDefine|IfModule|Limit|LimitExcept|Location|LocationMatch|VirtualHost|Macro|If|Else|ElseIf)(>)",
 	},
 	{
 		captures: {
 			"3": {
-				name: "string.regexp.apacheconf"
+				name: "string.regexp.apacheconf",
 			},
 			"4": {
-				name: "string.replacement.apacheconf"
-			}
+				name: "string.replacement.apacheconf",
+			},
 		},
-		match: "(?<=(Rewrite(Rule|Cond)))\\s+(.+?)\\s+(.+?)($|\\s)"
+		match: "(?<=(Rewrite(Rule|Cond)))\\s+(.+?)\\s+(.+?)($|\\s)",
 	},
 	{
 		captures: {
 			"2": {
-				name: "entity.status.apacheconf"
+				name: "entity.status.apacheconf",
 			},
 			"3": {
-				name: "string.regexp.apacheconf"
+				name: "string.regexp.apacheconf",
 			},
 			"5": {
-				name: "string.path.apacheconf"
-			}
+				name: "string.path.apacheconf",
+			},
 		},
-		match: "(?<=RedirectMatch)(\\s+(\\d\\d\\d|permanent|temp|seeother|gone))?\\s+(.+?)\\s+((.+?)($|\\s))?"
+		match: "(?<=RedirectMatch)(\\s+(\\d\\d\\d|permanent|temp|seeother|gone))?\\s+(.+?)\\s+((.+?)($|\\s))?",
 	},
 	{
 		captures: {
 			"2": {
-				name: "entity.status.apacheconf"
+				name: "entity.status.apacheconf",
 			},
 			"3": {
-				name: "string.path.apacheconf"
+				name: "string.path.apacheconf",
 			},
 			"5": {
-				name: "string.path.apacheconf"
-			}
+				name: "string.path.apacheconf",
+			},
 		},
-		match: "(?<=Redirect)(\\s+(\\d\\d\\d|permanent|temp|seeother|gone))?\\s+(.+?)\\s+((.+?)($|\\s))?"
+		match: "(?<=Redirect)(\\s+(\\d\\d\\d|permanent|temp|seeother|gone))?\\s+(.+?)\\s+((.+?)($|\\s))?",
 	},
 	{
 		captures: {
 			"1": {
-				name: "string.regexp.apacheconf"
+				name: "string.regexp.apacheconf",
 			},
 			"3": {
-				name: "string.path.apacheconf"
-			}
+				name: "string.path.apacheconf",
+			},
 		},
-		match: "(?<=ScriptAliasMatch|AliasMatch)\\s+(.+?)\\s+((.+?)\\s)?"
+		match: "(?<=ScriptAliasMatch|AliasMatch)\\s+(.+?)\\s+((.+?)\\s)?",
 	},
 	{
 		captures: {
 			"1": {
-				name: "string.path.apacheconf"
+				name: "string.path.apacheconf",
 			},
 			"3": {
-				name: "string.path.apacheconf"
-			}
+				name: "string.path.apacheconf",
+			},
 		},
-		match: "(?<=RedirectPermanent|RedirectTemp|ScriptAlias|Alias)\\s+(.+?)\\s+((.+?)($|\\s))?"
+		match: "(?<=RedirectPermanent|RedirectTemp|ScriptAlias|Alias)\\s+(.+?)\\s+((.+?)($|\\s))?",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.core.apacheconf"
-			}
+				name: "keyword.core.apacheconf",
+			},
 		},
-		match: "\\b(AcceptPathInfo|AccessFileName|AddDefaultCharset|AddOutputFilterByType|AllowEncodedSlashes|AllowOverride|AuthName|AuthType|CGIMapExtension|ContentDigest|DefaultType|Define|DocumentRoot|EnableMMAP|EnableSendfile|ErrorDocument|ErrorLog|FileETag|ForceType|HostnameLookups|IdentityCheck|Include(Optional)?|KeepAlive|KeepAliveTimeout|LimitInternalRecursion|LimitRequestBody|LimitRequestFields|LimitRequestFieldSize|LimitRequestLine|LimitXMLRequestBody|LogLevel|MaxKeepAliveRequests|Mutex|NameVirtualHost|Options|Require|RLimitCPU|RLimitMEM|RLimitNPROC|Satisfy|ScriptInterpreterSource|ServerAdmin|ServerAlias|ServerName|ServerPath|ServerRoot|ServerSignature|ServerTokens|SetHandler|SetInputFilter|SetOutputFilter|Time(O|o)ut|TraceEnable|UseCanonicalName|Use|ErrorLogFormat|GlobalLog|PHPIniDir|SSLHonorCipherOrder|SSLCompression|SSLUseStapling|SSLStapling\\w+|SSLCARevocationCheck|SSLSRPVerifierFile|SSLSessionTickets|RequestReadTimeout|ProxyHTML\\w+|MaxRanges)\\b"
+		match: "\\b(AcceptPathInfo|AccessFileName|AddDefaultCharset|AddOutputFilterByType|AllowEncodedSlashes|AllowOverride|AuthName|AuthType|CGIMapExtension|ContentDigest|DefaultType|Define|DocumentRoot|EnableMMAP|EnableSendfile|ErrorDocument|ErrorLog|FileETag|ForceType|HostnameLookups|IdentityCheck|Include(Optional)?|KeepAlive|KeepAliveTimeout|LimitInternalRecursion|LimitRequestBody|LimitRequestFields|LimitRequestFieldSize|LimitRequestLine|LimitXMLRequestBody|LogLevel|MaxKeepAliveRequests|Mutex|NameVirtualHost|Options|Require|RLimitCPU|RLimitMEM|RLimitNPROC|Satisfy|ScriptInterpreterSource|ServerAdmin|ServerAlias|ServerName|ServerPath|ServerRoot|ServerSignature|ServerTokens|SetHandler|SetInputFilter|SetOutputFilter|Time(O|o)ut|TraceEnable|UseCanonicalName|Use|ErrorLogFormat|GlobalLog|PHPIniDir|SSLHonorCipherOrder|SSLCompression|SSLUseStapling|SSLStapling\\w+|SSLCARevocationCheck|SSLSRPVerifierFile|SSLSessionTickets|RequestReadTimeout|ProxyHTML\\w+|MaxRanges)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.mpm.apacheconf"
-			}
+				name: "keyword.mpm.apacheconf",
+			},
 		},
-		match: "\\b(AcceptMutex|AssignUserID|BS2000Account|ChildPerUserID|CoreDumpDirectory|EnableExceptionHook|Group|Listen|ListenBacklog|LockFile|MaxClients|MaxConnectionsPerChild|MaxMemFree|MaxRequestsPerChild|MaxRequestsPerThread|MaxRequestWorkers|MaxSpareServers|MaxSpareThreads|MaxThreads|MaxThreadsPerChild|MinSpareServers|MinSpareThreads|NumServers|PidFile|ReceiveBufferSize|ScoreBoardFile|SendBufferSize|ServerLimit|StartServers|StartThreads|ThreadLimit|ThreadsPerChild|ThreadStackSize|User|Win32DisableAcceptEx)\\b"
+		match: "\\b(AcceptMutex|AssignUserID|BS2000Account|ChildPerUserID|CoreDumpDirectory|EnableExceptionHook|Group|Listen|ListenBacklog|LockFile|MaxClients|MaxConnectionsPerChild|MaxMemFree|MaxRequestsPerChild|MaxRequestsPerThread|MaxRequestWorkers|MaxSpareServers|MaxSpareThreads|MaxThreads|MaxThreadsPerChild|MinSpareServers|MinSpareThreads|NumServers|PidFile|ReceiveBufferSize|ScoreBoardFile|SendBufferSize|ServerLimit|StartServers|StartThreads|ThreadLimit|ThreadsPerChild|ThreadStackSize|User|Win32DisableAcceptEx)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.access.apacheconf"
-			}
+				name: "keyword.access.apacheconf",
+			},
 		},
-		match: "\\b(Allow|Deny|Order)\\b"
+		match: "\\b(Allow|Deny|Order)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.actions.apacheconf"
-			}
+				name: "keyword.actions.apacheconf",
+			},
 		},
-		match: "\\b(Action|Script)\\b"
+		match: "\\b(Action|Script)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.alias.apacheconf"
-			}
+				name: "keyword.alias.apacheconf",
+			},
 		},
-		match: "\\b(Alias|AliasMatch|Redirect|RedirectMatch|RedirectPermanent|RedirectTemp|ScriptAlias|ScriptAliasMatch)\\b"
+		match: "\\b(Alias|AliasMatch|Redirect|RedirectMatch|RedirectPermanent|RedirectTemp|ScriptAlias|ScriptAliasMatch)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.auth.apacheconf"
-			}
+				name: "keyword.auth.apacheconf",
+			},
 		},
-		match: "\\b(AuthAuthoritative|AuthGroupFile|AuthUserFile|AuthBasicProvider|AuthBasicFake|AuthBasicAuthoritative|AuthBasicUseDigestAlgorithm)\\b"
+		match: "\\b(AuthAuthoritative|AuthGroupFile|AuthUserFile|AuthBasicProvider|AuthBasicFake|AuthBasicAuthoritative|AuthBasicUseDigestAlgorithm)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.auth_anon.apacheconf"
-			}
+				name: "keyword.auth_anon.apacheconf",
+			},
 		},
-		match: "\\b(Anonymous|Anonymous_Authoritative|Anonymous_LogEmail|Anonymous_MustGiveEmail|Anonymous_NoUserID|Anonymous_VerifyEmail)\\b"
+		match: "\\b(Anonymous|Anonymous_Authoritative|Anonymous_LogEmail|Anonymous_MustGiveEmail|Anonymous_NoUserID|Anonymous_VerifyEmail)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.auth_dbm.apacheconf"
-			}
+				name: "keyword.auth_dbm.apacheconf",
+			},
 		},
-		match: "\\b(AuthDBMAuthoritative|AuthDBMGroupFile|AuthDBMType|AuthDBMUserFile)\\b"
+		match: "\\b(AuthDBMAuthoritative|AuthDBMGroupFile|AuthDBMType|AuthDBMUserFile)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.auth_digest.apacheconf"
-			}
+				name: "keyword.auth_digest.apacheconf",
+			},
 		},
-		match: "\\b(AuthDigestAlgorithm|AuthDigestDomain|AuthDigestFile|AuthDigestGroupFile|AuthDigestNcCheck|AuthDigestNonceFormat|AuthDigestNonceLifetime|AuthDigestQop|AuthDigestShmemSize|AuthDigestProvider)\\b"
+		match: "\\b(AuthDigestAlgorithm|AuthDigestDomain|AuthDigestFile|AuthDigestGroupFile|AuthDigestNcCheck|AuthDigestNonceFormat|AuthDigestNonceLifetime|AuthDigestQop|AuthDigestShmemSize|AuthDigestProvider)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.auth_ldap.apacheconf"
-			}
+				name: "keyword.auth_ldap.apacheconf",
+			},
 		},
-		match: "\\b(AuthLDAPAuthoritative|AuthLDAPBindDN|AuthLDAPBindPassword|AuthLDAPCharsetConfig|AuthLDAPCompareDNOnServer|AuthLDAPDereferenceAliases|AuthLDAPEnabled|AuthLDAPFrontPageHack|AuthLDAPGroupAttribute|AuthLDAPGroupAttributeIsDN|AuthLDAPRemoteUserIsDN|AuthLDAPUrl)\\b"
+		match: "\\b(AuthLDAPAuthoritative|AuthLDAPBindDN|AuthLDAPBindPassword|AuthLDAPCharsetConfig|AuthLDAPCompareDNOnServer|AuthLDAPDereferenceAliases|AuthLDAPEnabled|AuthLDAPFrontPageHack|AuthLDAPGroupAttribute|AuthLDAPGroupAttributeIsDN|AuthLDAPRemoteUserIsDN|AuthLDAPUrl)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.autoindex.apacheconf"
-			}
+				name: "keyword.autoindex.apacheconf",
+			},
 		},
-		match: "\\b(AddAlt|AddAltByEncoding|AddAltByType|AddDescription|AddIcon|AddIconByEncoding|AddIconByType|DefaultIcon|HeaderName|IndexIgnore|IndexOptions|IndexOrderDefault|IndexStyleSheet|IndexHeadInsert|ReadmeName)\\b"
+		match: "\\b(AddAlt|AddAltByEncoding|AddAltByType|AddDescription|AddIcon|AddIconByEncoding|AddIconByType|DefaultIcon|HeaderName|IndexIgnore|IndexOptions|IndexOrderDefault|IndexStyleSheet|IndexHeadInsert|ReadmeName)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.filter.apacheconf"
-			}
+				name: "keyword.filter.apacheconf",
+			},
 		},
-		match: "\\b(BalancerMember|BalancerGrowth|BalancerPersist|BalancerInherit)\\b"
+		match: "\\b(BalancerMember|BalancerGrowth|BalancerPersist|BalancerInherit)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.cache.apacheconf"
-			}
+				name: "keyword.cache.apacheconf",
+			},
 		},
-		match: "\\b(CacheDefaultExpire|CacheDisable|CacheEnable|CacheForceCompletion|CacheIgnoreCacheControl|CacheIgnoreHeaders|CacheIgnoreNoLastMod|CacheLastModifiedFactor|CacheMaxExpire)\\b"
+		match: "\\b(CacheDefaultExpire|CacheDisable|CacheEnable|CacheForceCompletion|CacheIgnoreCacheControl|CacheIgnoreHeaders|CacheIgnoreNoLastMod|CacheLastModifiedFactor|CacheMaxExpire)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.cern_meta.apacheconf"
-			}
+				name: "keyword.cern_meta.apacheconf",
+			},
 		},
-		match: "\\b(MetaDir|MetaFiles|MetaSuffix)\\b"
+		match: "\\b(MetaDir|MetaFiles|MetaSuffix)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.cgi.apacheconf"
-			}
+				name: "keyword.cgi.apacheconf",
+			},
 		},
-		match: "\\b(ScriptLog|ScriptLogBuffer|ScriptLogLength)\\b"
+		match: "\\b(ScriptLog|ScriptLogBuffer|ScriptLogLength)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.cgid.apacheconf"
-			}
+				name: "keyword.cgid.apacheconf",
+			},
 		},
-		match: "\\b(ScriptLog|ScriptLogBuffer|ScriptLogLength|ScriptSock)\\b"
+		match: "\\b(ScriptLog|ScriptLogBuffer|ScriptLogLength|ScriptSock)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.charset_lite.apacheconf"
-			}
+				name: "keyword.charset_lite.apacheconf",
+			},
 		},
-		match: "\\b(CharsetDefault|CharsetOptions|CharsetSourceEnc)\\b"
+		match: "\\b(CharsetDefault|CharsetOptions|CharsetSourceEnc)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.dav.apacheconf"
-			}
+				name: "keyword.dav.apacheconf",
+			},
 		},
-		match: "\\b(Dav|DavDepthInfinity|DavMinTimeout|DavLockDB)\\b"
+		match: "\\b(Dav|DavDepthInfinity|DavMinTimeout|DavLockDB)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.deflate.apacheconf"
-			}
+				name: "keyword.deflate.apacheconf",
+			},
 		},
-		match: "\\b(DeflateBufferSize|DeflateCompressionLevel|DeflateFilterNote|DeflateMemLevel|DeflateWindowSize)\\b"
+		match: "\\b(DeflateBufferSize|DeflateCompressionLevel|DeflateFilterNote|DeflateMemLevel|DeflateWindowSize)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.dir.apacheconf"
-			}
+				name: "keyword.dir.apacheconf",
+			},
 		},
-		match: "\\b(DirectoryIndex|DirectorySlash|FallbackResource)\\b"
+		match: "\\b(DirectoryIndex|DirectorySlash|FallbackResource)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.disk_cache.apacheconf"
-			}
+				name: "keyword.disk_cache.apacheconf",
+			},
 		},
-		match: "\\b(CacheDirLength|CacheDirLevels|CacheExpiryCheck|CacheGcClean|CacheGcDaily|CacheGcInterval|CacheGcMemUsage|CacheGcUnused|CacheMaxFileSize|CacheMinFileSize|CacheRoot|CacheSize|CacheTimeMargin)\\b"
+		match: "\\b(CacheDirLength|CacheDirLevels|CacheExpiryCheck|CacheGcClean|CacheGcDaily|CacheGcInterval|CacheGcMemUsage|CacheGcUnused|CacheMaxFileSize|CacheMinFileSize|CacheRoot|CacheSize|CacheTimeMargin)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.dumpio.apacheconf"
-			}
+				name: "keyword.dumpio.apacheconf",
+			},
 		},
-		match: "\\b(DumpIOInput|DumpIOOutput)\\b"
+		match: "\\b(DumpIOInput|DumpIOOutput)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.env.apacheconf"
-			}
+				name: "keyword.env.apacheconf",
+			},
 		},
-		match: "\\b(PassEnv|SetEnv|UnsetEnv)\\b"
+		match: "\\b(PassEnv|SetEnv|UnsetEnv)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.expires.apacheconf"
-			}
+				name: "keyword.expires.apacheconf",
+			},
 		},
-		match: "\\b(ExpiresActive|ExpiresByType|ExpiresDefault)\\b"
+		match: "\\b(ExpiresActive|ExpiresByType|ExpiresDefault)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.ext_filter.apacheconf"
-			}
+				name: "keyword.ext_filter.apacheconf",
+			},
 		},
-		match: "\\b(ExtFilterDefine|ExtFilterOptions)\\b"
+		match: "\\b(ExtFilterDefine|ExtFilterOptions)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.file_cache.apacheconf"
-			}
+				name: "keyword.file_cache.apacheconf",
+			},
 		},
-		match: "\\b(CacheFile|MMapFile)\\b"
+		match: "\\b(CacheFile|MMapFile)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.filter.apacheconf"
-			}
+				name: "keyword.filter.apacheconf",
+			},
 		},
-		match: "\\b(AddOutputFilterByType|FilterChain|FilterDeclare|FilterProtocol|FilterProvider|FilterTrace)\\b"
+		match: "\\b(AddOutputFilterByType|FilterChain|FilterDeclare|FilterProtocol|FilterProvider|FilterTrace)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.headers.apacheconf"
-			}
+				name: "keyword.headers.apacheconf",
+			},
 		},
-		match: "\\b(Header|RequestHeader)\\b"
+		match: "\\b(Header|RequestHeader)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.imap.apacheconf"
-			}
+				name: "keyword.imap.apacheconf",
+			},
 		},
-		match: "\\b(ImapBase|ImapDefault|ImapMenu)\\b"
+		match: "\\b(ImapBase|ImapDefault|ImapMenu)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.include.apacheconf"
-			}
+				name: "keyword.include.apacheconf",
+			},
 		},
-		match: "\\b(SSIEndTag|SSIErrorMsg|SSIStartTag|SSITimeFormat|SSIUndefinedEcho|XBitHack)\\b"
+		match: "\\b(SSIEndTag|SSIErrorMsg|SSIStartTag|SSITimeFormat|SSIUndefinedEcho|XBitHack)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.isapi.apacheconf"
-			}
+				name: "keyword.isapi.apacheconf",
+			},
 		},
-		match: "\\b(ISAPIAppendLogToErrors|ISAPIAppendLogToQuery|ISAPICacheFile|ISAPIFakeAsync|ISAPILogNotSupported|ISAPIReadAheadBuffer)\\b"
+		match: "\\b(ISAPIAppendLogToErrors|ISAPIAppendLogToQuery|ISAPICacheFile|ISAPIFakeAsync|ISAPILogNotSupported|ISAPIReadAheadBuffer)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.ldap.apacheconf"
-			}
+				name: "keyword.ldap.apacheconf",
+			},
 		},
-		match: "\\b(LDAPCacheEntries|LDAPCacheTTL|LDAPConnectionTimeout|LDAPOpCacheEntries|LDAPOpCacheTTL|LDAPSharedCacheFile|LDAPSharedCacheSize|LDAPTrustedCA|LDAPTrustedCAType)\\b"
+		match: "\\b(LDAPCacheEntries|LDAPCacheTTL|LDAPConnectionTimeout|LDAPOpCacheEntries|LDAPOpCacheTTL|LDAPSharedCacheFile|LDAPSharedCacheSize|LDAPTrustedCA|LDAPTrustedCAType)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.log.apacheconf"
-			}
+				name: "keyword.log.apacheconf",
+			},
 		},
-		match: "\\b(BufferedLogs|CookieLog|CustomLog|LogFormat|TransferLog|ForensicLog)\\b"
+		match: "\\b(BufferedLogs|CookieLog|CustomLog|LogFormat|TransferLog|ForensicLog)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.mem_cache.apacheconf"
-			}
+				name: "keyword.mem_cache.apacheconf",
+			},
 		},
-		match: "\\b(MCacheMaxObjectCount|MCacheMaxObjectSize|MCacheMaxStreamingBuffer|MCacheMinObjectSize|MCacheRemovalAlgorithm|MCacheSize)\\b"
+		match: "\\b(MCacheMaxObjectCount|MCacheMaxObjectSize|MCacheMaxStreamingBuffer|MCacheMinObjectSize|MCacheRemovalAlgorithm|MCacheSize)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.mime.apacheconf"
-			}
+				name: "keyword.mime.apacheconf",
+			},
 		},
-		match: "\\b(AddCharset|AddEncoding|AddHandler|AddInputFilter|AddLanguage|AddOutputFilter|AddType|DefaultLanguage|ModMimeUsePathInfo|MultiviewsMatch|RemoveCharset|RemoveEncoding|RemoveHandler|RemoveInputFilter|RemoveLanguage|RemoveOutputFilter|RemoveType|TypesConfig)\\b"
+		match: "\\b(AddCharset|AddEncoding|AddHandler|AddInputFilter|AddLanguage|AddOutputFilter|AddType|DefaultLanguage|ModMimeUsePathInfo|MultiviewsMatch|RemoveCharset|RemoveEncoding|RemoveHandler|RemoveInputFilter|RemoveLanguage|RemoveOutputFilter|RemoveType|TypesConfig)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.misc.apacheconf"
-			}
+				name: "keyword.misc.apacheconf",
+			},
 		},
-		match: "\\b(ProtocolEcho|Example|AddModuleInfo|MimeMagicFile|CheckSpelling|ExtendedStatus|SuexecUserGroup|UserDir)\\b"
+		match: "\\b(ProtocolEcho|Example|AddModuleInfo|MimeMagicFile|CheckSpelling|ExtendedStatus|SuexecUserGroup|UserDir)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.negotiation.apacheconf"
-			}
+				name: "keyword.negotiation.apacheconf",
+			},
 		},
-		match: "\\b(CacheNegotiatedDocs|ForceLanguagePriority|LanguagePriority)\\b"
+		match: "\\b(CacheNegotiatedDocs|ForceLanguagePriority|LanguagePriority)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.nw_ssl.apacheconf"
-			}
+				name: "keyword.nw_ssl.apacheconf",
+			},
 		},
-		match: "\\b(NWSSLTrustedCerts|NWSSLUpgradeable|SecureListen)\\b"
+		match: "\\b(NWSSLTrustedCerts|NWSSLUpgradeable|SecureListen)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.proxy.apacheconf"
-			}
+				name: "keyword.proxy.apacheconf",
+			},
 		},
-		match: "\\b(AllowCONNECT|NoProxy|ProxyBadHeader|ProxyBlock|ProxyDomain|ProxyErrorOverride|ProxyFtpDirCharset|ProxyIOBufferSize|ProxyMaxForwards|ProxyPass|ProxyPassMatch|ProxyPassReverse|ProxyPreserveHost|ProxyReceiveBufferSize|ProxyRemote|ProxyRemoteMatch|ProxyRequests|ProxyTimeout|ProxyVia)\\b"
+		match: "\\b(AllowCONNECT|NoProxy|ProxyBadHeader|ProxyBlock|ProxyDomain|ProxyErrorOverride|ProxyFtpDirCharset|ProxyIOBufferSize|ProxyMaxForwards|ProxyPass|ProxyPassMatch|ProxyPassReverse|ProxyPreserveHost|ProxyReceiveBufferSize|ProxyRemote|ProxyRemoteMatch|ProxyRequests|ProxyTimeout|ProxyVia)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.rewrite.apacheconf"
-			}
+				name: "keyword.rewrite.apacheconf",
+			},
 		},
-		match: "\\b(RewriteBase|RewriteCond|RewriteEngine|RewriteLock|RewriteLog|RewriteLogLevel|RewriteMap|RewriteOptions|RewriteRule)\\b"
+		match: "\\b(RewriteBase|RewriteCond|RewriteEngine|RewriteLock|RewriteLog|RewriteLogLevel|RewriteMap|RewriteOptions|RewriteRule)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.setenvif.apacheconf"
-			}
+				name: "keyword.setenvif.apacheconf",
+			},
 		},
-		match: "\\b(BrowserMatch|BrowserMatchNoCase|SetEnvIf|SetEnvIfNoCase)\\b"
+		match: "\\b(BrowserMatch|BrowserMatchNoCase|SetEnvIf|SetEnvIfNoCase)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.so.apacheconf"
-			}
+				name: "keyword.so.apacheconf",
+			},
 		},
-		match: "\\b(LoadFile|LoadModule)\\b"
+		match: "\\b(LoadFile|LoadModule)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.ssl.apacheconf"
-			}
+				name: "keyword.ssl.apacheconf",
+			},
 		},
-		match: "\\b(SSLCACertificateFile|SSLCACertificatePath|SSLCARevocationFile|SSLCARevocationPath|SSLCertificateChainFile|SSLCertificateFile|SSLCertificateKeyFile|SSLCipherSuite|SSLEngine|SSLMutex|SSLOptions|SSLPassPhraseDialog|SSLProtocol|SSLProxyCACertificateFile|SSLProxyCACertificatePath|SSLProxyCARevocationFile|SSLProxyCARevocationPath|SSLProxyCipherSuite|SSLProxyEngine|SSLProxyMachineCertificateFile|SSLProxyMachineCertificatePath|SSLProxyProtocol|SSLProxyVerify|SSLProxyVerifyDepth|SSLRandomSeed|SSLRequire|SSLRequireSSL|SSLSessionCache|SSLSessionCacheTimeout|SSLUserName|SSLVerifyClient|SSLVerifyDepth|SSLInsecureRenegotiation|SSLOpenSSLConfCmd)\\b"
+		match: "\\b(SSLCACertificateFile|SSLCACertificatePath|SSLCARevocationFile|SSLCARevocationPath|SSLCertificateChainFile|SSLCertificateFile|SSLCertificateKeyFile|SSLCipherSuite|SSLEngine|SSLMutex|SSLOptions|SSLPassPhraseDialog|SSLProtocol|SSLProxyCACertificateFile|SSLProxyCACertificatePath|SSLProxyCARevocationFile|SSLProxyCARevocationPath|SSLProxyCipherSuite|SSLProxyEngine|SSLProxyMachineCertificateFile|SSLProxyMachineCertificatePath|SSLProxyProtocol|SSLProxyVerify|SSLProxyVerifyDepth|SSLRandomSeed|SSLRequire|SSLRequireSSL|SSLSessionCache|SSLSessionCacheTimeout|SSLUserName|SSLVerifyClient|SSLVerifyDepth|SSLInsecureRenegotiation|SSLOpenSSLConfCmd)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.substitute.apacheconf"
-			}
+				name: "keyword.substitute.apacheconf",
+			},
 		},
-		match: "\\b(Substitute|SubstituteInheritBefore|SubstituteMaxLineLength)\\b"
+		match: "\\b(Substitute|SubstituteInheritBefore|SubstituteMaxLineLength)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.usertrack.apacheconf"
-			}
+				name: "keyword.usertrack.apacheconf",
+			},
 		},
-		match: "\\b(CookieDomain|CookieExpires|CookieName|CookieStyle|CookieTracking)\\b"
+		match: "\\b(CookieDomain|CookieExpires|CookieName|CookieStyle|CookieTracking)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.vhost_alias.apacheconf"
-			}
+				name: "keyword.vhost_alias.apacheconf",
+			},
 		},
-		match: "\\b(VirtualDocumentRoot|VirtualDocumentRootIP|VirtualScriptAlias|VirtualScriptAliasIP)\\b"
+		match: "\\b(VirtualDocumentRoot|VirtualDocumentRootIP|VirtualScriptAlias|VirtualScriptAliasIP)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "keyword.php.apacheconf"
+				name: "keyword.php.apacheconf",
 			},
 			"3": {
-				name: "entity.property.apacheconf"
+				name: "entity.property.apacheconf",
 			},
 			"5": {
-				name: "string.value.apacheconf"
-			}
+				name: "string.value.apacheconf",
+			},
 		},
-		match: "\\b(php_value|php_flag|php_admin_value|php_admin_flag)\\b(\\s+(.+?)(\\s+(\".+?\"|.+?))?)?\\s"
+		match: '\\b(php_value|php_flag|php_admin_value|php_admin_flag)\\b(\\s+(.+?)(\\s+(".+?"|.+?))?)?\\s',
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.variable.apacheconf"
+				name: "punctuation.variable.apacheconf",
 			},
 			"3": {
-				name: "variable.env.apacheconf"
+				name: "variable.env.apacheconf",
 			},
 			"4": {
-				name: "variable.misc.apacheconf"
+				name: "variable.misc.apacheconf",
 			},
 			"5": {
-				name: "punctuation.variable.apacheconf"
-			}
+				name: "punctuation.variable.apacheconf",
+			},
 		},
-		match: "(%\\{)((HTTP_USER_AGENT|HTTP_REFERER|HTTP_COOKIE|HTTP_FORWARDED|HTTP_HOST|HTTP_PROXY_CONNECTION|HTTP_ACCEPT|REMOTE_ADDR|REMOTE_HOST|REMOTE_PORT|REMOTE_USER|REMOTE_IDENT|REQUEST_METHOD|SCRIPT_FILENAME|PATH_INFO|QUERY_STRING|AUTH_TYPE|DOCUMENT_ROOT|SERVER_ADMIN|SERVER_NAME|SERVER_ADDR|SERVER_PORT|SERVER_PROTOCOL|SERVER_SOFTWARE|TIME_YEAR|TIME_MON|TIME_DAY|TIME_HOUR|TIME_MIN|TIME_SEC|TIME_WDAY|TIME|API_VERSION|THE_REQUEST|REQUEST_URI|REQUEST_FILENAME|IS_SUBREQ|HTTPS)|(.*?))(\\})"
+		match: "(%\\{)((HTTP_USER_AGENT|HTTP_REFERER|HTTP_COOKIE|HTTP_FORWARDED|HTTP_HOST|HTTP_PROXY_CONNECTION|HTTP_ACCEPT|REMOTE_ADDR|REMOTE_HOST|REMOTE_PORT|REMOTE_USER|REMOTE_IDENT|REQUEST_METHOD|SCRIPT_FILENAME|PATH_INFO|QUERY_STRING|AUTH_TYPE|DOCUMENT_ROOT|SERVER_ADMIN|SERVER_NAME|SERVER_ADDR|SERVER_PORT|SERVER_PROTOCOL|SERVER_SOFTWARE|TIME_YEAR|TIME_MON|TIME_DAY|TIME_HOUR|TIME_MIN|TIME_SEC|TIME_WDAY|TIME|API_VERSION|THE_REQUEST|REQUEST_URI|REQUEST_FILENAME|IS_SUBREQ|HTTPS)|(.*?))(\\})",
 	},
 	{
 		captures: {
 			"1": {
-				name: "entity.mime-type.apacheconf"
-			}
+				name: "entity.mime-type.apacheconf",
+			},
 		},
-		match: "\\b((text|image|application|video|audio)/.+?)\\s"
+		match: "\\b((text|image|application|video|audio)/.+?)\\s",
 	},
 	{
 		captures: {
 			"1": {
-				name: "entity.helper.apacheconf"
-			}
+				name: "entity.helper.apacheconf",
+			},
 		},
-		match: "\\b(?i)(export|from|unset|set|on|off)\\b"
+		match: "\\b(?i)(export|from|unset|set|on|off)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "constant.numeric.integer.decimal.apacheconf"
-			}
+				name: "constant.numeric.integer.decimal.apacheconf",
+			},
 		},
-		match: "\\b(\\d+)\\b"
+		match: "\\b(\\d+)\\b",
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.flag.apacheconf"
+				name: "punctuation.definition.flag.apacheconf",
 			},
 			"2": {
-				name: "string.flag.apacheconf"
+				name: "string.flag.apacheconf",
 			},
 			"3": {
-				name: "punctuation.definition.flag.apacheconf"
-			}
+				name: "punctuation.definition.flag.apacheconf",
+			},
 		},
-		match: "\\s(\\[)(.*?)(\\])\\s"
-	}
+		match: "\\s(\\[)(.*?)(\\])\\s",
+	},
 ];
 const scopeName = "source.apacheconf";
 const uuid = "8747d9e4-b308-4fc2-9aa1-66b6919bc7b9";
@@ -563,7 +563,14 @@ const apache_tmLanguage = {
 	name: name,
 	patterns: patterns,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { apache_tmLanguage as default, fileTypes, name, patterns, scopeName, uuid };
+export {
+	apache_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	scopeName,
+	uuid,
+};

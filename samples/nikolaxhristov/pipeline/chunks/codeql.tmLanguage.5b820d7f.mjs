@@ -1,618 +1,615 @@
 const name = "codeql";
 const scopeName = "source.ql";
-const fileTypes = [
-	"ql",
-	"qll"
-];
+const fileTypes = ["ql", "qll"];
 const uuid = "7F6926BF-1C6C-468A-A7AA-215EBAC86A4E";
 const patterns = [
 	{
-		include: "#module-member"
-	}
+		include: "#module-member",
+	},
 ];
 const repository = {
 	"id-character": {
-		match: "(?x)[0-9A-Za-z_]"
+		match: "(?x)[0-9A-Za-z_]",
 	},
 	"end-of-id": {
-		match: "(?x)(?!(?:[0-9A-Za-z_]))"
+		match: "(?x)(?!(?:[0-9A-Za-z_]))",
 	},
 	"simple-id": {
-		match: "(?x)\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))"
+		match: "(?x)\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))",
 	},
 	"lower-id": {
-		match: "(?x)\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))"
+		match: "(?x)\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))",
 	},
 	"upper-id": {
-		match: "(?x)\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))"
+		match: "(?x)\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))",
 	},
 	"at-lower-id": {
-		match: "(?x)@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))"
+		match: "(?x)@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))",
 	},
 	"comment-start": {
-		match: "(?x)// | /\\*"
+		match: "(?x)// | /\\*",
 	},
 	"non-context-sensitive": {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#operator-or-punctuation"
+				include: "#operator-or-punctuation",
 			},
 			{
-				include: "#keyword"
-			}
-		]
+				include: "#keyword",
+			},
+		],
 	},
 	"relational-operator": {
 		match: "(?x)<=|<|>=|>",
-		name: "keyword.operator.relational.ql"
+		name: "keyword.operator.relational.ql",
 	},
 	"comparison-operator": {
 		match: "(?x)=|\\!-",
-		name: "keyword.operator.comparison.ql"
+		name: "keyword.operator.comparison.ql",
 	},
 	"arithmetic-operator": {
 		match: "(?x)\\+|-|\\*|/|%",
-		name: "keyword.operator.arithmetic.ql"
+		name: "keyword.operator.arithmetic.ql",
 	},
 	comma: {
 		match: "(?x),",
-		name: "punctuation.separator.comma.ql"
+		name: "punctuation.separator.comma.ql",
 	},
 	semicolon: {
 		match: "(?x);",
-		name: "punctuation.separator.statement.ql"
+		name: "punctuation.separator.statement.ql",
 	},
 	dot: {
 		match: "(?x)\\.",
-		name: "punctuation.accessor.ql"
+		name: "punctuation.accessor.ql",
 	},
 	dotdot: {
 		match: "(?x)\\.\\.",
-		name: "punctuation.operator.range.ql"
+		name: "punctuation.operator.range.ql",
 	},
 	pipe: {
 		match: "(?x)\\|",
-		name: "punctuation.separator.pipe.ql"
+		name: "punctuation.separator.pipe.ql",
 	},
 	"open-paren": {
 		match: "(?x)\\(",
-		name: "punctuation.parenthesis.open.ql"
+		name: "punctuation.parenthesis.open.ql",
 	},
 	"close-paren": {
 		match: "(?x)\\)",
-		name: "punctuation.parenthesis.close.ql"
+		name: "punctuation.parenthesis.close.ql",
 	},
 	"open-brace": {
 		match: "(?x)\\{",
-		name: "punctuation.curlybrace.open.ql"
+		name: "punctuation.curlybrace.open.ql",
 	},
 	"close-brace": {
 		match: "(?x)\\}",
-		name: "punctuation.curlybrace.close.ql"
+		name: "punctuation.curlybrace.close.ql",
 	},
 	"open-bracket": {
 		match: "(?x)\\[",
-		name: "punctuation.squarebracket.open.ql"
+		name: "punctuation.squarebracket.open.ql",
 	},
 	"close-bracket": {
 		match: "(?x)\\]",
-		name: "punctuation.squarebracket.close.ql"
+		name: "punctuation.squarebracket.close.ql",
 	},
 	"operator-or-punctuation": {
 		patterns: [
 			{
-				include: "#relational-operator"
+				include: "#relational-operator",
 			},
 			{
-				include: "#comparison-operator"
+				include: "#comparison-operator",
 			},
 			{
-				include: "#arithmetic-operator"
+				include: "#arithmetic-operator",
 			},
 			{
-				include: "#comma"
+				include: "#comma",
 			},
 			{
-				include: "#semicolon"
+				include: "#semicolon",
 			},
 			{
-				include: "#dot"
+				include: "#dot",
 			},
 			{
-				include: "#dotdot"
+				include: "#dotdot",
 			},
 			{
-				include: "#pipe"
+				include: "#pipe",
 			},
 			{
-				include: "#open-paren"
+				include: "#open-paren",
 			},
 			{
-				include: "#close-paren"
+				include: "#close-paren",
 			},
 			{
-				include: "#open-brace"
+				include: "#open-brace",
 			},
 			{
-				include: "#close-brace"
+				include: "#close-brace",
 			},
 			{
-				include: "#open-bracket"
+				include: "#open-bracket",
 			},
 			{
-				include: "#close-bracket"
-			}
-		]
+				include: "#close-bracket",
+			},
+		],
 	},
 	"dont-care": {
 		match: "(?x)\\b(?:_)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "variable.language.dont-care.ql"
+		name: "variable.language.dont-care.ql",
 	},
 	and: {
 		match: "(?x)\\b(?:and)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.and.ql"
+		name: "keyword.other.and.ql",
 	},
 	any: {
 		match: "(?x)\\b(?:any)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.quantifier.any.ql"
+		name: "keyword.quantifier.any.ql",
 	},
 	as: {
 		match: "(?x)\\b(?:as)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.as.ql"
+		name: "keyword.other.as.ql",
 	},
 	asc: {
 		match: "(?x)\\b(?:asc)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.order.asc.ql"
+		name: "keyword.order.asc.ql",
 	},
 	avg: {
 		match: "(?x)\\b(?:avg)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.avg.ql"
+		name: "keyword.aggregate.avg.ql",
 	},
 	boolean: {
 		match: "(?x)\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.type.boolean.ql"
+		name: "keyword.type.boolean.ql",
 	},
 	by: {
 		match: "(?x)\\b(?:by)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.order.by.ql"
+		name: "keyword.order.by.ql",
 	},
 	"class": {
 		match: "(?x)\\b(?:class)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.class.ql"
+		name: "keyword.other.class.ql",
 	},
 	concat: {
 		match: "(?x)\\b(?:concat)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.concat.ql"
+		name: "keyword.aggregate.concat.ql",
 	},
 	count: {
 		match: "(?x)\\b(?:count)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.count.ql"
+		name: "keyword.aggregate.count.ql",
 	},
 	date: {
 		match: "(?x)\\b(?:date)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.type.date.ql"
+		name: "keyword.type.date.ql",
 	},
 	desc: {
 		match: "(?x)\\b(?:desc)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.order.desc.ql"
+		name: "keyword.order.desc.ql",
 	},
 	"else": {
 		match: "(?x)\\b(?:else)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.else.ql"
+		name: "keyword.other.else.ql",
 	},
 	exists: {
 		match: "(?x)\\b(?:exists)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.quantifier.exists.ql"
+		name: "keyword.quantifier.exists.ql",
 	},
 	"extends": {
 		match: "(?x)\\b(?:extends)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.extends.ql"
+		name: "keyword.other.extends.ql",
 	},
 	"false": {
 		match: "(?x)\\b(?:false)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "constant.language.boolean.false.ql"
+		name: "constant.language.boolean.false.ql",
 	},
 	float: {
 		match: "(?x)\\b(?:float)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.type.float.ql"
+		name: "keyword.type.float.ql",
 	},
 	forall: {
 		match: "(?x)\\b(?:forall)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.quantifier.forall.ql"
+		name: "keyword.quantifier.forall.ql",
 	},
 	forex: {
 		match: "(?x)\\b(?:forex)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.quantifier.forex.ql"
+		name: "keyword.quantifier.forex.ql",
 	},
 	from: {
 		match: "(?x)\\b(?:from)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.from.ql"
+		name: "keyword.other.from.ql",
 	},
 	"if": {
 		match: "(?x)\\b(?:if)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.if.ql"
+		name: "keyword.other.if.ql",
 	},
 	implies: {
 		match: "(?x)\\b(?:implies)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.implies.ql"
+		name: "keyword.other.implies.ql",
 	},
 	"import": {
 		match: "(?x)\\b(?:import)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.import.ql"
+		name: "keyword.other.import.ql",
 	},
 	"in": {
 		match: "(?x)\\b(?:in)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.in.ql"
+		name: "keyword.other.in.ql",
 	},
 	"instanceof": {
 		match: "(?x)\\b(?:instanceof)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.instanceof.ql"
+		name: "keyword.other.instanceof.ql",
 	},
 	int: {
 		match: "(?x)\\b(?:int)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.type.int.ql"
+		name: "keyword.type.int.ql",
 	},
 	max: {
 		match: "(?x)\\b(?:max)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.max.ql"
+		name: "keyword.aggregate.max.ql",
 	},
 	min: {
 		match: "(?x)\\b(?:min)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.min.ql"
+		name: "keyword.aggregate.min.ql",
 	},
 	module: {
 		match: "(?x)\\b(?:module)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.module.ql"
+		name: "keyword.other.module.ql",
 	},
 	newtype: {
 		match: "(?x)\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.newtype.ql"
+		name: "keyword.other.newtype.ql",
 	},
 	none: {
 		match: "(?x)\\b(?:none)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.quantifier.none.ql"
+		name: "keyword.quantifier.none.ql",
 	},
 	not: {
 		match: "(?x)\\b(?:not)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.not.ql"
+		name: "keyword.other.not.ql",
 	},
 	or: {
 		match: "(?x)\\b(?:or)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.or.ql"
+		name: "keyword.other.or.ql",
 	},
 	order: {
 		match: "(?x)\\b(?:order)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.order.order.ql"
+		name: "keyword.order.order.ql",
 	},
 	predicate: {
 		match: "(?x)\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.predicate.ql"
+		name: "keyword.other.predicate.ql",
 	},
 	rank: {
 		match: "(?x)\\b(?:rank)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.rank.ql"
+		name: "keyword.aggregate.rank.ql",
 	},
 	result: {
 		match: "(?x)\\b(?:result)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "variable.language.result.ql"
+		name: "variable.language.result.ql",
 	},
 	select: {
 		match: "(?x)\\b(?:select)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.query.select.ql"
+		name: "keyword.query.select.ql",
 	},
 	strictconcat: {
 		match: "(?x)\\b(?:strictconcat)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.strictconcat.ql"
+		name: "keyword.aggregate.strictconcat.ql",
 	},
 	strictcount: {
 		match: "(?x)\\b(?:strictcount)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.strictcount.ql"
+		name: "keyword.aggregate.strictcount.ql",
 	},
 	strictsum: {
 		match: "(?x)\\b(?:strictsum)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.strictsum.ql"
+		name: "keyword.aggregate.strictsum.ql",
 	},
 	string: {
 		match: "(?x)\\b(?:string)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.type.string.ql"
+		name: "keyword.type.string.ql",
 	},
 	sum: {
 		match: "(?x)\\b(?:sum)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.aggregate.sum.ql"
+		name: "keyword.aggregate.sum.ql",
 	},
 	"super": {
 		match: "(?x)\\b(?:super)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "variable.language.super.ql"
+		name: "variable.language.super.ql",
 	},
 	then: {
 		match: "(?x)\\b(?:then)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.other.then.ql"
+		name: "keyword.other.then.ql",
 	},
 	"this": {
 		match: "(?x)\\b(?:this)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "variable.language.this.ql"
+		name: "variable.language.this.ql",
 	},
 	"true": {
 		match: "(?x)\\b(?:true)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "constant.language.boolean.true.ql"
+		name: "constant.language.boolean.true.ql",
 	},
 	where: {
 		match: "(?x)\\b(?:where)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "keyword.query.where.ql"
+		name: "keyword.query.where.ql",
 	},
 	keyword: {
 		patterns: [
 			{
-				include: "#dont-care"
+				include: "#dont-care",
 			},
 			{
-				include: "#and"
+				include: "#and",
 			},
 			{
-				include: "#any"
+				include: "#any",
 			},
 			{
-				include: "#as"
+				include: "#as",
 			},
 			{
-				include: "#asc"
+				include: "#asc",
 			},
 			{
-				include: "#avg"
+				include: "#avg",
 			},
 			{
-				include: "#boolean"
+				include: "#boolean",
 			},
 			{
-				include: "#by"
+				include: "#by",
 			},
 			{
-				include: "#class"
+				include: "#class",
 			},
 			{
-				include: "#concat"
+				include: "#concat",
 			},
 			{
-				include: "#count"
+				include: "#count",
 			},
 			{
-				include: "#date"
+				include: "#date",
 			},
 			{
-				include: "#desc"
+				include: "#desc",
 			},
 			{
-				include: "#else"
+				include: "#else",
 			},
 			{
-				include: "#exists"
+				include: "#exists",
 			},
 			{
-				include: "#extends"
+				include: "#extends",
 			},
 			{
-				include: "#false"
+				include: "#false",
 			},
 			{
-				include: "#float"
+				include: "#float",
 			},
 			{
-				include: "#forall"
+				include: "#forall",
 			},
 			{
-				include: "#forex"
+				include: "#forex",
 			},
 			{
-				include: "#from"
+				include: "#from",
 			},
 			{
-				include: "#if"
+				include: "#if",
 			},
 			{
-				include: "#implies"
+				include: "#implies",
 			},
 			{
-				include: "#import"
+				include: "#import",
 			},
 			{
-				include: "#in"
+				include: "#in",
 			},
 			{
-				include: "#instanceof"
+				include: "#instanceof",
 			},
 			{
-				include: "#int"
+				include: "#int",
 			},
 			{
-				include: "#max"
+				include: "#max",
 			},
 			{
-				include: "#min"
+				include: "#min",
 			},
 			{
-				include: "#module"
+				include: "#module",
 			},
 			{
-				include: "#newtype"
+				include: "#newtype",
 			},
 			{
-				include: "#none"
+				include: "#none",
 			},
 			{
-				include: "#not"
+				include: "#not",
 			},
 			{
-				include: "#or"
+				include: "#or",
 			},
 			{
-				include: "#order"
+				include: "#order",
 			},
 			{
-				include: "#predicate"
+				include: "#predicate",
 			},
 			{
-				include: "#rank"
+				include: "#rank",
 			},
 			{
-				include: "#result"
+				include: "#result",
 			},
 			{
-				include: "#select"
+				include: "#select",
 			},
 			{
-				include: "#strictconcat"
+				include: "#strictconcat",
 			},
 			{
-				include: "#strictcount"
+				include: "#strictcount",
 			},
 			{
-				include: "#strictsum"
+				include: "#strictsum",
 			},
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
-				include: "#sum"
+				include: "#sum",
 			},
 			{
-				include: "#super"
+				include: "#super",
 			},
 			{
-				include: "#then"
+				include: "#then",
 			},
 			{
-				include: "#this"
+				include: "#this",
 			},
 			{
-				include: "#true"
+				include: "#true",
 			},
 			{
-				include: "#where"
-			}
-		]
+				include: "#where",
+			},
+		],
 	},
 	"predicate-start-keyword": {
 		patterns: [
 			{
-				include: "#boolean"
+				include: "#boolean",
 			},
 			{
-				include: "#date"
+				include: "#date",
 			},
 			{
-				include: "#float"
+				include: "#float",
 			},
 			{
-				include: "#int"
+				include: "#int",
 			},
 			{
-				include: "#predicate"
+				include: "#predicate",
 			},
 			{
-				include: "#string"
-			}
-		]
+				include: "#string",
+			},
+		],
 	},
 	abstract: {
 		match: "(?x)\\b(?:abstract)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.abstract.ql"
+		name: "storage.modifier.abstract.ql",
 	},
 	bindingset: {
 		match: "(?x)\\b(?:bindingset)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.bindingset.ql"
+		name: "storage.modifier.bindingset.ql",
 	},
 	cached: {
 		match: "(?x)\\b(?:cached)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.cached.ql"
+		name: "storage.modifier.cached.ql",
 	},
 	deprecated: {
 		match: "(?x)\\b(?:deprecated)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.deprecated.ql"
+		name: "storage.modifier.deprecated.ql",
 	},
 	external: {
 		match: "(?x)\\b(?:external)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.external.ql"
+		name: "storage.modifier.external.ql",
 	},
 	final: {
 		match: "(?x)\\b(?:final)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.final.ql"
+		name: "storage.modifier.final.ql",
 	},
 	language: {
 		match: "(?x)\\b(?:language)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.language.ql"
+		name: "storage.modifier.language.ql",
 	},
 	library: {
 		match: "(?x)\\b(?:library)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.library.ql"
+		name: "storage.modifier.library.ql",
 	},
 	override: {
 		match: "(?x)\\b(?:override)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.override.ql"
+		name: "storage.modifier.override.ql",
 	},
 	pragma: {
 		match: "(?x)\\b(?:pragma)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.pragma.ql"
+		name: "storage.modifier.pragma.ql",
 	},
 	"private": {
 		match: "(?x)\\b(?:private)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.private.ql"
+		name: "storage.modifier.private.ql",
 	},
 	query: {
 		match: "(?x)\\b(?:query)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.query.ql"
+		name: "storage.modifier.query.ql",
 	},
 	transient: {
 		match: "(?x)\\b(?:transient)(?:(?!(?:[0-9A-Za-z_])))",
-		name: "storage.modifier.transient.ql"
+		name: "storage.modifier.transient.ql",
 	},
 	"annotation-keyword": {
 		patterns: [
 			{
-				include: "#abstract"
+				include: "#abstract",
 			},
 			{
-				include: "#bindingset"
+				include: "#bindingset",
 			},
 			{
-				include: "#cached"
+				include: "#cached",
 			},
 			{
-				include: "#deprecated"
+				include: "#deprecated",
 			},
 			{
-				include: "#external"
+				include: "#external",
 			},
 			{
-				include: "#final"
+				include: "#final",
 			},
 			{
-				include: "#language"
+				include: "#language",
 			},
 			{
-				include: "#library"
+				include: "#library",
 			},
 			{
-				include: "#override"
+				include: "#override",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#private"
+				include: "#private",
 			},
 			{
-				include: "#query"
+				include: "#query",
 			},
 			{
-				include: "#transient"
-			}
-		]
+				include: "#transient",
+			},
+		],
 	},
 	comment: {
 		patterns: [
@@ -623,166 +620,167 @@ const repository = {
 				patterns: [
 					{
 						begin: "(?x)(?<=/\\*\\*)([^*]|\\*(?!/))*$",
-						"while": "(?x)(^|\\G)\\s*([^*]|\\*(?!/))(?=([^*]|[*](?!/))*$)",
+						"while":
+							"(?x)(^|\\G)\\s*([^*]|\\*(?!/))(?=([^*]|[*](?!/))*$)",
 						patterns: [
 							{
 								match: "(?x)\\G\\s* (@\\S+)",
-								name: "keyword.tag.ql"
-							}
-						]
-					}
-				]
+								name: "keyword.tag.ql",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?x)/\\*",
 				end: "(?x)\\*/",
-				name: "comment.block.ql"
+				name: "comment.block.ql",
 			},
 			{
 				match: "(?x)//.*$",
-				name: "comment.line.double-slash.ql"
-			}
-		]
+				name: "comment.line.double-slash.ql",
+			},
+		],
 	},
 	"module-member": {
 		patterns: [
 			{
-				include: "#import-directive"
+				include: "#import-directive",
 			},
 			{
-				include: "#import-as-clause"
+				include: "#import-as-clause",
 			},
 			{
-				include: "#module-declaration"
+				include: "#module-declaration",
 			},
 			{
-				include: "#class-declaration"
+				include: "#class-declaration",
 			},
 			{
-				include: "#select-clause"
+				include: "#select-clause",
 			},
 			{
-				include: "#predicate-or-field-declaration"
+				include: "#predicate-or-field-declaration",
 			},
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
-				include: "#annotation"
-			}
-		]
+				include: "#annotation",
+			},
+		],
 	},
 	"import-directive": {
 		end: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))) (?!\\s*(\\.|\\:\\:))",
 		endCaptures: {
 			"0": {
-				name: "entity.name.type.namespace.ql"
-			}
+				name: "entity.name.type.namespace.ql",
+			},
 		},
 		name: "meta.block.import-directive.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.namespace.ql"
-			}
+				name: "entity.name.type.namespace.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:import)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#import"
-					}
-				]
-			}
-		}
+						include: "#import",
+					},
+				],
+			},
+		},
 	},
 	"end-of-as-clause": {
-		match: "(?x)(?: (?<=(?:[0-9A-Za-z_])) (?!(?:[0-9A-Za-z_])) (?<!(?<!(?:[0-9A-Za-z_]))as)) | (?=\\s* (?!(?:// | /\\*) | (?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))) \\S) | (?=\\s* (?:(?:(?:\\b(?:_)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:and)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:any)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:asc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:avg)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:by)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:class)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:concat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:count)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:date)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:desc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:else)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:exists)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:extends)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:false)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:float)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forall)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forex)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:if)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:implies)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:import)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:in)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:instanceof)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:int)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:max)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:min)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:module)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:none)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:not)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:or)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:order)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:rank)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:result)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictconcat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictcount)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictsum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:string)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:sum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:super)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:then)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:this)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:true)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_])))))))"
+		match: "(?x)(?: (?<=(?:[0-9A-Za-z_])) (?!(?:[0-9A-Za-z_])) (?<!(?<!(?:[0-9A-Za-z_]))as)) | (?=\\s* (?!(?:// | /\\*) | (?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))) \\S) | (?=\\s* (?:(?:(?:\\b(?:_)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:and)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:any)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:asc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:avg)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:by)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:class)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:concat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:count)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:date)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:desc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:else)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:exists)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:extends)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:false)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:float)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forall)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forex)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:if)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:implies)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:import)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:in)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:instanceof)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:int)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:max)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:min)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:module)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:none)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:not)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:or)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:order)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:rank)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:result)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictconcat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictcount)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictsum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:string)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:sum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:super)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:then)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:this)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:true)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_])))))))",
 	},
 	"import-as-clause": {
 		end: "(?x)(?:(?: (?<=(?:[0-9A-Za-z_])) (?!(?:[0-9A-Za-z_])) (?<!(?<!(?:[0-9A-Za-z_]))as)) | (?=\\s* (?!(?:// | /\\*) | (?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))) \\S) | (?=\\s* (?:(?:(?:\\b(?:_)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:and)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:any)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:asc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:avg)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:by)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:class)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:concat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:count)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:date)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:desc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:else)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:exists)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:extends)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:false)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:float)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forall)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forex)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:if)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:implies)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:import)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:in)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:instanceof)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:int)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:max)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:min)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:module)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:none)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:not)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:or)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:order)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:rank)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:result)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictconcat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictcount)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictsum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:string)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:sum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:super)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:then)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:this)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:true)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_]))))))))",
 		name: "meta.block.import-as-clause.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.namespace.ql"
-			}
+				name: "entity.name.type.namespace.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#as"
-					}
-				]
-			}
-		}
+						include: "#as",
+					},
+				],
+			},
+		},
 	},
 	"module-declaration": {
 		end: "(?x)(?<=\\}|;)",
 		name: "meta.block.module-declaration.ql",
 		patterns: [
 			{
-				include: "#module-body"
+				include: "#module-body",
 			},
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.namespace.ql"
-			}
+				name: "entity.name.type.namespace.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:module)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#module"
-					}
-				]
-			}
-		}
+						include: "#module",
+					},
+				],
+			},
+		},
 	},
 	"module-body": {
 		name: "meta.block.module-body.ql",
 		patterns: [
 			{
-				include: "#module-member"
-			}
+				include: "#module-member",
+			},
 		],
 		begin: "(?x)((?:\\{))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-brace"
-					}
-				]
-			}
+						include: "#open-brace",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\}))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-brace"
-					}
-				]
-			}
-		}
+						include: "#close-brace",
+					},
+				],
+			},
+		},
 	},
 	"module-qualifier": {
 		match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))) (?=\\s*\\:\\:)",
-		name: "entity.name.type.namespace.ql"
+		name: "entity.name.type.namespace.ql",
 	},
 	"predicate-or-field-declaration": {
 		begin: "(?x)(?:(?=(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))))(?!(?:(?:(?:\\b(?:_)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:and)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:any)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:asc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:avg)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:by)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:class)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:concat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:count)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:date)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:desc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:else)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:exists)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:extends)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:false)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:float)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forall)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forex)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:if)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:implies)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:import)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:in)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:instanceof)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:int)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:max)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:min)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:module)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:none)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:not)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:or)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:order)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:rank)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:result)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictconcat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictcount)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictsum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:string)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:sum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:super)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:then)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:this)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:true)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_]))))))|(?:(?:(?:\\b(?:abstract)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:bindingset)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:cached)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:deprecated)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:external)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:final)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:language)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:library)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:override)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:pragma)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:private)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:query)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:transient)(?:(?!(?:[0-9A-Za-z_])))))))) | (?=(?:(?:(?:\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:date)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:float)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:int)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:string)(?:(?!(?:[0-9A-Za-z_]))))))) | (?=(?:@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))))",
@@ -790,461 +788,461 @@ const repository = {
 		name: "meta.block.predicate-or-field-declaration.ql",
 		patterns: [
 			{
-				include: "#predicate-parameter-list"
+				include: "#predicate-parameter-list",
 			},
 			{
-				include: "#predicate-body"
+				include: "#predicate-body",
 			},
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
-				include: "#module-qualifier"
+				include: "#module-qualifier",
 			},
 			{
 				match: "(?x)(?:\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))(?=\\s*;)",
-				name: "variable.field.ql"
+				name: "variable.field.ql",
 			},
 			{
 				match: "(?x)(?:\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.function.ql"
+				name: "entity.name.function.ql",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))|(?:@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.ql"
-			}
-		]
+				name: "entity.name.type.ql",
+			},
+		],
 	},
 	"predicate-parameter-list": {
 		name: "meta.block.predicate-parameter-list.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))(?=\\s*(?:,|\\)))",
-				name: "variable.parameter.ql"
+				name: "variable.parameter.ql",
 			},
 			{
-				include: "#module-qualifier"
+				include: "#module-qualifier",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))|(?:@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.ql"
+				name: "entity.name.type.ql",
 			},
 			{
 				match: "(?x)(?:\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "variable.parameter.ql"
-			}
+				name: "variable.parameter.ql",
+			},
 		],
 		begin: "(?x)((?:\\())",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-paren"
-					}
-				]
-			}
+						include: "#open-paren",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\)))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-paren"
-					}
-				]
-			}
-		}
+						include: "#close-paren",
+					},
+				],
+			},
+		},
 	},
 	"expr-as-clause": {
 		end: "(?x)(?:(?: (?<=(?:[0-9A-Za-z_])) (?!(?:[0-9A-Za-z_])) (?<!(?<!(?:[0-9A-Za-z_]))as)) | (?=\\s* (?!(?:// | /\\*) | (?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))) \\S) | (?=\\s* (?:(?:(?:\\b(?:_)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:and)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:any)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:asc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:avg)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:boolean)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:by)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:class)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:concat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:count)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:date)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:desc)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:else)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:exists)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:extends)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:false)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:float)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forall)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:forex)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:if)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:implies)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:import)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:in)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:instanceof)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:int)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:max)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:min)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:module)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:none)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:not)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:or)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:order)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:predicate)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:rank)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:result)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictconcat)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictcount)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:strictsum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:string)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:sum)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:super)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:then)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:this)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:true)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_]))))))))",
 		name: "meta.block.expr-as-clause.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "variable.other.ql"
-			}
+				name: "variable.other.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#as"
-					}
-				]
-			}
-		}
+						include: "#as",
+					},
+				],
+			},
+		},
 	},
 	"predicate-body-contents": {
 		patterns: [
 			{
-				include: "#expr-as-clause"
+				include: "#expr-as-clause",
 			},
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
-				include: "#module-qualifier"
+				include: "#module-qualifier",
 			},
 			{
 				match: "(?x)(?:\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))\\s*(?:\\*|\\+)?\\s*(?=\\()",
-				name: "entity.name.function.ql"
+				name: "entity.name.function.ql",
 			},
 			{
 				match: "(?x)(?:\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "variable.other.ql"
+				name: "variable.other.ql",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))|(?:@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.ql"
-			}
-		]
+				name: "entity.name.type.ql",
+			},
+		],
 	},
 	"predicate-body": {
 		name: "meta.block.predicate-body.ql",
 		patterns: [
 			{
-				include: "#predicate-body-contents"
-			}
+				include: "#predicate-body-contents",
+			},
 		],
 		begin: "(?x)((?:\\{))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-brace"
-					}
-				]
-			}
+						include: "#open-brace",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\}))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-brace"
-					}
-				]
-			}
-		}
+						include: "#close-brace",
+					},
+				],
+			},
+		},
 	},
 	annotation: {
 		patterns: [
 			{
-				include: "#bindingset-annotation"
+				include: "#bindingset-annotation",
 			},
 			{
-				include: "#language-annotation"
+				include: "#language-annotation",
 			},
 			{
-				include: "#pragma-annotation"
+				include: "#pragma-annotation",
 			},
 			{
-				include: "#annotation-keyword"
-			}
-		]
+				include: "#annotation-keyword",
+			},
+		],
 	},
 	"bindingset-annotation": {
 		end: "(?x)(?! \\s | (?:// | /\\*) | \\[ ) | (?<=\\])",
 		name: "meta.block.bindingset-annotation.ql",
 		patterns: [
 			{
-				include: "#bindingset-annotation-body"
+				include: "#bindingset-annotation-body",
 			},
 			{
-				include: "#non-context-sensitive"
-			}
+				include: "#non-context-sensitive",
+			},
 		],
 		begin: "(?x)((?:\\b(?:bindingset)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#bindingset"
-					}
-				]
-			}
-		}
+						include: "#bindingset",
+					},
+				],
+			},
+		},
 	},
 	"bindingset-annotation-body": {
 		name: "meta.block.bindingset-annotation-body.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "variable.parameter.ql"
-			}
+				name: "variable.parameter.ql",
+			},
 		],
 		begin: "(?x)((?:\\[))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-bracket"
-					}
-				]
-			}
+						include: "#open-bracket",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\]))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-bracket"
-					}
-				]
-			}
-		}
+						include: "#close-bracket",
+					},
+				],
+			},
+		},
 	},
 	"language-annotation": {
 		end: "(?x)(?! \\s | (?:// | /\\*) | \\[ ) | (?<=\\])",
 		name: "meta.block.language-annotation.ql",
 		patterns: [
 			{
-				include: "#language-annotation-body"
+				include: "#language-annotation-body",
 			},
 			{
-				include: "#non-context-sensitive"
-			}
+				include: "#non-context-sensitive",
+			},
 		],
 		begin: "(?x)((?:\\b(?:language)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#language"
-					}
-				]
-			}
-		}
+						include: "#language",
+					},
+				],
+			},
+		},
 	},
 	"language-annotation-body": {
 		name: "meta.block.language-annotation-body.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)\\b(?:monotonicAggregates)(?:(?!(?:[0-9A-Za-z_])))",
-				name: "storage.modifier.ql"
-			}
+				name: "storage.modifier.ql",
+			},
 		],
 		begin: "(?x)((?:\\[))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-bracket"
-					}
-				]
-			}
+						include: "#open-bracket",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\]))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-bracket"
-					}
-				]
-			}
-		}
+						include: "#close-bracket",
+					},
+				],
+			},
+		},
 	},
 	"pragma-annotation": {
 		end: "(?x)(?! \\s | (?:// | /\\*) | \\[ ) | (?<=\\])",
 		name: "meta.block.pragma-annotation.ql",
 		patterns: [
 			{
-				include: "#pragma-annotation-body"
+				include: "#pragma-annotation-body",
 			},
 			{
-				include: "#non-context-sensitive"
-			}
+				include: "#non-context-sensitive",
+			},
 		],
 		begin: "(?x)((?:\\b(?:pragma)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#pragma"
-					}
-				]
-			}
-		}
+						include: "#pragma",
+					},
+				],
+			},
+		},
 	},
 	"pragma-annotation-body": {
 		name: "meta.block.pragma-annotation-body.ql",
 		patterns: [
 			{
 				match: "(?x)\\b(?:inline|noinline|nomagic|noopt)\\b",
-				name: "storage.modifier.ql"
-			}
+				name: "storage.modifier.ql",
+			},
 		],
 		begin: "(?x)((?:\\[))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-bracket"
-					}
-				]
-			}
+						include: "#open-bracket",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\]))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-bracket"
-					}
-				]
-			}
-		}
+						include: "#close-bracket",
+					},
+				],
+			},
+		},
 	},
 	"newtype-declaration": {
 		end: "(?x)(?! \\s | (?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_])))) | (?:// | /\\*) | \\= | \\( )",
 		name: "meta.block.newtype.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
-				include: "#newtype-branch"
-			}
+				include: "#newtype-branch",
+			},
 		],
 		begin: "(?x)((?:\\b(?:newtype)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#newtype"
-					}
-				]
-			}
-		}
+						include: "#newtype",
+					},
+				],
+			},
+		},
 	},
 	"newtype-branch": {
 		begin: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
 		beginCaptures: {
 			"0": {
-				name: "entity.name.type.ql"
-			}
+				name: "entity.name.type.ql",
+			},
 		},
 		end: "(?x)(?<=\\}) | (?! \\s | (?:// | /\\*) | \\{ )",
 		name: "meta.block.newtype-branch.ql",
 		patterns: [
 			{
-				include: "#predicate-body"
+				include: "#predicate-body",
 			},
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.ql"
-			}
-		]
+				name: "entity.name.type.ql",
+			},
+		],
 	},
 	"class-declaration": {
 		end: "(?x)(?<= \\} | ; )",
 		name: "meta.block.class-declaration.ql",
 		patterns: [
 			{
-				include: "#class-body"
+				include: "#class-body",
 			},
 			{
-				include: "#extends-clause"
+				include: "#extends-clause",
 			},
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.class.ql"
-			}
+				name: "entity.name.type.class.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:class)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#class"
-					}
-				]
-			}
-		}
+						include: "#class",
+					},
+				],
+			},
+		},
 	},
 	"extends-clause": {
 		end: "(?x)(?= \\{ )",
 		name: "meta.block.extends-clause.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))|(?:@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.ql"
-			}
+				name: "entity.name.type.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:extends)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#extends"
-					}
-				]
-			}
-		}
+						include: "#extends",
+					},
+				],
+			},
+		},
 	},
 	"class-body": {
 		name: "meta.block.class-body.ql",
 		patterns: [
 			{
-				include: "#class-member"
-			}
+				include: "#class-member",
+			},
 		],
 		begin: "(?x)((?:\\{))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#open-brace"
-					}
-				]
-			}
+						include: "#open-brace",
+					},
+				],
+			},
 		},
 		end: "(?x)((?:\\}))",
 		endCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#close-brace"
-					}
-				]
-			}
-		}
+						include: "#close-brace",
+					},
+				],
+			},
+		},
 	},
 	"class-member": {
 		patterns: [
 			{
-				include: "#predicate-or-field-declaration"
+				include: "#predicate-or-field-declaration",
 			},
 			{
-				include: "#annotation"
+				include: "#annotation",
 			},
 			{
-				include: "#non-context-sensitive"
-			}
-		]
+				include: "#non-context-sensitive",
+			},
+		],
 	},
 	"select-clause": {
 		begin: "(?x)(?=(?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_])))))",
@@ -1252,162 +1250,162 @@ const repository = {
 		name: "meta.block.select-clause.ql",
 		patterns: [
 			{
-				include: "#from-section"
+				include: "#from-section",
 			},
 			{
-				include: "#where-section"
+				include: "#where-section",
 			},
 			{
-				include: "#select-section"
-			}
-		]
+				include: "#select-section",
+			},
+		],
 	},
 	"from-section": {
 		end: "(?x)(?= (?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_])))) | (?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_])))) )",
 		name: "meta.block.from-section.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))(?=\\s*(?:,|(?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_]))))|(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_]))))|$))",
-				name: "variable.parameter.ql"
+				name: "variable.parameter.ql",
 			},
 			{
-				include: "#module-qualifier"
+				include: "#module-qualifier",
 			},
 			{
 				match: "(?x)(?:\\b [A-Z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))|(?:@[a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "entity.name.type.ql"
+				name: "entity.name.type.ql",
 			},
 			{
 				match: "(?x)(?:\\b [a-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "variable.parameter.ql"
-			}
+				name: "variable.parameter.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:from)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#from"
-					}
-				]
-			}
-		}
+						include: "#from",
+					},
+				],
+			},
+		},
 	},
 	"where-section": {
 		end: "(?x)(?=(?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_])))))",
 		name: "meta.block.where-section.ql",
 		patterns: [
 			{
-				include: "#predicate-body-contents"
-			}
+				include: "#predicate-body-contents",
+			},
 		],
 		begin: "(?x)((?:\\b(?:where)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#where"
-					}
-				]
-			}
-		}
+						include: "#where",
+					},
+				],
+			},
+		},
 	},
 	"select-section": {
 		end: "(?x)(?=\\n)",
 		name: "meta.block.select-section.ql",
 		patterns: [
 			{
-				include: "#predicate-body-contents"
+				include: "#predicate-body-contents",
 			},
 			{
-				include: "#select-as-clause"
-			}
+				include: "#select-as-clause",
+			},
 		],
 		begin: "(?x)((?:\\b(?:select)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#select"
-					}
-				]
-			}
-		}
+						include: "#select",
+					},
+				],
+			},
+		},
 	},
 	"select-as-clause": {
 		end: "(?x)(?<=(?:[0-9A-Za-z_])(?:(?!(?:[0-9A-Za-z_]))))",
 		match: "(?x)meta.block.select-as-clause.ql",
 		patterns: [
 			{
-				include: "#non-context-sensitive"
+				include: "#non-context-sensitive",
 			},
 			{
 				match: "(?x)(?:\\b [A-Za-z][0-9A-Za-z_]* (?:(?!(?:[0-9A-Za-z_]))))",
-				name: "variable.other.ql"
-			}
+				name: "variable.other.ql",
+			},
 		],
 		begin: "(?x)((?:\\b(?:as)(?:(?!(?:[0-9A-Za-z_])))))",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "#as"
-					}
-				]
-			}
-		}
+						include: "#as",
+					},
+				],
+			},
+		},
 	},
 	literal: {
 		patterns: [
 			{
-				include: "#float-literal"
+				include: "#float-literal",
 			},
 			{
-				include: "#int-literal"
+				include: "#int-literal",
 			},
 			{
-				include: "#string-literal"
-			}
-		]
+				include: "#string-literal",
+			},
+		],
 	},
 	"int-literal": {
 		match: "(?x)-?[0-9]+(?![0-9])",
-		name: "constant.numeric.decimal.ql"
+		name: "constant.numeric.decimal.ql",
 	},
 	"float-literal": {
 		match: "(?x)-?[0-9]+\\.[0-9]+(?![0-9])",
-		name: "constant.numeric.decimal.ql"
+		name: "constant.numeric.decimal.ql",
 	},
 	"string-literal": {
 		name: "string.quoted.double.ql",
-		begin: "(?x)\"",
+		begin: '(?x)"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.ql"
-			}
+				name: "punctuation.definition.string.begin.ql",
+			},
 		},
-		end: "(?x)(\") | ((?:[^\\\\\\n])$)",
+		end: '(?x)(") | ((?:[^\\\\\\n])$)',
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.string.end.ql"
+				name: "punctuation.definition.string.end.ql",
 			},
 			"2": {
-				name: "invalid.illegal.newline.ql"
-			}
+				name: "invalid.illegal.newline.ql",
+			},
 		},
 		patterns: [
 			{
-				include: "#string-escape"
-			}
-		]
+				include: "#string-escape",
+			},
+		],
 	},
 	"string-escape": {
-		match: "(?x)\\\\[\"\\\\nrt]",
-		name: "constant.character.escape.ql"
-	}
+		match: '(?x)\\\\["\\\\nrt]',
+		name: "constant.character.escape.ql",
+	},
 };
 const codeql_tmLanguage = {
 	name: name,
@@ -1415,7 +1413,15 @@ const codeql_tmLanguage = {
 	fileTypes: fileTypes,
 	uuid: uuid,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { codeql_tmLanguage as default, fileTypes, name, patterns, repository, scopeName, uuid };
+export {
+	codeql_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

@@ -6,7 +6,7 @@ const fred = {
 	name: name,
 	title: title,
 	image: image,
-	twitter: twitter
+	twitter: twitter,
 };
 
 export { fred as default, image, name, title, twitter };

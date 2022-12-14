@@ -2,74 +2,61 @@ const name = "css-variables";
 const type = "css";
 const colors = {
 	"editor.foreground": "#000001",
-	"editor.background": "#000002"
+	"editor.background": "#000002",
 };
 const tokenColors = [
 	{
 		settings: {
-			foreground: "#000001"
-		}
+			foreground: "#000001",
+		},
 	},
 	{
 		scope: [
 			"keyword.operator.accessor",
 			"meta.group.braces.round.function.arguments",
 			"meta.template.expression",
-			"markup.fenced_code meta.embedded.block"
+			"markup.fenced_code meta.embedded.block",
 		],
 		settings: {
-			foreground: "#000001"
-		}
+			foreground: "#000001",
+		},
 	},
 	{
 		scope: "emphasis",
 		settings: {
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"strong",
-			"markup.heading.markdown",
-			"markup.bold.markdown"
-		],
+		scope: ["strong", "markup.heading.markdown", "markup.bold.markdown"],
 		settings: {
-			fontStyle: "bold"
-		}
+			fontStyle: "bold",
+		},
 	},
 	{
-		scope: [
-			"markup.italic.markdown"
-		],
+		scope: ["markup.italic.markdown"],
 		settings: {
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "meta.link.inline.markdown",
 		settings: {
 			fontStyle: "underline",
-			foreground: "#000004"
-		}
+			foreground: "#000004",
+		},
 	},
 	{
-		scope: [
-			"string",
-			"markup.fenced_code",
-			"markup.inline"
-		],
+		scope: ["string", "markup.fenced_code", "markup.inline"],
 		settings: {
-			foreground: "#000005"
-		}
+			foreground: "#000005",
+		},
 	},
 	{
-		scope: [
-			"comment",
-			"string.quoted.docstring.multi"
-		],
+		scope: ["comment", "string.quoted.docstring.multi"],
 		settings: {
-			foreground: "#000006"
-		}
+			foreground: "#000006",
+		},
 	},
 	{
 		scope: [
@@ -83,11 +70,11 @@ const tokenColors = [
 			"variable.other.constant",
 			"meta.property-name",
 			"meta.property-value",
-			"support"
+			"support",
 		],
 		settings: {
-			foreground: "#000004"
-		}
+			foreground: "#000004",
+		},
 	},
 	{
 		scope: [
@@ -100,17 +87,17 @@ const tokenColors = [
 			"support.function.node",
 			"support.type.property-name.json",
 			"punctuation.separator.key-value",
-			"punctuation.definition.template-expression"
+			"punctuation.definition.template-expression",
 		],
 		settings: {
-			foreground: "#000007"
-		}
+			foreground: "#000007",
+		},
 	},
 	{
 		scope: "variable.parameter.function",
 		settings: {
-			foreground: "#000008"
-		}
+			foreground: "#000008",
+		},
 	},
 	{
 		scope: [
@@ -121,11 +108,11 @@ const tokenColors = [
 			"meta.instance.constructor",
 			"entity.other.attribute-name",
 			"entity.name.function",
-			"constant.keyword.clojure"
+			"constant.keyword.clojure",
 		],
 		settings: {
-			foreground: "#000009"
-		}
+			foreground: "#000009",
+		},
 	},
 	{
 		scope: [
@@ -135,41 +122,39 @@ const tokenColors = [
 			"string.interpolated",
 			"string.template",
 			"string.unquoted.plain.out.yaml",
-			"keyword.other.template"
+			"keyword.other.template",
 		],
 		settings: {
-			foreground: "#000010"
-		}
+			foreground: "#000010",
+		},
 	},
 	{
 		scope: [
 			"punctuation.definition.arguments",
 			"punctuation.definition.dict",
 			"punctuation.separator",
-			"meta.function-call.arguments"
+			"meta.function-call.arguments",
 		],
 		settings: {
-			foreground: "#000011"
-		}
+			foreground: "#000011",
+		},
 	},
 	{
 		name: "[Custom] Markdown links",
 		scope: [
 			"markup.underline.link",
-			"punctuation.definition.metadata.markdown"
+			"punctuation.definition.metadata.markdown",
 		],
 		settings: {
-			foreground: "#000012"
-		}
+			foreground: "#000012",
+		},
 	},
 	{
 		name: "[Custom] Markdown list",
-		scope: [
-			"beginning.punctuation.definition.list.markdown"
-		],
+		scope: ["beginning.punctuation.definition.list.markdown"],
 		settings: {
-			foreground: "#000005"
-		}
+			foreground: "#000005",
+		},
 	},
 	{
 		name: "[Custom] Markdown punctuation definition brackets",
@@ -177,18 +162,18 @@ const tokenColors = [
 			"punctuation.definition.string.begin.markdown",
 			"punctuation.definition.string.end.markdown",
 			"string.other.link.title.markdown",
-			"string.other.link.description.markdown"
+			"string.other.link.description.markdown",
 		],
 		settings: {
-			foreground: "#000007"
-		}
-	}
+			foreground: "#000007",
+		},
+	},
 ];
 const cssVariables = {
 	name: name,
 	type: type,
 	colors: colors,
-	tokenColors: tokenColors
+	tokenColors: tokenColors,
 };
 
 export { colors, cssVariables as default, name, tokenColors, type };

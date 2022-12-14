@@ -1,47 +1,45 @@
-const fileTypes = [
-	"sol"
-];
+const fileTypes = ["sol"];
 const name = "solidity";
 const patterns = [
 	{
-		include: "#natspec"
+		include: "#natspec",
 	},
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#operator"
+		include: "#operator",
 	},
 	{
-		include: "#global"
+		include: "#global",
 	},
 	{
-		include: "#control"
+		include: "#control",
 	},
 	{
-		include: "#constant"
+		include: "#constant",
 	},
 	{
-		include: "#primitive"
+		include: "#primitive",
 	},
 	{
-		include: "#type-primitive"
+		include: "#type-primitive",
 	},
 	{
-		include: "#type-modifier-extended-scope"
+		include: "#type-modifier-extended-scope",
 	},
 	{
-		include: "#declaration"
+		include: "#declaration",
 	},
 	{
-		include: "#function-call"
+		include: "#function-call",
 	},
 	{
-		include: "#assembly"
+		include: "#assembly",
 	},
 	{
-		include: "#punctuation"
-	}
+		include: "#punctuation",
+	},
 ];
 const repository = {
 	natspec: {
@@ -52,9 +50,9 @@ const repository = {
 				name: "comment.block.documentation",
 				patterns: [
 					{
-						include: "#natspec-tags"
-					}
-				]
+						include: "#natspec-tags",
+					},
+				],
 			},
 			{
 				begin: "///",
@@ -62,88 +60,88 @@ const repository = {
 				name: "comment.block.documentation",
 				patterns: [
 					{
-						include: "#natspec-tags"
-					}
-				]
-			}
-		]
+						include: "#natspec-tags",
+					},
+				],
+			},
+		],
 	},
 	"natspec-tags": {
 		patterns: [
 			{
-				include: "#comment-todo"
+				include: "#comment-todo",
 			},
 			{
-				include: "#natspec-tag-title"
+				include: "#natspec-tag-title",
 			},
 			{
-				include: "#natspec-tag-author"
+				include: "#natspec-tag-author",
 			},
 			{
-				include: "#natspec-tag-notice"
+				include: "#natspec-tag-notice",
 			},
 			{
-				include: "#natspec-tag-dev"
+				include: "#natspec-tag-dev",
 			},
 			{
-				include: "#natspec-tag-param"
+				include: "#natspec-tag-param",
 			},
 			{
-				include: "#natspec-tag-return"
-			}
-		]
+				include: "#natspec-tag-return",
+			},
+		],
 	},
 	"natspec-tag-title": {
 		match: "(@title)\\b",
-		name: "storage.type.title.natspec"
+		name: "storage.type.title.natspec",
 	},
 	"natspec-tag-author": {
 		match: "(@author)\\b",
-		name: "storage.type.author.natspec"
+		name: "storage.type.author.natspec",
 	},
 	"natspec-tag-notice": {
 		match: "(@notice)\\b",
-		name: "storage.type.dev.natspec"
+		name: "storage.type.dev.natspec",
 	},
 	"natspec-tag-dev": {
 		match: "(@dev)\\b",
-		name: "storage.type.dev.natspec"
+		name: "storage.type.dev.natspec",
 	},
 	"natspec-tag-param": {
 		match: "(@param)(\\s+([A-Za-z_]\\w*))?\\b",
 		captures: {
 			"1": {
-				name: "storage.type.param.natspec"
+				name: "storage.type.param.natspec",
 			},
 			"3": {
-				name: "variable.other.natspec"
-			}
-		}
+				name: "variable.other.natspec",
+			},
+		},
 	},
 	"natspec-tag-return": {
 		match: "(@return)(\\s+([A-Za-z_]\\w*))?\\b",
 		captures: {
 			"1": {
-				name: "storage.type.return.natspec"
+				name: "storage.type.return.natspec",
 			},
 			"3": {
-				name: "variable.other.natspec"
-			}
-		}
+				name: "variable.other.natspec",
+			},
+		},
 	},
 	comment: {
 		patterns: [
 			{
-				include: "#comment-line"
+				include: "#comment-line",
 			},
 			{
-				include: "#comment-block"
-			}
-		]
+				include: "#comment-block",
+			},
+		],
 	},
 	"comment-todo": {
 		match: "(?i)\\b(FIXME|TODO|CHANGED|XXX|IDEA|HACK|NOTE|REVIEW|NB|BUG|QUESTION|COMBAK|TEMP|SUPPRESS|LINT|\\w+-disable|\\w+-suppress)\\b(?-i)",
-		name: "keyword.comment.todo"
+		name: "keyword.comment.todo",
 	},
 	"comment-line": {
 		begin: "(?<!tp:)//",
@@ -151,9 +149,9 @@ const repository = {
 		name: "comment.line",
 		patterns: [
 			{
-				include: "#comment-todo"
-			}
-		]
+				include: "#comment-todo",
+			},
+		],
 	},
 	"comment-block": {
 		begin: "/\\*",
@@ -161,95 +159,95 @@ const repository = {
 		name: "comment.block",
 		patterns: [
 			{
-				include: "#comment-todo"
-			}
-		]
+				include: "#comment-todo",
+			},
+		],
 	},
 	operator: {
 		patterns: [
 			{
-				include: "#operator-logic"
+				include: "#operator-logic",
 			},
 			{
-				include: "#operator-mapping"
+				include: "#operator-mapping",
 			},
 			{
-				include: "#operator-arithmetic"
+				include: "#operator-arithmetic",
 			},
 			{
-				include: "#operator-binary"
+				include: "#operator-binary",
 			},
 			{
-				include: "#operator-assignment"
-			}
-		]
+				include: "#operator-assignment",
+			},
+		],
 	},
 	"operator-logic": {
 		match: "(==|\\!=|<(?!<)|<=|>(?!>)|>=|\\&\\&|\\|\\||\\:(?!=)|\\?|\\!)",
-		name: "keyword.operator.logic"
+		name: "keyword.operator.logic",
 	},
 	"operator-mapping": {
 		match: "(=>)",
-		name: "keyword.operator.mapping"
+		name: "keyword.operator.mapping",
 	},
 	"operator-arithmetic": {
 		match: "(\\+|\\-|\\/|\\*)",
-		name: "keyword.operator.arithmetic"
+		name: "keyword.operator.arithmetic",
 	},
 	"operator-binary": {
 		match: "(\\^|\\&|\\||<<|>>)",
-		name: "keyword.operator.binary"
+		name: "keyword.operator.binary",
 	},
 	"operator-assignment": {
 		match: "(\\:?=)",
-		name: "keyword.operator.assignment"
+		name: "keyword.operator.assignment",
 	},
 	control: {
 		patterns: [
 			{
-				include: "#control-flow"
+				include: "#control-flow",
 			},
 			{
-				include: "#control-using"
+				include: "#control-using",
 			},
 			{
-				include: "#control-import"
+				include: "#control-import",
 			},
 			{
-				include: "#control-pragma"
+				include: "#control-pragma",
 			},
 			{
-				include: "#control-underscore"
+				include: "#control-underscore",
 			},
 			{
-				include: "#control-unchecked"
+				include: "#control-unchecked",
 			},
 			{
-				include: "#control-other"
-			}
-		]
+				include: "#control-other",
+			},
+		],
 	},
 	"control-flow": {
 		patterns: [
 			{
 				match: "\\b(if|else|for|while|do|break|continue|try|catch|finally|throw|return)\\b",
-				name: "keyword.control.flow"
+				name: "keyword.control.flow",
 			},
 			{
 				begin: "\\b(returns)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.flow.return"
-					}
+						name: "keyword.control.flow.return",
+					},
 				},
 				end: "(?=\\))",
 				patterns: [
 					{
-						include: "#declaration-function-parameters"
-					}
-				]
-			}
-		]
+						include: "#declaration-function-parameters",
+					},
+				],
+			},
+		],
 	},
 	"control-using": {
 		patterns: [
@@ -257,24 +255,24 @@ const repository = {
 				match: "\\b(using)\\b\\s+\\b([A-Za-z\\d_]+)\\b\\s+\\b(for)\\b\\s+\\b([A-Za-z\\d_]+)",
 				captures: {
 					"1": {
-						name: "keyword.control.using"
+						name: "keyword.control.using",
 					},
 					"2": {
-						name: "entity.name.type.library"
+						name: "entity.name.type.library",
 					},
 					"3": {
-						name: "keyword.control.for"
+						name: "keyword.control.for",
 					},
 					"4": {
-						name: "entity.name.type"
-					}
-				}
+						name: "entity.name.type",
+					},
+				},
 			},
 			{
 				match: "\\b(using)\\b",
-				name: "keyword.control.using"
-			}
-		]
+				name: "keyword.control.using",
+			},
+		],
 	},
 	"control-import": {
 		patterns: [
@@ -282,8 +280,8 @@ const repository = {
 				begin: "\\b(import)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.import"
-					}
+						name: "keyword.control.import",
+					},
 				},
 				end: "(?=\\;)",
 				patterns: [
@@ -293,131 +291,131 @@ const repository = {
 						patterns: [
 							{
 								match: "\\b(\\w+)\\b",
-								name: "entity.name.type.interface"
-							}
-						]
+								name: "entity.name.type.interface",
+							},
+						],
 					},
 					{
 						match: "\\b(from)\\b",
-						name: "keyword.control.import.from"
+						name: "keyword.control.import.from",
 					},
 					{
-						include: "#string"
+						include: "#string",
 					},
 					{
-						include: "#punctuation"
-					}
-				]
+						include: "#punctuation",
+					},
+				],
 			},
 			{
 				match: "\\b(import)\\b",
-				name: "keyword.control.import"
-			}
-		]
+				name: "keyword.control.import",
+			},
+		],
 	},
 	"control-unchecked": {
 		match: "\\b(unchecked)\\b",
-		name: "keyword.control.unchecked"
+		name: "keyword.control.unchecked",
 	},
 	"control-pragma": {
 		match: "\\b(pragma)(?:\\s+([A-Za-z_]\\w+)\\s+([^\\s]+))?\\b",
 		captures: {
 			"1": {
-				name: "keyword.control.pragma"
+				name: "keyword.control.pragma",
 			},
 			"2": {
-				name: "entity.name.tag.pragma"
+				name: "entity.name.tag.pragma",
 			},
 			"3": {
-				name: "constant.other.pragma"
-			}
-		}
+				name: "constant.other.pragma",
+			},
+		},
 	},
 	"control-underscore": {
 		match: "\\b(_)\\b",
-		name: "constant.other.underscore"
+		name: "constant.other.underscore",
 	},
 	"control-other": {
 		match: "\\b(new|delete|emit)\\b",
-		name: "keyword.control"
+		name: "keyword.control",
 	},
 	constant: {
 		patterns: [
 			{
-				include: "#constant-boolean"
+				include: "#constant-boolean",
 			},
 			{
-				include: "#constant-time"
+				include: "#constant-time",
 			},
 			{
-				include: "#constant-currency"
-			}
-		]
+				include: "#constant-currency",
+			},
+		],
 	},
 	"constant-boolean": {
 		match: "\\b(true|false)\\b",
-		name: "constant.language.boolean"
+		name: "constant.language.boolean",
 	},
 	"constant-time": {
 		match: "\\b(seconds|minutes|hours|days|weeks|years)\\b",
-		name: "constant.language.time"
+		name: "constant.language.time",
 	},
 	"constant-currency": {
 		match: "\\b(ether|wei|gwei|finney|szabo)\\b",
-		name: "constant.language.currency"
+		name: "constant.language.currency",
 	},
 	number: {
 		patterns: [
 			{
-				include: "#number-decimal"
+				include: "#number-decimal",
 			},
 			{
-				include: "#number-hex"
+				include: "#number-hex",
 			},
 			{
-				include: "#number-scientific"
-			}
-		]
+				include: "#number-scientific",
+			},
+		],
 	},
 	"number-decimal": {
 		match: "\\b([0-9_]+(\\.[0-9_]+)?)\\b",
-		name: "constant.numeric.decimal"
+		name: "constant.numeric.decimal",
 	},
 	"number-hex": {
 		match: "\\b(0[xX][a-fA-F0-9]+)\\b",
-		name: "constant.numeric.hexadecimal"
+		name: "constant.numeric.hexadecimal",
 	},
 	"number-scientific": {
 		match: "\\b(?:0\\.(?:0[1-9]|[1-9][0-9_]?)|[1-9][0-9_]*(?:\\.\\d{1,2})?)(?:e[+-]?[0-9_]+)?",
-		name: "constant.numeric.scientific"
+		name: "constant.numeric.scientific",
 	},
 	string: {
 		patterns: [
 			{
-				match: "\\\".*?\\\"",
-				name: "string.quoted.double"
+				match: '\\".*?\\"',
+				name: "string.quoted.double",
 			},
 			{
 				match: "\\'.*?\\'",
-				name: "string.quoted.single"
-			}
-		]
+				name: "string.quoted.single",
+			},
+		],
 	},
 	primitive: {
 		patterns: [
 			{
-				include: "#number-decimal"
+				include: "#number-decimal",
 			},
 			{
-				include: "#number-hex"
+				include: "#number-hex",
 			},
 			{
-				include: "#number-scientific"
+				include: "#number-scientific",
 			},
 			{
-				include: "#string"
-			}
-		]
+				include: "#string",
+			},
+		],
 	},
 	"type-primitive": {
 		patterns: [
@@ -425,112 +423,112 @@ const repository = {
 				begin: "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b(?:\\[\\])(\\()",
 				beginCaptures: {
 					"1": {
-						name: "support.type.primitive"
-					}
+						name: "support.type.primitive",
+					},
 				},
 				end: "(\\))",
 				patterns: [
 					{
-						include: "#primitive"
+						include: "#primitive",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#global"
+						include: "#global",
 					},
 					{
-						include: "#variable"
-					}
-				]
+						include: "#variable",
+					},
+				],
 			},
 			{
 				match: "\\b(address|string\\d*|bytes\\d*|int\\d*|uint\\d*|bool|hash\\d*)\\b",
-				name: "support.type.primitive"
-			}
-		]
+				name: "support.type.primitive",
+			},
+		],
 	},
 	global: {
 		patterns: [
 			{
-				include: "#global-variables"
+				include: "#global-variables",
 			},
 			{
-				include: "#global-functions"
-			}
-		]
+				include: "#global-functions",
+			},
+		],
 	},
 	"global-variables": {
 		patterns: [
 			{
 				match: "\\b(this)\\b",
-				name: "variable.language.this"
+				name: "variable.language.this",
 			},
 			{
 				match: "\\b(super)\\b",
-				name: "variable.language.super"
+				name: "variable.language.super",
 			},
 			{
 				match: "\\b(abi)\\b",
-				name: "variable.language.builtin.abi"
+				name: "variable.language.builtin.abi",
 			},
 			{
 				match: "\\b(msg\\.sender|msg|block|tx|now)\\b",
-				name: "variable.language.transaction"
+				name: "variable.language.transaction",
 			},
 			{
 				match: "\\b(tx\\.origin|tx\\.gasprice|msg\\.data|msg\\.sig|msg\\.value)\\b",
-				name: "variable.language.transaction"
-			}
-		]
+				name: "variable.language.transaction",
+			},
+		],
 	},
 	"global-functions": {
 		patterns: [
 			{
 				match: "\\b(require|assert|revert)\\b",
-				name: "keyword.control.exceptions"
+				name: "keyword.control.exceptions",
 			},
 			{
 				match: "\\b(selfdestruct|suicide)\\b",
-				name: "keyword.control.contract"
+				name: "keyword.control.contract",
 			},
 			{
 				match: "\\b(addmod|mulmod|keccak256|sha256|sha3|ripemd160|ecrecover)\\b",
-				name: "support.function.math"
+				name: "support.function.math",
 			},
 			{
 				match: "\\b(unicode)\\b",
-				name: "support.function.string"
+				name: "support.function.string",
 			},
 			{
 				match: "\\b(blockhash|gasleft)\\b",
-				name: "variable.language.transaction"
+				name: "variable.language.transaction",
 			},
 			{
 				match: "\\b(type)\\b",
-				name: "variable.language.type"
-			}
-		]
+				name: "variable.language.type",
+			},
+		],
 	},
 	"type-modifier-access": {
 		match: "\\b(internal|external|private|public)\\b",
-		name: "storage.type.modifier.access"
+		name: "storage.type.modifier.access",
 	},
 	"type-modifier-payable": {
 		match: "\\b(nonpayable|payable)\\b",
-		name: "storage.type.modifier.payable"
+		name: "storage.type.modifier.payable",
 	},
 	"type-modifier-constant": {
 		match: "\\b(constant)\\b",
-		name: "storage.type.modifier.readonly"
+		name: "storage.type.modifier.readonly",
 	},
 	"type-modifier-immutable": {
 		match: "\\b(immutable)\\b",
-		name: "storage.type.modifier.readonly"
+		name: "storage.type.modifier.readonly",
 	},
 	"type-modifier-extended-scope": {
 		match: "\\b(pure|view|inherited|indexed|storage|memory|virtual|calldata|override|abstract)\\b",
-		name: "storage.type.modifier.extendedscope"
+		name: "storage.type.modifier.extendedscope",
 	},
 	variable: {
 		patterns: [
@@ -538,125 +536,125 @@ const repository = {
 				match: "\\b(\\_\\w+)\\b",
 				captures: {
 					"1": {
-						name: "variable.parameter.function"
-					}
-				}
+						name: "variable.parameter.function",
+					},
+				},
 			},
 			{
 				match: "(?:\\.)(\\w+)\\b",
 				captures: {
 					"1": {
-						name: "support.variable.property"
-					}
-				}
+						name: "support.variable.property",
+					},
+				},
 			},
 			{
 				match: "\\b(\\w+)\\b",
 				captures: {
 					"1": {
-						name: "variable.parameter.other"
-					}
-				}
-			}
-		]
+						name: "variable.parameter.other",
+					},
+				},
+			},
+		],
 	},
 	"modifier-call": {
 		patterns: [
 			{
-				include: "#function-call"
+				include: "#function-call",
 			},
 			{
 				match: "\\b(\\w+)\\b",
-				name: "entity.name.function.modifier"
-			}
-		]
+				name: "entity.name.function.modifier",
+			},
+		],
 	},
 	declaration: {
 		patterns: [
 			{
-				include: "#declaration-contract"
+				include: "#declaration-contract",
 			},
 			{
-				include: "#declaration-interface"
+				include: "#declaration-interface",
 			},
 			{
-				include: "#declaration-library"
+				include: "#declaration-library",
 			},
 			{
-				include: "#declaration-function"
+				include: "#declaration-function",
 			},
 			{
-				include: "#declaration-modifier"
+				include: "#declaration-modifier",
 			},
 			{
-				include: "#declaration-constructor"
+				include: "#declaration-constructor",
 			},
 			{
-				include: "#declaration-event"
+				include: "#declaration-event",
 			},
 			{
-				include: "#declaration-storage"
+				include: "#declaration-storage",
 			},
 			{
-				include: "#declaration-error"
-			}
-		]
+				include: "#declaration-error",
+			},
+		],
 	},
 	"declaration-storage-field": {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#control"
+				include: "#control",
 			},
 			{
-				include: "#type-primitive"
+				include: "#type-primitive",
 			},
 			{
-				include: "#type-modifier-access"
+				include: "#type-modifier-access",
 			},
 			{
-				include: "#type-modifier-immutable"
+				include: "#type-modifier-immutable",
 			},
 			{
-				include: "#type-modifier-extend-scope"
+				include: "#type-modifier-extend-scope",
 			},
 			{
-				include: "#type-modifier-payable"
+				include: "#type-modifier-payable",
 			},
 			{
-				include: "#type-modifier-constant"
+				include: "#type-modifier-constant",
 			},
 			{
-				include: "#primitive"
+				include: "#primitive",
 			},
 			{
-				include: "#constant"
+				include: "#constant",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#punctuation"
-			}
-		]
+				include: "#punctuation",
+			},
+		],
 	},
 	"declaration-storage": {
 		patterns: [
 			{
-				include: "#declaration-storage-mapping"
+				include: "#declaration-storage-mapping",
 			},
 			{
-				include: "#declaration-struct"
+				include: "#declaration-struct",
 			},
 			{
-				include: "#declaration-enum"
+				include: "#declaration-enum",
 			},
 			{
-				include: "#declaration-storage-field"
-			}
-		]
+				include: "#declaration-storage-field",
+			},
+		],
 	},
 	"declaration-contract": {
 		patterns: [
@@ -665,34 +663,34 @@ const repository = {
 				end: "(?=\\{)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.contract"
+						name: "storage.type.contract",
 					},
 					"2": {
-						name: "entity.name.type.contract"
+						name: "entity.name.type.contract",
 					},
 					"3": {
-						name: "storage.modifier.is"
-					}
+						name: "storage.modifier.is",
+					},
 				},
 				patterns: [
 					{
 						match: "\\b(\\w+)\\b",
-						name: "entity.name.type.contract.extend"
-					}
-				]
+						name: "entity.name.type.contract.extend",
+					},
+				],
 			},
 			{
 				match: "\\b(contract)(\\s+([A-Za-z_]\\w*))?\\b",
 				captures: {
 					"1": {
-						name: "storage.type.contract"
+						name: "storage.type.contract",
 					},
 					"2": {
-						name: "entity.name.type.contract"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.contract",
+					},
+				},
+			},
+		],
 	},
 	"declaration-interface": {
 		patterns: [
@@ -701,45 +699,45 @@ const repository = {
 				end: "(?=\\{)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.interface"
+						name: "storage.type.interface",
 					},
 					"2": {
-						name: "entity.name.type.interface"
+						name: "entity.name.type.interface",
 					},
 					"3": {
-						name: "storage.modifier.is"
-					}
+						name: "storage.modifier.is",
+					},
 				},
 				patterns: [
 					{
 						match: "\\b(\\w+)\\b",
-						name: "entity.name.type.interface.extend"
-					}
-				]
+						name: "entity.name.type.interface.extend",
+					},
+				],
 			},
 			{
 				match: "\\b(interface)(\\s+([A-Za-z_]\\w*))?\\b",
 				captures: {
 					"1": {
-						name: "storage.type.interface"
+						name: "storage.type.interface",
 					},
 					"2": {
-						name: "entity.name.type.interface"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.interface",
+					},
+				},
+			},
+		],
 	},
 	"declaration-library": {
 		match: "\\b(library)(\\s+([A-Za-z_]\\w*))?\\b",
 		captures: {
 			"1": {
-				name: "storage.type.library"
+				name: "storage.type.library",
 			},
 			"3": {
-				name: "entity.name.type.library"
-			}
-		}
+				name: "entity.name.type.library",
+			},
+		},
 	},
 	"declaration-struct": {
 		patterns: [
@@ -747,40 +745,40 @@ const repository = {
 				match: "\\b(struct)(\\s+([A-Za-z_]\\w*))?\\b",
 				captures: {
 					"1": {
-						name: "storage.type.struct"
+						name: "storage.type.struct",
 					},
 					"3": {
-						name: "entity.name.type.struct"
-					}
-				}
+						name: "entity.name.type.struct",
+					},
+				},
 			},
 			{
 				begin: "\\b(struct)\\b\\s*(\\w+)?\\b\\s*(?=\\{)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.struct"
+						name: "storage.type.struct",
 					},
 					"2": {
-						name: "entity.name.type.struct"
-					}
+						name: "entity.name.type.struct",
+					},
 				},
 				end: "(?=\\})",
 				patterns: [
 					{
-						include: "#type-primitive"
+						include: "#type-primitive",
 					},
 					{
-						include: "#variable"
+						include: "#variable",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#comment"
-					}
-				]
-			}
-		]
+						include: "#comment",
+					},
+				],
+			},
+		],
 	},
 	"declaration-event": {
 		patterns: [
@@ -789,44 +787,44 @@ const repository = {
 				end: "(?=\\))",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.event"
+						name: "storage.type.event",
 					},
 					"2": {
-						name: "entity.name.type.event"
-					}
+						name: "entity.name.type.event",
+					},
 				},
 				patterns: [
 					{
-						include: "#type-primitive"
+						include: "#type-primitive",
 					},
 					{
 						match: "\\b(?:(indexed)\\s)?(\\w+)(?:,\\s*|)",
 						captures: {
 							"1": {
-								name: "storage.type.modifier.indexed"
+								name: "storage.type.modifier.indexed",
 							},
 							"2": {
-								name: "variable.parameter.event"
-							}
-						}
+								name: "variable.parameter.event",
+							},
+						},
 					},
 					{
-						include: "#punctuation"
-					}
-				]
+						include: "#punctuation",
+					},
+				],
 			},
 			{
 				match: "\\b(event)(\\s+([A-Za-z_]\\w*))?\\b",
 				captures: {
 					"1": {
-						name: "storage.type.event"
+						name: "storage.type.event",
 					},
 					"3": {
-						name: "entity.name.type.event"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.event",
+					},
+				},
+			},
+		],
 	},
 	"declaration-constructor": {
 		patterns: [
@@ -834,8 +832,8 @@ const repository = {
 				begin: "\\b(constructor)\\b",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.constructor"
-					}
+						name: "storage.type.constructor",
+					},
 				},
 				end: "(?=\\{)",
 				patterns: [
@@ -844,33 +842,33 @@ const repository = {
 						end: "(?=\\))",
 						patterns: [
 							{
-								include: "#declaration-function-parameters"
-							}
-						]
+								include: "#declaration-function-parameters",
+							},
+						],
 					},
 					{
 						begin: "(?<=\\))",
 						end: "(?=\\{)",
 						patterns: [
 							{
-								include: "#type-modifier-access"
+								include: "#type-modifier-access",
 							},
 							{
-								include: "#function-call"
-							}
-						]
-					}
-				]
+								include: "#function-call",
+							},
+						],
+					},
+				],
 			},
 			{
 				match: "\\b(constructor)\\b",
 				captures: {
 					"1": {
-						name: "storage.type.constructor"
-					}
-				}
-			}
-		]
+						name: "storage.type.constructor",
+					},
+				},
+			},
+		],
 	},
 	"declaration-enum": {
 		patterns: [
@@ -878,64 +876,64 @@ const repository = {
 				begin: "\\b(enum)\\s+(\\w+)\\b",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.enum"
+						name: "storage.type.enum",
 					},
 					"2": {
-						name: "entity.name.type.enum"
-					}
+						name: "entity.name.type.enum",
+					},
 				},
 				end: "(?=\\})",
 				patterns: [
 					{
 						match: "\\b(\\w+)\\b",
-						name: "variable.other.enummember"
+						name: "variable.other.enummember",
 					},
 					{
-						include: "#punctuation"
-					}
-				]
+						include: "#punctuation",
+					},
+				],
 			},
 			{
 				match: "\\b(enum)(\\s+([A-Za-z_]\\w*))?\\b",
 				captures: {
 					"1": {
-						name: "storage.type.enum"
+						name: "storage.type.enum",
 					},
 					"3": {
-						name: "entity.name.type.enum"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.enum",
+					},
+				},
+			},
+		],
 	},
 	"declaration-function-parameters": {
 		begin: "\\G\\s*(?=\\()",
 		end: "(?=\\))",
 		patterns: [
 			{
-				include: "#type-primitive"
+				include: "#type-primitive",
 			},
 			{
-				include: "#type-modifier-extended-scope"
+				include: "#type-modifier-extended-scope",
 			},
 			{
 				match: "\\b([A-Z]\\w*)\\b",
 				captures: {
 					"1": {
-						name: "storage.type.struct"
-					}
-				}
+						name: "storage.type.struct",
+					},
+				},
 			},
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
-				include: "#punctuation"
+				include: "#punctuation",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	"declaration-function": {
 		patterns: [
@@ -943,61 +941,61 @@ const repository = {
 				begin: "\\b(function)\\s+(\\w+)\\b",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.function"
+						name: "storage.type.function",
 					},
 					"2": {
-						name: "entity.name.function"
-					}
+						name: "entity.name.function",
+					},
 				},
 				end: "(?=\\{|;)",
 				patterns: [
 					{
-						include: "#natspec"
+						include: "#natspec",
 					},
 					{
-						include: "#global"
+						include: "#global",
 					},
 					{
-						include: "#declaration-function-parameters"
+						include: "#declaration-function-parameters",
 					},
 					{
-						include: "#type-modifier-access"
+						include: "#type-modifier-access",
 					},
 					{
-						include: "#type-modifier-payable"
+						include: "#type-modifier-payable",
 					},
 					{
-						include: "#type-modifier-immutable"
+						include: "#type-modifier-immutable",
 					},
 					{
-						include: "#type-modifier-extended-scope"
+						include: "#type-modifier-extended-scope",
 					},
 					{
-						include: "#control-flow"
+						include: "#control-flow",
 					},
 					{
-						include: "#function-call"
+						include: "#function-call",
 					},
 					{
-						include: "#modifier-call"
+						include: "#modifier-call",
 					},
 					{
-						include: "#punctuation"
-					}
-				]
+						include: "#punctuation",
+					},
+				],
 			},
 			{
 				match: "\\b(function)\\s+([A-Za-z_]\\w*)\\b",
 				captures: {
 					"1": {
-						name: "storage.type.function"
+						name: "storage.type.function",
 					},
 					"2": {
-						name: "entity.name.function"
-					}
-				}
-			}
-		]
+						name: "entity.name.function",
+					},
+				},
+			},
+		],
 	},
 	"declaration-modifier": {
 		patterns: [
@@ -1005,61 +1003,61 @@ const repository = {
 				begin: "\\b(modifier)\\b\\s*(\\w+)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.function.modifier"
+						name: "storage.type.function.modifier",
 					},
 					"2": {
-						name: "entity.name.function.modifier"
-					}
+						name: "entity.name.function.modifier",
+					},
 				},
 				end: "(?=\\{)",
 				patterns: [
 					{
-						include: "#declaration-function-parameters"
+						include: "#declaration-function-parameters",
 					},
 					{
 						begin: "(?<=\\))",
 						end: "(?=\\{)",
 						patterns: [
 							{
-								include: "#declaration-function-parameters"
+								include: "#declaration-function-parameters",
 							},
 							{
-								include: "#type-modifier-access"
+								include: "#type-modifier-access",
 							},
 							{
-								include: "#type-modifier-payable"
+								include: "#type-modifier-payable",
 							},
 							{
-								include: "#type-modifier-immutable"
+								include: "#type-modifier-immutable",
 							},
 							{
-								include: "#type-modifier-extended-scope"
+								include: "#type-modifier-extended-scope",
 							},
 							{
-								include: "#function-call"
+								include: "#function-call",
 							},
 							{
-								include: "#modifier-call"
+								include: "#modifier-call",
 							},
 							{
-								include: "#control-flow"
-							}
-						]
-					}
-				]
+								include: "#control-flow",
+							},
+						],
+					},
+				],
 			},
 			{
 				match: "\\b(modifier)(\\s+([A-Za-z_]\\w*))?\\b",
 				captures: {
 					"1": {
-						name: "storage.type.modifier"
+						name: "storage.type.modifier",
 					},
 					"3": {
-						name: "entity.name.function"
-					}
-				}
-			}
-		]
+						name: "entity.name.function",
+					},
+				},
+			},
+		],
 	},
 	"declaration-storage-mapping": {
 		patterns: [
@@ -1067,105 +1065,105 @@ const repository = {
 				begin: "\\b(mapping)\\b",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.mapping"
-					}
+						name: "storage.type.mapping",
+					},
 				},
 				end: "(?=\\))",
 				patterns: [
 					{
-						include: "#declaration-storage-mapping"
+						include: "#declaration-storage-mapping",
 					},
 					{
-						include: "#type-primitive"
+						include: "#type-primitive",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#operator"
-					}
-				]
+						include: "#operator",
+					},
+				],
 			},
 			{
 				match: "\\b(mapping)\\b",
-				name: "storage.type.mapping"
-			}
-		]
+				name: "storage.type.mapping",
+			},
+		],
 	},
 	"declaration-error": {
 		match: "\\b(error)(\\s+([A-Za-z_]\\w*))?\\b",
 		captures: {
 			"1": {
-				name: "storage.type.error"
+				name: "storage.type.error",
 			},
 			"3": {
-				name: "entity.name.type.error"
-			}
-		}
+				name: "entity.name.type.error",
+			},
+		},
 	},
 	"function-call": {
 		match: "\\b([A-Za-z_]\\w*)\\s*(\\()",
 		captures: {
 			"1": {
-				name: "entity.name.function"
+				name: "entity.name.function",
 			},
 			"2": {
-				name: "punctuation.parameters.begin"
-			}
-		}
+				name: "punctuation.parameters.begin",
+			},
+		},
 	},
 	assembly: {
 		patterns: [
 			{
 				match: "\\b(assembly)\\b",
-				name: "keyword.control.assembly"
+				name: "keyword.control.assembly",
 			},
 			{
 				match: "\\b(let)\\b",
-				name: "storage.type.assembly"
-			}
-		]
+				name: "storage.type.assembly",
+			},
+		],
 	},
 	punctuation: {
 		patterns: [
 			{
 				match: ";",
-				name: "punctuation.terminator.statement"
+				name: "punctuation.terminator.statement",
 			},
 			{
 				match: "\\.",
-				name: "punctuation.accessor"
+				name: "punctuation.accessor",
 			},
 			{
 				match: ",",
-				name: "punctuation.separator"
+				name: "punctuation.separator",
 			},
 			{
 				match: "\\{",
-				name: "punctuation.brace.curly.begin"
+				name: "punctuation.brace.curly.begin",
 			},
 			{
 				match: "\\}",
-				name: "punctuation.brace.curly.end"
+				name: "punctuation.brace.curly.end",
 			},
 			{
 				match: "\\[",
-				name: "punctuation.brace.square.begin"
+				name: "punctuation.brace.square.begin",
 			},
 			{
 				match: "\\]",
-				name: "punctuation.brace.square.end"
+				name: "punctuation.brace.square.end",
 			},
 			{
 				match: "\\(",
-				name: "punctuation.parameters.begin"
+				name: "punctuation.parameters.begin",
 			},
 			{
 				match: "\\)",
-				name: "punctuation.parameters.end"
-			}
-		]
-	}
+				name: "punctuation.parameters.end",
+			},
+		],
+	},
 };
 const scopeName = "source.solidity";
 const uuid = "ad87d2cd-8575-4afe-984e-9421a3788933";
@@ -1175,7 +1173,15 @@ const solidity_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { solidity_tmLanguage as default, fileTypes, name, patterns, repository, scopeName, uuid };
+export {
+	solidity_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

@@ -1,26 +1,25 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "cue";
-const fileTypes = [
-	"cue"
-];
+const fileTypes = ["cue"];
 const scopeName = "source.cue";
 const patterns = [
 	{
-		include: "#whitespace"
+		include: "#whitespace",
 	},
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
 		match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(package)[ \\t]+([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*)(?![\\p{L}\\p{Nd}_\\$\\#])",
 		captures: {
 			"1": {
-				name: "keyword.other.package"
+				name: "keyword.other.package",
 			},
 			"2": {
-				name: "entity.name.namespace"
-			}
-		}
+				name: "entity.name.namespace",
+			},
+		},
 	},
 	{
 		patterns: [
@@ -28,97 +27,97 @@ const patterns = [
 				begin: "(?<![\\p{L}\\p{Nd}_\\$\\#])(import)[ \\t]+(\\()",
 				beginCaptures: {
 					"1": {
-						name: "keyword.other.import"
+						name: "keyword.other.import",
 					},
 					"2": {
-						name: "punctuation.section.parens.begin"
-					}
+						name: "punctuation.section.parens.begin",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.section.parens.end"
-					}
+						name: "punctuation.section.parens.end",
+					},
 				},
 				patterns: [
 					{
-						include: "#whitespace"
+						include: "#whitespace",
 					},
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						match: "(?:([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*)[ \\t]+)?(\")([^:\"]+)(?:(:)([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*))?(\")",
+						match: '(?:([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*)[ \\t]+)?(")([^:"]+)(?:(:)([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*))?(")',
 						captures: {
 							"1": {
-								name: "entity.name.namespace"
+								name: "entity.name.namespace",
 							},
 							"2": {
-								name: "punctuation.definition.string.begin"
+								name: "punctuation.definition.string.begin",
 							},
 							"3": {
-								name: "string.quoted.double-import"
+								name: "string.quoted.double-import",
 							},
 							"4": {
-								name: "punctuation.colon"
+								name: "punctuation.colon",
 							},
 							"5": {
-								name: "entity.name"
+								name: "entity.name",
 							},
 							"6": {
-								name: "punctuation.definition.string.end"
-							}
+								name: "punctuation.definition.string.end",
+							},
 						},
-						name: "meta.import-spec"
+						name: "meta.import-spec",
 					},
 					{
 						match: ";",
-						name: "punctuation.separator"
+						name: "punctuation.separator",
 					},
 					{
-						include: "#invalid_in_parens"
-					}
+						include: "#invalid_in_parens",
+					},
 				],
-				name: "meta.imports"
+				name: "meta.imports",
 			},
 			{
-				match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(import)[ \\t]+(?:([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*)[ \\t]+)?(\")([^:\"]+)(?:(:)([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*))?(\")",
+				match: '(?<![\\p{L}\\p{Nd}_\\$\\#])(import)[ \\t]+(?:([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*)[ \\t]+)?(")([^:"]+)(?:(:)([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*))?(")',
 				captures: {
 					"1": {
-						name: "keyword.other.import"
+						name: "keyword.other.import",
 					},
 					"2": {
-						name: "entity.name.namespace"
+						name: "entity.name.namespace",
 					},
 					"3": {
-						name: "punctuation.definition.string.begin"
+						name: "punctuation.definition.string.begin",
 					},
 					"4": {
-						name: "string.quoted.double-import"
+						name: "string.quoted.double-import",
 					},
 					"5": {
-						name: "punctuation.colon"
+						name: "punctuation.colon",
 					},
 					"6": {
-						name: "entity.name"
+						name: "entity.name",
 					},
 					"7": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
-				name: "meta.import"
-			}
-		]
+				name: "meta.import",
+			},
+		],
 	},
 	{
-		include: "#punctuation_comma"
+		include: "#punctuation_comma",
 	},
 	{
-		include: "#declaration"
+		include: "#declaration",
 	},
 	{
-		include: "#invalid_in_braces"
-	}
+		include: "#invalid_in_braces",
+	},
 ];
 const repository = {
 	attribute_element: {
@@ -127,63 +126,63 @@ const repository = {
 				begin: "([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)(=)",
 				beginCaptures: {
 					"1": {
-						name: "variable.other"
+						name: "variable.other",
 					},
 					"2": {
-						name: "punctuation.bind"
-					}
+						name: "punctuation.bind",
+					},
 				},
 				end: "(?=[,\\)])",
 				patterns: [
 					{
-						include: "#attribute_string"
-					}
-				]
+						include: "#attribute_string",
+					},
+				],
 			},
 			{
 				begin: "([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)(\\()",
 				beginCaptures: {
 					"1": {
-						name: "variable.other"
+						name: "variable.other",
 					},
 					"2": {
-						name: "punctuation.attribute-elements.begin"
-					}
+						name: "punctuation.attribute-elements.begin",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.attribute-elements.end"
-					}
+						name: "punctuation.attribute-elements.end",
+					},
 				},
 				patterns: [
 					{
-						include: "#punctuation_comma"
+						include: "#punctuation_comma",
 					},
 					{
-						include: "#attribute_element"
-					}
-				]
+						include: "#attribute_element",
+					},
+				],
 			},
 			{
-				include: "#attribute_string"
-			}
-		]
+				include: "#attribute_string",
+			},
+		],
 	},
 	attribute_string: {
 		patterns: [
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
 				match: "[^\\n,\"'#=\\(\\)]+",
-				name: "string.unquoted"
+				name: "string.unquoted",
 			},
 			{
 				match: "[^,\\)]+",
-				name: "invalid"
-			}
-		]
+				name: "invalid",
+			},
+		],
 	},
 	comment: {
 		patterns: [
@@ -191,22 +190,22 @@ const repository = {
 				match: "(//).*$\\n?",
 				captures: {
 					"1": {
-						name: "punctuation.definition.comment"
-					}
+						name: "punctuation.definition.comment",
+					},
 				},
-				name: "comment.line"
+				name: "comment.line",
 			},
 			{
 				captures: {
 					"0": {
-						name: "punctuation.definition.comment"
-					}
+						name: "punctuation.definition.comment",
+					},
 				},
 				begin: "/\\*",
 				end: "\\*/",
-				name: "comment.block"
-			}
-		]
+				name: "comment.block",
+			},
+		],
 	},
 	declaration: {
 		patterns: [
@@ -214,54 +213,54 @@ const repository = {
 				begin: "(@)([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)(\\()",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.annotation"
+						name: "punctuation.definition.annotation",
 					},
 					"2": {
-						name: "variable.annotation"
+						name: "variable.annotation",
 					},
 					"3": {
-						name: "punctuation.attribute-elements.begin"
-					}
+						name: "punctuation.attribute-elements.begin",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.attribute-elements.end"
-					}
+						name: "punctuation.attribute-elements.end",
+					},
 				},
 				patterns: [
 					{
-						include: "#punctuation_comma"
+						include: "#punctuation_comma",
 					},
 					{
-						include: "#attribute_element"
-					}
+						include: "#attribute_element",
+					},
 				],
-				name: "meta.annotation"
+				name: "meta.annotation",
 			},
 			{
 				match: "(?<!:)::(?!:)",
-				name: "punctuation.isa"
+				name: "punctuation.isa",
 			},
 			{
-				include: "#punctuation_colon"
+				include: "#punctuation_colon",
 			},
 			{
 				match: "\\?",
-				name: "punctuation.option"
+				name: "punctuation.option",
 			},
 			{
 				match: "(?<![=!><])=(?![=~])",
-				name: "punctuation.bind"
+				name: "punctuation.bind",
 			},
 			{
 				match: "<-",
-				name: "punctuation.arrow"
+				name: "punctuation.arrow",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	expression: {
 		patterns: [
@@ -271,94 +270,94 @@ const repository = {
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(for)[ \\t]+([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)(?:[ \\t]*(,)[ \\t]*([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+))?[ \\t]+(in)(?![\\p{L}\\p{Nd}_\\$\\#])",
 						captures: {
 							"1": {
-								name: "keyword.control.for"
+								name: "keyword.control.for",
 							},
 							"2": {
-								name: "variable.other"
+								name: "variable.other",
 							},
 							"3": {
-								name: "punctuation.separator"
+								name: "punctuation.separator",
 							},
 							"4": {
-								name: "variable.other"
+								name: "variable.other",
 							},
 							"5": {
-								name: "keyword.control.in"
-							}
-						}
+								name: "keyword.control.in",
+							},
+						},
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])if(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "keyword.control.conditional"
+						name: "keyword.control.conditional",
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(let)[ \\t]+([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)[ \\t]*(=)(?![=])",
 						captures: {
 							"1": {
-								name: "keyword.control.let"
+								name: "keyword.control.let",
 							},
 							"2": {
-								name: "variable.other"
+								name: "variable.other",
 							},
 							"3": {
-								name: "punctuation.bind"
-							}
-						}
-					}
-				]
+								name: "punctuation.bind",
+							},
+						},
+					},
+				],
 			},
 			{
 				patterns: [
 					{
 						match: "[\\+\\-\\*]|/(?![/*])",
-						name: "keyword.operator"
+						name: "keyword.operator",
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(?:div|mod|quo|rem)(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "keyword.operator.word"
+						name: "keyword.operator.word",
 					},
 					{
 						match: "=[=~]|![=~]|<=|>=|[<](?![-=])|[>](?![=])",
-						name: "keyword.operator.comparison"
+						name: "keyword.operator.comparison",
 					},
 					{
 						match: "&{2}|\\|{2}|!(?![=~])",
-						name: "keyword.operator.logical"
+						name: "keyword.operator.logical",
 					},
 					{
 						match: "&(?!&)|\\|(?!\\|)",
-						name: "keyword.operator.set"
-					}
-				]
+						name: "keyword.operator.set",
+					},
+				],
 			},
 			{
 				match: "(?<!\\.)(\\.)([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)(?![\\p{L}\\p{Nd}_\\$\\#])",
 				captures: {
 					"1": {
-						name: "punctuation.accessor"
+						name: "punctuation.accessor",
 					},
 					"2": {
-						name: "variable.other.member"
-					}
-				}
+						name: "variable.other.member",
+					},
+				},
 			},
 			{
 				patterns: [
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])_(?!\\|)(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "constant.language.top"
+						name: "constant.language.top",
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])_\\|_(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "constant.language.bottom"
+						name: "constant.language.bottom",
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])null(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "constant.language.null"
+						name: "constant.language.null",
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(?:true|false)(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "constant.language.bool"
+						name: "constant.language.bool",
 					},
 					{
 						patterns: [
@@ -366,17 +365,17 @@ const repository = {
 								patterns: [
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])[0-9](?:_?[0-9])*\\.(?:[0-9](?:_?[0-9])*)?(?:[eE][\\+\\-]?[0-9](?:_?[0-9])*)?(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.float.decimal"
+										name: "constant.numeric.float.decimal",
 									},
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])[0-9](?:_?[0-9])*[eE][\\+\\-]?[0-9](?:_?[0-9])*(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.float.decimal"
+										name: "constant.numeric.float.decimal",
 									},
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])\\.[0-9](?:_?[0-9])*(?:[eE][\\+\\-]?[0-9](?:_?[0-9])*)?(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.float.decimal"
-									}
-								]
+										name: "constant.numeric.float.decimal",
+									},
+								],
 							},
 							{
 								patterns: [
@@ -384,40 +383,40 @@ const repository = {
 										patterns: [
 											{
 												match: "(?<![\\p{L}\\p{Nd}_\\.])(?:0|[1-9](?:_?[0-9])*)(?:\\.[0-9](?:_?[0-9])*)?(?:[KMGTPEYZ]i?)(?![\\p{L}\\p{Nd}_\\.])",
-												name: "constant.numeric.integer.other"
+												name: "constant.numeric.integer.other",
 											},
 											{
 												match: "(?<![\\p{L}\\p{Nd}_\\.])\\.[0-9](?:_?[0-9])*(?:[KMGTPEYZ]i?)(?![\\p{L}\\p{Nd}_\\.])",
-												name: "constant.numeric.integer.other"
-											}
-										]
+												name: "constant.numeric.integer.other",
+											},
+										],
 									},
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])(?:0|[1-9](?:_?[0-9])*)(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.integer.decimal"
+										name: "constant.numeric.integer.decimal",
 									},
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])0b[0-1](?:_?[0-1])*(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.integer.binary"
+										name: "constant.numeric.integer.binary",
 									},
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.integer.hexadecimal"
+										name: "constant.numeric.integer.hexadecimal",
 									},
 									{
 										match: "(?<![\\p{L}\\p{Nd}_\\.])0o?[0-7](?:_?[0-7])*(?![\\p{L}\\p{Nd}_\\.])",
-										name: "constant.numeric.integer.octal"
-									}
-								]
-							}
-						]
+										name: "constant.numeric.integer.octal",
+									},
+								],
+							},
+						],
 					},
 					{
-						include: "#string"
+						include: "#string",
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(?:bool|u?int(?:8|16|32|64|128)?|float(?:32|64)?|string|bytes|number|rune)(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "support.type"
+						name: "support.type",
 					},
 					{
 						patterns: [
@@ -425,704 +424,704 @@ const repository = {
 								begin: "(?<![\\p{L}\\p{Nd}_\\$\\#])(len|close|and|or)(\\()",
 								beginCaptures: {
 									"1": {
-										name: "support.function"
+										name: "support.function",
 									},
 									"2": {
-										name: "punctuation.section.parens.begin"
-									}
+										name: "punctuation.section.parens.begin",
+									},
 								},
 								end: "\\)",
 								endCaptures: {
 									"0": {
-										name: "punctuation.section.parens.end"
-									}
+										name: "punctuation.section.parens.end",
+									},
 								},
 								patterns: [
 									{
-										include: "#whitespace"
+										include: "#whitespace",
 									},
 									{
-										include: "#comment"
+										include: "#comment",
 									},
 									{
-										include: "#punctuation_comma"
+										include: "#punctuation_comma",
 									},
 									{
-										include: "#expression"
+										include: "#expression",
 									},
 									{
-										include: "#invalid_in_parens"
-									}
+										include: "#invalid_in_parens",
+									},
 								],
-								name: "meta.function-call"
+								name: "meta.function-call",
 							},
 							{
 								begin: "(?<![\\p{L}\\p{Nd}_\\$\\#])([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*)(\\.)(\\p{Lu}[\\p{L}\\p{Nd}_\\$\\#]*)(\\()",
 								beginCaptures: {
 									"1": {
-										name: "support.module"
+										name: "support.module",
 									},
 									"2": {
-										name: "punctuation"
+										name: "punctuation",
 									},
 									"3": {
-										name: "support.function"
+										name: "support.function",
 									},
 									"4": {
-										name: "punctuation.section.parens.begin"
-									}
+										name: "punctuation.section.parens.begin",
+									},
 								},
 								end: "\\)",
 								endCaptures: {
 									"0": {
-										name: "punctuation.section.parens.end"
-									}
+										name: "punctuation.section.parens.end",
+									},
 								},
 								patterns: [
 									{
-										include: "#whitespace"
+										include: "#whitespace",
 									},
 									{
-										include: "#comment"
+										include: "#comment",
 									},
 									{
-										include: "#punctuation_comma"
+										include: "#punctuation_comma",
 									},
 									{
-										include: "#expression"
+										include: "#expression",
 									},
 									{
-										include: "#invalid_in_parens"
-									}
+										include: "#invalid_in_parens",
+									},
 								],
-								name: "meta.function-call"
-							}
-						]
+								name: "meta.function-call",
+							},
+						],
 					},
 					{
 						match: "(?<![\\p{L}\\p{Nd}_\\$\\#])(?:[\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)(?![\\p{L}\\p{Nd}_\\$\\#])",
-						name: "variable.other"
+						name: "variable.other",
 					},
 					{
 						begin: "\\{",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.struct.begin"
-							}
+								name: "punctuation.definition.struct.begin",
+							},
 						},
 						end: "\\}",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.struct.end"
-							}
+								name: "punctuation.definition.struct.end",
+							},
 						},
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
-								include: "#punctuation_comma"
+								include: "#punctuation_comma",
 							},
 							{
-								include: "#punctuation_ellipsis"
+								include: "#punctuation_ellipsis",
 							},
 							{
-								include: "#declaration"
+								include: "#declaration",
 							},
 							{
-								include: "#invalid_in_braces"
-							}
+								include: "#invalid_in_braces",
+							},
 						],
-						name: "meta.struct"
+						name: "meta.struct",
 					},
 					{
 						begin: "\\[",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.brackets.begin"
-							}
+								name: "punctuation.section.brackets.begin",
+							},
 						},
 						end: "\\]",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.brackets.end"
-							}
+								name: "punctuation.section.brackets.end",
+							},
 						},
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
-								include: "#punctuation_colon"
+								include: "#punctuation_colon",
 							},
 							{
-								include: "#punctuation_comma"
+								include: "#punctuation_comma",
 							},
 							{
-								include: "#punctuation_ellipsis"
+								include: "#punctuation_ellipsis",
 							},
 							{
 								match: "([\\p{L}\\$\\#][\\p{L}\\p{Nd}_\\$\\#]*|_[\\p{L}\\p{Nd}_\\$\\#]+)[ \\t]*(=)",
 								captures: {
 									"1": {
-										name: "variable.other"
+										name: "variable.other",
 									},
 									"2": {
-										name: "punctuation.alias"
-									}
-								}
+										name: "punctuation.alias",
+									},
+								},
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
 								match: "[^\\]]+",
-								name: "invalid"
-							}
+								name: "invalid",
+							},
 						],
-						name: "meta.brackets"
+						name: "meta.brackets",
 					},
 					{
 						begin: "\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.parens.begin"
-							}
+								name: "punctuation.section.parens.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.parens.end"
-							}
+								name: "punctuation.section.parens.end",
+							},
 						},
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
-								include: "#punctuation_comma"
+								include: "#punctuation_comma",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.parens"
-					}
-				]
-			}
-		]
+						name: "meta.parens",
+					},
+				],
+			},
+		],
 	},
 	invalid_in_braces: {
 		match: "[^\\}]+",
-		name: "invalid"
+		name: "invalid",
 	},
 	invalid_in_parens: {
 		match: "[^\\)]+",
-		name: "invalid"
+		name: "invalid",
 	},
 	punctuation_colon: {
 		match: "(?<!:):(?!:)",
-		name: "punctuation.colon"
+		name: "punctuation.colon",
 	},
 	punctuation_comma: {
 		match: ",",
-		name: "punctuation.separator"
+		name: "punctuation.separator",
 	},
 	punctuation_ellipsis: {
 		match: "(?<!\\.)\\.{3}(?!\\.)",
-		name: "punctuation.ellipsis"
+		name: "punctuation.ellipsis",
 	},
 	string: {
 		patterns: [
 			{
-				begin: "#\"\"\"",
+				begin: '#"""',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
-				end: "\"\"\"#",
+				end: '"""#',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.double-multiline",
 				patterns: [
 					{
-						match: "\\\\#(?:\"\"\"|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						match: '\\\\#(?:"""|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})',
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\#(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "invalid.illegal"
+						name: "invalid.illegal",
 					},
 					{
 						begin: "\\\\#\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\#.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
-				begin: "#\"",
+				begin: '#"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
-				end: "\"#",
+				end: '"#',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.double",
 				patterns: [
 					{
-						match: "\\\\#(?:\"|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						match: '\\\\#(?:"|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})',
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\#(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "invalid.illegal"
+						name: "invalid.illegal",
 					},
 					{
 						begin: "\\\\#\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\#.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
 				begin: "#'''",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
 				end: "'''#",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.single-multiline",
 				patterns: [
 					{
 						match: "\\\\#(?:'''|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\#(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						begin: "\\\\#\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\#.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
 				begin: "#'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
 				end: "'#",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.single",
 				patterns: [
 					{
 						match: "\\\\#(?:'|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\#(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						begin: "\\\\#\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\#.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
-				begin: "\"\"\"",
+				begin: '"""',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
-				end: "\"\"\"",
+				end: '"""',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.double-multiline",
 				patterns: [
 					{
-						match: "\\\\(?:\"\"\"|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						match: '\\\\(?:"""|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})',
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "invalid.illegal"
+						name: "invalid.illegal",
 					},
 					{
 						begin: "\\\\\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
-				begin: "\"",
+				begin: '"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
-				end: "\"",
+				end: '"',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.double",
 				patterns: [
 					{
-						match: "\\\\(?:\"|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						match: '\\\\(?:"|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})',
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "invalid.illegal"
+						name: "invalid.illegal",
 					},
 					{
 						begin: "\\\\\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
 				begin: "'''",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
 				end: "'''",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.single-multiline",
 				patterns: [
 					{
 						match: "\\\\(?:'''|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						begin: "\\\\\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
 				begin: "'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.single",
 				patterns: [
 					{
 						match: "\\\\(?:'|/|\\\\|[abfnrtv]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						match: "\\\\(?:[0-7]{3}|x[0-9A-Fa-f]{2})",
-						name: "constant.character.escape"
+						name: "constant.character.escape",
 					},
 					{
 						begin: "\\\\\\(",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.begin"
-							}
+								name: "punctuation.section.interpolation.begin",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.section.interpolation.end"
-							}
+								name: "punctuation.section.interpolation.end",
+							},
 						},
 						contentName: "source.cue.embedded",
 						patterns: [
 							{
-								include: "#whitespace"
+								include: "#whitespace",
 							},
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#invalid_in_parens"
-							}
+								include: "#invalid_in_parens",
+							},
 						],
-						name: "meta.interpolation"
+						name: "meta.interpolation",
 					},
 					{
 						match: "\\\\.",
-						name: "invalid.illegal"
-					}
+						name: "invalid.illegal",
+					},
 				],
-				name: "meta.string"
+				name: "meta.string",
 			},
 			{
 				begin: "`",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin"
-					}
+						name: "punctuation.definition.string.begin",
+					},
 				},
 				end: "`",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end"
-					}
+						name: "punctuation.definition.string.end",
+					},
 				},
 				contentName: "string.quoted.backtick",
-				name: "meta.string"
-			}
-		]
+				name: "meta.string",
+			},
+		],
 	},
 	whitespace: {
-		match: "[ \\t\\r\\n]+"
-	}
+		match: "[ \\t\\r\\n]+",
+	},
 };
 const cue_tmLanguage = {
 	$schema: $schema,
@@ -1130,7 +1129,15 @@ const cue_tmLanguage = {
 	fileTypes: fileTypes,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, cue_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	$schema,
+	cue_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

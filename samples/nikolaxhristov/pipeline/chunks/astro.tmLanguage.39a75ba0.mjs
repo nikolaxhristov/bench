@@ -1,69 +1,70 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
-const fileTypes = [
-	"astro"
-];
-const foldingStartMarker = "(?x)\n(<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)\\b.*?>\n|<!--(?!.*--\\s*>)\n|^<!--\\ \\#tminclude\\ (?>.*?-->)$\n|<\\?(?:php)?.*\\b(if|for(each)?|while)\\b.+:\n|\\{\\{?(if|foreach|capture|literal|foreach|php|section|strip)\n|\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/)))\n)";
-const foldingStopMarker = "(?x)\n(</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)>\n|^(?!.*?<!--).*?--\\s*>\n|^<!--\\ end\\ tminclude\\ -->$\n|<\\?(?:php)?.*\\bend(if|for(each)?|while)\\b\n|\\{\\{?/(if|foreach|capture|literal|foreach|php|section|strip)\n|^[^{]*\\}\n)";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const fileTypes = ["astro"];
+const foldingStartMarker =
+	"(?x)\n(<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)\\b.*?>\n|<!--(?!.*--\\s*>)\n|^<!--\\ \\#tminclude\\ (?>.*?-->)$\n|<\\?(?:php)?.*\\b(if|for(each)?|while)\\b.+:\n|\\{\\{?(if|foreach|capture|literal|foreach|php|section|strip)\n|\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/)))\n)";
+const foldingStopMarker =
+	"(?x)\n(</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)>\n|^(?!.*?<!--).*?--\\s*>\n|^<!--\\ end\\ tminclude\\ -->$\n|<\\?(?:php)?.*\\bend(if|for(each)?|while)\\b\n|\\{\\{?/(if|foreach|capture|literal|foreach|php|section|strip)\n|^[^{]*\\}\n)";
 const keyEquivalent = "^~H";
 const name = "astro";
 const scopeName = "source.astro";
 const patterns = [
 	{
-		include: "#astro:expressions"
+		include: "#astro:expressions",
 	},
 	{
-		include: "#html:comment"
+		include: "#html:comment",
 	},
 	{
-		include: "#html:comment:bogus"
+		include: "#html:comment:bogus",
 	},
 	{
-		include: "#html:doctype"
+		include: "#html:doctype",
 	},
 	{
-		include: "#astro:fragment"
+		include: "#astro:fragment",
 	},
 	{
-		include: "#astro:lang-scripts"
+		include: "#astro:lang-scripts",
 	},
 	{
-		include: "#astro:lang-styles"
+		include: "#astro:lang-styles",
 	},
 	{
-		include: "#astro:component"
+		include: "#astro:component",
 	},
 	{
-		include: "#html:element"
+		include: "#html:element",
 	},
 	{
-		include: "#html:entity"
+		include: "#html:entity",
 	},
 	{
-		include: "#html:entity:bogus"
+		include: "#html:entity:bogus",
 	},
 	{
-		include: "#frontmatter"
-	}
+		include: "#frontmatter",
+	},
 ];
 const repository = {
 	"astro:attribute": {
 		patterns: [
 			{
-				include: "#html:attribute"
+				include: "#html:attribute",
 			},
 			{
-				include: "#string-double-quoted"
+				include: "#string-double-quoted",
 			},
 			{
-				include: "#string-single-quoted"
+				include: "#string-single-quoted",
 			},
 			{
-				include: "#string-template-literal"
+				include: "#string-template-literal",
 			},
 			{
-				include: "#astro:expressions"
-			}
-		]
+				include: "#astro:expressions",
+			},
+		],
 	},
 	"astro:component": {
 		patterns: [
@@ -73,103 +74,104 @@ const repository = {
 				end: "(</)([$A-Z_][^/?!\\s<>]*|[^/?!\\s<>.]+\\.[^/?!\\s<>]+)(?=\\s|/?>)(>)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.astro"
+						name: "punctuation.definition.tag.begin.astro",
 					},
 					"2": {
-						name: "entity.name.tag.astro support.class.component.astro"
+						name: "entity.name.tag.astro support.class.component.astro",
 					},
 					"3": {
 						patterns: [
 							{
-								include: "#astro:attribute"
-							}
-						]
+								include: "#astro:attribute",
+							},
+						],
 					},
 					"4": {
-						name: "punctuation.definition.tag.end.astro"
-					}
+						name: "punctuation.definition.tag.end.astro",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.astro"
+						name: "punctuation.definition.tag.begin.astro",
 					},
 					"2": {
-						name: "entity.name.tag.astro support.class.component.astro"
+						name: "entity.name.tag.astro support.class.component.astro",
 					},
 					"3": {
-						name: "punctuation.definition.tag.end.astro"
-					}
+						name: "punctuation.definition.tag.end.astro",
+					},
 				},
-				contentName: "source.unknown"
+				contentName: "source.unknown",
 			},
 			{
 				name: "meta.tag.component.astro",
 				begin: "(</?)([$A-Z_][^/?!\\s<>]*|[^/?!\\s<>.]+\\.[^/?!\\s<>]+)\\b",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.astro"
+						name: "punctuation.definition.tag.begin.astro",
 					},
 					"2": {
-						name: "entity.name.tag.astro support.class.component.astro"
-					}
+						name: "entity.name.tag.astro support.class.component.astro",
+					},
 				},
 				end: "(/?>)",
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.end.astro"
-					}
+						name: "punctuation.definition.tag.end.astro",
+					},
 				},
 				patterns: [
 					{
-						include: "#astro:attribute"
-					}
-				]
-			}
-		]
+						include: "#astro:attribute",
+					},
+				],
+			},
+		],
 	},
 	"astro:fragment": {
 		name: "meta.tag.component.astro",
 		match: "(</?)(Fragment)?(\\s*>)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.astro"
+				name: "punctuation.definition.tag.astro",
 			},
 			"2": {
-				name: "entity.name.tag.astro support.class.fragment.astro"
+				name: "entity.name.tag.astro support.class.fragment.astro",
 			},
 			"3": {
-				name: "punctuation.definition.tag.astro"
-			}
-		}
+				name: "punctuation.definition.tag.astro",
+			},
+		},
 	},
 	"astro:lang-scripts": {
 		begin: "(<)(script)",
 		end: "(</)(script)\\s*(>)|(/>)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "entity.name.tag.html"
-			}
+				name: "entity.name.tag.html",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "entity.name.tag.html"
+				name: "entity.name.tag.html",
 			},
 			"3": {
-				name: "punctuation.definition.tag.end.html"
+				name: "punctuation.definition.tag.end.html",
 			},
 			"4": {
-				name: "punctuation.definition.tag.end.html"
-			}
+				name: "punctuation.definition.tag.end.html",
+			},
 		},
 		patterns: [
 			{
-				comment: "Treat script tag with application/ld+json as JSON. This needs to be higher than is:raw since it's a very possible situation to have is:raw on a JSON script tag",
+				comment:
+					"Treat script tag with application/ld+json as JSON. This needs to be higher than is:raw since it's a very possible situation to have is:raw on a JSON script tag",
 				begin: "\\G(?=\\s*[^>]*?type\\s*=\\s*(['\"]|)(?i:application/ld\\+json)\\1)",
 				end: "(?=</|/>)",
 				patterns: [
@@ -179,14 +181,14 @@ const repository = {
 						contentName: "source.json",
 						patterns: [
 							{
-								include: "source.json"
-							}
-						]
+								include: "source.json",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				comment: "Treat script tag with JS-compatible types as JS",
@@ -199,14 +201,14 @@ const repository = {
 						contentName: "source.js",
 						patterns: [
 							{
-								include: "source.js"
-							}
-						]
+								include: "source.js",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				comment: "Treat anything with an unknown type as unknown",
@@ -216,12 +218,12 @@ const repository = {
 					{
 						begin: "(?<=>)(?!</)",
 						end: "(?=</)",
-						name: "source.unknown"
+						name: "source.unknown",
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:jsx?|javascript)\\1)",
@@ -233,14 +235,14 @@ const repository = {
 						contentName: "source.js",
 						patterns: [
 							{
-								include: "source.js"
-							}
-						]
+								include: "source.js",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:ts|typescript)\\1)",
@@ -252,14 +254,14 @@ const repository = {
 						contentName: "source.ts",
 						patterns: [
 							{
-								include: "source.ts"
-							}
-						]
+								include: "source.ts",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:tsx)\\1)",
@@ -271,14 +273,14 @@ const repository = {
 						contentName: "source.tsx",
 						patterns: [
 							{
-								include: "source.tsx"
-							}
-						]
+								include: "source.tsx",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "(?<=>)(?!</)",
@@ -286,39 +288,39 @@ const repository = {
 				contentName: "source.js",
 				patterns: [
 					{
-						include: "source.js"
-					}
-				]
+						include: "source.js",
+					},
+				],
 			},
 			{
-				include: "#html:tag-attributes"
-			}
-		]
+				include: "#html:tag-attributes",
+			},
+		],
 	},
 	"astro:lang-styles": {
 		begin: "(<)(style)",
 		end: "(</)(style)\\s*(>)|(/>)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "entity.name.tag.html"
-			}
+				name: "entity.name.tag.html",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "entity.name.tag.html"
+				name: "entity.name.tag.html",
 			},
 			"3": {
-				name: "punctuation.definition.tag.end.html"
+				name: "punctuation.definition.tag.end.html",
 			},
 			"4": {
-				name: "punctuation.definition.tag.end.html"
-			}
+				name: "punctuation.definition.tag.end.html",
+			},
 		},
 		patterns: [
 			{
@@ -331,14 +333,14 @@ const repository = {
 						contentName: "source.css",
 						patterns: [
 							{
-								include: "source.css"
-							}
-						]
+								include: "source.css",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:less)\\1)",
@@ -350,14 +352,14 @@ const repository = {
 						contentName: "source.css.less",
 						patterns: [
 							{
-								include: "source.css.less"
-							}
-						]
+								include: "source.css.less",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:sass)\\1)",
@@ -369,14 +371,14 @@ const repository = {
 						contentName: "source.sass",
 						patterns: [
 							{
-								include: "source.sass"
-							}
-						]
+								include: "source.sass",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:scss)\\1)",
@@ -388,14 +390,14 @@ const repository = {
 						contentName: "source.css.scss",
 						patterns: [
 							{
-								include: "source.css.scss"
-							}
-						]
+								include: "source.css.scss",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=\\s*[^>]*?lang\\s*=\\s*(['\"]|)(?i:styl(?:us)?)\\1)",
@@ -407,14 +409,14 @@ const repository = {
 						contentName: "source.stylus",
 						patterns: [
 							{
-								include: "source.stylus"
-							}
-						]
+								include: "source.stylus",
+							},
+						],
 					},
 					{
-						include: "#html:tag-attributes"
-					}
-				]
+						include: "#html:tag-attributes",
+					},
+				],
 			},
 			{
 				begin: "(?<=>)(?!</)",
@@ -422,104 +424,104 @@ const repository = {
 				contentName: "source.css",
 				patterns: [
 					{
-						include: "source.css"
-					}
-				]
+						include: "source.css",
+					},
+				],
 			},
 			{
-				include: "#html:tag-attributes"
-			}
-		]
+				include: "#html:tag-attributes",
+			},
+		],
 	},
 	"html:attribute": {
 		name: "meta.attribute.$1.html",
 		match: "([a-zA-Z\\-:@_.]+)(=?)",
 		captures: {
 			"1": {
-				name: "entity.other.attribute-name.html"
+				name: "entity.other.attribute-name.html",
 			},
 			"2": {
-				name: "punctuation.separator.key-value.html"
-			}
-		}
+				name: "punctuation.separator.key-value.html",
+			},
+		},
 	},
 	"html:tag-attributes": {
 		begin: "\\G",
 		end: "(?=/>)|>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.end.html"
-			}
+				name: "punctuation.definition.tag.end.html",
+			},
 		},
 		patterns: [
 			{
-				include: "#astro:attribute"
-			}
-		]
+				include: "#astro:attribute",
+			},
+		],
 	},
 	"html:comment": {
 		name: "comment.block.html",
 		begin: "<!--",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.comment.html punctuation.definition.comment.begin.html"
-			}
+				name: "punctuation.definition.comment.html punctuation.definition.comment.begin.html",
+			},
 		},
 		end: "--!?>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.comment.html punctuation.definition.comment.end.html"
-			}
-		}
+				name: "punctuation.definition.comment.html punctuation.definition.comment.end.html",
+			},
+		},
 	},
 	"html:comment:bogus": {
 		name: "comment.block.html",
 		begin: "<\\?",
 		captures: {
 			"0": {
-				name: "punctuation.definition.comment.html"
-			}
+				name: "punctuation.definition.comment.html",
+			},
 		},
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.comment.html punctuation.definition.comment.begin.html"
-			}
+				name: "punctuation.definition.comment.html punctuation.definition.comment.begin.html",
+			},
 		},
 		end: ">",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.comment.html punctuation.definition.comment.end.html"
-			}
-		}
+				name: "punctuation.definition.comment.html punctuation.definition.comment.end.html",
+			},
+		},
 	},
 	"html:doctype": {
 		name: "meta.tag.metadata.doctype.html",
 		begin: "(<!)([Dd][Oo][Cc][Tt][Yy][Pp][Ee])",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.html punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.html punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "entity.name.tag.html"
-			}
+				name: "entity.name.tag.html",
+			},
 		},
 		end: ">",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.html punctuation.definition.tag.end.html"
-			}
+				name: "punctuation.definition.tag.html punctuation.definition.tag.end.html",
+			},
 		},
 		patterns: [
 			{
-				begin: "\"",
-				end: "\"",
-				name: "string.quoted.double.html"
+				begin: '"',
+				end: '"',
+				name: "string.quoted.double.html",
 			},
 			{
 				match: "[^\\s>]+",
-				name: "entity.other.attribute-name.html"
-			}
-		]
+				name: "entity.other.attribute-name.html",
+			},
+		],
 	},
 	"html:element": {
 		patterns: [
@@ -529,106 +531,106 @@ const repository = {
 				end: "(</)([^/?!\\s<>]+)(?=\\s|/?>)(>)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.html"
+						name: "punctuation.definition.tag.begin.html",
 					},
 					"2": {
-						name: "entity.name.tag.html"
+						name: "entity.name.tag.html",
 					},
 					"3": {
 						patterns: [
 							{
-								include: "#astro:attribute"
-							}
-						]
+								include: "#astro:attribute",
+							},
+						],
 					},
 					"4": {
-						name: "punctuation.definition.tag.end.html"
-					}
+						name: "punctuation.definition.tag.end.html",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.html"
+						name: "punctuation.definition.tag.begin.html",
 					},
 					"2": {
-						name: "entity.name.tag.html"
+						name: "entity.name.tag.html",
 					},
 					"3": {
-						name: "punctuation.definition.tag.end.html"
-					}
+						name: "punctuation.definition.tag.end.html",
+					},
 				},
-				contentName: "source.unknown"
+				contentName: "source.unknown",
 			},
 			{
 				name: "meta.tag.any.$2.start.html",
 				begin: "(<)([^/?!\\s<>]+)(?=\\s|/?>)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.html"
+						name: "punctuation.definition.tag.begin.html",
 					},
 					"2": {
-						name: "entity.name.tag.html"
-					}
+						name: "entity.name.tag.html",
+					},
 				},
 				end: "/?>",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.tag.end.html"
-					}
+						name: "punctuation.definition.tag.end.html",
+					},
 				},
 				patterns: [
 					{
-						include: "#astro:attribute"
-					}
-				]
+						include: "#astro:attribute",
+					},
+				],
 			},
 			{
 				name: "meta.tag.any.$2.end.html",
 				begin: "(</)([^/?!\\s<>]+)(?=\\s|/?>)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.html"
+						name: "punctuation.definition.tag.begin.html",
 					},
 					"2": {
-						name: "entity.name.tag.html"
-					}
+						name: "entity.name.tag.html",
+					},
 				},
 				end: "/?>",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.tag.end.html"
-					}
+						name: "punctuation.definition.tag.end.html",
+					},
 				},
 				patterns: [
 					{
-						include: "#astro:attribute"
-					}
-				]
-			}
-		]
+						include: "#astro:attribute",
+					},
+				],
+			},
+		],
 	},
 	"html:entity": {
 		name: "constant.character.entity.html",
 		match: "(&)([0-9A-Za-z]+|#x[0-9A-Fa-f]+|x[0-9]+)(;)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.entity.html"
+				name: "punctuation.definition.entity.html",
 			},
 			"3": {
-				name: "punctuation.definition.entity.html"
-			}
-		}
+				name: "punctuation.definition.entity.html",
+			},
+		},
 	},
 	"html:entity:bogus": {
 		name: "constant.character.entity.html",
 		match: "(&)([0-9A-Za-z]+|#x[0-9A-Fa-f]+|x[0-9]+)",
 		captures: {
 			"1": {
-				name: "invalid.illegal.bad-ampersand.html"
+				name: "invalid.illegal.bad-ampersand.html",
 			},
 			"3": {
-				name: "punctuation.definition.entity.html"
-			}
-		}
+				name: "punctuation.definition.entity.html",
+			},
+		},
 	},
 	"astro:expressions": {
 		patterns: [
@@ -636,91 +638,92 @@ const repository = {
 				begin: "\\{",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.section.embedded.begin.tsx"
-					}
+						name: "punctuation.section.embedded.begin.tsx",
+					},
 				},
 				end: "\\}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.section.embedded.end.tsx"
-					}
+						name: "punctuation.section.embedded.end.tsx",
+					},
 				},
 				name: "expression.embedded.astro",
 				contentName: "source.tsx",
 				patterns: [
 					{
-						include: "source.tsx"
-					}
-				]
-			}
-		]
+						include: "source.tsx",
+					},
+				],
+			},
+		],
 	},
 	frontmatter: {
-		comment: "The frontmatter is treated as comments in order to get the \"faded\" look",
+		comment:
+			'The frontmatter is treated as comments in order to get the "faded" look',
 		begin: "\\A(-{3})\\s*$",
 		beginCaptures: {
 			"1": {
-				name: "comment"
-			}
+				name: "comment",
+			},
 		},
 		contentName: "source.ts",
 		patterns: [
 			{
-				include: "source.ts"
-			}
+				include: "source.ts",
+			},
 		],
 		end: "(^|\\G)(-{3})|\\.{3}\\s*$",
 		endCaptures: {
 			"2": {
-				name: "comment"
-			}
-		}
+				name: "comment",
+			},
+		},
 	},
 	"string-double-quoted": {
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.html"
-			}
+				name: "punctuation.definition.string.begin.html",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.html"
-			}
+				name: "punctuation.definition.string.end.html",
+			},
 		},
 		name: "string.quoted.double.html",
 		patterns: [
 			{
-				include: "#html:entity"
+				include: "#html:entity",
 			},
 			{
-				include: "#html:entity:bogus"
-			}
-		]
+				include: "#html:entity:bogus",
+			},
+		],
 	},
 	"string-single-quoted": {
 		begin: "'",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.html"
-			}
+				name: "punctuation.definition.string.begin.html",
+			},
 		},
 		end: "'",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.html"
-			}
+				name: "punctuation.definition.string.end.html",
+			},
 		},
 		name: "string.quoted.single.html",
 		patterns: [
 			{
-				include: "#html:entity"
+				include: "#html:entity",
 			},
 			{
-				include: "#html:entity:bogus"
-			}
-		]
+				include: "#html:entity:bogus",
+			},
+		],
 	},
 	"string-template-literal": {
 		begin: "`",
@@ -728,10 +731,10 @@ const repository = {
 		name: "string.template.html",
 		patterns: [
 			{
-				include: "source.tsx#template-substitution-element"
-			}
-		]
-	}
+				include: "source.tsx#template-substitution-element",
+			},
+		],
+	},
 };
 const astro_tmLanguage = {
 	$schema: $schema,
@@ -742,7 +745,18 @@ const astro_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, astro_tmLanguage as default, fileTypes, foldingStartMarker, foldingStopMarker, keyEquivalent, name, patterns, repository, scopeName };
+export {
+	$schema,
+	astro_tmLanguage as default,
+	fileTypes,
+	foldingStartMarker,
+	foldingStopMarker,
+	keyEquivalent,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

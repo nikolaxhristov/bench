@@ -1,22 +1,23 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "mdx";
 const patterns = [
 	{
-		include: "#jsx"
+		include: "#jsx",
 	},
 	{
-		include: "#markdown"
-	}
+		include: "#markdown",
+	},
 ];
 const repository = {
 	jsx: {
 		patterns: [
 			{
-				include: "#jsx-module"
+				include: "#jsx-module",
 			},
 			{
-				include: "#jsx-tag"
-			}
+				include: "#jsx-tag",
+			},
 		],
 		repository: {
 			"jsx-module": {
@@ -27,11 +28,11 @@ const repository = {
 						contentName: "source.js.jsx",
 						patterns: [
 							{
-								include: "source.js.jsx"
-							}
-						]
-					}
-				]
+								include: "source.js.jsx",
+							},
+						],
+					},
+				],
 			},
 			"jsx-tag": {
 				patterns: [
@@ -41,22 +42,22 @@ const repository = {
 						contentName: "source.js.jsx",
 						patterns: [
 							{
-								include: "source.js.jsx"
-							}
-						]
-					}
-				]
-			}
-		}
+								include: "source.js.jsx",
+							},
+						],
+					},
+				],
+			},
+		},
 	},
 	markdown: {
 		contentName: "text.html.markdown",
 		patterns: [
 			{
-				include: "text.html.markdown"
-			}
-		]
-	}
+				include: "text.html.markdown",
+			},
+		],
+	},
 };
 const scopeName = "text.html.markdown.jsx";
 const mdx_tmLanguage = {
@@ -64,7 +65,14 @@ const mdx_tmLanguage = {
 	name: name,
 	patterns: patterns,
 	repository: repository,
-	scopeName: scopeName
+	scopeName: scopeName,
 };
 
-export { $schema, mdx_tmLanguage as default, name, patterns, repository, scopeName };
+export {
+	$schema,
+	mdx_tmLanguage as default,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

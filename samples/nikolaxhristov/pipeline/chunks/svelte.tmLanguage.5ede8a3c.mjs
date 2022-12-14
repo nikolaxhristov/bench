@@ -1,55 +1,56 @@
 const name = "svelte";
 const scopeName = "source.svelte";
-const fileTypes = [
-	"svelte"
-];
+const fileTypes = ["svelte"];
 const uuid = "7582b62f-51d9-4a84-8c8d-fc189530faf6";
 const injections = {
-	"L:(meta.script.svelte | meta.style.svelte) (meta.lang.js | meta.lang.javascript) - (meta source)": {
-		patterns: [
-			{
-				begin: "(?<=>)(?!</)",
-				end: "(?=</)",
-				name: "meta.embedded.block.svelte",
-				contentName: "source.js",
-				patterns: [
-					{
-						include: "source.js"
-					}
-				]
-			}
-		]
-	},
-	"L:(meta.script.svelte | meta.style.svelte) (meta.lang.ts | meta.lang.typescript) - (meta source)": {
-		patterns: [
-			{
-				begin: "(?<=>)(?!</)",
-				end: "(?=</)",
-				name: "meta.embedded.block.svelte",
-				contentName: "source.ts",
-				patterns: [
-					{
-						include: "source.ts"
-					}
-				]
-			}
-		]
-	},
-	"L:(meta.script.svelte | meta.style.svelte) meta.lang.coffee - (meta source)": {
-		patterns: [
-			{
-				begin: "(?<=>)(?!</)",
-				end: "(?=</)",
-				name: "meta.embedded.block.svelte",
-				contentName: "source.coffee",
-				patterns: [
-					{
-						include: "source.coffee"
-					}
-				]
-			}
-		]
-	},
+	"L:(meta.script.svelte | meta.style.svelte) (meta.lang.js | meta.lang.javascript) - (meta source)":
+		{
+			patterns: [
+				{
+					begin: "(?<=>)(?!</)",
+					end: "(?=</)",
+					name: "meta.embedded.block.svelte",
+					contentName: "source.js",
+					patterns: [
+						{
+							include: "source.js",
+						},
+					],
+				},
+			],
+		},
+	"L:(meta.script.svelte | meta.style.svelte) (meta.lang.ts | meta.lang.typescript) - (meta source)":
+		{
+			patterns: [
+				{
+					begin: "(?<=>)(?!</)",
+					end: "(?=</)",
+					name: "meta.embedded.block.svelte",
+					contentName: "source.ts",
+					patterns: [
+						{
+							include: "source.ts",
+						},
+					],
+				},
+			],
+		},
+	"L:(meta.script.svelte | meta.style.svelte) meta.lang.coffee - (meta source)":
+		{
+			patterns: [
+				{
+					begin: "(?<=>)(?!</)",
+					end: "(?=</)",
+					name: "meta.embedded.block.svelte",
+					contentName: "source.coffee",
+					patterns: [
+						{
+							include: "source.coffee",
+						},
+					],
+				},
+			],
+		},
 	"L:meta.script.svelte - meta.lang - (meta source)": {
 		patterns: [
 			{
@@ -59,11 +60,11 @@ const injections = {
 				contentName: "source.js",
 				patterns: [
 					{
-						include: "source.js"
-					}
-				]
-			}
-		]
+						include: "source.js",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte meta.lang.stylus - (meta source)": {
 		patterns: [
@@ -74,11 +75,11 @@ const injections = {
 				contentName: "source.stylus",
 				patterns: [
 					{
-						include: "source.stylus"
-					}
-				]
-			}
-		]
+						include: "source.stylus",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte meta.lang.sass - (meta source)": {
 		patterns: [
@@ -89,11 +90,11 @@ const injections = {
 				contentName: "source.sass",
 				patterns: [
 					{
-						include: "source.sass"
-					}
-				]
-			}
-		]
+						include: "source.sass",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte meta.lang.css - (meta source)": {
 		patterns: [
@@ -104,11 +105,11 @@ const injections = {
 				contentName: "source.css",
 				patterns: [
 					{
-						include: "source.css"
-					}
-				]
-			}
-		]
+						include: "source.css",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte meta.lang.scss - (meta source)": {
 		patterns: [
@@ -119,11 +120,11 @@ const injections = {
 				contentName: "source.css.scss",
 				patterns: [
 					{
-						include: "source.css.scss"
-					}
-				]
-			}
-		]
+						include: "source.css.scss",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte meta.lang.less - (meta source)": {
 		patterns: [
@@ -134,11 +135,11 @@ const injections = {
 				contentName: "source.css.less",
 				patterns: [
 					{
-						include: "source.css.less"
-					}
-				]
-			}
-		]
+						include: "source.css.less",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte meta.lang.postcss - (meta source)": {
 		patterns: [
@@ -149,11 +150,11 @@ const injections = {
 				contentName: "source.css.postcss",
 				patterns: [
 					{
-						include: "source.css.postcss"
-					}
-				]
-			}
-		]
+						include: "source.css.postcss",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.style.svelte - meta.lang - (meta source)": {
 		patterns: [
@@ -164,11 +165,11 @@ const injections = {
 				contentName: "source.css",
 				patterns: [
 					{
-						include: "source.css"
-					}
-				]
-			}
-		]
+						include: "source.css",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.template.svelte meta.lang.pug - (meta source)": {
 		patterns: [
@@ -179,11 +180,11 @@ const injections = {
 				contentName: "text.pug",
 				patterns: [
 					{
-						include: "text.pug"
-					}
-				]
-			}
-		]
+						include: "text.pug",
+					},
+				],
+			},
+		],
 	},
 	"L:meta.template.svelte - meta.lang - (meta source)": {
 		patterns: [
@@ -192,59 +193,59 @@ const injections = {
 				end: "(?=</template)",
 				patterns: [
 					{
-						include: "#scope"
-					}
-				]
-			}
-		]
+						include: "#scope",
+					},
+				],
+			},
+		],
 	},
 	"L:(source.ts, source.js, source.coffee)": {
 		patterns: [
 			{
 				match: "(?<![_$[:alnum:]])\\$(?=[_[:alpha:]][_$[:alnum:]]*)",
-				name: "punctuation.definition.variable.svelte"
+				name: "punctuation.definition.variable.svelte",
 			},
 			{
 				match: "(?<![_$[:alnum:]])(\\$\\$)(?=props|restProps|slots)",
-				name: "punctuation.definition.variable.svelte"
-			}
-		]
-	}
+				name: "punctuation.definition.variable.svelte",
+			},
+		],
+	},
 };
 const patterns = [
 	{
-		include: "#scope"
-	}
+		include: "#scope",
+	},
 ];
 const repository = {
 	scope: {
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#special-tags"
+				include: "#special-tags",
 			},
 			{
-				include: "#tags"
+				include: "#tags",
 			},
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
 				begin: "(?<=>|})",
 				end: "(?=<|{)",
-				name: "text.svelte"
-			}
-		]
+				name: "text.svelte",
+			},
+		],
 	},
 	comments: {
 		begin: "<!--",
 		end: "-->",
 		captures: {
 			"0": {
-				name: "punctuation.definition.comment.svelte"
-			}
+				name: "punctuation.definition.comment.svelte",
+			},
 		},
 		name: "comment.block.svelte",
 		patterns: [
@@ -252,11 +253,11 @@ const repository = {
 				begin: "(@)(component)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.keyword.svelte"
+						name: "punctuation.definition.keyword.svelte",
 					},
 					"2": {
-						name: "storage.type.class.component.svelte keyword.declaration.class.component.svelte"
-					}
+						name: "storage.type.class.component.svelte keyword.declaration.class.component.svelte",
+					},
 				},
 				end: "(?=-->)",
 				contentName: "comment.block.documentation.svelte",
@@ -267,22 +268,22 @@ const repository = {
 							"0": {
 								patterns: [
 									{
-										include: "text.html.markdown"
-									}
-								]
-							}
-						}
+										include: "text.html.markdown",
+									},
+								],
+							},
+						},
 					},
 					{
-						include: "text.html.markdown"
-					}
-				]
+						include: "text.html.markdown",
+					},
+				],
 			},
 			{
 				match: "\\G-?>|<!--(?!>)|<!-(?=-->)|--!>",
-				name: "invalid.illegal.characters-not-allowed-here.svelte"
-			}
-		]
+				name: "invalid.illegal.characters-not-allowed-here.svelte",
+			},
+		],
 	},
 	destructuring: {
 		patterns: [
@@ -292,9 +293,9 @@ const repository = {
 				name: "meta.embedded.expression.svelte source.ts",
 				patterns: [
 					{
-						include: "source.ts#object-binding-pattern"
-					}
-				]
+						include: "source.ts#object-binding-pattern",
+					},
+				],
 			},
 			{
 				begin: "(?=\\[)",
@@ -302,11 +303,11 @@ const repository = {
 				name: "meta.embedded.expression.svelte source.ts",
 				patterns: [
 					{
-						include: "source.ts#array-binding-pattern"
-					}
-				]
-			}
-		]
+						include: "source.ts#array-binding-pattern",
+					},
+				],
+			},
+		],
 	},
 	interpolation: {
 		patterns: [
@@ -315,13 +316,13 @@ const repository = {
 				end: "\\}",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.section.embedded.begin.svelte"
-					}
+						name: "punctuation.section.embedded.begin.svelte",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.section.embedded.end.svelte"
-					}
+						name: "punctuation.section.embedded.end.svelte",
+					},
 				},
 				contentName: "meta.embedded.expression.svelte source.ts",
 				patterns: [
@@ -330,65 +331,65 @@ const repository = {
 						end: "(?<=})",
 						patterns: [
 							{
-								include: "source.ts#object-literal"
-							}
-						]
+								include: "source.ts#object-literal",
+							},
+						],
 					},
 					{
-						include: "source.ts"
-					}
-				]
-			}
-		]
+						include: "source.ts",
+					},
+				],
+			},
+		],
 	},
 	"special-tags": {
 		patterns: [
 			{
-				include: "#special-tags-void"
+				include: "#special-tags-void",
 			},
 			{
-				include: "#special-tags-block-begin"
+				include: "#special-tags-block-begin",
 			},
 			{
-				include: "#special-tags-block-end"
-			}
-		]
+				include: "#special-tags-block-end",
+			},
+		],
 	},
 	"special-tags-keywords": {
 		match: "([#@/:])(else\\s+if|[a-z]*)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.keyword.svelte"
+				name: "punctuation.definition.keyword.svelte",
 			},
 			"2": {
 				patterns: [
 					{
 						match: "if|else\\s+if|else",
-						name: "keyword.control.conditional.svelte"
+						name: "keyword.control.conditional.svelte",
 					},
 					{
 						match: "each|key",
-						name: "keyword.control.svelte"
+						name: "keyword.control.svelte",
 					},
 					{
 						match: "await|then|catch",
-						name: "keyword.control.flow.svelte"
+						name: "keyword.control.flow.svelte",
 					},
 					{
 						match: "html",
-						name: "keyword.other.svelte"
+						name: "keyword.other.svelte",
 					},
 					{
 						match: "debug",
-						name: "keyword.other.debugger.svelte"
+						name: "keyword.other.debugger.svelte",
 					},
 					{
 						match: "const",
-						name: "storage.type.svelte"
-					}
-				]
-			}
-		}
+						name: "storage.type.svelte",
+					},
+				],
+			},
+		},
 	},
 	"special-tags-modes": {
 		patterns: [
@@ -398,9 +399,9 @@ const repository = {
 				name: "meta.embedded.expression.svelte source.ts",
 				patterns: [
 					{
-						include: "source.ts"
-					}
-				]
+						include: "source.ts",
+					},
+				],
 			},
 			{
 				begin: "(?<=const.*?)\\G",
@@ -411,20 +412,20 @@ const repository = {
 						end: "(?=\\=)",
 						beginCaptures: {
 							"1": {
-								name: "variable.other.constant.svelte"
-							}
-						}
+								name: "variable.other.constant.svelte",
+							},
+						},
 					},
 					{
 						begin: "(?=\\=)",
 						end: "(?=})",
 						patterns: [
 							{
-								include: "source.ts#variable-initializer"
-							}
-						]
-					}
-				]
+								include: "source.ts#variable-initializer",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=each.*?)\\G",
@@ -433,39 +434,41 @@ const repository = {
 					{
 						begin: "\\G\\s*?(?=\\S)",
 						end: "(?=(?:^\\s*|\\s+)(as))",
-						contentName: "meta.embedded.expression.svelte source.ts",
+						contentName:
+							"meta.embedded.expression.svelte source.ts",
 						patterns: [
 							{
-								include: "source.ts"
-							}
-						]
+								include: "source.ts",
+							},
+						],
 					},
 					{
 						begin: "(as)",
 						beginCaptures: {
 							"1": {
-								name: "keyword.control.as.svelte"
-							}
+								name: "keyword.control.as.svelte",
+							},
 						},
 						end: "(?=})",
 						patterns: [
 							{
-								include: "#destructuring"
+								include: "#destructuring",
 							},
 							{
 								begin: "\\(",
 								end: "\\)|(?=})",
 								captures: {
 									"0": {
-										name: "meta.brace.round.svelte"
-									}
+										name: "meta.brace.round.svelte",
+									},
 								},
-								contentName: "meta.embedded.expression.svelte source.ts",
+								contentName:
+									"meta.embedded.expression.svelte source.ts",
 								patterns: [
 									{
-										include: "source.ts"
-									}
-								]
+										include: "source.ts",
+									},
+								],
 							},
 							{
 								match: "(\\s*([_$[:alpha:]][_$[:alnum:]]*)\\s*)",
@@ -474,19 +477,19 @@ const repository = {
 										name: "meta.embedded.expression.svelte source.ts",
 										patterns: [
 											{
-												include: "source.ts"
-											}
-										]
-									}
-								}
+												include: "source.ts",
+											},
+										],
+									},
+								},
 							},
 							{
 								match: ",",
-								name: "punctuation.separator.svelte"
-							}
-						]
-					}
-				]
+								name: "punctuation.separator.svelte",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=await.*?)\\G",
@@ -497,27 +500,29 @@ const repository = {
 						end: "\\s+(then)|(?=})",
 						endCaptures: {
 							"1": {
-								name: "keyword.control.flow.svelte"
-							}
+								name: "keyword.control.flow.svelte",
+							},
 						},
-						contentName: "meta.embedded.expression.svelte source.ts",
+						contentName:
+							"meta.embedded.expression.svelte source.ts",
 						patterns: [
 							{
-								include: "source.ts"
-							}
-						]
+								include: "source.ts",
+							},
+						],
 					},
 					{
 						begin: "(?<=then\\b)",
 						end: "(?=})",
-						contentName: "meta.embedded.expression.svelte source.ts",
+						contentName:
+							"meta.embedded.expression.svelte source.ts",
 						patterns: [
 							{
-								include: "source.ts"
-							}
-						]
-					}
-				]
+								include: "source.ts",
+							},
+						],
+					},
+				],
 			},
 			{
 				begin: "(?<=debug.*?)\\G",
@@ -530,46 +535,46 @@ const repository = {
 								name: "meta.embedded.expression.svelte source.ts",
 								patterns: [
 									{
-										include: "source.ts"
-									}
-								]
-							}
-						}
+										include: "source.ts",
+									},
+								],
+							},
+						},
 					},
 					{
 						match: ",",
-						name: "punctuation.separator.svelte"
-					}
-				]
-			}
-		]
+						name: "punctuation.separator.svelte",
+					},
+				],
+			},
+		],
 	},
 	"special-tags-void": {
 		begin: "({)\\s*((?:[@:])(else\\s+if|[a-z]*))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.block.begin.svelte"
+				name: "punctuation.definition.block.begin.svelte",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#special-tags-keywords"
-					}
-				]
-			}
+						include: "#special-tags-keywords",
+					},
+				],
+			},
 		},
 		end: "\\}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.block.end.svelte"
-			}
+				name: "punctuation.definition.block.end.svelte",
+			},
 		},
 		name: "meta.special.$3.svelte",
 		patterns: [
 			{
-				include: "#special-tags-modes"
-			}
-		]
+				include: "#special-tags-modes",
+			},
+		],
 	},
 	"special-tags-block-begin": {
 		begin: "({)\\s*(#([a-z]*))",
@@ -577,26 +582,26 @@ const repository = {
 		name: "meta.special.$3.svelte meta.special.start.svelte",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.block.begin.svelte"
+				name: "punctuation.definition.block.begin.svelte",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#special-tags-keywords"
-					}
-				]
-			}
+						include: "#special-tags-keywords",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.block.end.svelte"
-			}
+				name: "punctuation.definition.block.end.svelte",
+			},
 		},
 		patterns: [
 			{
-				include: "#special-tags-modes"
-			}
-		]
+				include: "#special-tags-modes",
+			},
+		],
 	},
 	"special-tags-block-end": {
 		begin: "({)\\s*(/([a-z]*))",
@@ -604,49 +609,49 @@ const repository = {
 		name: "meta.special.$3.svelte meta.special.end.svelte",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.block.begin.svelte"
+				name: "punctuation.definition.block.begin.svelte",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#special-tags-keywords"
-					}
-				]
-			}
+						include: "#special-tags-keywords",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.block.end.svelte"
-			}
-		}
+				name: "punctuation.definition.block.end.svelte",
+			},
+		},
 	},
 	attributes: {
 		patterns: [
 			{
-				include: "#attributes-directives"
+				include: "#attributes-directives",
 			},
 			{
-				include: "#attributes-keyvalue"
+				include: "#attributes-keyvalue",
 			},
 			{
-				include: "#attributes-interpolated"
-			}
-		]
+				include: "#attributes-interpolated",
+			},
+		],
 	},
 	"attributes-interpolated": {
 		begin: "(?<!:|=)\\s*({)",
 		end: "(\\})",
 		captures: {
 			"1": {
-				name: "entity.other.attribute-name.svelte"
-			}
+				name: "entity.other.attribute-name.svelte",
+			},
 		},
 		contentName: "meta.embedded.expression.svelte source.ts",
 		patterns: [
 			{
-				include: "source.ts"
-			}
-		]
+				include: "source.ts",
+			},
+		],
 	},
 	"attributes-keyvalue": {
 		begin: "((?:--)?[_$[:alpha:]][_\\-$[:alnum:]]*)",
@@ -655,14 +660,14 @@ const repository = {
 				patterns: [
 					{
 						match: "--.*",
-						name: "support.type.property-name.svelte"
+						name: "support.type.property-name.svelte",
 					},
 					{
 						match: ".*",
-						name: "entity.other.attribute-name.svelte"
-					}
-				]
-			}
+						name: "entity.other.attribute-name.svelte",
+					},
+				],
+			},
 		},
 		end: "(?=\\s*+[^=\\s])",
 		name: "meta.attribute.$1.svelte",
@@ -671,133 +676,133 @@ const repository = {
 				begin: "=",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.separator.key-value.svelte"
-					}
+						name: "punctuation.separator.key-value.svelte",
+					},
 				},
 				end: "(?<=[^\\s=])(?!\\s*=)|(?=/?>)",
 				patterns: [
 					{
-						include: "#attributes-value"
-					}
-				]
-			}
-		]
+						include: "#attributes-value",
+					},
+				],
+			},
+		],
 	},
 	"attributes-value": {
 		patterns: [
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
 				match: "(?:(['\"])([0-9._]+[\\w%]{,4})(\\1))|(?:([0-9._]+[\\w%]{,4})(?=\\s|/?>))",
 				captures: {
 					"1": {
-						name: "punctuation.definition.string.begin.svelte"
+						name: "punctuation.definition.string.begin.svelte",
 					},
 					"2": {
-						name: "constant.numeric.decimal.svelte"
+						name: "constant.numeric.decimal.svelte",
 					},
 					"3": {
-						name: "punctuation.definition.string.end.svelte"
+						name: "punctuation.definition.string.end.svelte",
 					},
 					"4": {
-						name: "constant.numeric.decimal.svelte"
-					}
-				}
+						name: "constant.numeric.decimal.svelte",
+					},
+				},
 			},
 			{
 				match: "([^\\s\"'=<>`/]|/(?!>))+",
 				name: "string.unquoted.svelte",
 				patterns: [
 					{
-						include: "#interpolation"
-					}
-				]
+						include: "#interpolation",
+					},
+				],
 			},
 			{
 				begin: "(['\"])",
 				end: "\\1",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.svelte"
-					}
+						name: "punctuation.definition.string.begin.svelte",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.svelte"
-					}
+						name: "punctuation.definition.string.end.svelte",
+					},
 				},
 				name: "string.quoted.svelte",
 				patterns: [
 					{
-						include: "#interpolation"
-					}
-				]
-			}
-		]
+						include: "#interpolation",
+					},
+				],
+			},
+		],
 	},
 	"attributes-directives-keywords": {
 		patterns: [
 			{
 				match: "on|use|bind",
-				name: "keyword.control.svelte"
+				name: "keyword.control.svelte",
 			},
 			{
 				match: "transition|in|out|animate",
-				name: "keyword.other.animation.svelte"
+				name: "keyword.other.animation.svelte",
 			},
 			{
 				match: "let",
-				name: "storage.type.svelte"
+				name: "storage.type.svelte",
 			},
 			{
 				match: "class|style",
-				name: "entity.other.attribute-name.svelte"
-			}
-		]
+				name: "entity.other.attribute-name.svelte",
+			},
+		],
 	},
 	"attributes-directives-types": {
 		patterns: [
 			{
 				match: "(?<=(on):).*$",
-				name: "entity.name.type.svelte"
+				name: "entity.name.type.svelte",
 			},
 			{
 				match: "(?<=(bind):).*$",
-				name: "variable.parameter.svelte"
+				name: "variable.parameter.svelte",
 			},
 			{
 				match: "(?<=(use|transition|in|out|animate):).*$",
-				name: "variable.function.svelte"
+				name: "variable.function.svelte",
 			},
 			{
 				match: "(?<=(let|class|style):).*$",
-				name: "variable.parameter.svelte"
-			}
-		]
+				name: "variable.parameter.svelte",
+			},
+		],
 	},
 	"attributes-directives-types-assigned": {
 		patterns: [
 			{
 				match: "(?<=(bind):)this$",
-				name: "variable.language.svelte"
+				name: "variable.language.svelte",
 			},
 			{
 				match: "(?<=(bind):).*$",
-				name: "entity.name.type.svelte"
+				name: "entity.name.type.svelte",
 			},
 			{
 				match: "(?<=(class):).*$",
-				name: "entity.other.attribute-name.class.svelte"
+				name: "entity.other.attribute-name.class.svelte",
 			},
 			{
 				match: "(?<=(style):).*$",
-				name: "support.type.property-name.svelte"
+				name: "support.type.property-name.svelte",
 			},
 			{
-				include: "#attributes-directives-types"
-			}
-		]
+				include: "#attributes-directives-types",
+			},
+		],
 	},
 	"attributes-directives": {
 		begin: "(?<!<)(on|use|bind|transition|in|out|animate|let|class|style)(:)(?:((?:--)?[_$[:alpha:]][_\\-$[:alnum:]]*(?=\\s*=))|((?:--)?[_$[:alpha:]][_\\-$[:alnum:]]*))((\\|\\w+)*)",
@@ -805,39 +810,39 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#attributes-directives-keywords"
-					}
-				]
+						include: "#attributes-directives-keywords",
+					},
+				],
 			},
 			"2": {
-				name: "punctuation.definition.keyword.svelte"
+				name: "punctuation.definition.keyword.svelte",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#attributes-directives-types-assigned"
-					}
-				]
+						include: "#attributes-directives-types-assigned",
+					},
+				],
 			},
 			"4": {
 				patterns: [
 					{
-						include: "#attributes-directives-types"
-					}
-				]
+						include: "#attributes-directives-types",
+					},
+				],
 			},
 			"5": {
 				patterns: [
 					{
 						match: "\\w+",
-						name: "support.function.svelte"
+						name: "support.function.svelte",
 					},
 					{
 						match: "\\|",
-						name: "punctuation.separator.svelte"
-					}
-				]
-			}
+						name: "punctuation.separator.svelte",
+					},
+				],
+			},
 		},
 		end: "(?=\\s*+[^=\\s])",
 		name: "meta.directive.$1.svelte",
@@ -846,33 +851,33 @@ const repository = {
 				begin: "=",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.separator.key-value.svelte"
-					}
+						name: "punctuation.separator.key-value.svelte",
+					},
 				},
 				end: "(?<=[^\\s=])(?!\\s*=)|(?=/?>)",
 				patterns: [
 					{
-						include: "#attributes-value"
-					}
-				]
-			}
-		]
+						include: "#attributes-value",
+					},
+				],
+			},
+		],
 	},
 	tags: {
 		patterns: [
 			{
-				include: "#tags-lang"
+				include: "#tags-lang",
 			},
 			{
-				include: "#tags-void"
+				include: "#tags-void",
 			},
 			{
-				include: "#tags-general-end"
+				include: "#tags-general-end",
 			},
 			{
-				include: "#tags-general-start"
-			}
-		]
+				include: "#tags-general-start",
+			},
+		],
 	},
 	"tags-name": {
 		patterns: [
@@ -880,33 +885,33 @@ const repository = {
 				match: "(svelte)(:)([a-z][\\w0-9:-]*)",
 				captures: {
 					"1": {
-						name: "keyword.control.svelte"
+						name: "keyword.control.svelte",
 					},
 					"2": {
-						name: "punctuation.definition.keyword.svelte"
+						name: "punctuation.definition.keyword.svelte",
 					},
 					"3": {
-						name: "entity.name.tag.svelte"
-					}
-				}
+						name: "entity.name.tag.svelte",
+					},
+				},
 			},
 			{
 				match: "slot",
-				name: "keyword.control.svelte"
+				name: "keyword.control.svelte",
 			},
 			{
 				match: "[A-Z][a-zA-Z0-9_]*",
-				name: "support.class.component.svelte"
+				name: "support.class.component.svelte",
 			},
 			{
 				match: "[a-z][\\w0-9:]*-[\\w0-9:-]*",
-				name: "meta.tag.custom.svelte entity.name.tag.svelte"
+				name: "meta.tag.custom.svelte entity.name.tag.svelte",
 			},
 			{
 				match: "[a-z][\\w0-9:-]*",
-				name: "entity.name.tag.svelte"
-			}
-		]
+				name: "entity.name.tag.svelte",
+			},
+		],
 	},
 	"tags-start-attributes": {
 		begin: "\\G",
@@ -914,62 +919,62 @@ const repository = {
 		name: "meta.tag.start.svelte",
 		patterns: [
 			{
-				include: "#attributes"
-			}
-		]
+				include: "#attributes",
+			},
+		],
 	},
 	"tags-lang-start-attributes": {
 		begin: "\\G",
 		end: "(?=/>)|>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.end.svelte"
-			}
+				name: "punctuation.definition.tag.end.svelte",
+			},
 		},
 		name: "meta.tag.start.svelte",
 		patterns: [
 			{
-				include: "#attributes"
-			}
-		]
+				include: "#attributes",
+			},
+		],
 	},
 	"tags-start-node": {
 		match: "(<)([^/\\s>/]*)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.svelte"
+				name: "punctuation.definition.tag.begin.svelte",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#tags-name"
-					}
-				]
-			}
+						include: "#tags-name",
+					},
+				],
+			},
 		},
-		name: "meta.tag.start.svelte"
+		name: "meta.tag.start.svelte",
 	},
 	"tags-end-node": {
 		match: "(</)(.*?)\\s*(>)|(/>)",
 		captures: {
 			"1": {
-				name: "meta.tag.end.svelte punctuation.definition.tag.begin.svelte"
+				name: "meta.tag.end.svelte punctuation.definition.tag.begin.svelte",
 			},
 			"2": {
 				name: "meta.tag.end.svelte",
 				patterns: [
 					{
-						include: "#tags-name"
-					}
-				]
+						include: "#tags-name",
+					},
+				],
 			},
 			"3": {
-				name: "meta.tag.end.svelte punctuation.definition.tag.end.svelte"
+				name: "meta.tag.end.svelte punctuation.definition.tag.end.svelte",
 			},
 			"4": {
-				name: "meta.tag.start.svelte punctuation.definition.tag.end.svelte"
-			}
-		}
+				name: "meta.tag.start.svelte punctuation.definition.tag.end.svelte",
+			},
+		},
 	},
 	"tags-lang": {
 		begin: "<(script|style|template)",
@@ -978,19 +983,19 @@ const repository = {
 			"0": {
 				patterns: [
 					{
-						include: "#tags-start-node"
-					}
-				]
-			}
+						include: "#tags-start-node",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"0": {
 				patterns: [
 					{
-						include: "#tags-end-node"
-					}
-				]
-			}
+						include: "#tags-end-node",
+					},
+				],
+			},
 		},
 		name: "meta.$1.svelte",
 		patterns: [
@@ -1000,37 +1005,37 @@ const repository = {
 				name: "meta.lang.$3.svelte",
 				patterns: [
 					{
-						include: "#tags-lang-start-attributes"
-					}
-				]
+						include: "#tags-lang-start-attributes",
+					},
+				],
 			},
 			{
-				include: "#tags-lang-start-attributes"
-			}
-		]
+				include: "#tags-lang-start-attributes",
+			},
+		],
 	},
 	"tags-void": {
 		begin: "(<)(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)(?=\\s|/?>)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.svelte"
+				name: "punctuation.definition.tag.begin.svelte",
 			},
 			"2": {
-				name: "entity.name.tag.svelte"
-			}
+				name: "entity.name.tag.svelte",
+			},
 		},
 		end: "/?>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.begin.svelte"
-			}
+				name: "punctuation.definition.tag.begin.svelte",
+			},
 		},
 		name: "meta.tag.void.svelte",
 		patterns: [
 			{
-				include: "#attributes"
-			}
-		]
+				include: "#attributes",
+			},
+		],
 	},
 	"tags-general-start": {
 		begin: "(<)([^/\\s>/]*)",
@@ -1039,46 +1044,46 @@ const repository = {
 			"0": {
 				patterns: [
 					{
-						include: "#tags-start-node"
-					}
-				]
-			}
+						include: "#tags-start-node",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "meta.tag.start.svelte punctuation.definition.tag.end.svelte"
-			}
+				name: "meta.tag.start.svelte punctuation.definition.tag.end.svelte",
+			},
 		},
 		name: "meta.scope.tag.$2.svelte",
 		patterns: [
 			{
-				include: "#tags-start-attributes"
-			}
-		]
+				include: "#tags-start-attributes",
+			},
+		],
 	},
 	"tags-general-end": {
 		begin: "(</)([^/\\s>]*)",
 		end: "(>)",
 		beginCaptures: {
 			"1": {
-				name: "meta.tag.end.svelte punctuation.definition.tag.begin.svelte"
+				name: "meta.tag.end.svelte punctuation.definition.tag.begin.svelte",
 			},
 			"2": {
 				name: "meta.tag.end.svelte",
 				patterns: [
 					{
-						include: "#tags-name"
-					}
-				]
-			}
+						include: "#tags-name",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "meta.tag.end.svelte punctuation.definition.tag.end.svelte"
-			}
+				name: "meta.tag.end.svelte punctuation.definition.tag.end.svelte",
+			},
 		},
-		name: "meta.scope.tag.$2.svelte"
-	}
+		name: "meta.scope.tag.$2.svelte",
+	},
 };
 const svelte_tmLanguage = {
 	name: name,
@@ -1087,7 +1092,16 @@ const svelte_tmLanguage = {
 	uuid: uuid,
 	injections: injections,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { svelte_tmLanguage as default, fileTypes, injections, name, patterns, repository, scopeName, uuid };
+export {
+	svelte_tmLanguage as default,
+	fileTypes,
+	injections,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

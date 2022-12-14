@@ -1,16 +1,15 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "bicep";
 const scopeName = "source.bicep";
-const fileTypes = [
-	".bicep"
-];
+const fileTypes = [".bicep"];
 const patterns = [
 	{
-		include: "#expression"
+		include: "#expression",
 	},
 	{
-		include: "#comments"
-	}
+		include: "#comments",
+	},
 ];
 const repository = {
 	"array-literal": {
@@ -19,27 +18,27 @@ const repository = {
 		end: "]",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	"block-comment": {
 		name: "comment.block.bicep",
 		begin: "/\\*",
-		end: "\\*/"
+		end: "\\*/",
 	},
 	comments: {
 		patterns: [
 			{
-				include: "#line-comment"
+				include: "#line-comment",
 			},
 			{
-				include: "#block-comment"
-			}
-		]
+				include: "#block-comment",
+			},
+		],
 	},
 	decorator: {
 		name: "meta.decorator.bicep",
@@ -47,12 +46,12 @@ const repository = {
 		end: "",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	directive: {
 		name: "meta.directive.bicep",
@@ -60,86 +59,86 @@ const repository = {
 		end: "$",
 		patterns: [
 			{
-				include: "#directive-variable"
+				include: "#directive-variable",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	"directive-variable": {
 		name: "keyword.control.declaration.bicep",
-		match: "\\b[_a-zA-Z-0-9]+\\b"
+		match: "\\b[_a-zA-Z-0-9]+\\b",
 	},
 	"escape-character": {
 		name: "constant.character.escape.bicep",
-		match: "\\\\(u{[0-9A-Fa-f]+}|n|r|t|\\\\|'|\\${)"
+		match: "\\\\(u{[0-9A-Fa-f]+}|n|r|t|\\\\|'|\\${)",
 	},
 	expression: {
 		patterns: [
 			{
-				include: "#string-literal"
+				include: "#string-literal",
 			},
 			{
-				include: "#string-verbatim"
+				include: "#string-verbatim",
 			},
 			{
-				include: "#numeric-literal"
+				include: "#numeric-literal",
 			},
 			{
-				include: "#named-literal"
+				include: "#named-literal",
 			},
 			{
-				include: "#object-literal"
+				include: "#object-literal",
 			},
 			{
-				include: "#array-literal"
+				include: "#array-literal",
 			},
 			{
-				include: "#keyword"
+				include: "#keyword",
 			},
 			{
-				include: "#identifier"
+				include: "#identifier",
 			},
 			{
-				include: "#function-call"
+				include: "#function-call",
 			},
 			{
-				include: "#decorator"
+				include: "#decorator",
 			},
 			{
-				include: "#lambda-start"
+				include: "#lambda-start",
 			},
 			{
-				include: "#directive"
-			}
-		]
+				include: "#directive",
+			},
+		],
 	},
 	"function-call": {
 		name: "meta.function-call.bicep",
 		begin: "(\\b[_$[:alpha:]][_$[:alnum:]]*\\b)(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*\\(",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.function.bicep"
-			}
+				name: "entity.name.function.bicep",
+			},
 		},
 		end: "\\)",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	identifier: {
 		name: "variable.other.readwrite.bicep",
-		match: "\\b[_$[:alpha:]][_$[:alnum:]]*\\b(?!(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*\\()"
+		match: "\\b[_$[:alpha:]][_$[:alnum:]]*\\b(?!(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*\\()",
 	},
 	keyword: {
 		name: "keyword.control.declaration.bicep",
-		match: "\\b(targetScope|resource|module|param|var|output|for|in|if|existing|import|from)\\b"
+		match: "\\b(targetScope|resource|module|param|var|output|for|in|if|existing|import|from)\\b",
 	},
 	"lambda-start": {
 		name: "meta.lambda-start.bicep",
@@ -149,27 +148,27 @@ const repository = {
 				name: "meta.undefined.bicep",
 				patterns: [
 					{
-						include: "#identifier"
+						include: "#identifier",
 					},
 					{
-						include: "#comments"
-					}
-				]
-			}
+						include: "#comments",
+					},
+				],
+			},
 		},
-		end: "(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*=>"
+		end: "(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*=>",
 	},
 	"line-comment": {
 		name: "comment.line.double-slash.bicep",
-		match: "//.*(?=$)"
+		match: "//.*(?=$)",
 	},
 	"named-literal": {
 		name: "constant.language.bicep",
-		match: "\\b(true|false|null)\\b"
+		match: "\\b(true|false|null)\\b",
 	},
 	"numeric-literal": {
 		name: "constant.numeric.bicep",
-		match: "[0-9]+"
+		match: "[0-9]+",
 	},
 	"object-literal": {
 		name: "meta.object-literal.bicep",
@@ -177,19 +176,19 @@ const repository = {
 		end: "}",
 		patterns: [
 			{
-				include: "#object-property-key"
+				include: "#object-property-key",
 			},
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	"object-property-key": {
 		name: "variable.other.property.bicep",
-		match: "\\b[_$[:alpha:]][_$[:alnum:]]*\\b(?=(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*:)"
+		match: "\\b[_$[:alpha:]][_$[:alnum:]]*\\b(?=(?:[ \\t\\r\\n]|\\/\\*(?:\\*(?!\\/)|[^*])*\\*\\/)*:)",
 	},
 	"string-literal": {
 		name: "string.quoted.single.bicep",
@@ -197,43 +196,42 @@ const repository = {
 		end: "'",
 		patterns: [
 			{
-				include: "#escape-character"
+				include: "#escape-character",
 			},
 			{
-				include: "#string-literal-subst"
-			}
-		]
+				include: "#string-literal-subst",
+			},
+		],
 	},
 	"string-literal-subst": {
 		name: "meta.string-literal-subst.bicep",
 		begin: "(?<!\\\\)(\\${)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.template-expression.begin.bicep"
-			}
+				name: "punctuation.definition.template-expression.begin.bicep",
+			},
 		},
 		end: "(})",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.template-expression.end.bicep"
-			}
+				name: "punctuation.definition.template-expression.end.bicep",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	"string-verbatim": {
 		name: "string.quoted.multi.bicep",
 		begin: "'''",
 		end: "'''",
-		patterns: [
-		]
-	}
+		patterns: [],
+	},
 };
 const bicep_tmLanguage = {
 	$schema: $schema,
@@ -241,7 +239,15 @@ const bicep_tmLanguage = {
 	scopeName: scopeName,
 	fileTypes: fileTypes,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, bicep_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	$schema,
+	bicep_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

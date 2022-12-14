@@ -1,7 +1,4 @@
-const fileTypes = [
-	"haml",
-	"html.haml"
-];
+const fileTypes = ["haml", "html.haml"];
 const foldingStartMarker = "^\\s*([-%#\\:\\.\\w\\=].*)\\s$";
 const foldingStopMarker = "^\\s*$";
 const keyEquivalent = "^~H";
@@ -13,9 +10,9 @@ const patterns = [
 		end: "$\\n*",
 		patterns: [
 			{
-				include: "#interpolated_ruby"
-			}
-		]
+				include: "#interpolated_ruby",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):ruby",
@@ -23,18 +20,18 @@ const patterns = [
 		name: "source.ruby.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.ruby"
-			}
-		]
+				include: "source.ruby",
+			},
+		],
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.definition.prolog.haml"
-			}
+				name: "punctuation.definition.prolog.haml",
+			},
 		},
 		match: "^(!!!)($|\\s.*)",
-		name: "meta.prolog.haml"
+		name: "meta.prolog.haml",
 	},
 	{
 		begin: "^(\\s*):javascript",
@@ -42,9 +39,9 @@ const patterns = [
 		name: "js.haml",
 		patterns: [
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)%script",
@@ -52,9 +49,9 @@ const patterns = [
 		name: "js.inline.haml",
 		patterns: [
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):ruby$",
@@ -62,47 +59,47 @@ const patterns = [
 		name: "source.ruby.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.ruby"
-			}
-		]
+				include: "source.ruby",
+			},
+		],
 	},
 	{
 		captures: {
 			"1": {
-				name: "punctuation.section.comment.haml"
-			}
+				name: "punctuation.section.comment.haml",
+			},
 		},
 		match: "^(\\s*)(\\/\\[[^\\]].*?$\\n?)",
-		name: "comment.line.slash.haml"
+		name: "comment.line.slash.haml",
 	},
 	{
 		begin: "^(\\s*)(\\-\\#|\\/|\\-\\s*\\/\\*+)",
 		beginCaptures: {
 			"2": {
-				name: "punctuation.section.comment.haml"
-			}
+				name: "punctuation.section.comment.haml",
+			},
 		},
 		end: "^(?!\\1\\s+|\\n)",
 		name: "comment.block.haml",
 		patterns: [
 			{
-				include: "text.haml"
-			}
-		]
+				include: "text.haml",
+			},
+		],
 	},
 	{
 		begin: "^\\s*(?:((%)([-\\w:]+))|(?=\\.|#))",
 		end: "$|(?!\\.|#|\\{|\\(|\\[|&amp;|=|-|~|!=|&=|/)",
 		captures: {
 			"1": {
-				name: "meta.tag.haml"
+				name: "meta.tag.haml",
 			},
 			"2": {
-				name: "punctuation.definition.tag.haml"
+				name: "punctuation.definition.tag.haml",
 			},
 			"3": {
-				name: "entity.name.tag.haml"
-			}
+				name: "entity.name.tag.haml",
+			},
 		},
 		patterns: [
 			{
@@ -111,27 +108,27 @@ const patterns = [
 				end: "$\\n?",
 				patterns: [
 					{
-						include: "#interpolated_ruby"
-					}
-				]
+						include: "#interpolated_ruby",
+					},
+				],
 			},
 			{
 				captures: {
 					"1": {
-						name: "entity.other.attribute-name.class"
-					}
+						name: "entity.other.attribute-name.class",
+					},
 				},
 				match: "(\\.[\\w\\-\\:]+)",
-				name: "meta.selector.css"
+				name: "meta.selector.css",
 			},
 			{
 				captures: {
 					"1": {
-						name: "entity.other.attribute-name.id"
-					}
+						name: "entity.other.attribute-name.id",
+					},
 				},
 				match: "(#[\\w-]+)",
-				name: "meta.selector.css"
+				name: "meta.selector.css",
 			},
 			{
 				begin: "(?<!\\#)\\{(?=.*(,|(do)|\\{|\\}|\\||(\\#.*)|\\R)\\s*)",
@@ -139,15 +136,15 @@ const patterns = [
 				name: "meta.section.attributes.haml",
 				patterns: [
 					{
-						include: "source.ruby"
+						include: "source.ruby",
 					},
 					{
-						include: "#continuation"
+						include: "#continuation",
 					},
 					{
-						include: "#rubyline"
-					}
-				]
+						include: "#rubyline",
+					},
+				],
 			},
 			{
 				begin: "\\(",
@@ -156,33 +153,33 @@ const patterns = [
 				patterns: [
 					{
 						match: "([\\w-]+)",
-						name: "constant.other.symbol.ruby"
+						name: "constant.other.symbol.ruby",
 					},
 					{
 						match: "\\=",
-						name: "punctuation"
+						name: "punctuation",
 					},
 					{
-						include: "#variables"
+						include: "#variables",
 					},
 					{
-						begin: "\"",
-						end: "\"",
+						begin: '"',
+						end: '"',
 						name: "string.quoted.double.ruby",
 						patterns: [
 							{
 								match: "\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)",
-								name: "constant.character.escape.ruby"
+								name: "constant.character.escape.ruby",
 							},
 							{
-								include: "#interpolated_ruby"
-							}
-						]
+								include: "#interpolated_ruby",
+							},
+						],
 					},
 					{
-						include: "#interpolated_ruby"
-					}
-				]
+						include: "#interpolated_ruby",
+					},
+				],
 			},
 			{
 				begin: "\\[(?=.+(,|\\[|\\]|\\||(\\#.*))\\s*)",
@@ -190,27 +187,27 @@ const patterns = [
 				name: "meta.section.object.haml",
 				patterns: [
 					{
-						include: "source.ruby"
+						include: "source.ruby",
 					},
 					{
-						include: "#continuation"
+						include: "#continuation",
 					},
 					{
-						include: "#rubyline"
-					}
-				]
+						include: "#rubyline",
+					},
+				],
 			},
 			{
-				include: "#interpolated_ruby_line"
+				include: "#interpolated_ruby_line",
 			},
 			{
-				include: "#rubyline"
+				include: "#rubyline",
 			},
 			{
 				match: "/",
-				name: "punctuation.terminator.tag.haml"
-			}
-		]
+				name: "punctuation.terminator.tag.haml",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(ruby|opal)$",
@@ -218,9 +215,9 @@ const patterns = [
 		name: "source.ruby.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.ruby"
-			}
-		]
+				include: "source.ruby",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):ruby$",
@@ -228,9 +225,9 @@ const patterns = [
 		name: "source.ruby.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.ruby"
-			}
-		]
+				include: "source.ruby",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(style|sass)$",
@@ -238,9 +235,9 @@ const patterns = [
 		name: "source.sass.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.sass"
-			}
-		]
+				include: "source.sass",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):coffee(script)?",
@@ -248,9 +245,9 @@ const patterns = [
 		name: "source.coffee.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.coffee"
-			}
-		]
+				include: "source.coffee",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):plain$",
@@ -258,39 +255,39 @@ const patterns = [
 		name: "text.plain.embedded.filter.haml",
 		patterns: [
 			{
-				include: "text.plain"
-			}
-		]
+				include: "text.plain",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:ruby)",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control.filter.haml"
-			}
+				name: "keyword.control.filter.haml",
+			},
 		},
 		end: "(?m:(?<=\\n)(?!\\1\\s+|$\\n*))",
 		name: "source.ruby.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.ruby"
-			}
-		]
+				include: "source.ruby",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:sass)",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control.filter.haml"
-			}
+				name: "keyword.control.filter.haml",
+			},
 		},
 		end: "^(?!\\1\\s+|$\\n*)",
 		name: "source.embedded.filter.sass",
 		patterns: [
 			{
-				include: "source.sass"
-			}
-		]
+				include: "source.sass",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(styles|sass)$",
@@ -298,9 +295,9 @@ const patterns = [
 		name: "source.sass.embedded.filter.haml",
 		patterns: [
 			{
-				include: "source.sass"
-			}
-		]
+				include: "source.sass",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):plain$",
@@ -308,29 +305,29 @@ const patterns = [
 		name: "text.plain.embedded.filter.haml",
 		patterns: [
 			{
-				include: "text.plain"
-			}
-		]
+				include: "text.plain",
+			},
+		],
 	},
 	{
 		captures: {
 			"1": {
-				name: "meta.escape.haml"
-			}
+				name: "meta.escape.haml",
+			},
 		},
-		match: "^\\s*(\\.)"
+		match: "^\\s*(\\.)",
 	},
 	{
 		begin: "^\\s*(?==|-|~|!=|&=)",
 		end: "$",
 		patterns: [
 			{
-				include: "#interpolated_ruby_line"
+				include: "#interpolated_ruby_line",
 			},
 			{
-				include: "#rubyline"
-			}
-		]
+				include: "#rubyline",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:php)",
@@ -338,14 +335,14 @@ const patterns = [
 		name: "meta.embedded.php",
 		captures: {
 			"2": {
-				name: "entity.name.tag.haml"
-			}
+				name: "entity.name.tag.haml",
+			},
 		},
 		patterns: [
 			{
-				include: "text.html.php#language"
-			}
-		]
+				include: "text.html.php#language",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:markdown)",
@@ -353,14 +350,14 @@ const patterns = [
 		name: "meta.embedded.markdown",
 		captures: {
 			"2": {
-				name: "entity.name.tag.haml"
-			}
+				name: "entity.name.tag.haml",
+			},
 		},
 		patterns: [
 			{
-				include: "text.html.markdown"
-			}
-		]
+				include: "text.html.markdown",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:(css|styles?))$",
@@ -368,14 +365,14 @@ const patterns = [
 		name: "meta.embedded.css",
 		captures: {
 			"2": {
-				name: "entity.name.tag.haml"
-			}
+				name: "entity.name.tag.haml",
+			},
 		},
 		patterns: [
 			{
-				include: "source.css"
-			}
-		]
+				include: "source.css",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:sass)$",
@@ -383,14 +380,14 @@ const patterns = [
 		name: "meta.embedded.sass",
 		captures: {
 			"2": {
-				name: "entity.name.tag.haml"
-			}
+				name: "entity.name.tag.haml",
+			},
 		},
 		patterns: [
 			{
-				include: "source.sass"
-			}
-		]
+				include: "source.sass",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(:scss)$",
@@ -398,61 +395,61 @@ const patterns = [
 		name: "meta.embedded.scss",
 		captures: {
 			"2": {
-				name: "entity.name.tag.haml"
-			}
+				name: "entity.name.tag.haml",
+			},
 		},
 		patterns: [
 			{
-				include: "source.scss"
-			}
-		]
-	}
+				include: "source.scss",
+			},
+		],
+	},
 ];
 const repository = {
 	continuation: {
 		captures: {
 			"1": {
-				name: "punctuation.separator.continuation.haml"
-			}
+				name: "punctuation.separator.continuation.haml",
+			},
 		},
-		match: "(\\|)\\s*\\n"
+		match: "(\\|)\\s*\\n",
 	},
 	interpolated_ruby: {
 		patterns: [
 			{
 				captures: {
 					"0": {
-						name: "punctuation.section.embedded.ruby"
+						name: "punctuation.section.embedded.ruby",
 					},
 					"1": {
-						name: "source.ruby.embedded.source.empty"
-					}
+						name: "source.ruby.embedded.source.empty",
+					},
 				},
 				match: "#\\{(\\})",
-				name: "source.ruby.embedded.source"
+				name: "source.ruby.embedded.source",
 			},
 			{
 				begin: "#\\{",
 				captures: {
 					"0": {
-						name: "punctuation.section.embedded.ruby"
-					}
+						name: "punctuation.section.embedded.ruby",
+					},
 				},
 				end: "(\\})",
 				name: "source.ruby.embedded.source",
 				patterns: [
 					{
-						include: "#nest_curly_and_self"
+						include: "#nest_curly_and_self",
 					},
 					{
-						include: "source.ruby"
-					}
-				]
+						include: "source.ruby",
+					},
+				],
 			},
 			{
-				include: "#variables"
-			}
-		]
+				include: "#variables",
+			},
+		],
 	},
 	interpolated_ruby_line: {
 		begin: "!?==",
@@ -461,12 +458,12 @@ const repository = {
 		name: "meta.line.ruby.interpolated.haml",
 		patterns: [
 			{
-				include: "#interpolated_ruby"
+				include: "#interpolated_ruby",
 			},
 			{
-				include: "source.ruby#escaped_char"
-			}
-		]
+				include: "source.ruby#escaped_char",
+			},
+		],
 	},
 	nest_curly_and_self: {
 		patterns: [
@@ -474,51 +471,51 @@ const repository = {
 				begin: "\\{",
 				captures: {
 					"0": {
-						name: "punctuation.section.scope.ruby"
-					}
+						name: "punctuation.section.scope.ruby",
+					},
 				},
 				end: "\\}",
 				patterns: [
 					{
-						include: "#nest_curly_and_self"
+						include: "#nest_curly_and_self",
 					},
 					{
-						include: "source.ruby"
-					}
-				]
-			}
-		]
+						include: "source.ruby",
+					},
+				],
+			},
+		],
 	},
 	variables: {
 		patterns: [
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.variable.ruby"
-					}
+						name: "punctuation.definition.variable.ruby",
+					},
 				},
 				match: "(#@)[a-zA-Z_]\\w*",
-				name: "variable.other.readwrite.instance.ruby"
+				name: "variable.other.readwrite.instance.ruby",
 			},
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.variable.ruby"
-					}
+						name: "punctuation.definition.variable.ruby",
+					},
 				},
 				match: "(#@@)[a-zA-Z_]\\w*",
-				name: "variable.other.readwrite.class.ruby"
+				name: "variable.other.readwrite.class.ruby",
 			},
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.variable.ruby"
-					}
+						name: "punctuation.definition.variable.ruby",
+					},
 				},
 				match: "(#\\$)[a-zA-Z_]\\w*",
-				name: "variable.other.readwrite.global.ruby"
-			}
-		]
+				name: "variable.other.readwrite.global.ruby",
+			},
+		],
 	},
 	rubyline: {
 		begin: "(&amp|!)?(=|-|~)",
@@ -526,11 +523,11 @@ const repository = {
 		end: "((do|\\{)( \\|[.*]+\\|)?)$|$|^(?!.*\\|\\s*)$\\n?",
 		endCaptures: {
 			"1": {
-				name: "source.ruby.embedded.html"
+				name: "source.ruby.embedded.html",
 			},
 			"2": {
-				name: "keyword.control.ruby.start-block"
-			}
+				name: "keyword.control.ruby.start-block",
+			},
 		},
 		name: "meta.line.ruby.haml",
 		patterns: [
@@ -538,60 +535,61 @@ const repository = {
 				match: "\\s+((elseif|foreach|switch|declare|default|use))(?=\\s|\\()",
 				captures: {
 					"1": {
-						name: "keyword.control.php"
-					}
-				}
+						name: "keyword.control.php",
+					},
+				},
 			},
 			{
 				match: "\\s+(require_once|include_once)(?=\\s|\\()",
 				captures: {
 					"1": {
-						name: "keyword.control.import.include.php"
-					}
-				}
+						name: "keyword.control.import.include.php",
+					},
+				},
 			},
 			{
 				match: "\\s+(catch|try|throw|exception|finally|die)(?=\\s|\\(|\\n*)",
-				name: "keyword.control.exception.php"
+				name: "keyword.control.exception.php",
 			},
 			{
 				match: "\\s+(function\\s*)((?=\\())",
 				captures: {
 					"1": {
-						name: "storage.type.function.php"
-					}
-				}
+						name: "storage.type.function.php",
+					},
+				},
 			},
 			{
 				match: "\\s+(use\\s*)((?=\\())",
 				captures: {
 					"1": {
-						name: "keyword.control.php"
-					}
-				}
+						name: "keyword.control.php",
+					},
+				},
 			},
 			{
 				match: "(\\||,|<|do|\\{)\\s*(\\#.*)?$\\n*",
 				name: "source.ruby",
 				patterns: [
 					{
-						include: "#rubyline"
-					}
-				]
+						include: "#rubyline",
+					},
+				],
 			},
 			{
-				comment: "Hack to let ruby comments work in this context properly",
+				comment:
+					"Hack to let ruby comments work in this context properly",
 				match: "#.*$",
-				name: "comment.line.number-sign.ruby"
+				name: "comment.line.number-sign.ruby",
 			},
 			{
-				include: "source.ruby"
+				include: "source.ruby",
 			},
 			{
-				include: "#continuation"
-			}
-		]
-	}
+				include: "#continuation",
+			},
+		],
+	},
 };
 const scopeName = "text.haml";
 const uuid = "3D727049-DD05-45DF-92A5-D50EA36FD035";
@@ -604,7 +602,18 @@ const haml_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { haml_tmLanguage as default, fileTypes, foldingStartMarker, foldingStopMarker, keyEquivalent, name, patterns, repository, scopeName, uuid };
+export {
+	haml_tmLanguage as default,
+	fileTypes,
+	foldingStartMarker,
+	foldingStopMarker,
+	keyEquivalent,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

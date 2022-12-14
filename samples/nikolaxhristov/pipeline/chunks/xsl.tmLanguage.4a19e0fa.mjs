@@ -1,9 +1,10 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/atom/language-xml/blob/master/grammars/xsl.cson",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/atom/language-xml/commit/507de2ee7daca60cf02e9e21fbeb92bbae73e280";
+const version =
+	"https://github.com/atom/language-xml/commit/507de2ee7daca60cf02e9e21fbeb92bbae73e280";
 const name = "xsl";
 const scopeName = "text.xml.xsl";
 const patterns = [
@@ -11,20 +12,20 @@ const patterns = [
 		begin: "(<)(xsl)((:))(template)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.tag.xml"
+				name: "punctuation.definition.tag.xml",
 			},
 			"2": {
-				name: "entity.name.tag.namespace.xml"
+				name: "entity.name.tag.namespace.xml",
 			},
 			"3": {
-				name: "entity.name.tag.xml"
+				name: "entity.name.tag.xml",
 			},
 			"4": {
-				name: "punctuation.separator.namespace.xml"
+				name: "punctuation.separator.namespace.xml",
 			},
 			"5": {
-				name: "entity.name.tag.localname.xml"
-			}
+				name: "entity.name.tag.localname.xml",
+			},
 		},
 		end: "(>)",
 		name: "meta.tag.xml.template",
@@ -32,63 +33,63 @@ const patterns = [
 			{
 				captures: {
 					"1": {
-						name: "entity.other.attribute-name.namespace.xml"
+						name: "entity.other.attribute-name.namespace.xml",
 					},
 					"2": {
-						name: "entity.other.attribute-name.xml"
+						name: "entity.other.attribute-name.xml",
 					},
 					"3": {
-						name: "punctuation.separator.namespace.xml"
+						name: "punctuation.separator.namespace.xml",
 					},
 					"4": {
-						name: "entity.other.attribute-name.localname.xml"
-					}
+						name: "entity.other.attribute-name.localname.xml",
+					},
 				},
-				match: " (?:([-_a-zA-Z0-9]+)((:)))?([a-zA-Z-]+)"
+				match: " (?:([-_a-zA-Z0-9]+)((:)))?([a-zA-Z-]+)",
 			},
 			{
-				include: "#doublequotedString"
+				include: "#doublequotedString",
 			},
 			{
-				include: "#singlequotedString"
-			}
-		]
+				include: "#singlequotedString",
+			},
+		],
 	},
 	{
-		include: "text.xml"
-	}
+		include: "text.xml",
+	},
 ];
 const repository = {
 	doublequotedString: {
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.xml"
-			}
+				name: "punctuation.definition.string.begin.xml",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.xml"
-			}
+				name: "punctuation.definition.string.end.xml",
+			},
 		},
-		name: "string.quoted.double.xml"
+		name: "string.quoted.double.xml",
 	},
 	singlequotedString: {
 		begin: "'",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.xml"
-			}
+				name: "punctuation.definition.string.begin.xml",
+			},
 		},
 		end: "'",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.xml"
-			}
+				name: "punctuation.definition.string.end.xml",
+			},
 		},
-		name: "string.quoted.single.xml"
-	}
+		name: "string.quoted.single.xml",
+	},
 };
 const xsl_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -96,7 +97,15 @@ const xsl_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { xsl_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	xsl_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

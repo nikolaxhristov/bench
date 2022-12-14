@@ -1,6 +1,4 @@
-const fileTypes = [
-	"sass"
-];
+const fileTypes = ["sass"];
 const foldingStartMarker = "/\\*|^#|^\\*|^\\b|*#?region|^\\.";
 const foldingStopMarker = "\\*/|*#?endregion|^\\s*$";
 const name = "sass";
@@ -11,16 +9,16 @@ const patterns = [
 		name: "comment.block.sass",
 		patterns: [
 			{
-				include: "#comment-tag"
+				include: "#comment-tag",
 			},
 			{
-				include: "#comment-param"
-			}
-		]
+				include: "#comment-param",
+			},
+		],
 	},
 	{
 		match: "^[\\t ]*/?//[\\t ]*[SRI][\\t ]*$",
-		name: "keyword.other.sass.formatter.action"
+		name: "keyword.other.sass.formatter.action",
 	},
 	{
 		begin: "^[\\t ]*//[\\t ]*(import)[\\t ]*(css-variables)[\\t ]*(from)",
@@ -28,38 +26,38 @@ const patterns = [
 		name: "comment.import.css.variables",
 		captures: {
 			"1": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"2": {
-				name: "variable"
+				name: "variable",
 			},
 			"3": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
-				include: "#import-quotes"
-			}
-		]
+				include: "#import-quotes",
+			},
+		],
 	},
 	{
-		include: "#double-slash"
+		include: "#double-slash",
 	},
 	{
-		include: "#double-quoted"
+		include: "#double-quoted",
 	},
 	{
-		include: "#single-quoted"
+		include: "#single-quoted",
 	},
 	{
-		include: "#interpolation"
+		include: "#interpolation",
 	},
 	{
-		include: "#curly-brackets"
+		include: "#curly-brackets",
 	},
 	{
-		include: "#placeholder-selector"
+		include: "#placeholder-selector",
 	},
 	{
 		begin: "\\$[a-zA-Z0-9_-]+(?=:)",
@@ -67,86 +65,86 @@ const patterns = [
 		name: "sass.script.maps",
 		captures: {
 			"0": {
-				name: "variable.other.name"
-			}
+				name: "variable.other.name",
+			},
 		},
 		patterns: [
 			{
-				include: "#double-slash"
+				include: "#double-slash",
 			},
 			{
-				include: "#double-quoted"
+				include: "#double-quoted",
 			},
 			{
-				include: "#single-quoted"
+				include: "#single-quoted",
 			},
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
-				include: "#rgb-value"
+				include: "#rgb-value",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#unit"
+				include: "#unit",
 			},
 			{
-				include: "#flag"
+				include: "#flag",
 			},
 			{
-				include: "#comma"
+				include: "#comma",
 			},
 			{
-				include: "#function"
+				include: "#function",
 			},
 			{
-				include: "#function-content"
+				include: "#function-content",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#reserved-words"
+				include: "#reserved-words",
 			},
 			{
-				include: "#parent-selector"
+				include: "#parent-selector",
 			},
 			{
-				include: "#property-value"
+				include: "#property-value",
 			},
 			{
-				include: "#semicolon"
+				include: "#semicolon",
 			},
 			{
-				include: "#dotdotdot"
-			}
-		]
+				include: "#dotdotdot",
+			},
+		],
 	},
 	{
-		include: "#variable-root"
+		include: "#variable-root",
 	},
 	{
-		include: "#numeric"
+		include: "#numeric",
 	},
 	{
-		include: "#unit"
+		include: "#unit",
 	},
 	{
-		include: "#flag"
+		include: "#flag",
 	},
 	{
-		include: "#comma"
+		include: "#comma",
 	},
 	{
-		include: "#semicolon"
+		include: "#semicolon",
 	},
 	{
-		include: "#dotdotdot"
+		include: "#dotdotdot",
 	},
 	{
 		begin: "@include|\\+(?!\\W|\\d)",
@@ -154,9 +152,9 @@ const patterns = [
 		name: "support.function.name.sass.library",
 		captures: {
 			"0": {
-				name: "keyword.control.at-rule.css.sass"
-			}
-		}
+				name: "keyword.control.at-rule.css.sass",
+			},
+		},
 	},
 	{
 		begin: "^(@use)",
@@ -164,42 +162,42 @@ const patterns = [
 		name: "sass.use",
 		captures: {
 			"0": {
-				name: "keyword.control.at-rule.css.sass.use"
-			}
+				name: "keyword.control.at-rule.css.sass.use",
+			},
 		},
 		patterns: [
 			{
 				match: "as|with",
-				name: "support.type.css.sass"
+				name: "support.type.css.sass",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#unit"
+				include: "#unit",
 			},
 			{
-				include: "#variable-root"
+				include: "#variable-root",
 			},
 			{
-				include: "#rgb-value"
+				include: "#rgb-value",
 			},
 			{
-				include: "#comma"
+				include: "#comma",
 			},
 			{
-				include: "#parenthesis-open"
+				include: "#parenthesis-open",
 			},
 			{
-				include: "#parenthesis-close"
+				include: "#parenthesis-close",
 			},
 			{
-				include: "#colon"
+				include: "#colon",
 			},
 			{
-				include: "#import-quotes"
-			}
-		]
+				include: "#import-quotes",
+			},
+		],
 	},
 	{
 		begin: "^@import(.*?)( as.*)?$",
@@ -207,12 +205,12 @@ const patterns = [
 		name: "keyword.control.at-rule.use",
 		captures: {
 			"1": {
-				name: "constant.character.css.sass"
+				name: "constant.character.css.sass",
 			},
 			"2": {
-				name: "invalid"
-			}
-		}
+				name: "invalid",
+			},
+		},
 	},
 	{
 		begin: "@mixin|^[\\t ]*=|@function",
@@ -220,20 +218,20 @@ const patterns = [
 		name: "support.function.name.sass",
 		captures: {
 			"0": {
-				name: "keyword.control.at-rule.css.sass"
-			}
+				name: "keyword.control.at-rule.css.sass",
+			},
 		},
 		patterns: [
 			{
 				match: "[\\w-]+",
-				name: "entity.name.function"
-			}
-		]
+				name: "entity.name.function",
+			},
+		],
 	},
 	{
 		begin: "@",
 		end: "$\\n?|\\s(?!(all|braille|embossed|handheld|print|projection|screen|speech|tty|tv|if|only|not)(\\s|,))",
-		name: "keyword.control.at-rule.css.sass"
+		name: "keyword.control.at-rule.css.sass",
 	},
 	{
 		begin: "(?<!\\-|\\()\\b(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|big|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|eventsource|fieldset|figure|figcaption|footer|form|frame|frameset|(h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|mark|menu|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|picture|pre|progress|q|samp|script|section|select|small|source|span|strike|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|tt|ul|var|video|main|svg|rect|ruby|center|circle|ellipse|line|polyline|polygon|path|text|u|x)\\b(?!-|\\)|:\\s)|&",
@@ -241,12 +239,12 @@ const patterns = [
 		name: "entity.name.tag.css.sass.symbol",
 		patterns: [
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#pseudo-class"
-			}
-		]
+				include: "#pseudo-class",
+			},
+		],
 	},
 	{
 		begin: "#",
@@ -254,12 +252,12 @@ const patterns = [
 		name: "entity.other.attribute-name.id.css.sass",
 		patterns: [
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#pseudo-class"
-			}
-		]
+				include: "#pseudo-class",
+			},
+		],
 	},
 	{
 		begin: "\\.|(?<=&)(-|_)",
@@ -267,12 +265,12 @@ const patterns = [
 		name: "entity.other.attribute-name.class.css.sass",
 		patterns: [
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#pseudo-class"
-			}
-		]
+				include: "#pseudo-class",
+			},
+		],
 	},
 	{
 		begin: "\\[",
@@ -280,31 +278,31 @@ const patterns = [
 		name: "entity.other.attribute-selector.sass",
 		patterns: [
 			{
-				include: "#double-quoted"
+				include: "#double-quoted",
 			},
 			{
-				include: "#single-quoted"
+				include: "#single-quoted",
 			},
 			{
 				match: "\\^|\\$|\\*|~",
-				name: "keyword.other.regex.sass"
-			}
-		]
+				name: "keyword.other.regex.sass",
+			},
+		],
 	},
 	{
 		match: "(?<=\\]|\\)|not\\(|\\*|>|>\\s):[a-z:-]+|(::|:-)[a-z:-]+",
-		name: "entity.other.attribute-name.pseudo-class.css.sass"
+		name: "entity.other.attribute-name.pseudo-class.css.sass",
 	},
 	{
-		include: "#module"
+		include: "#module",
 	},
 	{
 		match: "[\\w-]*\\(",
-		name: "entity.name.function"
+		name: "entity.name.function",
 	},
 	{
 		match: "\\)",
-		name: "entity.name.function.close"
+		name: "entity.name.function.close",
 	},
 	{
 		begin: ":",
@@ -313,84 +311,84 @@ const patterns = [
 		patterns: [
 			{
 				match: "(?<=:)[a-z-]+\\s",
-				name: "support.type.property-name.css.sass.prop.name"
+				name: "support.type.property-name.css.sass.prop.name",
 			},
 			{
-				include: "#double-slash"
+				include: "#double-slash",
 			},
 			{
-				include: "#double-quoted"
+				include: "#double-quoted",
 			},
 			{
-				include: "#single-quoted"
+				include: "#single-quoted",
 			},
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#curly-brackets"
+				include: "#curly-brackets",
 			},
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
-				include: "#rgb-value"
+				include: "#rgb-value",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#unit"
+				include: "#unit",
 			},
 			{
-				include: "#module"
+				include: "#module",
 			},
 			{
 				match: "--.+?(?=\\))",
-				name: "variable.css"
+				name: "variable.css",
 			},
 			{
 				match: "[\\w-]*\\(",
-				name: "entity.name.function"
+				name: "entity.name.function",
 			},
 			{
 				match: "\\)",
-				name: "entity.name.function.close"
+				name: "entity.name.function.close",
 			},
 			{
-				include: "#flag"
+				include: "#flag",
 			},
 			{
-				include: "#comma"
+				include: "#comma",
 			},
 			{
-				include: "#semicolon"
+				include: "#semicolon",
 			},
 			{
-				include: "#function"
+				include: "#function",
 			},
 			{
-				include: "#function-content"
+				include: "#function-content",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#parent-selector"
+				include: "#parent-selector",
 			},
 			{
-				include: "#property-value"
-			}
-		]
+				include: "#property-value",
+			},
+		],
 	},
 	{
-		include: "#rgb-value"
+		include: "#rgb-value",
 	},
 	{
-		include: "#function"
+		include: "#function",
 	},
 	{
-		include: "#function-content"
+		include: "#function-content",
 	},
 	{
 		begin: "(?<=})(?!\\n|\\(|\\)|[a-zA-Z0-9_-]+:)",
@@ -398,26 +396,26 @@ const patterns = [
 		name: "entity.name.tag.css.sass",
 		patterns: [
 			{
-				include: "#interpolation"
+				include: "#interpolation",
 			},
 			{
-				include: "#pseudo-class"
-			}
-		]
+				include: "#pseudo-class",
+			},
+		],
 	},
 	{
-		include: "#operator"
+		include: "#operator",
 	},
 	{
 		match: "[a-z-]+((?=:|#{))",
-		name: "support.type.property-name.css.sass.prop.name"
+		name: "support.type.property-name.css.sass.prop.name",
 	},
 	{
-		include: "#reserved-words"
+		include: "#reserved-words",
 	},
 	{
-		include: "#property-value"
-	}
+		include: "#property-value",
+	},
 ];
 const repository = {
 	module: {
@@ -425,33 +423,33 @@ const repository = {
 		name: "constant.character.module",
 		captures: {
 			"1": {
-				name: "constant.character.module.name"
+				name: "constant.character.module.name",
 			},
 			"2": {
-				name: "constant.numeric.module.dot"
-			}
-		}
+				name: "constant.numeric.module.dot",
+			},
+		},
 	},
 	comma: {
 		match: "\\band\\b|\\bor\\b|,",
-		name: "comment.punctuation.comma.sass"
+		name: "comment.punctuation.comma.sass",
 	},
 	"comment-tag": {
 		begin: "(?<={{)",
 		end: "(?=}})",
-		name: "comment.tag.sass"
+		name: "comment.tag.sass",
 	},
 	"comment-param": {
 		match: "\\@(\\w+)",
-		name: "storage.type.class.jsdoc"
+		name: "storage.type.class.jsdoc",
 	},
 	"curly-brackets": {
 		match: "{|}",
-		name: "invalid"
+		name: "invalid",
 	},
 	dotdotdot: {
 		match: "\\.\\.\\.",
-		name: "variable.other"
+		name: "variable.other",
 	},
 	"double-slash": {
 		begin: "//",
@@ -459,44 +457,44 @@ const repository = {
 		name: "comment.line.sass",
 		patterns: [
 			{
-				include: "#comment-tag"
-			}
-		]
+				include: "#comment-tag",
+			},
+		],
 	},
 	"double-quoted": {
-		begin: "\"",
-		end: "\"",
+		begin: '"',
+		end: '"',
 		name: "string.quoted.double.css.sass",
 		patterns: [
 			{
-				include: "#quoted-interpolation"
-			}
-		]
+				include: "#quoted-interpolation",
+			},
+		],
 	},
 	flag: {
 		match: "!(important|default|optional|global)",
-		name: "keyword.other.important.css.sass"
+		name: "keyword.other.important.css.sass",
 	},
 	"function": {
 		match: "(?<=[\\s|\\(|,|:])(?!url|format|attr)[a-zA-Z0-9_-][\\w-]*(?=\\()",
-		name: "support.function.name.sass"
+		name: "support.function.name.sass",
 	},
 	"function-content": {
 		begin: "(?<=url\\(|format\\(|attr\\()",
 		end: ".(?=\\))",
-		name: "string.quoted.double.css.sass"
+		name: "string.quoted.double.css.sass",
 	},
 	"parenthesis-open": {
 		match: "\\(",
-		name: "entity.name.function.parenthesis.open"
+		name: "entity.name.function.parenthesis.open",
 	},
 	"parenthesis-close": {
 		match: "\\)",
-		name: "entity.name.function.parenthesis.close"
+		name: "entity.name.function.parenthesis.close",
 	},
 	colon: {
 		match: ":",
-		name: "meta.property-list.css.sass.colon"
+		name: "meta.property-list.css.sass.colon",
 	},
 	interpolation: {
 		begin: "#{",
@@ -504,52 +502,52 @@ const repository = {
 		name: "support.function.interpolation.sass",
 		patterns: [
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#unit"
+				include: "#unit",
 			},
 			{
-				include: "#comma"
+				include: "#comma",
 			},
 			{
-				include: "#double-quoted"
+				include: "#double-quoted",
 			},
 			{
-				include: "#single-quoted"
-			}
-		]
+				include: "#single-quoted",
+			},
+		],
 	},
 	numeric: {
 		match: "(-|\\.)?[0-9]+(\\.[0-9]+)?",
-		name: "constant.numeric.css.sass"
+		name: "constant.numeric.css.sass",
 	},
 	operator: {
 		match: "\\+|\\s-\\s|\\s-(?=\\$)|(?<=\\()-(?=\\$)|\\s-(?=\\()|\\*|/|%|=|!|<|>|~",
-		name: "keyword.operator.sass"
+		name: "keyword.operator.sass",
 	},
 	"parent-selector": {
 		match: "&",
-		name: "entity.name.tag.css.sass"
+		name: "entity.name.tag.css.sass",
 	},
 	"placeholder-selector": {
 		begin: "(?<!\\d)%(?!\\d)",
 		end: "$\\n?|\\s",
-		name: "entity.other.inherited-class.placeholder-selector.css.sass"
+		name: "entity.other.inherited-class.placeholder-selector.css.sass",
 	},
 	"property-value": {
 		match: "[a-zA-Z0-9_-]+",
-		name: "meta.property-value.css.sass support.constant.property-value.css.sass"
+		name: "meta.property-value.css.sass support.constant.property-value.css.sass",
 	},
 	"pseudo-class": {
 		match: ":[a-z:-]+",
-		name: "entity.other.attribute-name.pseudo-class.css.sass"
+		name: "entity.other.attribute-name.pseudo-class.css.sass",
 	},
 	"quoted-interpolation": {
 		begin: "#{",
@@ -557,33 +555,33 @@ const repository = {
 		name: "support.function.interpolation.sass",
 		patterns: [
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#unit"
+				include: "#unit",
 			},
 			{
-				include: "#comma"
-			}
-		]
+				include: "#comma",
+			},
+		],
 	},
 	"reserved-words": {
 		match: "\\b(false|from|in|not|null|through|to|true)\\b",
-		name: "support.type.property-name.css.sass"
+		name: "support.type.property-name.css.sass",
 	},
 	"rgb-value": {
 		match: "(#)([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\\b",
-		name: "constant.language.color.rgb-value.css.sass"
+		name: "constant.language.color.rgb-value.css.sass",
 	},
 	semicolon: {
 		match: ";",
-		name: "invalid"
+		name: "invalid",
 	},
 	"single-quoted": {
 		begin: "'",
@@ -591,26 +589,26 @@ const repository = {
 		name: "string.quoted.single.css.sass",
 		patterns: [
 			{
-				include: "#quoted-interpolation"
-			}
-		]
+				include: "#quoted-interpolation",
+			},
+		],
 	},
 	unit: {
 		match: "(?<=[\\d]|})(ch|cm|deg|dpcm|dpi|dppx|em|ex|grad|Hz|in|kHz|mm|ms|pc|pt|px|rad|rem|s|turn|vh|vmax|vmin|vw|fr|%)",
-		name: "keyword.control.unit.css.sass"
+		name: "keyword.control.unit.css.sass",
 	},
 	"variable-root": {
 		match: "\\$[a-zA-Z0-9_-]+",
-		name: "variable.other.root"
+		name: "variable.other.root",
 	},
 	variable: {
 		match: "\\$[a-zA-Z0-9_-]+",
-		name: "variable.other.value"
+		name: "variable.other.value",
 	},
 	"import-quotes": {
 		match: "[\"']?\\.{0,2}[\\w/]+[\"']?",
-		name: "constant.character.css.sass"
-	}
+		name: "constant.character.css.sass",
+	},
 };
 const scopeName = "source.sass";
 const sass_tmLanguage = {
@@ -620,7 +618,16 @@ const sass_tmLanguage = {
 	name: name,
 	patterns: patterns,
 	repository: repository,
-	scopeName: scopeName
+	scopeName: scopeName,
 };
 
-export { sass_tmLanguage as default, fileTypes, foldingStartMarker, foldingStopMarker, name, patterns, repository, scopeName };
+export {
+	sass_tmLanguage as default,
+	fileTypes,
+	foldingStartMarker,
+	foldingStopMarker,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

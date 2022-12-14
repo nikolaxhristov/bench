@@ -1,25 +1,29 @@
-const fileTypes = [
-	"purs"
-];
+const fileTypes = ["purs"];
 const name = "purescript";
 const scopeName = "source.purescript";
 const macros = {
 	functionNameOne: "[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
 	classNameOne: "[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
-	functionName: "(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
-	className: "[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*",
+	functionName:
+		"(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
+	className:
+		"[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*",
 	operatorChar: "[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]",
 	operator: "[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]+",
 	operatorFun: "(?:\\((?!--+\\))[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]+\\))",
-	character: "(?:[ -\\[\\]-~]|(\\\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL|[abfnrtv\\\\\\\"'\\&]))|(\\\\o[0-7]+)|(\\\\x[0-9A-Fa-f]+)|(\\^[A-Z@\\[\\]\\\\\\^_]))",
-	classConstraint: "(?:(?:([\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*)\\s+)(?:(?<classConstraint>(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*|(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)(?:\\s*(?:\\s+)\\s*\\g<classConstraint>)?)))",
-	functionTypeDeclaration: "([\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)\\s*(::|∷)",
-	ctorArgs: "(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*|(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*|(?:(?:[\\w()'→⇒\\[\\],]|->|=>)+\\s*)+)",
+	character:
+		"(?:[ -\\[\\]-~]|(\\\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL|[abfnrtv\\\\\\\"'\\&]))|(\\\\o[0-7]+)|(\\\\x[0-9A-Fa-f]+)|(\\^[A-Z@\\[\\]\\\\\\^_]))",
+	classConstraint:
+		"(?:(?:([\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*)\\s+)(?:(?<classConstraint>(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*|(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)(?:\\s*(?:\\s+)\\s*\\g<classConstraint>)?)))",
+	functionTypeDeclaration:
+		"([\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)\\s*(::|∷)",
+	ctorArgs:
+		"(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*|(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*|(?:(?:[\\w()'→⇒\\[\\],]|->|=>)+\\s*)+)",
 	ctor: "(?:(?:\\b([\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*)\\s+)(?:(?<ctorArgs>(?:(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*|(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*|(?:(?:[\\w()'→⇒\\[\\],]|->|=>)+\\s*)+))(?:\\s*(?:\\s+)\\s*\\g<ctorArgs>)?)?))",
 	typeDecl: ".+?",
 	indentChar: "[ \\t]",
 	indentBlockEnd: "^(?!\\1[ \\t]|[ \\t]*$)",
-	maybeBirdTrack: "^"
+	maybeBirdTrack: "^",
 };
 const patterns = [
 	{
@@ -27,12 +31,12 @@ const patterns = [
 		match: "(`)(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(`)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.entity.purescript"
+				name: "punctuation.definition.entity.purescript",
 			},
 			"2": {
-				name: "punctuation.definition.entity.purescript"
-			}
-		}
+				name: "punctuation.definition.entity.purescript",
+			},
+		},
 	},
 	{
 		name: "meta.declaration.module.purescript",
@@ -40,29 +44,29 @@ const patterns = [
 		end: "(where)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.other.purescript"
-			}
+				name: "keyword.other.purescript",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.other.purescript"
-			}
+				name: "keyword.other.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#module_name"
+				include: "#module_name",
 			},
 			{
-				include: "#module_exports"
+				include: "#module_exports",
 			},
 			{
 				name: "invalid.purescript",
-				match: "[a-z]+"
-			}
-		]
+				match: "[a-z]+",
+			},
+		],
 	},
 	{
 		name: "meta.declaration.typeclass.purescript",
@@ -70,19 +74,19 @@ const patterns = [
 		end: "\\b(where)\\b|$",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.class.purescript"
-			}
+				name: "storage.type.class.purescript",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.other.purescript"
-			}
+				name: "keyword.other.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#type_signature"
-			}
-		]
+				include: "#type_signature",
+			},
+		],
 	},
 	{
 		name: "meta.declaration.instance.purescript",
@@ -91,28 +95,28 @@ const patterns = [
 		contentName: "meta.type-signature.purescript",
 		beginCaptures: {
 			"1": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"2": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"3": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"4": {
-				name: "keyword.other.purescript"
-			}
+				name: "keyword.other.purescript",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.other.purescript"
-			}
+				name: "keyword.other.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#type_signature"
-			}
-		]
+				include: "#type_signature",
+			},
+		],
 	},
 	{
 		name: "meta.foreign.data.purescript",
@@ -121,29 +125,29 @@ const patterns = [
 		contentName: "meta.kind-signature.purescript",
 		beginCaptures: {
 			"2": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"3": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"4": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"5": {
-				name: "entity.name.type.purescript"
+				name: "entity.name.type.purescript",
 			},
 			"6": {
-				name: "keyword.other.double-colon.purescript"
-			}
+				name: "keyword.other.double-colon.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#double_colon"
+				include: "#double_colon",
 			},
 			{
-				include: "#kind_signature"
-			}
-		]
+				include: "#kind_signature",
+			},
+		],
 	},
 	{
 		name: "meta.foreign.purescript",
@@ -152,23 +156,23 @@ const patterns = [
 		contentName: "meta.type-signature.purescript",
 		beginCaptures: {
 			"2": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"3": {
-				name: "keyword.other.purescript"
+				name: "keyword.other.purescript",
 			},
 			"4": {
-				name: "entity.name.function.purescript"
-			}
+				name: "entity.name.function.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#double_colon"
+				include: "#double_colon",
 			},
 			{
-				include: "#type_signature"
-			}
-		]
+				include: "#type_signature",
+			},
+		],
 	},
 	{
 		name: "meta.import.purescript",
@@ -176,25 +180,25 @@ const patterns = [
 		end: "($|(?=--))",
 		beginCaptures: {
 			"1": {
-				name: "keyword.other.purescript"
-			}
+				name: "keyword.other.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#module_name"
+				include: "#module_name",
 			},
 			{
-				include: "#module_exports"
+				include: "#module_exports",
 			},
 			{
 				match: "\\b(as|hiding)\\b",
 				captures: {
 					"1": {
-						name: "keyword.other.purescript"
-					}
-				}
-			}
-		]
+						name: "keyword.other.purescript",
+					},
+				},
+			},
+		],
 	},
 	{
 		name: "meta.declaration.type.data.purescript",
@@ -202,28 +206,28 @@ const patterns = [
 		end: "^(?!\\1[ \\t]|[ \\t]*$)",
 		beginCaptures: {
 			"2": {
-				name: "storage.type.data.purescript"
+				name: "storage.type.data.purescript",
 			},
 			"3": {
 				name: "meta.type-signature.purescript",
 				patterns: [
 					{
-						include: "#type_signature"
-					}
-				]
-			}
+						include: "#type_signature",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
 				match: "=",
 				captures: {
 					"0": {
-						name: "keyword.operator.assignment.purescript"
-					}
-				}
+						name: "keyword.operator.assignment.purescript",
+					},
+				},
 			},
 			{
 				match: "(?:(?:\\b([\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*)\\s+)(?:(?<ctorArgs>(?:(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*|(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*|(?:(?:[\\w()'→⇒\\[\\],]|->|=>)+\\s*)+))(?:\\s*(?:\\s+)\\s*\\g<ctorArgs>)?)?))",
@@ -231,32 +235,32 @@ const patterns = [
 					"1": {
 						patterns: [
 							{
-								include: "#data_ctor"
-							}
-						]
+								include: "#data_ctor",
+							},
+						],
 					},
 					"2": {
 						name: "meta.type-signature.purescript",
 						patterns: [
 							{
-								include: "#type_signature"
-							}
-						]
-					}
-				}
+								include: "#type_signature",
+							},
+						],
+					},
+				},
 			},
 			{
 				match: "\\|",
 				captures: {
 					"0": {
-						name: "punctuation.separator.pipe.purescript"
-					}
-				}
+						name: "punctuation.separator.pipe.purescript",
+					},
+				},
 			},
 			{
-				include: "#record_types"
-			}
-		]
+				include: "#record_types",
+			},
+		],
 	},
 	{
 		name: "meta.declaration.type.type.purescript",
@@ -265,172 +269,172 @@ const patterns = [
 		contentName: "meta.type-signature.purescript",
 		beginCaptures: {
 			"2": {
-				name: "storage.type.data.purescript"
+				name: "storage.type.data.purescript",
 			},
 			"3": {
 				name: "meta.type-signature.purescript",
 				patterns: [
 					{
-						include: "#type_signature"
-					}
-				]
-			}
+						include: "#type_signature",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
 				match: "=",
 				captures: {
 					"0": {
-						name: "keyword.operator.assignment.purescript"
-					}
-				}
+						name: "keyword.operator.assignment.purescript",
+					},
+				},
 			},
 			{
-				include: "#type_signature"
+				include: "#type_signature",
 			},
 			{
-				include: "#record_types"
+				include: "#record_types",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	{
 		name: "keyword.other.purescript",
-		match: "^\\s*\\b(derive|where|data|type|newtype|infix[lr]?|foreign(\\s+import)?(\\s+data)?)(?!')\\b"
+		match: "^\\s*\\b(derive|where|data|type|newtype|infix[lr]?|foreign(\\s+import)?(\\s+data)?)(?!')\\b",
 	},
 	{
 		name: "entity.name.function.typed-hole.purescript",
-		match: "\\?(?:[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*|[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)"
+		match: "\\?(?:[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*|[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)",
 	},
 	{
 		name: "storage.type.purescript",
-		match: "^\\s*\\b(data|type|newtype)(?!')\\b"
+		match: "^\\s*\\b(data|type|newtype)(?!')\\b",
 	},
 	{
 		name: "keyword.control.purescript",
-		match: "\\b(do|ado|if|then|else|case|of|let|in)(?!('|\\s*(:|=)))\\b"
+		match: "\\b(do|ado|if|then|else|case|of|let|in)(?!('|\\s*(:|=)))\\b",
 	},
 	{
 		name: "constant.numeric.hex.purescript",
-		match: "\\b(?<!\\$)0(x|X)[0-9a-fA-F]+\\b(?!\\$)"
+		match: "\\b(?<!\\$)0(x|X)[0-9a-fA-F]+\\b(?!\\$)",
 	},
 	{
 		name: "constant.numeric.decimal.purescript",
 		match: "(?x)\n(?<!\\$)(?:\n  (?:\\b[0-9]+(\\.)[0-9]+[eE][+-]?[0-9]+\\b)| # 1.1E+3\n  (?:\\b[0-9]+[eE][+-]?[0-9]+\\b)|            # 1E+3\n  (?:\\b[0-9]+(\\.)[0-9]+\\b)|                # 1.1\n  (?:\\b[0-9]+\\b(?!\\.))                     # 1\n)(?!\\$)",
 		captures: {
 			"0": {
-				name: "constant.numeric.decimal.purescript"
+				name: "constant.numeric.decimal.purescript",
 			},
 			"1": {
-				name: "meta.delimiter.decimal.period.purescript"
+				name: "meta.delimiter.decimal.period.purescript",
 			},
 			"2": {
-				name: "meta.delimiter.decimal.period.purescript"
+				name: "meta.delimiter.decimal.period.purescript",
 			},
 			"3": {
-				name: "meta.delimiter.decimal.period.purescript"
+				name: "meta.delimiter.decimal.period.purescript",
 			},
 			"4": {
-				name: "meta.delimiter.decimal.period.purescript"
+				name: "meta.delimiter.decimal.period.purescript",
 			},
 			"5": {
-				name: "meta.delimiter.decimal.period.purescript"
+				name: "meta.delimiter.decimal.period.purescript",
 			},
 			"6": {
-				name: "meta.delimiter.decimal.period.purescript"
-			}
-		}
+				name: "meta.delimiter.decimal.period.purescript",
+			},
+		},
 	},
 	{
 		name: "constant.language.boolean.purescript",
-		match: "\\b(true|false)\\b"
+		match: "\\b(true|false)\\b",
 	},
 	{
 		name: "constant.numeric.purescript",
-		match: "\\b(([0-9]+_?)*[0-9]+|0([xX][0-9a-fA-F]+|[oO][0-7]+))\\b"
+		match: "\\b(([0-9]+_?)*[0-9]+|0([xX][0-9a-fA-F]+|[oO][0-7]+))\\b",
 	},
 	{
 		name: "string.quoted.triple.purescript",
-		begin: "\"\"\"",
-		end: "\"\"\"",
+		begin: '"""',
+		end: '"""',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.purescript"
-			}
+				name: "punctuation.definition.string.begin.purescript",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.purescript"
-			}
-		}
+				name: "punctuation.definition.string.end.purescript",
+			},
+		},
 	},
 	{
 		name: "string.quoted.double.purescript",
-		begin: "\"",
-		end: "\"",
+		begin: '"',
+		end: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.purescript"
-			}
+				name: "punctuation.definition.string.begin.purescript",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.purescript"
-			}
+				name: "punctuation.definition.string.end.purescript",
+			},
 		},
 		patterns: [
 			{
-				include: "#characters"
+				include: "#characters",
 			},
 			{
 				begin: "\\\\\\s",
 				end: "\\\\",
 				beginCaptures: {
 					"0": {
-						name: "markup.other.escape.newline.begin.purescript"
-					}
+						name: "markup.other.escape.newline.begin.purescript",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "markup.other.escape.newline.end.purescript"
-					}
+						name: "markup.other.escape.newline.end.purescript",
+					},
 				},
 				patterns: [
 					{
 						match: "\\S+",
-						name: "invalid.illegal.character-not-allowed-here.purescript"
-					}
-				]
-			}
-		]
+						name: "invalid.illegal.character-not-allowed-here.purescript",
+					},
+				],
+			},
+		],
 	},
 	{
 		name: "markup.other.escape.newline.purescript",
-		match: "\\\\$"
+		match: "\\\\$",
 	},
 	{
 		name: "string.quoted.single.purescript",
 		match: "(')((?:[ -\\[\\]-~]|(\\\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL|[abfnrtv\\\\\\\"'\\&]))|(\\\\o[0-7]+)|(\\\\x[0-9A-Fa-f]+)|(\\^[A-Z@\\[\\]\\\\\\^_])))(')",
 		captures: {
 			"1": {
-				name: "punctuation.definition.string.begin.purescript"
+				name: "punctuation.definition.string.begin.purescript",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#characters"
-					}
-				]
+						include: "#characters",
+					},
+				],
 			},
 			"7": {
-				name: "punctuation.definition.string.end.purescript"
-			}
-		}
+				name: "punctuation.definition.string.end.purescript",
+			},
+		},
 	},
 	{
-		include: "#function_type_declaration"
+		include: "#function_type_declaration",
 	},
 	{
 		match: "\\((?<paren>(?:[^()]|\\(\\g<paren>\\))*)(::|∷)(?<paren2>(?:[^()]|\\(\\g<paren2>\\))*)\\)",
@@ -438,58 +442,58 @@ const patterns = [
 			"1": {
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.other.double-colon.purescript"
+				name: "keyword.other.double-colon.purescript",
 			},
 			"3": {
 				name: "meta.type-signature.purescript",
 				patterns: [
 					{
-						include: "#type_signature"
-					}
-				]
-			}
-		}
+						include: "#type_signature",
+					},
+				],
+			},
+		},
 	},
 	{
 		begin: "^(\\s*)(?:(::|∷))",
 		beginCaptures: {
 			"2": {
-				name: "keyword.other.double-colon.purescript"
-			}
+				name: "keyword.other.double-colon.purescript",
+			},
 		},
 		end: "^(?!\\1[ \\t]*|[ \\t]*$)",
 		patterns: [
 			{
-				include: "#type_signature"
-			}
-		]
+				include: "#type_signature",
+			},
+		],
 	},
 	{
-		include: "#data_ctor"
+		include: "#data_ctor",
 	},
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#infix_op"
+		include: "#infix_op",
 	},
 	{
 		name: "keyword.other.arrow.purescript",
-		match: "\\<-|-\\>"
+		match: "\\<-|-\\>",
 	},
 	{
 		name: "keyword.operator.purescript",
-		match: "[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]+"
+		match: "[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]+",
 	},
 	{
 		name: "punctuation.separator.comma.purescript",
-		match: ","
-	}
+		match: ",",
+	},
 ];
 const repository = {
 	block_comment: {
@@ -501,19 +505,19 @@ const repository = {
 				applyEndPatternLast: 1,
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.documentation.purescript"
-					}
+						name: "punctuation.definition.comment.documentation.purescript",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.documentation.purescript"
-					}
+						name: "punctuation.definition.comment.documentation.purescript",
+					},
 				},
 				patterns: [
 					{
-						include: "#block_comment"
-					}
-				]
+						include: "#block_comment",
+					},
+				],
 			},
 			{
 				name: "comment.block.purescript",
@@ -522,16 +526,16 @@ const repository = {
 				applyEndPatternLast: 1,
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.purescript"
-					}
+						name: "punctuation.definition.comment.purescript",
+					},
 				},
 				patterns: [
 					{
-						include: "#block_comment"
-					}
-				]
-			}
-		]
+						include: "#block_comment",
+					},
+				],
+			},
+		],
 	},
 	record_types: {
 		patterns: [
@@ -540,29 +544,29 @@ const repository = {
 				begin: "\\{",
 				beginCaptures: {
 					"0": {
-						name: "keyword.operator.type.record.begin.purescript"
-					}
+						name: "keyword.operator.type.record.begin.purescript",
+					},
 				},
 				end: "\\}",
 				endCaptures: {
 					"0": {
-						name: "keyword.operator.type.record.end.purescript"
-					}
+						name: "keyword.operator.type.record.end.purescript",
+					},
 				},
 				patterns: [
 					{
 						name: "punctuation.separator.comma.purescript",
-						match: ","
+						match: ",",
 					},
 					{
-						include: "#record_field_declaration"
+						include: "#record_field_declaration",
 					},
 					{
-						include: "#comments"
-					}
-				]
-			}
-		]
+						include: "#comments",
+					},
+				],
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -571,8 +575,8 @@ const repository = {
 				end: "(?!\\G)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.leading.purescript"
-					}
+						name: "punctuation.whitespace.comment.leading.purescript",
+					},
 				},
 				patterns: [
 					{
@@ -581,22 +585,22 @@ const repository = {
 						end: "\\n",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.definition.comment.purescript"
+								name: "punctuation.definition.comment.purescript",
 							},
 							"2": {
-								name: "punctuation.definition.comment.documentation.purescript"
-							}
-						}
-					}
-				]
+								name: "punctuation.definition.comment.documentation.purescript",
+							},
+						},
+					},
+				],
 			},
 			{
 				begin: "(^[ \\t]+)?(?=--+(?![\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]))",
 				end: "(?!\\G)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.leading.purescript"
-					}
+						name: "punctuation.whitespace.comment.leading.purescript",
+					},
 				},
 				patterns: [
 					{
@@ -605,16 +609,16 @@ const repository = {
 						end: "\\n",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.purescript"
-							}
-						}
-					}
-				]
+								name: "punctuation.definition.comment.purescript",
+							},
+						},
+					},
+				],
 			},
 			{
-				include: "#block_comment"
-			}
-		]
+				include: "#block_comment",
+			},
+		],
 	},
 	characters: {
 		patterns: [
@@ -622,28 +626,28 @@ const repository = {
 				match: "(?:[ -\\[\\]-~]|(\\\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL|[abfnrtv\\\\\\\"'\\&]))|(\\\\o[0-7]+)|(\\\\x[0-9A-Fa-f]+)|(\\^[A-Z@\\[\\]\\\\\\^_]))",
 				captures: {
 					"1": {
-						name: "constant.character.escape.purescript"
+						name: "constant.character.escape.purescript",
 					},
 					"2": {
-						name: "constant.character.escape.octal.purescript"
+						name: "constant.character.escape.octal.purescript",
 					},
 					"3": {
-						name: "constant.character.escape.hexadecimal.purescript"
+						name: "constant.character.escape.hexadecimal.purescript",
 					},
 					"4": {
-						name: "constant.character.escape.control.purescript"
-					}
-				}
-			}
-		]
+						name: "constant.character.escape.control.purescript",
+					},
+				},
+			},
+		],
 	},
 	infix_op: {
 		patterns: [
 			{
 				name: "entity.name.function.infix.purescript",
-				match: "(?:\\((?!--+\\))[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]+\\))"
-			}
-		]
+				match: "(?:\\((?!--+\\))[\\p{S}\\p{P}&&[^(),;\\[\\]`{}_\"']]+\\))",
+			},
+		],
 	},
 	module_exports: {
 		patterns: [
@@ -653,37 +657,37 @@ const repository = {
 				end: "\\)",
 				patterns: [
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
 						name: "entity.name.function.purescript",
-						match: "\\b(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*"
+						match: "\\b(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
 					},
 					{
-						include: "#type_name"
+						include: "#type_name",
 					},
 					{
 						name: "punctuation.separator.comma.purescript",
-						match: ","
+						match: ",",
 					},
 					{
-						include: "#infix_op"
+						include: "#infix_op",
 					},
 					{
 						name: "meta.other.constructor-list.purescript",
-						match: "\\(.*?\\)"
-					}
-				]
-			}
-		]
+						match: "\\(.*?\\)",
+					},
+				],
+			},
+		],
 	},
 	module_name: {
 		patterns: [
 			{
 				name: "support.other.module.purescript",
-				match: "(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)*[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.?"
-			}
-		]
+				match: "(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)*[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.?",
+			},
+		],
 	},
 	function_type_declaration: {
 		patterns: [
@@ -694,22 +698,22 @@ const repository = {
 				contentName: "meta.type-signature.purescript",
 				beginCaptures: {
 					"2": {
-						name: "entity.name.function.purescript"
+						name: "entity.name.function.purescript",
 					},
 					"3": {
-						name: "keyword.other.double-colon.purescript"
-					}
+						name: "keyword.other.double-colon.purescript",
+					},
 				},
 				patterns: [
 					{
-						include: "#double_colon"
+						include: "#double_colon",
 					},
 					{
-						include: "#type_signature"
-					}
-				]
-			}
-		]
+						include: "#type_signature",
+					},
+				],
+			},
+		],
 	},
 	record_field_declaration: {
 		patterns: [
@@ -723,44 +727,44 @@ const repository = {
 						patterns: [
 							{
 								name: "entity.other.attribute-name.purescript",
-								match: "(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*"
-							}
-						]
+								match: "(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
+							},
+						],
 					},
 					"2": {
-						name: "keyword.other.double-colon.purescript"
-					}
+						name: "keyword.other.double-colon.purescript",
+					},
 				},
 				patterns: [
 					{
-						include: "#type_signature"
+						include: "#type_signature",
 					},
 					{
-						include: "#record_types"
-					}
-				]
-			}
-		]
+						include: "#record_types",
+					},
+				],
+			},
+		],
 	},
 	kind_signature: {
 		patterns: [
 			{
 				name: "keyword.other.star.purescript",
-				match: "\\*"
+				match: "\\*",
 			},
 			{
 				name: "keyword.other.exclaimation-point.purescript",
-				match: "!"
+				match: "!",
 			},
 			{
 				name: "keyword.other.pound-sign.purescript",
-				match: "#"
+				match: "#",
 			},
 			{
 				name: "keyword.other.arrow.purescript",
-				match: "->|→"
-			}
-		]
+				match: "->|→",
+			},
+		],
 	},
 	type_signature: {
 		patterns: [
@@ -771,14 +775,14 @@ const repository = {
 					"1": {
 						patterns: [
 							{
-								include: "#class_constraint"
-							}
-						]
+								include: "#class_constraint",
+							},
+						],
 					},
 					"4": {
-						name: "keyword.other.big-arrow.purescript"
-					}
-				}
+						name: "keyword.other.big-arrow.purescript",
+					},
+				},
 			},
 			{
 				name: "meta.class-constraints.purescript",
@@ -787,73 +791,73 @@ const repository = {
 					"1": {
 						patterns: [
 							{
-								include: "#class_constraint"
-							}
-						]
+								include: "#class_constraint",
+							},
+						],
 					},
 					"4": {
-						name: "keyword.other.big-arrow.purescript"
-					}
-				}
+						name: "keyword.other.big-arrow.purescript",
+					},
+				},
 			},
 			{
 				name: "keyword.other.arrow.purescript",
-				match: "->|→"
+				match: "->|→",
 			},
 			{
 				name: "keyword.other.big-arrow.purescript",
-				match: "=>|⇒"
+				match: "=>|⇒",
 			},
 			{
 				name: "keyword.other.big-arrow-left.purescript",
-				match: "<=|⇐"
+				match: "<=|⇐",
 			},
 			{
 				name: "keyword.other.forall.purescript",
-				match: "forall|∀"
+				match: "forall|∀",
 			},
 			{
-				include: "#generic_type"
+				include: "#generic_type",
 			},
 			{
-				include: "#type_name"
+				include: "#type_name",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	type_name: {
 		patterns: [
 			{
 				name: "entity.name.type.purescript",
-				match: "\\b[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*"
-			}
-		]
+				match: "\\b[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*",
+			},
+		],
 	},
 	data_ctor: {
 		patterns: [
 			{
 				name: "entity.name.tag.purescript",
-				match: "\\b[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*"
-			}
-		]
+				match: "\\b[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*",
+			},
+		],
 	},
 	generic_type: {
 		patterns: [
 			{
 				name: "variable.other.generic-type.purescript",
-				match: "\\b(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*"
-			}
-		]
+				match: "\\b(?:[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*\\.)?[\\p{Ll}_][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*",
+			},
+		],
 	},
 	double_colon: {
 		patterns: [
 			{
 				name: "keyword.other.double-colon.purescript",
-				match: "(?:::|∷)"
-			}
-		]
+				match: "(?:::|∷)",
+			},
+		],
 	},
 	class_constraint: {
 		patterns: [
@@ -865,24 +869,24 @@ const repository = {
 						patterns: [
 							{
 								name: "entity.name.type.purescript",
-								match: "\\b[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*"
-							}
-						]
+								match: "\\b[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*(?:\\.[\\p{Lu}\\p{Lt}][\\p{Ll}_\\p{Lu}\\p{Lt}\\p{Nd}']*)*",
+							},
+						],
 					},
 					"2": {
 						patterns: [
 							{
-								include: "#type_name"
+								include: "#type_name",
 							},
 							{
-								include: "#generic_type"
-							}
-						]
-					}
-				}
-			}
-		]
-	}
+								include: "#generic_type",
+							},
+						],
+					},
+				},
+			},
+		],
+	},
 };
 const purescript_tmLanguage = {
 	fileTypes: fileTypes,
@@ -890,7 +894,15 @@ const purescript_tmLanguage = {
 	scopeName: scopeName,
 	macros: macros,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { purescript_tmLanguage as default, fileTypes, macros, name, patterns, repository, scopeName };
+export {
+	purescript_tmLanguage as default,
+	fileTypes,
+	macros,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

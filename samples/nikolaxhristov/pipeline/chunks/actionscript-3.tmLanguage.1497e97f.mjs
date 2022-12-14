@@ -1,224 +1,222 @@
-const fileTypes = [
-	"as"
-];
+const fileTypes = ["as"];
 const name = "actionscript-3";
 const patterns = [
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#package"
+		include: "#package",
 	},
 	{
-		include: "#class"
+		include: "#class",
 	},
 	{
-		include: "#interface"
+		include: "#interface",
 	},
 	{
-		include: "#namespace_declaration"
+		include: "#namespace_declaration",
 	},
 	{
-		include: "#import"
+		include: "#import",
 	},
 	{
-		include: "#mxml"
+		include: "#mxml",
 	},
 	{
-		include: "#strings"
+		include: "#strings",
 	},
 	{
-		include: "#regexp"
+		include: "#regexp",
 	},
 	{
-		include: "#variable_declaration"
+		include: "#variable_declaration",
 	},
 	{
-		include: "#numbers"
+		include: "#numbers",
 	},
 	{
-		include: "#primitive_types"
+		include: "#primitive_types",
 	},
 	{
-		include: "#primitive_error_types"
+		include: "#primitive_error_types",
 	},
 	{
-		include: "#dynamic_type"
+		include: "#dynamic_type",
 	},
 	{
-		include: "#primitive_functions"
+		include: "#primitive_functions",
 	},
 	{
-		include: "#language_constants"
+		include: "#language_constants",
 	},
 	{
-		include: "#language_variables"
+		include: "#language_variables",
 	},
 	{
-		include: "#guess_type"
+		include: "#guess_type",
 	},
 	{
-		include: "#guess_constant"
+		include: "#guess_constant",
 	},
 	{
-		include: "#other_operators"
+		include: "#other_operators",
 	},
 	{
-		include: "#arithmetic_operators"
+		include: "#arithmetic_operators",
 	},
 	{
-		include: "#logical_operators"
+		include: "#logical_operators",
 	},
 	{
-		include: "#array_access_operators"
+		include: "#array_access_operators",
 	},
 	{
-		include: "#vector_creation_operators"
+		include: "#vector_creation_operators",
 	},
 	{
-		include: "#control_keywords"
+		include: "#control_keywords",
 	},
 	{
-		include: "#other_keywords"
+		include: "#other_keywords",
 	},
 	{
-		include: "#use_namespace"
+		include: "#use_namespace",
 	},
 	{
-		include: "#functions"
-	}
+		include: "#functions",
+	},
 ];
 const repository = {
 	arithmetic_operators: {
 		match: "(\\+|\\-|/|%|(?<!:)\\*)",
-		name: "keyword.operator.actionscript.3"
+		name: "keyword.operator.actionscript.3",
 	},
 	array_access_operators: {
 		match: "(\\[|\\])",
-		name: "keyword.operator.actionscript.3"
+		name: "keyword.operator.actionscript.3",
 	},
 	"class": {
 		begin: "(?x) (^|\\s+|;) (\\b(dynamic|final|abstract)\\b\\s+)? (\\b(internal|public)\\b\\s+)? (\\b(dynamic|final|abstract)\\b\\s+)? (?=\\bclass\\b)",
 		beginCaptures: {
 			"3": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"5": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"7": {
-				name: "storage.modifier.actionscript.3"
-			}
+				name: "storage.modifier.actionscript.3",
+			},
 		},
 		end: "\\}",
 		name: "meta.class.actionscript.3",
 		patterns: [
 			{
-				include: "#class_declaration"
+				include: "#class_declaration",
 			},
 			{
-				include: "#metadata"
+				include: "#metadata",
 			},
 			{
-				include: "#method"
+				include: "#method",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#regexp"
+				include: "#regexp",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#primitive_types"
+				include: "#primitive_types",
 			},
 			{
-				include: "#primitive_error_types"
+				include: "#primitive_error_types",
 			},
 			{
-				include: "#dynamic_type"
+				include: "#dynamic_type",
 			},
 			{
-				include: "#primitive_functions"
+				include: "#primitive_functions",
 			},
 			{
-				include: "#language_constants"
+				include: "#language_constants",
 			},
 			{
-				include: "#language_variables"
+				include: "#language_variables",
 			},
 			{
-				include: "#other_operators"
+				include: "#other_operators",
 			},
 			{
-				include: "#other_keywords"
+				include: "#other_keywords",
 			},
 			{
-				include: "#use_namespace"
+				include: "#use_namespace",
 			},
 			{
-				include: "#guess_type"
+				include: "#guess_type",
 			},
 			{
-				include: "#guess_constant"
+				include: "#guess_constant",
 			},
 			{
-				include: "#arithmetic_operators"
+				include: "#arithmetic_operators",
 			},
 			{
-				include: "#array_access_operators"
+				include: "#array_access_operators",
 			},
 			{
-				include: "#vector_creation_operators"
+				include: "#vector_creation_operators",
 			},
 			{
-				include: "#variable_declaration"
+				include: "#variable_declaration",
 			},
 			{
-				include: "#object_literal"
-			}
-		]
+				include: "#object_literal",
+			},
+		],
 	},
 	namespace_declaration: {
 		captures: {
 			"2": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"3": {
-				name: "storage.modifier.actionscript.3"
-			}
+				name: "storage.modifier.actionscript.3",
+			},
 		},
 		match: "(?x) ((\\w+)\\s+)? (namespace) \\s+ (?:[A-Za-z0-9_\\$]+)",
-		name: "meta.namespace_declaration.actionscript.3"
+		name: "meta.namespace_declaration.actionscript.3",
 	},
 	class_declaration: {
 		begin: "(?x) \\b(class)\\b \\s+ ([\\.\\w]+|\\*)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.class.actionscript.3"
+				name: "storage.type.class.actionscript.3",
 			},
 			"2": {
-				name: "entity.name.class.actionscript.3"
-			}
+				name: "entity.name.class.actionscript.3",
+			},
 		},
 		end: "\\{",
 		name: "meta.class_declaration.actionscript.3",
 		patterns: [
 			{
-				include: "#extends"
+				include: "#extends",
 			},
 			{
-				include: "#implements"
+				include: "#implements",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	code_block: {
 		begin: "\\{",
@@ -226,78 +224,78 @@ const repository = {
 		name: "meta.code_block.actionscript.3",
 		patterns: [
 			{
-				include: "#code_block"
+				include: "#code_block",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#regexp"
+				include: "#regexp",
 			},
 			{
-				include: "#variable_declaration"
+				include: "#variable_declaration",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#primitive_types"
+				include: "#primitive_types",
 			},
 			{
-				include: "#primitive_error_types"
+				include: "#primitive_error_types",
 			},
 			{
-				include: "#dynamic_type"
+				include: "#dynamic_type",
 			},
 			{
-				include: "#primitive_functions"
+				include: "#primitive_functions",
 			},
 			{
-				include: "#language_constants"
+				include: "#language_constants",
 			},
 			{
-				include: "#language_variables"
+				include: "#language_variables",
 			},
 			{
-				include: "#guess_type"
+				include: "#guess_type",
 			},
 			{
-				include: "#guess_constant"
+				include: "#guess_constant",
 			},
 			{
-				include: "#other_operators"
+				include: "#other_operators",
 			},
 			{
-				include: "#arithmetic_operators"
+				include: "#arithmetic_operators",
 			},
 			{
-				include: "#logical_operators"
+				include: "#logical_operators",
 			},
 			{
-				include: "#array_access_operators"
+				include: "#array_access_operators",
 			},
 			{
-				include: "#vector_creation_operators"
+				include: "#vector_creation_operators",
 			},
 			{
-				include: "#control_keywords"
+				include: "#control_keywords",
 			},
 			{
-				include: "#other_keywords"
+				include: "#other_keywords",
 			},
 			{
-				include: "#use_namespace"
+				include: "#use_namespace",
 			},
 			{
-				include: "#functions"
+				include: "#functions",
 			},
 			{
-				include: "#import"
-			}
-		]
+				include: "#import",
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -308,51 +306,51 @@ const repository = {
 				patterns: [
 					{
 						match: "@(copy|default|eventType|example|exampleText|includeExample|inheritDoc|internal|param|private|return|see|since|throws)\\b",
-						name: "keyword.other.documentation.actionscript.3.asdoc"
-					}
-				]
+						name: "keyword.other.documentation.actionscript.3.asdoc",
+					},
+				],
 			},
 			{
 				begin: "/\\*",
 				end: "\\*/",
-				name: "comment.block.actionscript.3"
+				name: "comment.block.actionscript.3",
 			},
 			{
 				match: "//.*",
-				name: "comment.line.actionscript.3"
-			}
-		]
+				name: "comment.line.actionscript.3",
+			},
+		],
 	},
 	control_keywords: {
 		match: "\\b(if|else|do|while|for|each|continue|return|switch|case|default|break|try|catch|finally|throw)\\b",
-		name: "keyword.control.actionscript.3"
+		name: "keyword.control.actionscript.3",
 	},
 	dynamic_type: {
 		captures: {
 			"1": {
-				name: "support.type.actionscript.3"
-			}
+				name: "support.type.actionscript.3",
+			},
 		},
-		match: "(?<=:)\\s*(\\*)"
+		match: "(?<=:)\\s*(\\*)",
 	},
 	escapes: {
 		match: "\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)",
-		name: "constant.character.escape.actionscript.3"
+		name: "constant.character.escape.actionscript.3",
 	},
 	"extends": {
 		captures: {
 			"1": {
-				name: "keyword.other.actionscript.3"
+				name: "keyword.other.actionscript.3",
 			},
 			"2": {
-				name: "entity.other.inherited-class.actionscript.3"
+				name: "entity.other.inherited-class.actionscript.3",
 			},
 			"3": {
-				name: "entity.other.inherited-class.actionscript.3"
-			}
+				name: "entity.other.inherited-class.actionscript.3",
+			},
 		},
 		match: "(?x) \\b(extends)\\b \\s+ ([\\.\\w]+) \\s* (?:, \\s* ([\\.\\w]+))* \\s*",
-		name: "meta.extends.actionscript.3"
+		name: "meta.extends.actionscript.3",
 	},
 	function_arguments: {
 		begin: "\\(",
@@ -360,244 +358,246 @@ const repository = {
 		name: "meta.function_arguments.actionscript.3",
 		patterns: [
 			{
-				include: "#parameters"
+				include: "#parameters",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	parameters: {
 		begin: "(\\.\\.\\.)?\\s*([A-Za-z\\_\\$][A-Za-z0-9_\\$]*)(?:\\s*(\\:)\\s*(?:(?:([A-Za-z\\$][A-Za-z0-9_\\$]+(?:\\.[A-Za-z\\$][A-Za-z0-9_\\$]+)*)(?:\\.<([A-Za-z\\$][A-Za-z0-9_\\$]+(?:\\.[A-Za-z\\$][A-Za-z0-9_\\$]+)*)>)?)|(\\*)))?(?:\\s*(=))?",
 		end: ",|(?=\\))",
 		beginCaptures: {
 			"1": {
-				name: "keyword.operator.actionscript.3"
+				name: "keyword.operator.actionscript.3",
 			},
 			"2": {
-				name: "variable.parameter.actionscript.3"
+				name: "variable.parameter.actionscript.3",
 			},
 			"3": {
-				name: "keyword.operator.actionscript.3"
+				name: "keyword.operator.actionscript.3",
 			},
 			"4": {
-				name: "support.type.actionscript.3"
+				name: "support.type.actionscript.3",
 			},
 			"5": {
-				name: "support.type.actionscript.3"
+				name: "support.type.actionscript.3",
 			},
 			"6": {
-				name: "support.type.actionscript.3"
+				name: "support.type.actionscript.3",
 			},
 			"7": {
-				name: "keyword.operator.actionscript.3"
-			}
+				name: "keyword.operator.actionscript.3",
+			},
 		},
 		patterns: [
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#language_constants"
+				include: "#language_constants",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#primitive_types"
+				include: "#primitive_types",
 			},
 			{
-				include: "#primitive_error_types"
+				include: "#primitive_error_types",
 			},
 			{
-				include: "#dynamic_type"
+				include: "#dynamic_type",
 			},
 			{
-				include: "#guess_type"
+				include: "#guess_type",
 			},
 			{
-				include: "#guess_constant"
-			}
-		]
+				include: "#guess_constant",
+			},
+		],
 	},
 	functions: {
 		begin: "(?x) \\b(function)\\b (?:\\s+\\b(get|set)\\b\\s+)? \\s* ([a-zA-Z0-9_\\$]+\\b)?",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.function.actionscript.3"
+				name: "storage.type.function.actionscript.3",
 			},
 			"2": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"3": {
-				name: "entity.name.function.actionscript.3"
-			}
+				name: "entity.name.function.actionscript.3",
+			},
 		},
 		end: "($|;|(?=\\{))",
 		name: "meta.function.actionscript.3",
 		patterns: [
 			{
-				include: "#function_arguments"
+				include: "#function_arguments",
 			},
 			{
-				include: "#return_type"
+				include: "#return_type",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	guess_constant: {
 		captures: {
 			"1": {
-				name: "constant.other.actionscript.3"
-			}
+				name: "constant.other.actionscript.3",
+			},
 		},
-		comment: "Following convention, let's guess that anything in all caps/digits (possible underscores) is a constant.",
-		match: "\\b([A-Z\\$][A-Z0-9_]+)\\b"
+		comment:
+			"Following convention, let's guess that anything in all caps/digits (possible underscores) is a constant.",
+		match: "\\b([A-Z\\$][A-Z0-9_]+)\\b",
 	},
 	guess_type: {
 		captures: {
 			"1": {
-				name: "support.type.actionscript.3"
-			}
+				name: "support.type.actionscript.3",
+			},
 		},
-		comment: "Following convention, let's guess that any word starting with one or more capital letters (that contains at least some lower-case letters so that constants aren't detected) refers to a class/type. May be fully-qualified.",
-		match: "\\b((?:[A-Za-z0-9_\\$]+\\.)*[A-Z][A-Z0-9]*[a-z]+[A-Za-z0-9_\\$]*)\\b"
+		comment:
+			"Following convention, let's guess that any word starting with one or more capital letters (that contains at least some lower-case letters so that constants aren't detected) refers to a class/type. May be fully-qualified.",
+		match: "\\b((?:[A-Za-z0-9_\\$]+\\.)*[A-Z][A-Z0-9]*[a-z]+[A-Za-z0-9_\\$]*)\\b",
 	},
 	"implements": {
 		captures: {
 			"1": {
-				name: "keyword.other.actionscript.3"
+				name: "keyword.other.actionscript.3",
 			},
 			"2": {
-				name: "entity.other.inherited-class.actionscript.3"
+				name: "entity.other.inherited-class.actionscript.3",
 			},
 			"3": {
-				name: "entity.other.inherited-class.actionscript.3"
-			}
+				name: "entity.other.inherited-class.actionscript.3",
+			},
 		},
 		match: "(?x) \\b(implements)\\b \\s+ ([\\.\\w]+) \\s* (?:, \\s* ([\\.\\w]+))* \\s*",
-		name: "meta.implements.actionscript.3"
+		name: "meta.implements.actionscript.3",
 	},
 	"import": {
 		captures: {
 			"2": {
-				name: "keyword.control.import.actionscript.3"
+				name: "keyword.control.import.actionscript.3",
 			},
 			"3": {
-				name: "support.type.actionscript.3"
-			}
+				name: "support.type.actionscript.3",
+			},
 		},
 		match: "(?x) (^|\\s+|;) \\b(import)\\b \\s+ ([A-Za-z0-9\\$_\\.]+(?:\\.\\*)?) \\s* (?=;|$)",
-		name: "meta.import.actionscript.3"
+		name: "meta.import.actionscript.3",
 	},
 	"interface": {
 		begin: "(?x) (^|\\s+|;) (\\b(internal|public)\\b\\s+)? (?=\\binterface\\b)",
 		beginCaptures: {
 			"3": {
-				name: "storage.modifier.actionscript.3"
-			}
+				name: "storage.modifier.actionscript.3",
+			},
 		},
 		end: "\\}",
 		name: "meta.interface.actionscript.3",
 		patterns: [
 			{
-				include: "#interface_declaration"
+				include: "#interface_declaration",
 			},
 			{
-				include: "#metadata"
+				include: "#metadata",
 			},
 			{
-				include: "#functions"
+				include: "#functions",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	interface_declaration: {
 		begin: "(?x) \\b(interface)\\b \\s+ ([\\.\\w]+)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.interface.actionscript.3"
+				name: "storage.type.interface.actionscript.3",
 			},
 			"2": {
-				name: "entity.name.class.actionscript.3"
-			}
+				name: "entity.name.class.actionscript.3",
+			},
 		},
 		end: "\\{",
 		name: "meta.class_declaration.actionscript.3",
 		patterns: [
 			{
-				include: "#extends"
+				include: "#extends",
 			},
 			{
-				include: "#comments"
-			}
-		]
+				include: "#comments",
+			},
+		],
 	},
 	language_constants: {
 		match: "\\b(true|false|null|Infinity|-Infinity|NaN|undefined)\\b",
-		name: "constant.language.actionscript.3"
+		name: "constant.language.actionscript.3",
 	},
 	language_variables: {
 		match: "\\b(super|this|arguments)\\b",
-		name: "variable.language.actionscript.3"
+		name: "variable.language.actionscript.3",
 	},
 	logical_operators: {
 		match: "(&|<|~|\\||>|\\^|!|\\?)",
-		name: "keyword.operator.actionscript.3"
+		name: "keyword.operator.actionscript.3",
 	},
 	metadata_info: {
 		begin: "\\(",
 		end: "\\)",
 		patterns: [
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
 				captures: {
 					"1": {
-						name: "variable.parameter.actionscript.3"
+						name: "variable.parameter.actionscript.3",
 					},
 					"2": {
-						name: "keyword.operator.actionscript.3"
-					}
+						name: "keyword.operator.actionscript.3",
+					},
 				},
-				match: "(\\w+)\\s*(=)"
-			}
-		]
+				match: "(\\w+)\\s*(=)",
+			},
+		],
 	},
 	method: {
 		begin: "(?x) (^|\\s+) ((\\w+)\\s+)? ((\\w+)\\s+)? ((\\w+)\\s+)? ((\\w+)\\s+)? (?=\\bfunction\\b)",
 		beginCaptures: {
 			"3": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"5": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"7": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"8": {
-				name: "storage.modifier.actionscript.3"
-			}
+				name: "storage.modifier.actionscript.3",
+			},
 		},
 		end: "(?<=(;|\\}))",
 		name: "meta.method.actionscript.3",
 		patterns: [
 			{
-				include: "#functions"
+				include: "#functions",
 			},
 			{
-				include: "#code_block"
-			}
-		]
+				include: "#code_block",
+			},
+		],
 	},
 	mxml: {
 		begin: "<!\\[CDATA\\[",
@@ -605,88 +605,88 @@ const repository = {
 		name: "meta.cdata.actionscript.3",
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#import"
+				include: "#import",
 			},
 			{
-				include: "#metadata"
+				include: "#metadata",
 			},
 			{
-				include: "#class"
+				include: "#class",
 			},
 			{
-				include: "#namespace_declaration"
+				include: "#namespace_declaration",
 			},
 			{
-				include: "#use_namespace"
+				include: "#use_namespace",
 			},
 			{
-				include: "#class_declaration"
+				include: "#class_declaration",
 			},
 			{
-				include: "#method"
+				include: "#method",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#regexp"
+				include: "#regexp",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#primitive_types"
+				include: "#primitive_types",
 			},
 			{
-				include: "#primitive_error_types"
+				include: "#primitive_error_types",
 			},
 			{
-				include: "#dynamic_type"
+				include: "#dynamic_type",
 			},
 			{
-				include: "#primitive_functions"
+				include: "#primitive_functions",
 			},
 			{
-				include: "#language_constants"
+				include: "#language_constants",
 			},
 			{
-				include: "#language_variables"
+				include: "#language_variables",
 			},
 			{
-				include: "#other_keywords"
+				include: "#other_keywords",
 			},
 			{
-				include: "#guess_type"
+				include: "#guess_type",
 			},
 			{
-				include: "#guess_constant"
+				include: "#guess_constant",
 			},
 			{
-				include: "#other_operators"
+				include: "#other_operators",
 			},
 			{
-				include: "#arithmetic_operators"
+				include: "#arithmetic_operators",
 			},
 			{
-				include: "#array_access_operators"
+				include: "#array_access_operators",
 			},
 			{
-				include: "#vector_creation_operators"
+				include: "#vector_creation_operators",
 			},
 			{
-				include: "#variable_declaration"
-			}
-		]
+				include: "#variable_declaration",
+			},
+		],
 	},
 	numbers: {
 		match: "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f)?\\b",
-		name: "constant.numeric.actionscript.3"
+		name: "constant.numeric.actionscript.3",
 	},
 	object_literal: {
 		begin: "\\{",
@@ -694,145 +694,145 @@ const repository = {
 		name: "meta.object_literal.actionscript.3",
 		patterns: [
 			{
-				include: "#object_literal"
+				include: "#object_literal",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#regexp"
+				include: "#regexp",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#primitive_types"
+				include: "#primitive_types",
 			},
 			{
-				include: "#primitive_error_types"
+				include: "#primitive_error_types",
 			},
 			{
-				include: "#dynamic_type"
+				include: "#dynamic_type",
 			},
 			{
-				include: "#primitive_functions"
+				include: "#primitive_functions",
 			},
 			{
-				include: "#language_constants"
+				include: "#language_constants",
 			},
 			{
-				include: "#language_variables"
+				include: "#language_variables",
 			},
 			{
-				include: "#guess_type"
+				include: "#guess_type",
 			},
 			{
-				include: "#guess_constant"
+				include: "#guess_constant",
 			},
 			{
-				include: "#array_access_operators"
+				include: "#array_access_operators",
 			},
 			{
-				include: "#vector_creation_operators"
+				include: "#vector_creation_operators",
 			},
 			{
-				include: "#functions"
-			}
-		]
+				include: "#functions",
+			},
+		],
 	},
 	other_keywords: {
 		match: "\\b(as|delete|in|instanceof|is|native|new|to|typeof)\\b",
-		name: "keyword.other.actionscript.3"
+		name: "keyword.other.actionscript.3",
 	},
 	other_operators: {
 		match: "(\\.|=)",
-		name: "keyword.operator.actionscript.3"
+		name: "keyword.operator.actionscript.3",
 	},
 	"package": {
 		begin: "(^|\\s+)(package)\\b",
 		beginCaptures: {
 			"2": {
-				name: "keyword.other.actionscript.3"
-			}
+				name: "keyword.other.actionscript.3",
+			},
 		},
 		end: "\\}",
 		name: "meta.package.actionscript.3",
 		patterns: [
 			{
-				include: "#package_name"
+				include: "#package_name",
 			},
 			{
-				include: "#variable_declaration"
+				include: "#variable_declaration",
 			},
 			{
-				include: "#method"
+				include: "#method",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#return_type"
+				include: "#return_type",
 			},
 			{
-				include: "#import"
+				include: "#import",
 			},
 			{
-				include: "#use_namespace"
+				include: "#use_namespace",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#language_constants"
+				include: "#language_constants",
 			},
 			{
-				include: "#metadata"
+				include: "#metadata",
 			},
 			{
-				include: "#class"
+				include: "#class",
 			},
 			{
-				include: "#interface"
+				include: "#interface",
 			},
 			{
-				include: "#namespace_declaration"
-			}
-		]
+				include: "#namespace_declaration",
+			},
+		],
 	},
 	package_name: {
 		begin: "(?<=package)\\s+([\\w\\._]*)\\b",
 		end: "\\{",
-		name: "meta.package_name.actionscript.3"
+		name: "meta.package_name.actionscript.3",
 	},
 	primitive_types: {
 		captures: {
 			"1": {
-				name: "support.class.builtin.actionscript.3"
-			}
+				name: "support.class.builtin.actionscript.3",
+			},
 		},
-		match: "\\b(Array|Boolean|Class|Date|Function|int|JSON|Math|Namespace|Number|Object|QName|RegExp|String|uint|Vector|XML|XMLList|\\*(?<=a))\\b"
+		match: "\\b(Array|Boolean|Class|Date|Function|int|JSON|Math|Namespace|Number|Object|QName|RegExp|String|uint|Vector|XML|XMLList|\\*(?<=a))\\b",
 	},
 	primitive_error_types: {
 		captures: {
 			"1": {
-				name: "support.class.error.actionscript.3"
-			}
+				name: "support.class.error.actionscript.3",
+			},
 		},
-		match: "\\b((Argument|Definition|Eval|Internal|Range|Reference|Security|Syntax|Type|URI|Verify)?Error)\\b"
+		match: "\\b((Argument|Definition|Eval|Internal|Range|Reference|Security|Syntax|Type|URI|Verify)?Error)\\b",
 	},
 	primitive_functions: {
 		captures: {
 			"1": {
-				name: "support.function.actionscript.3"
-			}
+				name: "support.function.actionscript.3",
+			},
 		},
-		match: "\\b(decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|isFinite|isNaN|isXMLName|parseFloat|parseInt|trace|unescape)(?=\\s*\\()"
+		match: "\\b(decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|isFinite|isNaN|isXMLName|parseFloat|parseInt|trace|unescape)(?=\\s*\\()",
 	},
 	regexp: {
 		begin: "(?<=[=(:,\\[]|^|return|&&|\\|\\||!)\\s*(/)(?![/*+{}?])",
@@ -841,42 +841,42 @@ const repository = {
 		patterns: [
 			{
 				match: "\\\\.",
-				name: "constant.character.escape.actionscript.3"
+				name: "constant.character.escape.actionscript.3",
 			},
 			{
 				match: "\\[(\\\\\\]|[^\\]])*\\]",
-				name: "constant.character.class.actionscript.3"
-			}
-		]
+				name: "constant.character.class.actionscript.3",
+			},
+		],
 	},
 	return_type: {
 		captures: {
 			"1": {
-				name: "keyword.operator.actionscript.3"
+				name: "keyword.operator.actionscript.3",
 			},
 			"2": {
-				name: "support.type.actionscript.3"
+				name: "support.type.actionscript.3",
 			},
 			"3": {
-				name: "support.type.actionscript.3"
+				name: "support.type.actionscript.3",
 			},
 			"4": {
-				name: "support.type.actionscript.3"
-			}
+				name: "support.type.actionscript.3",
+			},
 		},
-		match: "(\\:)\\s*(?:([A-Za-z\\$][A-Za-z0-9_\\$]+(?:\\.[A-Za-z\\$][A-Za-z0-9_\\$]+)*)(?:\\.<([A-Za-z\\$][A-Za-z0-9_\\$]+(?:\\.[A-Za-z\\$][A-Za-z0-9_\\$]+)*)>)?)|(\\*)"
+		match: "(\\:)\\s*(?:([A-Za-z\\$][A-Za-z0-9_\\$]+(?:\\.[A-Za-z\\$][A-Za-z0-9_\\$]+)*)(?:\\.<([A-Za-z\\$][A-Za-z0-9_\\$]+(?:\\.[A-Za-z\\$][A-Za-z0-9_\\$]+)*)>)?)|(\\*)",
 	},
 	strings: {
 		patterns: [
 			{
-				begin: "\"",
-				end: "\"",
+				begin: '"',
+				end: '"',
 				name: "string.quoted.double.actionscript.3",
 				patterns: [
 					{
-						include: "#escapes"
-					}
-				]
+						include: "#escapes",
+					},
+				],
 			},
 			{
 				begin: "'",
@@ -884,66 +884,66 @@ const repository = {
 				name: "string.quoted.single.actionscript.3",
 				patterns: [
 					{
-						include: "#escapes"
-					}
-				]
-			}
-		]
+						include: "#escapes",
+					},
+				],
+			},
+		],
 	},
 	metadata: {
 		begin: "\\[\\s*\\b(\\w+)\\b",
 		beginCaptures: {
 			"1": {
-				name: "keyword.other.actionscript.3"
-			}
+				name: "keyword.other.actionscript.3",
+			},
 		},
 		end: "\\]",
 		name: "meta.metadata_info.actionscript.3",
 		patterns: [
 			{
-				include: "#metadata_info"
-			}
-		]
+				include: "#metadata_info",
+			},
+		],
 	},
 	use_namespace: {
 		captures: {
 			"2": {
-				name: "keyword.other.actionscript.3"
+				name: "keyword.other.actionscript.3",
 			},
 			"3": {
-				name: "keyword.other.actionscript.3"
+				name: "keyword.other.actionscript.3",
 			},
 			"4": {
-				name: "storage.modifier.actionscript.3"
-			}
+				name: "storage.modifier.actionscript.3",
+			},
 		},
-		match: "(?x) (^|\\s+|;) (use\\s+)? (namespace) \\s+ (\\w+) \\s* (;|$)"
+		match: "(?x) (^|\\s+|;) (use\\s+)? (namespace) \\s+ (\\w+) \\s* (;|$)",
 	},
 	variable_declaration: {
 		captures: {
 			"2": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"4": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"6": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"7": {
-				name: "storage.modifier.actionscript.3"
+				name: "storage.modifier.actionscript.3",
 			},
 			"8": {
-				name: "keyword.operator.actionscript.3"
-			}
+				name: "keyword.operator.actionscript.3",
+			},
 		},
 		match: "(?x) ((static)\\s+)? ((\\w+)\\s+)? ((static)\\s+)? (const|var) \\s+ (?:[A-Za-z0-9_\\$]+)(?:\\s*(:))?",
-		name: "meta.variable_declaration.actionscript.3"
+		name: "meta.variable_declaration.actionscript.3",
 	},
 	vector_creation_operators: {
 		match: "(<|>)",
-		name: "keyword.operator.actionscript.3"
-	}
+		name: "keyword.operator.actionscript.3",
+	},
 };
 const scopeName = "source.actionscript.3";
 const uuid = "aa6f75ba-ab10-466e-8c6f-28c69aca1e9d";
@@ -953,7 +953,15 @@ const actionscript3_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { actionscript3_tmLanguage as default, fileTypes, name, patterns, repository, scopeName, uuid };
+export {
+	actionscript3_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

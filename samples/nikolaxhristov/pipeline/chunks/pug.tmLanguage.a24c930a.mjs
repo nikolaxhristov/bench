@@ -1,22 +1,23 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/davidrios/pug-tmbundle/blob/master/Syntaxes/Pug.JSON-tmLanguage",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/davidrios/pug-tmbundle/commit/e67e895f6fb64932aa122e471000fa55d826bff6";
+const version =
+	"https://github.com/davidrios/pug-tmbundle/commit/e67e895f6fb64932aa122e471000fa55d826bff6";
 const name = "pug";
 const scopeName = "text.pug";
 const patterns = [
 	{
 		match: "^(!!!|doctype)(\\s*[a-zA-Z0-9-_]+)?",
 		name: "meta.tag.sgml.doctype.html",
-		comment: "Doctype declaration."
+		comment: "Doctype declaration.",
 	},
 	{
 		begin: "^(\\s*)//-",
 		end: "^(?!(\\1\\s)|\\s*$)",
 		name: "comment.unbuffered.block.pug",
-		comment: "Unbuffered (pug-only) comments."
+		comment: "Unbuffered (pug-only) comments.",
 	},
 	{
 		begin: "^(\\s*)//",
@@ -27,14 +28,15 @@ const patterns = [
 			{
 				captures: {
 					"1": {
-						name: "invalid.illegal.comment.comment.block.pug"
-					}
+						name: "invalid.illegal.comment.comment.block.pug",
+					},
 				},
 				match: "^\\s*(//)(?!-)",
 				name: "string.comment.buffered.block.pug",
-				comment: "Buffered comments inside buffered comments will generate invalid html."
-			}
-		]
+				comment:
+					"Buffered comments inside buffered comments will generate invalid html.",
+			},
+		],
 	},
 	{
 		begin: "<!--",
@@ -43,9 +45,9 @@ const patterns = [
 		patterns: [
 			{
 				match: "--",
-				name: "invalid.illegal.comment.comment.block.pug"
-			}
-		]
+				name: "invalid.illegal.comment.comment.block.pug",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)-$",
@@ -54,16 +56,16 @@ const patterns = [
 		comment: "Unbuffered code block.",
 		patterns: [
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(script)((\\.$)|(?=[^\\n]*(text|application)/javascript.*\\.$))",
 		beginCaptures: {
 			"2": {
-				name: "entity.name.tag.pug"
-			}
+				name: "entity.name.tag.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		name: "meta.tag.other",
@@ -74,30 +76,30 @@ const patterns = [
 				end: "$",
 				patterns: [
 					{
-						include: "#tag_attributes"
-					}
-				]
+						include: "#tag_attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=[.#])",
 				end: "$",
 				patterns: [
 					{
-						include: "#complete_tag"
-					}
-				]
+						include: "#complete_tag",
+					},
+				],
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(style)((\\.$)|(?=[.#(].*\\.$))",
 		beginCaptures: {
 			"2": {
-				name: "entity.name.tag.pug"
-			}
+				name: "entity.name.tag.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		name: "meta.tag.other",
@@ -108,101 +110,101 @@ const patterns = [
 				end: "$",
 				patterns: [
 					{
-						include: "#tag_attributes"
-					}
-				]
+						include: "#tag_attributes",
+					},
+				],
 			},
 			{
 				begin: "\\G(?=[.#])",
 				end: "$",
 				patterns: [
 					{
-						include: "#complete_tag"
-					}
-				]
+						include: "#complete_tag",
+					},
+				],
 			},
 			{
-				include: "source.css"
-			}
-		]
+				include: "source.css",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(sass)(?=\\(|$)",
 		beginCaptures: {
 			"2": {
-				name: "constant.language.name.sass.filter.pug"
-			}
+				name: "constant.language.name.sass.filter.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		name: "source.sass.filter.pug",
 		patterns: [
 			{
-				include: "#tag_attributes"
+				include: "#tag_attributes",
 			},
 			{
-				include: "source.sass"
-			}
-		]
+				include: "source.sass",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(less)(?=\\(|$)",
 		beginCaptures: {
 			"2": {
-				name: "constant.language.name.less.filter.pug"
-			}
+				name: "constant.language.name.less.filter.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		name: "source.less.filter.pug",
 		patterns: [
 			{
-				include: "#tag_attributes"
+				include: "#tag_attributes",
 			},
 			{
-				include: "source.less"
-			}
-		]
+				include: "source.less",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(stylus)(?=\\(|$)",
 		beginCaptures: {
 			"2": {
-				name: "constant.language.name.stylus.filter.pug"
-			}
+				name: "constant.language.name.stylus.filter.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		patterns: [
 			{
-				include: "#tag_attributes"
+				include: "#tag_attributes",
 			},
 			{
-				include: "source.stylus"
-			}
-		]
+				include: "source.stylus",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*):(coffee(-?script)?)(?=\\(|$)",
 		beginCaptures: {
 			"2": {
-				name: "constant.language.name.coffeescript.filter.pug"
-			}
+				name: "constant.language.name.coffeescript.filter.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		name: "source.coffeescript.filter.pug",
 		patterns: [
 			{
-				include: "#tag_attributes"
+				include: "#tag_attributes",
 			},
 			{
-				include: "source.coffee"
-			}
-		]
+				include: "source.coffee",
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)((:(?=.))|(:$))",
 		beginCaptures: {
 			"4": {
-				name: "invalid.illegal.empty.generic.filter.pug"
-			}
+				name: "invalid.illegal.empty.generic.filter.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		comment: "Generic Pug filter.",
@@ -214,44 +216,44 @@ const patterns = [
 				patterns: [
 					{
 						match: "\\G\\(",
-						name: "invalid.illegal.name.generic.filter.pug"
+						name: "invalid.illegal.name.generic.filter.pug",
 					},
 					{
 						match: "[\\w-]",
-						name: "constant.language.name.generic.filter.pug"
+						name: "constant.language.name.generic.filter.pug",
 					},
 					{
-						include: "#tag_attributes"
+						include: "#tag_attributes",
 					},
 					{
 						match: "\\W",
-						name: "invalid.illegal.name.generic.filter.pug"
-					}
-				]
-			}
-		]
+						name: "invalid.illegal.name.generic.filter.pug",
+					},
+				],
+			},
+		],
 	},
 	{
 		begin: "^(\\s*)(?=[\\w.#].*?\\.$)(?=(?:(?:(?:(?:(?:#[\\w-]+)|(?:\\.[\\w-]+))|(?:(?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))(?:(?:#[\\w-]+)|(?:\\.[\\w-]+)|(?:\\((?:[^()\\'\\\"]*(?:(?:\\'(?:[^\\']|(?:(?<!\\\\)\\\\\\'))*\\')|(?:\\\"(?:[^\\\"]|(?:(?<!\\\\)\\\\\\\"))*\\\")))*[^()]*\\))*)*)(?:(?:(?::\\s+)|(?<=\\)))(?:(?:(?:(?:#[\\w-]+)|(?:\\.[\\w-]+))|(?:(?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))(?:(?:#[\\w-]+)|(?:\\.[\\w-]+)|(?:\\((?:[^()\\'\\\"]*(?:(?:\\'(?:[^\\']|(?:(?<!\\\\)\\\\\\'))*\\')|(?:\\\"(?:[^\\\"]|(?:(?<!\\\\)\\\\\\\"))*\\\")))*[^()]*\\))*)*))*)\\.$)(?:(?:(#[\\w-]+)|(\\.[\\w-]+))|((?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))",
 		beginCaptures: {
 			"2": {
-				name: "entity.other.attribute-name.id.pug"
+				name: "entity.other.attribute-name.id.pug",
 			},
 			"3": {
-				name: "entity.other.attribute-name.class.pug"
+				name: "entity.other.attribute-name.class.pug",
 			},
 			"4": {
-				name: "meta.tag.other entity.name.tag.pug"
-			}
+				name: "meta.tag.other entity.name.tag.pug",
+			},
 		},
 		end: "^(?!(\\1\\s)|\\s*$)",
 		comment: "Generated from dot_block_tag.py",
 		patterns: [
 			{
-				include: "#tag_attributes"
+				include: "#tag_attributes",
 			},
 			{
-				include: "#complete_tag"
+				include: "#complete_tag",
 			},
 			{
 				begin: "^(?=.)",
@@ -259,49 +261,50 @@ const patterns = [
 				name: "text.block.pug",
 				patterns: [
 					{
-						include: "#inline_pug"
+						include: "#inline_pug",
 					},
 					{
-						include: "#embedded_html"
+						include: "#embedded_html",
 					},
 					{
-						include: "#html_entity"
+						include: "#html_entity",
 					},
 					{
-						include: "#interpolated_value"
+						include: "#interpolated_value",
 					},
 					{
-						include: "#interpolated_error"
-					}
-				]
-			}
-		]
+						include: "#interpolated_error",
+					},
+				],
+			},
+		],
 	},
 	{
 		begin: "^\\s*",
 		end: "$",
-		comment: "All constructs that generally span a single line starting with any number of white-spaces.",
+		comment:
+			"All constructs that generally span a single line starting with any number of white-spaces.",
 		patterns: [
 			{
-				include: "#inline_pug"
+				include: "#inline_pug",
 			},
 			{
-				include: "#blocks_and_includes"
+				include: "#blocks_and_includes",
 			},
 			{
-				include: "#unbuffered_code"
+				include: "#unbuffered_code",
 			},
 			{
-				include: "#mixin_definition"
+				include: "#mixin_definition",
 			},
 			{
-				include: "#mixin_call"
+				include: "#mixin_call",
 			},
 			{
-				include: "#flow_control"
+				include: "#flow_control",
 			},
 			{
-				include: "#case_conds"
+				include: "#case_conds",
 			},
 			{
 				begin: "\\|",
@@ -310,133 +313,134 @@ const patterns = [
 				comment: "Tag pipe text line.",
 				patterns: [
 					{
-						include: "#inline_pug"
+						include: "#inline_pug",
 					},
 					{
-						include: "#embedded_html"
+						include: "#embedded_html",
 					},
 					{
-						include: "#html_entity"
+						include: "#html_entity",
 					},
 					{
-						include: "#interpolated_value"
+						include: "#interpolated_value",
 					},
 					{
-						include: "#interpolated_error"
-					}
-				]
+						include: "#interpolated_error",
+					},
+				],
 			},
 			{
-				include: "#printed_expression"
+				include: "#printed_expression",
 			},
 			{
 				begin: "\\G(?=(#[^\\{\\w-])|[^\\w.#])",
 				end: "$",
-				comment: "Line starting with characters incompatible with tag name/id/class is standalone text.",
+				comment:
+					"Line starting with characters incompatible with tag name/id/class is standalone text.",
 				patterns: [
 					{
 						begin: "</?(?=[!#])",
 						end: ">|$",
 						patterns: [
 							{
-								include: "#inline_pug"
+								include: "#inline_pug",
 							},
 							{
-								include: "#interpolated_value"
+								include: "#interpolated_value",
 							},
 							{
-								include: "#interpolated_error"
-							}
-						]
+								include: "#interpolated_error",
+							},
+						],
 					},
 					{
-						include: "#inline_pug"
+						include: "#inline_pug",
 					},
 					{
-						include: "#embedded_html"
+						include: "#embedded_html",
 					},
 					{
-						include: "#html_entity"
+						include: "#html_entity",
 					},
 					{
-						include: "#interpolated_value"
+						include: "#interpolated_value",
 					},
 					{
-						include: "#interpolated_error"
-					}
-				]
+						include: "#interpolated_error",
+					},
+				],
 			},
 			{
-				include: "#complete_tag"
-			}
-		]
-	}
+				include: "#complete_tag",
+			},
+		],
+	},
 ];
 const repository = {
 	blocks_and_includes: {
 		captures: {
 			"1": {
-				name: "storage.type.import.include.pug"
+				name: "storage.type.import.include.pug",
 			},
 			"4": {
-				name: "variable.control.import.include.pug"
-			}
+				name: "variable.control.import.include.pug",
+			},
 		},
 		match: "(extends|include|yield|append|prepend|block( (append|prepend))?)\\s+(.*)$",
 		name: "meta.first-class.pug",
-		comment: "Template blocks and includes."
+		comment: "Template blocks and includes.",
 	},
 	unbuffered_code: {
 		begin: "(-|(([a-zA-Z0-9_]+)\\s+=))",
 		beginCaptures: {
 			"3": {
-				name: "variable.parameter.javascript.embedded.pug"
-			}
+				name: "variable.parameter.javascript.embedded.pug",
+			},
 		},
 		end: "(?=\\])|(({\\s*)?$)",
 		name: "source.js",
 		comment: "name = function() {}",
 		patterns: [
 			{
-				include: "#js_brackets"
+				include: "#js_brackets",
 			},
 			{
-				include: "#babel_parens"
+				include: "#babel_parens",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	mixin_definition: {
 		match: "(mixin\\s+)([\\w-]+)(?:(\\()\\s*((?:[a-zA-Z_]\\w*\\s*)(?:,\\s*[a-zA-Z_]\\w*\\s*)*)(\\)))?$",
 		captures: {
 			"1": {
-				name: "storage.type.function.pug"
+				name: "storage.type.function.pug",
 			},
 			"2": {
-				name: "meta.tag.other entity.name.function.pug"
+				name: "meta.tag.other entity.name.function.pug",
 			},
 			"3": {
-				name: "punctuation.definition.parameters.begin.js"
+				name: "punctuation.definition.parameters.begin.js",
 			},
 			"4": {
-				name: "variable.parameter.function.js"
+				name: "variable.parameter.function.js",
 			},
 			"5": {
-				name: "punctuation.definition.parameters.begin.js"
-			}
-		}
+				name: "punctuation.definition.parameters.begin.js",
+			},
+		},
 	},
 	mixin_call: {
 		begin: "((?:mixin\\s+)|\\+)([\\w-]+)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.function.pug"
+				name: "storage.type.function.pug",
 			},
 			"2": {
-				name: "meta.tag.other entity.name.function.pug"
-			}
+				name: "meta.tag.other entity.name.function.pug",
+			},
 		},
 		end: "(?!\\()|$",
 		patterns: [
@@ -446,35 +450,35 @@ const repository = {
 				name: "args.mixin.pug",
 				patterns: [
 					{
-						include: "#js_parens"
+						include: "#js_parens",
 					},
 					{
-						include: "#string"
+						include: "#string",
 					},
 					{
 						match: "([^\\s(),=/]+)\\s*=\\s*",
 						captures: {
 							"1": {
-								name: "meta.tag.other entity.other.attribute-name.tag.pug"
-							}
-						}
+								name: "meta.tag.other entity.other.attribute-name.tag.pug",
+							},
+						},
 					},
 					{
-						include: "source.js"
-					}
-				]
+						include: "source.js",
+					},
+				],
 			},
 			{
-				include: "#tag_attributes"
-			}
-		]
+				include: "#tag_attributes",
+			},
+		],
 	},
 	flow_control: {
 		begin: "(for|if|else if|else|each|until|while|unless|case)(\\s+|$)",
 		captures: {
 			"1": {
-				name: "storage.type.function.pug"
-			}
+				name: "storage.type.function.pug",
+			},
 		},
 		end: "$",
 		name: "meta.control.flow.pug",
@@ -486,11 +490,11 @@ const repository = {
 				name: "js.embedded.control.flow.pug",
 				patterns: [
 					{
-						include: "source.js"
-					}
-				]
-			}
-		]
+						include: "source.js",
+					},
+				],
+			},
+		],
 	},
 	case_when_paren: {
 		begin: "\\(",
@@ -498,23 +502,23 @@ const repository = {
 		name: "js.when.control.flow.pug",
 		patterns: [
 			{
-				include: "#case_when_paren"
+				include: "#case_when_paren",
 			},
 			{
 				match: ":",
-				name: "invalid.illegal.name.tag.pug"
+				name: "invalid.illegal.name.tag.pug",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	case_conds: {
 		begin: "(default|when)((\\s+|(?=:))|$)",
 		captures: {
 			"1": {
-				name: "storage.type.function.pug"
-			}
+				name: "storage.type.function.pug",
+			},
 		},
 		end: "$",
 		name: "meta.control.flow.pug",
@@ -526,12 +530,12 @@ const repository = {
 				name: "js.embedded.control.flow.pug",
 				patterns: [
 					{
-						include: "#case_when_paren"
+						include: "#case_when_paren",
 					},
 					{
-						include: "source.js"
-					}
-				]
+						include: "source.js",
+					},
+				],
 			},
 			{
 				begin: ":\\s+",
@@ -539,65 +543,65 @@ const repository = {
 				name: "tag.case.control.flow.pug",
 				patterns: [
 					{
-						include: "#complete_tag"
-					}
-				]
-			}
-		]
+						include: "#complete_tag",
+					},
+				],
+			},
+		],
 	},
 	complete_tag: {
 		begin: "(?=[\\w.#])|(:\\s*)",
 		end: "(\\.?$)|(?=:.)",
 		patterns: [
 			{
-				include: "#blocks_and_includes"
+				include: "#blocks_and_includes",
 			},
 			{
-				include: "#unbuffered_code"
+				include: "#unbuffered_code",
 			},
 			{
-				include: "#mixin_call"
+				include: "#mixin_call",
 			},
 			{
-				include: "#flow_control"
+				include: "#flow_control",
 			},
 			{
 				match: "(?<=:)\\w.*$",
-				name: "invalid.illegal.name.tag.pug"
+				name: "invalid.illegal.name.tag.pug",
 			},
 			{
-				include: "#tag_name"
+				include: "#tag_name",
 			},
 			{
-				include: "#tag_id"
+				include: "#tag_id",
 			},
 			{
-				include: "#tag_classes"
+				include: "#tag_classes",
 			},
 			{
-				include: "#tag_attributes"
+				include: "#tag_attributes",
 			},
 			{
-				include: "#tag_mixin_attributes"
+				include: "#tag_mixin_attributes",
 			},
 			{
 				match: "((\\.)\\s+$)|((:)\\s*$)",
 				captures: {
 					"2": {
-						name: "invalid.illegal.end.tag.pug"
+						name: "invalid.illegal.end.tag.pug",
 					},
 					"4": {
-						name: "invalid.illegal.end.tag.pug"
-					}
-				}
+						name: "invalid.illegal.end.tag.pug",
+					},
+				},
 			},
 			{
-				include: "#printed_expression"
+				include: "#printed_expression",
 			},
 			{
-				include: "#tag_text"
-			}
-		]
+				include: "#tag_text",
+			},
+		],
 	},
 	tag_name: {
 		begin: "([#!]\\{(?=.*?\\}))|(\\w(([\\w:-]+[\\w-])|([\\w-]*)))",
@@ -611,47 +615,47 @@ const repository = {
 				patterns: [
 					{
 						match: "{",
-						name: "invalid.illegal.tag.pug"
+						name: "invalid.illegal.tag.pug",
 					},
 					{
-						include: "source.js"
-					}
-				]
-			}
-		]
+						include: "source.js",
+					},
+				],
+			},
+		],
 	},
 	tag_id: {
 		match: "#[\\w-]+",
-		name: "entity.other.attribute-name.id.pug"
+		name: "entity.other.attribute-name.id.pug",
 	},
 	tag_classes: {
 		match: "\\.([^\\w-])?[\\w-]*",
 		captures: {
 			"1": {
-				name: "invalid.illegal.tag.pug"
-			}
+				name: "invalid.illegal.tag.pug",
+			},
 		},
-		name: "entity.other.attribute-name.class.pug"
+		name: "entity.other.attribute-name.class.pug",
 	},
 	tag_attributes: {
 		begin: "(\\(\\s*)",
 		captures: {
 			"1": {
-				name: "constant.name.attribute.tag.pug"
-			}
+				name: "constant.name.attribute.tag.pug",
+			},
 		},
 		end: "(\\))",
 		name: "meta.tag.other",
 		patterns: [
 			{
-				include: "#tag_attribute_name_paren"
+				include: "#tag_attribute_name_paren",
 			},
 			{
-				include: "#tag_attribute_name"
+				include: "#tag_attribute_name",
 			},
 			{
 				match: "!(?!=)",
-				name: "invalid.illegal.tag.pug"
+				name: "invalid.illegal.tag.pug",
 			},
 			{
 				begin: "=\\s*",
@@ -659,21 +663,21 @@ const repository = {
 				name: "attribute_value",
 				patterns: [
 					{
-						include: "#string"
+						include: "#string",
 					},
 					{
-						include: "#js_parens"
+						include: "#js_parens",
 					},
 					{
-						include: "#js_brackets"
+						include: "#js_brackets",
 					},
 					{
-						include: "#js_braces"
+						include: "#js_braces",
 					},
 					{
-						include: "source.js"
-					}
-				]
+						include: "source.js",
+					},
+				],
 			},
 			{
 				begin: "(?<=[%&*-+~|<>:?/])\\s+",
@@ -681,31 +685,31 @@ const repository = {
 				name: "attribute_value2",
 				patterns: [
 					{
-						include: "#string"
+						include: "#string",
 					},
 					{
-						include: "#js_parens"
+						include: "#js_parens",
 					},
 					{
-						include: "#js_brackets"
+						include: "#js_brackets",
 					},
 					{
-						include: "#js_braces"
+						include: "#js_braces",
 					},
 					{
-						include: "source.js"
-					}
-				]
-			}
-		]
+						include: "source.js",
+					},
+				],
+			},
+		],
 	},
 	tag_attribute_name: {
 		match: "([^\\s(),=/!]+)\\s*",
 		captures: {
 			"1": {
-				name: "entity.other.attribute-name.tag.pug"
-			}
-		}
+				name: "entity.other.attribute-name.tag.pug",
+			},
+		},
 	},
 	tag_attribute_name_paren: {
 		begin: "\\(\\s*",
@@ -713,52 +717,52 @@ const repository = {
 		name: "entity.other.attribute-name.tag.pug",
 		patterns: [
 			{
-				include: "#tag_attribute_name_paren"
+				include: "#tag_attribute_name_paren",
 			},
 			{
-				include: "#tag_attribute_name"
-			}
-		]
+				include: "#tag_attribute_name",
+			},
+		],
 	},
 	tag_mixin_attributes: {
 		begin: "(&attributes\\()",
 		captures: {
 			"1": {
-				name: "entity.name.function.pug"
-			}
+				name: "entity.name.function.pug",
+			},
 		},
 		end: "(\\))",
 		name: "meta.tag.other",
 		patterns: [
 			{
 				match: "attributes(?=\\))",
-				name: "storage.type.keyword.pug"
+				name: "storage.type.keyword.pug",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	tag_text: {
 		begin: "(?=.)",
 		end: "$",
 		patterns: [
 			{
-				include: "#inline_pug"
+				include: "#inline_pug",
 			},
 			{
-				include: "#embedded_html"
+				include: "#embedded_html",
 			},
 			{
-				include: "#html_entity"
+				include: "#html_entity",
 			},
 			{
-				include: "#interpolated_value"
+				include: "#interpolated_value",
 			},
 			{
-				include: "#interpolated_error"
-			}
-		]
+				include: "#interpolated_error",
+			},
+		],
 	},
 	inline_pug_text: {
 		begin: "",
@@ -769,45 +773,45 @@ const repository = {
 				end: "\\]",
 				patterns: [
 					{
-						include: "#inline_pug_text"
-					}
-				]
+						include: "#inline_pug_text",
+					},
+				],
 			},
 			{
-				include: "#inline_pug"
+				include: "#inline_pug",
 			},
 			{
-				include: "#embedded_html"
+				include: "#embedded_html",
 			},
 			{
-				include: "#html_entity"
+				include: "#html_entity",
 			},
 			{
-				include: "#interpolated_value"
+				include: "#interpolated_value",
 			},
 			{
-				include: "#interpolated_error"
-			}
-		]
+				include: "#interpolated_error",
+			},
+		],
 	},
 	inline_pug: {
 		begin: "(?<!\\\\)(#\\[)",
 		captures: {
 			"1": {
-				name: "entity.name.function.pug"
+				name: "entity.name.function.pug",
 			},
 			"2": {
-				name: "entity.name.function.pug"
-			}
+				name: "entity.name.function.pug",
+			},
 		},
 		end: "(\\])",
 		name: "inline.pug",
 		patterns: [
 			{
-				include: "#inline_pug"
+				include: "#inline_pug",
 			},
 			{
-				include: "#mixin_call"
+				include: "#mixin_call",
 			},
 			{
 				begin: "(?<!\\])(?=[\\w.#])|(:\\s*)",
@@ -815,55 +819,55 @@ const repository = {
 				name: "tag.inline.pug",
 				patterns: [
 					{
-						include: "#tag_name"
+						include: "#tag_name",
 					},
 					{
-						include: "#tag_id"
+						include: "#tag_id",
 					},
 					{
-						include: "#tag_classes"
+						include: "#tag_classes",
 					},
 					{
-						include: "#tag_attributes"
+						include: "#tag_attributes",
 					},
 					{
-						include: "#tag_mixin_attributes"
+						include: "#tag_mixin_attributes",
 					},
 					{
-						include: "#inline_pug"
+						include: "#inline_pug",
 					},
 					{
 						match: "\\[",
-						name: "invalid.illegal.tag.pug"
-					}
-				]
+						name: "invalid.illegal.tag.pug",
+					},
+				],
 			},
 			{
-				include: "#unbuffered_code"
+				include: "#unbuffered_code",
 			},
 			{
-				include: "#printed_expression"
+				include: "#printed_expression",
 			},
 			{
 				match: "\\[",
-				name: "invalid.illegal.tag.pug"
+				name: "invalid.illegal.tag.pug",
 			},
 			{
-				include: "#inline_pug_text"
-			}
-		]
+				include: "#inline_pug_text",
+			},
+		],
 	},
 	html_entity: {
 		patterns: [
 			{
 				match: "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)",
-				name: "constant.character.entity.html.text.pug"
+				name: "constant.character.entity.html.text.pug",
 			},
 			{
 				match: "[<>&]",
-				name: "invalid.illegal.html_entity.text.pug"
-			}
-		]
+				name: "invalid.illegal.html_entity.text.pug",
+			},
+		],
 	},
 	interpolated_value: {
 		begin: "(?<!\\\\)[#!]\\{(?=.*?\\})",
@@ -872,34 +876,34 @@ const repository = {
 		patterns: [
 			{
 				match: "{",
-				name: "invalid.illegal.tag.pug"
+				name: "invalid.illegal.tag.pug",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	interpolated_error: {
 		match: "(?<!\\\\)[#!]\\{(?=[^}]*$)",
-		name: "invalid.illegal.tag.pug"
+		name: "invalid.illegal.tag.pug",
 	},
 	printed_expression: {
 		begin: "(!?\\=)\\s*",
 		captures: {
 			"1": {
-				name: "constant"
-			}
+				name: "constant",
+			},
 		},
 		end: "(?=\\])|$",
 		name: "source.js",
 		patterns: [
 			{
-				include: "#js_brackets"
+				include: "#js_brackets",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	string: {
 		begin: "(['\"])",
@@ -908,15 +912,15 @@ const repository = {
 		patterns: [
 			{
 				match: "\\\\((x[0-9a-fA-F]{2})|(u[0-9]{4})|.)",
-				name: "constant.character.quoted.pug"
+				name: "constant.character.quoted.pug",
 			},
 			{
-				include: "#interpolated_value"
+				include: "#interpolated_value",
 			},
 			{
-				include: "#interpolated_error"
-			}
-		]
+				include: "#interpolated_error",
+			},
+		],
 	},
 	embedded_html: {
 		begin: "(?=<[^>]*>)",
@@ -924,64 +928,64 @@ const repository = {
 		name: "html",
 		patterns: [
 			{
-				include: "text.html.basic"
+				include: "text.html.basic",
 			},
 			{
-				include: "#interpolated_value"
+				include: "#interpolated_value",
 			},
 			{
-				include: "#interpolated_error"
-			}
-		]
+				include: "#interpolated_error",
+			},
+		],
 	},
 	js_parens: {
 		begin: "\\(",
 		end: "\\)",
 		patterns: [
 			{
-				include: "#js_parens"
+				include: "#js_parens",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	js_brackets: {
 		begin: "\\[",
 		end: "\\]",
 		patterns: [
 			{
-				include: "#js_brackets"
+				include: "#js_brackets",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	js_braces: {
 		begin: "\\{",
 		end: "\\}",
 		patterns: [
 			{
-				include: "#js_braces"
+				include: "#js_braces",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	babel_parens: {
 		begin: "\\(",
 		end: "\\)|(({\\s*)?$)",
 		patterns: [
 			{
-				include: "#babel_parens"
+				include: "#babel_parens",
 			},
 			{
-				include: "source.js"
-			}
-		]
-	}
+				include: "source.js",
+			},
+		],
+	},
 };
 const pug_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -989,7 +993,15 @@ const pug_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { pug_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	pug_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

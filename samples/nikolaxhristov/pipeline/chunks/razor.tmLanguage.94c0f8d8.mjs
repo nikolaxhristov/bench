@@ -1,50 +1,47 @@
 const name = "razor";
 const scopeName = "text.aspnetcorerazor";
-const fileTypes = [
-	"razor",
-	"cshtml"
-];
+const fileTypes = ["razor", "cshtml"];
 const patterns = [
 	{
-		include: "#razor-control-structures"
+		include: "#razor-control-structures",
 	},
 	{
-		include: "text.html.basic"
-	}
+		include: "text.html.basic",
+	},
 ];
 const repository = {
 	"razor-control-structures": {
 		patterns: [
 			{
-				include: "#razor-comment"
+				include: "#razor-comment",
 			},
 			{
-				include: "#razor-codeblock"
+				include: "#razor-codeblock",
 			},
 			{
-				include: "#explicit-razor-expression"
+				include: "#explicit-razor-expression",
 			},
 			{
-				include: "#escaped-transition"
+				include: "#escaped-transition",
 			},
 			{
-				include: "#directives"
+				include: "#directives",
 			},
 			{
-				include: "#transitioned-csharp-control-structures"
+				include: "#transitioned-csharp-control-structures",
 			},
 			{
-				include: "#implicit-expression"
-			}
-		]
+				include: "#implicit-expression",
+			},
+		],
 	},
 	"escaped-transition": {
 		name: "constant.character.escape.razor.transition",
-		match: "@@"
+		match: "@@",
 	},
 	transition: {
 		match: "@",
-		name: "keyword.control.cshtml.transition"
+		name: "keyword.control.cshtml.transition",
 	},
 	"razor-codeblock": {
 		name: "meta.structure.razor.codeblock",
@@ -53,85 +50,85 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.codeblock.open"
-			}
+				name: "keyword.control.razor.directive.codeblock.open",
+			},
 		},
 		contentName: "source.cs",
 		patterns: [
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
 		end: "(\\})",
 		endCaptures: {
 			"1": {
-				name: "keyword.control.razor.directive.codeblock.close"
-			}
-		}
+				name: "keyword.control.razor.directive.codeblock.close",
+			},
+		},
 	},
 	"razor-codeblock-body": {
 		patterns: [
 			{
-				include: "#text-tag"
+				include: "#text-tag",
 			},
 			{
-				include: "#wellformed-html"
+				include: "#wellformed-html",
 			},
 			{
-				include: "#razor-single-line-markup"
+				include: "#razor-single-line-markup",
 			},
 			{
-				include: "#razor-control-structures"
+				include: "#razor-control-structures",
 			},
 			{
-				include: "source.cs"
-			}
-		]
+				include: "source.cs",
+			},
+		],
 	},
 	"razor-single-line-markup": {
 		match: "(\\@\\:)([^$]*)$",
 		captures: {
 			"1": {
-				name: "keyword.control.razor.singleLineMarkup"
+				name: "keyword.control.razor.singleLineMarkup",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#razor-control-structures"
+						include: "#razor-control-structures",
 					},
 					{
-						include: "text.html.basic"
-					}
-				]
-			}
-		}
+						include: "text.html.basic",
+					},
+				],
+			},
+		},
 	},
 	"text-tag": {
 		begin: "(<text\\s*>)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.cshtml.transition.textTag.open"
-			}
+				name: "keyword.control.cshtml.transition.textTag.open",
+			},
 		},
 		patterns: [
 			{
-				include: "#wellformed-html"
+				include: "#wellformed-html",
 			},
 			{
-				include: "$self"
-			}
+				include: "$self",
+			},
 		],
 		end: "(</text>)",
 		endCaptures: {
 			"1": {
-				name: "keyword.control.cshtml.transition.textTag.close"
-			}
-		}
+				name: "keyword.control.cshtml.transition.textTag.close",
+			},
+		},
 	},
 	"razor-comment": {
 		name: "meta.comment.razor",
@@ -140,151 +137,151 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.comment.star"
-			}
+				name: "keyword.control.razor.comment.star",
+			},
 		},
 		contentName: "comment.block.razor",
 		end: "(\\*)(@)",
 		endCaptures: {
 			"1": {
-				name: "keyword.control.razor.comment.star"
+				name: "keyword.control.razor.comment.star",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
-			}
-		}
+						include: "#transition",
+					},
+				],
+			},
+		},
 	},
 	"wellformed-html": {
 		patterns: [
 			{
-				include: "#void-tag"
+				include: "#void-tag",
 			},
 			{
-				include: "#non-void-tag"
-			}
-		]
+				include: "#non-void-tag",
+			},
+		],
 	},
 	"void-tag": {
 		name: "meta.tag.structure.$3.void.html",
 		begin: "(?i)(<)(!)?(area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)(?=\\s|/?>)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "constant.character.escape.razor.tagHelperOptOut"
+				name: "constant.character.escape.razor.tagHelperOptOut",
 			},
 			"3": {
-				name: "entity.name.tag.html"
-			}
+				name: "entity.name.tag.html",
+			},
 		},
 		patterns: [
 			{
-				include: "text.html.basic#attribute"
-			}
+				include: "text.html.basic#attribute",
+			},
 		],
 		end: "/?>",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.end.html"
-			}
-		}
+				name: "punctuation.definition.tag.end.html",
+			},
+		},
 	},
 	"non-void-tag": {
 		begin: "(?=<(!)?([^/\\s>]+)(\\s|/?>))",
 		end: "(</)(\\2)\\s*(>)|(/>)",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.begin.html"
+				name: "punctuation.definition.tag.begin.html",
 			},
 			"2": {
-				name: "entity.name.tag.html"
+				name: "entity.name.tag.html",
 			},
 			"3": {
-				name: "punctuation.definition.tag.end.html"
+				name: "punctuation.definition.tag.end.html",
 			},
 			"4": {
-				name: "punctuation.definition.tag.end.html"
-			}
+				name: "punctuation.definition.tag.end.html",
+			},
 		},
 		patterns: [
 			{
 				begin: "(<)(!)?([^/\\s>]+)(?=\\s|/?>)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.tag.begin.html"
+						name: "punctuation.definition.tag.begin.html",
 					},
 					"2": {
-						name: "constant.character.escape.razor.tagHelperOptOut"
+						name: "constant.character.escape.razor.tagHelperOptOut",
 					},
 					"3": {
-						name: "entity.name.tag.html"
-					}
+						name: "entity.name.tag.html",
+					},
 				},
 				end: "(?=/?>)",
 				patterns: [
 					{
-						include: "#razor-control-structures"
+						include: "#razor-control-structures",
 					},
 					{
-						include: "text.html.basic#attribute"
-					}
-				]
+						include: "text.html.basic#attribute",
+					},
+				],
 			},
 			{
 				begin: ">",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.tag.end.html"
-					}
+						name: "punctuation.definition.tag.end.html",
+					},
 				},
 				end: "(?=</)",
 				patterns: [
 					{
-						include: "#wellformed-html"
+						include: "#wellformed-html",
 					},
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	"explicit-razor-expression": {
 		name: "meta.expression.explicit.cshtml",
 		begin: "(@)\\(",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.cshtml"
+				name: "keyword.control.cshtml",
 			},
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
-			}
+						include: "#transition",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "source.cs#expression"
-			}
+				include: "source.cs#expression",
+			},
 		],
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "keyword.control.cshtml"
-			}
-		}
+				name: "keyword.control.cshtml",
+			},
+		},
 	},
 	"implicit-expression": {
 		name: "meta.expression.implicit.cshtml",
@@ -294,213 +291,213 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
-			}
+						include: "#transition",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#await-prefix"
+				include: "#await-prefix",
 			},
 			{
-				include: "#implicit-expression-body"
-			}
+				include: "#implicit-expression-body",
+			},
 		],
-		end: "(?=[\\s<>\\{\\}\\)\\]'\"])"
+		end: "(?=[\\s<>\\{\\}\\)\\]'\"])",
 	},
 	"implicit-expression-body": {
 		patterns: [
 			{
-				include: "#implicit-expression-invocation-start"
+				include: "#implicit-expression-invocation-start",
 			},
 			{
-				include: "#implicit-expression-accessor-start"
-			}
+				include: "#implicit-expression-accessor-start",
+			},
 		],
-		end: "(?=[\\s<>\\{\\}\\)\\]'\"])"
+		end: "(?=[\\s<>\\{\\}\\)\\]'\"])",
 	},
 	"implicit-expression-invocation-start": {
 		begin: "([_[:alpha:]][_[:alnum:]]*)(?=\\()",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.function.cs"
-			}
+				name: "entity.name.function.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#implicit-expression-continuation"
-			}
+				include: "#implicit-expression-continuation",
+			},
 		],
-		end: "(?=[\\s<>\\{\\}\\)\\]'\"])"
+		end: "(?=[\\s<>\\{\\}\\)\\]'\"])",
 	},
 	"implicit-expression-accessor-start": {
 		begin: "([_[:alpha:]][_[:alnum:]]*)",
 		beginCaptures: {
 			"1": {
-				name: "variable.other.object.cs"
-			}
+				name: "variable.other.object.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#implicit-expression-continuation"
-			}
+				include: "#implicit-expression-continuation",
+			},
 		],
-		end: "(?=[\\s<>\\{\\}\\)\\]'\"])"
+		end: "(?=[\\s<>\\{\\}\\)\\]'\"])",
 	},
 	"implicit-expression-continuation": {
 		patterns: [
 			{
-				include: "#balanced-parenthesis-csharp"
+				include: "#balanced-parenthesis-csharp",
 			},
 			{
-				include: "#balanced-brackets-csharp"
+				include: "#balanced-brackets-csharp",
 			},
 			{
-				include: "#implicit-expression-invocation"
+				include: "#implicit-expression-invocation",
 			},
 			{
-				include: "#implicit-expression-accessor"
+				include: "#implicit-expression-accessor",
 			},
 			{
-				include: "#implicit-expression-extension"
-			}
+				include: "#implicit-expression-extension",
+			},
 		],
-		end: "(?=[\\s<>\\{\\}\\)\\]'\"])"
+		end: "(?=[\\s<>\\{\\}\\)\\]'\"])",
 	},
 	"implicit-expression-accessor": {
 		match: "(?<=\\.)[_[:alpha:]][_[:alnum:]]*",
-		name: "variable.other.object.property.cs"
+		name: "variable.other.object.property.cs",
 	},
 	"implicit-expression-invocation": {
 		match: "(?<=\\.)[_[:alpha:]][_[:alnum:]]*(?=\\()",
-		name: "entity.name.function.cs"
+		name: "entity.name.function.cs",
 	},
 	"implicit-expression-operator": {
 		patterns: [
 			{
-				include: "#implicit-expression-dot-operator"
+				include: "#implicit-expression-dot-operator",
 			},
 			{
-				include: "#implicit-expression-null-conditional-operator"
+				include: "#implicit-expression-null-conditional-operator",
 			},
 			{
-				include: "#implicit-expression-null-forgiveness-operator"
-			}
-		]
+				include: "#implicit-expression-null-forgiveness-operator",
+			},
+		],
 	},
 	"implicit-expression-dot-operator": {
 		match: "(\\.)(?=[_[:alpha:]][_[:alnum:]]*)",
 		captures: {
 			"1": {
-				name: "punctuation.accessor.cs"
-			}
-		}
+				name: "punctuation.accessor.cs",
+			},
+		},
 	},
 	"implicit-expression-null-conditional-operator": {
 		match: "(\\?)(?=[.\\[])",
 		captures: {
 			"1": {
-				name: "keyword.operator.null-conditional.cs"
-			}
-		}
+				name: "keyword.operator.null-conditional.cs",
+			},
+		},
 	},
 	"implicit-expression-null-forgiveness-operator": {
 		match: "(\\!)(?=(?:\\.[_[:alpha:]][_[:alnum:]]*)|\\?|[\\[\\(])",
 		captures: {
 			"1": {
-				name: "keyword.operator.logical.cs"
-			}
-		}
+				name: "keyword.operator.logical.cs",
+			},
+		},
 	},
 	"balanced-parenthesis-csharp": {
 		begin: "(\\()",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.parenthesis.open.cs"
-			}
+				name: "punctuation.parenthesis.open.cs",
+			},
 		},
 		name: "razor.test.balanced.parenthesis",
 		patterns: [
 			{
-				include: "source.cs"
-			}
+				include: "source.cs",
+			},
 		],
 		end: "(\\))",
 		endCaptures: {
 			"1": {
-				name: "punctuation.parenthesis.close.cs"
-			}
-		}
+				name: "punctuation.parenthesis.close.cs",
+			},
+		},
 	},
 	"balanced-brackets-csharp": {
 		begin: "(\\[)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.squarebracket.open.cs"
-			}
+				name: "punctuation.squarebracket.open.cs",
+			},
 		},
 		name: "razor.test.balanced.brackets",
 		patterns: [
 			{
-				include: "source.cs"
-			}
+				include: "source.cs",
+			},
 		],
 		end: "(\\])",
 		endCaptures: {
 			"1": {
-				name: "punctuation.squarebracket.close.cs"
-			}
-		}
+				name: "punctuation.squarebracket.close.cs",
+			},
+		},
 	},
 	directives: {
 		patterns: [
 			{
-				include: "#code-directive"
+				include: "#code-directive",
 			},
 			{
-				include: "#functions-directive"
+				include: "#functions-directive",
 			},
 			{
-				include: "#page-directive"
+				include: "#page-directive",
 			},
 			{
-				include: "#addTagHelper-directive"
+				include: "#addTagHelper-directive",
 			},
 			{
-				include: "#removeTagHelper-directive"
+				include: "#removeTagHelper-directive",
 			},
 			{
-				include: "#tagHelperPrefix-directive"
+				include: "#tagHelperPrefix-directive",
 			},
 			{
-				include: "#model-directive"
+				include: "#model-directive",
 			},
 			{
-				include: "#inherits-directive"
+				include: "#inherits-directive",
 			},
 			{
-				include: "#implements-directive"
+				include: "#implements-directive",
 			},
 			{
-				include: "#namespace-directive"
+				include: "#namespace-directive",
 			},
 			{
-				include: "#inject-directive"
+				include: "#inject-directive",
 			},
 			{
-				include: "#attribute-directive"
+				include: "#attribute-directive",
 			},
 			{
-				include: "#section-directive"
+				include: "#section-directive",
 			},
 			{
-				include: "#layout-directive"
+				include: "#layout-directive",
 			},
 			{
-				include: "#using-directive"
-			}
-		]
+				include: "#using-directive",
+			},
+		],
 	},
 	"code-directive": {
 		begin: "(@)(code)\\s*",
@@ -508,20 +505,20 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.code"
-			}
+				name: "keyword.control.razor.directive.code",
+			},
 		},
 		patterns: [
 			{
-				include: "#directive-codeblock"
-			}
+				include: "#directive-codeblock",
+			},
 		],
-		end: "(?<=})|\\s"
+		end: "(?<=})|\\s",
 	},
 	"functions-directive": {
 		begin: "(@)(functions)\\s*",
@@ -529,41 +526,41 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.functions"
-			}
+				name: "keyword.control.razor.directive.functions",
+			},
 		},
 		patterns: [
 			{
-				include: "#directive-codeblock"
-			}
+				include: "#directive-codeblock",
+			},
 		],
-		end: "(?<=})|\\s"
+		end: "(?<=})|\\s",
 	},
 	"directive-codeblock": {
 		begin: "(\\{)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.razor.directive.codeblock.open"
-			}
+				name: "keyword.control.razor.directive.codeblock.open",
+			},
 		},
 		name: "meta.structure.razor.directive.codeblock",
 		contentName: "source.cs",
 		patterns: [
 			{
-				include: "source.cs"
-			}
+				include: "source.cs",
+			},
 		],
 		end: "(\\})",
 		endCaptures: {
 			"1": {
-				name: "keyword.control.razor.directive.codeblock.close"
-			}
-		}
+				name: "keyword.control.razor.directive.codeblock.close",
+			},
+		},
 	},
 	"page-directive": {
 		name: "meta.directive",
@@ -572,21 +569,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.page"
+				name: "keyword.control.razor.directive.page",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#string-literal"
-					}
-				]
-			}
-		}
+						include: "source.cs#string-literal",
+					},
+				],
+			},
+		},
 	},
 	"addTagHelper-directive": {
 		name: "meta.directive",
@@ -595,21 +592,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.addTagHelper"
+				name: "keyword.control.razor.directive.addTagHelper",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#tagHelper-directive-argument"
-					}
-				]
-			}
-		}
+						include: "#tagHelper-directive-argument",
+					},
+				],
+			},
+		},
 	},
 	"removeTagHelper-directive": {
 		name: "meta.directive",
@@ -618,21 +615,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.removeTagHelper"
+				name: "keyword.control.razor.directive.removeTagHelper",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#tagHelper-directive-argument"
-					}
-				]
-			}
-		}
+						include: "#tagHelper-directive-argument",
+					},
+				],
+			},
+		},
 	},
 	"tagHelperPrefix-directive": {
 		name: "meta.directive",
@@ -641,35 +638,35 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.tagHelperPrefix"
+				name: "keyword.control.razor.directive.tagHelperPrefix",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#tagHelper-directive-argument"
-					}
-				]
-			}
-		}
+						include: "#tagHelper-directive-argument",
+					},
+				],
+			},
+		},
 	},
 	"tagHelper-directive-argument": {
 		patterns: [
 			{
-				include: "source.cs#string-literal"
+				include: "source.cs#string-literal",
 			},
 			{
-				include: "#unquoted-string-argument"
-			}
-		]
+				include: "#unquoted-string-argument",
+			},
+		],
 	},
 	"unquoted-string-argument": {
 		name: "string.quoted.double.cs",
-		match: "[^$]+"
+		match: "[^$]+",
 	},
 	"model-directive": {
 		name: "meta.directive",
@@ -678,21 +675,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.model"
+				name: "keyword.control.razor.directive.model",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
-			}
-		}
+						include: "source.cs#type",
+					},
+				],
+			},
+		},
 	},
 	"inherits-directive": {
 		name: "meta.directive",
@@ -701,21 +698,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.inherits"
+				name: "keyword.control.razor.directive.inherits",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
-			}
-		}
+						include: "source.cs#type",
+					},
+				],
+			},
+		},
 	},
 	"implements-directive": {
 		name: "meta.directive",
@@ -724,21 +721,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.implements"
+				name: "keyword.control.razor.directive.implements",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
-			}
-		}
+						include: "source.cs#type",
+					},
+				],
+			},
+		},
 	},
 	"layout-directive": {
 		name: "meta.directive",
@@ -747,21 +744,21 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.layout"
+				name: "keyword.control.razor.directive.layout",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
-			}
-		}
+						include: "source.cs#type",
+					},
+				],
+			},
+		},
 	},
 	"namespace-directive": {
 		name: "meta.directive",
@@ -770,32 +767,32 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.namespace"
+				name: "keyword.control.razor.directive.namespace",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#namespace-directive-argument"
-					}
-				]
-			}
-		}
+						include: "#namespace-directive-argument",
+					},
+				],
+			},
+		},
 	},
 	"namespace-directive-argument": {
 		match: "([_[:alpha:]][_[:alnum:]]*)(\\.)?",
 		captures: {
 			"1": {
-				name: "entity.name.type.namespace.cs"
+				name: "entity.name.type.namespace.cs",
 			},
 			"2": {
-				name: "punctuation.accessor.cs"
-			}
-		}
+				name: "punctuation.accessor.cs",
+			},
+		},
 	},
 	"inject-directive": {
 		name: "meta.directive",
@@ -804,24 +801,24 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.inject"
+				name: "keyword.control.razor.directive.inject",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
+						include: "source.cs#type",
+					},
+				],
 			},
 			"4": {
-				name: "entity.name.variable.property.cs"
-			}
-		}
+				name: "entity.name.variable.property.cs",
+			},
+		},
 	},
 	"attribute-directive": {
 		name: "meta.directive",
@@ -830,20 +827,20 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.attribute"
-			}
+				name: "keyword.control.razor.directive.attribute",
+			},
 		},
 		patterns: [
 			{
-				include: "source.cs#attribute-section"
-			}
+				include: "source.cs#attribute-section",
+			},
 		],
-		end: "(?<=\\])|$"
+		end: "(?<=\\])|$",
 	},
 	"section-directive": {
 		name: "meta.directive.block",
@@ -852,43 +849,43 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.razor.directive.section"
+				name: "keyword.control.razor.directive.section",
 			},
 			"3": {
-				name: "variable.other.razor.directive.sectionName"
-			}
+				name: "variable.other.razor.directive.sectionName",
+			},
 		},
 		patterns: [
 			{
-				include: "#directive-markupblock"
-			}
+				include: "#directive-markupblock",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"directive-markupblock": {
 		name: "meta.structure.razor.directive.markblock",
 		begin: "(\\{)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.razor.directive.codeblock.open"
-			}
+				name: "keyword.control.razor.directive.codeblock.open",
+			},
 		},
 		patterns: [
 			{
-				include: "$self"
-			}
+				include: "$self",
+			},
 		],
 		end: "(\\})",
 		endCaptures: {
 			"1": {
-				name: "keyword.control.razor.directive.codeblock.close"
-			}
-		}
+				name: "keyword.control.razor.directive.codeblock.close",
+			},
+		},
 	},
 	"using-directive": {
 		name: "meta.directive",
@@ -897,105 +894,105 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.other.using.cs"
+				name: "keyword.other.using.cs",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#using-static-directive"
+						include: "#using-static-directive",
 					},
 					{
-						include: "#using-alias-directive"
+						include: "#using-alias-directive",
 					},
 					{
-						include: "#using-standard-directive"
-					}
-				]
+						include: "#using-standard-directive",
+					},
+				],
 			},
 			"4": {
-				name: "keyword.control.razor.optionalSemicolon"
-			}
-		}
+				name: "keyword.control.razor.optionalSemicolon",
+			},
+		},
 	},
 	"using-static-directive": {
 		match: "(static)\\b\\s+(.+)",
 		captures: {
 			"1": {
-				name: "keyword.other.static.cs"
+				name: "keyword.other.static.cs",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
-			}
-		}
+						include: "source.cs#type",
+					},
+				],
+			},
+		},
 	},
 	"using-alias-directive": {
 		match: "([_[:alpha:]][_[:alnum:]]*)\\b\\s*(=)\\s*(.+)\\s*",
 		captures: {
 			"1": {
-				name: "entity.name.type.alias.cs"
+				name: "entity.name.type.alias.cs",
 			},
 			"2": {
-				name: "keyword.operator.assignment.cs"
+				name: "keyword.operator.assignment.cs",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.cs#type"
-					}
-				]
-			}
-		}
+						include: "source.cs#type",
+					},
+				],
+			},
+		},
 	},
 	"using-standard-directive": {
 		match: "([_[:alpha:]][_[:alnum:]]*)\\s*",
 		captures: {
 			"1": {
-				name: "entity.name.type.namespace.cs"
-			}
-		}
+				name: "entity.name.type.namespace.cs",
+			},
+		},
 	},
 	"transitioned-csharp-control-structures": {
 		patterns: [
 			{
-				include: "#using-statement"
+				include: "#using-statement",
 			},
 			{
-				include: "#if-statement"
+				include: "#if-statement",
 			},
 			{
-				include: "#else-part"
+				include: "#else-part",
 			},
 			{
-				include: "#foreach-statement"
+				include: "#foreach-statement",
 			},
 			{
-				include: "#for-statement"
+				include: "#for-statement",
 			},
 			{
-				include: "#while-statement"
+				include: "#while-statement",
 			},
 			{
-				include: "#switch-statement"
+				include: "#switch-statement",
 			},
 			{
-				include: "#lock-statement"
+				include: "#lock-statement",
 			},
 			{
-				include: "#do-statement"
+				include: "#do-statement",
 			},
 			{
-				include: "#try-statement"
-			}
-		]
+				include: "#try-statement",
+			},
+		],
 	},
 	"using-statement": {
 		name: "meta.statement.using.razor",
@@ -1004,26 +1001,26 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.other.using.cs"
-			}
+				name: "keyword.other.using.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"if-statement": {
 		name: "meta.statement.if.razor",
@@ -1032,50 +1029,50 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.conditional.if.cs"
-			}
+				name: "keyword.control.conditional.if.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"else-part": {
 		name: "meta.statement.else.razor",
 		begin: "(?:^|(?<=}))\\s*(else)\\b\\s*?(?: (if))?\\s*?(?=[\\n\\(\\{])",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.conditional.else.cs"
+				name: "keyword.control.conditional.else.cs",
 			},
 			"2": {
-				name: "keyword.control.conditional.if.cs"
-			}
+				name: "keyword.control.conditional.if.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"for-statement": {
 		name: "meta.statement.for.razor",
@@ -1084,26 +1081,26 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.loop.for.cs"
-			}
+				name: "keyword.control.loop.for.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"foreach-statement": {
 		name: "meta.statement.foreach.razor",
@@ -1112,91 +1109,92 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#await-prefix"
-					}
-				]
+						include: "#await-prefix",
+					},
+				],
 			},
 			"3": {
-				name: "keyword.control.loop.foreach.cs"
-			}
+				name: "keyword.control.loop.foreach.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#foreach-condition"
+				include: "#foreach-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"foreach-condition": {
 		begin: "\\(",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.parenthesis.open.cs"
-			}
+				name: "punctuation.parenthesis.open.cs",
+			},
 		},
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.parenthesis.close.cs"
-			}
+				name: "punctuation.parenthesis.close.cs",
+			},
 		},
 		patterns: [
 			{
 				match: "(?x)\n(?:\n  (\\bvar\\b)|\n  (?<type-name>\n    (?:\n      (?:\n        (?:(?<identifier>@?[_[:alpha:]][_[:alnum:]]*)\\s*\\:\\:\\s*)? # alias-qualification\n        (?<name-and-type-args> # identifier + type arguments (if any)\n          \\g<identifier>\\s*\n          (?<type-args>\\s*<(?:[^<>]|\\g<type-args>)+>\\s*)?\n        )\n        (?:\\s*\\.\\s*\\g<name-and-type-args>)* | # Are there any more names being dotted into?\n        (?<tuple>\\s*\\((?:[^\\(\\)]|\\g<tuple>)+\\))\n      )\n      (?:\\s*\\?\\s*)? # nullable suffix?\n      (?:\\s*\\[(?:\\s*,\\s*)*\\]\\s*)* # array suffix?\n    )\n  )\n)\\s+\n(\\g<identifier>)\\s+\n\\b(in)\\b",
 				captures: {
 					"1": {
-						name: "keyword.other.var.cs"
+						name: "keyword.other.var.cs",
 					},
 					"2": {
 						patterns: [
 							{
-								include: "source.cs#type"
-							}
-						]
+								include: "source.cs#type",
+							},
+						],
 					},
 					"7": {
-						name: "entity.name.variable.local.cs"
+						name: "entity.name.variable.local.cs",
 					},
 					"8": {
-						name: "keyword.control.loop.in.cs"
-					}
-				}
+						name: "keyword.control.loop.in.cs",
+					},
+				},
 			},
 			{
 				match: "(?x) # match foreach (var (x, y) in ...)\n(?:\\b(var)\\b\\s*)?\n(?<tuple>\\((?:[^\\(\\)]|\\g<tuple>)+\\))\\s+\n\\b(in)\\b",
 				captures: {
 					"1": {
-						name: "keyword.other.var.cs"
+						name: "keyword.other.var.cs",
 					},
 					"2": {
 						patterns: [
 							{
-								include: "source.cs#tuple-declaration-deconstruction-element-list"
-							}
-						]
+								include:
+									"source.cs#tuple-declaration-deconstruction-element-list",
+							},
+						],
 					},
 					"3": {
-						name: "keyword.control.loop.in.cs"
-					}
-				}
+						name: "keyword.control.loop.in.cs",
+					},
+				},
 			},
 			{
-				include: "source.cs#expression"
-			}
-		]
+				include: "source.cs#expression",
+			},
+		],
 	},
 	"do-statement": {
 		name: "meta.statement.do.razor",
@@ -1205,26 +1203,26 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.loop.do.cs"
-			}
+				name: "keyword.control.loop.do.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"while-statement": {
 		name: "meta.statement.while.razor",
@@ -1233,31 +1231,31 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.loop.while.cs"
-			}
+				name: "keyword.control.loop.while.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
 		end: "(?<=})|(;)",
 		endCaptures: {
 			"1": {
-				name: "punctuation.terminator.statement.cs"
-			}
-		}
+				name: "punctuation.terminator.statement.cs",
+			},
+		},
 	},
 	"switch-statement": {
 		name: "meta.statement.switch.razor",
@@ -1266,49 +1264,49 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.switch.cs"
-			}
+				name: "keyword.control.switch.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#switch-code-block"
+				include: "#switch-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"switch-code-block": {
 		name: "meta.structure.razor.csharp.codeblock.switch",
 		begin: "(\\{)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.curlybrace.open.cs"
-			}
+				name: "punctuation.curlybrace.open.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "source.cs#switch-label"
+				include: "source.cs#switch-label",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
 		end: "(\\})",
 		endCaptures: {
 			"1": {
-				name: "punctuation.curlybrace.close.cs"
-			}
-		}
+				name: "punctuation.curlybrace.close.cs",
+			},
+		},
 	},
 	"lock-statement": {
 		name: "meta.statement.lock.razor",
@@ -1317,39 +1315,39 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.other.lock.cs"
-			}
+				name: "keyword.other.lock.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"try-statement": {
 		patterns: [
 			{
-				include: "#try-block"
+				include: "#try-block",
 			},
 			{
-				include: "#catch-clause"
+				include: "#catch-clause",
 			},
 			{
-				include: "#finally-clause"
-			}
-		]
+				include: "#finally-clause",
+			},
+		],
 	},
 	"try-block": {
 		name: "meta.statement.try.razor",
@@ -1358,63 +1356,63 @@ const repository = {
 			"1": {
 				patterns: [
 					{
-						include: "#transition"
-					}
-				]
+						include: "#transition",
+					},
+				],
 			},
 			"2": {
-				name: "keyword.control.try.cs"
-			}
+				name: "keyword.control.try.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-condition"
+				include: "#csharp-condition",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"catch-clause": {
 		name: "meta.statement.catch.razor",
 		begin: "(?:^|(?<=}))\\s*(catch)\\b\\s*?(?=[\\n\\(\\{])",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.try.catch.cs"
-			}
+				name: "keyword.control.try.catch.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#catch-condition"
+				include: "#catch-condition",
 			},
 			{
-				include: "source.cs#when-clause"
+				include: "source.cs#when-clause",
 			},
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"catch-condition": {
 		begin: "\\(",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.parenthesis.open.cs"
-			}
+				name: "punctuation.parenthesis.open.cs",
+			},
 		},
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.parenthesis.close.cs"
-			}
+				name: "punctuation.parenthesis.close.cs",
+			},
 		},
 		patterns: [
 			{
@@ -1423,94 +1421,101 @@ const repository = {
 					"1": {
 						patterns: [
 							{
-								include: "source.cs#type"
-							}
-						]
+								include: "source.cs#type",
+							},
+						],
 					},
 					"6": {
-						name: "entity.name.variable.local.cs"
-					}
-				}
-			}
-		]
+						name: "entity.name.variable.local.cs",
+					},
+				},
+			},
+		],
 	},
 	"finally-clause": {
 		name: "meta.statement.finally.razor",
 		begin: "(?:^|(?<=}))\\s*(finally)\\b\\s*?(?=[\\n\\{])",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.try.finally.cs"
-			}
+				name: "keyword.control.try.finally.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#csharp-code-block"
+				include: "#csharp-code-block",
 			},
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
-		end: "(?<=})"
+		end: "(?<=})",
 	},
 	"await-prefix": {
 		name: "keyword.other.await.cs",
-		match: "(await)\\s+"
+		match: "(await)\\s+",
 	},
 	"csharp-code-block": {
 		name: "meta.structure.razor.csharp.codeblock",
 		begin: "(\\{)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.curlybrace.open.cs"
-			}
+				name: "punctuation.curlybrace.open.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "#razor-codeblock-body"
-			}
+				include: "#razor-codeblock-body",
+			},
 		],
 		end: "(\\})",
 		endCaptures: {
 			"1": {
-				name: "punctuation.curlybrace.close.cs"
-			}
-		}
+				name: "punctuation.curlybrace.close.cs",
+			},
+		},
 	},
 	"csharp-condition": {
 		begin: "(\\()",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.parenthesis.open.cs"
-			}
+				name: "punctuation.parenthesis.open.cs",
+			},
 		},
 		patterns: [
 			{
-				include: "source.cs#local-variable-declaration"
+				include: "source.cs#local-variable-declaration",
 			},
 			{
-				include: "source.cs#expression"
+				include: "source.cs#expression",
 			},
 			{
-				include: "source.cs#punctuation-comma"
+				include: "source.cs#punctuation-comma",
 			},
 			{
-				include: "source.cs#punctuation-semicolon"
-			}
+				include: "source.cs#punctuation-semicolon",
+			},
 		],
 		end: "(\\))",
 		endCaptures: {
 			"1": {
-				name: "punctuation.parenthesis.close.cs"
-			}
-		}
-	}
+				name: "punctuation.parenthesis.close.cs",
+			},
+		},
+	},
 };
 const razor_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	fileTypes: fileTypes,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { razor_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	razor_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

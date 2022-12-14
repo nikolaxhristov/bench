@@ -1,82 +1,81 @@
-const fileTypes = [
-	"m"
-];
+const fileTypes = ["m"];
 const keyEquivalent = "^~M";
 const name = "matlab";
 const patterns = [
 	{
-		comment: "This and #all_after_command_dual are split out so #command_dual can be excluded in things like (), {}, []",
-		include: "#all_before_command_dual"
+		comment:
+			"This and #all_after_command_dual are split out so #command_dual can be excluded in things like (), {}, []",
+		include: "#all_before_command_dual",
 	},
 	{
-		include: "#command_dual"
+		include: "#command_dual",
 	},
 	{
-		include: "#all_after_command_dual"
-	}
+		include: "#all_after_command_dual",
+	},
 ];
 const repository = {
 	all_before_command_dual: {
 		patterns: [
 			{
-				include: "#classdef"
+				include: "#classdef",
 			},
 			{
-				include: "#function"
+				include: "#function",
 			},
 			{
-				include: "#blocks"
+				include: "#blocks",
 			},
 			{
-				include: "#control_statements"
+				include: "#control_statements",
 			},
 			{
-				include: "#global_persistent"
+				include: "#global_persistent",
 			},
 			{
-				include: "#parens"
+				include: "#parens",
 			},
 			{
-				include: "#square_brackets"
+				include: "#square_brackets",
 			},
 			{
-				include: "#indexing_curly_brackets"
+				include: "#indexing_curly_brackets",
 			},
 			{
-				include: "#curly_brackets"
-			}
-		]
+				include: "#curly_brackets",
+			},
+		],
 	},
 	all_after_command_dual: {
 		patterns: [
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
-				include: "#line_continuation"
+				include: "#line_continuation",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#conjugate_transpose"
+				include: "#conjugate_transpose",
 			},
 			{
-				include: "#transpose"
+				include: "#transpose",
 			},
 			{
-				include: "#constants"
+				include: "#constants",
 			},
 			{
-				include: "#variables"
+				include: "#variables",
 			},
 			{
-				include: "#numbers"
+				include: "#numbers",
 			},
 			{
-				include: "#operators"
-			}
-		]
+				include: "#operators",
+			},
+		],
 	},
 	blocks: {
 		patterns: [
@@ -84,95 +83,95 @@ const repository = {
 				begin: "\\s*(?:^|[\\s,;])(for)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.for.matlab"
-					}
+						name: "keyword.control.for.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.for.matlab"
-					}
+						name: "keyword.control.end.for.matlab",
+					},
 				},
 				name: "meta.for.matlab",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\s*(?:^|[\\s,;])(if)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.if.matlab"
-					}
+						name: "keyword.control.if.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.if.matlab"
+						name: "keyword.control.end.if.matlab",
 					},
 					"2": {
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
-					}
+								include: "$self",
+							},
+						],
+					},
 				},
 				name: "meta.if.matlab",
 				patterns: [
 					{
 						captures: {
 							"2": {
-								name: "keyword.control.elseif.matlab"
+								name: "keyword.control.elseif.matlab",
 							},
 							"3": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
+										include: "$self",
+									},
+								],
+							},
 						},
 						end: "^",
 						match: "(\\s*)(?:^|[\\s,;])(elseif)\\b(.*)$\\n?",
-						name: "meta.elseif.matlab"
+						name: "meta.elseif.matlab",
 					},
 					{
 						captures: {
 							"2": {
-								name: "keyword.control.else.matlab"
+								name: "keyword.control.else.matlab",
 							},
 							"3": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
+										include: "$self",
+									},
+								],
+							},
 						},
 						end: "^",
 						match: "(\\s*)(?:^|[\\s,;])(else)\\b(.*)?$\\n?",
-						name: "meta.else.matlab"
+						name: "meta.else.matlab",
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\s*(?:^|[\\s,;])(parfor)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.for.matlab"
-					}
+						name: "keyword.control.for.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.for.matlab"
-					}
+						name: "keyword.control.end.for.matlab",
+					},
 				},
 				name: "meta.parfor.matlab",
 				patterns: [
@@ -182,27 +181,27 @@ const repository = {
 						name: "meta.parfor-quantity.matlab",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\s*(?:^|[\\s,;])(spmd)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.spmd.matlab"
-					}
+						name: "keyword.control.spmd.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.spmd.matlab"
-					}
+						name: "keyword.control.end.spmd.matlab",
+					},
 				},
 				name: "meta.spmd.matlab",
 				patterns: [
@@ -212,127 +211,127 @@ const repository = {
 						name: "meta.spmd-statement.matlab",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\s*(?:^|[\\s,;])(switch)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.switch.matlab"
-					}
+						name: "keyword.control.switch.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.switch.matlab"
-					}
+						name: "keyword.control.end.switch.matlab",
+					},
 				},
 				name: "meta.switch.matlab",
 				patterns: [
 					{
 						captures: {
 							"2": {
-								name: "keyword.control.case.matlab"
+								name: "keyword.control.case.matlab",
 							},
 							"3": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
+										include: "$self",
+									},
+								],
+							},
 						},
 						end: "^",
 						match: "(\\s*)(?:^|[\\s,;])(case)\\b(.*)$\\n?",
-						name: "meta.case.matlab"
+						name: "meta.case.matlab",
 					},
 					{
 						captures: {
 							"2": {
-								name: "keyword.control.otherwise.matlab"
+								name: "keyword.control.otherwise.matlab",
 							},
 							"3": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
+										include: "$self",
+									},
+								],
+							},
 						},
 						end: "^",
 						match: "(\\s*)(?:^|[\\s,;])(otherwise)\\b(.*)?$\\n?",
-						name: "meta.otherwise.matlab"
+						name: "meta.otherwise.matlab",
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\s*(?:^|[\\s,;])(try)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.try.matlab"
-					}
+						name: "keyword.control.try.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.try.matlab"
-					}
+						name: "keyword.control.end.try.matlab",
+					},
 				},
 				name: "meta.try.matlab",
 				patterns: [
 					{
 						captures: {
 							"2": {
-								name: "keyword.control.catch.matlab"
+								name: "keyword.control.catch.matlab",
 							},
 							"3": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
+										include: "$self",
+									},
+								],
+							},
 						},
 						end: "^",
 						match: "(\\s*)(?:^|[\\s,;])(catch)\\b(.*)?$\\n?",
-						name: "meta.catch.matlab"
+						name: "meta.catch.matlab",
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\s*(?:^|[\\s,;])(while)\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.while.matlab"
-					}
+						name: "keyword.control.while.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.while.matlab"
-					}
+						name: "keyword.control.end.while.matlab",
+					},
 				},
 				name: "meta.while.matlab",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	classdef: {
 		patterns: [
@@ -340,7 +339,7 @@ const repository = {
 				begin: "(?x)\n\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t(classdef)\n\t\t\t\t\t\t\t\\b\\s*\n\t\t\t\t\t\t\t(.*)\n\t\t\t\t\t",
 				beginCaptures: {
 					"2": {
-						name: "storage.type.class.matlab"
+						name: "storage.type.class.matlab",
 					},
 					"3": {
 						patterns: [
@@ -351,7 +350,7 @@ const repository = {
 										patterns: [
 											{
 												match: "[a-zA-Z][a-zA-Z0-9_]*",
-												name: "variable.parameter.class.matlab"
+												name: "variable.parameter.class.matlab",
 											},
 											{
 												begin: "=\\s*",
@@ -359,53 +358,53 @@ const repository = {
 												patterns: [
 													{
 														match: "true|false",
-														name: "constant.language.boolean.matlab"
+														name: "constant.language.boolean.matlab",
 													},
 													{
-														include: "#string"
-													}
-												]
-											}
-										]
+														include: "#string",
+													},
+												],
+											},
+										],
 									},
 									"2": {
-										name: "meta.class-declaration.matlab"
+										name: "meta.class-declaration.matlab",
 									},
 									"3": {
-										name: "entity.name.section.class.matlab"
+										name: "entity.name.section.class.matlab",
 									},
 									"4": {
-										name: "keyword.operator.other.matlab"
+										name: "keyword.operator.other.matlab",
 									},
 									"5": {
 										patterns: [
 											{
 												match: "[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)*",
-												name: "entity.other.inherited-class.matlab"
+												name: "entity.other.inherited-class.matlab",
 											},
 											{
 												match: "&",
-												name: "keyword.operator.other.matlab"
-											}
-										]
+												name: "keyword.operator.other.matlab",
+											},
+										],
 									},
 									"6": {
 										patterns: [
 											{
-												include: "$self"
-											}
-										]
-									}
-								}
-							}
-						]
-					}
+												include: "$self",
+											},
+										],
+									},
+								},
+							},
+						],
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.class.matlab"
-					}
+						name: "keyword.control.end.class.matlab",
+					},
 				},
 				name: "meta.class.matlab",
 				patterns: [
@@ -413,13 +412,13 @@ const repository = {
 						begin: "(?x)\n\t\t\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t\t\t(properties)\\b([^%]*)\n\t\t\t\t\t\t\t\t\t\\s*\n\t\t\t\t\t\t\t\t\t(\t\t\t\t\t\t\t\t\t# Optional attributes\n\t\t\t\t\t\t\t\t\t\t\\( [^)]* \\)\n\t\t\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t\t\t\t\\s*($|(?=%))\n\t\t\t\t\t\t\t\t",
 						beginCaptures: {
 							"2": {
-								name: "keyword.control.properties.matlab"
+								name: "keyword.control.properties.matlab",
 							},
 							"3": {
 								patterns: [
 									{
 										match: "[a-zA-Z][a-zA-Z0-9_]*",
-										name: "variable.parameter.properties.matlab"
+										name: "variable.parameter.properties.matlab",
 									},
 									{
 										begin: "=\\s*",
@@ -427,44 +426,44 @@ const repository = {
 										patterns: [
 											{
 												match: "true|false",
-												name: "constant.language.boolean.matlab"
+												name: "constant.language.boolean.matlab",
 											},
 											{
 												match: "public|protected|private",
-												name: "constant.language.access.matlab"
-											}
-										]
-									}
-								]
-							}
+												name: "constant.language.access.matlab",
+											},
+										],
+									},
+								],
+							},
 						},
 						end: "\\s*(?:^|[\\s,;])(end)\\b",
 						endCaptures: {
 							"1": {
-								name: "keyword.control.end.properties.matlab"
-							}
+								name: "keyword.control.end.properties.matlab",
+							},
 						},
 						name: "meta.properties.matlab",
 						patterns: [
 							{
-								include: "#validators"
+								include: "#validators",
 							},
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
 						begin: "(?x)\n\t\t\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t\t\t(methods)\\b([^%]*)\n\t\t\t\t\t\t\t\t\t\\s*\n\t\t\t\t\t\t\t\t\t(\t\t\t\t\t\t\t\t\t# Optional attributes\n\t\t\t\t\t\t\t\t\t\t\\( [^)]* \\)\n\t\t\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t\t\t\t\\s*($|(?=%))\n\t\t\t\t\t\t\t\t",
 						beginCaptures: {
 							"2": {
-								name: "keyword.control.methods.matlab"
+								name: "keyword.control.methods.matlab",
 							},
 							"3": {
 								patterns: [
 									{
 										match: "[a-zA-Z][a-zA-Z0-9_]*",
-										name: "variable.parameter.methods.matlab"
+										name: "variable.parameter.methods.matlab",
 									},
 									{
 										begin: "=\\s*",
@@ -472,41 +471,41 @@ const repository = {
 										patterns: [
 											{
 												match: "true|false",
-												name: "constant.language.boolean.matlab"
+												name: "constant.language.boolean.matlab",
 											},
 											{
 												match: "public|protected|private",
-												name: "constant.language.access.matlab"
-											}
-										]
-									}
-								]
-							}
+												name: "constant.language.access.matlab",
+											},
+										],
+									},
+								],
+							},
 						},
 						end: "\\s*(?:^|[\\s,;])(end)\\b",
 						endCaptures: {
 							"1": {
-								name: "keyword.control.end.methods.matlab"
-							}
+								name: "keyword.control.end.methods.matlab",
+							},
 						},
 						name: "meta.methods.matlab",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
 						begin: "(?x)\n\t\t\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t\t\t(events)\\b([^%]*)\n\t\t\t\t\t\t\t\t\t\\s*\n\t\t\t\t\t\t\t\t\t(\t\t\t\t\t\t\t\t\t# Optional attributes\n\t\t\t\t\t\t\t\t\t\t\\( [^)]* \\)\n\t\t\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t\t\t\t\\s*($|(?=%))\n\t\t\t\t\t\t\t\t",
 						beginCaptures: {
 							"2": {
-								name: "keyword.control.events.matlab"
+								name: "keyword.control.events.matlab",
 							},
 							"3": {
 								patterns: [
 									{
 										match: "[a-zA-Z][a-zA-Z0-9_]*",
-										name: "variable.parameter.events.matlab"
+										name: "variable.parameter.events.matlab",
 									},
 									{
 										begin: "=\\s*",
@@ -514,89 +513,90 @@ const repository = {
 										patterns: [
 											{
 												match: "true|false",
-												name: "constant.language.boolean.matlab"
+												name: "constant.language.boolean.matlab",
 											},
 											{
 												match: "public|protected|private",
-												name: "constant.language.access.matlab"
-											}
-										]
-									}
-								]
-							}
+												name: "constant.language.access.matlab",
+											},
+										],
+									},
+								],
+							},
 						},
 						end: "\\s*(?:^|[\\s,;])(end)\\b",
 						endCaptures: {
 							"1": {
-								name: "keyword.control.end.events.matlab"
-							}
+								name: "keyword.control.end.events.matlab",
+							},
 						},
 						name: "meta.events.matlab",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
 						begin: "(?x)\n\t\t\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t\t\t(enumeration)\\b([^%]*)\n\t\t\t\t\t\t\t\t\t\\s*($|(?=%))\n\t\t\t\t\t\t\t\t",
 						beginCaptures: {
 							"2": {
-								name: "keyword.control.enumeration.matlab"
-							}
+								name: "keyword.control.enumeration.matlab",
+							},
 						},
 						end: "\\s*(?:^|[\\s,;])(end)\\b",
 						endCaptures: {
 							"1": {
-								name: "keyword.control.end.enumeration.matlab"
-							}
+								name: "keyword.control.end.enumeration.matlab",
+							},
 						},
 						name: "meta.enumeration.matlab",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	command_dual: {
 		captures: {
 			"1": {
-				name: "string.interpolated.matlab"
+				name: "string.interpolated.matlab",
 			},
 			"2": {
-				name: "variable.other.command.matlab"
+				name: "variable.other.command.matlab",
 			},
 			"28": {
-				name: "comment.line.percentage.matlab"
-			}
+				name: "comment.line.percentage.matlab",
+			},
 		},
-		comment: "  1        2                                  3                                                    4                                                  5                                                    6                                                         7                                                                             8                 9                            10                   11                      12                         13                   14                                                               1516       17                                                             18                                                                                                                               19                      20                                     21                                    22                                      23                                         24                                         25                                                                         26            27                 28",
-		match: "^\\s*((?# A> )([b-df-hk-moq-zA-HJ-MO-Z]\\w*|a|an|a([A-Za-mo-z0-9_]\\w*|n[A-Za-rt-z0-9_]\\w*|ns\\w+)|e|ep|e([A-Za-oq-z0-9_]\\w*|p[A-Za-rt-z0-9_]\\w*|ps\\w+)|in|i([A-Za-mo-z0-9_]\\w*|n[A-Za-eg-z0-9_]\\w*|nf\\w+)|I|In|I([A-Za-mo-z0-9_]\\w*|n[A-Za-eg-z0-9_]\\w*|nf\\w+)|j\\w+|N|Na|N([A-Zb-z0-9_]\\w*|a[A-MO-Za-z0-9_]\\w*|aN\\w+)|n|na|nar|narg|nargi|nargo|nargou|n([A-Zb-z0-9_]\\w*|a([A-Za-mo-qs-z0-9_]\\w*|n\\w+|r([A-Za-fh-z0-9_]\\w*|g([A-Za-hj-nq-z0-9_]\\w*|i([A-Za-mo-z0-9_]\\w*|n\\w+)|o([A-Za-tv-z0-9_]\\w*|u([A-Za-su-z]\\w*|t\\w+))))))|p|p[A-Za-hj-z0-9_]\\w*|pi\\w+)(?# <A )\\s+(((?# B> )([^\\s;,%()=.{&|~<>:+\\-*/\\\\@^'\"]|(?=')|(?=\"))(?# <B )|(?# C> )(\\.\\^|\\.\\*|\\./|\\.\\\\|\\.'|\\.\\(|&&|==|\\|\\||&(?=[^&])|\\|(?=[^\\|])|~=|<=|>=|~(?!=)|<(?!=)|>(?!=)|:|\\+|-|\\*|/|\\\\|@|\\^)(?# <C )(?# D> )([^\\s]|\\s*(?=%)|\\s+$|\\s+(,|;|\\)|}|\\]|&|\\||<|>|=|:|\\*|/|\\\\|\\^|@|(\\.[^\\d.]|\\.\\.[^.])))(?# <D )|(?# E> )(\\.[^^*/\\\\'(\\sA-Za-z])(?# <E ))(?# F> )([^%]|'[^']*'|\"[^\"]*\")*(?# <F )|(?# X> )(\\.(?=\\s)|\\.[A-Za-z]|(?={))(?# <X )(?# Y> )([^(=\\'\"%]|==|'[^']*'|\"[^\"]*\"|\\(|\\([^)%]*\\)|\\[|\\[[^\\]%]*\\]|{|{[^}%]*})*(\\.\\.\\.[^%]*)?((?=%)|$)(?# <Y )))(%.*)?$"
+		comment:
+			"  1        2                                  3                                                    4                                                  5                                                    6                                                         7                                                                             8                 9                            10                   11                      12                         13                   14                                                               1516       17                                                             18                                                                                                                               19                      20                                     21                                    22                                      23                                         24                                         25                                                                         26            27                 28",
+		match: "^\\s*((?# A> )([b-df-hk-moq-zA-HJ-MO-Z]\\w*|a|an|a([A-Za-mo-z0-9_]\\w*|n[A-Za-rt-z0-9_]\\w*|ns\\w+)|e|ep|e([A-Za-oq-z0-9_]\\w*|p[A-Za-rt-z0-9_]\\w*|ps\\w+)|in|i([A-Za-mo-z0-9_]\\w*|n[A-Za-eg-z0-9_]\\w*|nf\\w+)|I|In|I([A-Za-mo-z0-9_]\\w*|n[A-Za-eg-z0-9_]\\w*|nf\\w+)|j\\w+|N|Na|N([A-Zb-z0-9_]\\w*|a[A-MO-Za-z0-9_]\\w*|aN\\w+)|n|na|nar|narg|nargi|nargo|nargou|n([A-Zb-z0-9_]\\w*|a([A-Za-mo-qs-z0-9_]\\w*|n\\w+|r([A-Za-fh-z0-9_]\\w*|g([A-Za-hj-nq-z0-9_]\\w*|i([A-Za-mo-z0-9_]\\w*|n\\w+)|o([A-Za-tv-z0-9_]\\w*|u([A-Za-su-z]\\w*|t\\w+))))))|p|p[A-Za-hj-z0-9_]\\w*|pi\\w+)(?# <A )\\s+(((?# B> )([^\\s;,%()=.{&|~<>:+\\-*/\\\\@^'\"]|(?=')|(?=\"))(?# <B )|(?# C> )(\\.\\^|\\.\\*|\\./|\\.\\\\|\\.'|\\.\\(|&&|==|\\|\\||&(?=[^&])|\\|(?=[^\\|])|~=|<=|>=|~(?!=)|<(?!=)|>(?!=)|:|\\+|-|\\*|/|\\\\|@|\\^)(?# <C )(?# D> )([^\\s]|\\s*(?=%)|\\s+$|\\s+(,|;|\\)|}|\\]|&|\\||<|>|=|:|\\*|/|\\\\|\\^|@|(\\.[^\\d.]|\\.\\.[^.])))(?# <D )|(?# E> )(\\.[^^*/\\\\'(\\sA-Za-z])(?# <E ))(?# F> )([^%]|'[^']*'|\"[^\"]*\")*(?# <F )|(?# X> )(\\.(?=\\s)|\\.[A-Za-z]|(?={))(?# <X )(?# Y> )([^(=\\'\"%]|==|'[^']*'|\"[^\"]*\"|\\(|\\([^)%]*\\)|\\[|\\[[^\\]%]*\\]|{|{[^}%]*})*(\\.\\.\\.[^%]*)?((?=%)|$)(?# <Y )))(%.*)?$",
 	},
 	comment_block: {
 		begin: "(^[\\s]*)%\\{[^\\n\\S]*+\\n",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.comment.matlab"
-			}
+				name: "punctuation.definition.comment.matlab",
+			},
 		},
 		end: "^[\\s]*%\\}[^\\n\\S]*+(?:\\n|$)",
 		name: "comment.block.percentage.matlab",
 		patterns: [
 			{
-				include: "#comment_block"
+				include: "#comment_block",
 			},
 			{
-				match: "^[^\\n]*\\n"
-			}
-		]
+				match: "^[^\\n]*\\n",
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -604,8 +604,8 @@ const repository = {
 				begin: "(^[ \\t]+)?(?=%%\\s)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.leading.matlab"
-					}
+						name: "punctuation.whitespace.comment.leading.matlab",
+					},
 				},
 				end: "(?!\\G)",
 				patterns: [
@@ -613,8 +613,8 @@ const repository = {
 						begin: "%%",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.matlab"
-							}
+								name: "punctuation.definition.comment.matlab",
+							},
 						},
 						end: "\\n",
 						name: "comment.line.double-percentage.matlab",
@@ -622,21 +622,21 @@ const repository = {
 							{
 								begin: "\\G[^\\S\\n]*(?![\\n\\s])",
 								contentName: "meta.cell.matlab",
-								end: "(?=\\n)"
-							}
-						]
-					}
-				]
+								end: "(?=\\n)",
+							},
+						],
+					},
+				],
 			},
 			{
-				include: "#comment_block"
+				include: "#comment_block",
 			},
 			{
 				begin: "(^[ \\t]+)?(?=%)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.leading.matlab"
-					}
+						name: "punctuation.whitespace.comment.leading.matlab",
+					},
 				},
 				end: "(?!\\G)",
 				patterns: [
@@ -644,24 +644,24 @@ const repository = {
 						begin: "%",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.matlab"
-							}
+								name: "punctuation.definition.comment.matlab",
+							},
 						},
 						end: "\\n",
-						name: "comment.line.percentage.matlab"
-					}
-				]
-			}
-		]
+						name: "comment.line.percentage.matlab",
+					},
+				],
+			},
+		],
 	},
 	control_statements: {
 		captures: {
 			"1": {
-				name: "keyword.control.matlab"
-			}
+				name: "keyword.control.matlab",
+			},
 		},
 		match: "\\s*(?:^|[\\s,;])(break|continue|return)\\b",
-		name: "meta.control.matlab"
+		name: "meta.control.matlab",
 	},
 	"function": {
 		patterns: [
@@ -669,34 +669,34 @@ const repository = {
 				begin: "(?x)\n\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t(function)\n\t\t\t\t\t\t\t\\s+\n\t\t\t\t\t\t\t(?:\t\t\t\t\t\t\t\t\t\t\t\t\t# Optional\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t(\\[) ([^\\]]*) (\\])\n\t\t\t\t\t\t\t\t  | ([a-zA-Z][a-zA-Z0-9_]*)\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t\\s* = \\s*\n\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t\t([a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)*)\t# Function name\n\t\t\t\t\t\t\t\\s*\t\t\t\t\t\t\t\t\t\t\t\t\t# Trailing space\n\t\t\t\t\t\t",
 				beginCaptures: {
 					"2": {
-						name: "storage.type.function.matlab"
+						name: "storage.type.function.matlab",
 					},
 					"3": {
-						name: "punctuation.definition.arguments.begin.matlab"
+						name: "punctuation.definition.arguments.begin.matlab",
 					},
 					"4": {
 						patterns: [
 							{
 								match: "\\w+",
-								name: "variable.parameter.output.matlab"
-							}
-						]
+								name: "variable.parameter.output.matlab",
+							},
+						],
 					},
 					"5": {
-						name: "punctuation.definition.arguments.end.matlab"
+						name: "punctuation.definition.arguments.end.matlab",
 					},
 					"6": {
-						name: "variable.parameter.output.function.matlab"
+						name: "variable.parameter.output.function.matlab",
 					},
 					"7": {
-						name: "entity.name.function.matlab"
-					}
+						name: "entity.name.function.matlab",
+					},
 				},
 				end: "\\s*(?:^|[\\s,;])(end)\\b(\\s*\\n)?",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.end.function.matlab"
-					}
+						name: "keyword.control.end.function.matlab",
+					},
 				},
 				name: "meta.function.matlab",
 				patterns: [
@@ -706,275 +706,285 @@ const repository = {
 						name: "meta.arguments.function.matlab",
 						patterns: [
 							{
-								include: "#line_continuation"
+								include: "#line_continuation",
 							},
 							{
 								match: "\\w+",
-								name: "variable.parameter.input.matlab"
-							}
-						]
+								name: "variable.parameter.input.matlab",
+							},
+						],
 					},
 					{
 						begin: "(?x)\n\t\t\t\t\t\t\t\t\t(^\\s*)\t\t\t\t\t\t\t\t# Leading whitespace\n\t\t\t\t\t\t\t\t\t(arguments)\\b([^%]*)\n\t\t\t\t\t\t\t\t\t\\s*\n\t\t\t\t\t\t\t\t\t(\t\t\t\t\t\t\t\t\t# Optional attributes\n\t\t\t\t\t\t\t\t\t\t\\( [^)]* \\)\n\t\t\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t\t\t\t\\s*($|(?=%))\n\t\t\t\t\t\t\t\t",
 						beginCaptures: {
 							"2": {
-								name: "keyword.control.arguments.matlab"
+								name: "keyword.control.arguments.matlab",
 							},
 							"3": {
 								patterns: [
 									{
 										match: "[a-zA-Z][a-zA-Z0-9_]*",
-										name: "variable.parameter.arguments.matlab"
-									}
-								]
-							}
+										name: "variable.parameter.arguments.matlab",
+									},
+								],
+							},
 						},
 						end: "\\s*(?:^|[\\s,;])(end)\\b",
 						endCaptures: {
 							"1": {
-								name: "keyword.control.end.arguments.matlab"
-							}
+								name: "keyword.control.end.arguments.matlab",
+							},
 						},
 						name: "meta.arguments.matlab",
 						patterns: [
 							{
-								include: "#validators"
+								include: "#validators",
 							},
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	global_persistent: {
 		captures: {
 			"1": {
-				name: "keyword.control.globalpersistent.matlab"
-			}
+				name: "keyword.control.globalpersistent.matlab",
+			},
 		},
 		match: "^\\s*(global|persistent)\\b",
-		name: "meta.globalpersistent.matlab"
+		name: "meta.globalpersistent.matlab",
 	},
 	parens: {
 		begin: "\\(",
 		end: "(\\)|(?<!\\.\\.\\.).\\n)",
-		comment: "We don't include $self here to avoid matching command syntax inside (), [], {}",
+		comment:
+			"We don't include $self here to avoid matching command syntax inside (), [], {}",
 		patterns: [
 			{
-				include: "#end_in_parens"
+				include: "#end_in_parens",
 			},
 			{
-				include: "#all_before_command_dual"
+				include: "#all_before_command_dual",
 			},
 			{
-				include: "#all_after_command_dual"
+				include: "#all_after_command_dual",
 			},
 			{
-				comment: "These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
-				include: "#block_keywords"
-			}
-		]
+				comment:
+					"These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
+				include: "#block_keywords",
+			},
+		],
 	},
 	square_brackets: {
 		begin: "\\[",
 		end: "\\]",
-		comment: "We don't include $self here to avoid matching command syntax inside (), [], {}",
+		comment:
+			"We don't include $self here to avoid matching command syntax inside (), [], {}",
 		patterns: [
 			{
-				include: "#all_before_command_dual"
+				include: "#all_before_command_dual",
 			},
 			{
-				include: "#all_after_command_dual"
+				include: "#all_after_command_dual",
 			},
 			{
-				comment: "These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
-				include: "#block_keywords"
-			}
-		]
+				comment:
+					"These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
+				include: "#block_keywords",
+			},
+		],
 	},
 	curly_brackets: {
 		begin: "\\{",
 		end: "\\}",
-		comment: "We don't include $self here to avoid matching command syntax inside (), [], {}",
+		comment:
+			"We don't include $self here to avoid matching command syntax inside (), [], {}",
 		patterns: [
 			{
-				include: "#end_in_parens"
+				include: "#end_in_parens",
 			},
 			{
-				include: "#all_before_command_dual"
+				include: "#all_before_command_dual",
 			},
 			{
-				include: "#all_after_command_dual"
+				include: "#all_after_command_dual",
 			},
 			{
-				include: "#end_in_parens"
+				include: "#end_in_parens",
 			},
 			{
-				comment: "These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
-				include: "#block_keywords"
-			}
-		]
+				comment:
+					"These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
+				include: "#block_keywords",
+			},
+		],
 	},
 	indexing_curly_brackets: {
-		Comment: "Match identifier{idx, idx, } and stop at newline without ... This helps with partially written code like x{idx ",
+		Comment:
+			"Match identifier{idx, idx, } and stop at newline without ... This helps with partially written code like x{idx ",
 		begin: "([a-zA-Z][a-zA-Z0-9_\\.]*\\s*)\\{",
 		beginCaptures: {
 			"1": {
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
+						include: "$self",
+					},
+				],
+			},
 		},
 		end: "(\\}|(?<!\\.\\.\\.).\\n)",
-		comment: "We don't include $self here to avoid matching command syntax inside (), [], {}",
+		comment:
+			"We don't include $self here to avoid matching command syntax inside (), [], {}",
 		patterns: [
 			{
-				include: "#end_in_parens"
+				include: "#end_in_parens",
 			},
 			{
-				include: "#all_before_command_dual"
+				include: "#all_before_command_dual",
 			},
 			{
-				include: "#all_after_command_dual"
+				include: "#all_after_command_dual",
 			},
 			{
-				include: "#end_in_parens"
+				include: "#end_in_parens",
 			},
 			{
-				comment: "These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
-				include: "#block_keywords"
-			}
-		]
+				comment:
+					"These block keywords pick up any such missed keywords when the block matching for things like (), if-end, etc. don't work. Useful for when someone has partially written",
+				include: "#block_keywords",
+			},
+		],
 	},
 	line_continuation: {
 		captures: {
 			"1": {
-				name: "keyword.operator.symbols.matlab"
+				name: "keyword.operator.symbols.matlab",
 			},
 			"2": {
-				name: "comment.line.continuation.matlab"
-			}
+				name: "comment.line.continuation.matlab",
+			},
 		},
 		comment: "Line continuations",
 		match: "(\\.\\.\\.)(.*)$",
-		name: "meta.linecontinuation.matlab"
+		name: "meta.linecontinuation.matlab",
 	},
 	string: {
 		patterns: [
 			{
 				captures: {
 					"1": {
-						name: "string.interpolated.matlab"
+						name: "string.interpolated.matlab",
 					},
 					"2": {
-						name: "punctuation.definition.string.begin.matlab"
-					}
+						name: "punctuation.definition.string.begin.matlab",
+					},
 				},
 				comment: "Shell command",
-				match: "^\\s*((!).*$\\n?)"
+				match: "^\\s*((!).*$\\n?)",
 			},
 			{
 				begin: "((?<=(\\[|\\(|\\{|=|\\s|;|:|,|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^))|^)'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.matlab"
-					}
+						name: "punctuation.definition.string.begin.matlab",
+					},
 				},
 				comment: "Character vector literal (single-quoted)",
 				end: "'(?=(\\[|\\(|\\{|\\]|\\)|\\}|=|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^|\\s|;|:|,))",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.matlab"
-					}
+						name: "punctuation.definition.string.end.matlab",
+					},
 				},
 				name: "string.quoted.single.matlab",
 				patterns: [
 					{
 						match: "''",
-						name: "constant.character.escape.matlab"
+						name: "constant.character.escape.matlab",
 					},
 					{
 						match: "'(?=.)",
-						name: "invalid.illegal.unescaped-quote.matlab"
+						name: "invalid.illegal.unescaped-quote.matlab",
 					},
 					{
 						comment: "Operator symbols",
 						match: "((\\%([\\+\\-0]?\\d{0,3}(\\.\\d{1,3})?)(c|d|e|E|f|g|G|s|((b|t)?(o|u|x|X))))|\\%\\%|\\\\(b|f|n|r|t|\\\\))",
-						name: "constant.character.escape.matlab"
-					}
-				]
+						name: "constant.character.escape.matlab",
+					},
+				],
 			},
 			{
-				begin: "((?<=(\\[|\\(|\\{|=|\\s|;|:|,|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^))|^)\"",
+				begin: '((?<=(\\[|\\(|\\{|=|\\s|;|:|,|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^))|^)"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.matlab"
-					}
+						name: "punctuation.definition.string.begin.matlab",
+					},
 				},
 				comment: "String literal (double-quoted)",
-				end: "\"(?=(\\[|\\(|\\{|\\]|\\)|\\}|=|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^|\\||\\s|;|:|,))",
+				end: '"(?=(\\[|\\(|\\{|\\]|\\)|\\}|=|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^|\\||\\s|;|:|,))',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.matlab"
-					}
+						name: "punctuation.definition.string.end.matlab",
+					},
 				},
 				name: "string.quoted.double.matlab",
 				patterns: [
 					{
-						match: "\"\"",
-						name: "constant.character.escape.matlab"
+						match: '""',
+						name: "constant.character.escape.matlab",
 					},
 					{
-						match: "\"(?=.)",
-						name: "invalid.illegal.unescaped-quote.matlab"
-					}
-				]
-			}
-		]
+						match: '"(?=.)',
+						name: "invalid.illegal.unescaped-quote.matlab",
+					},
+				],
+			},
+		],
 	},
 	conjugate_transpose: {
 		match: "((?<=[^\\s])|(?<=\\])|(?<=\\))|(?<=\\}))'",
-		name: "keyword.operator.transpose.matlab"
+		name: "keyword.operator.transpose.matlab",
 	},
 	transpose: {
 		match: "\\.'",
-		name: "keyword.operator.transpose.matlab"
+		name: "keyword.operator.transpose.matlab",
 	},
 	constants: {
 		comment: "MATLAB Constants",
 		match: "(?<!\\.)\\b(eps|false|Inf|inf|intmax|intmin|namelengthmax|NaN|nan|on|off|realmax|realmin|true|pi)\\b",
-		name: "constant.language.matlab"
+		name: "constant.language.matlab",
 	},
 	variables: {
 		comment: "MATLAB variables",
 		match: "(?<!\\.)\\b(nargin|nargout|varargin|varargout)\\b",
-		name: "variable.other.function.matlab"
+		name: "variable.other.function.matlab",
 	},
 	end_in_parens: {
 		comment: "end as operator symbol",
 		match: "\\bend\\b",
-		name: "keyword.operator.symbols.matlab"
+		name: "keyword.operator.symbols.matlab",
 	},
 	numbers: {
 		comment: "Valid numbers: 1, .1, 1.1, .1e1, 1.1e1, 1e1, 1i, 1j, 1e2j",
 		match: "(?<=[\\s\\-\\+\\*\\/\\\\=:\\[\\(\\{,]|^)\\d*\\.?\\d+([eE][+-]?\\d)?([0-9&&[^\\.]])*(i|j)?\\b",
-		name: "constant.numeric.matlab"
+		name: "constant.numeric.matlab",
 	},
 	operators: {
 		comment: "Operator symbols",
 		match: "(?<=\\s)(==|~=|>|>=|<|<=|&|&&|:|\\||\\|\\||\\+|-|\\*|\\.\\*|/|\\./|\\\\|\\.\\\\|\\^|\\.\\^)(?=\\s)",
-		name: "keyword.operator.symbols.matlab"
+		name: "keyword.operator.symbols.matlab",
 	},
 	validators: {
-		comment: "Property and argument validation. Match an identifier allowing . and ?.",
+		comment:
+			"Property and argument validation. Match an identifier allowing . and ?.",
 		begin: "\\s*[;]?\\s*([a-zA-Z][a-zA-Z0-9_\\.\\?]*)",
 		end: "([;\\n%=].*)",
 		endCaptures: {
@@ -987,11 +997,11 @@ const repository = {
 							"1": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
-						}
+										include: "$self",
+									},
+								],
+							},
+						},
 					},
 					{
 						comment: "Handle things like arg = val; nextArg",
@@ -1000,90 +1010,93 @@ const repository = {
 							"1": {
 								patterns: [
 									{
-										include: "$self"
-									}
-								]
-							}
-						}
+										include: "$self",
+									},
+								],
+							},
+						},
 					},
 					{
-						comment: "End of property/argument patterns which start a new property/argument. Look for beginning of identifier after semicolon. Otherwise treat as regular code.",
+						comment:
+							"End of property/argument patterns which start a new property/argument. Look for beginning of identifier after semicolon. Otherwise treat as regular code.",
 						match: "([\\n;]\\s*[a-zA-Z].*)",
 						captures: {
 							"1": {
 								patterns: [
 									{
-										include: "#validators"
-									}
-								]
-							}
-						}
+										include: "#validators",
+									},
+								],
+							},
+						},
 					},
 					{
-						include: "$self"
-					}
-				]
-			}
+						include: "$self",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#line_continuation"
+				include: "#line_continuation",
 			},
 			{
 				comment: "Size declaration",
 				match: "\\s*(\\([^\\)]*\\))",
-				name: "storage.type.matlab"
+				name: "storage.type.matlab",
 			},
 			{
 				comment: "Type declaration",
 				match: "([a-zA-Z][a-zA-Z0-9_\\.]*)",
-				name: "storage.type.matlab"
+				name: "storage.type.matlab",
 			},
 			{
-				include: "#braced_validator_list"
-			}
-		]
+				include: "#braced_validator_list",
+			},
+		],
 	},
 	braced_validator_list: {
-		comment: "Validator functions. Treated as a recursive group to permit nested brackets, quotes, etc.",
+		comment:
+			"Validator functions. Treated as a recursive group to permit nested brackets, quotes, etc.",
 		begin: "\\s*({)\\s*",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.matlab"
-			}
+				name: "storage.type.matlab",
+			},
 		},
 		end: "(})",
 		endCaptures: {
 			"1": {
-				name: "storage.type.matlab"
-			}
+				name: "storage.type.matlab",
+			},
 		},
 		patterns: [
 			{
-				include: "#braced_validator_list"
+				include: "#braced_validator_list",
 			},
 			{
-				include: "#validator_strings"
+				include: "#validator_strings",
 			},
 			{
-				include: "#line_continuation"
+				include: "#line_continuation",
 			},
 			{
 				match: "([^{}}'\"\\.]+)",
 				captures: {
 					"1": {
-						name: "storage.type.matlab"
-					}
-				}
+						name: "storage.type.matlab",
+					},
+				},
 			},
 			{
 				match: "\\.",
-				name: "storage.type.matlab"
-			}
-		]
+				name: "storage.type.matlab",
+			},
+		],
 	},
 	validator_strings: {
-		comment: "Simplified string patterns nested inside validator functions which don't change scopes of matches.",
+		comment:
+			"Simplified string patterns nested inside validator functions which don't change scopes of matches.",
 		patterns: [
 			{
 				patterns: [
@@ -1094,37 +1107,37 @@ const repository = {
 						name: "storage.type.matlab",
 						patterns: [
 							{
-								match: "''"
+								match: "''",
 							},
 							{
-								match: "'(?=.)"
+								match: "'(?=.)",
 							},
 							{
-								match: "([^']+)"
-							}
-						]
+								match: "([^']+)",
+							},
+						],
 					},
 					{
-						begin: "((?<=(\\[|\\(|\\{|=|\\s|;|:|,|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^))|^)\"",
+						begin: '((?<=(\\[|\\(|\\{|=|\\s|;|:|,|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^))|^)"',
 						comment: "String literal (double-quoted)",
-						end: "\"(?=(\\[|\\(|\\{|\\]|\\)|\\}|=|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^|\\||\\s|;|:|,))",
+						end: '"(?=(\\[|\\(|\\{|\\]|\\)|\\}|=|~|<|>|&|\\||-|\\+|\\*|/|\\\\|\\.|\\^|\\||\\s|;|:|,))',
 						name: "storage.type.matlab",
 						patterns: [
 							{
-								match: "\"\""
+								match: '""',
 							},
 							{
-								match: "\"(?=.)"
+								match: '"(?=.)',
 							},
 							{
-								match: "[^\"]+"
-							}
-						]
-					}
-				]
-			}
-		]
-	}
+								match: '[^"]+',
+							},
+						],
+					},
+				],
+			},
+		],
+	},
 };
 const scopeName = "source.matlab";
 const uuid = "48F8858B-72FF-11D9-BFEE-000D93589AF6";
@@ -1135,7 +1148,16 @@ const matlab_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { matlab_tmLanguage as default, fileTypes, keyEquivalent, name, patterns, repository, scopeName, uuid };
+export {
+	matlab_tmLanguage as default,
+	fileTypes,
+	keyEquivalent,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

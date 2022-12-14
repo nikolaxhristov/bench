@@ -2,26 +2,26 @@ const name = "wasm";
 const scopeName = "source.wat";
 const patterns = [
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#strings"
+		include: "#strings",
 	},
 	{
-		include: "#instructions"
+		include: "#instructions",
 	},
 	{
-		include: "#types"
+		include: "#types",
 	},
 	{
-		include: "#modules"
+		include: "#modules",
 	},
 	{
-		include: "#constants"
+		include: "#constants",
 	},
 	{
-		include: "#invalid"
-	}
+		include: "#invalid",
+	},
 ];
 const repository = {
 	comments: {
@@ -32,9 +32,9 @@ const repository = {
 				match: "(;;).*$",
 				captures: {
 					"1": {
-						name: "punctuation.definition.comment.wat"
-					}
-				}
+						name: "punctuation.definition.comment.wat",
+					},
+				},
 			},
 			{
 				comment: "Block comment",
@@ -42,39 +42,39 @@ const repository = {
 				begin: "\\(;",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.wat"
-					}
+						name: "punctuation.definition.comment.wat",
+					},
 				},
 				end: ";\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.wat"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.comment.wat",
+					},
+				},
+			},
+		],
 	},
 	strings: {
 		comment: "String literal",
 		name: "string.quoted.double.wat",
-		begin: "\"",
-		end: "\"",
+		begin: '"',
+		end: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin"
-			}
+				name: "punctuation.definition.string.begin",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end"
-			}
+				name: "punctuation.definition.string.end",
+			},
 		},
 		patterns: [
 			{
 				name: "constant.character.escape.wat",
-				match: "\\\\(n|t|\\\\|'|\"|[0-9a-fA-F]{2})"
-			}
-		]
+				match: "\\\\(n|t|\\\\|'|\"|[0-9a-fA-F]{2})",
+			},
+		],
 	},
 	instructions: {
 		patterns: [
@@ -82,41 +82,44 @@ const repository = {
 				comment: "Non-trapping float-to-int conversions",
 				patterns: [
 					{
-						comment: "Conversion instruction [nontrapping-float-to-int-conversions]",
+						comment:
+							"Conversion instruction [nontrapping-float-to-int-conversions]",
 						name: "keyword.operator.word.wat",
 						match: "\\b(i32|i64)\\.trunc_sat_f(?:32|64)_[su]\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
-					}
-				]
+								name: "support.class.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "Sign-extension operators",
 				patterns: [
 					{
-						comment: "Numeric instruction (i32) [sign-extension-ops]",
+						comment:
+							"Numeric instruction (i32) [sign-extension-ops]",
 						name: "keyword.operator.word.wat",
 						match: "\\b(i32)\\.(?:extend(?:8|16)_s)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
-						comment: "Numeric instruction (i64) [sign-extension-ops]",
+						comment:
+							"Numeric instruction (i64) [sign-extension-ops]",
 						name: "keyword.operator.word.wat",
 						match: "\\b(i64)\\.(?:extend(?:8|16|32)_s)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
-					}
-				]
+								name: "support.class.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "Bulk memory operations",
@@ -127,11 +130,11 @@ const repository = {
 						match: "\\b(memory)\\.(?:copy|fill|init|drop)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
-					}
-				]
+								name: "support.class.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "Fixed-width SIMD",
@@ -142,9 +145,9 @@ const repository = {
 						match: "\\b(v128)\\.(?:const|and|or|xor|not|andnot|bitselect|load|store)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (i8x16) [simd]",
@@ -152,9 +155,9 @@ const repository = {
 						match: "\\b(i8x16)\\.(?:splat|replace_lane|add|sub|mul|neg|shl|shr_[su]|eq|ne|lt_[su]|le_[su]|gt_[su]|ge_[su]|min_[su]|max_[su]|any_true|all_true|extract_lane_[su]|add_saturate_[su]|sub_saturate_[su]|avgr_u|narrow_i16x8_[su])\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (i16x8) [simd]",
@@ -162,9 +165,9 @@ const repository = {
 						match: "\\b(i16x8)\\.(?:splat|replace_lane|add|sub|mul|neg|shl|shr_[su]|eq|ne|lt_[su]|le_[su]|gt_[su]|ge_[su]|min_[su]|max_[su]|any_true|all_true|extract_lane_[su]|add_saturate_[su]|sub_saturate_[su]|avgr_u|load8x8_[su]|narrow_i32x4_[su]|widen_(low|high)_i8x16_[su])\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (i32x4) [simd]",
@@ -172,9 +175,9 @@ const repository = {
 						match: "\\b(i32x4)\\.(?:splat|replace_lane|add|sub|mul|neg|shl|shr_[su]|eq|ne|lt_[su]|le_[su]|gt_[su]|ge_[su]|min_[su]|max_[su]|any_true|all_true|extract_lane|load16x4_[su]|trunc_sat_f32x4_[su]|widen_(low|high)_i16x8_[su])\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (i64x2) [simd]",
@@ -182,9 +185,9 @@ const repository = {
 						match: "\\b(i64x2)\\.(?:splat|replace_lane|add|sub|mul|neg|shl|shr_[su]|extract_lane|load32x2_[su])\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (f32x4) [simd]",
@@ -192,9 +195,9 @@ const repository = {
 						match: "\\b(f32x4)\\.(?:splat|replace_lane|add|sub|mul|neg|extract_lane|eq|ne|lt|le|gt|ge|abs|min|max|div|sqrt|convert_i32x4_[su])\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (f64x2) [simd]",
@@ -202,9 +205,9 @@ const repository = {
 						match: "\\b(f64x2)\\.(?:splat|replace_lane|add|sub|mul|neg|extract_lane|eq|ne|lt|le|gt|ge|abs|min|max|div|sqrt)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (v8x16) [simd]",
@@ -212,9 +215,9 @@ const repository = {
 						match: "\\b(v8x16)\\.(?:load_splat|shuffle|swizzle)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (v16x8) [simd]",
@@ -222,9 +225,9 @@ const repository = {
 						match: "\\b(v16x8)\\.load_splat\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (v32x4) [simd]",
@@ -232,9 +235,9 @@ const repository = {
 						match: "\\b(v32x4)\\.load_splat\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector instruction (v64x2) [simd]",
@@ -242,11 +245,11 @@ const repository = {
 						match: "\\b(v64x2)\\.load_splat\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
-					}
-				]
+								name: "support.class.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "Threads",
@@ -257,18 +260,18 @@ const repository = {
 						match: "\\b(i32)\\.(atomic)\\.(?:load(?:8_u|16_u)?|store(?:8|16)?|wait|(rmw)\\.(?:add|sub|and|or|xor|xchg|cmpxchg)|(rmw8|rmw16)\\.(?:add_u|sub_u|and_u|or_u|xor_u|xchg_u|cmpxchg_u))\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
+								name: "support.class.wat",
 							},
 							"2": {
-								name: "support.class.wat"
+								name: "support.class.wat",
 							},
 							"3": {
-								name: "support.class.wat"
+								name: "support.class.wat",
 							},
 							"4": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Atomic instruction (i64) [threads]",
@@ -276,18 +279,18 @@ const repository = {
 						match: "\\b(i64)\\.(atomic)\\.(?:load(?:8_u|16_u|32_u)?|store(?:8|16|32)?|wait|(rmw)\\.(?:add|sub|and|or|xor|xchg|cmpxchg)|(rmw8|rmw16|rmw32)\\.(?:add_u|sub_u|and_u|or_u|xor_u|xchg_u|cmpxchg_u))\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
+								name: "support.class.wat",
 							},
 							"2": {
-								name: "support.class.wat"
+								name: "support.class.wat",
 							},
 							"3": {
-								name: "support.class.wat"
+								name: "support.class.wat",
 							},
 							"4": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Atomic instruction [threads]",
@@ -295,16 +298,16 @@ const repository = {
 						match: "\\b(atomic)\\.(?:notify|fence)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Shared modifier [threads]",
 						name: "storage.modifier.wat",
-						match: "\\bshared\\b"
-					}
-				]
+						match: "\\bshared\\b",
+					},
+				],
 			},
 			{
 				comment: "Reference types",
@@ -315,9 +318,9 @@ const repository = {
 						match: "\\b(ref)\\.(?:null|is_null|func|extern)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Table instruction [reference-types]",
@@ -325,16 +328,16 @@ const repository = {
 						match: "\\b(table)\\.(?:get|size|grow|fill|init|copy)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
+								name: "support.class.wat",
+							},
+						},
 					},
 					{
 						comment: "Type name [reference-types]",
 						name: "entity.name.type.wat",
-						match: "\\b(?:externref|funcref|nullref)\\b"
-					}
-				]
+						match: "\\b(?:externref|funcref|nullref)\\b",
+					},
+				],
 			},
 			{
 				comment: "Tail Call",
@@ -342,9 +345,9 @@ const repository = {
 					{
 						comment: "Control instruction [tail-call]",
 						name: "keyword.control.wat",
-						match: "\\breturn_call(?:_indirect)?\\b"
-					}
-				]
+						match: "\\breturn_call(?:_indirect)?\\b",
+					},
+				],
 			},
 			{
 				comment: "Exception handling",
@@ -352,14 +355,14 @@ const repository = {
 					{
 						comment: "Control instruction [exception-handling]",
 						name: "keyword.control.wat",
-						match: "\\b(?:try|catch|throw|rethrow|br_on_exn)\\b"
+						match: "\\b(?:try|catch|throw|rethrow|br_on_exn)\\b",
 					},
 					{
 						comment: "Module element [exception-handling]",
 						name: "storage.type.wat",
-						match: "(?<=\\()event\\b"
-					}
-				]
+						match: "(?<=\\()event\\b",
+					},
+				],
 			},
 			{
 				comment: "Binaryen extensions",
@@ -370,11 +373,11 @@ const repository = {
 						match: "\\b(i32|i64|f32|f64|externref|funcref|nullref|exnref)\\.(?:push|pop)\\b",
 						captures: {
 							"1": {
-								name: "support.class.wat"
-							}
-						}
-					}
-				]
+								name: "support.class.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "MVP",
@@ -385,9 +388,9 @@ const repository = {
 						match: "\\b(i32)\\.(?:load|load(?:8|16)(?:_[su])?|store(?:8|16)?)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Memory instruction (i64) [mvp]",
@@ -395,9 +398,9 @@ const repository = {
 						match: "\\b(i64)\\.(?:load|load(?:8|16|32)(?:_[su])?|store(?:8|16|32)?)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Memory instruction (f32/f64) [mvp]",
@@ -405,9 +408,9 @@ const repository = {
 						match: "\\b(f32|f64)\\.(?:load|store)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Memory instruction [mvp]",
@@ -415,18 +418,18 @@ const repository = {
 						match: "\\b(memory)\\.(?:size|grow)\\b",
 						captures: {
 							"1": {
-								name: "support.class.memory.wat"
-							}
-						}
+								name: "support.class.memory.wat",
+							},
+						},
 					},
 					{
 						comment: "Memory instruction attribute [mvp]",
 						match: "\\b(offset|align)=\\b",
 						captures: {
 							"1": {
-								name: "entity.other.attribute-name.wat"
-							}
-						}
+								name: "entity.other.attribute-name.wat",
+							},
+						},
 					},
 					{
 						comment: "Variable instruction (local) [mvp]",
@@ -434,9 +437,9 @@ const repository = {
 						match: "\\b(local)\\.(?:get|set|tee)\\b",
 						captures: {
 							"1": {
-								name: "support.class.local.wat"
-							}
-						}
+								name: "support.class.local.wat",
+							},
+						},
 					},
 					{
 						comment: "Variable instruction (global) [mvp]",
@@ -444,9 +447,9 @@ const repository = {
 						match: "\\b(global)\\.(?:get|set)\\b",
 						captures: {
 							"1": {
-								name: "support.class.global.wat"
-							}
-						}
+								name: "support.class.global.wat",
+							},
+						},
 					},
 					{
 						comment: "Numeric instruction (i32/i64) [mvp]",
@@ -454,9 +457,9 @@ const repository = {
 						match: "\\b(i32|i64)\\.(const|eqz|eq|ne|lt_[su]|gt_[su]|le_[su]|ge_[su]|clz|ctz|popcnt|add|sub|mul|div_[su]|rem_[su]|and|or|xor|shl|shr_[su]|rotl|rotr)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Numeric instruction (f32/f64) [mvp]",
@@ -464,9 +467,9 @@ const repository = {
 						match: "\\b(f32|f64)\\.(const|eq|ne|lt|gt|le|ge|abs|neg|ceil|floor|trunc|nearest|sqrt|add|sub|mul|div|min|max|copysign)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Conversion instruction (i32) [mvp]",
@@ -474,9 +477,9 @@ const repository = {
 						match: "\\b(i32)\\.(wrap_i64|trunc_(f32|f64)_[su]|reinterpret_f32)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Conversion instruction (i64) [mvp]",
@@ -484,9 +487,9 @@ const repository = {
 						match: "\\b(i64)\\.(extend_i32_[su]|trunc_f(32|64)_[su]|reinterpret_f64)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Conversion instruction (f32) [mvp]",
@@ -494,9 +497,9 @@ const repository = {
 						match: "\\b(f32)\\.(convert_i(32|64)_[su]|demote_f64|reinterpret_i32)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Conversion instruction (f64) [mvp]",
@@ -504,23 +507,23 @@ const repository = {
 						match: "\\b(f64)\\.(convert_i(32|64)_[su]|promote_f32|reinterpret_i64)\\b",
 						captures: {
 							"1": {
-								name: "support.class.type.wat"
-							}
-						}
+								name: "support.class.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Control instruction [mvp]",
 						name: "keyword.control.wat",
-						match: "\\b(?:unreachable|nop|block|loop|if|then|else|end|br|br_if|br_table|return|call|call_indirect)\\b"
+						match: "\\b(?:unreachable|nop|block|loop|if|then|else|end|br|br_if|br_table|return|call|call_indirect)\\b",
 					},
 					{
 						comment: "Parametric instruction [mvp]",
 						name: "keyword.operator.word.wat",
-						match: "\\b(?:drop|select)\\b"
-					}
-				]
-			}
-		]
+						match: "\\b(?:drop|select)\\b",
+					},
+				],
+			},
+		],
 	},
 	types: {
 		patterns: [
@@ -530,9 +533,9 @@ const repository = {
 					{
 						comment: "Type name [simd]",
 						name: "entity.name.type.wat",
-						match: "\\bv128\\b(?!\\.)"
-					}
-				]
+						match: "\\bv128\\b(?!\\.)",
+					},
+				],
 			},
 			{
 				comment: "Reference types",
@@ -540,9 +543,9 @@ const repository = {
 					{
 						comment: "Type name [reference-types]",
 						name: "entity.name.type.wat",
-						match: "\\b(?:externref|funcref|nullref)\\b(?!\\.)"
-					}
-				]
+						match: "\\b(?:externref|funcref|nullref)\\b(?!\\.)",
+					},
+				],
 			},
 			{
 				comment: "Exception handling",
@@ -550,9 +553,9 @@ const repository = {
 					{
 						comment: "Type name [exception-handling]",
 						name: "entity.name.type.wat",
-						match: "\\bexnref\\b(?!\\.)"
-					}
-				]
+						match: "\\bexnref\\b(?!\\.)",
+					},
+				],
 			},
 			{
 				comment: "MVP",
@@ -560,11 +563,11 @@ const repository = {
 					{
 						comment: "Type name [mvp]",
 						name: "entity.name.type.wat",
-						match: "\\b(?:i32|i64|f32|f64)\\b(?!\\.)"
-					}
-				]
-			}
-		]
+						match: "\\b(?:i32|i64|f32|f64)\\b(?!\\.)",
+					},
+				],
+			},
+		],
 	},
 	modules: {
 		patterns: [
@@ -576,11 +579,11 @@ const repository = {
 						match: "(?<=\\(data)\\s+(passive)\\b",
 						captures: {
 							"1": {
-								name: "storage.modifier.wat"
-							}
-						}
-					}
-				]
+								name: "storage.modifier.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "MVP",
@@ -588,7 +591,7 @@ const repository = {
 					{
 						comment: "Module element [mvp]",
 						name: "storage.type.wat",
-						match: "(?<=\\()(?:module|import|export|memory|data|table|elem|start|func|type|param|result|global|local)\\b"
+						match: "(?<=\\()(?:module|import|export|memory|data|table|elem|start|func|type|param|result|global|local)\\b",
 					},
 					{
 						comment: "Mutable global modifier [mvp]",
@@ -596,52 +599,52 @@ const repository = {
 						match: "(?<=\\()\\s*(mut)\\b",
 						captures: {
 							"1": {
-								name: "storage.modifier.wat"
-							}
-						}
+								name: "storage.modifier.wat",
+							},
+						},
 					},
 					{
 						comment: "Function name [mvp]",
 						match: "(?<=\\(func|\\(start|call|return_call|ref\\.func)\\s+(\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*)",
 						captures: {
 							"1": {
-								name: "entity.name.function.wat"
-							}
-						}
+								name: "entity.name.function.wat",
+							},
+						},
 					},
 					{
 						comment: "Function name(s) (elem) [mvp]",
 						begin: "\\)\\s+(\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*)",
 						beginCaptures: {
 							"1": {
-								name: "entity.name.function.wat"
-							}
+								name: "entity.name.function.wat",
+							},
 						},
 						end: "\\)",
 						patterns: [
 							{
 								name: "entity.name.function.wat",
-								match: "(?<=\\s)\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*"
-							}
-						]
+								match: "(?<=\\s)\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*",
+							},
+						],
 					},
 					{
 						comment: "Function type [mvp]",
 						match: "(?<=\\(type)\\s+(\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*)",
 						captures: {
 							"1": {
-								name: "support.type.function.wat"
-							}
-						}
+								name: "support.type.function.wat",
+							},
+						},
 					},
 					{
 						comment: "Variable name or branch label [mvp]",
 						name: "variable.other.wat",
-						match: "\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*\\b"
-					}
-				]
-			}
-		]
+						match: "\\$[0-9A-Za-z!#$%&'*+\\-./:<=>?@\\\\^_`|~]*\\b",
+					},
+				],
+			},
+		],
 	},
 	constants: {
 		patterns: [
@@ -654,9 +657,9 @@ const repository = {
 						match: "\\b(i8x16)(?:\\s+0x[0-9a-fA-F]{1,2}){16}\\b",
 						captures: {
 							"1": {
-								name: "support.type.wat"
-							}
-						}
+								name: "support.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector literal (i16x8) [simd]",
@@ -664,9 +667,9 @@ const repository = {
 						match: "\\b(i16x8)(?:\\s+0x[0-9a-fA-F]{1,4}){8}\\b",
 						captures: {
 							"1": {
-								name: "support.type.wat"
-							}
-						}
+								name: "support.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector literal (i32x4) [simd]",
@@ -674,9 +677,9 @@ const repository = {
 						match: "\\b(i32x4)(?:\\s+0x[0-9a-fA-F]{1,8}){4}\\b",
 						captures: {
 							"1": {
-								name: "support.type.wat"
-							}
-						}
+								name: "support.type.wat",
+							},
+						},
 					},
 					{
 						comment: "Vector literal (i64x2) [simd]",
@@ -684,11 +687,11 @@ const repository = {
 						match: "\\b(i64x2)(?:\\s+0x[0-9a-fA-F]{1,16}){2}\\b",
 						captures: {
 							"1": {
-								name: "support.type.wat"
-							}
-						}
-					}
-				]
+								name: "support.type.wat",
+							},
+						},
+					},
+				],
 			},
 			{
 				comment: "MVP",
@@ -696,46 +699,46 @@ const repository = {
 					{
 						comment: "Floating point literal",
 						name: "constant.numeric.float.wat",
-						match: "[+-]?\\b[0-9][0-9]*(?:\\.[0-9][0-9]*)?(?:[eE][+-]?[0-9]+)?\\b"
+						match: "[+-]?\\b[0-9][0-9]*(?:\\.[0-9][0-9]*)?(?:[eE][+-]?[0-9]+)?\\b",
 					},
 					{
 						comment: "Floating point hexadecimal literal",
 						name: "constant.numeric.float.wat",
-						match: "[+-]?\\b0x([0-9a-fA-F]*\\.[0-9a-fA-F]+|[0-9a-fA-F]+\\.?)[Pp][+-]?[0-9]+\\b"
+						match: "[+-]?\\b0x([0-9a-fA-F]*\\.[0-9a-fA-F]+|[0-9a-fA-F]+\\.?)[Pp][+-]?[0-9]+\\b",
 					},
 					{
 						comment: "Floating point infinity",
 						name: "constant.numeric.float.wat",
-						match: "[+-]?\\binf\\b"
+						match: "[+-]?\\binf\\b",
 					},
 					{
 						comment: "Floating point literal (NaN)",
 						name: "constant.numeric.float.wat",
-						match: "[+-]?\\bnan:0x[0-9a-fA-F][0-9a-fA-F]*\\b"
+						match: "[+-]?\\bnan:0x[0-9a-fA-F][0-9a-fA-F]*\\b",
 					},
 					{
 						comment: "Integer literal",
 						name: "constant.numeric.integer.wat",
-						match: "[+-]?\\b(?:0x[0-9a-fA-F][0-9a-fA-F]*|\\d[\\d]*)\\b"
-					}
-				]
-			}
-		]
+						match: "[+-]?\\b(?:0x[0-9a-fA-F][0-9a-fA-F]*|\\d[\\d]*)\\b",
+					},
+				],
+			},
+		],
 	},
 	invalid: {
 		patterns: [
 			{
 				name: "invalid.wat",
-				match: "[^\\s()]+"
-			}
-		]
-	}
+				match: "[^\\s()]+",
+			},
+		],
+	},
 };
 const wasm_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
 export { wasm_tmLanguage as default, name, patterns, repository, scopeName };

@@ -1,1 +1,37 @@
-li:where(.astro-677RY6MT).highlight:nth-of-type(even){grid-column-end:-1}li:where(.astro-677RY6MT) picture{height:100%;width:100%}li:where(.astro-677RY6MT) img{height:100%;width:100%;overflow:hidden;border-radius:.5rem;-o-object-fit:cover;object-fit:cover}li:where(.astro-677RY6MT) picture:after{position:absolute;inset:0;overflow:hidden;border-radius:.5rem;--tw-bg-opacity: 1;background-color:rgb(15 23 42 / var(--tw-bg-opacity));opacity:0;transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s;transition-timing-function:cubic-bezier(0,0,.2,1);content:""}li:where(.astro-677RY6MT):hover picture:after,a:where(.astro-677RY6MT):focus picture:after{opacity:.4}li:where(.astro-677RY6MT):hover footer:where(.astro-677RY6MT),a:where(.astro-677RY6MT):focus+footer:where(.astro-677RY6MT){opacity:1}
+li:where(.astro-677RY6MT).highlight:nth-of-type(even) {
+	grid-column-end: -1;
+}
+li:where(.astro-677RY6MT) picture {
+	height: 100%;
+	width: 100%;
+}
+li:where(.astro-677RY6MT) img {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 0.5rem;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+li:where(.astro-677RY6MT) picture:after {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	border-radius: 0.5rem;
+	--tw-bg-opacity: 1;
+	background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+	opacity: 0;
+	transition-property: opacity;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 0.15s;
+	transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	content: "";
+}
+li:where(.astro-677RY6MT):hover picture:after,
+a:where(.astro-677RY6MT):focus picture:after {
+	opacity: 0.4;
+}
+li:where(.astro-677RY6MT):hover footer:where(.astro-677RY6MT),
+a:where(.astro-677RY6MT):focus + footer:where(.astro-677RY6MT) {
+	opacity: 1;
+}

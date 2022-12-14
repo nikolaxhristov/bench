@@ -1,25 +1,24 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const scopeName = "source.tasl";
 const name = "tasl";
-const fileTypes = [
-	"tasl"
-];
+const fileTypes = ["tasl"];
 const patterns = [
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#namespace"
+		include: "#namespace",
 	},
 	{
-		include: "#type"
+		include: "#type",
 	},
 	{
-		include: "#class"
+		include: "#class",
 	},
 	{
-		include: "#edge"
-	}
+		include: "#edge",
+	},
 ];
 const repository = {
 	comment: {
@@ -27,266 +26,266 @@ const repository = {
 		name: "comment.line.number-sign.tasl",
 		captures: {
 			"1": {
-				name: "punctuation.definition.comment.tasl"
-			}
-		}
+				name: "punctuation.definition.comment.tasl",
+			},
+		},
 	},
 	namespace: {
 		match: "(?:^\\s*)(namespace)\\b(.*)",
 		captures: {
 			"1": {
-				name: "keyword.control.tasl.namespace"
+				name: "keyword.control.tasl.namespace",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#namespaceURI"
+						include: "#namespaceURI",
 					},
 					{
 						match: "[a-zA-Z][a-zA-Z0-9]*\\b",
-						name: "entity.name"
-					}
-				]
-			}
-		}
+						name: "entity.name",
+					},
+				],
+			},
+		},
 	},
 	type: {
 		begin: "(?:^\\s*)(type)\\b",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.tasl.type"
-			}
+				name: "keyword.control.tasl.type",
+			},
 		},
 		end: "$",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"class": {
 		begin: "(?:^\\s*)(class)\\b",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.tasl.class"
-			}
+				name: "keyword.control.tasl.class",
+			},
 		},
 		end: "$",
 		patterns: [
 			{
-				include: "#key"
+				include: "#key",
 			},
 			{
-				include: "#export"
+				include: "#export",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	edge: {
 		begin: "(?:^\\s*)(edge)\\b",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.tasl.edge"
-			}
+				name: "keyword.control.tasl.edge",
+			},
 		},
 		end: "$",
 		patterns: [
 			{
-				include: "#key"
+				include: "#key",
 			},
 			{
-				include: "#export"
+				include: "#export",
 			},
 			{
 				match: "=/",
-				name: "punctuation.separator.tasl.edge.source"
+				name: "punctuation.separator.tasl.edge.source",
 			},
 			{
 				match: "/=>",
-				name: "punctuation.separator.tasl.edge.target"
+				name: "punctuation.separator.tasl.edge.target",
 			},
 			{
 				match: "=>",
-				name: "punctuation.separator.tasl.edge"
+				name: "punctuation.separator.tasl.edge",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"export": {
 		match: "::",
-		name: "keyword.operator.tasl.export"
+		name: "keyword.operator.tasl.export",
 	},
 	expression: {
 		patterns: [
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#uri"
+				include: "#uri",
 			},
 			{
-				include: "#product"
+				include: "#product",
 			},
 			{
-				include: "#coproduct"
+				include: "#coproduct",
 			},
 			{
-				include: "#reference"
+				include: "#reference",
 			},
 			{
-				include: "#optional"
+				include: "#optional",
 			},
 			{
-				include: "#identifier"
-			}
-		]
+				include: "#identifier",
+			},
+		],
 	},
 	literal: {
 		patterns: [
 			{
-				include: "#datatype"
-			}
-		]
+				include: "#datatype",
+			},
+		],
 	},
 	uri: {
 		match: "<>",
-		name: "variable.other.constant"
+		name: "variable.other.constant",
 	},
 	product: {
 		begin: "{",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.block.tasl.product"
-			}
+				name: "punctuation.definition.block.tasl.product",
+			},
 		},
 		end: "}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.block.tasl.product"
-			}
+				name: "punctuation.definition.block.tasl.product",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#term"
+				include: "#term",
 			},
 			{
-				include: "#component"
-			}
-		]
+				include: "#component",
+			},
+		],
 	},
 	component: {
 		begin: "->",
 		end: "$",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.separator.tasl.component"
-			}
+				name: "punctuation.separator.tasl.component",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	coproduct: {
 		begin: "\\[",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.block.tasl.coproduct"
-			}
+				name: "punctuation.definition.block.tasl.coproduct",
+			},
 		},
 		end: "\\]",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.block.tasl.coproduct"
-			}
+				name: "punctuation.definition.block.tasl.coproduct",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#term"
+				include: "#term",
 			},
 			{
-				include: "#option"
-			}
-		]
+				include: "#option",
+			},
+		],
 	},
 	option: {
 		begin: "<-",
 		end: "$",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.separator.tasl.option"
-			}
+				name: "punctuation.separator.tasl.option",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	reference: {
 		match: "(\\*)\\s*(.*)",
 		captures: {
 			"1": {
-				name: "markup.bold keyword.operator"
+				name: "markup.bold keyword.operator",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#key"
-					}
-				]
-			}
-		}
+						include: "#key",
+					},
+				],
+			},
+		},
 	},
 	identifier: {
 		match: "([a-zA-Z][a-zA-Z0-9]*)\\b",
 		captures: {
 			"1": {
-				name: "variable"
-			}
-		}
+				name: "variable",
+			},
+		},
 	},
 	optional: {
 		begin: "\\?",
 		beginCaptures: {
 			"0": {
-				name: "keyword.operator"
-			}
+				name: "keyword.operator",
+			},
 		},
 		end: "$",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	namespaceURI: {
 		match: "[a-z]+:[a-zA-Z0-9-._~:\\/?#\\[\\]@!$&'()*+,;%=]+",
-		name: "markup.underline.link"
+		name: "markup.underline.link",
 	},
 	key: {
 		match: "[a-zA-Z][a-zA-Z0-9]*:(?:[A-Za-z0-9\\-._~!$&'()*+,;=:@/?]|%[0-9A-Fa-f]{2})+",
-		name: "markup.bold entity.name.class"
+		name: "markup.bold entity.name.class",
 	},
 	datatype: {
 		match: "[a-zA-Z][a-zA-Z0-9]*:(?:[A-Za-z0-9\\-._~!$&'()*+,;=:@/?]|%[0-9A-Fa-f]{2})+",
-		name: "string.regexp"
+		name: "string.regexp",
 	},
 	term: {
 		match: "[a-zA-Z][a-zA-Z0-9]*:(?:[A-Za-z0-9\\-._~!$&'()*+,;=:@/?]|%[0-9A-Fa-f]{2})+",
-		name: "entity.other.tasl.key"
-	}
+		name: "entity.other.tasl.key",
+	},
 };
 const tasl_tmLanguage = {
 	$schema: $schema,
@@ -294,7 +293,15 @@ const tasl_tmLanguage = {
 	name: name,
 	fileTypes: fileTypes,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, tasl_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	$schema,
+	tasl_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

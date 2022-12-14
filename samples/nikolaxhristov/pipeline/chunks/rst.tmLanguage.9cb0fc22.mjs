@@ -1,137 +1,138 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/trond-snekvik/vscode-rst/blob/master/syntaxes/rst.tmLanguage.json",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/trond-snekvik/vscode-rst/commit/f0fe19ffde6509be52ad9267a57e1b3df665f072";
+const version =
+	"https://github.com/trond-snekvik/vscode-rst/commit/f0fe19ffde6509be52ad9267a57e1b3df665f072";
 const scopeName = "source.rst";
 const patterns = [
 	{
-		include: "#body"
-	}
+		include: "#body",
+	},
 ];
 const repository = {
 	body: {
 		patterns: [
 			{
-				include: "#title"
+				include: "#title",
 			},
 			{
-				include: "#inline-markup"
+				include: "#inline-markup",
 			},
 			{
-				include: "#anchor"
+				include: "#anchor",
 			},
 			{
-				include: "#line-block"
+				include: "#line-block",
 			},
 			{
-				include: "#replace-include"
+				include: "#replace-include",
 			},
 			{
-				include: "#footnote"
+				include: "#footnote",
 			},
 			{
-				include: "#substitution"
+				include: "#substitution",
 			},
 			{
-				include: "#blocks"
+				include: "#blocks",
 			},
 			{
-				include: "#table"
+				include: "#table",
 			},
 			{
-				include: "#simple-table"
+				include: "#simple-table",
 			},
 			{
-				include: "#options-list"
-			}
-		]
+				include: "#options-list",
+			},
+		],
 	},
 	title: {
 		match: "^(\\*{3,}|#{3,}|\\={3,}|~{3,}|\\+{3,}|-{3,}|`{3,}|\\^{3,}|:{3,}|\"{3,}|_{3,}|'{3,})$",
-		name: "markup.heading"
+		name: "markup.heading",
 	},
 	"inline-markup": {
 		patterns: [
 			{
-				include: "#escaped"
+				include: "#escaped",
 			},
 			{
-				include: "#ignore"
+				include: "#ignore",
 			},
 			{
-				include: "#ref"
+				include: "#ref",
 			},
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#monospaced"
+				include: "#monospaced",
 			},
 			{
-				include: "#citation"
+				include: "#citation",
 			},
 			{
-				include: "#bold"
+				include: "#bold",
 			},
 			{
-				include: "#italic"
+				include: "#italic",
 			},
 			{
-				include: "#list"
+				include: "#list",
 			},
 			{
-				include: "#macro"
+				include: "#macro",
 			},
 			{
-				include: "#reference"
+				include: "#reference",
 			},
 			{
-				include: "#footnote-ref"
-			}
-		]
+				include: "#footnote-ref",
+			},
+		],
 	},
 	ignore: {
 		patterns: [
 			{
-				match: "'[`*]+'"
+				match: "'[`*]+'",
 			},
 			{
-				match: "<[`*]+>"
+				match: "<[`*]+>",
 			},
 			{
-				match: "{[`*]+}"
+				match: "{[`*]+}",
 			},
 			{
-				match: "\\([`*]+\\)"
+				match: "\\([`*]+\\)",
 			},
 			{
-				match: "\\[[`*]+\\]"
+				match: "\\[[`*]+\\]",
 			},
 			{
-				match: "\"[`*]+\""
-			}
-		]
+				match: '"[`*]+"',
+			},
+		],
 	},
 	table: {
 		begin: "^\\s*\\+[=+-]+\\+\\s*$",
 		end: "^(?![+|])",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.table"
-			}
+				name: "keyword.control.table",
+			},
 		},
 		patterns: [
 			{
 				match: "[=+|-]",
-				name: "keyword.control.table"
-			}
-		]
+				name: "keyword.control.table",
+			},
+		],
 	},
 	"simple-table": {
 		match: "^[=\\s]+$",
-		name: "keyword.control.table"
+		name: "keyword.control.table",
 	},
 	ref: {
 		begin: "(:ref:)`",
@@ -139,181 +140,181 @@ const repository = {
 		name: "entity.name.tag",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
 				match: "<.*?>",
-				name: "markup.underline.link"
-			}
-		]
+				name: "markup.underline.link",
+			},
+		],
 	},
 	reference: {
 		match: "[\\w-]*[a-zA-Z\\d-]__?\\b",
-		name: "entity.name.tag"
+		name: "entity.name.tag",
 	},
 	macro: {
 		match: "\\|[^\\|]+\\|",
-		name: "entity.name.tag"
+		name: "entity.name.tag",
 	},
 	literal: {
 		match: "(:\\S+:)(`.*?`\\\\?)",
 		captures: {
 			"1": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"2": {
-				name: "entity.name.tag"
-			}
-		}
+				name: "entity.name.tag",
+			},
+		},
 	},
 	monospaced: {
 		begin: "(?<=[\\s\"'(\\[{<]|^)``[^\\s`]",
 		end: "``|^\\s*$",
-		name: "string.interpolated"
+		name: "string.interpolated",
 	},
 	citation: {
 		begin: "(?<=[\\s\"'(\\[{<]|^)`[^\\s`]",
 		end: "`_{,2}|^\\s*$",
 		name: "entity.name.tag",
-		applyEndPatternLast: 0
+		applyEndPatternLast: 0,
 	},
 	bold: {
 		begin: "(?<=[\\s\"'(\\[{<]|^)\\*{2}[^\\s*]",
 		end: "\\*{2}|^\\s*$",
-		name: "markup.bold"
+		name: "markup.bold",
 	},
 	italic: {
 		begin: "(?<=[\\s\"'(\\[{<]|^)\\*[^\\s*]",
 		end: "\\*|^\\s*$",
-		name: "markup.italic"
+		name: "markup.italic",
 	},
 	escaped: {
 		match: "\\\\.",
-		name: "constant.character.escape"
+		name: "constant.character.escape",
 	},
 	list: {
 		match: "^\\s*(\\d+\\.|\\* -|[a-zA-Z#]\\.|[iIvVxXmMcC]+\\.|\\(\\d+\\)|\\d+\\)|[*+-])\\s+",
-		name: "keyword.control"
+		name: "keyword.control",
 	},
 	"line-block": {
 		match: "^\\|\\s+",
-		name: "keyword.control"
+		name: "keyword.control",
 	},
 	"raw-html": {
 		begin: "^(\\s*)(\\.{2}\\s+raw\\s*::)\\s+(html)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"3": {
-				name: "variable.parameter.html"
-			}
+				name: "variable.parameter.html",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "text.html.derivative"
-			}
-		]
+				include: "text.html.derivative",
+			},
+		],
 	},
 	anchor: {
 		match: "^\\.{2}\\s+(_[^:]+:)\\s*",
-		name: "entity.name.tag.anchor"
+		name: "entity.name.tag.anchor",
 	},
 	"replace-include": {
 		match: "^\\s*(\\.{2})\\s+(\\|[^\\|]+\\|)\\s+(replace::)",
 		captures: {
 			"1": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"2": {
-				name: "entity.name.tag"
+				name: "entity.name.tag",
 			},
 			"3": {
-				name: "keyword.control"
-			}
-		}
+				name: "keyword.control",
+			},
+		},
 	},
 	footnote: {
 		match: "^\\s*\\.{2}\\s+\\[(?:[\\w\\.-]+|[#*]|#\\w+)\\]\\s+",
-		name: "entity.name.tag"
+		name: "entity.name.tag",
 	},
 	"footnote-ref": {
 		match: "\\[(?:[\\w\\.-]+|[#*])\\]_",
-		name: "entity.name.tag"
+		name: "entity.name.tag",
 	},
 	substitution: {
 		match: "^\\.{2}\\s*\\|([^|]+)\\|",
-		name: "entity.name.tag"
+		name: "entity.name.tag",
 	},
 	"options-list": {
 		match: "^((?:-\\w|--[\\w-]+|/\\w+)(?:,? ?[\\w-]+)*)(?:  |\\t|$)",
-		name: "variable.parameter"
+		name: "variable.parameter",
 	},
 	blocks: {
 		patterns: [
 			{
-				include: "#domains"
+				include: "#domains",
 			},
 			{
-				include: "#doctest"
+				include: "#doctest",
 			},
 			{
-				include: "#code-block-cpp"
+				include: "#code-block-cpp",
 			},
 			{
-				include: "#code-block-py"
+				include: "#code-block-py",
 			},
 			{
-				include: "#code-block-console"
+				include: "#code-block-console",
 			},
 			{
-				include: "#code-block-javascript"
+				include: "#code-block-javascript",
 			},
 			{
-				include: "#code-block-yaml"
+				include: "#code-block-yaml",
 			},
 			{
-				include: "#code-block-cmake"
+				include: "#code-block-cmake",
 			},
 			{
-				include: "#code-block-kconfig"
+				include: "#code-block-kconfig",
 			},
 			{
-				include: "#code-block-ruby"
+				include: "#code-block-ruby",
 			},
 			{
-				include: "#code-block-dts"
+				include: "#code-block-dts",
 			},
 			{
-				include: "#code-block"
+				include: "#code-block",
 			},
 			{
-				include: "#doctest-block"
+				include: "#doctest-block",
 			},
 			{
-				include: "#raw-html"
+				include: "#raw-html",
 			},
 			{
-				include: "#block"
+				include: "#block",
 			},
 			{
-				include: "#literal-block"
+				include: "#literal-block",
 			},
 			{
-				include: "#block-comment"
-			}
-		]
+				include: "#block-comment",
+			},
+		],
 	},
 	"block-comment": {
 		begin: "^(\\s*)\\.{2}",
 		"while": "^\\1(?=\\s)|^\\s*$",
-		name: "comment.block"
+		name: "comment.block",
 	},
 	"literal-block": {
 		begin: "^(\\s*)(.*)(::)\\s*$",
@@ -322,34 +323,34 @@ const repository = {
 			"2": {
 				patterns: [
 					{
-						include: "#inline-markup"
-					}
-				]
+						include: "#inline-markup",
+					},
+				],
 			},
 			"3": {
-				name: "keyword.control"
-			}
-		}
+				name: "keyword.control",
+			},
+		},
 	},
 	block: {
 		begin: "^(\\s*)(\\.{2}\\s+\\S+::)(.*)",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"3": {
-				name: "variable"
-			}
+				name: "variable",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "#body"
-			}
-		]
+				include: "#body",
+			},
+		],
 	},
 	"block-param": {
 		patterns: [
@@ -357,376 +358,376 @@ const repository = {
 				match: "(:param\\s+(.+?):)(?:\\s|$)",
 				captures: {
 					"1": {
-						name: "keyword.control"
+						name: "keyword.control",
 					},
 					"2": {
-						name: "variable.parameter"
-					}
-				}
+						name: "variable.parameter",
+					},
+				},
 			},
 			{
 				match: "(:.+?:)(?:$|\\s+(.*))",
 				captures: {
 					"1": {
-						name: "keyword.control"
+						name: "keyword.control",
 					},
 					"2": {
 						patterns: [
 							{
 								match: "\\b(0x[a-fA-F\\d]+|\\d+)\\b",
-								name: "constant.numeric"
+								name: "constant.numeric",
 							},
 							{
-								include: "#inline-markup"
-							}
-						]
-					}
-				}
-			}
-		]
+								include: "#inline-markup",
+							},
+						],
+					},
+				},
+			},
+		],
 	},
 	domains: {
 		patterns: [
 			{
-				include: "#domain-cpp"
+				include: "#domain-cpp",
 			},
 			{
-				include: "#domain-py"
+				include: "#domain-py",
 			},
 			{
-				include: "#domain-auto"
+				include: "#domain-auto",
 			},
 			{
-				include: "#domain-js"
-			}
-		]
+				include: "#domain-js",
+			},
+		],
 	},
 	"domain-cpp": {
 		begin: "^(\\s*)(\\.{2}\\s+(?:cpp|c):(?:class|struct|function|member|var|type|enum|enum-struct|enum-class|enumerator|union|concept)::)\\s*(?:(@\\w+)|(.*))",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"3": {
-				name: "entity.name.tag"
+				name: "entity.name.tag",
 			},
 			"4": {
 				patterns: [
 					{
-						include: "source.cpp"
-					}
-				]
-			}
+						include: "source.cpp",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "#body"
-			}
-		]
+				include: "#body",
+			},
+		],
 	},
 	"domain-py": {
 		begin: "^(\\s*)(\\.{2}\\s+py:(?:module|function|data|exception|class|attribute|property|method|staticmethod|classmethod|decorator|decoratormethod)::)\\s*(.*)",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.python"
-					}
-				]
-			}
+						include: "source.python",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "#body"
-			}
-		]
+				include: "#body",
+			},
+		],
 	},
 	"domain-auto": {
 		begin: "^(\\s*)(\\.{2}\\s+auto(?:class|module|exception|function|decorator|data|method|attribute|property)::)\\s*(.*)",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control.py"
+				name: "keyword.control.py",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.python"
-					}
-				]
-			}
+						include: "source.python",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "#body"
-			}
-		]
+				include: "#body",
+			},
+		],
 	},
 	"domain-js": {
 		begin: "^(\\s*)(\\.{2}\\s+js:\\w+::)\\s*(.*)",
 		end: "^(?!\\1[ \\t]|$)",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "source.js"
-					}
-				]
-			}
+						include: "source.js",
+					},
+				],
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "#body"
-			}
-		]
+				include: "#body",
+			},
+		],
 	},
 	doctest: {
 		begin: "^(>>>)\\s*(.*)",
 		end: "^\\s*$",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "source.python"
-					}
-				]
-			}
-		}
+						include: "source.python",
+					},
+				],
+			},
+		},
 	},
 	"code-block-cpp": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(c|c\\+\\+|cpp|C|C\\+\\+|CPP|Cpp)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.cpp"
-			}
+				name: "variable.parameter.codeblock.cpp",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.cpp"
-			}
-		]
+				include: "source.cpp",
+			},
+		],
 	},
 	"code-block-console": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(console|shell|bash)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.console"
-			}
+				name: "variable.parameter.codeblock.console",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.shell"
-			}
-		]
+				include: "source.shell",
+			},
+		],
 	},
 	"code-block-py": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(python)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.py"
-			}
+				name: "variable.parameter.codeblock.py",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.python"
-			}
-		]
+				include: "source.python",
+			},
+		],
 	},
 	"code-block-javascript": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(javascript)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.js"
-			}
+				name: "variable.parameter.codeblock.js",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.js"
-			}
-		]
+				include: "source.js",
+			},
+		],
 	},
 	"code-block-yaml": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(ya?ml)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.yaml"
-			}
+				name: "variable.parameter.codeblock.yaml",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.yaml"
-			}
-		]
+				include: "source.yaml",
+			},
+		],
 	},
 	"code-block-cmake": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(cmake)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.cmake"
-			}
+				name: "variable.parameter.codeblock.cmake",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.cmake"
-			}
-		]
+				include: "source.cmake",
+			},
+		],
 	},
 	"code-block-kconfig": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*([kK]config)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.kconfig"
-			}
+				name: "variable.parameter.codeblock.kconfig",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.kconfig"
-			}
-		]
+				include: "source.kconfig",
+			},
+		],
 	},
 	"code-block-ruby": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(ruby)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.ruby"
-			}
+				name: "variable.parameter.codeblock.ruby",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.ruby"
-			}
-		]
+				include: "source.ruby",
+			},
+		],
 	},
 	"code-block-dts": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)\\s*(dts|DTS|devicetree)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
+				name: "keyword.control",
 			},
 			"4": {
-				name: "variable.parameter.codeblock.dts"
-			}
+				name: "variable.parameter.codeblock.dts",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.dts"
-			}
-		]
+				include: "source.dts",
+			},
+		],
 	},
 	"code-block": {
 		begin: "^(\\s*)(\\.{2}\\s+(code|code-block)::)",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
-			}
-		]
+				include: "#block-param",
+			},
+		],
 	},
 	"doctest-block": {
 		begin: "^(\\s*)(\\.{2}\\s+doctest::)\\s*$",
 		"while": "^\\1(?=\\s)|^\\s*$",
 		beginCaptures: {
 			"2": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-param"
+				include: "#block-param",
 			},
 			{
-				include: "source.python"
-			}
-		]
-	}
+				include: "source.python",
+			},
+		],
+	},
 };
 const name = "rst";
 const rst_tmLanguage = {
@@ -735,7 +736,15 @@ const rst_tmLanguage = {
 	scopeName: scopeName,
 	patterns: patterns,
 	repository: repository,
-	name: name
+	name: name,
 };
 
-export { rst_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	rst_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

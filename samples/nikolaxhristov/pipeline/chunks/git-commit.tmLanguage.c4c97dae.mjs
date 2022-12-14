@@ -1,9 +1,10 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/textmate/git.tmbundle/blob/master/Syntaxes/Git%20Commit%20Message.tmLanguage",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/textmate/git.tmbundle/commit/93897a78c6e52bef13dadc0d4091d203c5facb40";
+const version =
+	"https://github.com/textmate/git.tmbundle/commit/93897a78c6e52bef13dadc0d4091d203c5facb40";
 const name = "git-commit";
 const scopeName = "text.git-commit";
 const patterns = [
@@ -17,9 +18,9 @@ const patterns = [
 				end: "^(?!#)",
 				patterns: [
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
 				begin: "^(?!# Please enter the commit message)",
@@ -33,33 +34,33 @@ const patterns = [
 							{
 								captures: {
 									"1": {
-										name: "keyword.other.$2.git-commit"
-									}
+										name: "keyword.other.$2.git-commit",
+									},
 								},
-								match: "\\G((fixup|squash)!)\\s*"
+								match: "\\G((fixup|squash)!)\\s*",
 							},
 							{
 								match: ".{73,}$",
-								name: "invalid.illegal.line-too-long.git-commit"
+								name: "invalid.illegal.line-too-long.git-commit",
 							},
 							{
 								match: ".{51,}$",
-								name: "invalid.deprecated.line-too-long.git-commit"
-							}
-						]
+								name: "invalid.deprecated.line-too-long.git-commit",
+							},
+						],
 					},
 					{
 						begin: "^(?!# Please enter the commit message)",
 						end: "^(?=# Please enter the commit message)",
 						patterns: [
 							{
-								include: "#comment"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "#comment",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	{
 		begin: "^(?=# Please enter the commit message)",
@@ -67,21 +68,21 @@ const patterns = [
 		name: "meta.scope.metadata.git-commit",
 		patterns: [
 			{
-				include: "#metadata"
-			}
-		]
-	}
+				include: "#metadata",
+			},
+		],
+	},
 ];
 const repository = {
 	comment: {
 		begin: "^(#)",
 		captures: {
 			"1": {
-				name: "punctuation.definition.comment.git-commit"
-			}
+				name: "punctuation.definition.comment.git-commit",
+			},
 		},
 		end: "\\n",
-		name: "comment.line.number-sign.git-commit"
+		name: "comment.line.number-sign.git-commit",
 	},
 	metadata: {
 		patterns: [
@@ -93,49 +94,50 @@ const repository = {
 						begin: "(^[ \\t]+)?(?=#)",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.whitespace.comment.leading.git-commit"
-							}
+								name: "punctuation.whitespace.comment.leading.git-commit",
+							},
 						},
 						contentName: "comment.line.number-sign.git-commit",
 						end: "(?!\\G)^",
 						patterns: [
 							{
 								match: "\\G#",
-								name: "punctuation.definition.comment.git-commit"
+								name: "punctuation.definition.comment.git-commit",
 							},
 							{
 								match: "((modified|renamed):.*)$\\n?",
-								name: "markup.changed.git-commit"
+								name: "markup.changed.git-commit",
 							},
 							{
 								match: "(new file:.*)$\\n?",
-								name: "markup.inserted.git-commit"
+								name: "markup.inserted.git-commit",
 							},
 							{
 								match: "(deleted:.*)$\\n?",
-								name: "markup.deleted.git-commit"
-							}
-						]
-					}
-				]
+								name: "markup.deleted.git-commit",
+							},
+						],
+					},
+				],
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(?=diff\\ \\-\\-git)",
-				comment: "diff presented at the end of the commit message when using commit -v.",
+				comment:
+					"diff presented at the end of the commit message when using commit -v.",
 				contentName: "source.diff",
 				end: "\\z",
 				name: "meta.embedded.diff.git-commit",
 				patterns: [
 					{
-						include: "source.diff"
-					}
-				]
-			}
-		]
-	}
+						include: "source.diff",
+					},
+				],
+			},
+		],
+	},
 };
 const gitCommit_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -143,7 +145,15 @@ const gitCommit_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { gitCommit_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	gitCommit_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

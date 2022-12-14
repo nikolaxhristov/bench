@@ -1,110 +1,111 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "jsonnet";
 const patterns = [
 	{
-		include: "#expression"
+		include: "#expression",
 	},
 	{
-		include: "#keywords"
-	}
+		include: "#keywords",
+	},
 ];
 const repository = {
 	"builtin-functions": {
 		patterns: [
 			{
 				match: "\\bstd[.](acos|asin|atan|ceil|char|codepoint|cos|exp|exponent)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](filter|floor|force|length|log|makeArray|mantissa)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](objectFields|objectHas|pow|sin|sqrt|tan|type|thisFile)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](acos|asin|atan|ceil|char|codepoint|cos|exp|exponent)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](abs|assertEqual|escapeString(Bash|Dollars|Json|Python))\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](filterMap|flattenArrays|foldl|foldr|format|join)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](lines|manifest(Ini|Python(Vars)?)|map|max|min|mod)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](set|set(Diff|Inter|Member|Union)|sort)\\b",
-				name: "support.function.jsonnet"
+				name: "support.function.jsonnet",
 			},
 			{
 				match: "\\bstd[.](range|split|stringChars|substr|toString|uniq)\\b",
-				name: "support.function.jsonnet"
-			}
-		]
+				name: "support.function.jsonnet",
+			},
+		],
 	},
 	comment: {
 		patterns: [
 			{
 				begin: "/\\*",
 				end: "\\*/",
-				name: "comment.block.jsonnet"
+				name: "comment.block.jsonnet",
 			},
 			{
 				match: "//.*$",
-				name: "comment.line.jsonnet"
+				name: "comment.line.jsonnet",
 			},
 			{
 				match: "#.*$",
-				name: "comment.block.jsonnet"
-			}
-		]
+				name: "comment.block.jsonnet",
+			},
+		],
 	},
 	"double-quoted-strings": {
-		begin: "\"",
-		end: "\"",
+		begin: '"',
+		end: '"',
 		name: "string.quoted.double.jsonnet",
 		patterns: [
 			{
-				match: "\\\\([\"\\\\/bfnrt]|(u[0-9a-fA-F]{4}))",
-				name: "constant.character.escape.jsonnet"
+				match: '\\\\(["\\\\/bfnrt]|(u[0-9a-fA-F]{4}))',
+				name: "constant.character.escape.jsonnet",
 			},
 			{
-				match: "\\\\[^\"\\\\/bfnrtu]",
-				name: "invalid.illegal.jsonnet"
-			}
-		]
+				match: '\\\\[^"\\\\/bfnrtu]',
+				name: "invalid.illegal.jsonnet",
+			},
+		],
 	},
 	expression: {
 		patterns: [
 			{
-				include: "#literals"
+				include: "#literals",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#single-quoted-strings"
+				include: "#single-quoted-strings",
 			},
 			{
-				include: "#double-quoted-strings"
+				include: "#double-quoted-strings",
 			},
 			{
-				include: "#triple-quoted-strings"
+				include: "#triple-quoted-strings",
 			},
 			{
-				include: "#builtin-functions"
+				include: "#builtin-functions",
 			},
 			{
-				include: "#functions"
-			}
-		]
+				include: "#functions",
+			},
+		],
 	},
 	functions: {
 		patterns: [
@@ -112,74 +113,74 @@ const repository = {
 				begin: "\\b([a-zA-Z_][a-z0-9A-Z_]*)\\s*\\(",
 				beginCaptures: {
 					"1": {
-						name: "entity.name.function.jsonnet"
-					}
+						name: "entity.name.function.jsonnet",
+					},
 				},
 				end: "\\)",
 				name: "meta.function",
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	keywords: {
 		patterns: [
 			{
 				match: "[!:~\\+\\-&\\|\\^=<>\\*\\/%]",
-				name: "keyword.operator.jsonnet"
+				name: "keyword.operator.jsonnet",
 			},
 			{
 				match: "\\$",
-				name: "keyword.other.jsonnet"
+				name: "keyword.other.jsonnet",
 			},
 			{
 				match: "\\b(self|super|import|importstr|local|tailstrict)\\b",
-				name: "keyword.other.jsonnet"
+				name: "keyword.other.jsonnet",
 			},
 			{
 				match: "\\b(if|then|else|for|in|error|assert)\\b",
-				name: "keyword.control.jsonnet"
+				name: "keyword.control.jsonnet",
 			},
 			{
 				match: "\\b(function)\\b",
-				name: "storage.type.jsonnet"
+				name: "storage.type.jsonnet",
 			},
 			{
 				match: "[a-zA-Z_][a-z0-9A-Z_]*\\s*(:::|\\+:::)",
-				name: "variable.parameter.jsonnet"
+				name: "variable.parameter.jsonnet",
 			},
 			{
 				match: "[a-zA-Z_][a-z0-9A-Z_]*\\s*(::|\\+::)",
-				name: "entity.name.type"
+				name: "entity.name.type",
 			},
 			{
 				match: "[a-zA-Z_][a-z0-9A-Z_]*\\s*(:|\\+:)",
-				name: "variable.parameter.jsonnet"
-			}
-		]
+				name: "variable.parameter.jsonnet",
+			},
+		],
 	},
 	literals: {
 		patterns: [
 			{
 				match: "\\b(true|false|null)\\b",
-				name: "constant.language.jsonnet"
+				name: "constant.language.jsonnet",
 			},
 			{
 				match: "\\b(\\d+([Ee][+-]?\\d+)?)\\b",
-				name: "constant.numeric.jsonnet"
+				name: "constant.numeric.jsonnet",
 			},
 			{
 				match: "\\b\\d+[.]\\d*([Ee][+-]?\\d+)?\\b",
-				name: "constant.numeric.jsonnet"
+				name: "constant.numeric.jsonnet",
 			},
 			{
 				match: "\\b[.]\\d+([Ee][+-]?\\d+)?\\b",
-				name: "constant.numeric.jsonnet"
-			}
-		]
+				name: "constant.numeric.jsonnet",
+			},
+		],
 	},
 	"single-quoted-strings": {
 		begin: "'",
@@ -188,23 +189,23 @@ const repository = {
 		patterns: [
 			{
 				match: "\\\\(['\\\\/bfnrt]|(u[0-9a-fA-F]{4}))",
-				name: "constant.character.escape.jsonnet"
+				name: "constant.character.escape.jsonnet",
 			},
 			{
 				match: "\\\\[^'\\\\/bfnrtu]",
-				name: "invalid.illegal.jsonnet"
-			}
-		]
+				name: "invalid.illegal.jsonnet",
+			},
+		],
 	},
 	"triple-quoted-strings": {
 		patterns: [
 			{
 				begin: "\\|\\|\\|",
 				end: "\\|\\|\\|",
-				name: "string.quoted.triple.jsonnet"
-			}
-		]
-	}
+				name: "string.quoted.triple.jsonnet",
+			},
+		],
+	},
 };
 const scopeName = "source.jsonnet";
 const jsonnet_tmLanguage = {
@@ -212,7 +213,14 @@ const jsonnet_tmLanguage = {
 	name: name,
 	patterns: patterns,
 	repository: repository,
-	scopeName: scopeName
+	scopeName: scopeName,
 };
 
-export { $schema, jsonnet_tmLanguage as default, name, patterns, repository, scopeName };
+export {
+	$schema,
+	jsonnet_tmLanguage as default,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

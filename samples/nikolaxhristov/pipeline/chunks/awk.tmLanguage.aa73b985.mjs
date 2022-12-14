@@ -1,386 +1,384 @@
-const fileTypes = [
-	"awk"
-];
+const fileTypes = ["awk"];
 const name = "awk";
 const patterns = [
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#procedure"
+		include: "#procedure",
 	},
 	{
-		include: "#pattern"
-	}
+		include: "#pattern",
+	},
 ];
 const repository = {
 	"builtin-pattern": {
 		match: "\\b(BEGINFILE|BEGIN|ENDFILE|END)\\b",
-		name: "constant.language.awk"
+		name: "constant.language.awk",
 	},
 	command: {
 		patterns: [
 			{
 				match: "\\b(?:next|print|printf)\\b",
-				name: "keyword.other.command.awk"
+				name: "keyword.other.command.awk",
 			},
 			{
 				match: "\\b(?:close|getline|delete|system)\\b",
-				name: "keyword.other.command.nawk"
+				name: "keyword.other.command.nawk",
 			},
 			{
 				match: "\\b(?:fflush|nextfile)\\b",
-				name: "keyword.other.command.bell-awk"
-			}
-		]
+				name: "keyword.other.command.bell-awk",
+			},
+		],
 	},
 	comment: {
 		match: "#.*",
-		name: "comment.line.number-sign.awk"
+		name: "comment.line.number-sign.awk",
 	},
 	constant: {
 		patterns: [
 			{
-				include: "#numeric-constant"
+				include: "#numeric-constant",
 			},
 			{
-				include: "#string-constant"
-			}
-		]
+				include: "#string-constant",
+			},
+		],
 	},
 	"escaped-char": {
-		match: "\\\\(?:[\\\\abfnrtv/\"]|x[0-9A-Fa-f]{2}|[0-7]{3})",
-		name: "constant.character.escape.awk"
+		match: '\\\\(?:[\\\\abfnrtv/"]|x[0-9A-Fa-f]{2}|[0-7]{3})',
+		name: "constant.character.escape.awk",
 	},
 	expression: {
 		patterns: [
 			{
-				include: "#command"
+				include: "#command",
 			},
 			{
-				include: "#function"
+				include: "#function",
 			},
 			{
-				include: "#constant"
+				include: "#constant",
 			},
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
-				include: "#regexp-in-expression"
+				include: "#regexp-in-expression",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
-				include: "#groupings"
-			}
-		]
+				include: "#groupings",
+			},
+		],
 	},
 	"function": {
 		patterns: [
 			{
 				match: "\\b(?:exp|int|log|sqrt|index|length|split|sprintf|substr)\\b",
-				name: "support.function.awk"
+				name: "support.function.awk",
 			},
 			{
 				match: "\\b(?:atan2|cos|rand|sin|srand|gsub|match|sub|tolower|toupper)\\b",
-				name: "support.function.nawk"
+				name: "support.function.nawk",
 			},
 			{
 				match: "\\b(?:gensub|strftime|systime)\\b",
-				name: "support.function.gawk"
-			}
-		]
+				name: "support.function.gawk",
+			},
+		],
 	},
 	"function-definition": {
 		begin: "\\b(function)\\s+(\\w+)(\\()",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.function.awk"
+				name: "storage.type.function.awk",
 			},
 			"2": {
-				name: "entity.name.function.awk"
+				name: "entity.name.function.awk",
 			},
 			"3": {
-				name: "punctuation.definition.parameters.begin.awk"
-			}
+				name: "punctuation.definition.parameters.begin.awk",
+			},
 		},
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.parameters.end.awk"
-			}
+				name: "punctuation.definition.parameters.end.awk",
+			},
 		},
 		patterns: [
 			{
 				match: "\\b(\\w+)\\b",
-				name: "variable.parameter.function.awk"
+				name: "variable.parameter.function.awk",
 			},
 			{
 				match: "\\b(,)\\b",
-				name: "punctuation.separator.parameters.awk"
-			}
-		]
+				name: "punctuation.separator.parameters.awk",
+			},
+		],
 	},
 	groupings: {
 		patterns: [
 			{
 				match: "\\(",
-				name: "meta.brace.round.awk"
+				name: "meta.brace.round.awk",
 			},
 			{
 				match: "\\)",
-				name: "meta.brace.round.awk"
+				name: "meta.brace.round.awk",
 			},
 			{
 				match: "\\,",
-				name: "punctuation.separator.parameters.awk"
-			}
-		]
+				name: "punctuation.separator.parameters.awk",
+			},
+		],
 	},
 	keyword: {
 		match: "\\b(?:break|continue|do|while|exit|for|if|else|return)\\b",
-		name: "keyword.control.awk"
+		name: "keyword.control.awk",
 	},
 	"numeric-constant": {
 		match: "\\b[0-9]+(?:\\.[0-9]+)?(?:e[+-][0-9]+)?\\b",
-		name: "constant.numeric.awk"
+		name: "constant.numeric.awk",
 	},
 	operator: {
 		patterns: [
 			{
 				match: "(!?~|[=<>!]=|[<>])",
-				name: "keyword.operator.comparison.awk"
+				name: "keyword.operator.comparison.awk",
 			},
 			{
 				match: "\\b(in)\\b",
-				name: "keyword.operator.comparison.awk"
+				name: "keyword.operator.comparison.awk",
 			},
 			{
 				match: "([+\\-*/%^]=|\\+\\+|--|>>|=)",
-				name: "keyword.operator.assignment.awk"
+				name: "keyword.operator.assignment.awk",
 			},
 			{
 				match: "(\\|\\||&&|!)",
-				name: "keyword.operator.boolean.awk"
+				name: "keyword.operator.boolean.awk",
 			},
 			{
 				match: "([+\\-*/%^])",
-				name: "keyword.operator.arithmetic.awk"
+				name: "keyword.operator.arithmetic.awk",
 			},
 			{
 				match: "([?:])",
-				name: "keyword.operator.trinary.awk"
+				name: "keyword.operator.trinary.awk",
 			},
 			{
 				match: "(\\[|\\])",
-				name: "keyword.operator.index.awk"
-			}
-		]
+				name: "keyword.operator.index.awk",
+			},
+		],
 	},
 	pattern: {
 		patterns: [
 			{
-				include: "#regexp-as-pattern"
+				include: "#regexp-as-pattern",
 			},
 			{
-				include: "#function-definition"
+				include: "#function-definition",
 			},
 			{
-				include: "#builtin-pattern"
+				include: "#builtin-pattern",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	procedure: {
 		begin: "\\{",
 		end: "\\}",
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#procedure"
+				include: "#procedure",
 			},
 			{
-				include: "#keyword"
+				include: "#keyword",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"regex-as-assignment": {
 		begin: "([^=<>!+\\-*/%^]=)\\s*(/)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.operator.assignment.awk"
+				name: "keyword.operator.assignment.awk",
 			},
 			"2": {
-				name: "punctuation.definition.regex.begin.awk"
-			}
+				name: "punctuation.definition.regex.begin.awk",
+			},
 		},
 		contentName: "string.regexp",
 		end: "/",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.regex.end.awk"
-			}
+				name: "punctuation.definition.regex.end.awk",
+			},
 		},
 		patterns: [
 			{
-				include: "source.regexp"
-			}
-		]
+				include: "source.regexp",
+			},
+		],
 	},
 	"regex-as-comparison": {
 		begin: "(!?~)\\s*(/)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.operator.comparison.awk"
+				name: "keyword.operator.comparison.awk",
 			},
 			"2": {
-				name: "punctuation.definition.regex.begin.awk"
-			}
+				name: "punctuation.definition.regex.begin.awk",
+			},
 		},
 		contentName: "string.regexp",
 		end: "/",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.regex.end.awk"
-			}
+				name: "punctuation.definition.regex.end.awk",
+			},
 		},
 		patterns: [
 			{
-				include: "source.regexp"
-			}
-		]
+				include: "source.regexp",
+			},
+		],
 	},
 	"regex-as-first-argument": {
 		begin: "(\\()\\s*(/)",
 		beginCaptures: {
 			"1": {
-				name: "meta.brace.round.awk"
+				name: "meta.brace.round.awk",
 			},
 			"2": {
-				name: "punctuation.definition.regex.begin.awk"
-			}
+				name: "punctuation.definition.regex.begin.awk",
+			},
 		},
 		contentName: "string.regexp",
 		end: "/",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.regex.end.awk"
-			}
+				name: "punctuation.definition.regex.end.awk",
+			},
 		},
 		patterns: [
 			{
-				include: "source.regexp"
-			}
-		]
+				include: "source.regexp",
+			},
+		],
 	},
 	"regex-as-nth-argument": {
 		begin: "(,)\\s*(/)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.separator.parameters.awk"
+				name: "punctuation.separator.parameters.awk",
 			},
 			"2": {
-				name: "punctuation.definition.regex.begin.awk"
-			}
+				name: "punctuation.definition.regex.begin.awk",
+			},
 		},
 		contentName: "string.regexp",
 		end: "/",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.regex.end.awk"
-			}
+				name: "punctuation.definition.regex.end.awk",
+			},
 		},
 		patterns: [
 			{
-				include: "source.regexp"
-			}
-		]
+				include: "source.regexp",
+			},
+		],
 	},
 	"regexp-as-pattern": {
 		begin: "/",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.regex.begin.awk"
-			}
+				name: "punctuation.definition.regex.begin.awk",
+			},
 		},
 		contentName: "string.regexp",
 		end: "/",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.regex.end.awk"
-			}
+				name: "punctuation.definition.regex.end.awk",
+			},
 		},
 		patterns: [
 			{
-				include: "source.regexp"
-			}
-		]
+				include: "source.regexp",
+			},
+		],
 	},
 	"regexp-in-expression": {
 		patterns: [
 			{
-				include: "#regex-as-assignment"
+				include: "#regex-as-assignment",
 			},
 			{
-				include: "#regex-as-comparison"
+				include: "#regex-as-comparison",
 			},
 			{
-				include: "#regex-as-first-argument"
+				include: "#regex-as-first-argument",
 			},
 			{
-				include: "#regex-as-nth-argument"
-			}
-		]
+				include: "#regex-as-nth-argument",
+			},
+		],
 	},
 	"string-constant": {
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.awk"
-			}
+				name: "punctuation.definition.string.begin.awk",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.awk"
-			}
+				name: "punctuation.definition.string.end.awk",
+			},
 		},
 		name: "string.quoted.double.awk",
 		patterns: [
 			{
-				include: "#escaped-char"
-			}
-		]
+				include: "#escaped-char",
+			},
+		],
 	},
 	variable: {
 		patterns: [
 			{
 				match: "\\$[0-9]+",
-				name: "variable.language.awk"
+				name: "variable.language.awk",
 			},
 			{
 				match: "\\b(?:FILENAME|FS|NF|NR|OFMT|OFS|ORS|RS)\\b",
-				name: "variable.language.awk"
+				name: "variable.language.awk",
 			},
 			{
 				match: "\\b(?:ARGC|ARGV|CONVFMT|ENVIRON|FNR|RLENGTH|RSTART|SUBSEP)\\b",
-				name: "variable.language.nawk"
+				name: "variable.language.nawk",
 			},
 			{
 				match: "\\b(?:ARGIND|ERRNO|FIELDWIDTHS|IGNORECASE|RT)\\b",
-				name: "variable.language.gawk"
-			}
-		]
-	}
+				name: "variable.language.gawk",
+			},
+		],
+	},
 };
 const scopeName = "source.awk";
 const uuid = "67bd1ff0-006b-4c32-8b97-8bc198777582";
@@ -390,7 +388,15 @@ const awk_tmLanguage = {
 	patterns: patterns,
 	repository: repository,
 	scopeName: scopeName,
-	uuid: uuid
+	uuid: uuid,
 };
 
-export { awk_tmLanguage as default, fileTypes, name, patterns, repository, scopeName, uuid };
+export {
+	awk_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

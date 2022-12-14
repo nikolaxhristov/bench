@@ -1,103 +1,104 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "clarity";
 const scopeName = "source.clar";
 const uuid = "f9e9871d-2ea6-4be0-afd2-fc382d704716";
 const patterns = [
 	{
-		include: "#expression"
+		include: "#expression",
 	},
 	{
-		include: "#define-constant"
+		include: "#define-constant",
 	},
 	{
-		include: "#define-data-var"
+		include: "#define-data-var",
 	},
 	{
-		include: "#define-map"
+		include: "#define-map",
 	},
 	{
-		include: "#define-function"
+		include: "#define-function",
 	},
 	{
-		include: "#define-fungible-token"
+		include: "#define-fungible-token",
 	},
 	{
-		include: "#define-non-fungible-token"
+		include: "#define-non-fungible-token",
 	},
 	{
-		include: "#define-trait"
+		include: "#define-trait",
 	},
 	{
-		include: "#use-trait"
-	}
+		include: "#use-trait",
+	},
 ];
 const repository = {
 	comment: {
 		name: "comment.line.semicolon.clarity",
-		match: "(?x) (?<=^|[()\\[\\]{}\",'`;\\s]) (;) .* $"
+		match: "(?x) (?<=^|[()\\[\\]{}\",'`;\\s]) (;) .* $",
 	},
 	expression: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#keyword"
+				include: "#keyword",
 			},
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#let-func"
+				include: "#let-func",
 			},
 			{
-				include: "#built-in-func"
+				include: "#built-in-func",
 			},
 			{
-				include: "#get-set-func"
-			}
-		]
+				include: "#get-set-func",
+			},
+		],
 	},
 	keyword: {
 		name: "constant.language.clarity",
-		match: "\\b(?:block-height|burn-block-height|contract-caller|is-in-regtest|stx-liquid-supply|tx-sender)\\b"
+		match: "\\b(?:block-height|burn-block-height|contract-caller|is-in-regtest|stx-liquid-supply|tx-sender)\\b",
 	},
 	"define-function": {
 		begin: "(?x) (\\() \\s* (define-(?:public|private|read-only)) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.define-function.start.clarity"
+				name: "punctuation.define-function.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-function.clarity"
-			}
+				name: "keyword.declaration.define-function.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.define-function.end.clarity"
-			}
+				name: "punctuation.define-function.end.clarity",
+			},
 		},
 		name: "meta.define-function",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
 				begin: "(?x) (\\() \\s* ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s*",
 				end: "(\\))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.function-signature.start.clarity"
+						name: "punctuation.function-signature.start.clarity",
 					},
 					"2": {
-						name: "entity.name.function.clarity"
-					}
+						name: "entity.name.function.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.function-signature.end.clarity"
-					}
+						name: "punctuation.function-signature.end.clarity",
+					},
 				},
 				name: "meta.define-function-signature",
 				patterns: [
@@ -106,92 +107,92 @@ const repository = {
 						end: "(\\))",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.function-argument.start.clarity"
+								name: "punctuation.function-argument.start.clarity",
 							},
 							"2": {
-								name: "variable.parameter.clarity"
-							}
+								name: "variable.parameter.clarity",
+							},
 						},
 						endCaptures: {
 							"1": {
-								name: "punctuation.function-argument.end.clarity"
-							}
+								name: "punctuation.function-argument.end.clarity",
+							},
 						},
 						name: "meta.function-argument",
 						patterns: [
 							{
-								include: "#data-type"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "#data-type",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	"define-fungible-token": {
 		match: "(?x) (\\() \\s* (define-fungible-token) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) (?:\\s+(u\\d+))?",
 		captures: {
 			"1": {
-				name: "punctuation.define-fungible-token.start.clarity"
+				name: "punctuation.define-fungible-token.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-fungible-token.clarity"
+				name: "keyword.declaration.define-fungible-token.clarity",
 			},
 			"3": {
-				name: "entity.name.fungible-token-name.clarity variable.other.clarity"
+				name: "entity.name.fungible-token-name.clarity variable.other.clarity",
 			},
 			"4": {
-				name: "constant.numeric.fungible-token-total-supply.clarity"
+				name: "constant.numeric.fungible-token-total-supply.clarity",
 			},
 			"5": {
-				name: "punctuation.define-fungible-token.end.clarity"
-			}
-		}
+				name: "punctuation.define-fungible-token.end.clarity",
+			},
+		},
 	},
 	"define-non-fungible-token": {
 		begin: "(?x) (\\() \\s* (define-non-fungible-token) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.define-non-fungible-token.start.clarity"
+				name: "punctuation.define-non-fungible-token.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-non-fungible-token.clarity"
+				name: "keyword.declaration.define-non-fungible-token.clarity",
 			},
 			"3": {
-				name: "entity.name.non-fungible-token-name.clarity variable.other.clarity"
-			}
+				name: "entity.name.non-fungible-token-name.clarity variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.define-non-fungible-token.end.clarity"
-			}
+				name: "punctuation.define-non-fungible-token.end.clarity",
+			},
 		},
 		name: "meta.define-non-fungible-token",
 		patterns: [
 			{
-				include: "#data-type"
-			}
-		]
+				include: "#data-type",
+			},
+		],
 	},
 	"define-trait": {
 		begin: "(?x) (\\() \\s* (define-trait) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.define-trait.start.clarity"
+				name: "punctuation.define-trait.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-trait.clarity"
+				name: "keyword.declaration.define-trait.clarity",
 			},
 			"3": {
-				name: "entity.name.trait-name.clarity variable.other.clarity"
-			}
+				name: "entity.name.trait-name.clarity variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.define-trait.end.clarity"
-			}
+				name: "punctuation.define-trait.end.clarity",
+			},
 		},
 		name: "meta.define-trait",
 		patterns: [
@@ -200,202 +201,202 @@ const repository = {
 				end: "(\\))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.define-trait-body.start.clarity"
-					}
+						name: "punctuation.define-trait-body.start.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.define-trait-body.end.clarity"
-					}
+						name: "punctuation.define-trait-body.end.clarity",
+					},
 				},
 				name: "meta.define-trait-body",
 				patterns: [
 					{
-						include: "#expression"
+						include: "#expression",
 					},
 					{
 						begin: "(?x) (\\() \\s* ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]+\\??) \\s+",
 						end: "(\\))",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.trait-function.start.clarity"
+								name: "punctuation.trait-function.start.clarity",
 							},
 							"2": {
-								name: "entity.name.trait-function-name.clarity variable.other.clarity"
-							}
+								name: "entity.name.trait-function-name.clarity variable.other.clarity",
+							},
 						},
 						endCaptures: {
 							"1": {
-								name: "punctuation.trait-function.end.clarity"
-							}
+								name: "punctuation.trait-function.end.clarity",
+							},
 						},
 						name: "meta.trait-function",
 						patterns: [
 							{
-								include: "#data-type"
+								include: "#data-type",
 							},
 							{
 								begin: "(?x) (\\() \\s*",
 								end: "(\\))",
 								beginCaptures: {
 									"1": {
-										name: "punctuation.trait-function-args.start.clarity"
-									}
+										name: "punctuation.trait-function-args.start.clarity",
+									},
 								},
 								endCaptures: {
 									"1": {
-										name: "punctuation.trait-function-args.end.clarity"
-									}
+										name: "punctuation.trait-function-args.end.clarity",
+									},
 								},
 								name: "meta.trait-function-args",
 								patterns: [
 									{
-										include: "#data-type"
-									}
-								]
-							}
-						]
-					}
-				]
-			}
-		]
+										include: "#data-type",
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	"use-trait": {
 		begin: "(?x) (\\() \\s* (use-trait) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.use-trait.start.clarity"
+				name: "punctuation.use-trait.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.use-trait.clarity"
+				name: "keyword.declaration.use-trait.clarity",
 			},
 			"3": {
-				name: "entity.name.trait-alias.clarity variable.other.clarity"
-			}
+				name: "entity.name.trait-alias.clarity variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.use-trait.end.clarity"
-			}
+				name: "punctuation.use-trait.end.clarity",
+			},
 		},
 		name: "meta.use-trait",
 		patterns: [
 			{
-				include: "#literal"
-			}
-		]
+				include: "#literal",
+			},
+		],
 	},
 	"define-constant": {
 		begin: "(?x) (\\() \\s* (define-constant) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.define-constant.start.clarity"
+				name: "punctuation.define-constant.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-constant.clarity"
+				name: "keyword.declaration.define-constant.clarity",
 			},
 			"3": {
-				name: "entity.name.constant-name.clarity variable.other.clarity"
-			}
+				name: "entity.name.constant-name.clarity variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.define-constant.end.clarity"
-			}
+				name: "punctuation.define-constant.end.clarity",
+			},
 		},
 		name: "meta.define-constant",
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"define-data-var": {
 		begin: "(?x) (\\() \\s* (define-data-var) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.define-data-var.start.clarity"
+				name: "punctuation.define-data-var.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-data-var.clarity"
+				name: "keyword.declaration.define-data-var.clarity",
 			},
 			"3": {
-				name: "entity.name.data-var-name.clarity variable.other.clarity"
-			}
+				name: "entity.name.data-var-name.clarity variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.define-data-var.end.clarity"
-			}
+				name: "punctuation.define-data-var.end.clarity",
+			},
 		},
 		name: "meta.define-data-var",
 		patterns: [
 			{
-				include: "#data-type"
+				include: "#data-type",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"define-map": {
 		begin: "(?x) (\\() \\s* (define-map) \\s+ ([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.define-map.start.clarity"
+				name: "punctuation.define-map.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.define-map.clarity"
+				name: "keyword.declaration.define-map.clarity",
 			},
 			"3": {
-				name: "entity.name.map-name.clarity variable.other.clarity"
-			}
+				name: "entity.name.map-name.clarity variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.define-map.end.clarity"
-			}
+				name: "punctuation.define-map.end.clarity",
+			},
 		},
 		name: "meta.define-map",
 		patterns: [
 			{
-				include: "#data-type"
+				include: "#data-type",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	literal: {
 		patterns: [
 			{
-				include: "#number-literal"
+				include: "#number-literal",
 			},
 			{
-				include: "#bool-literal"
+				include: "#bool-literal",
 			},
 			{
-				include: "#string-literal"
+				include: "#string-literal",
 			},
 			{
-				include: "#tuple-literal"
+				include: "#tuple-literal",
 			},
 			{
-				include: "#principal-literal"
+				include: "#principal-literal",
 			},
 			{
-				include: "#list-literal"
+				include: "#list-literal",
 			},
 			{
-				include: "#optional-literal"
+				include: "#optional-literal",
 			},
 			{
-				include: "#response-literal"
-			}
+				include: "#response-literal",
+			},
 		],
 		repository: {
 			"number-literal": {
@@ -403,263 +404,263 @@ const repository = {
 					{
 						comment: "unsigned integers",
 						name: "constant.numeric.uint.clarity",
-						match: "\\bu\\d+\\b"
+						match: "\\bu\\d+\\b",
 					},
 					{
 						comment: "signed integers",
 						name: "constant.numeric.int.clarity",
-						match: "\\b\\d+\\b"
+						match: "\\b\\d+\\b",
 					},
 					{
 						comment: "hexadecimals",
 						name: "constant.numeric.hex.clarity",
-						match: "\\b0x[0-9a-f]*\\b"
-					}
-				]
+						match: "\\b0x[0-9a-f]*\\b",
+					},
+				],
 			},
 			"bool-literal": {
 				name: "constant.language.bool.clarity",
-				match: "\\b(true|false)\\b"
+				match: "\\b(true|false)\\b",
 			},
 			"string-literal": {
 				patterns: [
 					{
 						name: "string.quoted.double.clarity",
-						begin: "(u?)(\")",
+						begin: '(u?)(")',
 						beginCaptures: {
 							"1": {
-								name: "string.quoted.utf8.clarity"
+								name: "string.quoted.utf8.clarity",
 							},
 							"2": {
-								name: "punctuation.definition.string.begin.clarity"
-							}
+								name: "punctuation.definition.string.begin.clarity",
+							},
 						},
-						end: "\"",
+						end: '"',
 						endCaptures: {
 							"1": {
-								name: "punctuation.definition.string.end.clarity"
-							}
-						}
-					}
-				]
+								name: "punctuation.definition.string.end.clarity",
+							},
+						},
+					},
+				],
 			},
 			"tuple-literal": {
 				begin: "(\\{)",
 				end: "(\\})",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.tuple.start.clarity"
-					}
+						name: "punctuation.tuple.start.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.tuple.end.clarity"
-					}
+						name: "punctuation.tuple.end.clarity",
+					},
 				},
 				name: "meta.tuple",
 				patterns: [
 					{
 						name: "entity.name.tag.tuple-key.clarity",
-						match: "([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*)(?=:)"
+						match: "([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*)(?=:)",
 					},
 					{
-						include: "#expression"
+						include: "#expression",
 					},
 					{
-						include: "#user-func"
-					}
-				]
+						include: "#user-func",
+					},
+				],
 			},
 			"principal-literal": {
 				name: "constant.other.principal.clarity",
-				match: "(?x)  \\'[0-9A-Z]{28,41}(:?\\.[a-zA-Z][a-zA-Z0-9\\-]+){0,2} | (\\.[a-zA-Z][a-zA-Z0-9\\-]*){1,2} (?=[\\s(){},]|$)"
+				match: "(?x)  \\'[0-9A-Z]{28,41}(:?\\.[a-zA-Z][a-zA-Z0-9\\-]+){0,2} | (\\.[a-zA-Z][a-zA-Z0-9\\-]*){1,2} (?=[\\s(){},]|$)",
 			},
 			"list-literal": {
 				begin: "(?x) (\\() \\s* (list) \\s+",
 				end: "(\\))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.list.start.clarity"
+						name: "punctuation.list.start.clarity",
 					},
 					"2": {
-						name: "entity.name.type.list.clarity"
-					}
+						name: "entity.name.type.list.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						names: "punctuation.list.end.clarity"
-					}
+						names: "punctuation.list.end.clarity",
+					},
 				},
 				name: "meta.list",
 				patterns: [
 					{
-						include: "#expression"
+						include: "#expression",
 					},
 					{
-						include: "#user-func"
-					}
-				]
+						include: "#user-func",
+					},
+				],
 			},
 			"optional-literal": {
 				patterns: [
 					{
 						match: "\\b(none)\\b",
-						name: "constant.language.none.clarity"
+						name: "constant.language.none.clarity",
 					},
 					{
 						begin: "(?x) (\\() \\s* (some) \\s+",
 						end: "(\\))",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.some.start.clarity"
+								name: "punctuation.some.start.clarity",
 							},
 							"2": {
-								name: "constant.language.some.clarity"
-							}
+								name: "constant.language.some.clarity",
+							},
 						},
 						endCaptures: {
 							"1": {
-								name: "punctuation.some.end.clarity"
-							}
+								name: "punctuation.some.end.clarity",
+							},
 						},
 						name: "meta.some",
 						patterns: [
 							{
-								include: "#expression"
-							}
-						]
-					}
-				]
+								include: "#expression",
+							},
+						],
+					},
+				],
 			},
 			"response-literal": {
 				begin: "(?x) (\\() \\s* (ok|err) \\s+",
 				end: "(\\))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.response.start.clarity"
+						name: "punctuation.response.start.clarity",
 					},
 					"2": {
-						name: "constant.language.ok-err.clarity"
-					}
+						name: "constant.language.ok-err.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.response.end.clarity"
-					}
+						name: "punctuation.response.end.clarity",
+					},
 				},
 				name: "meta.response",
 				patterns: [
 					{
-						include: "#expression"
+						include: "#expression",
 					},
 					{
-						include: "#user-func"
-					}
-				]
-			}
-		}
+						include: "#user-func",
+					},
+				],
+			},
+		},
 	},
 	"data-type": {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				comment: "numerics",
 				name: "entity.name.type.numeric.clarity",
-				match: "\\b(uint|int)\\b"
+				match: "\\b(uint|int)\\b",
 			},
 			{
 				comment: "principal",
 				name: "entity.name.type.principal.clarity",
-				match: "\\b(principal)\\b"
+				match: "\\b(principal)\\b",
 			},
 			{
 				comment: "bool",
 				name: "entity.name.type.bool.clarity",
-				match: "\\b(bool)\\b"
+				match: "\\b(bool)\\b",
 			},
 			{
 				match: "(?x) (\\() \\s* (?:(string-ascii|string-utf8)\\s+(\\d+)) \\s* (\\))",
 				captures: {
 					"1": {
-						name: "punctuation.string-def.start.clarity"
+						name: "punctuation.string-def.start.clarity",
 					},
 					"2": {
-						name: "entity.name.type.string.clarity"
+						name: "entity.name.type.string.clarity",
 					},
 					"3": {
-						name: "constant.numeric.string-len.clarity"
+						name: "constant.numeric.string-len.clarity",
 					},
 					"4": {
-						name: "punctuation.string-def.end.clarity"
-					}
-				}
+						name: "punctuation.string-def.end.clarity",
+					},
+				},
 			},
 			{
 				match: "(?x) (\\() \\s* (buff)\\s+(\\d+)\\s* (\\))",
 				captures: {
 					"1": {
-						name: "punctuation.buff-def.start.clarity"
+						name: "punctuation.buff-def.start.clarity",
 					},
 					"2": {
-						name: "entity.name.type.buff.clarity"
+						name: "entity.name.type.buff.clarity",
 					},
 					"3": {
-						name: "constant.numeric.buf-len.clarity"
+						name: "constant.numeric.buf-len.clarity",
 					},
 					"4": {
-						name: "punctuation.buff-def.end.clarity"
-					}
-				}
+						name: "punctuation.buff-def.end.clarity",
+					},
+				},
 			},
 			{
 				comment: "optional",
 				begin: "(?x) (\\() \\s* (optional)\\s+",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.optional-def.start.clarity"
+						name: "punctuation.optional-def.start.clarity",
 					},
 					"2": {
-						name: "storage.type.modifier"
-					}
+						name: "storage.type.modifier",
+					},
 				},
 				end: "(\\))",
 				endCaptures: {
 					"1": {
-						name: "punctuation.optional-def.end.clarity"
-					}
+						name: "punctuation.optional-def.end.clarity",
+					},
 				},
 				name: "meta.optional-def",
 				patterns: [
 					{
-						include: "#data-type"
-					}
-				]
+						include: "#data-type",
+					},
+				],
 			},
 			{
 				comment: "response",
 				begin: "(?x) (\\() \\s* (response)\\s+",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.response-def.start.clarity"
+						name: "punctuation.response-def.start.clarity",
 					},
 					"2": {
-						name: "storage.type.modifier"
-					}
+						name: "storage.type.modifier",
+					},
 				},
 				end: "(\\))",
 				endCaptures: {
 					"1": {
-						name: "punctuation.response-def.end.clarity"
-					}
+						name: "punctuation.response-def.end.clarity",
+					},
 				},
 				name: "meta.response-def",
 				patterns: [
 					{
-						include: "#data-type"
-					}
-				]
+						include: "#data-type",
+					},
+				],
 			},
 			{
 				comment: "list",
@@ -667,78 +668,78 @@ const repository = {
 				end: "(\\))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.list-def.start.clarity"
+						name: "punctuation.list-def.start.clarity",
 					},
 					"2": {
-						name: "entity.name.type.list.clarity"
+						name: "entity.name.type.list.clarity",
 					},
 					"3": {
-						name: "constant.numeric.list-len.clarity"
-					}
+						name: "constant.numeric.list-len.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.list-def.end.clarity"
-					}
+						name: "punctuation.list-def.end.clarity",
+					},
 				},
 				name: "meta.list-def",
 				patterns: [
 					{
-						include: "#data-type"
-					}
-				]
+						include: "#data-type",
+					},
+				],
 			},
 			{
 				begin: "(\\{)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.tuple-def.start.clarity"
-					}
+						name: "punctuation.tuple-def.start.clarity",
+					},
 				},
 				end: "(\\})",
 				endCaptures: {
 					"1": {
-						name: "punctuation.tuple-def.end.clarity"
-					}
+						name: "punctuation.tuple-def.end.clarity",
+					},
 				},
 				name: "meta.tuple-def",
 				patterns: [
 					{
 						name: "entity.name.tag.tuple-data-type-key.clarity",
-						match: "([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*)(?=:)"
+						match: "([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*)(?=:)",
 					},
 					{
-						include: "#data-type"
-					}
-				]
-			}
-		]
+						include: "#data-type",
+					},
+				],
+			},
+		],
 	},
 	"built-in-func": {
 		begin: "(?x) (\\() \\s* (\\-|\\+|<\\=|>\\=|<|>|\\*|/|and|append|as-contract|as-max-len\\?|asserts!|at-block|begin|concat|contract-call\\?|contract-of|default-to|element-at|filter|fold|ft-burn\\?|ft-get-balance|ft-get-supply|ft-mint\\?|ft-transfer\\?|get-block-info\\?|hash160|if|impl-trait|index-of|is-eq|is-err|is-none|is-ok|is-some|keccak256|len|log2|map|match|merge|mod|nft-burn\\?|nft-get-owner\\?|nft-mint\\?|nft-transfer\\?|not|or|pow|principal-of\\?|print|secp256k1-recover\\?|secp256k1-verify|sha256|sha512|sha512/256|sqrti|stx-burn\\?|stx-get-balance|stx-transfer\\?|to-int|to-uint|try!|unwrap-err-panic|unwrap-err!|unwrap-panic|unwrap!|xor) \\s+",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.built-in-function.start.clarity"
+				name: "punctuation.built-in-function.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.built-in-function.clarity"
-			}
+				name: "keyword.declaration.built-in-function.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.built-in-function.end.clarity"
-			}
+				name: "punctuation.built-in-function.end.clarity",
+			},
 		},
 		name: "meta.built-in-function",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#user-func"
-			}
-		]
+				include: "#user-func",
+			},
+		],
 	},
 	"get-set-func": {
 		name: "meta.get-set-func",
@@ -746,62 +747,62 @@ const repository = {
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.get-set-func.start.clarity"
+				name: "punctuation.get-set-func.start.clarity",
 			},
 			"2": {
-				name: "keyword.control.clarity"
+				name: "keyword.control.clarity",
 			},
 			"3": {
-				name: "variable.other.clarity"
-			}
+				name: "variable.other.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.get-set-func.end.clarity"
-			}
+				name: "punctuation.get-set-func.end.clarity",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	"let-func": {
 		begin: "(?x) (\\() \\s* (let) \\s*",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.let-function.start.clarity"
+				name: "punctuation.let-function.start.clarity",
 			},
 			"2": {
-				name: "keyword.declaration.let-function.clarity"
-			}
+				name: "keyword.declaration.let-function.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.let-function.end.clarity"
-			}
+				name: "punctuation.let-function.end.clarity",
+			},
 		},
 		name: "meta.let-function",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#user-func"
+				include: "#user-func",
 			},
 			{
 				begin: "(?x) (\\() \\s*",
 				end: "(\\))",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.let-var.start.clarity"
-					}
+						name: "punctuation.let-var.start.clarity",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "punctuation.let-var.end.clarity"
-					}
+						name: "punctuation.let-var.end.clarity",
+					},
 				},
 				name: "meta.let-var",
 				patterns: [
@@ -810,60 +811,60 @@ const repository = {
 						end: "(\\))",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.let-local-var.start.clarity"
+								name: "punctuation.let-local-var.start.clarity",
 							},
 							"2": {
-								name: "entity.name.let-local-var-name.clarity variable.parameter.clarity"
-							}
+								name: "entity.name.let-local-var-name.clarity variable.parameter.clarity",
+							},
 						},
 						endCaptures: {
 							"1": {
-								name: "punctuation.let-local-var.end.clarity"
-							}
+								name: "punctuation.let-local-var.end.clarity",
+							},
 						},
 						name: "meta.let-local-var",
 						patterns: [
 							{
-								include: "#expression"
+								include: "#expression",
 							},
 							{
-								include: "#user-func"
-							}
-						]
+								include: "#user-func",
+							},
+						],
 					},
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	"user-func": {
 		begin: "(?x) (\\() \\s* (([a-zA-Z][a-zA-Z0-9_\\-\\!\\?]*)) \\s*",
 		end: "(\\))",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.user-function.start.clarity"
+				name: "punctuation.user-function.start.clarity",
 			},
 			"2": {
-				name: "entity.name.function.clarity"
-			}
+				name: "entity.name.function.clarity",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.user-function.end.clarity"
-			}
+				name: "punctuation.user-function.end.clarity",
+			},
 		},
 		name: "meta.user-function",
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "$self"
-			}
-		]
-	}
+				include: "$self",
+			},
+		],
+	},
 };
 const clarity_tmLanguage = {
 	$schema: $schema,
@@ -871,7 +872,15 @@ const clarity_tmLanguage = {
 	scopeName: scopeName,
 	uuid: uuid,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { $schema, clarity_tmLanguage as default, name, patterns, repository, scopeName, uuid };
+export {
+	$schema,
+	clarity_tmLanguage as default,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	uuid,
+};

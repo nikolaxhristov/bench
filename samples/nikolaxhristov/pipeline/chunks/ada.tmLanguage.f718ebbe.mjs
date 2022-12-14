@@ -1,24 +1,25 @@
-const $schema = "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+const $schema =
+	"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 const name = "ada";
 const patterns = [
 	{
-		include: "#library_unit"
+		include: "#library_unit",
 	},
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#use_clause"
+		include: "#use_clause",
 	},
 	{
-		include: "#with_clause"
+		include: "#with_clause",
 	},
 	{
-		include: "#pragma"
+		include: "#pragma",
 	},
 	{
-		include: "#keyword"
-	}
+		include: "#keyword",
+	},
 ];
 const repository = {
 	abort_statement: {
@@ -27,24 +28,24 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "entity.name.task.ada",
-				match: "\\b(\\w|\\d|\\.|_)+\\b"
-			}
-		]
+				match: "\\b(\\w|\\d|\\.|_)+\\b",
+			},
+		],
 	},
 	accept_statement: {
 		name: "meta.statement.accept.ada",
@@ -52,22 +53,22 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s*(\\s\\2)?\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "entity.name.accept.ada"
-			}
+				name: "entity.name.accept.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "entity.name.accept.ada"
+				name: "entity.name.accept.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -75,37 +76,37 @@ const repository = {
 				end: "(?i)\\b(?=end)\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#statement"
-					}
-				]
+						include: "#statement",
+					},
+				],
 			},
 			{
-				include: "#parameter_profile"
-			}
-		]
+				include: "#parameter_profile",
+			},
+		],
 	},
 	access_definition: {
 		name: "meta.declaration.access.definition.ada",
 		match: "(?i)(not\\s+null\\s+)?(access)\\s+(constant\\s+)?((?:\\w|\\d|\\.|_)+)\\b",
 		captures: {
 			"1": {
-				name: "storage.visibility.ada"
+				name: "storage.visibility.ada",
 			},
 			"2": {
-				name: "storage.visibility.ada"
+				name: "storage.visibility.ada",
 			},
 			"3": {
-				name: "storage.modifier.ada"
+				name: "storage.modifier.ada",
 			},
 			"4": {
-				name: "entity.name.type.ada"
-			}
-		}
+				name: "entity.name.type.ada",
+			},
+		},
 	},
 	access_type_definition: {
 		name: "meta.declaration.type.definition.access.ada",
@@ -113,47 +114,47 @@ const repository = {
 		end: "(?i)(?=(with|;))",
 		beginCaptures: {
 			"1": {
-				name: "storage.visibility.ada"
+				name: "storage.visibility.ada",
 			},
 			"2": {
-				name: "storage.visibility.ada"
-			}
+				name: "storage.visibility.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "storage.visibility.ada",
-				match: "(?i)\\ball\\b"
+				match: "(?i)\\ball\\b",
 			},
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\bconstant\\b"
+				match: "(?i)\\bconstant\\b",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	actual_parameter_part: {
 		begin: "\\(",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
-				include: "#parameter_association"
-			}
-		]
+				include: "#parameter_association",
+			},
+		],
 	},
 	adding_operator: {
 		name: "keyword.operator.adding.ada",
-		match: "(\\+|-|\\&)"
+		match: "(\\+|-|\\&)",
 	},
 	array_aggregate: {
 		name: "meta.definition.array.aggregate.ada",
@@ -161,44 +162,44 @@ const repository = {
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
-				include: "#positional_array_aggregate"
+				include: "#positional_array_aggregate",
 			},
 			{
-				include: "#array_component_association"
-			}
-		]
+				include: "#array_component_association",
+			},
+		],
 	},
 	array_component_association: {
 		name: "meta.definition.array.aggregate.component.ada",
 		match: "(?i)\\b([^(=>)]*)\\s*(=>)\\s*([^,\\)]+)",
 		captures: {
 			"1": {
-				name: "variable.name.ada"
+				name: "variable.name.ada",
 			},
 			"2": {
-				name: "keyword.other.ada"
+				name: "keyword.other.ada",
 			},
 			"3": {
 				patterns: [
 					{
 						name: "keyword.modifier.unknown.ada",
-						match: "<>"
+						match: "<>",
 					},
 					{
-						include: "#expression"
-					}
-				]
-			}
-		}
+						include: "#expression",
+					},
+				],
+			},
+		},
 	},
 	array_dimensions: {
 		name: "meta.declaration.type.definition.array.dimensions.ada",
@@ -206,37 +207,37 @@ const repository = {
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\brange\\b"
+				match: "(?i)\\brange\\b",
 			},
 			{
 				name: "keyword.modifier.unknown.ada",
-				match: "<>"
+				match: "<>",
 			},
 			{
 				name: "keyword.ada",
-				match: "\\.\\."
+				match: "\\.\\.",
 			},
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
 				patterns: [
 					{
-						include: "#subtype_mark"
-					}
-				]
-			}
-		]
+						include: "#subtype_mark",
+					},
+				],
+			},
+		],
 	},
 	array_type_definition: {
 		name: "meta.declaration.type.definition.array.ada",
@@ -244,28 +245,28 @@ const repository = {
 		end: "(?i)(?=(with|;))",
 		beginCaptures: {
 			"0": {
-				name: "storage.modifier.ada"
-			}
+				name: "storage.modifier.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#array_dimensions"
+				include: "#array_dimensions",
 			},
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\bof\\b"
+				match: "(?i)\\bof\\b",
 			},
 			{
 				name: "storage.visibility.ada",
-				match: "(?i)\\baliased\\b"
+				match: "(?i)\\baliased\\b",
 			},
 			{
-				include: "#access_definition"
+				include: "#access_definition",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	aspect_clause: {
 		name: "meta.aspect.clause.ada",
@@ -273,26 +274,26 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#subtype_mark"
-					}
-				]
+						include: "#subtype_mark",
+					},
+				],
 			},
 			"3": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"5": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -300,33 +301,33 @@ const repository = {
 				end: "(?=;)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.ada"
-					}
+						name: "punctuation.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#record_representation_clause"
+						include: "#record_representation_clause",
 					},
 					{
-						include: "#array_aggregate"
+						include: "#array_aggregate",
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?i)(?<=for)",
 				end: "(?i)(?=use)",
 				captures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
@@ -335,22 +336,22 @@ const repository = {
 							"1": {
 								patterns: [
 									{
-										include: "#subtype_mark"
-									}
-								]
+										include: "#subtype_mark",
+									},
+								],
 							},
 							"2": {
 								patterns: [
 									{
-										include: "#attribute"
-									}
-								]
-							}
-						}
-					}
-				]
-			}
-		]
+										include: "#attribute",
+									},
+								],
+							},
+						},
+					},
+				],
+			},
+		],
 	},
 	aspect_definition: {
 		name: "meta.aspect.definition.ada",
@@ -358,29 +359,29 @@ const repository = {
 		end: "(?i)(?=(,|;|\\bis\\b))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.other.ada"
-			}
+				name: "keyword.other.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	aspect_mark: {
 		name: "meta.aspect.mark.ada",
 		match: "(?i)\\b((?:\\w|\\d|\\.|_)+)(?:(')(class))?\\b",
 		captures: {
 			"1": {
-				name: "keyword.control.directive.ada"
+				name: "keyword.control.directive.ada",
 			},
 			"2": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"3": {
-				name: "entity.other.attribute-name.ada"
-			}
-		}
+				name: "entity.other.attribute-name.ada",
+			},
+		},
 	},
 	aspect_specification: {
 		name: "meta.aspect.specification.ada",
@@ -388,65 +389,65 @@ const repository = {
 		end: "(?i)(?=(;|\\bis\\b))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
 				match: "(?i)\\b(null)\\s+(record)\\b",
 				captures: {
 					"1": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"2": {
-						name: "storage.modifier.ada"
-					}
-				}
+						name: "storage.modifier.ada",
+					},
+				},
 			},
 			{
 				begin: "(?i)\\brecord\\b",
 				end: "(?i)\\b(end)\\s+(record)\\b",
 				beginCaptures: {
 					"0": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					"2": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#component_item"
-					}
-				]
+						include: "#component_item",
+					},
+				],
 			},
 			{
 				match: "(?i)\\bprivate\\b",
 				captures: {
 					"0": {
-						name: "storage.visibility.ada"
-					}
-				}
+						name: "storage.visibility.ada",
+					},
+				},
 			},
 			{
-				include: "#aspect_definition"
+				include: "#aspect_definition",
 			},
 			{
-				include: "#aspect_mark"
+				include: "#aspect_mark",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	assignment_statement: {
 		name: "meta.statement.assignment.ada",
@@ -457,134 +458,134 @@ const repository = {
 				patterns: [
 					{
 						match: "((?:\\w|\\d|\\.|_)+)",
-						name: "variable.name.ada"
+						name: "variable.name.ada",
 					},
 					{
 						begin: "\\(",
 						end: "\\)",
 						captures: {
 							"0": {
-								name: "punctuation.ada"
-							}
+								name: "punctuation.ada",
+							},
 						},
 						patterns: [
 							{
-								include: "#expression"
-							}
-						]
-					}
-				]
+								include: "#expression",
+							},
+						],
+					},
+				],
 			},
 			"2": {
-				name: "keyword.operator.new.ada"
-			}
+				name: "keyword.operator.new.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
+				include: "#expression",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	attribute: {
 		name: "meta.attribute.ada",
 		match: "(')((?:\\w|\\d|_)+)\\b",
 		captures: {
 			"1": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"2": {
-				name: "entity.other.attribute-name.ada"
-			}
-		}
+				name: "entity.other.attribute-name.ada",
+			},
+		},
 	},
 	based_literal: {
 		name: "constant.numeric.ada",
 		match: "(?i)(\\d(?:(_)?\\d)*#)[0-9a-f](?:(_)?[0-9a-f])*(?:(\\.)[0-9a-f](?:(_)?[0-9a-f])*)?(#)([eE](?:\\+|\\-)?\\d(?:_?\\d)*)?",
 		captures: {
 			"1": {
-				name: "constant.numeric.base.ada"
+				name: "constant.numeric.base.ada",
 			},
 			"2": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"4": {
-				name: "punctuation.radix-point.ada"
+				name: "punctuation.radix-point.ada",
 			},
 			"5": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"6": {
-				name: "constant.numeric.base.ada"
+				name: "constant.numeric.base.ada",
 			},
 			"7": {
 				patterns: [
 					{
-						include: "#exponent_part"
-					}
-				]
-			}
-		}
+						include: "#exponent_part",
+					},
+				],
+			},
+		},
 	},
 	basic_declarative_item: {
 		patterns: [
 			{
-				include: "#basic_declaration"
+				include: "#basic_declaration",
 			},
 			{
-				include: "#aspect_clause"
+				include: "#aspect_clause",
 			},
 			{
-				include: "#use_clause"
+				include: "#use_clause",
 			},
 			{
-				include: "#keyword"
-			}
-		]
+				include: "#keyword",
+			},
+		],
 	},
 	basic_declaration: {
 		patterns: [
 			{
-				include: "#type_declaration"
+				include: "#type_declaration",
 			},
 			{
-				include: "#subtype_declaration"
+				include: "#subtype_declaration",
 			},
 			{
-				include: "#exception_declaration"
+				include: "#exception_declaration",
 			},
 			{
-				include: "#object_declaration"
+				include: "#object_declaration",
 			},
 			{
-				include: "#single_protected_declaration"
+				include: "#single_protected_declaration",
 			},
 			{
-				include: "#single_task_declaration"
+				include: "#single_task_declaration",
 			},
 			{
-				include: "#subprogram_specification"
+				include: "#subprogram_specification",
 			},
 			{
-				include: "#package_declaration"
+				include: "#package_declaration",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	block_statement: {
 		name: "meta.statement.block.ada",
@@ -592,19 +593,19 @@ const repository = {
 		end: "(?i)\\b(end)(\\s+(?:\\w|\\d|_)+)?\\s*(;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.label.ada"
+				name: "entity.name.label.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -612,44 +613,44 @@ const repository = {
 				end: "(?i)\\bbegin\\b",
 				endCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#body"
+						include: "#body",
 					},
 					{
-						include: "#basic_declarative_item"
-					}
-				]
+						include: "#basic_declarative_item",
+					},
+				],
 			},
 			{
 				begin: "(?i)(?<=begin)",
 				end: "(?i)(?=end)",
 				patterns: [
 					{
-						include: "#statement"
-					}
-				]
-			}
-		]
+						include: "#statement",
+					},
+				],
+			},
+		],
 	},
 	body: {
 		patterns: [
 			{
-				include: "#subprogram_body"
+				include: "#subprogram_body",
 			},
 			{
-				include: "#package_body"
+				include: "#package_body",
 			},
 			{
-				include: "#task_body"
+				include: "#task_body",
 			},
 			{
-				include: "#protected_body"
-			}
-		]
+				include: "#protected_body",
+			},
+		],
 	},
 	case_statement: {
 		name: "meta.statement.case.ada",
@@ -657,19 +658,19 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(case)\\s*(;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -677,14 +678,14 @@ const repository = {
 				end: "(?i)\\bis\\b",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				name: "meta.statement.case.alternative.ada",
@@ -692,32 +693,32 @@ const repository = {
 				end: "=>",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.ada"
-					}
+						name: "punctuation.ada",
+					},
 				},
 				patterns: [
 					{
 						name: "keyword.modifier.unknown.ada",
-						match: "(?i)\\bothers\\b"
+						match: "(?i)\\bothers\\b",
 					},
 					{
 						name: "punctuation.ada",
-						match: "\\|"
+						match: "\\|",
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#statement"
-			}
-		]
+				include: "#statement",
+			},
+		],
 	},
 	character_literal: {
 		name: "string.quoted.single.ada",
@@ -727,72 +728,72 @@ const repository = {
 				patterns: [
 					{
 						name: "punctuation.definition.string.ada",
-						match: "'"
-					}
-				]
-			}
-		}
+						match: "'",
+					},
+				],
+			},
+		},
 	},
 	comment: {
 		patterns: [
 			{
-				include: "#preprocessor"
+				include: "#preprocessor",
 			},
 			{
-				include: "#comment-section"
+				include: "#comment-section",
 			},
 			{
-				include: "#comment-doc"
+				include: "#comment-doc",
 			},
 			{
-				include: "#comment-line"
-			}
-		]
+				include: "#comment-line",
+			},
+		],
 	},
 	"comment-doc": {
 		name: "comment.block.documentation.ada",
 		match: "(--)\\s*(@)(\\w+)\\s+(.*)$",
 		captures: {
 			"1": {
-				name: "comment.line.double-dash.ada"
+				name: "comment.line.double-dash.ada",
 			},
 			"2": {
-				name: "punctuation.definition.tag.ada"
+				name: "punctuation.definition.tag.ada",
 			},
 			"3": {
-				name: "entity.name.tag.ada"
+				name: "entity.name.tag.ada",
 			},
 			"4": {
-				name: "comment.line.double-dash.ada"
-			}
-		}
+				name: "comment.line.double-dash.ada",
+			},
+		},
 	},
 	"comment-line": {
 		name: "comment.line.double-dash.ada",
-		match: "--.*$"
+		match: "--.*$",
 	},
 	"comment-section": {
 		name: "comment.line.double-dash.ada",
 		match: "--\\s*([^-].*?[^-])\\s*--\\s*$",
 		captures: {
 			"1": {
-				name: "entity.name.section.ada"
-			}
-		}
+				name: "entity.name.section.ada",
+			},
+		},
 	},
 	component_clause: {
 		name: "meta.aspect.clause.record.representation.component.ada",
 		begin: "(?i)\\b((?:\\w|\\d|_)+)\\b",
 		beginCaptures: {
 			"0": {
-				name: "variable.name.ada"
-			}
+				name: "variable.name.ada",
+			},
 		},
 		end: ";",
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -800,19 +801,19 @@ const repository = {
 				end: "(?i)\\b(?=range)\\b",
 				beginCaptures: {
 					"0": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#range_constraint"
-			}
-		]
+				include: "#range_constraint",
+			},
+		],
 	},
 	component_declaration: {
 		name: "meta.declaration.type.definition.record.component.ada",
@@ -823,88 +824,88 @@ const repository = {
 				patterns: [
 					{
 						name: "punctuation.ada",
-						match: ","
+						match: ",",
 					},
 					{
 						name: "variable.name.ada",
-						match: "\\b(\\w|\\d|_)+\\b"
-					}
-				]
+						match: "\\b(\\w|\\d|_)+\\b",
+					},
+				],
 			},
 			"2": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				patterns: [
 					{
 						name: "keyword.operator.new.ada",
-						match: ":="
+						match: ":=",
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#component_definition"
-			}
-		]
+				include: "#component_definition",
+			},
+		],
 	},
 	component_definition: {
 		patterns: [
 			{
 				name: "storage.visibility.ada",
-				match: "(?i)\\baliased\\b"
+				match: "(?i)\\baliased\\b",
 			},
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\brange\\b"
+				match: "(?i)\\brange\\b",
 			},
 			{
 				name: "keyword.ada",
-				match: "\\.\\."
+				match: "\\.\\.",
 			},
 			{
-				include: "#access_definition"
+				include: "#access_definition",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	component_item: {
 		patterns: [
 			{
-				include: "#component_declaration"
+				include: "#component_declaration",
 			},
 			{
-				include: "#variant_part"
+				include: "#variant_part",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#aspect_clause"
+				include: "#aspect_clause",
 			},
 			{
 				match: "(?i)\\b(null)\\s*(;)",
 				captures: {
 					"1": {
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					"2": {
-						name: "punctuation.ada"
-					}
-				}
-			}
-		]
+						name: "punctuation.ada",
+					},
+				},
+			},
+		],
 	},
 	composite_constraint: {
 		name: "meta.declaration.constraint.composite.ada",
@@ -912,82 +913,82 @@ const repository = {
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "keyword.ada",
-				match: "\\.\\."
+				match: "\\.\\.",
 			},
 			{
 				match: "(?i)\\b((?:\\w|\\d|_)+)\\s*(=>)\\s*([^,\\)])+\\b",
 				captures: {
 					"1": {
-						name: "variable.name.ada"
+						name: "variable.name.ada",
 					},
 					"2": {
-						name: "keyword.other.ada"
+						name: "keyword.other.ada",
 					},
 					"3": {
 						patterns: [
 							{
-								include: "#expression"
-							}
-						]
-					}
-				}
+								include: "#expression",
+							},
+						],
+					},
+				},
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	decimal_literal: {
 		name: "constant.numeric.ada",
 		match: "\\d(?:(_)?\\d)*(?:(\\.)\\d(?:(_)?\\d)*)?([eE](?:\\+|\\-)?\\d(?:_?\\d)*)?",
 		captures: {
 			"1": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"2": {
-				name: "punctuation.radix-point.ada"
+				name: "punctuation.radix-point.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"4": {
 				patterns: [
 					{
-						include: "#exponent_part"
-					}
-				]
-			}
-		}
+						include: "#exponent_part",
+					},
+				],
+			},
+		},
 	},
 	declarative_item: {
 		patterns: [
 			{
-				include: "#body"
+				include: "#body",
 			},
 			{
-				include: "#basic_declarative_item"
-			}
-		]
+				include: "#basic_declarative_item",
+			},
+		],
 	},
 	delay_statement: {
 		patterns: [
 			{
-				include: "#delay_until_statement"
+				include: "#delay_until_statement",
 			},
 			{
-				include: "#delay_relative_statement"
-			}
-		]
+				include: "#delay_relative_statement",
+			},
+		],
 	},
 	delay_until_statement: {
 		name: "meta.statement.delay.until.ada",
@@ -995,41 +996,41 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	delay_relative_statement: {
 		begin: "(?i)\\b(delay)\\b",
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	derived_type_definition: {
 		name: "meta.declaration.type.definition.derived.ada",
@@ -1038,32 +1039,32 @@ const repository = {
 				begin: "(?i)\\bnew\\b",
 				beginCaptures: {
 					"0": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				end: "(?i)(?=(\\bwith\\b|;))",
 				patterns: [
 					{
 						name: "storage.modifier.ada",
-						match: "(?i)\\band\\b"
+						match: "(?i)\\band\\b",
 					},
 					{
-						include: "#subtype_mark"
-					}
-				]
+						include: "#subtype_mark",
+					},
+				],
 			},
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\b(abstract|and|limited|tagged)\\b"
+				match: "(?i)\\b(abstract|and|limited|tagged)\\b",
 			},
 			{
 				name: "storage.visibility.ada",
-				match: "(?i)\\bprivate\\b"
+				match: "(?i)\\bprivate\\b",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	discriminant_specification: {
 		begin: "(?i)\\b((?:\\w|\\d|_)+(?:\\s*,\\s*(?:\\w|\\d|_)+)?)\\s*(:)",
@@ -1073,17 +1074,17 @@ const repository = {
 				patterns: [
 					{
 						name: "punctuation.ada",
-						match: ","
+						match: ",",
 					},
 					{
 						name: "variable.name.ada",
-						match: "\\b(\\w|\\d|_)+\\b"
-					}
-				]
+						match: "\\b(\\w|\\d|_)+\\b",
+					},
+				],
 			},
 			"2": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -1091,132 +1092,132 @@ const repository = {
 				end: "(?=(;|\\)))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.operator.new.ada"
-					}
+						name: "keyword.operator.new.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				match: "(?i)(not\\s+null\\s+)?((?:\\w|\\d|\\.|_)+)\\b",
 				captures: {
 					"1": {
-						name: "storage.visibility.ada"
+						name: "storage.visibility.ada",
 					},
 					"2": {
 						patterns: [
 							{
-								include: "#subtype_mark"
-							}
-						]
-					}
-				}
+								include: "#subtype_mark",
+							},
+						],
+					},
+				},
 			},
 			{
-				include: "#access_definition"
-			}
-		]
+				include: "#access_definition",
+			},
+		],
 	},
 	entry_body: {
 		begin: "(?i)\\b(entry)\\s+((?:\\w|\\d|_)+)\\b",
 		end: "(?i)\\b(end)\\s*(\\s\\2)\\s*(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.entry.ada"
-			}
+				name: "entity.name.entry.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.entry.ada"
+				name: "entity.name.entry.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)\\b(?=begin)\\b",
 				patterns: [
 					{
-						include: "#declarative_item"
-					}
-				]
+						include: "#declarative_item",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\bbegin\\b",
 				end: "(?i)\\b(?=end)\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#statement"
-					}
-				]
+						include: "#statement",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\bwhen\\b",
 				end: "(?i)\\b(?=is)\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#parameter_profile"
-			}
-		]
+				include: "#parameter_profile",
+			},
+		],
 	},
 	entry_declaration: {
 		begin: "(?i)\\b(?:(not)?\\s+(overriding)\\s+)?(entry)\\s+((?:\\w|\\d|_)+)\\b",
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "storage.modifier.ada"
+				name: "storage.modifier.ada",
 			},
 			"2": {
-				name: "storage.modifier.ada"
+				name: "storage.modifier.ada",
 			},
 			"3": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"4": {
-				name: "entity.name.entry.ada"
-			}
+				name: "entity.name.entry.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#parameter_profile"
-			}
-		]
+				include: "#parameter_profile",
+			},
+		],
 	},
 	enumeration_type_definition: {
 		name: "meta.declaration.type.definition.enumeration.ada",
@@ -1224,27 +1225,27 @@ const repository = {
 		end: "\\)",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "variable.name.ada",
-				match: "\\b(\\w|\\d|_)+\\b"
+				match: "\\b(\\w|\\d|_)+\\b",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	exception_declaration: {
 		name: "meta.declaration.exception.ada",
@@ -1254,33 +1255,33 @@ const repository = {
 				patterns: [
 					{
 						name: "punctuation.ada",
-						match: ","
+						match: ",",
 					},
 					{
 						name: "entity.name.exception.ada",
-						match: "\\b(\\w|\\d|_)+\\b"
-					}
-				]
+						match: "\\b(\\w|\\d|_)+\\b",
+					},
+				],
 			},
 			"2": {
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			"3": {
-				name: "storage.type.ada"
-			}
+				name: "storage.type.ada",
+			},
 		},
 		end: ";",
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				match: "(?i)\\b(renames)\\s+((\\w|\\d|_|\\.)+)",
-				name: "entity.name.exception.ada"
-			}
-		]
+				name: "entity.name.exception.ada",
+			},
+		],
 	},
 	exit_statement: {
 		name: "meta.statement.exit.ada",
@@ -1288,13 +1289,13 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -1302,89 +1303,89 @@ const repository = {
 				end: "(?=;)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				match: "(?:\\w|\\d|_)+",
-				name: "entity.name.label.ada"
-			}
-		]
+				name: "entity.name.label.ada",
+			},
+		],
 	},
 	exponent_part: {
 		match: "([eE])(\\+|\\-)?\\d(?:(_)?\\d)*",
 		captures: {
 			"1": {
-				name: "punctuation.exponent-mark.ada"
+				name: "punctuation.exponent-mark.ada",
 			},
 			"2": {
-				name: "keyword.operator.unary.ada"
+				name: "keyword.operator.unary.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
-		}
+				name: "punctuation.ada",
+			},
+		},
 	},
 	expression: {
 		name: "meta.expression.ada",
 		patterns: [
 			{
 				match: "(?i)\\bnull\\b",
-				name: "constant.language.ada"
+				name: "constant.language.ada",
 			},
 			{
 				match: "=>(\\+)?",
-				name: "keyword.other.ada"
+				name: "keyword.other.ada",
 			},
 			{
 				begin: "\\(",
 				end: "\\)",
 				captures: {
 					"0": {
-						name: "punctuation.ada"
-					}
+						name: "punctuation.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				match: ",",
-				name: "punctuation.ada"
+				name: "punctuation.ada",
 			},
 			{
 				match: "\\.\\.",
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			{
-				include: "#value"
+				include: "#value",
 			},
 			{
-				include: "#attribute"
+				include: "#attribute",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#operator"
+				include: "#operator",
 			},
 			{
 				match: "(?i)\\b(and|or|xor)\\b",
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			{
 				match: "(?i)\\b(if|then|else|elsif|in|for|(?<!\\.)all|some|\\.\\.|delta|with)\\b",
-				name: "keyword.ada"
-			}
-		]
+				name: "keyword.ada",
+			},
+		],
 	},
 	for_loop_statement: {
 		name: "meta.statement.loop.for.ada",
@@ -1392,22 +1393,22 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(loop)(\\s+(?:\\w|\\d|_)+)?\\s*(;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"3": {
-				name: "entity.name.label.ada"
+				name: "entity.name.label.ada",
 			},
 			"4": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -1415,100 +1416,100 @@ const repository = {
 				end: "(?i)\\bloop\\b",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
 						match: "(?i)\\b((?:\\w|\\d|_)+)\\s+(in)(\\s+reverse)?\\b",
 						captures: {
 							"1": {
-								name: "variable.name.ada"
+								name: "variable.name.ada",
 							},
 							"2": {
-								name: "keyword.control.ada"
+								name: "keyword.control.ada",
 							},
 							"3": {
-								name: "keyword.control.ada"
-							}
-						}
+								name: "keyword.control.ada",
+							},
+						},
 					},
 					{
 						match: "(?i)\\b((?:\\w|\\d|_)+)(?:\\s*(:)\\s*((?:\\w|\\d|\\.|_)+))?\\s+(of)(\\s+reverse)?\\b",
 						captures: {
 							"1": {
-								name: "variable.name.ada"
+								name: "variable.name.ada",
 							},
 							"2": {
-								name: "punctuation.ada"
+								name: "punctuation.ada",
 							},
 							"3": {
 								patterns: [
 									{
-										include: "#subtype_mark"
-									}
-								]
+										include: "#subtype_mark",
+									},
+								],
 							},
 							"4": {
-								name: "keyword.control.ada"
+								name: "keyword.control.ada",
 							},
 							"5": {
-								name: "keyword.control.ada"
-							}
-						}
+								name: "keyword.control.ada",
+							},
+						},
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#statement"
-			}
-		]
+				include: "#statement",
+			},
+		],
 	},
 	full_type_declaration: {
 		patterns: [
 			{
-				include: "#task_type_declaration"
+				include: "#task_type_declaration",
 			},
 			{
-				include: "#regular_type_declaration"
-			}
-		]
+				include: "#regular_type_declaration",
+			},
+		],
 	},
 	function_body: {
 		name: "meta.declaration.function.body.ada",
-		begin: "(?i)\\b(overriding\\s+)?(function)\\s+(?:((?:\\w|\\d|\\.|_)+\\b)|(\".+\"))",
+		begin: '(?i)\\b(overriding\\s+)?(function)\\s+(?:((?:\\w|\\d|\\.|_)+\\b)|(".+"))',
 		end: "(?i)(?:\\b(end)\\s+(\\3|\\4)\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "storage.visibility.ada"
+				name: "storage.visibility.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
-				name: "entity.name.function.ada"
+				name: "entity.name.function.ada",
 			},
 			"4": {
 				patterns: [
 					{
-						include: "#string_literal"
-					}
-				]
-			}
+						include: "#string_literal",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.function.ada"
+				name: "entity.name.function.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -1516,34 +1517,34 @@ const repository = {
 				end: "(?i)(?=end)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#handled_sequence_of_statements"
-					}
-				]
+						include: "#handled_sequence_of_statements",
+					},
+				],
 			},
 			{
-				include: "#aspect_specification"
+				include: "#aspect_specification",
 			},
 			{
-				include: "#result_profile"
+				include: "#result_profile",
 			},
 			{
-				include: "#subprogram_renaming_declaration"
+				include: "#subprogram_renaming_declaration",
 			},
 			{
-				include: "#parameter_profile"
+				include: "#parameter_profile",
 			},
 			{
 				name: "meta.function.body.spec_part.ada",
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)(?=(with|begin|;))",
 				patterns: [
@@ -1552,48 +1553,48 @@ const repository = {
 						begin: "(?i)\\bnew\\b",
 						beginCaptures: {
 							"0": {
-								name: "keyword.operator.new.ada"
-							}
+								name: "keyword.operator.new.ada",
+							},
 						},
 						end: "(?=;)",
 						patterns: [
 							{
 								match: "((?:\\w|\\d|\\.|_)+)",
-								name: "entity.name.function.ada"
+								name: "entity.name.function.ada",
 							},
 							{
-								include: "#actual_parameter_part"
-							}
-						]
+								include: "#actual_parameter_part",
+							},
+						],
 					},
 					{
 						name: "meta.declaration.function.abstract.ada",
 						match: "(?i)\\babstract\\b",
 						captures: {
 							"0": {
-								name: "storage.modifier.ada"
-							}
-						}
+								name: "storage.modifier.ada",
+							},
+						},
 					},
 					{
-						include: "#declarative_item"
+						include: "#declarative_item",
 					},
 					{
-						include: "#subprogram_renaming_declaration"
+						include: "#subprogram_renaming_declaration",
 					},
 					{
-						include: "#expression"
-					}
-				]
-			}
-		]
+						include: "#expression",
+					},
+				],
+			},
+		],
 	},
 	function_specification: {
 		patterns: [
 			{
-				include: "#function_body"
-			}
-		]
+				include: "#function_body",
+			},
+		],
 	},
 	goto_statement: {
 		name: "meta.statement.goto.ada",
@@ -1601,37 +1602,34 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.goto.ada"
-			}
+				name: "keyword.control.goto.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
-		patterns: [
-			{
-			}
-		]
+		patterns: [{}],
 	},
 	guard: {
 		begin: "(?i)\\bwhen\\b",
 		end: "=>",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "keyword.other.ada"
-			}
+				name: "keyword.other.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	handled_sequence_of_statements: {
 		patterns: [
@@ -1640,8 +1638,8 @@ const repository = {
 				begin: "(?i)\\bexception\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)\\b(?=end)\\b",
 				patterns: [
@@ -1650,53 +1648,53 @@ const repository = {
 						end: "=>",
 						beginCaptures: {
 							"0": {
-								name: "keyword.ada"
-							}
+								name: "keyword.ada",
+							},
 						},
 						endCaptures: {
 							"0": {
-								name: "keyword.other.ada"
-							}
+								name: "keyword.other.ada",
+							},
 						},
 						patterns: [
 							{
 								match: "\\b((?:\\w|\\d|\\.|_)+)\\s*(:)",
 								captures: {
 									"1": {
-										name: "variable.name.ada"
+										name: "variable.name.ada",
 									},
 									"2": {
-										name: "punctuation.ada"
-									}
-								}
+										name: "punctuation.ada",
+									},
+								},
 							},
 							{
 								match: "\\|",
-								name: "punctuation.ada"
+								name: "punctuation.ada",
 							},
 							{
 								match: "(?i)\\bothers\\b",
-								name: "keyword.ada"
+								name: "keyword.ada",
 							},
 							{
 								match: "(?:\\w|\\d|\\.|_)+",
-								name: "entity.name.exception.ada"
-							}
-						]
+								name: "entity.name.exception.ada",
+							},
+						],
 					},
 					{
-						include: "#statement"
-					}
-				]
+						include: "#statement",
+					},
+				],
 			},
 			{
-				include: "#statement"
-			}
-		]
+				include: "#statement",
+			},
+		],
 	},
 	highest_precedence_operator: {
 		name: "keyword.operator.highest-precedence.ada",
-		match: "(?i)(\\*\\*|\\babs\\b|\\bnot\\b)"
+		match: "(?i)(\\*\\*|\\babs\\b|\\bnot\\b)",
 	},
 	if_statement: {
 		name: "meta.statement.if.ada",
@@ -1704,19 +1702,19 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(if)\\s*(;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -1724,69 +1722,69 @@ const repository = {
 				end: "(?i)(?:(?<!\\sand)\\s+(?=then))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\belse\\b",
 				end: "(?i)(?=end)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#statement"
-					}
-				]
+						include: "#statement",
+					},
+				],
 			},
 			{
 				begin: "(?i)(?<=if)\\b",
 				end: "(?i)(?:(?<!\\sand)\\s+(?=then))",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\bthen\\b",
 				end: "(?i)(?=(elsif|else|end))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#statement"
-					}
-				]
-			}
-		]
+						include: "#statement",
+					},
+				],
+			},
+		],
 	},
 	integer_type_definition: {
 		name: "meta.declaration.type.definition.integer.ada",
 		patterns: [
 			{
-				include: "#signed_integer_type_definition"
+				include: "#signed_integer_type_definition",
 			},
 			{
-				include: "#modular_type_definition"
-			}
-		]
+				include: "#modular_type_definition",
+			},
+		],
 	},
 	interface_type_definition: {
 		name: "meta.declaration.type.definition.interface.ada",
@@ -1794,61 +1792,61 @@ const repository = {
 		end: "(?i)(?=(with|;))",
 		beginCaptures: {
 			"1": {
-				name: "storage.modifier.ada"
+				name: "storage.modifier.ada",
 			},
 			"2": {
-				name: "storage.modifier.ada"
-			}
+				name: "storage.modifier.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\band\\b"
+				match: "(?i)\\band\\b",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	keyword: {
 		patterns: [
 			{
 				name: "keyword.ada",
-				match: "(?i)\\b(abort|abs|accept|all|and|at|begin|body|declare|delay|end|entry|exception|function|generic|in|is|mod|new|not|null|of|or|others|out|package|pragma|procedure|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|then|type|use|when|with|xor)\\b"
+				match: "(?i)\\b(abort|abs|accept|all|and|at|begin|body|declare|delay|end|entry|exception|function|generic|in|is|mod|new|not|null|of|or|others|out|package|pragma|procedure|range|record|rem|renames|requeue|reverse|select|separate|some|subtype|then|type|use|when|with|xor)\\b",
 			},
 			{
 				name: "keyword.control.ada",
-				match: "(?i)\\b(case|do|else|elsif|exit|for|goto|if|loop|raise|return|terminate|until|while)\\b"
+				match: "(?i)\\b(case|do|else|elsif|exit|for|goto|if|loop|raise|return|terminate|until|while)\\b",
 			},
 			{
 				name: "storage.modifier.ada",
-				match: "(?i)\\b(abstract|access|aliased|array|constant|delta|digits|interface|limited|protected|synchronized|tagged|task)\\b"
+				match: "(?i)\\b(abstract|access|aliased|array|constant|delta|digits|interface|limited|protected|synchronized|tagged|task)\\b",
 			},
 			{
 				name: "storage.visibility.ada",
-				match: "(?i)\\b(private|overriding)\\b"
+				match: "(?i)\\b(private|overriding)\\b",
 			},
 			{
 				name: "keyword.modifier.unknown.ada",
-				match: "<>"
+				match: "<>",
 			},
 			{
 				name: "keyword.operator.arithmetic.ada",
-				match: "(\\+|-|\\*|/)"
+				match: "(\\+|-|\\*|/)",
 			},
 			{
 				name: "keyword.operator.assignment.ada",
-				match: ":="
+				match: ":=",
 			},
 			{
 				name: "keyword.operator.logic.ada",
-				match: "(=|/=|<|>|<=|>=)"
+				match: "(=|/=|<|>|<=|>=)",
 			},
 			{
 				name: "keyword.operator.concatenation.ada",
-				match: "\\&"
-			}
-		]
+				match: "\\&",
+			},
+		],
 	},
 	known_discriminant_part: {
 		name: "meta.declaration.type.discriminant.ada",
@@ -1856,94 +1854,94 @@ const repository = {
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ";"
+				match: ";",
 			},
 			{
-				include: "#discriminant_specification"
-			}
-		]
+				include: "#discriminant_specification",
+			},
+		],
 	},
 	label: {
 		name: "meta.label.ada",
 		match: "(<<)?((?:\\w|\\d|_)+)\\s*(:[^=]|>>)",
 		captures: {
 			"1": {
-				name: "punctuation.label.ada"
+				name: "punctuation.label.ada",
 			},
 			"2": {
-				name: "entity.name.label.ada"
+				name: "entity.name.label.ada",
 			},
 			"3": {
-				name: "punctuation.label.ada"
-			}
-		}
+				name: "punctuation.label.ada",
+			},
+		},
 	},
 	library_unit: {
 		name: "meta.library.unit.ada",
 		patterns: [
 			{
-				include: "#package_body"
+				include: "#package_body",
 			},
 			{
-				include: "#package_specification"
+				include: "#package_specification",
 			},
 			{
-				include: "#subprogram_body"
-			}
-		]
+				include: "#subprogram_body",
+			},
+		],
 	},
 	loop_statement: {
 		patterns: [
 			{
-				include: "#simple_loop_statement"
+				include: "#simple_loop_statement",
 			},
 			{
-				include: "#while_loop_statement"
+				include: "#while_loop_statement",
 			},
 			{
-				include: "#for_loop_statement"
-			}
-		]
+				include: "#for_loop_statement",
+			},
+		],
 	},
 	modular_type_definition: {
 		begin: "(?i)\\b(mod)\\b",
 		end: "(?i)(?=(with|;))",
 		beginCaptures: {
 			"1": {
-				name: "storage.modifier.ada"
-			}
+				name: "storage.modifier.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "keyword.modifier.unknown.ada",
-				match: "<>"
+				match: "<>",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	multiplying_operator: {
 		name: "keyword.operator.multiplying.ada",
-		match: "(?i)(\\*|/|\\bmod\\b|\\brem\\b)"
+		match: "(?i)(\\*|/|\\bmod\\b|\\brem\\b)",
 	},
 	null_statement: {
 		name: "meta.statement.null.ada",
 		match: "(?i)\\b(null)\\s*(;)",
 		captures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "punctuation.ada"
-			}
-		}
+				name: "punctuation.ada",
+			},
+		},
 	},
 	object_declaration: {
 		name: "meta.declaration.object.ada",
@@ -1954,22 +1952,22 @@ const repository = {
 				patterns: [
 					{
 						name: "punctuation.ada",
-						match: ","
+						match: ",",
 					},
 					{
 						name: "variable.name.ada",
-						match: "\\b(\\w|\\d|_)+\\b"
-					}
-				]
+						match: "\\b(\\w|\\d|_)+\\b",
+					},
+				],
 			},
 			"2": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -1977,70 +1975,70 @@ const repository = {
 				end: "(?:(?=;)|(:=)|(\\brenames\\b))",
 				endCaptures: {
 					"1": {
-						name: "keyword.operator.new.ada"
+						name: "keyword.operator.new.ada",
 					},
 					"2": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
 						name: "storage.modifier.ada",
-						match: "(?i)\\bconstant\\b"
+						match: "(?i)\\bconstant\\b",
 					},
 					{
 						name: "storage.visibility.ada",
-						match: "(?i)\\baliased\\b"
+						match: "(?i)\\baliased\\b",
 					},
 					{
-						include: "#aspect_specification"
+						include: "#aspect_specification",
 					},
 					{
-						include: "#subtype_mark"
-					}
-				]
+						include: "#subtype_mark",
+					},
+				],
 			},
 			{
 				begin: "(?<=:=)",
 				end: "(?=;)",
 				patterns: [
 					{
-						include: "#aspect_specification"
+						include: "#aspect_specification",
 					},
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				begin: "(?<=renames)",
 				end: "(?=;)",
 				patterns: [
 					{
-						include: "#aspect_specification"
-					}
-				]
-			}
-		]
+						include: "#aspect_specification",
+					},
+				],
+			},
+		],
 	},
 	operator: {
 		patterns: [
 			{
-				include: "#highest_precedence_operator"
+				include: "#highest_precedence_operator",
 			},
 			{
-				include: "#multiplying_operator"
+				include: "#multiplying_operator",
 			},
 			{
-				include: "#adding_operator"
+				include: "#adding_operator",
 			},
 			{
-				include: "#relational_operator"
+				include: "#relational_operator",
 			},
 			{
-				include: "#logical_operator"
-			}
-		]
+				include: "#logical_operator",
+			},
+		],
 	},
 	package_body: {
 		name: "meta.declaration.package.body.ada",
@@ -2048,85 +2046,85 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(\\3)\\s*(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
 				patterns: [
 					{
-						include: "#package_mark"
-					}
-				]
-			}
+						include: "#package_mark",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#package_mark"
-					}
-				]
+						include: "#package_mark",
+					},
+				],
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				begin: "(?i)\\bbegin\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)\\b(?=end)\\b",
 				patterns: [
 					{
-						include: "#handled_sequence_of_statements"
-					}
-				]
+						include: "#handled_sequence_of_statements",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)(?=(\\bbegin\\b|\\bend\\b))",
 				patterns: [
 					{
 						match: "(?i)\\bprivate\\b",
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					{
-						include: "#declarative_item"
+						include: "#declarative_item",
 					},
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
-				include: "#aspect_specification"
-			}
-		]
+				include: "#aspect_specification",
+			},
+		],
 	},
 	package_declaration: {
 		patterns: [
 			{
-				include: "#package_specification"
-			}
-		]
+				include: "#package_specification",
+			},
+		],
 	},
 	package_mark: {
 		name: "entity.name.package.ada",
-		match: "\\b(\\w|\\d|\\.|_)+\\b"
+		match: "\\b(\\w|\\d|\\.|_)+\\b",
 	},
 	package_specification: {
 		name: "meta.declaration.package.specification.ada",
@@ -2134,38 +2132,38 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s+(\\2)\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#package_mark"
-					}
-				]
-			}
+						include: "#package_mark",
+					},
+				],
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#package_mark"
-					}
-				]
+						include: "#package_mark",
+					},
+				],
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?=(end|;))",
 				patterns: [
@@ -2174,35 +2172,35 @@ const repository = {
 						begin: "(?i)\\bnew\\b",
 						beginCaptures: {
 							"0": {
-								name: "keyword.operator.new.ada"
-							}
+								name: "keyword.operator.new.ada",
+							},
 						},
 						end: "(?=;)",
 						patterns: [
 							{
-								include: "#package_mark"
+								include: "#package_mark",
 							},
 							{
-								include: "#actual_parameter_part"
-							}
-						]
+								include: "#actual_parameter_part",
+							},
+						],
 					},
 					{
 						match: "(?i)\\bprivate\\b",
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					{
-						include: "#basic_declarative_item"
+						include: "#basic_declarative_item",
 					},
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
-				include: "#aspect_specification"
-			}
-		]
+				include: "#aspect_specification",
+			},
+		],
 	},
 	parameter_association: {
 		patterns: [
@@ -2210,35 +2208,35 @@ const repository = {
 				match: "((?:\\w|\\d|_)+)\\s*(=>)",
 				captures: {
 					"1": {
-						name: "variable.parameter.ada"
+						name: "variable.parameter.ada",
 					},
 					"2": {
-						name: "keyword.other.ada"
-					}
-				}
+						name: "keyword.other.ada",
+					},
+				},
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	parameter_profile: {
 		begin: "\\(",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ";"
+				match: ";",
 			},
 			{
-				include: "#parameter_specification"
-			}
-		]
+				include: "#parameter_specification",
+			},
+		],
 	},
 	parameter_specification: {
 		patterns: [
@@ -2248,45 +2246,45 @@ const repository = {
 				end: "(?=[:;)])",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.ada"
-					}
+						name: "punctuation.ada",
+					},
 				},
 				patterns: [
 					{
 						name: "keyword.ada",
-						match: "(?i)\\b(in|out)\\b"
+						match: "(?i)\\b(in|out)\\b",
 					},
 					{
-						include: "#subtype_mark"
-					}
-				]
+						include: "#subtype_mark",
+					},
+				],
 			},
 			{
 				begin: ":=",
 				end: "(?=[:;)])",
 				beginCaptures: {
 					"0": {
-						name: "keyword.operator.new.ada"
-					}
+						name: "keyword.operator.new.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "variable.parameter.ada",
-				match: "\\b(?:\\w|\\d|\\.|_)+\\b"
+				match: "\\b(?:\\w|\\d|\\.|_)+\\b",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	pragma: {
 		name: "meta.pragma.ada",
@@ -2294,22 +2292,22 @@ const repository = {
 		end: "(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "keyword.control.directive.ada"
-			}
+				name: "keyword.control.directive.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	preprocessor: {
 		name: "meta.preprocessor.ada",
@@ -2318,46 +2316,46 @@ const repository = {
 				match: "^\\s*(#)(if|elsif)\\s+(.*)$",
 				captures: {
 					"1": {
-						name: "punctuation.definition.directive.ada"
+						name: "punctuation.definition.directive.ada",
 					},
 					"2": {
-						name: "keyword.control.directive.conditional.ada"
+						name: "keyword.control.directive.conditional.ada",
 					},
 					"3": {
 						patterns: [
 							{
-								include: "#expression"
-							}
-						]
-					}
-				}
+								include: "#expression",
+							},
+						],
+					},
+				},
 			},
 			{
 				match: "^\\s*(#)(end if)(;)",
 				captures: {
 					"1": {
-						name: "punctuation.definition.directive.ada"
+						name: "punctuation.definition.directive.ada",
 					},
 					"2": {
-						name: "keyword.control.directive.conditional"
+						name: "keyword.control.directive.conditional",
 					},
 					"3": {
-						name: "punctuation.ada"
-					}
-				}
+						name: "punctuation.ada",
+					},
+				},
 			},
 			{
 				match: "^\\s*(#)(else)",
 				captures: {
 					"1": {
-						name: "punctuation.definition.directive.ada"
+						name: "punctuation.definition.directive.ada",
 					},
 					"2": {
-						name: "keyword.control.directive.conditional"
-					}
-				}
-			}
-		]
+						name: "keyword.control.directive.conditional",
+					},
+				},
+			},
+		],
 	},
 	procedure_body: {
 		name: "meta.declaration.procedure.body.ada",
@@ -2365,25 +2363,25 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s+(\\3)\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "storage.visibility.ada"
+				name: "storage.visibility.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
-				name: "entity.name.function.ada"
-			}
+				name: "entity.name.function.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.function.ada"
+				name: "entity.name.function.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2391,8 +2389,8 @@ const repository = {
 				end: "(?i)(?=(with|begin|;))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
@@ -2400,56 +2398,56 @@ const repository = {
 						begin: "(?i)\\bnew\\b",
 						beginCaptures: {
 							"0": {
-								name: "keyword.operator.new.ada"
-							}
+								name: "keyword.operator.new.ada",
+							},
 						},
 						end: "(?=;)",
 						patterns: [
 							{
 								match: "((?:\\w|\\d|\\.|_)+)",
-								name: "entity.name.function.ada"
+								name: "entity.name.function.ada",
 							},
 							{
-								include: "#actual_parameter_part"
-							}
-						]
+								include: "#actual_parameter_part",
+							},
+						],
 					},
 					{
 						match: "(?i)\\b(null|abstract)\\b",
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					{
-						include: "#declarative_item"
-					}
-				]
+						include: "#declarative_item",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\bbegin\\b",
 				end: "(?i)(?=\\bend\\b)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#handled_sequence_of_statements"
-					}
-				]
+						include: "#handled_sequence_of_statements",
+					},
+				],
 			},
 			{
-				include: "#subprogram_renaming_declaration"
+				include: "#subprogram_renaming_declaration",
 			},
 			{
-				include: "#aspect_specification"
+				include: "#aspect_specification",
 			},
 			{
-				include: "#parameter_profile"
+				include: "#parameter_profile",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	procedure_call_statement: {
 		name: "meta.statement.call.ada",
@@ -2457,32 +2455,32 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.function.ada"
-			}
+				name: "entity.name.function.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#attribute"
+				include: "#attribute",
 			},
 			{
-				include: "#actual_parameter_part"
+				include: "#actual_parameter_part",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	procedure_specification: {
 		patterns: [
 			{
-				include: "#procedure_body"
-			}
-		]
+				include: "#procedure_body",
+			},
+		],
 	},
 	protected_body: {
 		name: "meta.declaration.procedure.body.ada",
@@ -2490,25 +2488,25 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s*(\\s\\3)\\s*)(;)",
 		beginCaptures: {
 			"1": {
-				name: "storage.modifier.ada"
+				name: "storage.modifier.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
-				name: "entity.name.body.ada"
-			}
+				name: "entity.name.body.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.body.ada"
+				name: "entity.name.body.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2516,51 +2514,51 @@ const repository = {
 				end: "(?i)\\b(?=end)\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#protected_operation_item"
-					}
-				]
-			}
-		]
+						include: "#protected_operation_item",
+					},
+				],
+			},
+		],
 	},
 	protected_element_declaration: {
 		patterns: [
 			{
-				include: "#subprogram_specification"
+				include: "#subprogram_specification",
 			},
 			{
-				include: "#aspect_clause"
+				include: "#aspect_clause",
 			},
 			{
-				include: "#entry_declaration"
+				include: "#entry_declaration",
 			},
 			{
-				include: "#component_declaration"
+				include: "#component_declaration",
 			},
 			{
-				include: "#pragma"
-			}
-		]
+				include: "#pragma",
+			},
+		],
 	},
 	protected_operation_item: {
 		patterns: [
 			{
-				include: "#subprogram_specification"
+				include: "#subprogram_specification",
 			},
 			{
-				include: "#subprogram_body"
+				include: "#subprogram_body",
 			},
 			{
-				include: "#aspect_clause"
+				include: "#aspect_clause",
 			},
 			{
-				include: "#entry_body"
-			}
-		]
+				include: "#entry_body",
+			},
+		],
 	},
 	positional_array_aggregate: {
 		name: "meta.definition.array.aggregate.positional.ada",
@@ -2569,28 +2567,28 @@ const repository = {
 				match: "(?i)\\b(others)\\s*(=>)\\s*([^,\\)]+)",
 				captures: {
 					"1": {
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					"2": {
-						name: "keyword.other.ada"
+						name: "keyword.other.ada",
 					},
 					"3": {
 						patterns: [
 							{
 								name: "keyword.modifier.unknown.ada",
-								match: "<>"
+								match: "<>",
 							},
 							{
-								include: "#expression"
-							}
-						]
-					}
-				}
+								include: "#expression",
+							},
+						],
+					},
+				},
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	raise_statement: {
 		name: "meta.statement.raise.ada",
@@ -2598,13 +2596,13 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2612,20 +2610,20 @@ const repository = {
 				end: "(?=;)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				name: "entity.name.exception.ada",
-				match: "\\b(\\w|\\d|\\.|_)+\\b"
-			}
-		]
+				match: "\\b(\\w|\\d|\\.|_)+\\b",
+			},
+		],
 	},
 	raise_expression: {
 		name: "meta.expression.raise.ada",
@@ -2633,8 +2631,8 @@ const repository = {
 		end: "(?=;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2642,46 +2640,46 @@ const repository = {
 				end: "(?=(;|\\))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
 				name: "entity.name.exception.ada",
-				match: "\\b(\\w|\\d|_)+\\b"
-			}
-		]
+				match: "\\b(\\w|\\d|_)+\\b",
+			},
+		],
 	},
 	range_constraint: {
 		begin: "(?i)\\brange\\b",
 		end: "(?=(\\bwith\\b|;))",
 		beginCaptures: {
 			"0": {
-				name: "storage.modifier.ada"
-			}
+				name: "storage.modifier.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "keyword.ada",
-				match: "\\.\\."
+				match: "\\.\\.",
 			},
 			{
 				name: "keyword.modifier.unknown.ada",
-				match: "<>"
+				match: "<>",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	relational_operator: {
 		name: "keyword.operator.relational.ada",
-		match: "(=|/=|<|<=|>|>=)"
+		match: "(=|/=|<|<=|>|>=)",
 	},
 	record_representation_clause: {
 		name: "meta.aspect.clause.record.representation.ada",
@@ -2689,33 +2687,33 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(record)\\b",
 		beginCaptures: {
 			"1": {
-				name: "storage.modifier.ada"
-			}
+				name: "storage.modifier.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "storage.modifier.ada"
-			}
+				name: "storage.modifier.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#component_clause"
+				include: "#component_clause",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	real_type_definition: {
 		name: "meta.declaration.type.definition.real-type.ada",
 		patterns: [
 			{
-				include: "#scalar_constraint"
-			}
-		]
+				include: "#scalar_constraint",
+			},
+		],
 	},
 	record_type_definition: {
 		patterns: [
@@ -2724,26 +2722,26 @@ const repository = {
 				match: "(?i)\\b(?:(abstract)\\s+)?(?:(tagged)\\s+)?(?:(limited)\\s+)?(null)\\s+(record)\\b",
 				captures: {
 					"1": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"2": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"3": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"4": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"5": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#component_item"
-					}
-				]
+						include: "#component_item",
+					},
+				],
 			},
 			{
 				name: "meta.declaration.type.definition.record.ada",
@@ -2751,33 +2749,33 @@ const repository = {
 				end: "(?i)\\b(end)\\s+(record)\\b",
 				beginCaptures: {
 					"1": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"2": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"3": {
-						name: "storage.modifier.ada"
+						name: "storage.modifier.ada",
 					},
 					"4": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					"2": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#component_item"
-					}
-				]
-			}
-		]
+						include: "#component_item",
+					},
+				],
+			},
+		],
 	},
 	regular_type_declaration: {
 		name: "meta.declaration.type.definition.regular.ada",
@@ -2785,13 +2783,13 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2799,31 +2797,31 @@ const repository = {
 				end: "(?i)(?=(with(?!\\s+(private))|;))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#type_definition"
-					}
-				]
+						include: "#type_definition",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\b(?<=type)\\b",
 				end: "(?i)(?=(is|;))",
 				patterns: [
 					{
-						include: "#known_discriminant_part"
+						include: "#known_discriminant_part",
 					},
 					{
-						include: "#subtype_mark"
-					}
-				]
+						include: "#subtype_mark",
+					},
+				],
 			},
 			{
-				include: "#aspect_specification"
-			}
-		]
+				include: "#aspect_specification",
+			},
+		],
 	},
 	requeue_statement: {
 		name: "meta.statement.requeue.ada",
@@ -2831,38 +2829,38 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "keyword.control.ada",
-				match: "(?i)\\b(with|abort)\\b"
+				match: "(?i)\\b(with|abort)\\b",
 			},
 			{
 				name: "entity.name.function.ada",
-				match: "\\b(\\w|\\d|\\.|_)+\\b"
-			}
-		]
+				match: "\\b(\\w|\\d|\\.|_)+\\b",
+			},
+		],
 	},
 	result_profile: {
 		begin: "(?i)\\breturn\\b",
 		end: "(?=(is|with|renames|;))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	return_statement: {
 		name: "meta.statement.return.ada",
@@ -2870,13 +2868,13 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2884,48 +2882,48 @@ const repository = {
 				end: "(?i)\\b(end)\\s+(return)\\s*(?=;)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "keyword.control.ada"
+						name: "keyword.control.ada",
 					},
 					"2": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#label"
+						include: "#label",
 					},
 					{
-						include: "#statement"
-					}
-				]
+						include: "#statement",
+					},
+				],
 			},
 			{
 				match: "\\b((?:\\w|\\d|_)+)\\s*(:)\\s*((?:\\w|\\d|\\.|_)+)\\b",
 				captures: {
 					"1": {
-						name: "variable.name.ada"
+						name: "variable.name.ada",
 					},
 					"2": {
-						name: "punctuation.ada"
+						name: "punctuation.ada",
 					},
 					"3": {
-						name: "entity.name.type.ada"
-					}
-				}
+						name: "entity.name.type.ada",
+					},
+				},
 			},
 			{
 				match: ":=",
-				name: "keyword.operator.new.ada"
+				name: "keyword.operator.new.ada",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	scalar_constraint: {
 		name: "meta.declaration.constraint.scalar.ada",
@@ -2935,22 +2933,22 @@ const repository = {
 				end: "(?i)(?=\\brange\\b|\\bdigits\\b|\\bwith\\b|;)",
 				beginCaptures: {
 					"1": {
-						name: "storage.modifier.ada"
-					}
+						name: "storage.modifier.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#range_constraint"
+				include: "#range_constraint",
 			},
 			{
-				include: "#expression"
-			}
-		]
+				include: "#expression",
+			},
+		],
 	},
 	select_alternative: {
 		patterns: [
@@ -2959,19 +2957,19 @@ const repository = {
 				end: ";",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "punctuation.ada"
-					}
-				}
+						name: "punctuation.ada",
+					},
+				},
 			},
 			{
-				include: "#statement"
-			}
-		]
+				include: "#statement",
+			},
+		],
 	},
 	select_statement: {
 		name: "meta.statement.select.ada",
@@ -2979,16 +2977,16 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(select)\\b",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		patterns: [
 			{
@@ -2996,40 +2994,40 @@ const repository = {
 				end: "(?i)\\b(?=(or|else|end))\\b",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#guard"
+						include: "#guard",
 					},
 					{
-						include: "#select_alternative"
-					}
-				]
+						include: "#select_alternative",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\belse\\b",
 				end: "(?i)\\b(?=end)\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#statement"
-					}
-				]
-			}
-		]
+						include: "#statement",
+					},
+				],
+			},
+		],
 	},
 	signed_integer_type_definition: {
 		patterns: [
 			{
-				include: "#range_constraint"
-			}
-		]
+				include: "#range_constraint",
+			},
+		],
 	},
 	simple_loop_statement: {
 		name: "meta.statement.loop.ada",
@@ -3037,28 +3035,28 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(loop)(\\s+(?:\\w|\\d|_)+)?\\s*(;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"3": {
-				name: "entity.name.label.ada"
+				name: "entity.name.label.ada",
 			},
 			"4": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#statement"
-			}
-		]
+				include: "#statement",
+			},
+		],
 	},
 	single_protected_declaration: {
 		name: "meta.declaration.protected.ada",
@@ -3066,22 +3064,22 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s*(\\s\\2)?\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.protected.ada"
-			}
+				name: "entity.name.protected.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.protected.ada"
+				name: "entity.name.protected.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -3089,8 +3087,8 @@ const repository = {
 				end: "(?i)(?=(\\bend\\b|;))",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
@@ -3098,68 +3096,68 @@ const repository = {
 						end: "(?i)\\bwith\\b",
 						captures: {
 							"0": {
-								name: "keyword.ada"
-							}
+								name: "keyword.ada",
+							},
 						},
 						patterns: [
 							{
 								match: "(?i)\\band\\b",
-								name: "keyword.ada"
+								name: "keyword.ada",
 							},
 							{
-								include: "#subtype_mark"
+								include: "#subtype_mark",
 							},
 							{
-								include: "#comment"
-							}
-						]
+								include: "#comment",
+							},
+						],
 					},
 					{
 						match: "(?i)\\bprivate\\b",
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					{
-						include: "#protected_element_declaration"
+						include: "#protected_element_declaration",
 					},
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	single_task_declaration: {
 		begin: "(?i)\\b(task)\\s+((?:\\w|\\d|_)+)\\b",
 		end: "(?i)(?:\\b(end)\\s*(\\s\\2)?\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.task.ada"
-			}
+				name: "entity.name.task.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.task.ada"
+				name: "entity.name.task.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)\\b(?=end)\\b",
 				patterns: [
@@ -3168,38 +3166,38 @@ const repository = {
 						end: "(?i)\\bwith\\b",
 						captures: {
 							"0": {
-								name: "keyword.ada"
-							}
+								name: "keyword.ada",
+							},
 						},
 						patterns: [
 							{
 								match: "(?i)\\band\\b",
-								name: "keyword.ada"
+								name: "keyword.ada",
 							},
 							{
-								include: "#subtype_mark"
+								include: "#subtype_mark",
 							},
 							{
-								include: "#comment"
-							}
-						]
+								include: "#comment",
+							},
+						],
 					},
 					{
 						match: "(?i)\\bprivate\\b",
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					{
-						include: "#task_item"
+						include: "#task_item",
 					},
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	statement: {
 		patterns: [
@@ -3208,130 +3206,130 @@ const repository = {
 				end: "(?i)\\b(end)\\s*(;)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					"2": {
-						name: "punctuation.ada"
-					}
+						name: "punctuation.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#handled_sequence_of_statements"
-					}
-				]
+						include: "#handled_sequence_of_statements",
+					},
+				],
 			},
 			{
-				include: "#label"
+				include: "#label",
 			},
 			{
-				include: "#null_statement"
+				include: "#null_statement",
 			},
 			{
-				include: "#return_statement"
+				include: "#return_statement",
 			},
 			{
-				include: "#assignment_statement"
+				include: "#assignment_statement",
 			},
 			{
-				include: "#exit_statement"
+				include: "#exit_statement",
 			},
 			{
-				include: "#goto_statement"
+				include: "#goto_statement",
 			},
 			{
-				include: "#requeue_statement"
+				include: "#requeue_statement",
 			},
 			{
-				include: "#delay_statement"
+				include: "#delay_statement",
 			},
 			{
-				include: "#abort_statement"
+				include: "#abort_statement",
 			},
 			{
-				include: "#raise_statement"
+				include: "#raise_statement",
 			},
 			{
-				include: "#if_statement"
+				include: "#if_statement",
 			},
 			{
-				include: "#case_statement"
+				include: "#case_statement",
 			},
 			{
-				include: "#loop_statement"
+				include: "#loop_statement",
 			},
 			{
-				include: "#block_statement"
+				include: "#block_statement",
 			},
 			{
-				include: "#select_statement"
+				include: "#select_statement",
 			},
 			{
-				include: "#accept_statement"
+				include: "#accept_statement",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#procedure_call_statement"
+				include: "#procedure_call_statement",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	string_literal: {
 		name: "string.quoted.double.ada",
-		match: "(\").*?(\")",
+		match: '(").*?(")',
 		captures: {
 			"1": {
-				name: "punctuation.definition.string.ada"
+				name: "punctuation.definition.string.ada",
 			},
 			"2": {
-				name: "punctuation.definition.string.ada"
-			}
-		}
+				name: "punctuation.definition.string.ada",
+			},
+		},
 	},
 	subprogram_body: {
 		name: "meta.declaration.subprogram.body.ada",
 		patterns: [
 			{
-				include: "#procedure_body"
+				include: "#procedure_body",
 			},
 			{
-				include: "#function_body"
-			}
-		]
+				include: "#function_body",
+			},
+		],
 	},
 	subprogram_renaming_declaration: {
 		begin: "(?i)\\brenames\\b",
 		end: "(?=(with|;))",
 		beginCaptures: {
 			"0": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		patterns: [
 			{
 				match: "(?:\\w|\\d|_|\\.)+",
-				name: "entity.name.function.ada"
-			}
-		]
+				name: "entity.name.function.ada",
+			},
+		],
 	},
 	subprogram_specification: {
 		name: "meta.declaration.subprogram.specification.ada",
 		patterns: [
 			{
-				include: "#procedure_specification"
+				include: "#procedure_specification",
 			},
 			{
-				include: "#function_specification"
-			}
-		]
+				include: "#function_specification",
+			},
+		],
 	},
 	subtype_declaration: {
 		name: "meta.declaration.subtype.ada",
@@ -3339,100 +3337,100 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?=;)",
 				patterns: [
 					{
 						name: "storage.modifier.ada",
-						match: "(?i)\\b(not\\s+null)\\b"
+						match: "(?i)\\b(not\\s+null)\\b",
 					},
 					{
-						include: "#composite_constraint"
+						include: "#composite_constraint",
 					},
 					{
-						include: "#aspect_specification"
+						include: "#aspect_specification",
 					},
 					{
-						include: "#subtype_indication"
-					}
-				]
+						include: "#subtype_indication",
+					},
+				],
 			},
 			{
 				begin: "(?i)(?<=subtype)",
 				end: "(?i)\\b(?=is)\\b",
 				patterns: [
 					{
-						include: "#subtype_mark"
-					}
-				]
-			}
-		]
+						include: "#subtype_mark",
+					},
+				],
+			},
+		],
 	},
 	subtype_indication: {
 		name: "meta.declaration.indication.subtype.ada",
 		patterns: [
 			{
-				include: "#scalar_constraint"
+				include: "#scalar_constraint",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	subtype_mark: {
 		patterns: [
 			{
 				name: "storage.visibility.ada",
-				match: "(?i)\\b(access|aliased|not\\s+null|constant)\\b"
+				match: "(?i)\\b(access|aliased|not\\s+null|constant)\\b",
 			},
 			{
-				include: "#attribute"
+				include: "#attribute",
 			},
 			{
-				include: "#actual_parameter_part"
+				include: "#actual_parameter_part",
 			},
 			{
 				begin: "(?i)\\b(procedure|function)\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?=(;|\\)))",
 				patterns: [
 					{
-						include: "#parameter_profile"
+						include: "#parameter_profile",
 					},
 					{
 						begin: "(?i)\\breturn\\b",
 						end: "(?=(;|\\)))",
 						beginCaptures: {
 							"0": {
-								name: "keyword.ada"
-							}
+								name: "keyword.ada",
+							},
 						},
 						patterns: [
 							{
-								include: "#subtype_mark"
-							}
-						]
-					}
-				]
+								include: "#subtype_mark",
+							},
+						],
+					},
+				],
 			},
 			{
 				name: "entity.name.type.ada",
@@ -3442,16 +3440,16 @@ const repository = {
 						patterns: [
 							{
 								name: "punctuation.ada",
-								match: "[_.]"
-							}
-						]
-					}
-				}
+								match: "[_.]",
+							},
+						],
+					},
+				},
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	task_body: {
 		name: "meta.declaration.task.body.ada",
@@ -3459,25 +3457,25 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s*(?:\\s(\\3))?\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
-				name: "entity.name.task.ada"
-			}
+				name: "entity.name.task.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.task.ada"
+				name: "entity.name.task.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -3485,43 +3483,43 @@ const repository = {
 				end: "(?i)(?=end)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#handled_sequence_of_statements"
-					}
-				]
+						include: "#handled_sequence_of_statements",
+					},
+				],
 			},
 			{
-				include: "#aspect_specification"
+				include: "#aspect_specification",
 			},
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)(?=(with|begin))",
 				patterns: [
 					{
-						include: "#declarative_item"
-					}
-				]
-			}
-		]
+						include: "#declarative_item",
+					},
+				],
+			},
+		],
 	},
 	task_item: {
 		patterns: [
 			{
-				include: "#aspect_clause"
+				include: "#aspect_clause",
 			},
 			{
-				include: "#entry_declaration"
-			}
-		]
+				include: "#entry_declaration",
+			},
+		],
 	},
 	task_type_declaration: {
 		name: "meta.declaration.type.task.ada",
@@ -3529,36 +3527,36 @@ const repository = {
 		end: "(?i)(?:\\b(end)\\s*(?:\\s(\\3))?\\s*)?(;)",
 		beginCaptures: {
 			"1": {
-				name: "storage.modifier.ada"
+				name: "storage.modifier.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
-				name: "entity.name.task.ada"
-			}
+				name: "entity.name.task.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "entity.name.task.ada"
+				name: "entity.name.task.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
-				include: "#known_discriminant_part"
+				include: "#known_discriminant_part",
 			},
 			{
 				begin: "(?i)\\bis\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				end: "(?i)\\b(?=end)\\b",
 				patterns: [
@@ -3567,86 +3565,86 @@ const repository = {
 						end: "(?i)\\bwith\\b",
 						captures: {
 							"0": {
-								name: "keyword.ada"
-							}
+								name: "keyword.ada",
+							},
 						},
 						patterns: [
 							{
 								match: "(?i)\\band\\b",
-								name: "keyword.ada"
+								name: "keyword.ada",
 							},
 							{
-								include: "#subtype_mark"
+								include: "#subtype_mark",
 							},
 							{
-								include: "#comment"
-							}
-						]
+								include: "#comment",
+							},
+						],
 					},
 					{
 						match: "(?i)\\bprivate\\b",
-						name: "keyword.ada"
+						name: "keyword.ada",
 					},
 					{
-						include: "#task_item"
+						include: "#task_item",
 					},
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	type_declaration: {
 		name: "meta.declaration.type.ada",
 		patterns: [
 			{
-				include: "#full_type_declaration"
-			}
-		]
+				include: "#full_type_declaration",
+			},
+		],
 	},
 	type_definition: {
 		name: "meta.declaration.type.definition.ada",
 		patterns: [
 			{
-				include: "#enumeration_type_definition"
+				include: "#enumeration_type_definition",
 			},
 			{
-				include: "#integer_type_definition"
+				include: "#integer_type_definition",
 			},
 			{
-				include: "#real_type_definition"
+				include: "#real_type_definition",
 			},
 			{
-				include: "#array_type_definition"
+				include: "#array_type_definition",
 			},
 			{
-				include: "#record_type_definition"
+				include: "#record_type_definition",
 			},
 			{
-				include: "#access_type_definition"
+				include: "#access_type_definition",
 			},
 			{
-				include: "#interface_type_definition"
+				include: "#interface_type_definition",
 			},
 			{
-				include: "#derived_type_definition"
-			}
-		]
+				include: "#derived_type_definition",
+			},
+		],
 	},
 	use_clause: {
 		name: "meta.context.use.ada",
 		patterns: [
 			{
-				include: "#use_type_clause"
+				include: "#use_type_clause",
 			},
 			{
-				include: "#use_package_clause"
-			}
-		]
+				include: "#use_package_clause",
+			},
+		],
 	},
 	use_package_clause: {
 		name: "meta.context.use.package.ada",
@@ -3654,23 +3652,23 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"0": {
-				name: "keyword.other.using.ada"
-			}
+				name: "keyword.other.using.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
-				include: "#package_mark"
-			}
-		]
+				include: "#package_mark",
+			},
+		],
 	},
 	use_type_clause: {
 		name: "meta.context.use.type.ada",
@@ -3678,45 +3676,45 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "keyword.other.using.ada"
+				name: "keyword.other.using.ada",
 			},
 			"2": {
-				name: "keyword.modifier.ada"
+				name: "keyword.modifier.ada",
 			},
 			"3": {
-				name: "keyword.modifier.ada"
-			}
+				name: "keyword.modifier.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
-				include: "#subtype_mark"
-			}
-		]
+				include: "#subtype_mark",
+			},
+		],
 	},
 	value: {
 		patterns: [
 			{
-				include: "#based_literal"
+				include: "#based_literal",
 			},
 			{
-				include: "#decimal_literal"
+				include: "#decimal_literal",
 			},
 			{
-				include: "#character_literal"
+				include: "#character_literal",
 			},
 			{
-				include: "#string_literal"
-			}
-		]
+				include: "#string_literal",
+			},
+		],
 	},
 	variant_part: {
 		name: "meta.declaration.variant.ada",
@@ -3724,19 +3722,19 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(case);",
 		beginCaptures: {
 			"0": {
-				name: "keyword.ada"
-			}
+				name: "keyword.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"2": {
-				name: "keyword.ada"
+				name: "keyword.ada",
 			},
 			"3": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -3744,18 +3742,18 @@ const repository = {
 				end: "(?i)\\bis\\b",
 				endCaptures: {
 					"0": {
-						name: "keyword.ada"
-					}
+						name: "keyword.ada",
+					},
 				},
 				patterns: [
 					{
 						match: "(?:\\w|\\d|_)+",
-						name: "variable.name.ada"
+						name: "variable.name.ada",
 					},
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
 				begin: "(?i)\\b(?<=is)\\b",
@@ -3766,34 +3764,34 @@ const repository = {
 						end: "=>",
 						beginCaptures: {
 							"0": {
-								name: "keyword.ada"
-							}
+								name: "keyword.ada",
+							},
 						},
 						endCaptures: {
 							"0": {
-								name: "keyword.other.ada"
-							}
+								name: "keyword.other.ada",
+							},
 						},
 						patterns: [
 							{
 								match: "\\|",
-								name: "punctuation.ada"
+								name: "punctuation.ada",
 							},
 							{
 								match: "(?i)\\bothers\\b",
-								name: "keyword.ada"
+								name: "keyword.ada",
 							},
 							{
-								include: "#expression"
-							}
-						]
+								include: "#expression",
+							},
+						],
 					},
 					{
-						include: "#component_item"
-					}
-				]
-			}
-		]
+						include: "#component_item",
+					},
+				],
+			},
+		],
 	},
 	while_loop_statement: {
 		name: "meta.statement.loop.while.ada",
@@ -3801,22 +3799,22 @@ const repository = {
 		end: "(?i)\\b(end)\\s+(loop)(\\s+(?:\\w|\\d|_)+)?\\s*(;)",
 		beginCaptures: {
 			"0": {
-				name: "keyword.control.ada"
-			}
+				name: "keyword.control.ada",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"2": {
-				name: "keyword.control.ada"
+				name: "keyword.control.ada",
 			},
 			"3": {
-				name: "entity.name.label.ada"
+				name: "entity.name.label.ada",
 			},
 			"4": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
@@ -3824,19 +3822,19 @@ const repository = {
 				end: "(?i)\\bloop\\b",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.ada"
-					}
+						name: "keyword.control.ada",
+					},
 				},
 				patterns: [
 					{
-						include: "#expression"
-					}
-				]
+						include: "#expression",
+					},
+				],
 			},
 			{
-				include: "#statement"
-			}
-		]
+				include: "#statement",
+			},
+		],
 	},
 	with_clause: {
 		name: "meta.context.with.ada",
@@ -3844,30 +3842,30 @@ const repository = {
 		end: ";",
 		beginCaptures: {
 			"1": {
-				name: "keyword.modifier.ada"
+				name: "keyword.modifier.ada",
 			},
 			"2": {
-				name: "storage.visibility.ada"
+				name: "storage.visibility.ada",
 			},
 			"3": {
-				name: "keyword.other.using.ada"
-			}
+				name: "keyword.other.using.ada",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.ada"
-			}
+				name: "punctuation.ada",
+			},
 		},
 		patterns: [
 			{
 				name: "punctuation.ada",
-				match: ","
+				match: ",",
 			},
 			{
-				include: "#package_mark"
-			}
-		]
-	}
+				include: "#package_mark",
+			},
+		],
+	},
 };
 const scopeName = "source.ada";
 const ada_tmLanguage = {
@@ -3875,7 +3873,14 @@ const ada_tmLanguage = {
 	name: name,
 	patterns: patterns,
 	repository: repository,
-	scopeName: scopeName
+	scopeName: scopeName,
 };
 
-export { $schema, ada_tmLanguage as default, name, patterns, repository, scopeName };
+export {
+	$schema,
+	ada_tmLanguage as default,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

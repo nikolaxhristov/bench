@@ -1,19 +1,16 @@
 const name = "ocaml";
 const scopeName = "source.ocaml";
-const fileTypes = [
-	".ml",
-	".mli"
-];
+const fileTypes = [".ml", ".mli"];
 const patterns = [
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#pragma"
+		include: "#pragma",
 	},
 	{
-		include: "#decl"
-	}
+		include: "#decl",
+	},
 ];
 const repository = {
 	attribute: {
@@ -21,33 +18,33 @@ const repository = {
 		end: "\\]",
 		beginCaptures: {
 			"1": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 			},
 			"2": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+			},
 		},
 		patterns: [
 			{
-				include: "#attributePayload"
-			}
-		]
+				include: "#attributePayload",
+			},
+		],
 	},
 	attributeIdentifier: {
 		match: "((?<![#\\-:!?.@*/&%^+<=>|~$])%(?![#\\-:!?.@*/&%^+<=>|~$]))((?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*))",
 		captures: {
 			"1": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+				name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 			},
 			"2": {
-				name: "punctuation.definition.tag"
-			}
-		}
+				name: "punctuation.definition.tag",
+			},
+		},
 	},
 	attributePayload: {
 		patterns: [
@@ -56,29 +53,29 @@ const repository = {
 				end: "((?<![#\\-:!?.@*/&%^+<=>|~$])[:\\?](?![#\\-:!?.@*/&%^+<=>|~$]))|(?<=[[:space:]])|(?=\\])",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#pathModuleExtended"
+						include: "#pathModuleExtended",
 					},
 					{
-						include: "#pathRecord"
-					}
-				]
+						include: "#pathRecord",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(?=\\])",
 				patterns: [
 					{
-						include: "#signature"
+						include: "#signature",
 					},
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]\\?|^\\?))(?![#\\-:!?.@*/&%^+<=>|~$]))",
@@ -88,30 +85,29 @@ const repository = {
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]\\?|^\\?))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						end: "(?=\\])|\\bwhen\\b",
 						endCaptures: {
-							"1": {
-							}
+							"1": {},
 						},
 						patterns: [
 							{
-								include: "#pattern"
-							}
-						]
+								include: "#pattern",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]when|^when))(?![[:word:]]))",
 						end: "(?=\\])",
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
-					}
-				]
+								include: "#term",
+							},
+						],
+					},
+				],
 			},
 			{
-				include: "#term"
-			}
-		]
+				include: "#term",
+			},
+		],
 	},
 	bindClassTerm: {
 		patterns: [
@@ -120,11 +116,11 @@ const repository = {
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])(:)|(=)(?![#\\-:!?.@*/&%^+<=>|~$])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
@@ -132,63 +128,63 @@ const repository = {
 						end: "(?=(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)[[:space:]]*,|[^[:space:][:lower:]%])|(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)|(?=\\btype\\b)",
 						endCaptures: {
 							"0": {
-								name: "entity.name.function strong emphasis"
-							}
+								name: "entity.name.function strong emphasis",
+							},
 						},
 						patterns: [
 							{
-								include: "#attributeIdentifier"
-							}
-						]
+								include: "#attributeIdentifier",
+							},
+						],
 					},
 					{
 						begin: "\\[",
 						end: "\\]",
 						captures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#type"
-							}
-						]
+								include: "#type",
+							},
+						],
 					},
 					{
-						include: "#bindTermArgs"
-					}
-				]
+						include: "#bindTermArgs",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$])|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#literalClassType"
-					}
-				]
+						include: "#literalClassType",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\band\\b|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#term"
-					}
-				]
-			}
-		]
+						include: "#term",
+					},
+				],
+			},
+		],
 	},
 	bindClassType: {
 		patterns: [
@@ -197,11 +193,11 @@ const repository = {
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])(:)|(=)(?![#\\-:!?.@*/&%^+<=>|~$])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
@@ -209,63 +205,63 @@ const repository = {
 						end: "(?=(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)[[:space:]]*,|[^[:space:][:lower:]%])|(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)|(?=\\btype\\b)",
 						endCaptures: {
 							"0": {
-								name: "entity.name.function strong emphasis"
-							}
+								name: "entity.name.function strong emphasis",
+							},
 						},
 						patterns: [
 							{
-								include: "#attributeIdentifier"
-							}
-						]
+								include: "#attributeIdentifier",
+							},
+						],
 					},
 					{
 						begin: "\\[",
 						end: "\\]",
 						captures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#type"
-							}
-						]
+								include: "#type",
+							},
+						],
 					},
 					{
-						include: "#bindTermArgs"
-					}
-				]
+						include: "#bindTermArgs",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$])|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#literalClassType"
-					}
-				]
+						include: "#literalClassType",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\band\\b|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#literalClassType"
-					}
-				]
-			}
-		]
+						include: "#literalClassType",
+					},
+				],
+			},
+		],
 	},
 	bindConstructor: {
 		patterns: [
@@ -274,185 +270,185 @@ const repository = {
 				end: "(:)|(\\bof\\b)|((?<![#\\-:!?.@*/&%^+<=>|~$])\\|(?![#\\-:!?.@*/&%^+<=>|~$]))|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "punctuation.definition.tag"
+						name: "punctuation.definition.tag",
 					},
 					"3": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#attributeIdentifier"
+						include: "#attributeIdentifier",
 					},
 					{
 						match: "\\.\\.",
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					{
 						match: "\\b(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)\\b(?![[:space:]]*(?:\\.|\\([^\\*]))",
-						name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+						name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 					},
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))|(?:(?<=(?:[^[:word:]]of|^of))(?![[:word:]]))",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])\\|(?![#\\-:!?.@*/&%^+<=>|~$])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
-			}
-		]
+						include: "#type",
+					},
+				],
+			},
+		],
 	},
 	bindSignature: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]type|^type))(?![[:word:]]))",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$])",
 				endCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#pathModuleExtended"
-					}
-				]
+						include: "#pathModuleExtended",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\band\\b|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#signature"
-					}
-				]
-			}
-		]
+						include: "#signature",
+					},
+				],
+			},
+		],
 	},
 	bindStructure: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]and|^and))(?![[:word:]]))|(?=[[:upper:]])",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])(:(?!=))|(:?=)(?![#\\-:!?.@*/&%^+<=>|~$])|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
 						match: "\\bmodule\\b",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
 					},
 					{
 						match: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)",
-						name: "entity.name.function strong emphasis"
+						name: "entity.name.function strong emphasis",
 					},
 					{
 						begin: "\\((?!\\))",
 						end: "\\)",
 						captures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
 								begin: "(?<![#\\-:!?.@*/&%^+<=>|~$]):(?![#\\-:!?.@*/&%^+<=>|~$])",
 								end: "(?=\\))",
 								beginCaptures: {
 									"0": {
-										name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
-									}
+										name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
+									},
 								},
 								patterns: [
 									{
-										include: "#signature"
-									}
-								]
+										include: "#signature",
+									},
+								],
 							},
 							{
-								include: "#variableModule"
-							}
-						]
+								include: "#variableModule",
+							},
+						],
 					},
 					{
-						include: "#literalUnit"
-					}
-				]
+						include: "#literalUnit",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\b(and)\\b|((?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$]))|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#signature"
-					}
-				]
+						include: "#signature",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:=|^:=|[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\b(?:(and)|(with))\\b|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
 					},
 					"2": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#structure"
-					}
-				]
-			}
-		]
+						include: "#structure",
+					},
+				],
+			},
+		],
 	},
 	bindTerm: {
 		patterns: [
@@ -461,17 +457,17 @@ const repository = {
 				end: "(\\bmodule\\b)|(\\bopen\\b)|(?<![#\\-:!?.@*/&%^+<=>|~$])(:)|((?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$]))(?![#\\-:!?.@*/&%^+<=>|~$])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"1": {
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
 					},
 					"2": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"4": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
@@ -479,65 +475,65 @@ const repository = {
 						end: "(?=\\b(?:module|open)\\b)|(?=(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)[[:space:]]*,|[^[:space:][:lower:]%])|(\\brec\\b)|((?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*))",
 						endCaptures: {
 							"1": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp"
+								name: "variable.other.class.js message.error variable.interpolation string.regexp",
 							},
 							"2": {
-								name: "entity.name.function strong emphasis"
-							}
+								name: "entity.name.function strong emphasis",
+							},
 						},
 						patterns: [
 							{
-								include: "#attributeIdentifier"
+								include: "#attributeIdentifier",
 							},
 							{
-								include: "#comment"
-							}
-						]
+								include: "#comment",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]rec|^rec))(?![[:word:]]))",
 						end: "((?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*))|(?=[^[:space:][:alpha:]])",
 						endCaptures: {
 							"0": {
-								name: "entity.name.function strong emphasis"
-							}
+								name: "entity.name.function strong emphasis",
+							},
 						},
 						patterns: [
 							{
-								include: "#bindTermArgs"
-							}
-						]
+								include: "#bindTermArgs",
+							},
+						],
 					},
 					{
-						include: "#bindTermArgs"
-					}
-				]
+						include: "#bindTermArgs",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]module|^module))(?![[:word:]]))",
 				end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				patterns: [
 					{
-						include: "#declModule"
-					}
-				]
+						include: "#declModule",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]open|^open))(?![[:word:]]))",
 				end: "(?=\\bin\\b)|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				patterns: [
 					{
-						include: "#pathModuleSimple"
-					}
-				]
+						include: "#pathModuleSimple",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
@@ -545,44 +541,44 @@ const repository = {
 						end: "\\btype\\b|(?=[^[:space:]])",
 						endCaptures: {
 							"0": {
-								name: "keyword.control"
-							}
-						}
+								name: "keyword.control",
+							},
+						},
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]type|^type))(?![[:word:]]))",
 						end: "(?<![#\\-:!?.@*/&%^+<=>|~$])\\.(?![#\\-:!?.@*/&%^+<=>|~$])",
 						endCaptures: {
 							"0": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp"
-							}
+								name: "variable.other.class.js message.error variable.interpolation string.regexp",
+							},
 						},
 						patterns: [
 							{
-								include: "#pattern"
-							}
-						]
+								include: "#pattern",
+							},
+						],
 					},
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\band\\b|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#term"
-					}
-				]
-			}
-		]
+						include: "#term",
+					},
+				],
+			},
+		],
 	},
 	bindTermArgs: {
 		patterns: [
@@ -592,13 +588,13 @@ const repository = {
 				applyEndPatternLast: true,
 				beginCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				patterns: [
 					{
@@ -606,20 +602,20 @@ const repository = {
 						end: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)|(?<=\\))",
 						endCaptures: {
 							"0": {
-								name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-							}
+								name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+							},
 						},
 						patterns: [
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
 								begin: "\\((?!\\*)",
 								end: "\\)",
 								captures: {
 									"0": {
-										name: "punctuation.definition.tag"
-									}
+										name: "punctuation.definition.tag",
+									},
 								},
 								patterns: [
 									{
@@ -627,49 +623,49 @@ const repository = {
 										end: ":|=",
 										endCaptures: {
 											"0": {
-												name: "keyword"
-											}
+												name: "keyword",
+											},
 										},
 										patterns: [
 											{
 												match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-												name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-											}
-										]
+												name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+											},
+										],
 									},
 									{
 										begin: "(?<=:)",
 										end: "=|(?=\\))",
 										endCaptures: {
 											"0": {
-												name: "keyword"
-											}
+												name: "keyword",
+											},
 										},
 										patterns: [
 											{
-												include: "#type"
-											}
-										]
+												include: "#type",
+											},
+										],
 									},
 									{
 										begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 										end: "(?=\\))",
 										patterns: [
 											{
-												include: "#term"
-											}
-										]
-									}
-								]
-							}
-						]
-					}
-				]
+												include: "#term",
+											},
+										],
+									},
+								],
+							},
+						],
+					},
+				],
 			},
 			{
-				include: "#pattern"
-			}
-		]
+				include: "#pattern",
+			},
+		],
 	},
 	bindType: {
 		patterns: [
@@ -678,56 +674,56 @@ const repository = {
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])\\+=|=(?![#\\-:!?.@*/&%^+<=>|~$])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#attributeIdentifier"
+						include: "#attributeIdentifier",
 					},
 					{
-						include: "#pathType"
+						include: "#pathType",
 					},
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "entity.name.function strong"
+						name: "entity.name.function strong",
 					},
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]\\+=|^\\+=|[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "\\band\\b|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#bindConstructor"
-					}
-				]
-			}
-		]
+						include: "#bindConstructor",
+					},
+				],
+			},
+		],
 	},
 	comment: {
 		patterns: [
 			{
-				include: "#attribute"
+				include: "#attribute",
 			},
 			{
-				include: "#extension"
+				include: "#extension",
 			},
 			{
-				include: "#commentBlock"
+				include: "#commentBlock",
 			},
 			{
-				include: "#commentDoc"
-			}
-		]
+				include: "#commentDoc",
+			},
+		],
 	},
 	commentBlock: {
 		begin: "\\(\\*(?!\\*[^\\)])",
@@ -736,12 +732,12 @@ const repository = {
 		contentName: "emphasis",
 		patterns: [
 			{
-				include: "#commentBlock"
+				include: "#commentBlock",
 			},
 			{
-				include: "#commentDoc"
-			}
-		]
+				include: "#commentDoc",
+			},
+		],
 	},
 	commentDoc: {
 		begin: "\\(\\*\\*",
@@ -749,365 +745,365 @@ const repository = {
 		name: "comment constant.regexp meta.separator.markdown",
 		patterns: [
 			{
-				match: "\\*"
+				match: "\\*",
 			},
 			{
-				include: "#comment"
-			}
-		]
+				include: "#comment",
+			},
+		],
 	},
 	decl: {
 		patterns: [
 			{
-				include: "#declClass"
+				include: "#declClass",
 			},
 			{
-				include: "#declException"
+				include: "#declException",
 			},
 			{
-				include: "#declInclude"
+				include: "#declInclude",
 			},
 			{
-				include: "#declModule"
+				include: "#declModule",
 			},
 			{
-				include: "#declOpen"
+				include: "#declOpen",
 			},
 			{
-				include: "#declTerm"
+				include: "#declTerm",
 			},
 			{
-				include: "#declType"
-			}
-		]
+				include: "#declType",
+			},
+		],
 	},
 	declClass: {
 		begin: "\\bclass\\b",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "entity.name.class constant.numeric markup.underline"
-			}
+				name: "entity.name.class constant.numeric markup.underline",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]class|^class))(?![[:word:]]))",
 				end: "\\btype\\b|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|val)\\b)",
 				beginCaptures: {
 					"0": {
-						name: "entity.name.class constant.numeric markup.underline"
-					}
+						name: "entity.name.class constant.numeric markup.underline",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				patterns: [
 					{
-						include: "#bindClassTerm"
-					}
-				]
+						include: "#bindClassTerm",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]type|^type))(?![[:word:]]))",
 				end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				patterns: [
 					{
-						include: "#bindClassType"
-					}
-				]
-			}
-		]
+						include: "#bindClassType",
+					},
+				],
+			},
+		],
 	},
 	declException: {
 		begin: "\\bexception\\b",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "keyword markup.underline"
-			}
+				name: "keyword markup.underline",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#attributeIdentifier"
+				include: "#attributeIdentifier",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#bindConstructor"
-			}
-		]
+				include: "#bindConstructor",
+			},
+		],
 	},
 	declInclude: {
 		begin: "\\binclude\\b",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#attributeIdentifier"
+				include: "#attributeIdentifier",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#signature"
-			}
-		]
+				include: "#signature",
+			},
+		],
 	},
 	declModule: {
 		begin: "(?:(?<=(?:[^[:word:]]module|^module))(?![[:word:]]))|\\bmodule\\b",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "markup.inserted constant.language support.constant.property-value entity.name.filename markup.underline"
-			}
+				name: "markup.inserted constant.language support.constant.property-value entity.name.filename markup.underline",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]module|^module))(?![[:word:]]))",
 				end: "(\\btype\\b)|(?=[[:upper:]])",
 				endCaptures: {
 					"0": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				patterns: [
 					{
-						include: "#attributeIdentifier"
+						include: "#attributeIdentifier",
 					},
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
 						match: "\\brec\\b",
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
-				]
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]type|^type))(?![[:word:]]))",
 				end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				patterns: [
 					{
-						include: "#bindSignature"
-					}
-				]
+						include: "#bindSignature",
+					},
+				],
 			},
 			{
 				begin: "(?=[[:upper:]])",
 				end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				patterns: [
 					{
-						include: "#bindStructure"
-					}
-				]
-			}
-		]
+						include: "#bindStructure",
+					},
+				],
+			},
+		],
 	},
 	declOpen: {
 		begin: "\\bopen\\b",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#attributeIdentifier"
+				include: "#attributeIdentifier",
 			},
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#pathModuleExtended"
-			}
-		]
+				include: "#pathModuleExtended",
+			},
+		],
 	},
 	declTerm: {
 		begin: "\\b(?:(external|val)|(method)|(let))\\b(!?)",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"1": {
-				name: "support.type markup.underline"
+				name: "support.type markup.underline",
 			},
 			"2": {
-				name: "storage.type markup.underline"
+				name: "storage.type markup.underline",
 			},
 			"3": {
-				name: "keyword.control markup.underline"
+				name: "keyword.control markup.underline",
 			},
 			"4": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#bindTerm"
-			}
-		]
+				include: "#bindTerm",
+			},
+		],
 	},
 	declType: {
 		begin: "(?:(?<=(?:[^[:word:]]type|^type))(?![[:word:]]))|\\btype\\b",
 		end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "keyword markup.underline"
-			}
+				name: "keyword markup.underline",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#bindType"
-			}
-		]
+				include: "#bindType",
+			},
+		],
 	},
 	extension: {
 		begin: "(\\[)((?<![#\\-:!?.@*/&%^+<=>|~$])%{1,3}(?![#\\-:!?.@*/&%^+<=>|~$]))",
 		end: "\\]",
 		beginCaptures: {
 			"1": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 			},
 			"2": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+			},
 		},
 		patterns: [
 			{
-				include: "#attributePayload"
-			}
-		]
+				include: "#attributePayload",
+			},
+		],
 	},
 	literal: {
 		patterns: [
 			{
-				include: "#termConstructor"
+				include: "#termConstructor",
 			},
 			{
-				include: "#literalArray"
+				include: "#literalArray",
 			},
 			{
-				include: "#literalBoolean"
+				include: "#literalBoolean",
 			},
 			{
-				include: "#literalCharacter"
+				include: "#literalCharacter",
 			},
 			{
-				include: "#literalList"
+				include: "#literalList",
 			},
 			{
-				include: "#literalNumber"
+				include: "#literalNumber",
 			},
 			{
-				include: "#literalObjectTerm"
+				include: "#literalObjectTerm",
 			},
 			{
-				include: "#literalString"
+				include: "#literalString",
 			},
 			{
-				include: "#literalRecord"
+				include: "#literalRecord",
 			},
 			{
-				include: "#literalUnit"
-			}
-		]
+				include: "#literalUnit",
+			},
+		],
 	},
 	literalArray: {
 		begin: "\\[\\|",
 		end: "\\|\\]",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+			},
 		},
 		patterns: [
 			{
-				include: "#term"
-			}
-		]
+				include: "#term",
+			},
+		],
 	},
 	literalBoolean: {
 		match: "\\bfalse|true\\b",
-		name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+		name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 	},
 	literalCharacter: {
 		begin: "(?<![[:word:]])'",
@@ -1115,25 +1111,25 @@ const repository = {
 		name: "markup.punctuation.quote.beginning",
 		patterns: [
 			{
-				include: "#literalCharacterEscape"
-			}
-		]
+				include: "#literalCharacterEscape",
+			},
+		],
 	},
 	literalCharacterEscape: {
-		match: "\\\\(?:[\\\\\"'ntbr]|[[:digit:]][[:digit:]][[:digit:]]|x[[:xdigit:]][[:xdigit:]]|o[0-3][0-7][0-7])"
+		match: "\\\\(?:[\\\\\"'ntbr]|[[:digit:]][[:digit:]][[:digit:]]|x[[:xdigit:]][[:xdigit:]]|o[0-3][0-7][0-7])",
 	},
 	literalClassType: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "\\bobject\\b",
 				end: "\\bend\\b",
 				captures: {
 					"0": {
-						name: "punctuation.definition.tag emphasis"
-					}
+						name: "punctuation.definition.tag emphasis",
+					},
 				},
 				patterns: [
 					{
@@ -1141,13 +1137,13 @@ const repository = {
 						end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 						beginCaptures: {
 							"0": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp"
-							}
+								name: "variable.other.class.js message.error variable.interpolation string.regexp",
+							},
 						},
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
@@ -1155,33 +1151,33 @@ const repository = {
 								end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 								beginCaptures: {
 									"0": {
-										name: "variable.other.class.js message.error variable.interpolation string.regexp"
-									}
+										name: "variable.other.class.js message.error variable.interpolation string.regexp",
+									},
 								},
 								patterns: [
 									{
-										include: "#variablePattern"
-									}
-								]
+										include: "#variablePattern",
+									},
+								],
 							},
 							{
-								include: "#type"
-							}
-						]
+								include: "#type",
+							},
+						],
 					},
 					{
-						include: "#pattern"
+						include: "#pattern",
 					},
 					{
-						include: "#declTerm"
-					}
-				]
+						include: "#declTerm",
+					},
+				],
 			},
 			{
 				begin: "\\[",
-				end: "\\]"
-			}
-		]
+				end: "\\]",
+			},
+		],
 	},
 	literalList: {
 		patterns: [
@@ -1190,33 +1186,33 @@ const repository = {
 				end: "\\]",
 				captures: {
 					"0": {
-						name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-					}
+						name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#term"
-					}
-				]
-			}
-		]
+						include: "#term",
+					},
+				],
+			},
+		],
 	},
 	literalNumber: {
 		match: "(?<![[:alpha:]])[[:digit:]][[:digit:]]*(\\.[[:digit:]][[:digit:]]*)?",
-		name: "constant.numeric"
+		name: "constant.numeric",
 	},
 	literalObjectTerm: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "\\bobject\\b",
 				end: "\\bend\\b",
 				captures: {
 					"0": {
-						name: "punctuation.definition.tag emphasis"
-					}
+						name: "punctuation.definition.tag emphasis",
+					},
 				},
 				patterns: [
 					{
@@ -1224,13 +1220,13 @@ const repository = {
 						end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 						beginCaptures: {
 							"0": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp"
-							}
+								name: "variable.other.class.js message.error variable.interpolation string.regexp",
+							},
 						},
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
@@ -1238,41 +1234,41 @@ const repository = {
 								end: ";;|(?=\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 								beginCaptures: {
 									"0": {
-										name: "variable.other.class.js message.error variable.interpolation string.regexp"
-									}
+										name: "variable.other.class.js message.error variable.interpolation string.regexp",
+									},
 								},
 								patterns: [
 									{
-										include: "#variablePattern"
-									}
-								]
+										include: "#variablePattern",
+									},
+								],
 							},
 							{
-								include: "#term"
-							}
-						]
+								include: "#term",
+							},
+						],
 					},
 					{
-						include: "#pattern"
+						include: "#pattern",
 					},
 					{
-						include: "#declTerm"
-					}
-				]
+						include: "#declTerm",
+					},
+				],
 			},
 			{
 				begin: "\\[",
-				end: "\\]"
-			}
-		]
+				end: "\\]",
+			},
+		],
 	},
 	literalRecord: {
 		begin: "\\{",
 		end: "\\}",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong",
+			},
 		},
 		patterns: [
 			{
@@ -1280,96 +1276,96 @@ const repository = {
 				end: "(:)|(=)|(;)|(with)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"4": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#pathModulePrefixSimple"
+						include: "#pathModulePrefixSimple",
 					},
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]with|^with))(?![[:word:]]))",
 				end: "(:)|(=)|(;)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(;)|(=)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: ";|(?=\\})",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#term"
-					}
-				]
-			}
-		]
+						include: "#term",
+					},
+				],
+			},
+		],
 	},
 	literalString: {
 		patterns: [
 			{
-				begin: "\"",
-				end: "\"",
+				begin: '"',
+				end: '"',
 				name: "string beginning.punctuation.definition.quote.markdown",
 				patterns: [
 					{
-						include: "#literalStringEscape"
-					}
-				]
+						include: "#literalStringEscape",
+					},
+				],
 			},
 			{
 				begin: "(\\{)([_[:lower:]]*?)(\\|)",
@@ -1377,141 +1373,141 @@ const repository = {
 				name: "string beginning.punctuation.definition.quote.markdown",
 				patterns: [
 					{
-						include: "#literalStringEscape"
-					}
-				]
-			}
-		]
+						include: "#literalStringEscape",
+					},
+				],
+			},
+		],
 	},
 	literalStringEscape: {
-		match: "\\\\(?:[\\\\\"ntbr]|[[:digit:]][[:digit:]][[:digit:]]|x[[:xdigit:]][[:xdigit:]]|o[0-3][0-7][0-7])"
+		match: '\\\\(?:[\\\\"ntbr]|[[:digit:]][[:digit:]][[:digit:]]|x[[:xdigit:]][[:xdigit:]]|o[0-3][0-7][0-7])',
 	},
 	literalUnit: {
 		match: "\\(\\)",
-		name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+		name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 	},
 	pathModuleExtended: {
 		patterns: [
 			{
-				include: "#pathModulePrefixExtended"
+				include: "#pathModulePrefixExtended",
 			},
 			{
 				match: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)",
-				name: "entity.name.class constant.numeric"
-			}
-		]
+				name: "entity.name.class constant.numeric",
+			},
+		],
 	},
 	pathModulePrefixExtended: {
 		begin: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\.|$|\\()",
 		end: "(?![[:space:]\\.]|$|\\()",
 		beginCaptures: {
 			"0": {
-				name: "entity.name.class constant.numeric"
-			}
+				name: "entity.name.class constant.numeric",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "\\(",
 				end: "\\)",
 				captures: {
 					"0": {
-						name: "keyword.control"
-					}
+						name: "keyword.control",
+					},
 				},
 				patterns: [
 					{
 						match: "((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\)))",
-						name: "string.other.link variable.language variable.parameter emphasis"
+						name: "string.other.link variable.language variable.parameter emphasis",
 					},
 					{
-						include: "#structure"
-					}
-				]
+						include: "#structure",
+					},
+				],
 			},
 			{
 				begin: "(?<![#\\-:!?.@*/&%^+<=>|~$])\\.(?![#\\-:!?.@*/&%^+<=>|~$])",
 				end: "((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\.|$))|((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*(?:$|\\()))|((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\)))|(?![[:space:]\\.[:upper:]]|$|\\()",
 				beginCaptures: {
 					"0": {
-						name: "keyword strong"
-					}
+						name: "keyword strong",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "entity.name.class constant.numeric"
+						name: "entity.name.class constant.numeric",
 					},
 					"2": {
-						name: "entity.name.function strong"
+						name: "entity.name.function strong",
 					},
 					"3": {
-						name: "string.other.link variable.language variable.parameter emphasis"
-					}
-				}
-			}
-		]
+						name: "string.other.link variable.language variable.parameter emphasis",
+					},
+				},
+			},
+		],
 	},
 	pathModulePrefixExtendedParens: {
 		begin: "\\(",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
 				match: "((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\)))",
-				name: "string.other.link variable.language variable.parameter emphasis"
+				name: "string.other.link variable.language variable.parameter emphasis",
 			},
 			{
-				include: "#structure"
-			}
-		]
+				include: "#structure",
+			},
+		],
 	},
 	pathModulePrefixSimple: {
 		begin: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\.)",
 		end: "(?![[:space:]\\.])",
 		beginCaptures: {
 			"0": {
-				name: "entity.name.class constant.numeric"
-			}
+				name: "entity.name.class constant.numeric",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(?<![#\\-:!?.@*/&%^+<=>|~$])\\.(?![#\\-:!?.@*/&%^+<=>|~$])",
 				end: "((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*\\.))|((?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)(?=[[:space:]]*))|(?![[:space:]\\.[:upper:]])",
 				beginCaptures: {
 					"0": {
-						name: "keyword strong"
-					}
+						name: "keyword strong",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "entity.name.class constant.numeric"
+						name: "entity.name.class constant.numeric",
 					},
 					"2": {
-						name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-					}
-				}
-			}
-		]
+						name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+					},
+				},
+			},
+		],
 	},
 	pathModuleSimple: {
 		patterns: [
 			{
-				include: "#pathModulePrefixSimple"
+				include: "#pathModulePrefixSimple",
 			},
 			{
 				match: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)",
-				name: "entity.name.class constant.numeric"
-			}
-		]
+				name: "entity.name.class constant.numeric",
+			},
+		],
 	},
 	pathRecord: {
 		patterns: [
@@ -1520,203 +1516,203 @@ const repository = {
 				end: "(?=[^[:space:]\\.])(?!\\(\\*)",
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]\\.|^\\.))(?![#\\-:!?.@*/&%^+<=>|~$]))|(?<![#\\-:!?.@*/&%^+<=>|~$])\\.(?![#\\-:!?.@*/&%^+<=>|~$])",
 						end: "((?<![#\\-:!?.@*/&%^+<=>|~$])\\.(?![#\\-:!?.@*/&%^+<=>|~$]))|((?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|mutable|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*))|(?<=\\))|(?<=\\])",
 						beginCaptures: {
 							"0": {
-								name: "keyword strong"
-							}
+								name: "keyword strong",
+							},
 						},
 						endCaptures: {
 							"1": {
-								name: "keyword strong"
+								name: "keyword strong",
 							},
 							"2": {
-								name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-							}
+								name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+							},
 						},
 						patterns: [
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
-								include: "#pathModulePrefixSimple"
+								include: "#pathModulePrefixSimple",
 							},
 							{
 								begin: "\\((?!\\*)",
 								end: "\\)",
 								captures: {
 									"0": {
-										name: "variable.other.class.js message.error variable.interpolation string.regexp"
-									}
+										name: "variable.other.class.js message.error variable.interpolation string.regexp",
+									},
 								},
 								patterns: [
 									{
-										include: "#term"
-									}
-								]
+										include: "#term",
+									},
+								],
 							},
 							{
 								begin: "\\[",
 								end: "\\]",
 								captures: {
 									"0": {
-										name: "variable.other.class.js message.error variable.interpolation string.regexp"
-									}
+										name: "variable.other.class.js message.error variable.interpolation string.regexp",
+									},
 								},
 								patterns: [
 									{
-										include: "#pattern"
-									}
-								]
-							}
-						]
-					}
-				]
-			}
-		]
+										include: "#pattern",
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	pattern: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#patternArray"
+				include: "#patternArray",
 			},
 			{
-				include: "#patternLazy"
+				include: "#patternLazy",
 			},
 			{
-				include: "#patternList"
+				include: "#patternList",
 			},
 			{
-				include: "#patternMisc"
+				include: "#patternMisc",
 			},
 			{
-				include: "#patternModule"
+				include: "#patternModule",
 			},
 			{
-				include: "#patternRecord"
+				include: "#patternRecord",
 			},
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#patternParens"
+				include: "#patternParens",
 			},
 			{
-				include: "#patternType"
+				include: "#patternType",
 			},
 			{
-				include: "#variablePattern"
+				include: "#variablePattern",
 			},
 			{
-				include: "#termOperator"
-			}
-		]
+				include: "#termOperator",
+			},
+		],
 	},
 	patternArray: {
 		begin: "\\[\\|",
 		end: "\\|\\]",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+			},
 		},
 		patterns: [
 			{
-				include: "#pattern"
-			}
-		]
+				include: "#pattern",
+			},
+		],
 	},
 	patternLazy: {
 		match: "lazy",
-		name: "variable.other.class.js message.error variable.interpolation string.regexp"
+		name: "variable.other.class.js message.error variable.interpolation string.regexp",
 	},
 	patternList: {
 		begin: "\\[",
 		end: "\\]",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+			},
 		},
 		patterns: [
 			{
-				include: "#pattern"
-			}
-		]
+				include: "#pattern",
+			},
+		],
 	},
 	patternMisc: {
 		match: "((?<![#\\-:!?.@*/&%^+<=>|~$]),(?![#\\-:!?.@*/&%^+<=>|~$]))|([#\\-:!?.@*/&%^+<=>|~$]+)|\\b(as)\\b",
 		captures: {
 			"1": {
-				name: "string.regexp strong"
+				name: "string.regexp strong",
 			},
 			"2": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
 			},
 			"3": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
-		}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
+		},
 	},
 	patternModule: {
 		begin: "\\bmodule\\b",
 		end: "(?=\\))",
 		beginCaptures: {
 			"0": {
-				name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-			}
+				name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+			},
 		},
 		patterns: [
 			{
-				include: "#declModule"
-			}
-		]
+				include: "#declModule",
+			},
+		],
 	},
 	patternParens: {
 		begin: "\\((?!\\))",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(?<![#\\-:!?.@*/&%^+<=>|~$]):(?![#\\-:!?.@*/&%^+<=>|~$])",
 				end: "(?=\\))",
 				beginCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
-				include: "#pattern"
-			}
-		]
+				include: "#pattern",
+			},
+		],
 	},
 	patternRecord: {
 		begin: "\\{",
 		end: "\\}",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong",
+			},
 		},
 		patterns: [
 			{
@@ -1724,151 +1720,151 @@ const repository = {
 				end: "(:)|(=)|(;)|(with)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"4": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#pathModulePrefixSimple"
+						include: "#pathModulePrefixSimple",
 					},
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]with|^with))(?![[:word:]]))",
 				end: "(:)|(=)|(;)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(;)|(=)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: ";|(?=\\})",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#pattern"
-					}
-				]
-			}
-		]
+						include: "#pattern",
+					},
+				],
+			},
+		],
 	},
 	patternType: {
 		begin: "\\btype\\b",
 		end: "(?=\\))",
 		beginCaptures: {
 			"0": {
-				name: "keyword"
-			}
+				name: "keyword",
+			},
 		},
 		patterns: [
 			{
-				include: "#declType"
-			}
-		]
+				include: "#declType",
+			},
+		],
 	},
 	pragma: {
 		begin: "(?<![#\\-:!?.@*/&%^+<=>|~$])#(?![#\\-:!?.@*/&%^+<=>|~$])",
 		end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#literalNumber"
+				include: "#literalNumber",
 			},
 			{
-				include: "#literalString"
-			}
-		]
+				include: "#literalString",
+			},
+		],
 	},
 	signature: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#signatureLiteral"
+				include: "#signatureLiteral",
 			},
 			{
-				include: "#signatureFunctor"
+				include: "#signatureFunctor",
 			},
 			{
-				include: "#pathModuleExtended"
+				include: "#pathModuleExtended",
 			},
 			{
-				include: "#signatureParens"
+				include: "#signatureParens",
 			},
 			{
-				include: "#signatureRecovered"
+				include: "#signatureRecovered",
 			},
 			{
-				include: "#signatureConstraints"
-			}
-		]
+				include: "#signatureConstraints",
+			},
+		],
 	},
 	signatureConstraints: {
 		begin: "\\bwith\\b",
 		end: "(?=\\))|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 		beginCaptures: {
 			"0": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
+			},
 		},
 		patterns: [
 			{
@@ -1876,20 +1872,20 @@ const repository = {
 				end: "\\b(?:(module)|(type))\\b",
 				endCaptures: {
 					"1": {
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
 					},
 					"2": {
-						name: "keyword"
-					}
-				}
+						name: "keyword",
+					},
+				},
 			},
 			{
-				include: "#declModule"
+				include: "#declModule",
 			},
 			{
-				include: "#declType"
-			}
-		]
+				include: "#declType",
+			},
+		],
 	},
 	signatureFunctor: {
 		patterns: [
@@ -1898,8 +1894,8 @@ const repository = {
 				end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				beginCaptures: {
 					"0": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				patterns: [
 					{
@@ -1907,123 +1903,123 @@ const repository = {
 						end: "(\\(\\))|(\\((?!\\)))",
 						endCaptures: {
 							"1": {
-								name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+								name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 							},
 							"2": {
-								name: "punctuation.definition.tag"
-							}
-						}
+								name: "punctuation.definition.tag",
+							},
+						},
 					},
 					{
 						begin: "(?<=\\()",
 						end: "(:)|(\\))",
 						endCaptures: {
 							"1": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+								name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 							},
 							"2": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#variableModule"
-							}
-						]
+								include: "#variableModule",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#signature"
-							}
-						]
+								include: "#signature",
+							},
+						],
 					},
 					{
 						begin: "(?<=\\))",
 						end: "(\\()|((?<![#\\-:!?.@*/&%^+<=>|~$])->(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						endCaptures: {
 							"1": {
-								name: "punctuation.definition.tag"
+								name: "punctuation.definition.tag",
 							},
 							"2": {
-								name: "support.type strong"
-							}
-						}
+								name: "support.type strong",
+							},
+						},
 					},
 					{
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]->|^->))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 						patterns: [
 							{
-								include: "#signature"
-							}
-						]
-					}
-				]
+								include: "#signature",
+							},
+						],
+					},
+				],
 			},
 			{
 				match: "(?<![#\\-:!?.@*/&%^+<=>|~$])->(?![#\\-:!?.@*/&%^+<=>|~$])",
-				name: "support.type strong"
-			}
-		]
+				name: "support.type strong",
+			},
+		],
 	},
 	signatureLiteral: {
 		begin: "\\bsig\\b",
 		end: "\\bend\\b",
 		captures: {
 			"0": {
-				name: "punctuation.definition.tag emphasis"
-			}
+				name: "punctuation.definition.tag emphasis",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#decl"
-			}
-		]
+				include: "#decl",
+			},
+		],
 	},
 	signatureParens: {
 		begin: "\\((?!\\))",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				begin: "(?<![#\\-:!?.@*/&%^+<=>|~$]):(?![#\\-:!?.@*/&%^+<=>|~$])",
 				end: "(?=\\))",
 				beginCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#signature"
-					}
-				]
+						include: "#signature",
+					},
+				],
 			},
 			{
-				include: "#signature"
-			}
-		]
+				include: "#signature",
+			},
+		],
 	},
 	signatureRecovered: {
 		patterns: [
@@ -2032,9 +2028,9 @@ const repository = {
 				end: "\\bmodule\\b|(?!$|[[:space:]]|\\bmodule\\b)",
 				endCaptures: {
 					"0": {
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-					}
-				}
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+					},
+				},
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]module|^module))(?![[:word:]]))",
@@ -2045,50 +2041,50 @@ const repository = {
 						end: "\\btype\\b",
 						endCaptures: {
 							"0": {
-								name: "keyword"
-							}
-						}
+								name: "keyword",
+							},
+						},
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]type|^type))(?![[:word:]]))",
 						end: "\\bof\\b",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
-						}
+								name: "punctuation.definition.tag",
+							},
+						},
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]of|^of))(?![[:word:]]))",
 						end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 						patterns: [
 							{
-								include: "#signature"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "#signature",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	structure: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#structureLiteral"
+				include: "#structureLiteral",
 			},
 			{
-				include: "#structureFunctor"
+				include: "#structureFunctor",
 			},
 			{
-				include: "#pathModuleExtended"
+				include: "#pathModuleExtended",
 			},
 			{
-				include: "#structureParens"
-			}
-		]
+				include: "#structureParens",
+			},
+		],
 	},
 	structureFunctor: {
 		patterns: [
@@ -2097,8 +2093,8 @@ const repository = {
 				end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				beginCaptures: {
 					"0": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				patterns: [
 					{
@@ -2106,189 +2102,189 @@ const repository = {
 						end: "(\\(\\))|(\\((?!\\)))",
 						endCaptures: {
 							"1": {
-								name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
+								name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
 							},
 							"2": {
-								name: "punctuation.definition.tag"
-							}
-						}
+								name: "punctuation.definition.tag",
+							},
+						},
 					},
 					{
 						begin: "(?<=\\()",
 						end: "(:)|(\\))",
 						endCaptures: {
 							"1": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+								name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 							},
 							"2": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#variableModule"
-							}
-						]
+								include: "#variableModule",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.tag"
-							}
+								name: "punctuation.definition.tag",
+							},
 						},
 						patterns: [
 							{
-								include: "#signature"
-							}
-						]
+								include: "#signature",
+							},
+						],
 					},
 					{
 						begin: "(?<=\\))",
 						end: "(\\()|((?<![#\\-:!?.@*/&%^+<=>|~$])->(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						endCaptures: {
 							"1": {
-								name: "punctuation.definition.tag"
+								name: "punctuation.definition.tag",
 							},
 							"2": {
-								name: "support.type strong"
-							}
-						}
+								name: "support.type strong",
+							},
+						},
 					},
 					{
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]->|^->))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						end: "(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 						patterns: [
 							{
-								include: "#structure"
-							}
-						]
-					}
-				]
+								include: "#structure",
+							},
+						],
+					},
+				],
 			},
 			{
 				match: "(?<![#\\-:!?.@*/&%^+<=>|~$])->(?![#\\-:!?.@*/&%^+<=>|~$])",
-				name: "support.type strong"
-			}
-		]
+				name: "support.type strong",
+			},
+		],
 	},
 	structureLiteral: {
 		begin: "\\bstruct\\b",
 		end: "\\bend\\b",
 		captures: {
 			"0": {
-				name: "punctuation.definition.tag emphasis"
-			}
+				name: "punctuation.definition.tag emphasis",
+			},
 		},
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#pragma"
+				include: "#pragma",
 			},
 			{
-				include: "#decl"
-			}
-		]
+				include: "#decl",
+			},
+		],
 	},
 	structureParens: {
 		begin: "\\(",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
-				include: "#structureUnpack"
+				include: "#structureUnpack",
 			},
 			{
-				include: "#structure"
-			}
-		]
+				include: "#structure",
+			},
+		],
 	},
 	structureUnpack: {
 		begin: "\\bval\\b",
 		end: "(?=\\))",
 		beginCaptures: {
 			"0": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
-		}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
+		},
 	},
 	term: {
 		patterns: [
 			{
-				include: "#termLet"
+				include: "#termLet",
 			},
 			{
-				include: "#termAtomic"
-			}
-		]
+				include: "#termAtomic",
+			},
+		],
 	},
 	termAtomic: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
-				include: "#termConditional"
+				include: "#termConditional",
 			},
 			{
-				include: "#termConstructor"
+				include: "#termConstructor",
 			},
 			{
-				include: "#termDelim"
+				include: "#termDelim",
 			},
 			{
-				include: "#termFor"
+				include: "#termFor",
 			},
 			{
-				include: "#termFunction"
+				include: "#termFunction",
 			},
 			{
-				include: "#literal"
+				include: "#literal",
 			},
 			{
-				include: "#termMatch"
+				include: "#termMatch",
 			},
 			{
-				include: "#termMatchRule"
+				include: "#termMatchRule",
 			},
 			{
-				include: "#termPun"
+				include: "#termPun",
 			},
 			{
-				include: "#termOperator"
+				include: "#termOperator",
 			},
 			{
-				include: "#termTry"
+				include: "#termTry",
 			},
 			{
-				include: "#termWhile"
+				include: "#termWhile",
 			},
 			{
-				include: "#pathRecord"
-			}
-		]
+				include: "#pathRecord",
+			},
+		],
 	},
 	termConditional: {
 		match: "\\b(?:if|then|else)\\b",
-		name: "keyword.control"
+		name: "keyword.control",
 	},
 	termConstructor: {
 		patterns: [
 			{
-				include: "#pathModulePrefixSimple"
+				include: "#pathModulePrefixSimple",
 			},
 			{
 				match: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)",
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong"
-			}
-		]
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong",
+			},
+		],
 	},
 	termDelim: {
 		patterns: [
@@ -2297,33 +2293,33 @@ const repository = {
 				end: "\\)",
 				captures: {
 					"0": {
-						name: "punctuation.definition.tag"
-					}
+						name: "punctuation.definition.tag",
+					},
 				},
 				patterns: [
 					{
-						include: "#term"
-					}
-				]
+						include: "#term",
+					},
+				],
 			},
 			{
 				begin: "\\bbegin\\b",
 				end: "\\bend\\b",
 				captures: {
 					"0": {
-						name: "punctuation.definition.tag"
-					}
+						name: "punctuation.definition.tag",
+					},
 				},
 				patterns: [
 					{
-						include: "#attributeIdentifier"
+						include: "#attributeIdentifier",
 					},
 					{
-						include: "#term"
-					}
-				]
-			}
-		]
+						include: "#term",
+					},
+				],
+			},
+		],
 	},
 	termFor: {
 		patterns: [
@@ -2332,13 +2328,13 @@ const repository = {
 				end: "\\bdone\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control"
-					}
+						name: "keyword.control",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "keyword.control"
-					}
+						name: "keyword.control",
+					},
 				},
 				patterns: [
 					{
@@ -2346,66 +2342,66 @@ const repository = {
 						end: "(?<![#\\-:!?.@*/&%^+<=>|~$])=(?![#\\-:!?.@*/&%^+<=>|~$])",
 						endCaptures: {
 							"0": {
-								name: "support.type strong"
-							}
+								name: "support.type strong",
+							},
 						},
 						patterns: [
 							{
-								include: "#pattern"
-							}
-						]
+								include: "#pattern",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						end: "\\b(?:downto|to)\\b",
 						endCaptures: {
 							"0": {
-								name: "keyword.control"
-							}
+								name: "keyword.control",
+							},
 						},
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
+								include: "#term",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]to|^to))(?![[:word:]]))",
 						end: "\\bdo\\b",
 						endCaptures: {
 							"0": {
-								name: "keyword.control"
-							}
+								name: "keyword.control",
+							},
 						},
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
+								include: "#term",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]do|^do))(?![[:word:]]))",
 						end: "(?=\\bdone\\b)",
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "#term",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	termFunction: {
 		match: "\\b(?:(fun)|(function))\\b",
 		captures: {
 			"1": {
-				name: "storage.type"
+				name: "storage.type",
 			},
 			"2": {
-				name: "storage.type"
-			}
-		}
+				name: "storage.type",
+			},
+		},
 	},
 	termLet: {
 		patterns: [
@@ -2414,55 +2410,55 @@ const repository = {
 				end: "\\b(?:(and)|(let))\\b|(?=[^[:space:]])(?!\\(\\*)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
 					},
 					"2": {
-						name: "storage.type markup.underline"
-					}
+						name: "storage.type markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
-					}
-				]
+						include: "#comment",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]and|^and|[^[:word:]]let|^let))(?![[:word:]]))|(let)",
 				end: "\\b(?:(and)|(in))\\b|(?=\\}|\\)|\\]|\\b(?:end|class|exception|external|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				beginCaptures: {
 					"1": {
-						name: "storage.type markup.underline"
-					}
+						name: "storage.type markup.underline",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp markup.underline",
 					},
 					"2": {
-						name: "storage.type markup.underline"
-					}
+						name: "storage.type markup.underline",
+					},
 				},
 				patterns: [
 					{
-						include: "#bindTerm"
-					}
-				]
-			}
-		]
+						include: "#bindTerm",
+					},
+				],
+			},
+		],
 	},
 	termMatch: {
 		begin: "\\bmatch\\b",
 		end: "\\bwith\\b",
 		captures: {
 			"0": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
-				include: "#term"
-			}
-		]
+				include: "#term",
+			},
+		],
 	},
 	termMatchRule: {
 		patterns: [
@@ -2471,61 +2467,61 @@ const repository = {
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])(\\|)|(->)(?![#\\-:!?.@*/&%^+<=>|~$])",
 				endCaptures: {
 					"1": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#attributeIdentifier"
+						include: "#attributeIdentifier",
 					},
 					{
-						include: "#pattern"
-					}
-				]
+						include: "#pattern",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^\\[#\\-:!?.@*/&%^+<=>|~$]\\||^\\|))(?![#\\-:!?.@*/&%^+<=>|~$]))|(?<![#\\-:!?.@*/&%^+<=>|~$])\\|(?![#\\-:!?.@*/&%^+<=>|~$])",
 				end: "(?<![#\\-:!?.@*/&%^+<=>|~$])(\\|)|(->)(?![#\\-:!?.@*/&%^+<=>|~$])",
 				beginCaptures: {
 					"0": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#pattern"
+						include: "#pattern",
 					},
 					{
 						begin: "\\bwhen\\b",
 						end: "(?=(?<![#\\-:!?.@*/&%^+<=>|~$])->(?![#\\-:!?.@*/&%^+<=>|~$]))",
 						beginCaptures: {
 							"0": {
-								name: "variable.other.class.js message.error variable.interpolation string.regexp"
-							}
+								name: "variable.other.class.js message.error variable.interpolation string.regexp",
+							},
 						},
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "#term",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	termOperator: {
 		patterns: [
@@ -2534,39 +2530,39 @@ const repository = {
 				end: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
 				beginCaptures: {
 					"0": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "entity.name.function"
-					}
-				}
+						name: "entity.name.function",
+					},
+				},
 			},
 			{
 				match: "<-",
 				captures: {
 					"0": {
-						name: "keyword.control strong"
-					}
-				}
+						name: "keyword.control strong",
+					},
+				},
 			},
 			{
 				match: "(,|[#\\-:!?.@*/&%^+<=>|~$]+)|(;)",
 				captures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"2": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
-				}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
+				},
 			},
 			{
 				match: "\\b(?:and|assert|asr|land|lazy|lsr|lxor|mod|new|or)\\b",
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
-		]
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
+		],
 	},
 	termPun: {
 		begin: "(?<![#\\-:!?.@*/&%^+<=>|~$])\\?|~(?![#\\-:!?.@*/&%^+<=>|~$])",
@@ -2574,13 +2570,13 @@ const repository = {
 		applyEndPatternLast: true,
 		beginCaptures: {
 			"0": {
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
-			}
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
+			},
 		},
 		endCaptures: {
 			"0": {
-				name: "keyword"
-			}
+				name: "keyword",
+			},
 		},
 		patterns: [
 			{
@@ -2588,25 +2584,25 @@ const repository = {
 				end: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
 				endCaptures: {
 					"0": {
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-					}
-				}
-			}
-		]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+					},
+				},
+			},
+		],
 	},
 	termTry: {
 		begin: "\\btry\\b",
 		end: "\\bwith\\b",
 		captures: {
 			"0": {
-				name: "keyword.control"
-			}
+				name: "keyword.control",
+			},
 		},
 		patterns: [
 			{
-				include: "#term"
-			}
-		]
+				include: "#term",
+			},
+		],
 	},
 	termWhile: {
 		patterns: [
@@ -2615,13 +2611,13 @@ const repository = {
 				end: "\\bdone\\b",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control"
-					}
+						name: "keyword.control",
+					},
 				},
 				endCaptures: {
 					"0": {
-						name: "keyword.control"
-					}
+						name: "keyword.control",
+					},
 				},
 				patterns: [
 					{
@@ -2629,62 +2625,62 @@ const repository = {
 						end: "\\bdo\\b",
 						endCaptures: {
 							"0": {
-								name: "keyword.control"
-							}
+								name: "keyword.control",
+							},
 						},
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
+								include: "#term",
+							},
+						],
 					},
 					{
 						begin: "(?:(?<=(?:[^[:word:]]do|^do))(?![[:word:]]))",
 						end: "(?=\\bdone\\b)",
 						patterns: [
 							{
-								include: "#term"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "#term",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	type: {
 		patterns: [
 			{
-				include: "#comment"
+				include: "#comment",
 			},
 			{
 				match: "\\bnonrec\\b",
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
 			},
 			{
-				include: "#pathModulePrefixExtended"
+				include: "#pathModulePrefixExtended",
 			},
 			{
-				include: "#typeLabel"
+				include: "#typeLabel",
 			},
 			{
-				include: "#typeObject"
+				include: "#typeObject",
 			},
 			{
-				include: "#typeOperator"
+				include: "#typeOperator",
 			},
 			{
-				include: "#typeParens"
+				include: "#typeParens",
 			},
 			{
-				include: "#typePolymorphicVariant"
+				include: "#typePolymorphicVariant",
 			},
 			{
-				include: "#typeRecord"
+				include: "#typeRecord",
 			},
 			{
-				include: "#typeConstructor"
-			}
-		]
+				include: "#typeConstructor",
+			},
+		],
 	},
 	typeConstructor: {
 		patterns: [
@@ -2693,30 +2689,30 @@ const repository = {
 				end: "(?=\\((?!\\*)|\\*|:|,|=|\\.|>|-|\\{|\\[|\\+|\\}|\\)|\\]|;|\\|)|((?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*))[:space:]*(?!\\(\\*|[[:word:]])|(?=;;|\\}|\\)|\\]|\\b(?:end|and|class|exception|external|in|include|inherit|initializer|let|method|module|open|type|val)\\b)",
 				beginCaptures: {
 					"1": {
-						name: "comment constant.regexp meta.separator.markdown"
+						name: "comment constant.regexp meta.separator.markdown",
 					},
 					"3": {
-						name: "string.other.link variable.language variable.parameter emphasis strong emphasis"
+						name: "string.other.link variable.language variable.parameter emphasis strong emphasis",
 					},
 					"4": {
-						name: "keyword.control emphasis"
-					}
+						name: "keyword.control emphasis",
+					},
 				},
 				endCaptures: {
 					"1": {
-						name: "entity.name.function strong"
-					}
+						name: "entity.name.function strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#pathModulePrefixExtended"
-					}
-				]
-			}
-		]
+						include: "#pathModulePrefixExtended",
+					},
+				],
+			},
+		],
 	},
 	typeLabel: {
 		patterns: [
@@ -2725,47 +2721,47 @@ const repository = {
 				end: "(?=(?<![#\\-:!?.@*/&%^+<=>|~$])->(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				captures: {
 					"1": {
-						name: "keyword strong emphasis"
+						name: "keyword strong emphasis",
 					},
 					"2": {
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
 					},
 					"3": {
-						name: "keyword"
-					}
+						name: "keyword",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
-			}
-		]
+						include: "#type",
+					},
+				],
+			},
+		],
 	},
 	typeModule: {
 		begin: "\\bmodule\\b",
 		end: "(?=\\))",
 		beginCaptures: {
 			"0": {
-				name: "markup.inserted constant.language support.constant.property-value entity.name.filename"
-			}
+				name: "markup.inserted constant.language support.constant.property-value entity.name.filename",
+			},
 		},
 		patterns: [
 			{
-				include: "#pathModuleExtended"
+				include: "#pathModuleExtended",
 			},
 			{
-				include: "#signatureConstraints"
-			}
-		]
+				include: "#signatureConstraints",
+			},
+		],
 	},
 	typeObject: {
 		begin: "<",
 		end: ">",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong",
+			},
 		},
 		patterns: [
 			{
@@ -2773,89 +2769,88 @@ const repository = {
 				end: "(:)|(?=>)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"4": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#pathModulePrefixSimple"
+						include: "#pathModulePrefixSimple",
 					},
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(;)|(?=>)",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
-			}
-		]
+						include: "#type",
+					},
+				],
+			},
+		],
 	},
 	typeOperator: {
 		patterns: [
 			{
 				match: ",|;|[#\\-:!?.@*/&%^+<=>|~$]+",
-				name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
-			}
-		]
+				name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
+			},
+		],
 	},
 	typeParens: {
 		begin: "\\(",
 		end: "\\)",
 		captures: {
 			"0": {
-				name: "punctuation.definition.tag"
-			}
+				name: "punctuation.definition.tag",
+			},
 		},
 		patterns: [
 			{
 				match: ",",
-				name: "variable.other.class.js message.error variable.interpolation string.regexp"
+				name: "variable.other.class.js message.error variable.interpolation string.regexp",
 			},
 			{
-				include: "#typeModule"
+				include: "#typeModule",
 			},
 			{
-				include: "#type"
-			}
-		]
+				include: "#type",
+			},
+		],
 	},
 	typePolymorphicVariant: {
 		begin: "\\[",
 		end: "\\]",
-		patterns: [
-		]
+		patterns: [],
 	},
 	typeRecord: {
 		begin: "\\{",
 		end: "\\}",
 		captures: {
 			"0": {
-				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong"
-			}
+				name: "constant.language constant.numeric entity.other.attribute-name.id.css strong strong",
+			},
 		},
 		patterns: [
 			{
@@ -2863,111 +2858,118 @@ const repository = {
 				end: "(:)|(=)|(;)|(with)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"4": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#comment"
+						include: "#comment",
 					},
 					{
-						include: "#pathModulePrefixSimple"
+						include: "#pathModulePrefixSimple",
 					},
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^[:word:]]with|^with))(?![[:word:]]))",
 				end: "(:)|(=)|(;)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp strong"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp strong",
 					},
 					"2": {
-						name: "support.type strong"
+						name: "support.type strong",
 					},
 					"3": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
 						match: "(?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*)",
-						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis"
-					}
-				]
+						name: "markup.inserted constant.language support.constant.property-value entity.name.filename emphasis",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]:|^:))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: "(;)|(=)|(?=\\})",
 				endCaptures: {
 					"1": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
 					},
 					"2": {
-						name: "support.type strong"
-					}
+						name: "support.type strong",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
+						include: "#type",
+					},
+				],
 			},
 			{
 				begin: "(?:(?<=(?:[^#\\-:!?.@*/&%^+<=>|~$]=|^=))(?![#\\-:!?.@*/&%^+<=>|~$]))",
 				end: ";|(?=\\})",
 				endCaptures: {
 					"0": {
-						name: "variable.other.class.js message.error variable.interpolation string.regexp"
-					}
+						name: "variable.other.class.js message.error variable.interpolation string.regexp",
+					},
 				},
 				patterns: [
 					{
-						include: "#type"
-					}
-				]
-			}
-		]
+						include: "#type",
+					},
+				],
+			},
+		],
 	},
 	variableModule: {
 		match: "(?:\\b(?=[[:upper:]])[[:alpha:]_][[:word:]']*)",
 		captures: {
 			"0": {
-				name: "string.other.link variable.language variable.parameter emphasis"
-			}
-		}
+				name: "string.other.link variable.language variable.parameter emphasis",
+			},
+		},
 	},
 	variablePattern: {
 		match: "(\\b_\\b)|((?:(?!\\b(?:and|'|as|asr|assert|\\*|begin|class|:|,|@|constraint|do|done|downto|else|end|=|exception|external|false|for|\\.|fun|function|functor|>|-|if|in|include|inherit|initializer|land|lazy|\\{|\\(|\\[|<|let|lor|lsl|lsr|lxor|match|method|mod|module|mutable|new|nonrec|#|object|of|open|or|%|\\+|private|\\?|\"|rec|\\\\|\\}|\\)|\\]|;|sig|/|struct|then|~|to|true|try|type|val|\\||virtual|when|while|with)\\b(?:[^']|$))\\b(?=[[:lower:]_])[[:alpha:]_][[:word:]']*))",
 		captures: {
 			"1": {
-				name: "comment constant.regexp meta.separator.markdown"
+				name: "comment constant.regexp meta.separator.markdown",
 			},
 			"2": {
-				name: "string.other.link variable.language variable.parameter emphasis"
-			}
-		}
-	}
+				name: "string.other.link variable.language variable.parameter emphasis",
+			},
+		},
+	},
 };
 const ocaml_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	fileTypes: fileTypes,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { ocaml_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	ocaml_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

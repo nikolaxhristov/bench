@@ -3,83 +3,83 @@ const name = "dark-plus";
 const tokenColors = [
 	{
 		settings: {
-			foreground: "#D4D4D4"
-		}
+			foreground: "#D4D4D4",
+		},
 	},
 	{
 		scope: [
 			"meta.embedded",
 			"source.groovy.embedded",
-			"string meta.image.inline.markdown"
+			"string meta.image.inline.markdown",
 		],
 		settings: {
-			foreground: "#D4D4D4"
-		}
+			foreground: "#D4D4D4",
+		},
 	},
 	{
 		scope: "emphasis",
 		settings: {
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "strong",
 		settings: {
-			fontStyle: "bold"
-		}
+			fontStyle: "bold",
+		},
 	},
 	{
 		scope: "header",
 		settings: {
-			foreground: "#000080"
-		}
+			foreground: "#000080",
+		},
 	},
 	{
 		scope: "comment",
 		settings: {
-			foreground: "#6A9955"
-		}
+			foreground: "#6A9955",
+		},
 	},
 	{
 		scope: "constant.language",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: [
 			"constant.numeric",
 			"variable.other.enummember",
 			"keyword.operator.plus.exponent",
-			"keyword.operator.minus.exponent"
+			"keyword.operator.minus.exponent",
 		],
 		settings: {
-			foreground: "#b5cea8"
-		}
+			foreground: "#b5cea8",
+		},
 	},
 	{
 		scope: "constant.regexp",
 		settings: {
-			foreground: "#646695"
-		}
+			foreground: "#646695",
+		},
 	},
 	{
 		scope: "entity.name.tag",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "entity.name.tag.css",
 		settings: {
-			foreground: "#d7ba7d"
-		}
+			foreground: "#d7ba7d",
+		},
 	},
 	{
 		scope: "entity.other.attribute-name",
 		settings: {
-			foreground: "#9cdcfe"
-		}
+			foreground: "#9cdcfe",
+		},
 	},
 	{
 		scope: [
@@ -90,193 +90,182 @@ const tokenColors = [
 			"entity.other.attribute-name.pseudo-class.css",
 			"entity.other.attribute-name.pseudo-element.css",
 			"source.css.less entity.other.attribute-name.id",
-			"entity.other.attribute-name.scss"
+			"entity.other.attribute-name.scss",
 		],
 		settings: {
-			foreground: "#d7ba7d"
-		}
+			foreground: "#d7ba7d",
+		},
 	},
 	{
 		scope: "invalid",
 		settings: {
-			foreground: "#f44747"
-		}
+			foreground: "#f44747",
+		},
 	},
 	{
 		scope: "markup.underline",
 		settings: {
-			fontStyle: "underline"
-		}
+			fontStyle: "underline",
+		},
 	},
 	{
 		scope: "markup.bold",
 		settings: {
 			fontStyle: "bold",
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "markup.heading",
 		settings: {
 			fontStyle: "bold",
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "markup.italic",
 		settings: {
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "markup.strikethrough",
 		settings: {
-			fontStyle: "strikethrough"
-		}
+			fontStyle: "strikethrough",
+		},
 	},
 	{
 		scope: "markup.inserted",
 		settings: {
-			foreground: "#b5cea8"
-		}
+			foreground: "#b5cea8",
+		},
 	},
 	{
 		scope: "markup.deleted",
 		settings: {
-			foreground: "#ce9178"
-		}
+			foreground: "#ce9178",
+		},
 	},
 	{
 		scope: "markup.changed",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "punctuation.definition.quote.begin.markdown",
 		settings: {
-			foreground: "#6A9955"
-		}
+			foreground: "#6A9955",
+		},
 	},
 	{
 		scope: "punctuation.definition.list.begin.markdown",
 		settings: {
-			foreground: "#6796e6"
-		}
+			foreground: "#6796e6",
+		},
 	},
 	{
 		scope: "markup.inline.raw",
 		settings: {
-			foreground: "#ce9178"
-		}
+			foreground: "#ce9178",
+		},
 	},
 	{
 		name: "brackets of XML/HTML tags",
 		scope: "punctuation.definition.tag",
 		settings: {
-			foreground: "#808080"
-		}
+			foreground: "#808080",
+		},
 	},
 	{
-		scope: [
-			"meta.preprocessor",
-			"entity.name.function.preprocessor"
-		],
+		scope: ["meta.preprocessor", "entity.name.function.preprocessor"],
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "meta.preprocessor.string",
 		settings: {
-			foreground: "#ce9178"
-		}
+			foreground: "#ce9178",
+		},
 	},
 	{
 		scope: "meta.preprocessor.numeric",
 		settings: {
-			foreground: "#b5cea8"
-		}
+			foreground: "#b5cea8",
+		},
 	},
 	{
 		scope: "meta.structure.dictionary.key.python",
 		settings: {
-			foreground: "#9cdcfe"
-		}
+			foreground: "#9cdcfe",
+		},
 	},
 	{
 		scope: "meta.diff.header",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "storage",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "storage.type",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
-		scope: [
-			"storage.modifier",
-			"keyword.operator.noexcept"
-		],
+		scope: ["storage.modifier", "keyword.operator.noexcept"],
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
-		scope: [
-			"string",
-			"meta.embedded.assembly"
-		],
+		scope: ["string", "meta.embedded.assembly"],
 		settings: {
-			foreground: "#ce9178"
-		}
+			foreground: "#ce9178",
+		},
 	},
 	{
 		scope: "string.tag",
 		settings: {
-			foreground: "#ce9178"
-		}
+			foreground: "#ce9178",
+		},
 	},
 	{
 		scope: "string.value",
 		settings: {
-			foreground: "#ce9178"
-		}
+			foreground: "#ce9178",
+		},
 	},
 	{
 		scope: "string.regexp",
 		settings: {
-			foreground: "#d16969"
-		}
+			foreground: "#d16969",
+		},
 	},
 	{
 		name: "String interpolation",
 		scope: [
 			"punctuation.definition.template-expression.begin",
 			"punctuation.definition.template-expression.end",
-			"punctuation.section.embedded"
+			"punctuation.section.embedded",
 		],
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		name: "Reset JavaScript string interpolation expression",
-		scope: [
-			"meta.template.expression"
-		],
+		scope: ["meta.template.expression"],
 		settings: {
-			foreground: "#d4d4d4"
-		}
+			foreground: "#d4d4d4",
+		},
 	},
 	{
 		scope: [
@@ -285,29 +274,29 @@ const tokenColors = [
 			"variable.css",
 			"variable.scss",
 			"variable.other.less",
-			"source.coffee.embedded"
+			"source.coffee.embedded",
 		],
 		settings: {
-			foreground: "#9cdcfe"
-		}
+			foreground: "#9cdcfe",
+		},
 	},
 	{
 		scope: "keyword",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "keyword.control",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "keyword.operator",
 		settings: {
-			foreground: "#d4d4d4"
-		}
+			foreground: "#d4d4d4",
+		},
 	},
 	{
 		scope: [
@@ -320,56 +309,56 @@ const tokenColors = [
 			"keyword.operator.alignas",
 			"keyword.operator.instanceof",
 			"keyword.operator.logical.python",
-			"keyword.operator.wordlike"
+			"keyword.operator.wordlike",
 		],
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "keyword.other.unit",
 		settings: {
-			foreground: "#b5cea8"
-		}
+			foreground: "#b5cea8",
+		},
 	},
 	{
 		scope: [
 			"punctuation.section.embedded.begin.php",
-			"punctuation.section.embedded.end.php"
+			"punctuation.section.embedded.end.php",
 		],
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "support.function.git-rebase",
 		settings: {
-			foreground: "#9cdcfe"
-		}
+			foreground: "#9cdcfe",
+		},
 	},
 	{
 		scope: "constant.sha.git-rebase",
 		settings: {
-			foreground: "#b5cea8"
-		}
+			foreground: "#b5cea8",
+		},
 	},
 	{
 		name: "coloring of the Java import and package identifiers",
 		scope: [
 			"storage.modifier.import.java",
 			"variable.language.wildcard.java",
-			"storage.modifier.package.java"
+			"storage.modifier.package.java",
 		],
 		settings: {
-			foreground: "#d4d4d4"
-		}
+			foreground: "#d4d4d4",
+		},
 	},
 	{
 		name: "this.self",
 		scope: "variable.language",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		name: "Function declarations",
@@ -378,11 +367,11 @@ const tokenColors = [
 			"support.function",
 			"support.constant.handlebars",
 			"source.powershell variable.other.member",
-			"entity.name.operator.custom-literal"
+			"entity.name.operator.custom-literal",
 		],
 		settings: {
-			foreground: "#DCDCAA"
-		}
+			foreground: "#DCDCAA",
+		},
 	},
 	{
 		name: "Types declaration and references",
@@ -418,11 +407,11 @@ const tokenColors = [
 			"storage.type.generic.groovy",
 			"storage.type.object.array.groovy",
 			"storage.type.primitive.array.groovy",
-			"storage.type.primitive.groovy"
+			"storage.type.primitive.groovy",
 		],
 		settings: {
-			foreground: "#4EC9B0"
-		}
+			foreground: "#4EC9B0",
+		},
 	},
 	{
 		name: "Types declaration and references, TS grammar specific",
@@ -432,11 +421,11 @@ const tokenColors = [
 			"support.constant.math",
 			"support.constant.dom",
 			"support.constant.json",
-			"entity.other.inherited-class"
+			"entity.other.inherited-class",
 		],
 		settings: {
-			foreground: "#4EC9B0"
-		}
+			foreground: "#4EC9B0",
+		},
 	},
 	{
 		name: "Control flow / Special keywords",
@@ -446,11 +435,11 @@ const tokenColors = [
 			"keyword.operator.delete",
 			"keyword.other.using",
 			"keyword.other.operator",
-			"entity.name.operator"
+			"entity.name.operator",
 		],
 		settings: {
-			foreground: "#C586C0"
-		}
+			foreground: "#C586C0",
+		},
 	},
 	{
 		name: "Variable and parameter name",
@@ -459,30 +448,25 @@ const tokenColors = [
 			"meta.definition.variable.name",
 			"support.variable",
 			"entity.name.variable",
-			"constant.other.placeholder"
+			"constant.other.placeholder",
 		],
 		settings: {
-			foreground: "#9CDCFE"
-		}
+			foreground: "#9CDCFE",
+		},
 	},
 	{
 		name: "Constants and enums",
-		scope: [
-			"variable.other.constant",
-			"variable.other.enummember"
-		],
+		scope: ["variable.other.constant", "variable.other.enummember"],
 		settings: {
-			foreground: "#4FC1FF"
-		}
+			foreground: "#4FC1FF",
+		},
 	},
 	{
 		name: "Object keys, TS grammar specific",
-		scope: [
-			"meta.object-literal.key"
-		],
+		scope: ["meta.object-literal.key"],
 		settings: {
-			foreground: "#9CDCFE"
-		}
+			foreground: "#9CDCFE",
+		},
 	},
 	{
 		name: "CSS property value",
@@ -493,11 +477,11 @@ const tokenColors = [
 			"support.constant.media",
 			"constant.other.color.rgb-value",
 			"constant.other.rgb-value",
-			"support.constant.color"
+			"support.constant.color",
 		],
 		settings: {
-			foreground: "#CE9178"
-		}
+			foreground: "#CE9178",
+		},
 	},
 	{
 		name: "Regular expression groups",
@@ -508,62 +492,59 @@ const tokenColors = [
 			"punctuation.character.set.begin.regexp",
 			"punctuation.character.set.end.regexp",
 			"keyword.operator.negation.regexp",
-			"support.other.parenthesis.regexp"
+			"support.other.parenthesis.regexp",
 		],
 		settings: {
-			foreground: "#CE9178"
-		}
+			foreground: "#CE9178",
+		},
 	},
 	{
 		scope: [
 			"constant.character.character-class.regexp",
 			"constant.other.character-class.set.regexp",
 			"constant.other.character-class.regexp",
-			"constant.character.set.regexp"
+			"constant.character.set.regexp",
 		],
 		settings: {
-			foreground: "#d16969"
-		}
+			foreground: "#d16969",
+		},
 	},
 	{
-		scope: [
-			"keyword.operator.or.regexp",
-			"keyword.control.anchor.regexp"
-		],
+		scope: ["keyword.operator.or.regexp", "keyword.control.anchor.regexp"],
 		settings: {
-			foreground: "#DCDCAA"
-		}
+			foreground: "#DCDCAA",
+		},
 	},
 	{
 		scope: "keyword.operator.quantifier.regexp",
 		settings: {
-			foreground: "#d7ba7d"
-		}
+			foreground: "#d7ba7d",
+		},
 	},
 	{
 		scope: "constant.character",
 		settings: {
-			foreground: "#569cd6"
-		}
+			foreground: "#569cd6",
+		},
 	},
 	{
 		scope: "constant.character.escape",
 		settings: {
-			foreground: "#d7ba7d"
-		}
+			foreground: "#d7ba7d",
+		},
 	},
 	{
 		scope: "entity.name.label",
 		settings: {
-			foreground: "#C8C8C8"
-		}
-	}
+			foreground: "#C8C8C8",
+		},
+	},
 ];
 const semanticTokenColors = {
 	newOperator: "#C586C0",
 	stringLiteral: "#ce9178",
 	customLiteral: "#DCDCAA",
-	numberLiteral: "#b5cea8"
+	numberLiteral: "#b5cea8",
 };
 const colors = {
 	"editor.background": "#1E1E1E",
@@ -584,14 +565,21 @@ const colors = {
 	"sideBarSectionHeader.background": "#0000",
 	"sideBarSectionHeader.border": "#ccc3",
 	"tab.lastPinnedBorder": "#ccc3",
-	"list.activeSelectionIconForeground": "#FFF"
+	"list.activeSelectionIconForeground": "#FFF",
 };
 const darkPlus = {
 	$schema: $schema,
 	name: name,
 	tokenColors: tokenColors,
 	semanticTokenColors: semanticTokenColors,
-	colors: colors
+	colors: colors,
 };
 
-export { $schema, colors, darkPlus as default, name, semanticTokenColors, tokenColors };
+export {
+	$schema,
+	colors,
+	darkPlus as default,
+	name,
+	semanticTokenColors,
+	tokenColors,
+};

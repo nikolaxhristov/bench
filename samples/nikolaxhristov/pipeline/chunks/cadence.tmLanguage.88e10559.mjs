@@ -1,26 +1,26 @@
 const scopeName = "source.cadence";
 const patterns = [
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#expressions"
+		include: "#expressions",
 	},
 	{
-		include: "#declarations"
+		include: "#declarations",
 	},
 	{
-		include: "#keywords"
+		include: "#keywords",
 	},
 	{
-		include: "#code-block"
+		include: "#code-block",
 	},
 	{
-		include: "#composite"
+		include: "#composite",
 	},
 	{
-		include: "#event"
-	}
+		include: "#event",
+	},
 ];
 const repository = {
 	comments: {
@@ -28,82 +28,82 @@ const repository = {
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.comment.cadence"
-					}
+						name: "punctuation.definition.comment.cadence",
+					},
 				},
 				match: "\\A^(#!).*$\\n?",
-				name: "comment.line.number-sign.cadence"
+				name: "comment.line.number-sign.cadence",
 			},
 			{
 				begin: "/\\*\\*(?!/)",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.begin.cadence"
-					}
+						name: "punctuation.definition.comment.begin.cadence",
+					},
 				},
 				end: "\\*/",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.end.cadence"
-					}
+						name: "punctuation.definition.comment.end.cadence",
+					},
 				},
 				name: "comment.block.documentation.cadence",
 				patterns: [
 					{
-						include: "#nested"
-					}
-				]
+						include: "#nested",
+					},
+				],
 			},
 			{
 				begin: "/\\*:",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.begin.cadence"
-					}
+						name: "punctuation.definition.comment.begin.cadence",
+					},
 				},
 				end: "\\*/",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.end.cadence"
-					}
+						name: "punctuation.definition.comment.end.cadence",
+					},
 				},
 				name: "comment.block.documentation.playground.cadence",
 				patterns: [
 					{
-						include: "#nested"
-					}
-				]
+						include: "#nested",
+					},
+				],
 			},
 			{
 				begin: "/\\*",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.begin.cadence"
-					}
+						name: "punctuation.definition.comment.begin.cadence",
+					},
 				},
 				end: "\\*/",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.end.cadence"
-					}
+						name: "punctuation.definition.comment.end.cadence",
+					},
 				},
 				name: "comment.block.cadence",
 				patterns: [
 					{
-						include: "#nested"
-					}
-				]
+						include: "#nested",
+					},
+				],
 			},
 			{
 				match: "\\*/",
-				name: "invalid.illegal.unexpected-end-of-block-comment.cadence"
+				name: "invalid.illegal.unexpected-end-of-block-comment.cadence",
 			},
 			{
 				begin: "(^[ \\t]+)?(?=//)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.whitespace.comment.leading.cadence"
-					}
+						name: "punctuation.whitespace.comment.leading.cadence",
+					},
 				},
 				end: "(?!\\G)",
 				patterns: [
@@ -111,34 +111,34 @@ const repository = {
 						begin: "///",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.cadence"
-							}
+								name: "punctuation.definition.comment.cadence",
+							},
 						},
 						end: "^",
-						name: "comment.line.triple-slash.documentation.cadence"
+						name: "comment.line.triple-slash.documentation.cadence",
 					},
 					{
 						begin: "//:",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.cadence"
-							}
+								name: "punctuation.definition.comment.cadence",
+							},
 						},
 						end: "^",
-						name: "comment.line.double-slash.documentation.cadence"
+						name: "comment.line.double-slash.documentation.cadence",
 					},
 					{
 						begin: "//",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.comment.cadence"
-							}
+								name: "punctuation.definition.comment.cadence",
+							},
 						},
 						end: "^",
-						name: "comment.line.double-slash.cadence"
-					}
-				]
-			}
+						name: "comment.line.double-slash.cadence",
+					},
+				],
+			},
 		],
 		repository: {
 			nested: {
@@ -146,337 +146,337 @@ const repository = {
 				end: "\\*/",
 				patterns: [
 					{
-						include: "#nested"
-					}
-				]
-			}
-		}
+						include: "#nested",
+					},
+				],
+			},
+		},
 	},
 	literals: {
 		patterns: [
 			{
-				include: "#boolean"
+				include: "#boolean",
 			},
 			{
-				include: "#numeric"
+				include: "#numeric",
 			},
 			{
-				include: "#string"
+				include: "#string",
 			},
 			{
 				match: "\\bnil\\b",
-				name: "constant.language.nil.cadence"
-			}
+				name: "constant.language.nil.cadence",
+			},
 		],
 		repository: {
 			boolean: {
 				match: "\\b(true|false)\\b",
-				name: "constant.language.boolean.cadence"
+				name: "constant.language.boolean.cadence",
 			},
 			numeric: {
 				patterns: [
 					{
-						include: "#binary"
+						include: "#binary",
 					},
 					{
-						include: "#octal"
+						include: "#octal",
 					},
 					{
-						include: "#decimal"
+						include: "#decimal",
 					},
 					{
-						include: "#hexadecimal"
-					}
+						include: "#hexadecimal",
+					},
 				],
 				repository: {
 					binary: {
 						comment: "",
 						match: "(\\B\\-|\\b)0b[01]([_01]*[01])?\\b",
-						name: "constant.numeric.integer.binary.cadence"
+						name: "constant.numeric.integer.binary.cadence",
 					},
 					octal: {
 						comment: "",
 						match: "(\\B\\-|\\b)0o[0-7]([_0-7]*[0-7])?\\b",
-						name: "constant.numeric.integer.octal.cadence"
+						name: "constant.numeric.integer.octal.cadence",
 					},
 					decimal: {
 						comment: "",
 						match: "(\\B\\-|\\b)[0-9]([_0-9]*[0-9])?\\b",
-						name: "constant.numeric.integer.decimal.cadence"
+						name: "constant.numeric.integer.decimal.cadence",
 					},
 					hexadecimal: {
 						comment: "",
 						match: "(\\B\\-|\\b)0x[0-9A-Fa-f]([_0-9A-Fa-f]*[0-9A-Fa-f])?\\b",
-						name: "constant.numeric.integer.hexadecimal.cadence"
-					}
-				}
+						name: "constant.numeric.integer.hexadecimal.cadence",
+					},
+				},
 			},
 			string: {
 				patterns: [
 					{
-						begin: "\"",
+						begin: '"',
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.string.begin.cadence"
-							}
+								name: "punctuation.definition.string.begin.cadence",
+							},
 						},
-						end: "\"",
+						end: '"',
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.string.end.cadence"
-							}
+								name: "punctuation.definition.string.end.cadence",
+							},
 						},
 						name: "string.quoted.double.single-line.cadence",
 						patterns: [
 							{
 								match: "\\r|\\n",
-								name: "invalid.illegal.returns-not-allowed.cadence"
+								name: "invalid.illegal.returns-not-allowed.cadence",
 							},
 							{
-								include: "#string-guts"
-							}
-						]
-					}
+								include: "#string-guts",
+							},
+						],
+					},
 				],
 				repository: {
 					"string-guts": {
 						patterns: [
 							{
 								match: "\\\\[0\\\\tnr\"']",
-								name: "constant.character.escape.cadence"
+								name: "constant.character.escape.cadence",
 							},
 							{
 								match: "\\\\u\\{[0-9a-fA-F]{1,8}\\}",
-								name: "constant.character.escape.unicode.cadence"
-							}
-						]
-					}
-				}
-			}
-		}
+								name: "constant.character.escape.unicode.cadence",
+							},
+						],
+					},
+				},
+			},
+		},
 	},
 	operators: {
 		patterns: [
 			{
 				match: "\\-",
-				name: "keyword.operator.arithmetic.unary.cadence"
+				name: "keyword.operator.arithmetic.unary.cadence",
 			},
 			{
 				match: "!",
-				name: "keyword.operator.logical.not.cadence"
+				name: "keyword.operator.logical.not.cadence",
 			},
 			{
 				match: "=",
-				name: "keyword.operator.assignment.cadence"
+				name: "keyword.operator.assignment.cadence",
 			},
 			{
 				match: "<-",
-				name: "keyword.operator.move.cadence"
+				name: "keyword.operator.move.cadence",
 			},
 			{
 				match: "<-!",
-				name: "keyword.operator.force-move.cadence"
+				name: "keyword.operator.force-move.cadence",
 			},
 			{
 				match: "\\+|\\-|\\*|/",
-				name: "keyword.operator.arithmetic.cadence"
+				name: "keyword.operator.arithmetic.cadence",
 			},
 			{
 				match: "%",
-				name: "keyword.operator.arithmetic.remainder.cadence"
+				name: "keyword.operator.arithmetic.remainder.cadence",
 			},
 			{
 				match: "==|!=|>|<|>=|<=",
-				name: "keyword.operator.comparison.cadence"
+				name: "keyword.operator.comparison.cadence",
 			},
 			{
 				match: "\\?\\?",
-				name: "keyword.operator.coalescing.cadence"
+				name: "keyword.operator.coalescing.cadence",
 			},
 			{
 				match: "&&|\\|\\|",
-				name: "keyword.operator.logical.cadence"
+				name: "keyword.operator.logical.cadence",
 			},
 			{
 				match: "[?!]",
-				name: "keyword.operator.type.optional.cadence"
-			}
-		]
+				name: "keyword.operator.type.optional.cadence",
+			},
+		],
 	},
 	keywords: {
 		patterns: [
 			{
 				match: "(?<!\\.)\\b(?:if|else|switch|case|default)\\b",
-				name: "keyword.control.branch.cadence"
+				name: "keyword.control.branch.cadence",
 			},
 			{
 				match: "(?<!\\.)\\b(?:return|continue|break)\\b",
-				name: "keyword.control.transfer.cadence"
+				name: "keyword.control.transfer.cadence",
 			},
 			{
 				match: "(?<!\\.)\\b(?:while|for|in)\\b",
-				name: "keyword.control.loop.cadence"
+				name: "keyword.control.loop.cadence",
 			},
 			{
 				match: "(?<!\\.)\\b(?:pre|post|prepare|execute|create|destroy|emit)\\b",
-				name: "keyword.other.cadence"
+				name: "keyword.other.cadence",
 			},
 			{
 				match: "(?<!\\.)\\b(?:private|pub(?:\\(set\\))?|access\\((?:self|contract|account|all)\\))\\b",
-				name: "keyword.other.declaration-specifier.accessibility.cadence"
+				name: "keyword.other.declaration-specifier.accessibility.cadence",
 			},
 			{
 				match: "\\b(?:init|destroy)\\b",
-				name: "storage.type.function.cadence"
+				name: "storage.type.function.cadence",
 			},
 			{
 				match: "(?<!\\.)\\b(?:import|from)\\b",
-				name: "keyword.control.import.cadence"
-			}
-		]
+				name: "keyword.control.import.cadence",
+			},
+		],
 	},
 	"code-block": {
 		begin: "\\{",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.section.scope.begin.cadence"
-			}
+				name: "punctuation.section.scope.begin.cadence",
+			},
 		},
 		end: "\\}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.section.scope.end.cadence"
-			}
+				name: "punctuation.section.scope.end.cadence",
+			},
 		},
 		patterns: [
 			{
-				include: "$self"
-			}
-		]
+				include: "$self",
+			},
+		],
 	},
 	"function": {
 		begin: "\\b(fun)\\b\\s+([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)\\s*",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.function.cadence"
+				name: "storage.type.function.cadence",
 			},
 			"2": {
-				name: "entity.name.function.cadence"
-			}
+				name: "entity.name.function.cadence",
+			},
 		},
 		end: "(?<=\\})|$",
 		name: "meta.definition.function.cadence",
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#parameter-clause"
+				include: "#parameter-clause",
 			},
 			{
-				include: "#function-result"
+				include: "#function-result",
 			},
 			{
 				begin: "(\\{)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.section.function.begin.cadence"
-					}
+						name: "punctuation.section.function.begin.cadence",
+					},
 				},
 				end: "(\\})",
 				endCaptures: {
 					"1": {
-						name: "punctuation.section.function.end.cadence"
-					}
+						name: "punctuation.section.function.end.cadence",
+					},
 				},
 				name: "meta.definition.function.body.cadence",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	initializer: {
 		begin: "(?<!\\.)\\b(init)\\s*(?=\\(|<)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.function.cadence"
-			}
+				name: "storage.type.function.cadence",
+			},
 		},
 		end: "(?<=\\})|$",
 		name: "meta.definition.function.initializer.cadence",
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#parameter-clause"
+				include: "#parameter-clause",
 			},
 			{
 				begin: "(\\{)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.section.function.begin.cadence"
-					}
+						name: "punctuation.section.function.begin.cadence",
+					},
 				},
 				end: "(\\})",
 				endCaptures: {
 					"1": {
-						name: "punctuation.section.function.end.cadence"
-					}
+						name: "punctuation.section.function.end.cadence",
+					},
 				},
 				name: "meta.definition.function.body.cadence",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	"function-result": {
 		begin: "(?<![/=\\-+!*%<>&|\\^~.])(:)(?![/=\\-+!*%<>&|\\^~.])\\s*",
 		beginCaptures: {
 			"1": {
-				name: "keyword.operator.function-result.cadence"
-			}
+				name: "keyword.operator.function-result.cadence",
+			},
 		},
 		end: "(?!\\G)(?=\\{|;)|$",
 		name: "meta.function-result.cadence",
 		patterns: [
 			{
-				include: "#type"
-			}
-		]
+				include: "#type",
+			},
+		],
 	},
 	expressions: {
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#function-call-expression"
+				include: "#function-call-expression",
 			},
 			{
-				include: "#literals"
+				include: "#literals",
 			},
 			{
-				include: "#operators"
+				include: "#operators",
 			},
 			{
-				include: "#language-variables"
-			}
-		]
+				include: "#language-variables",
+			},
+		],
 	},
 	"language-variables": {
 		patterns: [
 			{
 				match: "\\b(self)\\b",
-				name: "variable.language.cadence"
-			}
-		]
+				name: "variable.language.cadence",
+			},
+		],
 	},
 	"function-call-expression": {
 		patterns: [
@@ -484,50 +484,51 @@ const repository = {
 				begin: "(?!(?:set|init))([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)\\s*(\\()",
 				beginCaptures: {
 					"1": {
-						name: "support.function.any-method.cadence"
+						name: "support.function.any-method.cadence",
 					},
 					"4": {
-						name: "punctuation.definition.arguments.begin.cadence"
-					}
+						name: "punctuation.definition.arguments.begin.cadence",
+					},
 				},
-				comment: "foo(args) -- a call whose callee is a highlightable name",
+				comment:
+					"foo(args) -- a call whose callee is a highlightable name",
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.arguments.end.cadence"
-					}
+						name: "punctuation.definition.arguments.end.cadence",
+					},
 				},
 				name: "meta.function-call.cadence",
 				patterns: [
 					{
-						include: "#expression-element-list"
-					}
-				]
-			}
-		]
+						include: "#expression-element-list",
+					},
+				],
+			},
+		],
 	},
 	"expression-element-list": {
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
 				begin: "([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)\\s*(:)",
 				beginCaptures: {
 					"1": {
-						name: "support.function.any-method.cadence"
+						name: "support.function.any-method.cadence",
 					},
 					"2": {
-						name: "punctuation.separator.argument-label.cadence"
-					}
+						name: "punctuation.separator.argument-label.cadence",
+					},
 				},
 				comment: "an element with a label",
 				end: "(?=[,)\\]])",
 				patterns: [
 					{
-						include: "#expressions"
-					}
-				]
+						include: "#expressions",
+					},
+				],
 			},
 			{
 				begin: "(?![,)\\]])(?=\\S)",
@@ -535,72 +536,72 @@ const repository = {
 				end: "(?=[,)\\]])",
 				patterns: [
 					{
-						include: "#expressions"
-					}
-				]
-			}
-		]
+						include: "#expressions",
+					},
+				],
+			},
+		],
 	},
 	declarations: {
 		patterns: [
 			{
-				include: "#var-let-declaration"
+				include: "#var-let-declaration",
 			},
 			{
-				include: "#function"
+				include: "#function",
 			},
 			{
-				include: "#initializer"
-			}
-		]
+				include: "#initializer",
+			},
+		],
 	},
 	"var-let-declaration": {
 		begin: "\\b(var|let)\\b\\s+([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.$1.cadence"
+				name: "storage.type.$1.cadence",
 			},
 			"2": {
-				name: "entity.name.type.$1.cadence"
-			}
+				name: "entity.name.type.$1.cadence",
+			},
 		},
 		end: "=|<-|<-!|$",
 		patterns: [
 			{
-				include: "#type"
-			}
-		]
+				include: "#type",
+			},
+		],
 	},
 	type: {
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
 				match: "([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)",
-				name: "storage.type.cadence"
-			}
-		]
+				name: "storage.type.cadence",
+			},
+		],
 	},
 	"parameter-clause": {
 		begin: "(\\()",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.parameters.begin.cadence"
-			}
+				name: "punctuation.definition.parameters.begin.cadence",
+			},
 		},
 		end: "(\\))",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.parameters.end.cadence"
-			}
+				name: "punctuation.definition.parameters.end.cadence",
+			},
 		},
 		name: "meta.parameter-clause.cadence",
 		patterns: [
 			{
-				include: "#parameter-list"
-			}
-		]
+				include: "#parameter-list",
+			},
+		],
 	},
 	"parameter-list": {
 		patterns: [
@@ -608,112 +609,114 @@ const repository = {
 				match: "([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)\\s+([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)(?=\\s*:)",
 				captures: {
 					"1": {
-						name: "entity.name.function.cadence"
+						name: "entity.name.function.cadence",
 					},
 					"2": {
-						name: "variable.parameter.function.cadence"
-					}
+						name: "variable.parameter.function.cadence",
+					},
 				},
-				comment: "External parameter labels are considered part of the function name"
+				comment:
+					"External parameter labels are considered part of the function name",
 			},
 			{
 				match: "(([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*))(?=\\s*:)",
 				captures: {
 					"1": {
-						name: "variable.parameter.function.cadence"
+						name: "variable.parameter.function.cadence",
 					},
 					"2": {
-						name: "entity.name.function.cadence"
-					}
+						name: "entity.name.function.cadence",
+					},
 				},
-				comment: "If no external label is given, the name is both the external label and the internal variable name"
+				comment:
+					"If no external label is given, the name is both the external label and the internal variable name",
 			},
 			{
 				begin: ":\\s*(?!\\s)",
 				end: "(?=[,)])",
 				patterns: [
 					{
-						include: "#type"
+						include: "#type",
 					},
 					{
 						match: ":",
-						name: "invalid.illegal.extra-colon-in-parameter-list.cadence"
-					}
-				]
-			}
-		]
+						name: "invalid.illegal.extra-colon-in-parameter-list.cadence",
+					},
+				],
+			},
+		],
 	},
 	event: {
 		begin: "\\b(event)\\b\\s+([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)\\s*",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.event.cadence"
+				name: "storage.type.event.cadence",
 			},
 			"2": {
-				name: "entity.name.type.event.cadence"
-			}
+				name: "entity.name.type.event.cadence",
+			},
 		},
 		end: "(?<=\\))|$",
 		name: "meta.definition.type.event.cadence",
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#parameter-clause"
-			}
-		]
+				include: "#parameter-clause",
+			},
+		],
 	},
 	composite: {
 		begin: "\\b((?:(?:struct|resource|contract)(?:\\s+interface)?)|transaction|enum)\\s+([\\p{L}_][\\p{L}_\\p{N}\\p{M}]*)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.$1.cadence"
+				name: "storage.type.$1.cadence",
 			},
 			"2": {
-				name: "entity.name.type.$1.cadence"
-			}
+				name: "entity.name.type.$1.cadence",
+			},
 		},
 		end: "(?<=\\})",
 		name: "meta.definition.type.composite.cadence",
 		patterns: [
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#conformance-clause"
+				include: "#conformance-clause",
 			},
 			{
 				begin: "\\{",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.type.begin.cadence"
-					}
+						name: "punctuation.definition.type.begin.cadence",
+					},
 				},
 				end: "\\}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.type.end.cadence"
-					}
+						name: "punctuation.definition.type.end.cadence",
+					},
 				},
 				name: "meta.definition.type.body.cadence",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	"conformance-clause": {
 		begin: "(:)(?=\\s*\\{)|(:)\\s*",
 		beginCaptures: {
 			"1": {
-				name: "invalid.illegal.empty-conformance-clause.cadence"
+				name: "invalid.illegal.empty-conformance-clause.cadence",
 			},
 			"2": {
-				name: "punctuation.separator.conformance-clause.cadence"
-			}
+				name: "punctuation.separator.conformance-clause.cadence",
+			},
 		},
 		end: "(?!\\G)$|(?=[={}])",
 		name: "meta.conformance-clause.cadence",
@@ -723,22 +726,22 @@ const repository = {
 				end: "(?!\\G)$|(?=[={}])",
 				patterns: [
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#type"
-					}
-				]
-			}
-		]
-	}
+						include: "#type",
+					},
+				],
+			},
+		],
+	},
 };
 const name = "cadence";
 const cadence_tmLanguage = {
 	scopeName: scopeName,
 	patterns: patterns,
 	repository: repository,
-	name: name
+	name: name,
 };
 
 export { cadence_tmLanguage as default, name, patterns, repository, scopeName };

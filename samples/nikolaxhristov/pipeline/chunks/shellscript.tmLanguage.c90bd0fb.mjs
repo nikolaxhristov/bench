@@ -1,57 +1,58 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/atom/language-shellscript/blob/master/grammars/shell-unix-bash.cson",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/atom/language-shellscript/commit/4f8d7bb5cc4d1643674551683df10fe552dd5a6f";
+const version =
+	"https://github.com/atom/language-shellscript/commit/4f8d7bb5cc4d1643674551683df10fe552dd5a6f";
 const name = "shellscript";
 const scopeName = "source.shell";
 const patterns = [
 	{
-		include: "#comment"
+		include: "#comment",
 	},
 	{
-		include: "#pipeline"
+		include: "#pipeline",
 	},
 	{
-		include: "#list"
+		include: "#list",
 	},
 	{
-		include: "#compound-command"
+		include: "#compound-command",
 	},
 	{
-		include: "#loop"
+		include: "#loop",
 	},
 	{
-		include: "#string"
+		include: "#string",
 	},
 	{
-		include: "#function-definition"
+		include: "#function-definition",
 	},
 	{
-		include: "#variable"
+		include: "#variable",
 	},
 	{
-		include: "#interpolation"
+		include: "#interpolation",
 	},
 	{
-		include: "#heredoc"
+		include: "#heredoc",
 	},
 	{
-		include: "#herestring"
+		include: "#herestring",
 	},
 	{
-		include: "#redirection"
+		include: "#redirection",
 	},
 	{
-		include: "#pathname"
+		include: "#pathname",
 	},
 	{
-		include: "#keyword"
+		include: "#keyword",
 	},
 	{
-		include: "#support"
-	}
+		include: "#support",
+	},
 ];
 const repository = {
 	"case-clause": {
@@ -61,8 +62,8 @@ const repository = {
 				end: ";;",
 				endCaptures: {
 					"0": {
-						name: "punctuation.terminator.case-clause.shell"
-					}
+						name: "punctuation.terminator.case-clause.shell",
+					},
 				},
 				name: "meta.scope.case-clause.shell",
 				patterns: [
@@ -70,34 +71,34 @@ const repository = {
 						begin: "\\(|(?=\\S)",
 						beginCaptures: {
 							"0": {
-								name: "punctuation.definition.case-pattern.shell"
-							}
+								name: "punctuation.definition.case-pattern.shell",
+							},
 						},
 						end: "\\)",
 						endCaptures: {
 							"0": {
-								name: "punctuation.definition.case-pattern.shell"
-							}
+								name: "punctuation.definition.case-pattern.shell",
+							},
 						},
 						name: "meta.scope.case-pattern.shell",
 						patterns: [
 							{
 								match: "\\|",
-								name: "punctuation.separator.pipe-sign.shell"
+								name: "punctuation.separator.pipe-sign.shell",
 							},
 							{
-								include: "#string"
+								include: "#string",
 							},
 							{
-								include: "#variable"
+								include: "#variable",
 							},
 							{
-								include: "#interpolation"
+								include: "#interpolation",
 							},
 							{
-								include: "#pathname"
-							}
-						]
+								include: "#pathname",
+							},
+						],
 					},
 					{
 						begin: "(?<=\\))",
@@ -105,20 +106,20 @@ const repository = {
 						name: "meta.scope.case-clause-body.shell",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
-					}
-				]
-			}
-		]
+								include: "$self",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	comment: {
 		begin: "(^\\s+)?(?<=^|\\W)(?<!-)(?=#)(?!#{)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.whitespace.comment.leading.shell"
-			}
+				name: "punctuation.whitespace.comment.leading.shell",
+			},
 		},
 		end: "(?!\\G)",
 		patterns: [
@@ -126,23 +127,23 @@ const repository = {
 				begin: "#!",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.shebang.shell"
-					}
+						name: "punctuation.definition.comment.shebang.shell",
+					},
 				},
 				end: "$",
-				name: "comment.line.number-sign.shebang.shell"
+				name: "comment.line.number-sign.shebang.shell",
 			},
 			{
 				begin: "#",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.comment.shell"
-					}
+						name: "punctuation.definition.comment.shell",
+					},
 				},
 				end: "$",
-				name: "comment.line.number-sign.shell"
-			}
-		]
+				name: "comment.line.number-sign.shell",
+			},
+		],
 	},
 	"compound-command": {
 		patterns: [
@@ -150,86 +151,86 @@ const repository = {
 				begin: "\\[{1,2}",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.logical-expression.shell"
-					}
+						name: "punctuation.definition.logical-expression.shell",
+					},
 				},
 				end: "\\]{1,2}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.logical-expression.shell"
-					}
+						name: "punctuation.definition.logical-expression.shell",
+					},
 				},
 				name: "meta.scope.logical-expression.shell",
 				patterns: [
 					{
-						include: "#logical-expression"
+						include: "#logical-expression",
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\({2}",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "\\){2}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.other.math.shell",
 				patterns: [
 					{
-						include: "#math"
-					}
-				]
+						include: "#math",
+					},
+				],
 			},
 			{
 				begin: "\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.subshell.shell"
-					}
+						name: "punctuation.definition.subshell.shell",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.subshell.shell"
-					}
+						name: "punctuation.definition.subshell.shell",
+					},
 				},
 				name: "meta.scope.subshell.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=\\s|^){(?=\\s|$)",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.group.shell"
-					}
+						name: "punctuation.definition.group.shell",
+					},
 				},
 				end: "(?<=^|;)\\s*(})",
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.group.shell"
-					}
+						name: "punctuation.definition.group.shell",
+					},
 				},
 				name: "meta.scope.group.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	"function-definition": {
 		patterns: [
@@ -237,52 +238,52 @@ const repository = {
 				begin: "(?<=^|;|&|\\s)(function)\\s+([^\\s\\\\]+)(?:\\s*(\\(\\)))?",
 				beginCaptures: {
 					"1": {
-						name: "storage.type.function.shell"
+						name: "storage.type.function.shell",
 					},
 					"2": {
-						name: "entity.name.function.shell"
+						name: "entity.name.function.shell",
 					},
 					"3": {
-						name: "punctuation.definition.arguments.shell"
-					}
+						name: "punctuation.definition.arguments.shell",
+					},
 				},
 				end: ";|&|$",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.function.shell"
-					}
+						name: "punctuation.definition.function.shell",
+					},
 				},
 				name: "meta.function.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=^|;|&|\\s)([^\\s\\\\=]+)\\s*(\\(\\))",
 				beginCaptures: {
 					"1": {
-						name: "entity.name.function.shell"
+						name: "entity.name.function.shell",
 					},
 					"2": {
-						name: "punctuation.definition.arguments.shell"
-					}
+						name: "punctuation.definition.arguments.shell",
+					},
 				},
 				end: ";|&|$",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.function.shell"
-					}
+						name: "punctuation.definition.function.shell",
+					},
 				},
 				name: "meta.function.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	heredoc: {
 		patterns: [
@@ -290,435 +291,435 @@ const repository = {
 				begin: "(<<)-\\s*(\"|'|)\\s*(RUBY)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(RUBY)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.no-indent.ruby.shell",
 				contentName: "source.ruby.embedded.shell",
 				patterns: [
 					{
-						include: "source.ruby"
-					}
-				]
+						include: "source.ruby",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(RUBY)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(RUBY)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.ruby.shell",
 				contentName: "source.ruby.embedded.shell",
 				patterns: [
 					{
-						include: "source.ruby"
-					}
-				]
+						include: "source.ruby",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|'|)\\s*(PYTHON)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(PYTHON)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.no-indent.python.shell",
 				contentName: "source.python.embedded.shell",
 				patterns: [
 					{
-						include: "source.python"
-					}
-				]
+						include: "source.python",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(PYTHON)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(PYTHON)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.python.shell",
 				contentName: "source.python.embedded.shell",
 				patterns: [
 					{
-						include: "source.python"
-					}
-				]
+						include: "source.python",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|'|)\\s*(APPLESCRIPT)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(APPLESCRIPT)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.no-indent.applescript.shell",
 				contentName: "source.applescript.embedded.shell",
 				patterns: [
 					{
-						include: "source.applescript"
-					}
-				]
+						include: "source.applescript",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(APPLESCRIPT)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(APPLESCRIPT)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.applescript.shell",
 				contentName: "source.applescript.embedded.shell",
 				patterns: [
 					{
-						include: "source.applescript"
-					}
-				]
+						include: "source.applescript",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|'|)\\s*(HTML)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(HTML)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.no-indent.html.shell",
 				contentName: "text.html.embedded.shell",
 				patterns: [
 					{
-						include: "text.html.basic"
-					}
-				]
+						include: "text.html.basic",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(HTML)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(HTML)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.html.shell",
 				contentName: "text.html.embedded.shell",
 				patterns: [
 					{
-						include: "text.html.basic"
-					}
-				]
+						include: "text.html.basic",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|'|)\\s*(MARKDOWN)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(MARKDOWN)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.no-indent.markdown.shell",
 				contentName: "text.html.markdown.embedded.shell",
 				patterns: [
 					{
-						include: "text.html.markdown"
-					}
-				]
+						include: "text.html.markdown",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(MARKDOWN)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(MARKDOWN)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.markdown.shell",
 				contentName: "text.html.markdown.embedded.shell",
 				patterns: [
 					{
-						include: "text.html.markdown"
-					}
-				]
+						include: "text.html.markdown",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|'|)\\s*(TEXTILE)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(TEXTILE)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.no-indent.textile.shell",
 				contentName: "text.html.textile.embedded.shell",
 				patterns: [
 					{
-						include: "text.html.textile"
-					}
-				]
+						include: "text.html.textile",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(TEXTILE)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(TEXTILE)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.textile.shell",
 				contentName: "text.html.textile.embedded.shell",
 				patterns: [
 					{
-						include: "text.html.textile"
-					}
-				]
+						include: "text.html.textile",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|'|)\\s*(SHELL)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(\\3)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				contentName: "source.shell.embedded.shell",
 				name: "string.unquoted.heredoc.no-indent.shell.shell",
 				patterns: [
 					{
-						include: "source.shell"
-					}
-				]
+						include: "source.shell",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*(\"|'|)\\s*(SHELL)(?=\\s|;|&|<|\"|')\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(\\3)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.shell.shell",
 				contentName: "source.shell.embedded.shell",
 				patterns: [
 					{
-						include: "source.shell"
-					}
-				]
+						include: "source.shell",
+					},
+				],
 			},
 			{
 				begin: "(<<)-\\s*(\"|')\\s*\\\\?([^;&<\\s]+)\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(\\3)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
-				name: "string.unquoted.heredoc.no-indent.shell"
+				name: "string.unquoted.heredoc.no-indent.shell",
 			},
 			{
 				begin: "(<<)\\s*(\"|')\\s*\\\\?([^;&<\\s]+)\\2",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"3": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(\\3)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
-				name: "string.unquoted.heredoc.shell"
+				name: "string.unquoted.heredoc.shell",
 			},
 			{
 				begin: "(<<)-\\s*\\\\?([^;&<\\s]+)",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"2": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^\\t*(\\2)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.expanded.no-indent.shell",
 				patterns: [
 					{
 						match: "\\\\[\\$`\\\\\\n]",
-						name: "constant.character.escape.shell"
+						name: "constant.character.escape.shell",
 					},
 					{
-						include: "#variable"
+						include: "#variable",
 					},
 					{
-						include: "#interpolation"
-					}
-				]
+						include: "#interpolation",
+					},
+				],
 			},
 			{
 				begin: "(<<)\\s*\\\\?([^;&<\\s]+)",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.heredoc.shell"
+						name: "keyword.operator.heredoc.shell",
 					},
 					"2": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				end: "^(\\2)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.heredoc-token.shell"
-					}
+						name: "keyword.control.heredoc-token.shell",
+					},
 				},
 				name: "string.unquoted.heredoc.expanded.shell",
 				patterns: [
 					{
 						match: "\\\\[\\$`\\\\\\n]",
-						name: "constant.character.escape.shell"
+						name: "constant.character.escape.shell",
 					},
 					{
-						include: "#variable"
+						include: "#variable",
 					},
 					{
-						include: "#interpolation"
-					}
-				]
-			}
-		]
+						include: "#interpolation",
+					},
+				],
+			},
+		],
 	},
 	herestring: {
 		patterns: [
@@ -726,70 +727,70 @@ const repository = {
 				begin: "(<<<)\\s*(('))",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.herestring.shell"
+						name: "keyword.operator.herestring.shell",
 					},
 					"2": {
-						name: "string.quoted.single.shell"
+						name: "string.quoted.single.shell",
 					},
 					"3": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "(')",
 				endCaptures: {
 					"0": {
-						name: "string.quoted.single.shell"
+						name: "string.quoted.single.shell",
 					},
 					"1": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "meta.herestring.shell",
-				contentName: "string.quoted.single.shell"
+				contentName: "string.quoted.single.shell",
 			},
 			{
-				begin: "(<<<)\\s*((\"))",
+				begin: '(<<<)\\s*(("))',
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.herestring.shell"
+						name: "keyword.operator.herestring.shell",
 					},
 					"2": {
-						name: "string.quoted.double.shell"
+						name: "string.quoted.double.shell",
 					},
 					"3": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
-				end: "(\")",
+				end: '(")',
 				endCaptures: {
 					"0": {
-						name: "string.quoted.double.shell"
+						name: "string.quoted.double.shell",
 					},
 					"1": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "meta.herestring.shell",
-				contentName: "string.quoted.double.shell"
+				contentName: "string.quoted.double.shell",
 			},
 			{
 				captures: {
 					"1": {
-						name: "keyword.operator.herestring.shell"
+						name: "keyword.operator.herestring.shell",
 					},
 					"2": {
 						name: "string.unquoted.herestring.shell",
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
-					}
+								include: "$self",
+							},
+						],
+					},
 				},
 				match: "(<<<)\\s*(([^\\s)\\\\]|\\\\.)+)",
-				name: "meta.herestring.shell"
-			}
-		]
+				name: "meta.herestring.shell",
+			},
+		],
 	},
 	interpolation: {
 		patterns: [
@@ -797,47 +798,47 @@ const repository = {
 				begin: "\\$\\({2}",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "\\){2}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.other.math.shell",
 				patterns: [
 					{
-						include: "#math"
-					}
-				]
+						include: "#math",
+					},
+				],
 			},
 			{
 				begin: "`",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "`",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.interpolated.backtick.shell",
 				patterns: [
 					{
 						match: "\\\\[`\\\\$]",
-						name: "constant.character.escape.shell"
+						name: "constant.character.escape.shell",
 					},
 					{
 						begin: "(?<=\\W)(?=#)(?!#{)",
 						beginCaptures: {
 							"1": {
-								name: "punctuation.whitespace.comment.leading.shell"
-							}
+								name: "punctuation.whitespace.comment.leading.shell",
+							},
 						},
 						end: "(?!\\G)",
 						patterns: [
@@ -845,73 +846,73 @@ const repository = {
 								begin: "#",
 								beginCaptures: {
 									"0": {
-										name: "punctuation.definition.comment.shell"
-									}
+										name: "punctuation.definition.comment.shell",
+									},
 								},
 								end: "(?=`)",
-								name: "comment.line.number-sign.shell"
-							}
-						]
+								name: "comment.line.number-sign.shell",
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\$\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.interpolated.dollar.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	keyword: {
 		patterns: [
 			{
 				match: "(?<=^|;|&|\\s)(then|else|elif|fi|for|in|do|done|select|case|continue|esac|while|until|return)(?=\\s|;|&|$)",
-				name: "keyword.control.shell"
+				name: "keyword.control.shell",
 			},
 			{
 				match: "(?<=^|;|&|\\s)(?:export|declare|typeset|local|readonly)(?=\\s|;|&|$)",
-				name: "storage.modifier.shell"
-			}
-		]
+				name: "storage.modifier.shell",
+			},
+		],
 	},
 	list: {
 		patterns: [
 			{
 				match: ";|&&|&|\\|\\|",
-				name: "keyword.operator.list.shell"
-			}
-		]
+				name: "keyword.operator.list.shell",
+			},
+		],
 	},
 	"logical-expression": {
 		patterns: [
 			{
 				comment: "do we want a special rule for ( expr )?",
 				match: "=[=~]?|!=?|<|>|&&|\\|\\|",
-				name: "keyword.operator.logical.shell"
+				name: "keyword.operator.logical.shell",
 			},
 			{
 				match: "(?<!\\S)-(nt|ot|ef|eq|ne|l[te]|g[te]|[a-hknoprstuwxzOGLSN])",
-				name: "keyword.operator.logical.shell"
-			}
-		]
+				name: "keyword.operator.logical.shell",
+			},
+		],
 	},
 	loop: {
 		patterns: [
@@ -919,108 +920,108 @@ const repository = {
 				begin: "(?<=^|;|&|\\s)(for)\\s+(?=\\({2})",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				end: "(?<=^|;|&|\\s)done(?=\\s|;|&|$)",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				name: "meta.scope.for-loop.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=^|;|&|\\s)(for)\\s+(.+?)\\s+(in)(?=\\s|;|&|$)",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.shell"
+						name: "keyword.control.shell",
 					},
 					"2": {
 						name: "variable.other.loop.shell",
 						patterns: [
 							{
-								include: "#string"
-							}
-						]
+								include: "#string",
+							},
+						],
 					},
 					"3": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				end: "(?<=^|;|&|\\s)done(?=\\s|;|&|$)",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				name: "meta.scope.for-in-loop.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=^|;|&|\\s)(while|until)(?=\\s|;|&|$)",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				end: "(?<=^|;|&|\\s)done(?=\\s|;|&|$)",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				name: "meta.scope.while-loop.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=^|;|&|\\s)(select)\\s+((?:[^\\s\\\\]|\\\\.)+)(?=\\s|;|&|$)",
 				beginCaptures: {
 					"1": {
-						name: "keyword.control.shell"
+						name: "keyword.control.shell",
 					},
 					"2": {
-						name: "variable.other.loop.shell"
-					}
+						name: "variable.other.loop.shell",
+					},
 				},
 				end: "(?<=^|;|&|\\s)(done)(?=\\s|;|&|$)",
 				endCaptures: {
 					"1": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				name: "meta.scope.select-block.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=^|;|&|\\s)case(?=\\s|;|&|$)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				end: "(?<=^|;|&|\\s)esac(?=\\s|;|&|$)",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				name: "meta.scope.case-block.shell",
 				patterns: [
@@ -1028,123 +1029,123 @@ const repository = {
 						begin: "(?<=^|;|&|\\s)in(?=\\s|;|&|$)",
 						beginCaptures: {
 							"0": {
-								name: "keyword.control.shell"
-							}
+								name: "keyword.control.shell",
+							},
 						},
 						end: "(?<=^|;|&|\\s)(?=esac(\\s|;|&|$))",
 						name: "meta.scope.case-body.shell",
 						patterns: [
 							{
-								include: "#comment"
+								include: "#comment",
 							},
 							{
-								include: "#case-clause"
+								include: "#case-clause",
 							},
 							{
-								include: "$self"
-							}
-						]
+								include: "$self",
+							},
+						],
 					},
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "(?<=^|;|&|\\s)if(?=\\s|;|&|$)",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				end: "(?<=^|;|&|\\s)fi(?=\\s|;|&|$)",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.shell"
-					}
+						name: "keyword.control.shell",
+					},
 				},
 				name: "meta.scope.if-block.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	math: {
 		patterns: [
 			{
-				include: "#variable"
+				include: "#variable",
 			},
 			{
 				match: "\\+{1,2}|-{1,2}|!|~|\\*{1,2}|/|%|<[<=]?|>[>=]?|==|!=|^|\\|{1,2}|&{1,2}|\\?|\\:|,|=|[*/%+\\-&^|]=|<<=|>>=",
-				name: "keyword.operator.arithmetic.shell"
+				name: "keyword.operator.arithmetic.shell",
 			},
 			{
 				match: "0[xX][0-9A-Fa-f]+",
-				name: "constant.numeric.hex.shell"
+				name: "constant.numeric.hex.shell",
 			},
 			{
 				match: "0\\d+",
-				name: "constant.numeric.octal.shell"
+				name: "constant.numeric.octal.shell",
 			},
 			{
 				match: "\\d{1,2}#[0-9a-zA-Z@_]+",
-				name: "constant.numeric.other.shell"
+				name: "constant.numeric.other.shell",
 			},
 			{
 				match: "\\d+",
-				name: "constant.numeric.integer.shell"
-			}
-		]
+				name: "constant.numeric.integer.shell",
+			},
+		],
 	},
 	pathname: {
 		patterns: [
 			{
 				match: "(?<=\\s|:|=|^)~",
-				name: "keyword.operator.tilde.shell"
+				name: "keyword.operator.tilde.shell",
 			},
 			{
 				match: "\\*|\\?",
-				name: "keyword.operator.glob.shell"
+				name: "keyword.operator.glob.shell",
 			},
 			{
 				begin: "([?*+@!])(\\()",
 				beginCaptures: {
 					"1": {
-						name: "keyword.operator.extglob.shell"
+						name: "keyword.operator.extglob.shell",
 					},
 					"2": {
-						name: "punctuation.definition.extglob.shell"
-					}
+						name: "punctuation.definition.extglob.shell",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.extglob.shell"
-					}
+						name: "punctuation.definition.extglob.shell",
+					},
 				},
 				name: "meta.structure.extglob.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
-			}
-		]
+						include: "$self",
+					},
+				],
+			},
+		],
 	},
 	pipeline: {
 		patterns: [
 			{
 				match: "(?<=^|;|&|\\s)(time)(?=\\s|;|&|$)",
-				name: "keyword.other.shell"
+				name: "keyword.other.shell",
 			},
 			{
 				match: "[|!]",
-				name: "keyword.operator.pipe.shell"
-			}
-		]
+				name: "keyword.operator.pipe.shell",
+			},
+		],
 	},
 	redirection: {
 		patterns: [
@@ -1152,192 +1153,192 @@ const repository = {
 				begin: "[><]\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.interpolated.process-substitution.shell",
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				match: "(?<![<>])(&>|\\d*>&\\d*|\\d*(>>|>|<)|\\d*<&|\\d*<>)(?![<>])",
-				name: "keyword.operator.redirect.shell"
-			}
-		]
+				name: "keyword.operator.redirect.shell",
+			},
+		],
 	},
 	string: {
 		patterns: [
 			{
 				match: "\\\\.",
-				name: "constant.character.escape.shell"
+				name: "constant.character.escape.shell",
 			},
 			{
 				begin: "'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
-				name: "string.quoted.single.shell"
+				name: "string.quoted.single.shell",
 			},
 			{
-				begin: "\\$?\"",
+				begin: '\\$?"',
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
-				end: "\"",
+				end: '"',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.quoted.double.shell",
 				patterns: [
 					{
-						match: "\\\\[\\$`\"\\\\\\n]",
-						name: "constant.character.escape.shell"
+						match: '\\\\[\\$`"\\\\\\n]',
+						name: "constant.character.escape.shell",
 					},
 					{
-						include: "#variable"
+						include: "#variable",
 					},
 					{
-						include: "#interpolation"
-					}
-				]
+						include: "#interpolation",
+					},
+				],
 			},
 			{
 				begin: "\\$'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.shell"
-					}
+						name: "punctuation.definition.string.begin.shell",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.shell"
-					}
+						name: "punctuation.definition.string.end.shell",
+					},
 				},
 				name: "string.quoted.single.dollar.shell",
 				patterns: [
 					{
 						match: "\\\\(a|b|e|f|n|r|t|v|\\\\|')",
-						name: "constant.character.escape.ansi-c.shell"
+						name: "constant.character.escape.ansi-c.shell",
 					},
 					{
 						match: "\\\\[0-9]{3}",
-						name: "constant.character.escape.octal.shell"
+						name: "constant.character.escape.octal.shell",
 					},
 					{
 						match: "\\\\x[0-9a-fA-F]{2}",
-						name: "constant.character.escape.hex.shell"
+						name: "constant.character.escape.hex.shell",
 					},
 					{
 						match: "\\\\c.",
-						name: "constant.character.escape.control-char.shell"
-					}
-				]
-			}
-		]
+						name: "constant.character.escape.control-char.shell",
+					},
+				],
+			},
+		],
 	},
 	support: {
 		patterns: [
 			{
 				match: "(?<=^|;|&|\\s)(?::|\\.)(?=\\s|;|&|$)",
-				name: "support.function.builtin.shell"
+				name: "support.function.builtin.shell",
 			},
 			{
 				match: "(?<=^|;|&|\\s)(?:alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|dirs|disown|echo|enable|eval|exec|exit|false|fc|fg|getopts|hash|help|history|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|times|trap|true|type|ulimit|umask|unalias|unset|wait)(?=\\s|;|&|$)",
-				name: "support.function.builtin.shell"
-			}
-		]
+				name: "support.function.builtin.shell",
+			},
+		],
 	},
 	variable: {
 		patterns: [
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.variable.shell"
-					}
+						name: "punctuation.definition.variable.shell",
+					},
 				},
 				match: "(\\$)[a-zA-Z_][a-zA-Z0-9_]*",
-				name: "variable.other.normal.shell"
+				name: "variable.other.normal.shell",
 			},
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.variable.shell"
-					}
+						name: "punctuation.definition.variable.shell",
+					},
 				},
 				match: "(\\$)[-*@#?$!0_]",
-				name: "variable.other.special.shell"
+				name: "variable.other.special.shell",
 			},
 			{
 				captures: {
 					"1": {
-						name: "punctuation.definition.variable.shell"
-					}
+						name: "punctuation.definition.variable.shell",
+					},
 				},
 				match: "(\\$)[1-9]",
-				name: "variable.other.positional.shell"
+				name: "variable.other.positional.shell",
 			},
 			{
 				begin: "\\${",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.variable.shell"
-					}
+						name: "punctuation.definition.variable.shell",
+					},
 				},
 				end: "}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.variable.shell"
-					}
+						name: "punctuation.definition.variable.shell",
+					},
 				},
 				name: "variable.other.bracket.shell",
 				patterns: [
 					{
 						match: "!|:[-=?]?|\\*|@|#{1,2}|%{1,2}|/",
-						name: "keyword.operator.expansion.shell"
+						name: "keyword.operator.expansion.shell",
 					},
 					{
 						captures: {
 							"1": {
-								name: "punctuation.section.array.shell"
+								name: "punctuation.section.array.shell",
 							},
 							"3": {
-								name: "punctuation.section.array.shell"
-							}
+								name: "punctuation.section.array.shell",
+							},
 						},
-						match: "(\\[)([^\\]]+)(\\])"
+						match: "(\\[)([^\\]]+)(\\])",
 					},
 					{
-						include: "#variable"
+						include: "#variable",
 					},
 					{
-						include: "#string"
-					}
-				]
-			}
-		]
-	}
+						include: "#string",
+					},
+				],
+			},
+		],
+	},
 };
 const shellscript_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -1345,7 +1346,15 @@ const shellscript_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { shellscript_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	shellscript_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

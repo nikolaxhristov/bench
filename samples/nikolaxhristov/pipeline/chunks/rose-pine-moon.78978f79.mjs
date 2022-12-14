@@ -454,264 +454,214 @@ const colors = {
 	"welcomePage.buttonHoverBackground": "#393552",
 	"widget.shadow": "#1917244d",
 	"window.activeBorder": "#2a273f",
-	"window.inactiveBorder": "#2a273f"
+	"window.inactiveBorder": "#2a273f",
 };
 const tokenColors = [
 	{
-		scope: [
-			"comment"
-		],
+		scope: ["comment"],
 		settings: {
 			foreground: "#6e6a86",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"constant"
-		],
+		scope: ["constant"],
 		settings: {
-			foreground: "#3e8fb0"
-		}
+			foreground: "#3e8fb0",
+		},
 	},
 	{
 		scope: [
 			"constant.numeric",
 			"constant.language",
-			"constant.charcter.escape"
+			"constant.charcter.escape",
 		],
 		settings: {
-			foreground: "#ea9a97"
-		}
+			foreground: "#ea9a97",
+		},
 	},
 	{
-		scope: [
-			"entity.name"
-		],
+		scope: ["entity.name"],
 		settings: {
-			foreground: "#ea9a97"
-		}
+			foreground: "#ea9a97",
+		},
 	},
 	{
 		scope: [
 			"entity.name.section",
 			"entity.name.tag",
 			"entity.name.namespace",
-			"entity.name.type"
+			"entity.name.type",
 		],
 		settings: {
-			foreground: "#9ccfd8"
-		}
+			foreground: "#9ccfd8",
+		},
 	},
 	{
-		scope: [
-			"entity.other.attribute-name",
-			"entity.other.inherited-class"
-		],
+		scope: ["entity.other.attribute-name", "entity.other.inherited-class"],
 		settings: {
 			foreground: "#c4a7e7",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"invalid"
-		],
+		scope: ["invalid"],
 		settings: {
-			foreground: "#eb6f92"
-		}
+			foreground: "#eb6f92",
+		},
 	},
 	{
-		scope: [
-			"invalid.deprecated"
-		],
+		scope: ["invalid.deprecated"],
 		settings: {
-			foreground: "#908caa"
-		}
+			foreground: "#908caa",
+		},
 	},
 	{
-		scope: [
-			"keyword"
-		],
+		scope: ["keyword"],
 		settings: {
-			foreground: "#3e8fb0"
-		}
+			foreground: "#3e8fb0",
+		},
 	},
 	{
-		scope: [
-			"markup.inserted.diff"
-		],
+		scope: ["markup.inserted.diff"],
 		settings: {
-			foreground: "#9ccfd8"
-		}
+			foreground: "#9ccfd8",
+		},
 	},
 	{
-		scope: [
-			"markup.deleted.diff"
-		],
+		scope: ["markup.deleted.diff"],
 		settings: {
-			foreground: "#eb6f92"
-		}
+			foreground: "#eb6f92",
+		},
 	},
 	{
-		scope: [
-			"meta.diff.range"
-		],
+		scope: ["meta.diff.range"],
 		settings: {
-			foreground: "#c4a7e7"
-		}
+			foreground: "#c4a7e7",
+		},
 	},
 	{
-		scope: [
-			"meta.tag",
-			"meta.brace"
-		],
+		scope: ["meta.tag", "meta.brace"],
 		settings: {
-			foreground: "#e0def4"
-		}
+			foreground: "#e0def4",
+		},
 	},
 	{
-		scope: [
-			"meta.import",
-			"meta.export"
-		],
+		scope: ["meta.import", "meta.export"],
 		settings: {
-			foreground: "#3e8fb0"
-		}
+			foreground: "#3e8fb0",
+		},
 	},
 	{
 		scope: "meta.directive.vue",
 		settings: {
 			foreground: "#c4a7e7",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: "meta.property-name.css",
 		settings: {
-			foreground: "#9ccfd8"
-		}
+			foreground: "#9ccfd8",
+		},
 	},
 	{
 		scope: "meta.property-value.css",
 		settings: {
-			foreground: "#f6c177"
-		}
+			foreground: "#f6c177",
+		},
 	},
 	{
 		scope: "meta.tag.other.html",
 		settings: {
-			foreground: "#908caa"
-		}
+			foreground: "#908caa",
+		},
 	},
 	{
-		scope: [
-			"punctuation"
-		],
+		scope: ["punctuation"],
 		settings: {
-			foreground: "#908caa"
-		}
+			foreground: "#908caa",
+		},
 	},
 	{
-		scope: [
-			"punctuation.accessor"
-		],
+		scope: ["punctuation.accessor"],
 		settings: {
-			foreground: "#3e8fb0"
-		}
+			foreground: "#3e8fb0",
+		},
 	},
 	{
-		scope: [
-			"punctuation.definition.string"
-		],
+		scope: ["punctuation.definition.string"],
 		settings: {
-			foreground: "#f6c177"
-		}
+			foreground: "#f6c177",
+		},
 	},
 	{
-		scope: [
-			"punctuation.definition.tag"
-		],
+		scope: ["punctuation.definition.tag"],
 		settings: {
-			foreground: "#6e6a86"
-		}
+			foreground: "#6e6a86",
+		},
 	},
 	{
-		scope: [
-			"storage.type",
-			"storage.modifier"
-		],
+		scope: ["storage.type", "storage.modifier"],
 		settings: {
-			foreground: "#3e8fb0"
-		}
+			foreground: "#3e8fb0",
+		},
 	},
 	{
-		scope: [
-			"string"
-		],
+		scope: ["string"],
 		settings: {
-			foreground: "#f6c177"
-		}
+			foreground: "#f6c177",
+		},
 	},
 	{
-		scope: [
-			"support"
-		],
+		scope: ["support"],
 		settings: {
-			foreground: "#9ccfd8"
-		}
+			foreground: "#9ccfd8",
+		},
 	},
 	{
-		scope: [
-			"support.constant"
-		],
+		scope: ["support.constant"],
 		settings: {
-			foreground: "#f6c177"
-		}
+			foreground: "#f6c177",
+		},
 	},
 	{
-		scope: [
-			"support.function"
-		],
+		scope: ["support.function"],
 		settings: {
 			foreground: "#eb6f92",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
-		scope: [
-			"variable"
-		],
+		scope: ["variable"],
 		settings: {
 			foreground: "#ea9a97",
-			fontStyle: "italic"
-		}
+			fontStyle: "italic",
+		},
 	},
 	{
 		scope: [
 			"variable.other",
 			"variable.language",
 			"variable.function",
-			"variable.argument"
+			"variable.argument",
 		],
 		settings: {
-			foreground: "#e0def4"
-		}
+			foreground: "#e0def4",
+		},
 	},
 	{
-		scope: [
-			"variable.parameter"
-		],
+		scope: ["variable.parameter"],
 		settings: {
-			foreground: "#c4a7e7"
-		}
-	}
+			foreground: "#c4a7e7",
+		},
+	},
 ];
 const rosePineMoon = {
 	name: name,
 	type: type,
 	colors: colors,
-	tokenColors: tokenColors
+	tokenColors: tokenColors,
 };
 
 export { colors, rosePineMoon as default, name, tokenColors, type };

@@ -1,225 +1,226 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/jeff-hykin/better-go-syntax/blob/master/export/generated.tmLanguage.json",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/jeff-hykin/better-go-syntax/commit/6175663a7a0e23d58ccf9aab95054cb6e5c92aff";
+const version =
+	"https://github.com/jeff-hykin/better-go-syntax/commit/6175663a7a0e23d58ccf9aab95054cb6e5c92aff";
 const name = "go";
 const scopeName = "source.go";
 const patterns = [
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
 		comment: "Interpreted string literals",
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.go"
-			}
+				name: "punctuation.definition.string.begin.go",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.go"
-			}
+				name: "punctuation.definition.string.end.go",
+			},
 		},
 		name: "string.quoted.double.go",
 		patterns: [
 			{
-				include: "#string_escaped_char"
+				include: "#string_escaped_char",
 			},
 			{
-				include: "#string_placeholder"
-			}
-		]
+				include: "#string_placeholder",
+			},
+		],
 	},
 	{
 		comment: "Raw string literals",
 		begin: "`",
 		beginCaptures: {
 			"0": {
-				name: "punctuation.definition.string.begin.go"
-			}
+				name: "punctuation.definition.string.begin.go",
+			},
 		},
 		end: "`",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.string.end.go"
-			}
+				name: "punctuation.definition.string.end.go",
+			},
 		},
 		name: "string.quoted.raw.go",
 		patterns: [
 			{
-				include: "#string_placeholder"
-			}
-		]
+				include: "#string_placeholder",
+			},
+		],
 	},
 	{
 		comment: "Syntax error receiving channels",
 		match: "<\\-([\\t ]+)chan\\b",
 		captures: {
 			"1": {
-				name: "invalid.illegal.receive-channel.go"
-			}
-		}
+				name: "invalid.illegal.receive-channel.go",
+			},
+		},
 	},
 	{
 		comment: "Syntax error sending channels",
 		match: "\\bchan([\\t ]+)<-",
 		captures: {
 			"1": {
-				name: "invalid.illegal.send-channel.go"
-			}
-		}
+				name: "invalid.illegal.send-channel.go",
+			},
+		},
 	},
 	{
 		comment: "Syntax error using slices",
 		match: "\\[\\](\\s+)",
 		captures: {
 			"1": {
-				name: "invalid.illegal.slice.go"
-			}
-		}
+				name: "invalid.illegal.slice.go",
+			},
+		},
 	},
 	{
 		comment: "Syntax error numeric literals",
 		match: "\\b0[0-7]*[89]\\d*\\b",
-		name: "invalid.illegal.numeric.go"
+		name: "invalid.illegal.numeric.go",
 	},
 	{
 		comment: "Built-in functions",
 		match: "\\b(append|cap|close|complex|copy|delete|imag|len|make|new|panic|print|println|real|recover)\\b(?=\\()",
-		name: "support.function.builtin.go"
+		name: "support.function.builtin.go",
 	},
 	{
 		comment: "Function declarations",
 		match: "^(\\bfunc\\b)(?:\\s+(\\([^\\)]+\\)\\s+)?(\\w+)(?=\\())?",
 		captures: {
 			"1": {
-				name: "keyword.function.go"
+				name: "keyword.function.go",
 			},
 			"2": {
 				patterns: [
 					{
-						include: "#brackets"
+						include: "#brackets",
 					},
 					{
-						include: "#operators"
-					}
-				]
+						include: "#operators",
+					},
+				],
 			},
 			"3": {
 				patterns: [
 					{
 						match: "\\d\\w*",
-						name: "invalid.illegal.identifier.go"
+						name: "invalid.illegal.identifier.go",
 					},
 					{
 						match: "\\w+",
-						name: "entity.name.function.go"
-					}
-				]
-			}
-		}
+						name: "entity.name.function.go",
+					},
+				],
+			},
+		},
 	},
 	{
 		comment: "Functions",
 		match: "(\\bfunc\\b)|(\\w+)(?=\\()",
 		captures: {
 			"1": {
-				name: "keyword.function.go"
+				name: "keyword.function.go",
 			},
 			"2": {
 				patterns: [
 					{
 						match: "\\d\\w*",
-						name: "invalid.illegal.identifier.go"
+						name: "invalid.illegal.identifier.go",
 					},
 					{
 						match: "\\w+",
-						name: "support.function.go"
-					}
-				]
-			}
-		}
+						name: "support.function.go",
+					},
+				],
+			},
+		},
 	},
 	{
-		include: "#numeric_literals"
+		include: "#numeric_literals",
 	},
 	{
 		comment: "Language constants",
 		match: "\\b(true|false|nil|iota)\\b",
-		name: "constant.language.go"
+		name: "constant.language.go",
 	},
 	{
 		begin: "\\b(package)\\s+",
 		beginCaptures: {
 			"1": {
-				name: "keyword.package.go"
-			}
+				name: "keyword.package.go",
+			},
 		},
 		end: "(?!\\G)",
 		patterns: [
 			{
 				match: "\\d\\w*",
-				name: "invalid.illegal.identifier.go"
+				name: "invalid.illegal.identifier.go",
 			},
 			{
 				match: "\\w+",
-				name: "entity.name.package.go"
-			}
-		]
+				name: "entity.name.package.go",
+			},
+		],
 	},
 	{
 		begin: "\\b(type)\\s+",
 		beginCaptures: {
 			"1": {
-				name: "keyword.type.go"
-			}
+				name: "keyword.type.go",
+			},
 		},
 		end: "(?!\\G)",
 		patterns: [
 			{
 				match: "\\d\\w*",
-				name: "invalid.illegal.identifier.go"
+				name: "invalid.illegal.identifier.go",
 			},
 			{
 				match: "\\w+",
-				name: "entity.name.type.go"
-			}
-		]
+				name: "entity.name.type.go",
+			},
+		],
 	},
 	{
 		begin: "\\b(import)\\s+",
 		beginCaptures: {
 			"1": {
-				name: "keyword.import.go"
-			}
+				name: "keyword.import.go",
+			},
 		},
 		end: "(?!\\G)",
 		patterns: [
 			{
-				include: "#imports"
-			}
-		]
+				include: "#imports",
+			},
+		],
 	},
 	{
 		begin: "\\b(var)\\s+",
 		beginCaptures: {
 			"1": {
-				name: "keyword.var.go"
-			}
+				name: "keyword.var.go",
+			},
 		},
 		end: "(?!\\G)",
 		patterns: [
 			{
-				include: "#variables"
-			}
-		]
+				include: "#variables",
+			},
+		],
 	},
 	{
 		match: "(?<!var)\\s*(\\w+(?:\\.\\w+)*(?>,\\s*\\w+(?:\\.\\w+)*)*)(?=\\s*=(?!=))",
@@ -228,7 +229,7 @@ const patterns = [
 				patterns: [
 					{
 						match: "\\d\\w*",
-						name: "invalid.illegal.identifier.go"
+						name: "invalid.illegal.identifier.go",
 					},
 					{
 						match: "\\w+(?:\\.\\w+)*",
@@ -237,18 +238,18 @@ const patterns = [
 							"0": {
 								patterns: [
 									{
-										include: "#delimiters"
-									}
-								]
-							}
-						}
+										include: "#delimiters",
+									},
+								],
+							},
+						},
 					},
 					{
-						include: "#delimiters"
-					}
-				]
-			}
-		}
+						include: "#delimiters",
+					},
+				],
+			},
+		},
 	},
 	{
 		match: "\\b\\w+(?:,\\s*\\w+)*(?=\\s*:=)",
@@ -257,42 +258,42 @@ const patterns = [
 				patterns: [
 					{
 						match: "\\d\\w*",
-						name: "invalid.illegal.identifier.go"
+						name: "invalid.illegal.identifier.go",
 					},
 					{
 						match: "\\w+",
-						name: "variable.other.assignment.go"
+						name: "variable.other.assignment.go",
 					},
 					{
-						include: "#delimiters"
-					}
-				]
-			}
-		}
+						include: "#delimiters",
+					},
+				],
+			},
+		},
 	},
 	{
 		comment: "Terminators",
 		match: ";",
-		name: "punctuation.terminator.go"
+		name: "punctuation.terminator.go",
 	},
 	{
-		include: "#brackets"
+		include: "#brackets",
 	},
 	{
-		include: "#delimiters"
+		include: "#delimiters",
 	},
 	{
-		include: "#keywords"
+		include: "#keywords",
 	},
 	{
-		include: "#operators"
+		include: "#operators",
 	},
 	{
-		include: "#runes"
+		include: "#runes",
 	},
 	{
-		include: "#storage_types"
-	}
+		include: "#storage_types",
+	},
 ];
 const repository = {
 	brackets: {
@@ -301,45 +302,45 @@ const repository = {
 				begin: "{",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.begin.bracket.curly.go"
-					}
+						name: "punctuation.definition.begin.bracket.curly.go",
+					},
 				},
 				end: "}",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.end.bracket.curly.go"
-					}
+						name: "punctuation.definition.end.bracket.curly.go",
+					},
 				},
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				begin: "\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.begin.bracket.round.go"
-					}
+						name: "punctuation.definition.begin.bracket.round.go",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.end.bracket.round.go"
-					}
+						name: "punctuation.definition.end.bracket.round.go",
+					},
 				},
 				patterns: [
 					{
-						include: "$self"
-					}
-				]
+						include: "$self",
+					},
+				],
 			},
 			{
 				match: "\\[|\\]",
-				name: "punctuation.definition.bracket.square.go"
-			}
-		]
+				name: "punctuation.definition.bracket.square.go",
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -348,167 +349,167 @@ const repository = {
 				begin: "(\\/\\*)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.comment.go"
-					}
+						name: "punctuation.definition.comment.go",
+					},
 				},
 				end: "(\\*\\/)",
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.comment.go"
-					}
-				}
+						name: "punctuation.definition.comment.go",
+					},
+				},
 			},
 			{
 				name: "comment.line.double-slash.go",
 				begin: "(\\/\\/)",
 				beginCaptures: {
 					"1": {
-						name: "punctuation.definition.comment.go"
-					}
+						name: "punctuation.definition.comment.go",
+					},
 				},
-				end: "(?:\\n|$)"
-			}
-		]
+				end: "(?:\\n|$)",
+			},
+		],
 	},
 	delimiters: {
 		patterns: [
 			{
 				match: ",",
-				name: "punctuation.other.comma.go"
+				name: "punctuation.other.comma.go",
 			},
 			{
 				match: "\\.(?!\\.\\.)",
-				name: "punctuation.other.period.go"
+				name: "punctuation.other.period.go",
 			},
 			{
 				match: ":(?!=)",
-				name: "punctuation.other.colon.go"
-			}
-		]
+				name: "punctuation.other.colon.go",
+			},
+		],
 	},
 	imports: {
 		patterns: [
 			{
-				match: "((?!\\s+\")[^\\s]*)?\\s*((\")([^\"]*)(\"))",
+				match: '((?!\\s+")[^\\s]*)?\\s*((")([^"]*)("))',
 				captures: {
 					"1": {
-						name: "entity.alias.import.go"
+						name: "entity.alias.import.go",
 					},
 					"2": {
-						name: "string.quoted.double.go"
+						name: "string.quoted.double.go",
 					},
 					"3": {
-						name: "punctuation.definition.string.begin.go"
+						name: "punctuation.definition.string.begin.go",
 					},
 					"4": {
-						name: "entity.name.import.go"
+						name: "entity.name.import.go",
 					},
 					"5": {
-						name: "punctuation.definition.string.end.go"
-					}
-				}
+						name: "punctuation.definition.string.end.go",
+					},
+				},
 			},
 			{
 				begin: "\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.imports.begin.bracket.round.go"
-					}
+						name: "punctuation.definition.imports.begin.bracket.round.go",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.imports.end.bracket.round.go"
-					}
+						name: "punctuation.definition.imports.end.bracket.round.go",
+					},
 				},
 				patterns: [
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#imports"
-					}
-				]
-			}
-		]
+						include: "#imports",
+					},
+				],
+			},
+		],
 	},
 	keywords: {
 		patterns: [
 			{
 				comment: "Flow control keywords",
 				match: "\\b(break|case|continue|default|defer|else|fallthrough|for|go|goto|if|range|return|select|switch)\\b",
-				name: "keyword.control.go"
+				name: "keyword.control.go",
 			},
 			{
 				match: "\\bchan\\b",
-				name: "keyword.channel.go"
+				name: "keyword.channel.go",
 			},
 			{
 				match: "\\bconst\\b",
-				name: "keyword.const.go"
+				name: "keyword.const.go",
 			},
 			{
 				match: "\\bfunc\\b",
-				name: "keyword.function.go"
+				name: "keyword.function.go",
 			},
 			{
 				match: "\\binterface\\b",
-				name: "keyword.interface.go"
+				name: "keyword.interface.go",
 			},
 			{
 				match: "\\bmap\\b",
-				name: "keyword.map.go"
+				name: "keyword.map.go",
 			},
 			{
 				match: "\\bstruct\\b",
-				name: "keyword.struct.go"
-			}
-		]
+				name: "keyword.struct.go",
+			},
+		],
 	},
 	operators: {
 		comment: "Note that the order here is very important!",
 		patterns: [
 			{
 				match: "(\\*|&)(?=\\w)",
-				name: "keyword.operator.address.go"
+				name: "keyword.operator.address.go",
 			},
 			{
 				match: "<\\-",
-				name: "keyword.operator.channel.go"
+				name: "keyword.operator.channel.go",
 			},
 			{
 				match: "\\-\\-",
-				name: "keyword.operator.decrement.go"
+				name: "keyword.operator.decrement.go",
 			},
 			{
 				match: "\\+\\+",
-				name: "keyword.operator.increment.go"
+				name: "keyword.operator.increment.go",
 			},
 			{
 				match: "(==|!=|<=|>=|<(?!<)|>(?!>))",
-				name: "keyword.operator.comparison.go"
+				name: "keyword.operator.comparison.go",
 			},
 			{
 				match: "(&&|\\|\\||!)",
-				name: "keyword.operator.logical.go"
+				name: "keyword.operator.logical.go",
 			},
 			{
 				match: "(=|\\+=|\\-=|\\|=|\\^=|\\*=|/=|:=|%=|<<=|>>=|&\\^=|&=)",
-				name: "keyword.operator.assignment.go"
+				name: "keyword.operator.assignment.go",
 			},
 			{
 				match: "(\\+|\\-|\\*|/|%)",
-				name: "keyword.operator.arithmetic.go"
+				name: "keyword.operator.arithmetic.go",
 			},
 			{
 				match: "(&(?!\\^)|\\||\\^|&\\^|<<|>>)",
-				name: "keyword.operator.arithmetic.bitwise.go"
+				name: "keyword.operator.arithmetic.bitwise.go",
 			},
 			{
 				match: "\\.\\.\\.",
-				name: "keyword.operator.ellipsis.go"
-			}
-		]
+				name: "keyword.operator.ellipsis.go",
+			},
+		],
 	},
 	runes: {
 		patterns: [
@@ -516,80 +517,80 @@ const repository = {
 				begin: "'",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.string.begin.go"
-					}
+						name: "punctuation.definition.string.begin.go",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.end.go"
-					}
+						name: "punctuation.definition.string.end.go",
+					},
 				},
 				name: "string.quoted.rune.go",
 				patterns: [
 					{
 						match: "\\G(\\\\([0-7]{3}|[abfnrtv\\\\'\"]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})|.)(?=')",
-						name: "constant.other.rune.go"
+						name: "constant.other.rune.go",
 					},
 					{
 						match: "[^']+",
-						name: "invalid.illegal.unknown-rune.go"
-					}
-				]
-			}
-		]
+						name: "invalid.illegal.unknown-rune.go",
+					},
+				],
+			},
+		],
 	},
 	storage_types: {
 		patterns: [
 			{
 				match: "\\bbool\\b",
-				name: "storage.type.boolean.go"
+				name: "storage.type.boolean.go",
 			},
 			{
 				match: "\\bbyte\\b",
-				name: "storage.type.byte.go"
+				name: "storage.type.byte.go",
 			},
 			{
 				match: "\\berror\\b",
-				name: "storage.type.error.go"
+				name: "storage.type.error.go",
 			},
 			{
 				match: "\\b(complex(64|128)|float(32|64)|u?int(8|16|32|64)?)\\b",
-				name: "storage.type.numeric.go"
+				name: "storage.type.numeric.go",
 			},
 			{
 				match: "\\brune\\b",
-				name: "storage.type.rune.go"
+				name: "storage.type.rune.go",
 			},
 			{
 				match: "\\bstring\\b",
-				name: "storage.type.string.go"
+				name: "storage.type.string.go",
 			},
 			{
 				match: "\\buintptr\\b",
-				name: "storage.type.uintptr.go"
-			}
-		]
+				name: "storage.type.uintptr.go",
+			},
+		],
 	},
 	string_escaped_char: {
 		patterns: [
 			{
 				match: "\\\\([0-7]{3}|[abfnrtv\\\\'\"]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})",
-				name: "constant.character.escape.go"
+				name: "constant.character.escape.go",
 			},
 			{
 				match: "\\\\[^0-7xuUabfnrtv\\'\"]",
-				name: "invalid.illegal.unknown-escape.go"
-			}
-		]
+				name: "invalid.illegal.unknown-escape.go",
+			},
+		],
 	},
 	string_placeholder: {
 		patterns: [
 			{
 				match: "%(\\[\\d+\\])?([\\+#\\-0\\x20]{,2}((\\d+|\\*)?(\\.?(\\d+|\\*|(\\[\\d+\\])\\*?)?(\\[\\d+\\])?)?))?[vT%tbcdoqxXUbeEfFgGspw]",
-				name: "constant.other.placeholder.go"
-			}
-		]
+				name: "constant.other.placeholder.go",
+			},
+		],
 	},
 	variables: {
 		patterns: [
@@ -600,25 +601,25 @@ const repository = {
 						patterns: [
 							{
 								match: "\\d\\w*",
-								name: "invalid.illegal.identifier.go"
+								name: "invalid.illegal.identifier.go",
 							},
 							{
 								match: "\\w+",
-								name: "variable.other.assignment.go"
+								name: "variable.other.assignment.go",
 							},
 							{
-								include: "#delimiters"
-							}
-						]
+								include: "#delimiters",
+							},
+						],
 					},
 					"2": {
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
-					}
-				}
+								include: "$self",
+							},
+						],
+					},
+				},
 			},
 			{
 				match: "(\\w+(?:,\\s*\\w+)*)(\\s+(\\[(\\d*|\\.\\.\\.)\\])*\\*?(<-)?\\w+(?:\\.\\w+)?\\s*[^=].*)",
@@ -627,49 +628,49 @@ const repository = {
 						patterns: [
 							{
 								match: "\\d\\w*",
-								name: "invalid.illegal.identifier.go"
+								name: "invalid.illegal.identifier.go",
 							},
 							{
 								match: "\\w+",
-								name: "variable.other.declaration.go"
+								name: "variable.other.declaration.go",
 							},
 							{
-								include: "#delimiters"
-							}
-						]
+								include: "#delimiters",
+							},
+						],
 					},
 					"2": {
 						patterns: [
 							{
-								include: "$self"
-							}
-						]
-					}
-				}
+								include: "$self",
+							},
+						],
+					},
+				},
 			},
 			{
 				begin: "\\(",
 				beginCaptures: {
 					"0": {
-						name: "punctuation.definition.variables.begin.bracket.round.go"
-					}
+						name: "punctuation.definition.variables.begin.bracket.round.go",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.variables.end.bracket.round.go"
-					}
+						name: "punctuation.definition.variables.end.bracket.round.go",
+					},
 				},
 				patterns: [
 					{
-						include: "$self"
+						include: "$self",
 					},
 					{
-						include: "#variables"
-					}
-				]
-			}
-		]
+						include: "#variables",
+					},
+				],
+			},
+		],
 	},
 	numeric_literals: {
 		match: "(?<!\\w)\\.?\\d(?:(?:[0-9a-zA-Z_\\.])|(?<=[eEpP])[+-])*",
@@ -688,245 +689,245 @@ const repository = {
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"2": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"3": {
-										name: "constant.numeric.decimal.point.go"
+										name: "constant.numeric.decimal.point.go",
 									},
 									"4": {
 										name: "constant.numeric.decimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"5": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"6": {
-										name: "keyword.other.unit.exponent.decimal.go"
+										name: "keyword.other.unit.exponent.decimal.go",
 									},
 									"7": {
-										name: "keyword.operator.plus.exponent.decimal.go"
+										name: "keyword.operator.plus.exponent.decimal.go",
 									},
 									"8": {
-										name: "keyword.operator.minus.exponent.decimal.go"
+										name: "keyword.operator.minus.exponent.decimal.go",
 									},
 									"9": {
 										name: "constant.numeric.exponent.decimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"10": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"11": {
 										name: "constant.numeric.decimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"12": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"13": {
-										name: "keyword.other.unit.exponent.decimal.go"
+										name: "keyword.other.unit.exponent.decimal.go",
 									},
 									"14": {
-										name: "keyword.operator.plus.exponent.decimal.go"
+										name: "keyword.operator.plus.exponent.decimal.go",
 									},
 									"15": {
-										name: "keyword.operator.minus.exponent.decimal.go"
+										name: "keyword.operator.minus.exponent.decimal.go",
 									},
 									"16": {
 										name: "constant.numeric.exponent.decimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"17": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"18": {
-										name: "constant.numeric.decimal.point.go"
+										name: "constant.numeric.decimal.point.go",
 									},
 									"19": {
 										name: "constant.numeric.decimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"20": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"21": {
-										name: "keyword.other.unit.exponent.decimal.go"
+										name: "keyword.other.unit.exponent.decimal.go",
 									},
 									"22": {
-										name: "keyword.operator.plus.exponent.decimal.go"
+										name: "keyword.operator.plus.exponent.decimal.go",
 									},
 									"23": {
-										name: "keyword.operator.minus.exponent.decimal.go"
+										name: "keyword.operator.minus.exponent.decimal.go",
 									},
 									"24": {
 										name: "constant.numeric.exponent.decimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"25": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"26": {
-										name: "keyword.other.unit.hexadecimal.go"
+										name: "keyword.other.unit.hexadecimal.go",
 									},
 									"27": {
 										name: "constant.numeric.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"28": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"29": {
-										name: "constant.numeric.hexadecimal.go"
+										name: "constant.numeric.hexadecimal.go",
 									},
 									"30": {
 										name: "constant.numeric.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"31": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"32": {
-										name: "keyword.other.unit.exponent.hexadecimal.go"
+										name: "keyword.other.unit.exponent.hexadecimal.go",
 									},
 									"33": {
-										name: "keyword.operator.plus.exponent.hexadecimal.go"
+										name: "keyword.operator.plus.exponent.hexadecimal.go",
 									},
 									"34": {
-										name: "keyword.operator.minus.exponent.hexadecimal.go"
+										name: "keyword.operator.minus.exponent.hexadecimal.go",
 									},
 									"35": {
 										name: "constant.numeric.exponent.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"36": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"37": {
-										name: "keyword.other.unit.hexadecimal.go"
+										name: "keyword.other.unit.hexadecimal.go",
 									},
 									"38": {
 										name: "constant.numeric.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"39": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"40": {
-										name: "keyword.other.unit.exponent.hexadecimal.go"
+										name: "keyword.other.unit.exponent.hexadecimal.go",
 									},
 									"41": {
-										name: "keyword.operator.plus.exponent.hexadecimal.go"
+										name: "keyword.operator.plus.exponent.hexadecimal.go",
 									},
 									"42": {
-										name: "keyword.operator.minus.exponent.hexadecimal.go"
+										name: "keyword.operator.minus.exponent.hexadecimal.go",
 									},
 									"43": {
 										name: "constant.numeric.exponent.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"44": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"45": {
-										name: "keyword.other.unit.hexadecimal.go"
+										name: "keyword.other.unit.hexadecimal.go",
 									},
 									"46": {
-										name: "constant.numeric.hexadecimal.go"
+										name: "constant.numeric.hexadecimal.go",
 									},
 									"47": {
 										name: "constant.numeric.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"48": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"49": {
-										name: "keyword.other.unit.exponent.hexadecimal.go"
+										name: "keyword.other.unit.exponent.hexadecimal.go",
 									},
 									"50": {
-										name: "keyword.operator.plus.exponent.hexadecimal.go"
+										name: "keyword.operator.plus.exponent.hexadecimal.go",
 									},
 									"51": {
-										name: "keyword.operator.minus.exponent.hexadecimal.go"
+										name: "keyword.operator.minus.exponent.hexadecimal.go",
 									},
 									"52": {
 										name: "constant.numeric.exponent.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"53": {
-										name: "keyword.other.unit.imaginary.go"
-									}
-								}
+										name: "keyword.other.unit.imaginary.go",
+									},
+								},
 							},
 							{
 								match: "(?:(?:(?:\\G(?=[0-9.])(?!0[xXbBoO])([0-9](?:[0-9]|((?<=[0-9a-fA-F])_(?=[0-9a-fA-F])))*)(i(?!\\w))?(?:\\n|$)|(\\G0[bB])_?([01](?:[01]|((?<=[0-9a-fA-F])_(?=[0-9a-fA-F])))*)(i(?!\\w))?(?:\\n|$))|(\\G0[oO]?)_?((?:[0-7]|((?<=[0-9a-fA-F])_(?=[0-9a-fA-F])))+)(i(?!\\w))?(?:\\n|$))|(\\G0[xX])_?([0-9a-fA-F](?:[0-9a-fA-F]|((?<=[0-9a-fA-F])_(?=[0-9a-fA-F])))*)(i(?!\\w))?(?:\\n|$))",
@@ -936,82 +937,82 @@ const repository = {
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"2": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"3": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"4": {
-										name: "keyword.other.unit.binary.go"
+										name: "keyword.other.unit.binary.go",
 									},
 									"5": {
 										name: "constant.numeric.binary.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"6": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"7": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"8": {
-										name: "keyword.other.unit.octal.go"
+										name: "keyword.other.unit.octal.go",
 									},
 									"9": {
 										name: "constant.numeric.octal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"10": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"11": {
-										name: "keyword.other.unit.imaginary.go"
+										name: "keyword.other.unit.imaginary.go",
 									},
 									"12": {
-										name: "keyword.other.unit.hexadecimal.go"
+										name: "keyword.other.unit.hexadecimal.go",
 									},
 									"13": {
 										name: "constant.numeric.hexadecimal.go",
 										patterns: [
 											{
 												match: "(?<=[0-9a-fA-F])_(?=[0-9a-fA-F])",
-												name: "punctuation.separator.constant.numeric.go"
-											}
-										]
+												name: "punctuation.separator.constant.numeric.go",
+											},
+										],
 									},
 									"14": {
-										name: "punctuation.separator.constant.numeric.go"
+										name: "punctuation.separator.constant.numeric.go",
 									},
 									"15": {
-										name: "keyword.other.unit.imaginary.go"
-									}
-								}
+										name: "keyword.other.unit.imaginary.go",
+									},
+								},
 							},
 							{
 								match: "(?:(?:[0-9a-zA-Z_\\.])|(?<=[eEpP])[+-])+",
-								name: "invalid.illegal.constant.numeric.go"
-							}
-						]
-					}
-				]
-			}
-		}
-	}
+								name: "invalid.illegal.constant.numeric.go",
+							},
+						],
+					},
+				],
+			},
+		},
+	},
 };
 const go_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -1019,7 +1020,15 @@ const go_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { go_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	go_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

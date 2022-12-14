@@ -1,23 +1,17 @@
 const name = "hcl";
 const scopeName = "source.hcl";
 const comment = "HashiCorp Configuration Language";
-const fileTypes = [
-	"tf",
-	"tfvars",
-	"nomad",
-	"hcl",
-	"appfile"
-];
+const fileTypes = ["tf", "tfvars", "nomad", "hcl", "appfile"];
 const patterns = [
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#constructs"
+		include: "#constructs",
 	},
 	{
-		include: "#variable"
-	}
+		include: "#variable",
+	},
 ];
 const repository = {
 	comments: {
@@ -27,36 +21,36 @@ const repository = {
 				match: "(#)+(.*)",
 				captures: {
 					"0": {
-						name: "comment.line.number-sign.hcl"
-					}
-				}
+						name: "comment.line.number-sign.hcl",
+					},
+				},
 			},
 			{
 				comment: "Single line comments with double-slash",
 				match: "(//)+(.*)",
 				captures: {
 					"0": {
-						name: "comment.line.double-slash.hcl"
-					}
-				}
+						name: "comment.line.double-slash.hcl",
+					},
+				},
 			},
 			{
 				comment: "Multiple line comment block",
 				begin: "/\\*",
 				beginCaptures: {
 					"0": {
-						name: "comment.block.documentation.hcl"
-					}
+						name: "comment.block.documentation.hcl",
+					},
 				},
 				end: "\\*/",
 				endCaptures: {
 					"0": {
-						name: "comment.block.documentation.hcl"
-					}
+						name: "comment.block.documentation.hcl",
+					},
 				},
-				contentName: "comment.block.documentation.hcl"
-			}
-		]
+				contentName: "comment.block.documentation.hcl",
+			},
+		],
 	},
 	constructs: {
 		patterns: [
@@ -64,52 +58,52 @@ const repository = {
 				begin: "([\\w-]+)\\s*\\{",
 				beginCaptures: {
 					"0": {
-						name: "meta.function.hcl"
+						name: "meta.function.hcl",
 					},
 					"1": {
-						name: "storage.type.hcl"
-					}
+						name: "storage.type.hcl",
+					},
 				},
 				end: "\\}",
 				patterns: [
 					{
-						include: "$self"
+						include: "$self",
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#variable"
-					}
-				]
+						include: "#variable",
+					},
+				],
 			},
 			{
-				begin: "([\\w-]+)((?:\\s*\"[^\"]*\")*)\\s*\\{",
+				begin: '([\\w-]+)((?:\\s*"[^"]*")*)\\s*\\{',
 				beginCaptures: {
 					"0": {
-						name: "meta.function.hcl"
+						name: "meta.function.hcl",
 					},
 					"1": {
-						name: "storage.type.hcl"
+						name: "storage.type.hcl",
 					},
 					"2": {
-						name: "string.quoted.double.hcl"
-					}
+						name: "string.quoted.double.hcl",
+					},
 				},
 				end: "\\}",
 				patterns: [
 					{
-						include: "$self"
+						include: "$self",
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#variable"
-					}
-				]
-			}
-		]
+						include: "#variable",
+					},
+				],
+			},
+		],
 	},
 	variable: {
 		patterns: [
@@ -117,43 +111,43 @@ const repository = {
 				begin: "([\\w\\.-]+)\\s*(=)\\s*",
 				beginCaptures: {
 					"1": {
-						name: "variable.parameter.hcl"
+						name: "variable.parameter.hcl",
 					},
 					"2": {
-						name: "keyword.operator.hcl"
-					}
+						name: "keyword.operator.hcl",
+					},
 				},
 				end: "(?<!\\2)$",
 				endCaptures: {
 					"0": {
-						name: "keyword.operator.hcl"
-					}
+						name: "keyword.operator.hcl",
+					},
 				},
 				patterns: [
 					{
-						include: "#variable-type-string"
+						include: "#variable-type-string",
 					},
 					{
-						include: "#variable-type-heredoc"
+						include: "#variable-type-heredoc",
 					},
 					{
-						include: "#variable-type-hexadecimal"
+						include: "#variable-type-hexadecimal",
 					},
 					{
-						include: "#variable-type-decimal"
+						include: "#variable-type-decimal",
 					},
 					{
-						include: "#variable-type-constant"
+						include: "#variable-type-constant",
 					},
 					{
-						include: "#variable-type-array"
+						include: "#variable-type-array",
 					},
 					{
-						include: "#variable-type-map"
-					}
-				]
-			}
-		]
+						include: "#variable-type-map",
+					},
+				],
+			},
+		],
 	},
 	"variable-interpolation": {
 		patterns: [
@@ -161,25 +155,25 @@ const repository = {
 				begin: "\\$\\{",
 				beginCaptures: {
 					"0": {
-						name: "keyword.operator.hcl"
-					}
+						name: "keyword.operator.hcl",
+					},
 				},
 				end: "\\}",
 				endCaptures: {
 					"0": {
-						name: "keyword.operator.hcl"
-					}
+						name: "keyword.operator.hcl",
+					},
 				},
 				patterns: [
 					{
-						include: "#variable-interpolation-function"
+						include: "#variable-interpolation-function",
 					},
 					{
-						include: "#variable-interpolation-reference"
-					}
-				]
-			}
-		]
+						include: "#variable-interpolation-reference",
+					},
+				],
+			},
+		],
 	},
 	"variable-interpolation-function": {
 		patterns: [
@@ -187,32 +181,32 @@ const repository = {
 				begin: "([\\w-]+)\\(",
 				beginCaptures: {
 					"1": {
-						name: "entity.name.function.hcl"
-					}
+						name: "entity.name.function.hcl",
+					},
 				},
 				end: "\\)",
 				patterns: [
 					{
-						include: "#variable-interpolation-function"
+						include: "#variable-interpolation-function",
 					},
 					{
-						include: "#variable-interpolation-reference"
+						include: "#variable-interpolation-reference",
 					},
 					{
-						include: "#variable-type-hexadecimal"
+						include: "#variable-type-hexadecimal",
 					},
 					{
-						include: "#variable-type-decimal"
+						include: "#variable-type-decimal",
 					},
 					{
-						include: "#variable-type-constant"
+						include: "#variable-type-constant",
 					},
 					{
-						include: "#variable-type-string"
-					}
-				]
-			}
-		]
+						include: "#variable-type-string",
+					},
+				],
+			},
+		],
 	},
 	"variable-interpolation-reference": {
 		patterns: [
@@ -220,14 +214,14 @@ const repository = {
 				match: "\\b([\\w-]+)((\\.[\\w-]+)*)\\b",
 				captures: {
 					"1": {
-						name: "storage.modifier.hcl"
+						name: "storage.modifier.hcl",
 					},
 					"2": {
-						name: "entity.name.type.hcl"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.hcl",
+					},
+				},
+			},
+		],
 	},
 	"variable-type-array": {
 		patterns: [
@@ -236,23 +230,23 @@ const repository = {
 				end: "\\]",
 				patterns: [
 					{
-						include: "#variable-type-decimal"
+						include: "#variable-type-decimal",
 					},
 					{
-						include: "#variable-type-hexadecimal"
+						include: "#variable-type-hexadecimal",
 					},
 					{
-						include: "#variable-type-constant"
+						include: "#variable-type-constant",
 					},
 					{
-						include: "#variable-type-string"
+						include: "#variable-type-string",
 					},
 					{
-						match: "\\s*,\\s*"
-					}
-				]
-			}
-		]
+						match: "\\s*,\\s*",
+					},
+				],
+			},
+		],
 	},
 	"variable-type-map": {
 		patterns: [
@@ -261,42 +255,42 @@ const repository = {
 				end: "\\}",
 				patterns: [
 					{
-						begin: "(\"[\\w\\s\\.-]+\")\\s*(:)",
+						begin: '("[\\w\\s\\.-]+")\\s*(:)',
 						beginCaptures: {
 							"1": {
-								name: "string.quoted.double.hcl"
+								name: "string.quoted.double.hcl",
 							},
 							"2": {
-								name: "keyword.operator.hcl"
-							}
+								name: "keyword.operator.hcl",
+							},
 						},
 						end: "(?<!\\2)\\s*($|(?=\\}))",
 						endCaptures: {
 							"0": {
-								name: "keyword.operator.hcl"
-							}
+								name: "keyword.operator.hcl",
+							},
 						},
 						patterns: [
 							{
-								include: "#variable-type-decimal"
+								include: "#variable-type-decimal",
 							},
 							{
-								include: "#variable-type-hexadecimal"
+								include: "#variable-type-hexadecimal",
 							},
 							{
-								include: "#variable-type-constant"
+								include: "#variable-type-constant",
 							},
 							{
-								include: "#variable-type-string"
+								include: "#variable-type-string",
 							},
 							{
-								match: "\\s*,\\s*"
-							}
-						]
-					}
-				]
-			}
-		]
+								match: "\\s*,\\s*",
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	"variable-type-hexadecimal": {
 		patterns: [
@@ -305,11 +299,11 @@ const repository = {
 				match: "0x[0-9A-Fa-f]+([kKmMgG]b?)?",
 				captures: {
 					"0": {
-						name: "constant.numeric.hcl"
-					}
-				}
-			}
-		]
+						name: "constant.numeric.hcl",
+					},
+				},
+			},
+		],
 	},
 	"variable-type-decimal": {
 		patterns: [
@@ -318,11 +312,11 @@ const repository = {
 				match: "\\b[0-9\\.]+([kKmMgG]b?)?\\b",
 				captures: {
 					"0": {
-						name: "constant.numeric.hcl"
-					}
-				}
-			}
-		]
+						name: "constant.numeric.hcl",
+					},
+				},
+			},
+		],
 	},
 	"variable-type-constant": {
 		patterns: [
@@ -330,43 +324,43 @@ const repository = {
 				match: "\\b(true|false|yes|no|on|off)\\b",
 				captures: {
 					"0": {
-						name: "constant.numeric.hcl"
-					}
-				}
-			}
-		]
+						name: "constant.numeric.hcl",
+					},
+				},
+			},
+		],
 	},
 	"variable-type-string": {
 		patterns: [
 			{
 				comment: "Usual string",
-				begin: "\"",
+				begin: '"',
 				beginCaptures: {
 					"0": {
-						name: "string.quoted.double.hcl"
-					}
+						name: "string.quoted.double.hcl",
+					},
 				},
-				end: "\"",
+				end: '"',
 				endCaptures: {
 					"0": {
-						name: "string.quoted.double.hcl"
-					}
+						name: "string.quoted.double.hcl",
+					},
 				},
 				patterns: [
 					{
-						include: "#variable-interpolation"
+						include: "#variable-interpolation",
 					},
 					{
-						match: "[^\"]",
+						match: '[^"]',
 						captures: {
 							"0": {
-								name: "string.quoted.double.hcl"
-							}
-						}
-					}
-				]
-			}
-		]
+								name: "string.quoted.double.hcl",
+							},
+						},
+					},
+				],
+			},
+		],
 	},
 	"variable-type-heredoc": {
 		patterns: [
@@ -375,19 +369,19 @@ const repository = {
 				begin: "<<(\\w+)",
 				beginCaptures: {
 					"0": {
-						name: "entity.name.section"
-					}
+						name: "entity.name.section",
+					},
 				},
 				end: "^\\s*\\1$",
 				endCaptures: {
 					"0": {
-						name: "entity.name.section"
-					}
+						name: "entity.name.section",
+					},
 				},
-				contentName: "string.unquoted.here-doc.hcl"
-			}
-		]
-	}
+				contentName: "string.unquoted.here-doc.hcl",
+			},
+		],
+	},
 };
 const hcl_tmLanguage = {
 	name: name,
@@ -395,7 +389,15 @@ const hcl_tmLanguage = {
 	comment: comment,
 	fileTypes: fileTypes,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { comment, hcl_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	comment,
+	hcl_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

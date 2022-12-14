@@ -2,15 +2,17 @@ const name = "jinja-html";
 const scopeName = "text.html.jinja";
 const comment = "Jinja HTML Templates";
 const firstLineMatch = "^{% extends [\"'][^\"']+[\"'] %}";
-const foldingStartMarker = "(<(?i:(head|table|tr|div|style|script|ul|ol|form|dl))\\b.*?>|{%\\s*(block|filter|for|if|macro|raw))";
-const foldingStopMarker = "(</(?i:(head|table|tr|div|style|script|ul|ol|form|dl))\\b.*?>|{%\\s*(endblock|endfilter|endfor|endif|endmacro|endraw)\\s*%})";
+const foldingStartMarker =
+	"(<(?i:(head|table|tr|div|style|script|ul|ol|form|dl))\\b.*?>|{%\\s*(block|filter|for|if|macro|raw))";
+const foldingStopMarker =
+	"(</(?i:(head|table|tr|div|style|script|ul|ol|form|dl))\\b.*?>|{%\\s*(endblock|endfilter|endfor|endif|endmacro|endraw)\\s*%})";
 const patterns = [
 	{
-		include: "source.jinja"
+		include: "source.jinja",
 	},
 	{
-		include: "text.html.basic"
-	}
+		include: "text.html.basic",
+	},
 ];
 const jinjaHtml_tmLanguage = {
 	name: name,
@@ -19,7 +21,16 @@ const jinjaHtml_tmLanguage = {
 	firstLineMatch: firstLineMatch,
 	foldingStartMarker: foldingStartMarker,
 	foldingStopMarker: foldingStopMarker,
-	patterns: patterns
+	patterns: patterns,
 };
 
-export { comment, jinjaHtml_tmLanguage as default, firstLineMatch, foldingStartMarker, foldingStopMarker, name, patterns, scopeName };
+export {
+	comment,
+	jinjaHtml_tmLanguage as default,
+	firstLineMatch,
+	foldingStartMarker,
+	foldingStopMarker,
+	name,
+	patterns,
+	scopeName,
+};

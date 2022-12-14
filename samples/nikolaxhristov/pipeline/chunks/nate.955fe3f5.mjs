@@ -6,7 +6,7 @@ const nate = {
 	name: name,
 	title: title,
 	image: image,
-	twitter: twitter
+	twitter: twitter,
 };
 
 export { nate as default, image, name, title, twitter };

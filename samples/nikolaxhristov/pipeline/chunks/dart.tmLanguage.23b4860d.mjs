@@ -1,65 +1,66 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/dart-lang/dart-syntax-highlight/blob/master/grammars/dart.json",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/dart-lang/dart-syntax-highlight/commit/45065882c9f699149cb181a5960c05295b4bfbc6";
+const version =
+	"https://github.com/dart-lang/dart-syntax-highlight/commit/45065882c9f699149cb181a5960c05295b4bfbc6";
 const name = "dart";
 const scopeName = "source.dart";
 const patterns = [
 	{
 		name: "meta.preprocessor.script.dart",
-		match: "^(#!.*)$"
+		match: "^(#!.*)$",
 	},
 	{
 		name: "meta.declaration.dart",
 		begin: "^\\w*\\b(library|import|part of|part|export)\\b",
 		beginCaptures: {
 			"0": {
-				name: "keyword.other.import.dart"
-			}
+				name: "keyword.other.import.dart",
+			},
 		},
 		end: ";",
 		endCaptures: {
 			"0": {
-				name: "punctuation.terminator.dart"
-			}
+				name: "punctuation.terminator.dart",
+			},
 		},
 		patterns: [
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
 				name: "keyword.other.import.dart",
-				match: "\\b(as|show|hide)\\b"
+				match: "\\b(as|show|hide)\\b",
 			},
 			{
 				name: "keyword.control.dart",
-				match: "\\b(if)\\b"
-			}
-		]
+				match: "\\b(if)\\b",
+			},
+		],
 	},
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#punctuation"
+		include: "#punctuation",
 	},
 	{
-		include: "#annotations"
+		include: "#annotations",
 	},
 	{
-		include: "#keywords"
+		include: "#keywords",
 	},
 	{
-		include: "#constants-and-special-vars"
+		include: "#constants-and-special-vars",
 	},
 	{
-		include: "#strings"
-	}
+		include: "#strings",
+	},
 ];
 const repository = {
 	dartdoc: {
@@ -68,48 +69,48 @@ const repository = {
 				match: "(\\[.*?\\])",
 				captures: {
 					"0": {
-						name: "variable.name.source.dart"
-					}
-				}
+						name: "variable.name.source.dart",
+					},
+				},
 			},
 			{
 				match: "^ {4,}(?![ \\*]).*",
 				captures: {
 					"0": {
-						name: "variable.name.source.dart"
-					}
-				}
+						name: "variable.name.source.dart",
+					},
+				},
 			},
 			{
 				contentName: "variable.other.source.dart",
 				begin: "```.*?$",
-				end: "```"
+				end: "```",
 			},
 			{
 				match: "(`.*?`)",
 				captures: {
 					"0": {
-						name: "variable.other.source.dart"
-					}
-				}
+						name: "variable.other.source.dart",
+					},
+				},
 			},
 			{
 				match: "(`.*?`)",
 				captures: {
 					"0": {
-						name: "variable.other.source.dart"
-					}
-				}
+						name: "variable.other.source.dart",
+					},
+				},
 			},
 			{
 				match: "(\\* ((    ).*))$",
 				captures: {
 					"2": {
-						name: "variable.other.source.dart"
-					}
-				}
-			}
-		]
+						name: "variable.other.source.dart",
+					},
+				},
+			},
+		],
 	},
 	comments: {
 		patterns: [
@@ -118,20 +119,20 @@ const repository = {
 				match: "/\\*\\*/",
 				captures: {
 					"0": {
-						name: "punctuation.definition.comment.dart"
-					}
-				}
+						name: "punctuation.definition.comment.dart",
+					},
+				},
 			},
 			{
-				include: "#comments-doc-oldschool"
+				include: "#comments-doc-oldschool",
 			},
 			{
-				include: "#comments-doc"
+				include: "#comments-doc",
 			},
 			{
-				include: "#comments-inline"
-			}
-		]
+				include: "#comments-inline",
+			},
+		],
 	},
 	"comments-doc-oldschool": {
 		patterns: [
@@ -141,17 +142,17 @@ const repository = {
 				end: "\\*/",
 				patterns: [
 					{
-						include: "#comments-doc-oldschool"
+						include: "#comments-doc-oldschool",
 					},
 					{
-						include: "#comments-block"
+						include: "#comments-block",
 					},
 					{
-						include: "#dartdoc"
-					}
-				]
-			}
-		]
+						include: "#dartdoc",
+					},
+				],
+			},
+		],
 	},
 	"comments-doc": {
 		patterns: [
@@ -161,26 +162,26 @@ const repository = {
 				"while": "^\\s*///",
 				patterns: [
 					{
-						include: "#dartdoc"
-					}
-				]
-			}
-		]
+						include: "#dartdoc",
+					},
+				],
+			},
+		],
 	},
 	"comments-inline": {
 		patterns: [
 			{
-				include: "#comments-block"
+				include: "#comments-block",
 			},
 			{
 				match: "((//).*)$",
 				captures: {
 					"1": {
-						name: "comment.line.double-slash.dart"
-					}
-				}
-			}
-		]
+						name: "comment.line.double-slash.dart",
+					},
+				},
+			},
+		],
 	},
 	"comments-block": {
 		patterns: [
@@ -190,41 +191,41 @@ const repository = {
 				end: "\\*/",
 				patterns: [
 					{
-						include: "#comments-block"
-					}
-				]
-			}
-		]
+						include: "#comments-block",
+					},
+				],
+			},
+		],
 	},
 	annotations: {
 		patterns: [
 			{
 				name: "storage.type.annotation.dart",
-				match: "@[a-zA-Z]+"
-			}
-		]
+				match: "@[a-zA-Z]+",
+			},
+		],
 	},
 	"constants-and-special-vars": {
 		patterns: [
 			{
 				name: "constant.language.dart",
-				match: "(?<!\\$)\\b(true|false|null)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(true|false|null)\\b(?!\\$)",
 			},
 			{
 				name: "variable.language.dart",
-				match: "(?<!\\$)\\b(this|super)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(this|super)\\b(?!\\$)",
 			},
 			{
 				name: "constant.numeric.dart",
-				match: "(?<!\\$)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b(?!\\$)"
+				match: "(?<!\\$)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b(?!\\$)",
 			},
 			{
-				include: "#class-identifier"
+				include: "#class-identifier",
 			},
 			{
-				include: "#function-identifier"
-			}
-		]
+				include: "#function-identifier",
+			},
+		],
 	},
 	"class-identifier": {
 		patterns: [
@@ -232,21 +233,21 @@ const repository = {
 				match: "(?<![a-zA-Z0-9_$])([_$]*[A-Z][a-zA-Z0-9_$]*(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?|bool\\b|num\\b|int\\b|double\\b|dynamic\\b|(void)\\b)",
 				captures: {
 					"1": {
-						name: "support.class.dart"
+						name: "support.class.dart",
 					},
 					"2": {
 						patterns: [
 							{
-								include: "#type-args"
-							}
-						]
+								include: "#type-args",
+							},
+						],
 					},
 					"3": {
-						name: "storage.type.primitive.dart"
-					}
-				}
-			}
-		]
+						name: "storage.type.primitive.dart",
+					},
+				},
+			},
+		],
 	},
 	"function-identifier": {
 		patterns: [
@@ -254,128 +255,128 @@ const repository = {
 				match: "([_$]*[a-z][a-zA-Z0-9_$]*)(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?[!?]?(\\(|\\s+=>)",
 				captures: {
 					"1": {
-						name: "entity.name.function.dart"
+						name: "entity.name.function.dart",
 					},
 					"2": {
 						patterns: [
 							{
-								include: "#type-args"
-							}
-						]
-					}
-				}
-			}
-		]
+								include: "#type-args",
+							},
+						],
+					},
+				},
+			},
+		],
 	},
 	"type-args": {
 		begin: "(<)",
 		end: "(>)",
 		beginCaptures: {
 			"1": {
-				name: "other.source.dart"
-			}
+				name: "other.source.dart",
+			},
 		},
 		endCaptures: {
 			"1": {
-				name: "other.source.dart"
-			}
+				name: "other.source.dart",
+			},
 		},
 		patterns: [
 			{
-				include: "#class-identifier"
+				include: "#class-identifier",
 			},
 			{
-				match: "[\\s,]+"
+				match: "[\\s,]+",
 			},
 			{
 				name: "keyword.declaration.dart",
-				match: "extends"
-			}
-		]
+				match: "extends",
+			},
+		],
 	},
 	keywords: {
 		patterns: [
 			{
 				name: "keyword.cast.dart",
-				match: "(?<!\\$)\\bas\\b(?!\\$)"
+				match: "(?<!\\$)\\bas\\b(?!\\$)",
 			},
 			{
 				name: "keyword.control.catch-exception.dart",
-				match: "(?<!\\$)\\b(try|on|catch|finally|throw|rethrow)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(try|on|catch|finally|throw|rethrow)\\b(?!\\$)",
 			},
 			{
 				name: "keyword.control.dart",
-				match: "(?<!\\$)\\b(break|case|continue|default|do|else|for|if|in|return|switch|while)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(break|case|continue|default|do|else|for|if|in|return|switch|while)\\b(?!\\$)",
 			},
 			{
 				name: "keyword.control.dart",
-				match: "(?<!\\$)\\b(sync(\\*)?|async(\\*)?|await|yield(\\*)?)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(sync(\\*)?|async(\\*)?|await|yield(\\*)?)\\b(?!\\$)",
 			},
 			{
 				name: "keyword.control.dart",
-				match: "(?<!\\$)\\bassert\\b(?!\\$)"
+				match: "(?<!\\$)\\bassert\\b(?!\\$)",
 			},
 			{
 				name: "keyword.control.new.dart",
-				match: "(?<!\\$)\\b(new)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(new)\\b(?!\\$)",
 			},
 			{
 				name: "keyword.declaration.dart",
-				match: "(?<!\\$)\\b(abstract|class|enum|extends|extension|external|factory|implements|get|mixin|native|operator|set|typedef|with|covariant)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(abstract|class|enum|extends|extension|external|factory|implements|get|mixin|native|operator|set|typedef|with|covariant)\\b(?!\\$)",
 			},
 			{
 				name: "keyword.operator.dart",
-				match: "(?<!\\$)\\b(is\\!?)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(is\\!?)\\b(?!\\$)",
 			},
 			{
 				name: "keyword.operator.ternary.dart",
-				match: "\\?|:"
+				match: "\\?|:",
 			},
 			{
 				name: "keyword.operator.bitwise.dart",
-				match: "(<<|>>>?|~|\\^|\\||&)"
+				match: "(<<|>>>?|~|\\^|\\||&)",
 			},
 			{
 				name: "keyword.operator.assignment.bitwise.dart",
-				match: "((&|\\^|\\||<<|>>>?)=)"
+				match: "((&|\\^|\\||<<|>>>?)=)",
 			},
 			{
 				name: "keyword.operator.closure.dart",
-				match: "(=>)"
+				match: "(=>)",
 			},
 			{
 				name: "keyword.operator.comparison.dart",
-				match: "(==|!=|<=?|>=?)"
+				match: "(==|!=|<=?|>=?)",
 			},
 			{
 				name: "keyword.operator.assignment.arithmetic.dart",
-				match: "(([+*/%-]|\\~)=)"
+				match: "(([+*/%-]|\\~)=)",
 			},
 			{
 				name: "keyword.operator.assignment.dart",
-				match: "(=)"
+				match: "(=)",
 			},
 			{
 				name: "keyword.operator.increment-decrement.dart",
-				match: "(\\-\\-|\\+\\+)"
+				match: "(\\-\\-|\\+\\+)",
 			},
 			{
 				name: "keyword.operator.arithmetic.dart",
-				match: "(\\-|\\+|\\*|\\/|\\~\\/|%)"
+				match: "(\\-|\\+|\\*|\\/|\\~\\/|%)",
 			},
 			{
 				name: "keyword.operator.logical.dart",
-				match: "(!|&&|\\|\\|)"
+				match: "(!|&&|\\|\\|)",
 			},
 			{
 				name: "storage.modifier.dart",
-				match: "(?<!\\$)\\b(static|final|const|required|late)\\b(?!\\$)"
+				match: "(?<!\\$)\\b(static|final|const|required|late)\\b(?!\\$)",
 			},
 			{
 				name: "storage.type.primitive.dart",
-				match: "(?<!\\$)\\b(?:void|var)\\b(?!\\$)"
-			}
-		]
+				match: "(?<!\\$)\\b(?:void|var)\\b(?!\\$)",
+			},
+		],
 	},
 	"string-interp": {
 		patterns: [
@@ -383,9 +384,9 @@ const repository = {
 				match: "\\$([a-zA-Z0-9_]+)",
 				captures: {
 					"1": {
-						name: "variable.parameter.dart"
-					}
-				}
+						name: "variable.parameter.dart",
+					},
+				},
 			},
 			{
 				name: "string.interpolated.expression.dart",
@@ -394,34 +395,34 @@ const repository = {
 				patterns: [
 					{
 						include: "#constants-and-special-vars",
-						name: "variable.parameter.dart"
+						name: "variable.parameter.dart",
 					},
 					{
-						include: "#strings"
+						include: "#strings",
 					},
 					{
 						name: "variable.parameter.dart",
-						match: "[a-zA-Z0-9_]+"
-					}
-				]
+						match: "[a-zA-Z0-9_]+",
+					},
+				],
 			},
 			{
 				name: "constant.character.escape.dart",
-				match: "\\\\."
-			}
-		]
+				match: "\\\\.",
+			},
+		],
 	},
 	strings: {
 		patterns: [
 			{
 				name: "string.interpolated.triple.double.dart",
-				begin: "(?<!r)\"\"\"",
-				end: "\"\"\"(?!\")",
+				begin: '(?<!r)"""',
+				end: '"""(?!")',
 				patterns: [
 					{
-						include: "#string-interp"
-					}
-				]
+						include: "#string-interp",
+					},
+				],
 			},
 			{
 				name: "string.interpolated.triple.single.dart",
@@ -429,44 +430,44 @@ const repository = {
 				end: "'''(?!')",
 				patterns: [
 					{
-						include: "#string-interp"
-					}
-				]
+						include: "#string-interp",
+					},
+				],
 			},
 			{
 				name: "string.quoted.triple.double.dart",
-				begin: "r\"\"\"",
-				end: "\"\"\"(?!\")"
+				begin: 'r"""',
+				end: '"""(?!")',
 			},
 			{
 				name: "string.quoted.triple.single.dart",
 				begin: "r'''",
-				end: "'''(?!')"
+				end: "'''(?!')",
 			},
 			{
 				name: "string.interpolated.double.dart",
-				begin: "(?<!\\|r)\"",
-				end: "\"",
+				begin: '(?<!\\|r)"',
+				end: '"',
 				patterns: [
 					{
 						name: "invalid.string.newline",
-						match: "\\n"
+						match: "\\n",
 					},
 					{
-						include: "#string-interp"
-					}
-				]
+						include: "#string-interp",
+					},
+				],
 			},
 			{
 				name: "string.quoted.double.dart",
-				begin: "r\"",
-				end: "\"",
+				begin: 'r"',
+				end: '"',
 				patterns: [
 					{
 						name: "invalid.string.newline",
-						match: "\\n"
-					}
-				]
+						match: "\\n",
+					},
+				],
 			},
 			{
 				name: "string.interpolated.single.dart",
@@ -475,12 +476,12 @@ const repository = {
 				patterns: [
 					{
 						name: "invalid.string.newline",
-						match: "\\n"
+						match: "\\n",
 					},
 					{
-						include: "#string-interp"
-					}
-				]
+						include: "#string-interp",
+					},
+				],
 			},
 			{
 				name: "string.quoted.single.dart",
@@ -489,28 +490,28 @@ const repository = {
 				patterns: [
 					{
 						name: "invalid.string.newline",
-						match: "\\n"
-					}
-				]
-			}
-		]
+						match: "\\n",
+					},
+				],
+			},
+		],
 	},
 	punctuation: {
 		patterns: [
 			{
 				name: "punctuation.comma.dart",
-				match: ","
+				match: ",",
 			},
 			{
 				name: "punctuation.terminator.dart",
-				match: ";"
+				match: ";",
 			},
 			{
 				name: "punctuation.dot.dart",
-				match: "\\."
-			}
-		]
-	}
+				match: "\\.",
+			},
+		],
+	},
 };
 const dart_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -518,7 +519,15 @@ const dart_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { dart_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	dart_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};

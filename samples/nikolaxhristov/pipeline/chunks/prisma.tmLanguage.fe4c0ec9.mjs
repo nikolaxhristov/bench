@@ -1,27 +1,25 @@
 const name = "prisma";
 const scopeName = "source.prisma";
-const fileTypes = [
-	"prisma"
-];
+const fileTypes = ["prisma"];
 const patterns = [
 	{
-		include: "#triple_comment"
+		include: "#triple_comment",
 	},
 	{
-		include: "#double_comment"
+		include: "#double_comment",
 	},
 	{
-		include: "#model_block_definition"
+		include: "#model_block_definition",
 	},
 	{
-		include: "#config_block_definition"
+		include: "#config_block_definition",
 	},
 	{
-		include: "#enum_block_definition"
+		include: "#enum_block_definition",
 	},
 	{
-		include: "#type_definition"
-	}
+		include: "#type_definition",
+	},
 ];
 const repository = {
 	model_block_definition: {
@@ -29,96 +27,96 @@ const repository = {
 		name: "source.prisma.embedded.source",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.model.prisma"
+				name: "storage.type.model.prisma",
 			},
 			"2": {
-				name: "entity.name.type.model.prisma"
+				name: "entity.name.type.model.prisma",
 			},
 			"3": {
-				name: "punctuation.definition.tag.prisma"
-			}
+				name: "punctuation.definition.tag.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#triple_comment"
+				include: "#triple_comment",
 			},
 			{
-				include: "#double_comment"
+				include: "#double_comment",
 			},
 			{
-				include: "#field_definition"
-			}
+				include: "#field_definition",
+			},
 		],
 		end: "\\s*\\}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.prisma"
-			}
-		}
+				name: "punctuation.definition.tag.prisma",
+			},
+		},
 	},
 	enum_block_definition: {
 		begin: "^\\s*(enum)\\s+([A-Za-z][\\w]*)\\s+({)",
 		name: "source.prisma.embedded.source",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.enum.prisma"
+				name: "storage.type.enum.prisma",
 			},
 			"2": {
-				name: "entity.name.type.enum.prisma"
+				name: "entity.name.type.enum.prisma",
 			},
 			"3": {
-				name: "punctuation.definition.tag.prisma"
-			}
+				name: "punctuation.definition.tag.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#triple_comment"
+				include: "#triple_comment",
 			},
 			{
-				include: "#double_comment"
+				include: "#double_comment",
 			},
 			{
-				include: "#enum_value_definition"
-			}
+				include: "#enum_value_definition",
+			},
 		],
 		end: "\\s*\\}",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.prisma"
-			}
-		}
+				name: "punctuation.definition.tag.prisma",
+			},
+		},
 	},
 	config_block_definition: {
 		begin: "^\\s*(generator|datasource)\\s+([A-Za-z][\\w]*)\\s+({)",
 		name: "source.prisma.embedded.source",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.config.prisma"
+				name: "storage.type.config.prisma",
 			},
 			"2": {
-				name: "entity.name.type.config.prisma"
+				name: "entity.name.type.config.prisma",
 			},
 			"3": {
-				name: "punctuation.definition.tag.prisma"
-			}
+				name: "punctuation.definition.tag.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#triple_comment"
+				include: "#triple_comment",
 			},
 			{
-				include: "#double_comment"
+				include: "#double_comment",
 			},
 			{
-				include: "#assignment"
-			}
+				include: "#assignment",
+			},
 		],
 		end: "\\s*\\}",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.prisma"
-			}
-		}
+				name: "punctuation.definition.tag.prisma",
+			},
+		},
 	},
 	assignment: {
 		patterns: [
@@ -126,23 +124,23 @@ const repository = {
 				begin: "^\\s*(\\w+)\\s*(=)\\s*",
 				beginCaptures: {
 					"1": {
-						name: "variable.other.assignment.prisma"
+						name: "variable.other.assignment.prisma",
 					},
 					"2": {
-						name: "keyword.operator.terraform"
-					}
+						name: "keyword.operator.terraform",
+					},
 				},
 				patterns: [
 					{
-						include: "#value"
+						include: "#value",
 					},
 					{
-						include: "#double_comment_inline"
-					}
+						include: "#double_comment_inline",
+					},
 				],
-				end: "\\n"
-			}
-		]
+				end: "\\n",
+			},
+		],
 	},
 	field_definition: {
 		name: "scalar.field",
@@ -151,35 +149,35 @@ const repository = {
 				match: "^\\s*(\\w+)(\\s*:)?\\s+((?!(?:Int|String|DateTime|Bytes|Decimal|Float|Json|Boolean)\\b)\\b\\w+)?(Int|String|DateTime|Bytes|Decimal|Float|Json|Boolean)?(\\[\\])?(\\?)?(\\!)?",
 				captures: {
 					"1": {
-						name: "variable.other.assignment.prisma"
+						name: "variable.other.assignment.prisma",
 					},
 					"2": {
-						name: "invalid.illegal.colon.prisma"
+						name: "invalid.illegal.colon.prisma",
 					},
 					"3": {
-						name: "variable.language.relations.prisma"
+						name: "variable.language.relations.prisma",
 					},
 					"4": {
-						name: "support.type.primitive.prisma"
+						name: "support.type.primitive.prisma",
 					},
 					"5": {
-						name: "keyword.operator.list_type.prisma"
+						name: "keyword.operator.list_type.prisma",
 					},
 					"6": {
-						name: "keyword.operator.optional_type.prisma"
+						name: "keyword.operator.optional_type.prisma",
 					},
 					"7": {
-						name: "invalid.illegal.required_type.prisma"
-					}
-				}
+						name: "invalid.illegal.required_type.prisma",
+					},
+				},
 			},
 			{
-				include: "#attribute_with_arguments"
+				include: "#attribute_with_arguments",
 			},
 			{
-				include: "#attribute"
-			}
-		]
+				include: "#attribute",
+			},
+		],
 	},
 	type_definition: {
 		patterns: [
@@ -187,23 +185,23 @@ const repository = {
 				match: "^\\s*(type)\\s+(\\w+)\\s*=\\s*(\\w+)",
 				captures: {
 					"1": {
-						name: "storage.type.type.prisma"
+						name: "storage.type.type.prisma",
 					},
 					"2": {
-						name: "entity.name.type.type.prisma"
+						name: "entity.name.type.type.prisma",
 					},
 					"3": {
-						name: "support.type.primitive.prisma"
-					}
-				}
+						name: "support.type.primitive.prisma",
+					},
+				},
 			},
 			{
-				include: "#attribute_with_arguments"
+				include: "#attribute_with_arguments",
 			},
 			{
-				include: "#attribute"
-			}
-		]
+				include: "#attribute",
+			},
+		],
 	},
 	enum_value_definition: {
 		patterns: [
@@ -211,134 +209,134 @@ const repository = {
 				match: "^\\s*(\\w+)\\s*",
 				captures: {
 					"1": {
-						name: "variable.other.assignment.prisma"
-					}
-				}
+						name: "variable.other.assignment.prisma",
+					},
+				},
 			},
 			{
-				include: "#attribute_with_arguments"
+				include: "#attribute_with_arguments",
 			},
 			{
-				include: "#attribute"
-			}
-		]
+				include: "#attribute",
+			},
+		],
 	},
 	attribute_with_arguments: {
 		name: "source.prisma.attribute.with_arguments",
 		begin: "(@@?[\\w\\.]+)(\\()",
 		beginCaptures: {
 			"1": {
-				name: "entity.name.function.attribute.prisma"
+				name: "entity.name.function.attribute.prisma",
 			},
 			"2": {
-				name: "punctuation.definition.tag.prisma"
-			}
+				name: "punctuation.definition.tag.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#named_argument"
+				include: "#named_argument",
 			},
 			{
-				include: "#value"
-			}
+				include: "#value",
+			},
 		],
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.prisma"
-			}
-		}
+				name: "punctuation.definition.tag.prisma",
+			},
+		},
 	},
 	attribute: {
 		name: "source.prisma.attribute",
 		match: "(@@?[\\w\\.]+)",
 		captures: {
 			"1": {
-				name: "entity.name.function.attribute.prisma"
-			}
-		}
+				name: "entity.name.function.attribute.prisma",
+			},
+		},
 	},
 	array: {
 		name: "source.prisma.array",
 		begin: "\\[",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.prisma"
-			}
+				name: "punctuation.definition.tag.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#value"
-			}
+				include: "#value",
+			},
 		],
 		end: "\\]",
 		endCaptures: {
 			"1": {
-				name: "punctuation.definition.tag.prisma"
-			}
-		}
+				name: "punctuation.definition.tag.prisma",
+			},
+		},
 	},
 	value: {
 		name: "source.prisma.value",
 		patterns: [
 			{
-				include: "#array"
+				include: "#array",
 			},
 			{
-				include: "#functional"
+				include: "#functional",
 			},
 			{
-				include: "#literal"
-			}
-		]
+				include: "#literal",
+			},
+		],
 	},
 	functional: {
 		name: "source.prisma.functional",
 		begin: "(\\w+)(\\()",
 		beginCaptures: {
 			"1": {
-				name: "support.function.functional.prisma"
+				name: "support.function.functional.prisma",
 			},
 			"2": {
-				name: "punctuation.definition.tag.prisma"
-			}
+				name: "punctuation.definition.tag.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#value"
-			}
+				include: "#value",
+			},
 		],
 		end: "\\)",
 		endCaptures: {
 			"0": {
-				name: "punctuation.definition.tag.prisma"
-			}
-		}
+				name: "punctuation.definition.tag.prisma",
+			},
+		},
 	},
 	literal: {
 		name: "source.prisma.literal",
 		patterns: [
 			{
-				include: "#boolean"
+				include: "#boolean",
 			},
 			{
-				include: "#number"
+				include: "#number",
 			},
 			{
-				include: "#double_quoted_string"
+				include: "#double_quoted_string",
 			},
 			{
-				include: "#identifier"
-			}
-		]
+				include: "#identifier",
+			},
+		],
 	},
 	identifier: {
 		patterns: [
 			{
 				match: "\\b(\\w)+\\b",
-				name: "support.constant.constant.prisma"
-			}
-		]
+				name: "support.constant.constant.prisma",
+			},
+		],
 	},
 	map_key: {
 		name: "source.prisma.key",
@@ -347,71 +345,71 @@ const repository = {
 				match: "(\\w+)\\s*(:)\\s*",
 				captures: {
 					"1": {
-						name: "variable.parameter.key.prisma"
+						name: "variable.parameter.key.prisma",
 					},
 					"2": {
-						name: "punctuation.definition.separator.key-value.prisma"
-					}
-				}
-			}
-		]
+						name: "punctuation.definition.separator.key-value.prisma",
+					},
+				},
+			},
+		],
 	},
 	named_argument: {
 		name: "source.prisma.named_argument",
 		patterns: [
 			{
-				include: "#map_key"
+				include: "#map_key",
 			},
 			{
-				include: "#value"
-			}
-		]
+				include: "#value",
+			},
+		],
 	},
 	triple_comment: {
 		begin: "///",
 		end: "$\\n?",
-		name: "comment.prisma"
+		name: "comment.prisma",
 	},
 	double_comment: {
 		begin: "//",
 		end: "$\\n?",
-		name: "comment.prisma"
+		name: "comment.prisma",
 	},
 	double_comment_inline: {
 		match: "//[^\\n]*",
-		name: "comment.prisma"
+		name: "comment.prisma",
 	},
 	boolean: {
 		match: "\\b(true|false)\\b",
-		name: "constant.language.boolean.prisma"
+		name: "constant.language.boolean.prisma",
 	},
 	number: {
 		match: "((0(x|X)[0-9a-fA-F]*)|(\\+|-)?\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDdg]|UL|ul)?\\b",
-		name: "constant.numeric.prisma"
+		name: "constant.numeric.prisma",
 	},
 	double_quoted_string: {
-		begin: "\"",
+		begin: '"',
 		beginCaptures: {
 			"0": {
-				name: "string.quoted.double.start.prisma"
-			}
+				name: "string.quoted.double.start.prisma",
+			},
 		},
-		end: "\"",
+		end: '"',
 		endCaptures: {
 			"0": {
-				name: "string.quoted.double.end.prisma"
-			}
+				name: "string.quoted.double.end.prisma",
+			},
 		},
 		patterns: [
 			{
-				include: "#string_interpolation"
+				include: "#string_interpolation",
 			},
 			{
 				match: "([\\w\\-\\/\\._\\\\%@:\\?=]+)",
-				name: "string.quoted.double.prisma"
-			}
+				name: "string.quoted.double.prisma",
+			},
 		],
-		name: "unnamed"
+		name: "unnamed",
 	},
 	string_interpolation: {
 		patterns: [
@@ -419,31 +417,38 @@ const repository = {
 				begin: "\\$\\{",
 				beginCaptures: {
 					"0": {
-						name: "keyword.control.interpolation.start.prisma"
-					}
+						name: "keyword.control.interpolation.start.prisma",
+					},
 				},
 				end: "\\s*\\}",
 				endCaptures: {
 					"0": {
-						name: "keyword.control.interpolation.end.prisma"
-					}
+						name: "keyword.control.interpolation.end.prisma",
+					},
 				},
 				name: "source.tag.embedded.source.prisma",
 				patterns: [
 					{
-						include: "#value"
-					}
-				]
-			}
-		]
-	}
+						include: "#value",
+					},
+				],
+			},
+		],
+	},
 };
 const prisma_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	fileTypes: fileTypes,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { prisma_tmLanguage as default, fileTypes, name, patterns, repository, scopeName };
+export {
+	prisma_tmLanguage as default,
+	fileTypes,
+	name,
+	patterns,
+	repository,
+	scopeName,
+};

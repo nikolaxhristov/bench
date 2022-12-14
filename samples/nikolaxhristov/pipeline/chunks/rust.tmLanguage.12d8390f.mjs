@@ -1,9 +1,10 @@
 const information_for_contributors = [
 	"This file has been converted from https://github.com/dustypomerleau/rust-syntax/blob/master/syntaxes/rust.tmLanguage.json",
 	"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-	"Once accepted there, we are happy to receive an update request."
+	"Once accepted there, we are happy to receive an update request.",
 ];
-const version = "https://github.com/dustypomerleau/rust-syntax/commit/20462d50ff97338f42c6b64c3f421c634fd60734";
+const version =
+	"https://github.com/dustypomerleau/rust-syntax/commit/20462d50ff97338f42c6b64c3f421c634fd60734";
 const name = "rust";
 const scopeName = "source.rust";
 const patterns = [
@@ -12,41 +13,41 @@ const patterns = [
 		begin: "(<)(\\[)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.brackets.angle.rust"
+				name: "punctuation.brackets.angle.rust",
 			},
 			"2": {
-				name: "punctuation.brackets.square.rust"
-			}
+				name: "punctuation.brackets.square.rust",
+			},
 		},
 		end: ">",
 		endCaptures: {
 			"0": {
-				name: "punctuation.brackets.angle.rust"
-			}
+				name: "punctuation.brackets.angle.rust",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-comments"
+				include: "#block-comments",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#gtypes"
+				include: "#gtypes",
 			},
 			{
-				include: "#lvariables"
+				include: "#lvariables",
 			},
 			{
-				include: "#lifetimes"
+				include: "#lifetimes",
 			},
 			{
-				include: "#punctuation"
+				include: "#punctuation",
 			},
 			{
-				include: "#types"
-			}
-		]
+				include: "#types",
+			},
+		],
 	},
 	{
 		comment: "macro type metavariables",
@@ -54,26 +55,26 @@ const patterns = [
 		match: "(\\$)((crate)|([A-Z][A-Za-z0-9_]*))((:)(block|expr|ident|item|lifetime|literal|meta|path?|stmt|tt|ty|vis))?",
 		captures: {
 			"1": {
-				name: "keyword.operator.macro.dollar.rust"
+				name: "keyword.operator.macro.dollar.rust",
 			},
 			"3": {
-				name: "keyword.other.crate.rust"
+				name: "keyword.other.crate.rust",
 			},
 			"4": {
-				name: "entity.name.type.metavariable.rust"
+				name: "entity.name.type.metavariable.rust",
 			},
 			"6": {
-				name: "keyword.operator.key-value.rust"
+				name: "keyword.operator.key-value.rust",
 			},
 			"7": {
-				name: "variable.other.metavariable.specifier.rust"
-			}
+				name: "variable.other.metavariable.specifier.rust",
+			},
 		},
 		patterns: [
 			{
-				include: "#keywords"
-			}
-		]
+				include: "#keywords",
+			},
+		],
 	},
 	{
 		comment: "macro metavariables",
@@ -81,23 +82,23 @@ const patterns = [
 		match: "(\\$)([a-z][A-Za-z0-9_]*)((:)(block|expr|ident|item|lifetime|literal|meta|path?|stmt|tt|ty|vis))?",
 		captures: {
 			"1": {
-				name: "keyword.operator.macro.dollar.rust"
+				name: "keyword.operator.macro.dollar.rust",
 			},
 			"2": {
-				name: "variable.other.metavariable.name.rust"
+				name: "variable.other.metavariable.name.rust",
 			},
 			"4": {
-				name: "keyword.operator.key-value.rust"
+				name: "keyword.operator.key-value.rust",
 			},
 			"5": {
-				name: "variable.other.metavariable.specifier.rust"
-			}
+				name: "variable.other.metavariable.specifier.rust",
+			},
 		},
 		patterns: [
 			{
-				include: "#keywords"
-			}
-		]
+				include: "#keywords",
+			},
+		],
 	},
 	{
 		comment: "macro rules",
@@ -105,18 +106,18 @@ const patterns = [
 		match: "\\b(macro_rules!)\\s+(([a-z0-9_]+)|([A-Z][a-z0-9_]*))\\s+(\\{)",
 		captures: {
 			"1": {
-				name: "entity.name.function.macro.rules.rust"
+				name: "entity.name.function.macro.rules.rust",
 			},
 			"3": {
-				name: "entity.name.function.macro.rust"
+				name: "entity.name.function.macro.rust",
 			},
 			"4": {
-				name: "entity.name.type.macro.rust"
+				name: "entity.name.type.macro.rust",
 			},
 			"5": {
-				name: "punctuation.brackets.curly.rust"
-			}
-		}
+				name: "punctuation.brackets.curly.rust",
+			},
+		},
 	},
 	{
 		comment: "attributes",
@@ -124,59 +125,59 @@ const patterns = [
 		begin: "(#)(\\!?)(\\[)",
 		beginCaptures: {
 			"1": {
-				name: "punctuation.definition.attribute.rust"
+				name: "punctuation.definition.attribute.rust",
 			},
 			"2": {
-				name: "keyword.operator.attribute.inner.rust"
+				name: "keyword.operator.attribute.inner.rust",
 			},
 			"3": {
-				name: "punctuation.brackets.attribute.rust"
-			}
+				name: "punctuation.brackets.attribute.rust",
+			},
 		},
 		end: "\\]",
 		endCaptures: {
 			"0": {
-				name: "punctuation.brackets.attribute.rust"
-			}
+				name: "punctuation.brackets.attribute.rust",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-comments"
+				include: "#block-comments",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#keywords"
+				include: "#keywords",
 			},
 			{
-				include: "#lifetimes"
+				include: "#lifetimes",
 			},
 			{
-				include: "#punctuation"
+				include: "#punctuation",
 			},
 			{
-				include: "#strings"
+				include: "#strings",
 			},
 			{
-				include: "#gtypes"
+				include: "#gtypes",
 			},
 			{
-				include: "#types"
-			}
-		]
+				include: "#types",
+			},
+		],
 	},
 	{
 		comment: "modules",
 		match: "(mod)\\s+((?:r#(?!crate|[Ss]elf|super))?[a-z][A-Za-z0-9_]*)",
 		captures: {
 			"1": {
-				name: "storage.type.rust"
+				name: "storage.type.rust",
 			},
 			"2": {
-				name: "entity.name.module.rust"
-			}
-		}
+				name: "entity.name.module.rust",
+			},
+		},
 	},
 	{
 		comment: "external crate imports",
@@ -184,32 +185,32 @@ const patterns = [
 		begin: "\\b(extern)\\s+(crate)",
 		beginCaptures: {
 			"1": {
-				name: "storage.type.rust"
+				name: "storage.type.rust",
 			},
 			"2": {
-				name: "keyword.other.crate.rust"
-			}
+				name: "keyword.other.crate.rust",
+			},
 		},
 		end: ";",
 		endCaptures: {
 			"0": {
-				name: "punctuation.semi.rust"
-			}
+				name: "punctuation.semi.rust",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-comments"
+				include: "#block-comments",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#keywords"
+				include: "#keywords",
 			},
 			{
-				include: "#punctuation"
-			}
-		]
+				include: "#punctuation",
+			},
+		],
 	},
 	{
 		comment: "use statements",
@@ -217,81 +218,81 @@ const patterns = [
 		begin: "\\b(use)\\s",
 		beginCaptures: {
 			"1": {
-				name: "keyword.other.rust"
-			}
+				name: "keyword.other.rust",
+			},
 		},
 		end: ";",
 		endCaptures: {
 			"0": {
-				name: "punctuation.semi.rust"
-			}
+				name: "punctuation.semi.rust",
+			},
 		},
 		patterns: [
 			{
-				include: "#block-comments"
+				include: "#block-comments",
 			},
 			{
-				include: "#comments"
+				include: "#comments",
 			},
 			{
-				include: "#keywords"
+				include: "#keywords",
 			},
 			{
-				include: "#namespaces"
+				include: "#namespaces",
 			},
 			{
-				include: "#punctuation"
+				include: "#punctuation",
 			},
 			{
-				include: "#types"
+				include: "#types",
 			},
 			{
-				include: "#lvariables"
-			}
-		]
+				include: "#lvariables",
+			},
+		],
 	},
 	{
-		include: "#block-comments"
+		include: "#block-comments",
 	},
 	{
-		include: "#comments"
+		include: "#comments",
 	},
 	{
-		include: "#lvariables"
+		include: "#lvariables",
 	},
 	{
-		include: "#constants"
+		include: "#constants",
 	},
 	{
-		include: "#gtypes"
+		include: "#gtypes",
 	},
 	{
-		include: "#functions"
+		include: "#functions",
 	},
 	{
-		include: "#types"
+		include: "#types",
 	},
 	{
-		include: "#keywords"
+		include: "#keywords",
 	},
 	{
-		include: "#lifetimes"
+		include: "#lifetimes",
 	},
 	{
-		include: "#macros"
+		include: "#macros",
 	},
 	{
-		include: "#namespaces"
+		include: "#namespaces",
 	},
 	{
-		include: "#punctuation"
+		include: "#punctuation",
 	},
 	{
-		include: "#strings"
+		include: "#strings",
 	},
 	{
-		include: "#variables"
-	}
+		include: "#variables",
+	},
 ];
 const repository = {
 	comments: {
@@ -299,21 +300,21 @@ const repository = {
 			{
 				comment: "documentation comments",
 				name: "comment.line.documentation.rust",
-				match: "^\\s*///.*"
+				match: "^\\s*///.*",
 			},
 			{
 				comment: "line comments",
 				name: "comment.line.double-slash.rust",
-				match: "\\s*//.*"
-			}
-		]
+				match: "\\s*//.*",
+			},
+		],
 	},
 	"block-comments": {
 		patterns: [
 			{
 				comment: "empty block comments",
 				name: "comment.block.rust",
-				match: "/\\*\\*/"
+				match: "/\\*\\*/",
 			},
 			{
 				comment: "block documentation comments",
@@ -322,9 +323,9 @@ const repository = {
 				end: "\\*/",
 				patterns: [
 					{
-						include: "#block-comments"
-					}
-				]
+						include: "#block-comments",
+					},
+				],
 			},
 			{
 				comment: "block comments",
@@ -333,30 +334,30 @@ const repository = {
 				end: "\\*/",
 				patterns: [
 					{
-						include: "#block-comments"
-					}
-				]
-			}
-		]
+						include: "#block-comments",
+					},
+				],
+			},
+		],
 	},
 	constants: {
 		patterns: [
 			{
 				comment: "ALL CAPS constants",
 				name: "constant.other.caps.rust",
-				match: "\\b[A-Z]{2}[A-Z0-9_]*\\b"
+				match: "\\b[A-Z]{2}[A-Z0-9_]*\\b",
 			},
 			{
 				comment: "constant declarations",
 				match: "\\b(const)\\s+([A-Z][A-Za-z0-9_]*)\\b",
 				captures: {
 					"1": {
-						name: "storage.type.rust"
+						name: "storage.type.rust",
 					},
 					"2": {
-						name: "constant.other.caps.rust"
-					}
-				}
+						name: "constant.other.caps.rust",
+					},
+				},
 			},
 			{
 				comment: "decimal integers and floats",
@@ -364,21 +365,21 @@ const repository = {
 				match: "\\b\\d[\\d_]*(\\.?)[\\d_]*(?:(E)([+-])([\\d_]+))?(f32|f64|i128|i16|i32|i64|i8|isize|u128|u16|u32|u64|u8|usize)?\\b",
 				captures: {
 					"1": {
-						name: "punctuation.separator.dot.decimal.rust"
+						name: "punctuation.separator.dot.decimal.rust",
 					},
 					"2": {
-						name: "keyword.operator.exponent.rust"
+						name: "keyword.operator.exponent.rust",
 					},
 					"3": {
-						name: "keyword.operator.exponent.sign.rust"
+						name: "keyword.operator.exponent.sign.rust",
 					},
 					"4": {
-						name: "constant.numeric.decimal.exponent.mantissa.rust"
+						name: "constant.numeric.decimal.exponent.mantissa.rust",
 					},
 					"5": {
-						name: "entity.name.type.numeric.rust"
-					}
-				}
+						name: "entity.name.type.numeric.rust",
+					},
+				},
 			},
 			{
 				comment: "hexadecimal integers",
@@ -386,9 +387,9 @@ const repository = {
 				match: "\\b0x[\\da-fA-F_]+(i128|i16|i32|i64|i8|isize|u128|u16|u32|u64|u8|usize)?\\b",
 				captures: {
 					"1": {
-						name: "entity.name.type.numeric.rust"
-					}
-				}
+						name: "entity.name.type.numeric.rust",
+					},
+				},
 			},
 			{
 				comment: "octal integers",
@@ -396,9 +397,9 @@ const repository = {
 				match: "\\b0o[0-7_]+(i128|i16|i32|i64|i8|isize|u128|u16|u32|u64|u8|usize)?\\b",
 				captures: {
 					"1": {
-						name: "entity.name.type.numeric.rust"
-					}
-				}
+						name: "entity.name.type.numeric.rust",
+					},
+				},
 			},
 			{
 				comment: "binary integers",
@@ -406,16 +407,16 @@ const repository = {
 				match: "\\b0b[01_]+(i128|i16|i32|i64|i8|isize|u128|u16|u32|u64|u8|usize)?\\b",
 				captures: {
 					"1": {
-						name: "entity.name.type.numeric.rust"
-					}
-				}
+						name: "entity.name.type.numeric.rust",
+					},
+				},
 			},
 			{
 				comment: "booleans",
 				name: "constant.language.bool.rust",
-				match: "\\b(true|false)\\b"
-			}
-		]
+				match: "\\b(true|false)\\b",
+			},
+		],
 	},
 	escapes: {
 		comment: "escapes: ASCII, byte, Unicode, quote, regex",
@@ -423,21 +424,21 @@ const repository = {
 		match: "(\\\\)(?:(?:(x[0-7][0-7a-fA-F])|(u(\\{)[\\da-fA-F]{4,6}(\\}))|.))",
 		captures: {
 			"1": {
-				name: "constant.character.escape.backslash.rust"
+				name: "constant.character.escape.backslash.rust",
 			},
 			"2": {
-				name: "constant.character.escape.bit.rust"
+				name: "constant.character.escape.bit.rust",
 			},
 			"3": {
-				name: "constant.character.escape.unicode.rust"
+				name: "constant.character.escape.unicode.rust",
 			},
 			"4": {
-				name: "constant.character.escape.unicode.punctuation.rust"
+				name: "constant.character.escape.unicode.punctuation.rust",
 			},
 			"5": {
-				name: "constant.character.escape.unicode.punctuation.rust"
-			}
-		}
+				name: "constant.character.escape.unicode.punctuation.rust",
+			},
+		},
 	},
 	functions: {
 		patterns: [
@@ -446,12 +447,12 @@ const repository = {
 				match: "\\b(pub)(\\()",
 				captures: {
 					"1": {
-						name: "keyword.other.rust"
+						name: "keyword.other.rust",
 					},
 					"2": {
-						name: "punctuation.brackets.round.rust"
-					}
-				}
+						name: "punctuation.brackets.round.rust",
+					},
+				},
 			},
 			{
 				comment: "function definition",
@@ -459,68 +460,68 @@ const repository = {
 				begin: "\\b(fn)\\s+((?:r#(?!crate|[Ss]elf|super))?[A-Za-z0-9_]+)((\\()|(<))",
 				beginCaptures: {
 					"1": {
-						name: "keyword.other.fn.rust"
+						name: "keyword.other.fn.rust",
 					},
 					"2": {
-						name: "entity.name.function.rust"
+						name: "entity.name.function.rust",
 					},
 					"4": {
-						name: "punctuation.brackets.round.rust"
+						name: "punctuation.brackets.round.rust",
 					},
 					"5": {
-						name: "punctuation.brackets.angle.rust"
-					}
+						name: "punctuation.brackets.angle.rust",
+					},
 				},
 				end: "\\{|;",
 				endCaptures: {
 					"0": {
-						name: "punctuation.brackets.curly.rust"
-					}
+						name: "punctuation.brackets.curly.rust",
+					},
 				},
 				patterns: [
 					{
-						include: "#block-comments"
+						include: "#block-comments",
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#keywords"
+						include: "#keywords",
 					},
 					{
-						include: "#lvariables"
+						include: "#lvariables",
 					},
 					{
-						include: "#constants"
+						include: "#constants",
 					},
 					{
-						include: "#gtypes"
+						include: "#gtypes",
 					},
 					{
-						include: "#functions"
+						include: "#functions",
 					},
 					{
-						include: "#lifetimes"
+						include: "#lifetimes",
 					},
 					{
-						include: "#macros"
+						include: "#macros",
 					},
 					{
-						include: "#namespaces"
+						include: "#namespaces",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#strings"
+						include: "#strings",
 					},
 					{
-						include: "#types"
+						include: "#types",
 					},
 					{
-						include: "#variables"
-					}
-				]
+						include: "#variables",
+					},
+				],
 			},
 			{
 				comment: "function/method calls, chaining",
@@ -528,62 +529,62 @@ const repository = {
 				begin: "((?:r#(?!crate|[Ss]elf|super))?[A-Za-z0-9_]+)(\\()",
 				beginCaptures: {
 					"1": {
-						name: "entity.name.function.rust"
+						name: "entity.name.function.rust",
 					},
 					"2": {
-						name: "punctuation.brackets.round.rust"
-					}
+						name: "punctuation.brackets.round.rust",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.brackets.round.rust"
-					}
+						name: "punctuation.brackets.round.rust",
+					},
 				},
 				patterns: [
 					{
-						include: "#block-comments"
+						include: "#block-comments",
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#keywords"
+						include: "#keywords",
 					},
 					{
-						include: "#lvariables"
+						include: "#lvariables",
 					},
 					{
-						include: "#constants"
+						include: "#constants",
 					},
 					{
-						include: "#gtypes"
+						include: "#gtypes",
 					},
 					{
-						include: "#functions"
+						include: "#functions",
 					},
 					{
-						include: "#lifetimes"
+						include: "#lifetimes",
 					},
 					{
-						include: "#macros"
+						include: "#macros",
 					},
 					{
-						include: "#namespaces"
+						include: "#namespaces",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#strings"
+						include: "#strings",
 					},
 					{
-						include: "#types"
+						include: "#types",
 					},
 					{
-						include: "#variables"
-					}
-				]
+						include: "#variables",
+					},
+				],
 			},
 			{
 				comment: "function/method calls with turbofish",
@@ -591,249 +592,250 @@ const repository = {
 				begin: "((?:r#(?!crate|[Ss]elf|super))?[A-Za-z0-9_]+)(?=::<.*>\\()",
 				beginCaptures: {
 					"1": {
-						name: "entity.name.function.rust"
-					}
+						name: "entity.name.function.rust",
+					},
 				},
 				end: "\\)",
 				endCaptures: {
 					"0": {
-						name: "punctuation.brackets.round.rust"
-					}
+						name: "punctuation.brackets.round.rust",
+					},
 				},
 				patterns: [
 					{
-						include: "#block-comments"
+						include: "#block-comments",
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#keywords"
+						include: "#keywords",
 					},
 					{
-						include: "#lvariables"
+						include: "#lvariables",
 					},
 					{
-						include: "#constants"
+						include: "#constants",
 					},
 					{
-						include: "#gtypes"
+						include: "#gtypes",
 					},
 					{
-						include: "#functions"
+						include: "#functions",
 					},
 					{
-						include: "#lifetimes"
+						include: "#lifetimes",
 					},
 					{
-						include: "#macros"
+						include: "#macros",
 					},
 					{
-						include: "#namespaces"
+						include: "#namespaces",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#strings"
+						include: "#strings",
 					},
 					{
-						include: "#types"
+						include: "#types",
 					},
 					{
-						include: "#variables"
-					}
-				]
-			}
-		]
+						include: "#variables",
+					},
+				],
+			},
+		],
 	},
 	keywords: {
 		patterns: [
 			{
 				comment: "control flow keywords",
 				name: "keyword.control.rust",
-				match: "\\b(await|break|continue|do|else|for|if|loop|match|return|try|while|yield)\\b"
+				match: "\\b(await|break|continue|do|else|for|if|loop|match|return|try|while|yield)\\b",
 			},
 			{
 				comment: "storage keywords",
 				name: "keyword.other.rust storage.type.rust",
-				match: "\\b(extern|let|macro|mod)\\b"
+				match: "\\b(extern|let|macro|mod)\\b",
 			},
 			{
 				comment: "const keyword",
 				name: "storage.modifier.rust",
-				match: "\\b(const)\\b"
+				match: "\\b(const)\\b",
 			},
 			{
 				comment: "type keyword",
 				name: "keyword.declaration.type.rust storage.type.rust",
-				match: "\\b(type)\\b"
+				match: "\\b(type)\\b",
 			},
 			{
 				comment: "enum keyword",
 				name: "keyword.declaration.enum.rust storage.type.rust",
-				match: "\\b(enum)\\b"
+				match: "\\b(enum)\\b",
 			},
 			{
 				comment: "trait keyword",
 				name: "keyword.declaration.trait.rust storage.type.rust",
-				match: "\\b(trait)\\b"
+				match: "\\b(trait)\\b",
 			},
 			{
 				comment: "struct keyword",
 				name: "keyword.declaration.struct.rust storage.type.rust",
-				match: "\\b(struct)\\b"
+				match: "\\b(struct)\\b",
 			},
 			{
 				comment: "storage modifiers",
 				name: "storage.modifier.rust",
-				match: "\\b(abstract|static)\\b"
+				match: "\\b(abstract|static)\\b",
 			},
 			{
 				comment: "other keywords",
 				name: "keyword.other.rust",
-				match: "\\b(as|async|become|box|dyn|move|final|impl|in|override|priv|pub|ref|typeof|union|unsafe|unsized|use|virtual|where)\\b"
+				match: "\\b(as|async|become|box|dyn|move|final|impl|in|override|priv|pub|ref|typeof|union|unsafe|unsized|use|virtual|where)\\b",
 			},
 			{
 				comment: "fn",
 				name: "keyword.other.fn.rust",
-				match: "\\bfn\\b"
+				match: "\\bfn\\b",
 			},
 			{
 				comment: "crate",
 				name: "keyword.other.crate.rust",
-				match: "\\bcrate\\b"
+				match: "\\bcrate\\b",
 			},
 			{
 				comment: "mut",
 				name: "storage.modifier.mut.rust",
-				match: "\\bmut\\b"
+				match: "\\bmut\\b",
 			},
 			{
 				comment: "logical operators",
 				name: "keyword.operator.logical.rust",
-				match: "(\\^|\\||\\|\\||&&|<<|>>|!)(?!=)"
+				match: "(\\^|\\||\\|\\||&&|<<|>>|!)(?!=)",
 			},
 			{
 				comment: "logical AND, borrow references",
 				name: "keyword.operator.borrow.and.rust",
-				match: "&(?![&=])"
+				match: "&(?![&=])",
 			},
 			{
 				comment: "assignment operators",
 				name: "keyword.operator.assignment.rust",
-				match: "(\\+=|-=|\\*=|/=|%=|\\^=|&=|\\|=|<<=|>>=)"
+				match: "(\\+=|-=|\\*=|/=|%=|\\^=|&=|\\|=|<<=|>>=)",
 			},
 			{
 				comment: "single equal",
 				name: "keyword.operator.assignment.equal.rust",
-				match: "(?<![<>])=(?!=|>)"
+				match: "(?<![<>])=(?!=|>)",
 			},
 			{
 				comment: "comparison operators",
 				name: "keyword.operator.comparison.rust",
-				match: "(=(=)?(?!>)|!=|<=|(?<!=)>=)"
+				match: "(=(=)?(?!>)|!=|<=|(?<!=)>=)",
 			},
 			{
 				comment: "math operators",
 				name: "keyword.operator.math.rust",
-				match: "(([+%]|(\\*(?!\\w)))(?!=))|(-(?!>))|(/(?!/))"
+				match: "(([+%]|(\\*(?!\\w)))(?!=))|(-(?!>))|(/(?!/))",
 			},
 			{
 				comment: "less than, greater than (special case)",
 				match: "(?:\\b|(?:(\\))|(\\])|(\\})))[ \\t]+([<>])[ \\t]+(?:\\b|(?:(\\()|(\\[)|(\\{)))",
 				captures: {
 					"1": {
-						name: "punctuation.brackets.round.rust"
+						name: "punctuation.brackets.round.rust",
 					},
 					"2": {
-						name: "punctuation.brackets.square.rust"
+						name: "punctuation.brackets.square.rust",
 					},
 					"3": {
-						name: "punctuation.brackets.curly.rust"
+						name: "punctuation.brackets.curly.rust",
 					},
 					"4": {
-						name: "keyword.operator.comparison.rust"
+						name: "keyword.operator.comparison.rust",
 					},
 					"5": {
-						name: "punctuation.brackets.round.rust"
+						name: "punctuation.brackets.round.rust",
 					},
 					"6": {
-						name: "punctuation.brackets.square.rust"
+						name: "punctuation.brackets.square.rust",
 					},
 					"7": {
-						name: "punctuation.brackets.curly.rust"
-					}
-				}
+						name: "punctuation.brackets.curly.rust",
+					},
+				},
 			},
 			{
 				comment: "namespace operator",
 				name: "keyword.operator.namespace.rust",
-				match: "::"
+				match: "::",
 			},
 			{
 				comment: "dereference asterisk",
 				match: "(\\*)(?=\\w+)",
 				captures: {
 					"1": {
-						name: "keyword.operator.dereference.rust"
-					}
-				}
+						name: "keyword.operator.dereference.rust",
+					},
+				},
 			},
 			{
 				comment: "subpattern binding",
 				name: "keyword.operator.subpattern.rust",
-				match: "@"
+				match: "@",
 			},
 			{
 				comment: "dot access",
 				name: "keyword.operator.access.dot.rust",
-				match: "\\.(?!\\.)"
+				match: "\\.(?!\\.)",
 			},
 			{
 				comment: "ranges, range patterns",
 				name: "keyword.operator.range.rust",
-				match: "\\.{2}(=|\\.)?"
+				match: "\\.{2}(=|\\.)?",
 			},
 			{
 				comment: "colon",
 				name: "keyword.operator.key-value.rust",
-				match: ":(?!:)"
+				match: ":(?!:)",
 			},
 			{
 				comment: "dashrocket, skinny arrow",
 				name: "keyword.operator.arrow.skinny.rust",
-				match: "->"
+				match: "->",
 			},
 			{
 				comment: "hashrocket, fat arrow",
 				name: "keyword.operator.arrow.fat.rust",
-				match: "=>"
+				match: "=>",
 			},
 			{
 				comment: "dollar macros",
 				name: "keyword.operator.macro.dollar.rust",
-				match: "\\$"
+				match: "\\$",
 			},
 			{
-				comment: "question mark operator, questionably sized, macro kleene matcher",
+				comment:
+					"question mark operator, questionably sized, macro kleene matcher",
 				name: "keyword.operator.question.rust",
-				match: "\\?"
-			}
-		]
+				match: "\\?",
+			},
+		],
 	},
 	interpolations: {
 		comment: "curly brace interpolations",
 		name: "meta.interpolation.rust",
-		match: "({)[^\"{}]*(})",
+		match: '({)[^"{}]*(})',
 		captures: {
 			"1": {
-				name: "punctuation.definition.interpolation.rust"
+				name: "punctuation.definition.interpolation.rust",
 			},
 			"2": {
-				name: "punctuation.definition.interpolation.rust"
-			}
-		}
+				name: "punctuation.definition.interpolation.rust",
+			},
+		},
 	},
 	lifetimes: {
 		patterns: [
@@ -842,29 +844,29 @@ const repository = {
 				match: "(['])([a-zA-Z_][0-9a-zA-Z_]*)(?!['])\\b",
 				captures: {
 					"1": {
-						name: "punctuation.definition.lifetime.rust"
+						name: "punctuation.definition.lifetime.rust",
 					},
 					"2": {
-						name: "entity.name.type.lifetime.rust"
-					}
-				}
+						name: "entity.name.type.lifetime.rust",
+					},
+				},
 			},
 			{
 				comment: "borrowing references to named lifetimes",
 				match: "(\\&)(['])([a-zA-Z_][0-9a-zA-Z_]*)(?!['])\\b",
 				captures: {
 					"1": {
-						name: "keyword.operator.borrow.rust"
+						name: "keyword.operator.borrow.rust",
 					},
 					"2": {
-						name: "punctuation.definition.lifetime.rust"
+						name: "punctuation.definition.lifetime.rust",
 					},
 					"3": {
-						name: "entity.name.type.lifetime.rust"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.lifetime.rust",
+					},
+				},
+			},
+		],
 	},
 	macros: {
 		patterns: [
@@ -874,14 +876,14 @@ const repository = {
 				match: "(([a-z_][A-Za-z0-9_]*!)|([A-Z_][A-Za-z0-9_]*!))",
 				captures: {
 					"2": {
-						name: "entity.name.function.macro.rust"
+						name: "entity.name.function.macro.rust",
 					},
 					"3": {
-						name: "entity.name.type.macro.rust"
-					}
-				}
-			}
-		]
+						name: "entity.name.type.macro.rust",
+					},
+				},
+			},
+		],
 	},
 	namespaces: {
 		patterns: [
@@ -890,14 +892,14 @@ const repository = {
 				match: "(?<![A-Za-z0-9_])([a-z0-9_]+)((?<!super|self)::)",
 				captures: {
 					"1": {
-						name: "entity.name.namespace.rust"
+						name: "entity.name.namespace.rust",
 					},
 					"2": {
-						name: "keyword.operator.namespace.rust"
-					}
-				}
-			}
-		]
+						name: "keyword.operator.namespace.rust",
+					},
+				},
+			},
+		],
 	},
 	types: {
 		patterns: [
@@ -906,215 +908,215 @@ const repository = {
 				match: "(?<![A-Za-z])(f32|f64|i128|i16|i32|i64|i8|isize|u128|u16|u32|u64|u8|usize)\\b",
 				captures: {
 					"1": {
-						name: "entity.name.type.numeric.rust"
-					}
-				}
+						name: "entity.name.type.numeric.rust",
+					},
+				},
 			},
 			{
 				comment: "parameterized types",
 				begin: "\\b([A-Z][A-Za-z0-9]*)(<)",
 				beginCaptures: {
 					"1": {
-						name: "entity.name.type.rust"
+						name: "entity.name.type.rust",
 					},
 					"2": {
-						name: "punctuation.brackets.angle.rust"
-					}
+						name: "punctuation.brackets.angle.rust",
+					},
 				},
 				end: ">",
 				endCaptures: {
 					"0": {
-						name: "punctuation.brackets.angle.rust"
-					}
+						name: "punctuation.brackets.angle.rust",
+					},
 				},
 				patterns: [
 					{
-						include: "#block-comments"
+						include: "#block-comments",
 					},
 					{
-						include: "#comments"
+						include: "#comments",
 					},
 					{
-						include: "#keywords"
+						include: "#keywords",
 					},
 					{
-						include: "#lvariables"
+						include: "#lvariables",
 					},
 					{
-						include: "#lifetimes"
+						include: "#lifetimes",
 					},
 					{
-						include: "#punctuation"
+						include: "#punctuation",
 					},
 					{
-						include: "#types"
+						include: "#types",
 					},
 					{
-						include: "#variables"
-					}
-				]
+						include: "#variables",
+					},
+				],
 			},
 			{
 				comment: "primitive types",
 				name: "entity.name.type.primitive.rust",
-				match: "\\b(bool|char|str)\\b"
+				match: "\\b(bool|char|str)\\b",
 			},
 			{
 				comment: "trait declarations",
 				match: "\\b(trait)\\s+([A-Z][A-Za-z0-9]*)\\b",
 				captures: {
 					"1": {
-						name: "keyword.declaration.trait.rust storage.type.rust"
+						name: "keyword.declaration.trait.rust storage.type.rust",
 					},
 					"2": {
-						name: "entity.name.type.trait.rust"
-					}
-				}
+						name: "entity.name.type.trait.rust",
+					},
+				},
 			},
 			{
 				comment: "struct declarations",
 				match: "\\b(struct)\\s+([A-Z][A-Za-z0-9]*)\\b",
 				captures: {
 					"1": {
-						name: "keyword.declaration.struct.rust storage.type.rust"
+						name: "keyword.declaration.struct.rust storage.type.rust",
 					},
 					"2": {
-						name: "entity.name.type.struct.rust"
-					}
-				}
+						name: "entity.name.type.struct.rust",
+					},
+				},
 			},
 			{
 				comment: "enum declarations",
 				match: "\\b(enum)\\s+([A-Z][A-Za-z0-9_]*)\\b",
 				captures: {
 					"1": {
-						name: "keyword.declaration.enum.rust storage.type.rust"
+						name: "keyword.declaration.enum.rust storage.type.rust",
 					},
 					"2": {
-						name: "entity.name.type.enum.rust"
-					}
-				}
+						name: "entity.name.type.enum.rust",
+					},
+				},
 			},
 			{
 				comment: "type declarations",
 				match: "\\b(type)\\s+([A-Z][A-Za-z0-9_]*)\\b",
 				captures: {
 					"1": {
-						name: "keyword.declaration.type.rust storage.type.rust"
+						name: "keyword.declaration.type.rust storage.type.rust",
 					},
 					"2": {
-						name: "entity.name.type.declaration.rust"
-					}
-				}
+						name: "entity.name.type.declaration.rust",
+					},
+				},
 			},
 			{
 				comment: "types",
 				name: "entity.name.type.rust",
-				match: "\\b[A-Z][A-Za-z0-9]*\\b(?!!)"
-			}
-		]
+				match: "\\b[A-Z][A-Za-z0-9]*\\b(?!!)",
+			},
+		],
 	},
 	gtypes: {
 		patterns: [
 			{
 				comment: "option types",
 				name: "entity.name.type.option.rust",
-				match: "\\b(Some|None)\\b"
+				match: "\\b(Some|None)\\b",
 			},
 			{
 				comment: "result types",
 				name: "entity.name.type.result.rust",
-				match: "\\b(Ok|Err)\\b"
-			}
-		]
+				match: "\\b(Ok|Err)\\b",
+			},
+		],
 	},
 	punctuation: {
 		patterns: [
 			{
 				comment: "comma",
 				name: "punctuation.comma.rust",
-				match: ","
+				match: ",",
 			},
 			{
 				comment: "curly braces",
 				name: "punctuation.brackets.curly.rust",
-				match: "[{}]"
+				match: "[{}]",
 			},
 			{
 				comment: "parentheses, round brackets",
 				name: "punctuation.brackets.round.rust",
-				match: "[()]"
+				match: "[()]",
 			},
 			{
 				comment: "semicolon",
 				name: "punctuation.semi.rust",
-				match: ";"
+				match: ";",
 			},
 			{
 				comment: "square brackets",
 				name: "punctuation.brackets.square.rust",
-				match: "[\\[\\]]"
+				match: "[\\[\\]]",
 			},
 			{
 				comment: "angle brackets",
 				name: "punctuation.brackets.angle.rust",
-				match: "(?<!=)[<>]"
-			}
-		]
+				match: "(?<!=)[<>]",
+			},
+		],
 	},
 	strings: {
 		patterns: [
 			{
 				comment: "double-quoted strings and byte strings",
 				name: "string.quoted.double.rust",
-				begin: "(b?)(\")",
+				begin: '(b?)(")',
 				beginCaptures: {
 					"1": {
-						name: "string.quoted.byte.raw.rust"
+						name: "string.quoted.byte.raw.rust",
 					},
 					"2": {
-						name: "punctuation.definition.string.rust"
-					}
+						name: "punctuation.definition.string.rust",
+					},
 				},
-				end: "\"",
+				end: '"',
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.string.rust"
-					}
+						name: "punctuation.definition.string.rust",
+					},
 				},
 				patterns: [
 					{
-						include: "#escapes"
+						include: "#escapes",
 					},
 					{
-						include: "#interpolations"
-					}
-				]
+						include: "#interpolations",
+					},
+				],
 			},
 			{
 				comment: "double-quoted raw strings and raw byte strings",
 				name: "string.quoted.double.rust",
-				begin: "(b?r)(#*)(\")",
+				begin: '(b?r)(#*)(")',
 				beginCaptures: {
 					"1": {
-						name: "string.quoted.byte.raw.rust"
+						name: "string.quoted.byte.raw.rust",
 					},
 					"2": {
-						name: "punctuation.definition.string.raw.rust"
+						name: "punctuation.definition.string.raw.rust",
 					},
 					"3": {
-						name: "punctuation.definition.string.rust"
-					}
+						name: "punctuation.definition.string.rust",
+					},
 				},
-				end: "(\")(\\2)",
+				end: '(")(\\2)',
 				endCaptures: {
 					"1": {
-						name: "punctuation.definition.string.rust"
+						name: "punctuation.definition.string.rust",
 					},
 					"2": {
-						name: "punctuation.definition.string.raw.rust"
-					}
-				}
+						name: "punctuation.definition.string.raw.rust",
+					},
+				},
 			},
 			{
 				comment: "characters and bytes",
@@ -1122,49 +1124,49 @@ const repository = {
 				begin: "(b)?(')",
 				beginCaptures: {
 					"1": {
-						name: "string.quoted.byte.raw.rust"
+						name: "string.quoted.byte.raw.rust",
 					},
 					"2": {
-						name: "punctuation.definition.char.rust"
-					}
+						name: "punctuation.definition.char.rust",
+					},
 				},
 				end: "'",
 				endCaptures: {
 					"0": {
-						name: "punctuation.definition.char.rust"
-					}
+						name: "punctuation.definition.char.rust",
+					},
 				},
 				patterns: [
 					{
-						include: "#escapes"
-					}
-				]
-			}
-		]
+						include: "#escapes",
+					},
+				],
+			},
+		],
 	},
 	lvariables: {
 		patterns: [
 			{
 				comment: "self",
 				name: "variable.language.self.rust",
-				match: "\\b[Ss]elf\\b"
+				match: "\\b[Ss]elf\\b",
 			},
 			{
 				comment: "super",
 				name: "variable.language.super.rust",
-				match: "\\bsuper\\b"
-			}
-		]
+				match: "\\bsuper\\b",
+			},
+		],
 	},
 	variables: {
 		patterns: [
 			{
 				comment: "variables",
 				name: "variable.other.rust",
-				match: "\\b(?<!(?<!\\.)\\.)(?:r#(?!(crate|[Ss]elf|super)))?[a-z0-9_]+\\b"
-			}
-		]
-	}
+				match: "\\b(?<!(?<!\\.)\\.)(?:r#(?!(crate|[Ss]elf|super)))?[a-z0-9_]+\\b",
+			},
+		],
+	},
 };
 const rust_tmLanguage = {
 	information_for_contributors: information_for_contributors,
@@ -1172,7 +1174,15 @@ const rust_tmLanguage = {
 	name: name,
 	scopeName: scopeName,
 	patterns: patterns,
-	repository: repository
+	repository: repository,
 };
 
-export { rust_tmLanguage as default, information_for_contributors, name, patterns, repository, scopeName, version };
+export {
+	rust_tmLanguage as default,
+	information_for_contributors,
+	name,
+	patterns,
+	repository,
+	scopeName,
+	version,
+};
