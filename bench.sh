@@ -3,27 +3,27 @@
 hyperfine \
 	--runs 1 \
 	--show-output \
-	--export-markdown ./bench/nikolaxhristov/pipeline/critters.md \
-	'node ./dist/bench/nikolaxhristov/pipeline/critters.js'
+	--export-markdown ./bench/lightrix/files-pipeline/critters.md \
+	'node ./dist/bench/lightrix/files-pipeline/critters.js'
 
 hyperfine \
 	--runs 1 \
 	--show-output \
-	--export-markdown ./bench/nikolaxhristov/pipeline/rome.md \
-	'node ./dist/bench/nikolaxhristov/pipeline/rome.js'
+	--export-markdown ./bench/lightrix/files-pipeline/rome.md \
+	'node ./dist/bench/lightrix/files-pipeline/rome.js'
 
 hyperfine \
 	--runs 1 \
 	--show-output \
-	--export-markdown ./bench/nikolaxhristov/pipeline/compress.md \
-	'node ./dist/bench/nikolaxhristov/pipeline/compress.js'
+	--export-markdown ./bench/lightrix/files-pipeline/compress.md \
+	'node ./dist/bench/lightrix/files-pipeline/compress.js'
 
 {
 	printf '# benchmarks\n'
-	printf '\n## @nikolarhristov/pipeline critters\n'
-	cat ./bench/nikolaxhristov/pipeline/critters.md
-	printf '\n## @nikolarhristov/pipeline rome\n'
-	cat ./bench/nikolaxhristov/pipeline/rome.md
-	printf '\n## @nikolarhristov/pipeline compress\n'
-	cat ./bench/nikolaxhristov/pipeline/compress.md
+	printf '\n## files-pipeline critters\n'
+	cat ./bench/lightrix/files-pipeline/critters.md
+	printf '\n## files-pipeline rome\n'
+	cat ./bench/lightrix/files-pipeline/rome.md
+	printf '\n## files-pipeline compress\n'
+	cat ./bench/lightrix/files-pipeline/compress.md
 } >README.md

@@ -1,4 +1,4 @@
-import { pipeline } from "@nikolarhristov/pipeline";
+import { pipeline } from "files-pipeline";
 
 import { Configuration, Distribution, Rome } from "@rometools/js-api";
 import { resolve } from "path";
@@ -16,8 +16,8 @@ rome.applyConfiguration(
 await new pipeline({
 	path: new Map([
 		[
-			"./samples/nikolaxhristov/pipeline/",
-			"./output/nikolaxhristov/pipeline/",
+			"./samples/lightrix/files-pipeline/",
+			"./output/lightrix/files-pipeline/",
 		],
 	]),
 	files: "**/*.{js,mjs,cjs,ts}",
