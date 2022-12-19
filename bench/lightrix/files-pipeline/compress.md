@@ -1,3 +1,3 @@
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `node ./dist/bench/lightrix/files-pipeline/compress.js` | 216.749 | 216.749 | 216.749 | 1.00 |
+| `node ./dist/bench/lightrix/files-pipeline/compress.js` | 213.115 | 213.115 | 213.115 | 1.00 |
