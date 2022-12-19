@@ -9,4 +9,4 @@ await new pipeline({
 	]),
 	// rome-ignore lint/nursery/noPrecisionLoss:
 	logger: 1,
-}).compress();
+}).process();
