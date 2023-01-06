@@ -72,7 +72,7 @@ jobs:
                   use-tool-cache: true
 
             # Download the production build from node.yml
-            - uses: actions/download-artifact@v3.0.1
+            - uses: actions/download-artifact@v3.0.2
               id: download
               with:
                   name: .-node-${{ matrix.node-version }}-dist
